@@ -166,6 +166,8 @@ export interface AskOptions {
   lang: Lang; // UI language (used when the question has no letters to detect from)
   cardId?: string | null; // "Asking about: …" context
   persistTrace?: boolean; // default true; the evaluator turns it off
+  /** Called as each stage completes (honest progress for the UI stream). */
+  onStage?: (stage: Stage["name"]) => void;
 }
 
 export const LEVEL_ORDER: Record<Exclude<Level, "X">, number> = { A: 0, B: 1, C: 2, D: 3 };

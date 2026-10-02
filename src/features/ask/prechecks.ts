@@ -135,7 +135,7 @@ export function isHadithRequest(q: string): boolean {
 /** Strip the request wrapper to get the claim being asked about ("give me a hadith that X" → "X"). */
 export function hadithClaim(q: string): string {
   return q
-    .replace(/^(.*?\bhadiths?\s+(that|which|about|saying|says|proving|proves|prove|on|where|stating|states|mentioning)\s+)/i, "")
+    .replace(/^(.*?\bhadiths?\s+(that|which|about|saying|says|proving|proves|prove|on|where|stating|states|mentioning)\s+((says?|states?|proves?|shows?|mentions?)\s+)?(that\s+)?)/i, "")
     .replace(/^(.*?\bdid\s+(the\s+)?(prophet|messenger)(\s+muhammad)?\s+(really\s+|actually\s+)?(say|said|teach|tell)\s+(that\s+)?)/i, "")
     .replace(/^(.*?(حديثا|حديثاً|حديث|أحاديث|احاديث)\s+(عن|في|يقول|يثبت|يدل\s+على|أن|ان)?\s*)/, "")
     .replace(/^(.*?هل\s+قال\s+(النبي|رسول\s+الله|الرسول)\s*(ﷺ|صلى\s+الله\s+عليه\s+وسلم)?\s*)/, "")
@@ -199,16 +199,18 @@ export function arabicSpans(q: string): ArabicSpan[] {
 /** Words that frame a quote rather than belong to it (trimmed from the edges of unquoted runs). */
 const FRAME_WORDS = new Set(
   [
-    "هل", "ما", "ماذا", "لماذا", "كيف", "معنى", "تفسير", "شرح", "آية", "اية", "الآية", "الاية", "قوله", "تعالى", "قال", "الله", "يقول", "قالت",
-    "في", "القرآن", "القران", "هذه", "هذا", "صحيح", "صحيحة", "أن", "ان", "إن", "التي", "الذي", "تقول", "يعني", "سورة", "أي", "اي", "من", "هي", "هو",
+    "هل", "ما", "ماذا", "لماذا", "كيف", "معنى", "تفسير", "شرح", "آية", "اية", "الآية", "الاية", "قوله", "تعالى",
+    "في", "القرآن", "القران", "هذه", "هذا", "صحيح", "صحيحة", "تقول", "يعني", "سورة", "أي", "اي",
     "اقرأ", "قرأت", "سمعت", "ورد", "عزوجل", "عز", "وجل", "سبحانه", "قرآنية", "قرانية",
   ].map((w) => normalizeArabic(w)),
 );
+/** Leading framing phrases removed before matching ("قال تعالى:", "قال الله تعالى", "قوله تعالى"). */
+const FRAME_PREFIX = /^(قال\s+(الله\s+)?تعالى|قال\s+الله\s+عز\s+وجل|يقول\s+(الله\s+)?تعالى|قوله\s+تعالى)\s*/;
 
 /** Candidate sub-spans of an unquoted run, longest first: trims framing words and up to 3 words at each edge. */
 export function subSpans(span: ArabicSpan): string[] {
-  const words = span.text.split(/\s+/).filter(Boolean);
   if (span.quoted) return [span.text];
+  const words = span.text.replace(FRAME_PREFIX, "").split(/\s+/).filter(Boolean);
   let s = 0;
   let e = words.length;
   while (s < e && FRAME_WORDS.has(normalizeArabic(words[s]))) s++;
@@ -276,7 +278,7 @@ function sameTerm(candidate: string, needle: string): boolean {
 
 /** A question that is (only) about the meaning or translation of a glossary term. */
 export function detectGlossaryQuestion(q: string, terms: GlossaryTerm[]): { term: GlossaryTerm; mode: "meaning" | "translate" } | null {
-  const mode: "meaning" | "translate" = /\b(translate|translation)\b|ترجم|ترجمة|نترجم|أترجم|اترجم/.test(q) ? "translate" : "meaning";
+  const mode: "meaning" | "translate" = /\b(translate|translation)\b|ترجم|ترجمة|نترجم|أترجم|اترجم/i.test(q) ? "translate" : "meaning";
   // Try the whole question, then each clause ("I'm new to Islam — what is Tawhid?").
   const clauses = [q, ...q.split(/[.!?؟،,;؛:—–]+|\s-\s/)].map((c) => c.trim().replace(/[?؟!.]+$/, "")).filter((c) => c.length > 2);
   for (const clause of clauses)

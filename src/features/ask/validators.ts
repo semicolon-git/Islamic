@@ -31,7 +31,8 @@ export const SENSITIVE_VERSES = new Set(["9:5", "2:191", "4:89", "4:91", "8:12",
 
 // ───────────────── regexes
 export const RE_HADITH_ATTRIBUTION = /\b(the\s+prophet|the\s+messenger(\s+of\s+allah)?|he)\s*(\(?ﷺ\)?\s*)?(said|says|told\s+(us|them|his)|taught|stated|used\s+to\s+say)\b|\bnarrated\b|\bnarrates\b|\breported\s+that\s+the\s+prophet\b|قال\s+رسول\s+الله|قال\s+النبي|عن\s+النبي|عن\s+رسول\s+الله|أن\s+النبي\s*ﷺ?\s*قال|أخبر\s+النبي|أخبر\s+رسول\s+الله|رواه\s+(البخاري|مسلم)/i;
-export const RE_GRADE = /\b(sahih|saheeh|hasan|da'?if|da['’]?eef|daif|authentic|weak|fabricated|mawdu'?|agreed\s+upon|muttafaq)\b|صحيح|حسن|ضعيف|موضوع|متفق\s+عليه/i;
+/** Grade words. Arabic only in grading constructions (bare «صحيح»/«حسن» are everyday words). */
+export const RE_GRADE = /\b(sahih|saheeh|hasan|da'?if|da['’]?eef|daif|authentic|weak|fabricated|mawdu'?|agreed\s+upon|muttafaq)\b|(حديث|الحديث|إسناده|اسناده|سنده)\s+(صحيح|حسن|ضعيف|موضوع|منكر)|صححه|حسّنه|حسنه\s+(الألباني|الترمذي)|ضعّفه|ضعفه|متفق\s+عليه/i;
 /** Collection names contain "Sahih"/«صحيح» but are not grades. */
 export const RE_COLLECTION_NAMES = /sahih\s+(al-)?bukhari|sahih\s+muslim|صحيح\s+البخاري|صحيح\s+مسلم|الصحيحين/gi;
 export const RE_OCCURRENCE = /\b\d+\s+times\b|\bmentioned\s+\d+|\b\d+\s+verses\b|ذكرت?\s+.{0,30}\s*مرة|[0-9٠-٩]+\s*مرة|[0-9٠-٩]+\s*آية/i;
@@ -64,7 +65,7 @@ const charRatio = (a: string, b: string) => 1 - levenshtein(a, b) / Math.max(a.l
 
 /** V3 core: does this prose contain ≥ 4 consecutive normalised tokens that match a Quran window with similarity ≥ 0.8? */
 export function findQuranInProse(text: string, ix: QuranIndex): string | null {
-  const toks = skeleton(text).split(" ").filter((t) => t.length > 1);
+  const toks = skeleton(text).split(" ").filter(Boolean);
   if (toks.length < 4) return null;
   for (let i = 0; i + 4 <= toks.length; i++) {
     const win = toks.slice(i, i + 4);
@@ -104,7 +105,7 @@ export function validate(blocks: ComposedBlock[], ctx: ValidationContext): Check
   const proseFail = (id: Check["id"], detail: string): Check => ({ id, status: ctx.approvedText ? "warn" : "fail", detail });
 
   // V0 — model call succeeded, schema valid, stop_reason end_turn
-  if (ctx.model === undefined || ctx.model === null) checks.push({ id: "V0", status: "pass", detail: "no model call (deterministic)" });
+  if (ctx.model === undefined || ctx.model === null) checks.push({ id: "V0", status: "skip", detail: "no model call (deterministic)" });
   else if (!ctx.model.ok || !ctx.model.schemaValid) checks.push({ id: "V0", status: "fail", detail: ctx.model.error ?? "model call failed or schema invalid" });
   else if (ctx.model.stopReason && ctx.model.stopReason !== "end_turn") checks.push({ id: "V0", status: "fail", detail: `stop_reason=${ctx.model.stopReason}` });
   else checks.push({ id: "V0", status: "pass" });

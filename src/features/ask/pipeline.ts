@@ -1,4 +1,5 @@
 import type { MatchResult, QuranIndex } from "@/lib/quran/matcher";
+import { skeleton } from "@/lib/quran/normalize";
 import type { Hadith } from "@/lib/hadith";
 import { COLLECTION_NAMES } from "@/lib/hadith";
 import type { GlossaryTerm } from "@/lib/glossary";
@@ -222,6 +223,11 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
     const t = now();
     stages.push({ name, ms: Math.round((t - tStage) * 10) / 10 });
     tStage = t;
+    try {
+      opts.onStage?.(name);
+    } catch {
+      /* progress reporting must never break an answer */
+    }
   };
   const floors: string[] = [];
   const flags: string[] = [];
@@ -237,6 +243,7 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
   const lang = detectLang(q, opts.lang);
 
   const finish = async (d: Draft, checks: Check[]): Promise<AskResult> => {
+    if (!stages.some((x) => x.name === "verify")) mark("verify");
     const result = await render(d, checks, {
       q, lang, deps, stages, mark, t0, now, floors, flags, aiInfo, dropped, retrieval, revised, composed: composedRaw,
     });
@@ -284,13 +291,13 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
     retrieval = retrieve(ix, q, { limit: 3 });
     const d = newDraft("D", "refer_d", "personal_case");
     const general = retrieval[0]?.card ?? ctxCard;
+    d.blocks.push({ type: "notice", kind: "not_ruling", tone: "warn" });
+    d.badge = { kind: "safety" };
     if (general && general.level !== "D") {
       d.blocks.push({ type: "notice", kind: "ruling_general", tone: "neutral" });
       addCard(d, general, lang, "general");
       d.card = general;
-      d.badge = approvedBadge(general);
-    } else d.badge = { kind: "safety" };
-    d.blocks.push({ type: "notice", kind: "not_ruling", tone: "warn" });
+    }
     referral(d, "level_d");
     d.outcome = "referred";
     mark("retrieve");
@@ -304,7 +311,7 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
     const d = quote.draft;
     if (quote.known) {
       floors.push(`known:${quote.known.id}`);
-      d.blocks.push({ type: "notice", kind: "known_unsupported", tone: "warn" });
+      d.blocks.push({ type: "notice", kind: "known_unsupported", tone: "neutral" });
       for (const r of quote.known.related ?? []) {
         d.blocks.push({ type: "notice", kind: "related_card", tone: "neutral", vars: { related: "hadith" } });
         d.blocks.push({ type: "hadith_ref", id: r });
@@ -426,7 +433,7 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
   // ── AI router + composer + verifier
   if (deps.ai?.enabled) {
     try {
-      const out = await aiAnswer(q, lang, cat, retrieval, ctxCard, deps, aiInfo, floors, flags);
+      const out = await aiAnswer(q, lang, cat, retrieval, ctxCard, deps, aiInfo, floors, flags, opts.onStage);
       dropped = out.dropped;
       revised = out.revised;
       composedRaw = out.composedRaw;
@@ -434,7 +441,7 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
       tStage = now();
       if (out.draft) return finish(out.draft, out.checks);
     } catch (e) {
-      aiInfo.error = e instanceof AiFailure ? e.kind : "error";
+      aiInfo.error = e instanceof AiFailure ? e.kind : `error: ${e instanceof Error ? e.message : String(e)}`;
       flags.push("ai_fallback");
     }
   }
@@ -468,6 +475,22 @@ export async function answer(question: string, opts: AskOptions, deps: AskDeps):
 }
 
 // ───────────────────────── Quote auditor
+/** Map skeleton tokens in matcher differences back to the words as written (input) and as in the KFGQPC text. */
+export function readableDiff(diffs: { op: string; given: string; quran: string }[], input: string, canonical: string[]) {
+  const map = (words: string[]) => {
+    const m = new Map<string, string>();
+    for (const w of words) {
+      const k = skeleton(w);
+      if (k && !m.has(k)) m.set(k, w.replace(/[^\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g, ""));
+    }
+    return m;
+  };
+  const given = map(input.split(/\s+/));
+  const quran = map(canonical.join(" ").split(/\s+/));
+  const conv = (s: string, m: Map<string, string>) => s.split(" ").filter(Boolean).map((tk) => m.get(tk) ?? tk).join(" ");
+  return diffs.map((d) => ({ op: d.op, given: conv(d.given, given), quran: conv(d.quran, quran) }));
+}
+
 async function auditQuotes(q: string, deps: AskDeps): Promise<{ draft: Draft; known: KnownSaying | null } | null> {
   const spans = arabicSpans(q);
   const askVerse = asksIfVerse(q);
@@ -511,7 +534,7 @@ async function auditQuotes(q: string, deps: AskDeps): Promise<{ draft: Draft; kn
           d.badge = { kind: "sources" };
           d.blocks.push({ type: "notice", kind: "misquote", tone: "warn" });
           const top2 = r.candidates.slice(0, 2);
-          d.blocks.push({ type: "misquote", input: sub, candidates: top2.map((x) => ({ verses: x.verses, similarity: x.similarity, differences: x.differences })) });
+          d.blocks.push({ type: "misquote", input: sub, candidates: top2.map((x) => ({ verses: x.verses, similarity: x.similarity, differences: readableDiff(x.differences, sub, x.canonical_uthmani) })) });
           for (const cand of top2) {
             d.blocks.push({ type: "verses_ref", keys: cand.verses, role: cand === top2[0] ? "primary" : "supporting" });
             cand.verses.forEach((k) => {
@@ -553,7 +576,7 @@ async function hadithRoute(q: string, known: KnownSaying | null, lang: Lang, ix:
   };
   if (known) {
     const d = none("no_hadith");
-    d.blocks.push({ type: "notice", kind: "known_unsupported", tone: "warn" });
+    d.blocks.push({ type: "notice", kind: "known_unsupported", tone: "neutral" });
     for (const r of known.related ?? []) {
       d.blocks.push({ type: "notice", kind: "related_card", tone: "neutral", vars: { related: "hadith" } });
       d.blocks.push({ type: "hadith_ref", id: r });
@@ -564,7 +587,9 @@ async function hadithRoute(q: string, known: KnownSaying | null, lang: Lang, ix:
     return d;
   }
   const hits = retrieve(ix, claim, { limit: 3 });
-  const cardHadith = hits.flatMap((h) => h.card.hadith.map((id) => ({ id, card: h.card })));
+  // Candidate cards are looser than for answers: the gate is whether the hadith text itself states the claim.
+  const candidates = retrieve(ix, claim, { all: true, limit: 4 }).filter((h) => h.strongHits >= 1 || h.score > 0);
+  const cardHadith = candidates.flatMap((h) => h.card.hadith.map((id) => ({ id, card: h.card })));
   const fetched = await deps.getHadith(cardHadith.map((c) => c.id));
   let found: { id: string; card: CatalogueCard | null }[] = [];
 
@@ -720,6 +745,7 @@ async function aiAnswer(
   aiInfo: AskTrace["ai"],
   floors: string[],
   flags: string[],
+  onStage?: (s: Stage["name"]) => void,
 ): Promise<AiOut> {
   const call = deps.ai!.call;
   const stages: Stage[] = [];
@@ -729,6 +755,11 @@ async function aiAnswer(
     const n = now();
     stages.push({ name, ms: Math.round((n - t) * 10) / 10 });
     t = n;
+    try {
+      onStage?.(name);
+    } catch {
+      /* ignore */
+    }
   };
   const usage = (u: { input_tokens: number; output_tokens: number }, model: string) => {
     aiInfo.calls++;
@@ -777,13 +808,12 @@ async function aiAnswer(
   if (level === "D") {
     const d = newDraft("D", "refer_d", r.intent);
     const general = cat.cards.find((c) => evidence.includes(`C:${c.id}`) && c.level !== "D") ?? retrieval[0]?.card ?? null;
+    d.blocks.push({ type: "notice", kind: "not_ruling", tone: "warn" });
     if (general) {
       d.blocks.push({ type: "notice", kind: "ruling_general", tone: "neutral" });
       addCard(d, general, lang, "general");
-      d.badge = approvedBadge(general);
       d.card = general;
     }
-    d.blocks.push({ type: "notice", kind: "not_ruling", tone: "warn" });
     referral(d, "level_d");
     d.outcome = "referred";
     return { draft: d, checks: validate(d.composed, await vctx(d, cat, deps, "D")), dropped, revised: false, stages };
@@ -830,7 +860,7 @@ async function aiAnswer(
 
   // 3. LLM support + tone check (only on deterministic pass)
   let degrade: "sources" | "referral" | null = null;
-  if (!passed(checks)) degrade = checks.some((c) => c.id === "V10" && c.status === "fail") || level === "C" || level === "D" ? "referral" : "sources";
+  if (!passed(checks)) degrade = checks.some((c) => c.id === "V10" && c.status === "fail") || level === "C" ? "referral" : "sources";
   else {
     try {
       const v = await call({ agent: "verifier", system: verifierSystem(), user: verifierUser(q, blocks, evText), schema: VerifierOut, effort: "low", maxTokens: 1200 });
@@ -859,7 +889,7 @@ async function aiAnswer(
       d.blocks.push({ type: "card_link", card: cardRef(card) });
       d.card = card;
     }
-    if (degrade === "referral" || !card) referral(d, level === "D" ? "level_d" : level === "C" ? "level_c" : "sensitive");
+    if (degrade === "referral" || !card) referral(d, level === "C" ? "level_c" : "sensitive");
     d.outcome = "sources_only";
     d.approvedText = true;
     const finalChecks = [...checks.filter((c) => c.id.startsWith("L")), ...validate(d.composed, await vctx(d, cat, deps, level))];
@@ -883,7 +913,7 @@ async function aiAnswer(
       if (c?.count) d.blocks.push({ type: "fact", ...c.count });
     } else if (b.type === "explanation") d.blocks.push({ type: "explanation", text: b.text, lang, cites: b.cites, source: "ai" });
     else if (b.type === "disagreement") d.blocks.push({ type: "disagreement", intro: false, lang, views: b.views.slice(0, 3) });
-    else if (b.type === "referral") d.blocks.push({ type: "referral", reason: level === "D" ? "level_d" : level === "C" ? "level_c" : "sensitive", official: level !== "B" && level !== "A" });
+    else if (b.type === "referral") d.blocks.push({ type: "referral", reason: level === "C" ? "level_c" : "sensitive", official: level === "C" });
   }
   // merge consecutive single-verse blocks
   const merged: Pending[] = [];

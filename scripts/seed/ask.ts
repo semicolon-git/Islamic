@@ -62,8 +62,8 @@ export const ASK_CARDS: SeedCard[] = [
     content: {
       verses: [{ key: "2:256", role: "primary" }, { key: "10:99", role: "supporting" }],
       explanation: {
-        en: "The Quran states a clear principle: there is no compulsion in religion (2:256), and it asks the Prophet ﷺ whether he would compel people to believe (10:99). How Islam actually spread is a historical question. Historians describe early Muslim rule expanding through conquest in some regions, while the conversion of the people living there happened gradually, over centuries; in other regions, such as maritime Southeast Asia, Islam spread mainly through trade and teachers (see the sources below).",
-        ar: "يقرّر القرآن مبدأً واضحًا: لا إكراه في الدين (البقرة ٢٥٦)، ويخاطب النبيَّ ﷺ مستنكرًا إكراه الناس على الإيمان (يونس ٩٩). أما كيف انتشر الإسلام فعلًا فمسألة تاريخية: يصف المؤرخون توسّع الحكم الإسلامي المبكر بالفتوح في بعض المناطق، بينما دخل سكانها في الإسلام تدريجيًا على مدى قرون، وفي مناطق أخرى كجنوب شرق آسيا البحري انتشر الإسلام أساسًا عبر التجارة والدعاة (انظر المصادر أدناه).",
+        en: "The Quran states a clear principle: faith is not to be imposed by compulsion (2:256), and it asks the Prophet ﷺ whether he would compel people to believe (10:99). How Islam actually spread is a historical question. Historians describe early Muslim rule expanding through conquest in some regions, while the conversion of the people living there happened gradually, over centuries; in other regions, such as maritime Southeast Asia, Islam spread mainly through trade and teachers (see the sources below).",
+        ar: "يقرّر القرآن مبدأً واضحًا هو نفي الإكراه في الدين (البقرة ٢٥٦)، ويخاطب النبيَّ ﷺ مستنكرًا إكراه الناس على الإيمان (يونس ٩٩). أما كيف انتشر الإسلام فعلًا فمسألة تاريخية: يصف المؤرخون توسّع الحكم الإسلامي المبكر بالفتوح في بعض المناطق، بينما دخل سكانها في الإسلام تدريجيًا على مدى قرون، وفي مناطق أخرى كجنوب شرق آسيا البحري انتشر الإسلام أساسًا عبر التجارة والدعاة (انظر المصادر أدناه).",
       },
       civilizational_note: {
         en: "Quantitative studies of conversion suggest that in lands such as Iran, Iraq, Syria and Egypt, most of the population became Muslim over several centuries after Muslim rule began (Bulliet 1979). In maritime Southeast Asia, Islam spread largely through trade networks and teachers (Ricklefs 2008).",
@@ -96,7 +96,7 @@ export const ASK_CARDS: SeedCard[] = [
       hadith: [{ id: "bukhari:7352" }, { id: "bukhari:946" }],
       explanation: {
         en: "Scholars study the same sources — the Quran and the Sunnah — but they can understand a text's wording differently, weigh the evidence differently, or apply it differently to a new situation. Islam honours sincere effort here: the Prophet ﷺ said that a judge who strives and is right has two rewards, and one who strives and errs has one (al-Bukhari 7352). When he told his companions not to pray 'Asr except at Banu Qurayza, some prayed on the way and others waited, and he did not blame either group (al-Bukhari 946). The Quran directs that disagreements be referred back to Allah and the Messenger (4:59).",
-        ar: "يدرس العلماء المصادر نفسها — القرآن والسنة — لكنهم قد يختلفون في فهم دلالة النص، أو في الموازنة بين الأدلة، أو في تنزيلها على واقعة جديدة. وقد أثنى الإسلام على الاجتهاد الصادق: فأخبر النبي ﷺ أن الحاكم إذا اجتهد فأصاب فله أجران، وإذا اجتهد فأخطأ فله أجر (البخاري ٧٣٥٢). ولما أمر أصحابه ألا يصلّوا العصر إلا في بني قريظة صلّى بعضهم في الطريق وأخّر آخرون، فلم يعنّف أحدًا منهم (البخاري ٩٤٦). ويأمر القرآن بردّ ما يُتنازع فيه إلى الله والرسول (النساء ٥٩).",
+        ar: "يدرس العلماء المصادر نفسها — القرآن والسنة — لكنهم قد يختلفون في فهم دلالة النص، أو في الموازنة بين الأدلة، أو في تنزيلها على واقعة جديدة. وقد أثنى الإسلام على الاجتهاد الصادق: فأخبر النبي ﷺ أن الحاكم إذا اجتهد فأصاب فله أجران، وإذا اجتهد فأخطأ فله أجر (البخاري ٧٣٥٢). ولما أمر أصحابه ألا يصلّوا العصر إلا في بني قريظة صلّى بعضهم في الطريق وأخّر آخرون، فلم يعنّف أحدًا منهم (البخاري ٩٤٦). ويأمر القرآن عند التنازع بالرجوع إلى كتاب الله وسنة نبيه (النساء ٥٩).",
       },
       glossary_terms: ["sunnah"],
     },
@@ -159,7 +159,7 @@ export const ASK_CARDS: SeedCard[] = [
       hadith: [{ id: "bukhari:8" }, { id: "muslim:16" }],
       explanation: {
         en: "Islam is built on five pillars: bearing witness that there is no god but Allah and that Muhammad is His Messenger; establishing the prayer; giving zakah (obligatory charity); pilgrimage (Hajj) to the House; and fasting in Ramadan (al-Bukhari 8; Muslim 16). The Quran commands prayer and zakah (2:43), prescribes fasting (2:183), and makes pilgrimage a duty for whoever is able to make the journey (3:97).",
-        ar: "بُني الإسلام على خمسة أركان: شهادة أن لا إله إلا الله وأن محمدًا رسول الله، وإقام الصلاة، وإيتاء الزكاة، وحج البيت، وصوم رمضان (البخاري ٨؛ مسلم ١٦). ويأمر القرآن بالصلاة والزكاة (البقرة ٤٣)، ويفرض الصيام (البقرة ١٨٣)، ويجعل الحج واجبًا على المستطيع (آل عمران ٩٧).",
+        ar: "بُني الإسلام على خمسة أركان: شهادة أن لا إله إلا الله وأن محمدًا رسول الله، وأداء الصلاة، ودفع الزكاة، والحج، وصوم رمضان (البخاري ٨؛ مسلم ١٦). ويأمر القرآن بالصلاة والزكاة (البقرة ٤٣)، ويفرض الصيام (البقرة ١٨٣)، ويجعل الحج واجبًا على المستطيع (آل عمران ٩٧).",
       },
       glossary_terms: ["ibadah"],
     },
@@ -190,7 +190,7 @@ export const ASK_CARDS: SeedCard[] = [
       verses: [{ key: "29:69", role: "primary" }, { key: "22:78", role: "supporting" }],
       explanation: {
         en: "Jihad comes from the Arabic word for striving and exerting effort. The Quran uses it broadly for striving in Allah's way — for example, it promises guidance to those who strive for His sake (29:69), and tells believers to strive for Allah as is His due (22:78). Its detailed rules in different situations are a subject for qualified scholars; rendering jihad simply as 'holy war' is misleading.",
-        ar: "الجهاد في العربية من الجُهد، أي بذل الوسع والطاقة. ويستعمله القرآن بمعنى واسع هو بذل الجهد في سبيل الله، فيعد بالهداية من جاهد في سبيله (العنكبوت ٦٩)، ويأمر المؤمنين ببذل غاية جهدهم في سبيل الله (الحج ٧٨). أما أحكامه التفصيلية في الأحوال المختلفة فمرجعها أهل العلم، وترجمته بـ«الحرب المقدسة» وحدها ترجمة مضلِّلة.",
+        ar: "الجهاد في العربية من الجُهد، أي بذل الوسع والطاقة. ويستعمله القرآن بمعنى واسع هو بذل الجهد طاعةً لله، فيعد بالهداية من بذل جهده ابتغاء مرضاته (العنكبوت ٦٩)، ويأمر المؤمنين ببذل غاية وسعهم في طاعته (الحج ٧٨). أما أحكامه التفصيلية في الأحوال المختلفة فمرجعها أهل العلم، وترجمته بـ«الحرب المقدسة» وحدها ترجمة مضلِّلة.",
       },
     },
   },
