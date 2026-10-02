@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#10143a">
+<title>Offline · Signs Around You</title>
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<style>
+  /* Self-contained: this page is served by the service worker when there is no network and no saved copy. */
+  :root {
+    --bg: #f4f5f9; --surface: #ffffff; --surface-2: #eceef5; --ink: #12163a; --ink-2: #474d75; --ink-3: #5f6589;
+    --line: #dadeeb; --accent: #077a67; --accent-hover: #06685a; --accent-ink: #ffffff; --accent-soft: #dcf2ec;
+    --focus: #5747e0; --shadow: 0 1px 2px rgb(16 20 58 / 0.06), 0 4px 16px rgb(16 20 58 / 0.06);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0e29; --surface: #131737; --surface-2: #1a1f46; --ink: #eceefa; --ink-2: #b5badb; --ink-3: #8b91ba;
+      --line: #2a3066; --accent: #36dcb8; --accent-hover: #5ae6c7; --accent-ink: #052a22; --accent-soft: #113c3c;
+      --focus: #a094ff; --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0e29; --surface: #131737; --surface-2: #1a1f46; --ink: #eceefa; --ink-2: #b5badb; --ink-3: #8b91ba;
+    --line: #2a3066; --accent: #36dcb8; --accent-hover: #5ae6c7; --accent-ink: #052a22; --accent-soft: #113c3c;
+    --focus: #a094ff; --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25); color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100dvh; display: grid; place-items: center; background: var(--bg); color: var(--ink);
+    font: 400 16px/1.6 "Readex Pro Variable", "Readex Pro", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  html[lang="ar"] body { font-family: "IBM Plex Sans Arabic", "Readex Pro Variable", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; line-height: 1.8; }
+  main { width: min(440px, 100%); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+  .mark { width: 76px; height: 76px; border-radius: 22px; background: #10143a; display: grid; place-items: center; box-shadow: var(--shadow); }
+  .mark svg { width: 52px; height: 52px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 500; color: var(--ink-2); background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); }
+  h1 { margin: 4px 0 0; font-size: 1.6rem; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }
+  p { margin: 0; color: var(--ink-2); max-width: 36ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; width: 100%; }
+  .btn { min-height: 48px; padding: 0 22px; border-radius: 14px; font: inherit; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: background 0.15s; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--surface); color: var(--ink); border-color: var(--line); }
+  .btn-secondary:hover { background: var(--surface-2); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  section { width: 100%; margin-top: 18px; text-align: start; }
+  h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin: 0 0 8px; }
+  html[lang="ar"] h2 { text-transform: none; letter-spacing: 0; font-size: 0.9rem; }
+  ul { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  li + li { border-top: 1px solid var(--line); }
+  li a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 10px 16px; color: var(--ink); text-decoration: none; }
+  li a:hover { background: var(--surface-2); }
+  li a span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  li a small { color: var(--ink-3); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.75rem; direction: ltr; unicode-bidi: isolate; flex-shrink: 0; }
+  .empty { font-size: 0.9rem; color: var(--ink-3); background: var(--surface); border: 1px dashed var(--line); border-radius: 16px; padding: 14px 16px; max-width: none; }
+  @media (prefers-reduced-motion: no-preference) { main { animation: rise 0.35s ease-out both; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+<script>
+  try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<main>
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 512 512" fill="none">
+      <g fill="#36dcb8" fill-opacity="0.14"><rect x="140" y="140" width="232" height="232" rx="10"/><rect x="140" y="140" width="232" height="232" rx="10" transform="rotate(45 256 256)"/></g>
+      <g stroke="#36dcb8" stroke-width="32" stroke-linejoin="round"><rect x="140" y="140" width="232" height="232" rx="10"/><rect x="140" y="140" width="232" height="232" rx="10" transform="rotate(45 256 256)"/></g>
+      <mask id="moon"><circle cx="256" cy="256" r="54" fill="#fff"/><circle cx="279" cy="242" r="43" fill="#000"/></mask>
+      <circle cx="256" cy="256" r="54" fill="#36dcb8" mask="url(#moon)"/>
+    </svg>
+  </div>
+  <span class="badge" role="status"><span class="dot" aria-hidden="true"></span><span lang="ar" dir="rtl">آيات حولك</span> · Signs Around You</span>
+  <h1 data-k="pwa.offlinePage.title">You're offline</h1>
+  <p data-k="pwa.offlinePage.body">This page isn't saved on this device yet. Pages you opened before still work without a connection.</p>
+  <div class="actions">
+    <button type="button" class="btn btn-primary" id="retry" data-k="pwa.offlinePage.retry">Try again</button>
+    <a class="btn btn-secondary" href="/" data-k="pwa.offlinePage.home">Go to home</a>
+  </div>
+  <section aria-labelledby="saved-h" id="saved" hidden>
+    <h2 id="saved-h" data-k="pwa.offlinePage.saved">Saved on this device</h2>
+    <ul id="saved-list"></ul>
+    <p class="empty" id="saved-empty" data-k="pwa.offlinePage.savedEmpty" hidden>Nothing saved yet. Pages you open while online are kept here for later.</p>
+  </section>
+</main>
+<script type="application/json" id="pwa-strings">
+{
+  "en": {
+    "pwa.offlinePage.title": "You're offline",
+    "pwa.offlinePage.body": "This page isn't saved on this device yet. Pages you opened before still work without a connection.",
+    "pwa.offlinePage.retry": "Try again",
+    "pwa.offlinePage.home": "Go to home",
+    "pwa.offlinePage.saved": "Saved on this device",
+    "pwa.offlinePage.savedEmpty": "Nothing saved yet. Pages you open while online are kept here for later."
+  },
+  "ar": {
+    "pwa.offlinePage.title": "أنت غير متصل بالإنترنت",
+    "pwa.offlinePage.body": "هذه الصفحة غير محفوظة على جهازك بعد، أما الصفحات التي فتحتها من قبل فتعمل دون اتصال.",
+    "pwa.offlinePage.retry": "حاول مجددًا",
+    "pwa.offlinePage.home": "إلى الصفحة الرئيسية",
+    "pwa.offlinePage.saved": "محفوظ على هذا الجهاز",
+    "pwa.offlinePage.savedEmpty": "لا شيء محفوظ بعد. ما تفتحه وأنت متصل يُحفظ هنا لوقت لاحق."
+  }
+}
+</script>
+<script>
+(function () {
+  var strings = {};
+  try { strings = JSON.parse(document.getElementById("pwa-strings").textContent); } catch (e) {}
+  var m = document.cookie.match(/(?:^|;\s*)lang=(ar|en)/);
+  var lang = m ? m[1] : /^ar\b/i.test(navigator.language || "") ? "ar" : "en";
+  var dict = strings[lang] || strings.en || {};
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  if (lang === "ar") document.title = "غير متصل · آيات حولك";
+  var nodes = document.querySelectorAll("[data-k]");
+  for (var i = 0; i < nodes.length; i++) { var v = dict[nodes[i].getAttribute("data-k")]; if (v) nodes[i].textContent = v; }
+
+  document.getElementById("retry").addEventListener("click", function () { location.reload(); });
+  window.addEventListener("online", function () { location.reload(); });
+
+  // List pages this device has saved (titles come from the cached HTML itself).
+  if (!("caches" in window)) return;
+  var section = document.getElementById("saved");
+  var list = document.getElementById("saved-list");
+  var empty = document.getElementById("saved-empty");
+  caches.keys().then(function (names) {
+    var pageCaches = names.filter(function (n) { return n.indexOf("say-pages-") === 0; });
+    return Promise.all(pageCaches.map(function (n) { return caches.open(n).then(function (c) { return c.keys().then(function (ks) { return ks.map(function (k) { return { cache: c, req: k }; }); }); }); }));
+  }).then(function (groups) {
+    var entries = [].concat.apply([], groups).reverse().slice(0, 8);
+    return Promise.all(entries.map(function (e) {
+      return e.cache.match(e.req).then(function (res) { return res ? res.text() : ""; }).then(function (html) {
+        var t = /<title[^>]*>([^<]*)<\/title>/i.exec(html);
+        var div = document.createElement("div"); div.innerHTML = t ? t[1] : "";
+        var u = new URL(e.req.url);
+        return { href: u.pathname + u.search, title: (div.textContent || "").replace(/\s*·\s*Signs Around You\s*$/, "").trim() };
+      }).catch(function () { return null; });
+    }));
+  }).then(function (items) {
+    items = items.filter(Boolean);
+    section.hidden = false;
+    if (!items.length) { empty.hidden = false; list.hidden = true; return; }
+    items.forEach(function (it) {
+      var li = document.createElement("li");
+      var a = document.createElement("a"); a.href = it.href;
+      var s = document.createElement("span"); s.textContent = it.title || it.href; s.setAttribute("dir", "auto");
+      var small = document.createElement("small"); small.textContent = it.href;
+      a.appendChild(s); a.appendChild(small); li.appendChild(a); list.appendChild(li);
+    });
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
