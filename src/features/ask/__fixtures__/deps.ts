@@ -4,7 +4,7 @@ import { buildIndex, matchQuran, type QuranIndex, type VerseRow } from "@/lib/qu
 import type { Hadith } from "@/lib/hadith";
 import type { GlossaryTerm } from "@/lib/glossary";
 import { CardContent } from "@/lib/cards/types";
-import { ASK_CARDS } from "../../../../scripts/seed/ask";
+import { ASK_CARDS, EQUIVALENT } from "../../../../scripts/seed/ask";
 import type { Catalogue, CatalogueCard } from "../catalogue";
 import type { AskDeps } from "../pipeline";
 import type { VerseView } from "../types";
@@ -99,7 +99,10 @@ function load() {
   };
   const dir = path.join(ROOT, "data/content/cards");
   const content = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => toCard(read(path.join(dir, f))));
-  const cards = [...content, ...ASK_CARDS.map((c) => toCard({ ...c, kind: "answer" }))];
+  // Mirror the seed: a demo answer is skipped when the reviewed content set covers the same topic.
+  const have = new Set(content.map((c) => c.id));
+  const demo = ASK_CARDS.filter((c) => !have.has(c.id) && !(EQUIVALENT[c.id] && have.has(EQUIVALENT[c.id])));
+  const cards = [...content, ...demo.map((c) => toCard({ ...c, kind: "answer" }))];
   const glossary = read<GlossaryTerm[]>(path.join(ROOT, "data/content/glossary.json"));
   cache = { ix: buildIndex(vrows), verses, hadith, catalogue: { version: "fixture-1", cards, glossary } };
   return cache;

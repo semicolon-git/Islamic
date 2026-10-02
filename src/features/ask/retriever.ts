@@ -64,7 +64,9 @@ export function retrieve(ix: RetrieverIndex, question: string, opts: { limit?: n
       const prev = best.get(h.card.id);
       if (!prev || h.coverage > prev.coverage || (h.coverage === prev.coverage && h.score > prev.score)) best.set(h.card.id, h);
     }
-  const hits = [...best.values()].sort((a, b) => b.coverage - a.coverage || b.score - a.score);
+  // Ties on coverage go to the card whose own match phrase appears in the question ("the moon" → the Moon card,
+  // not the moon-god answer that merely shares the word), then to the higher weighted score.
+  const hits = [...best.values()].sort((a, b) => b.coverage - a.coverage || Number(b.phrase) - Number(a.phrase) || b.score - a.score);
   const kept = opts.all ? hits : hits.filter((h) => h.phrase || (h.coverage >= THRESHOLD.coverage && h.strongHits >= THRESHOLD.minStrongHits));
   return kept.slice(0, opts.limit ?? 5);
 }

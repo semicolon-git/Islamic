@@ -97,7 +97,7 @@ describe("deterministic routes (no API key)", () => {
     const r = await ask("I'm new to Islam — what is Tawhid?");
     expect(r.route).toBe("glossary");
     expect(types(r).slice(0, 3)).toEqual(["explanation", "glossary", "verses"]);
-    expect(verseKeys(r)).toEqual(["112:1", "112:2", "112:3", "112:4"]);
+    expect(verseKeys(r)).toEqual(["112:1", "112:2", "112:3", "112:4", "2:163"]);
     expect(r.badge.kind).toBe("glossary");
   });
 

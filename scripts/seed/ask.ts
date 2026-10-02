@@ -26,6 +26,16 @@ const WORKFLOW = [
   { decision: "publish", by: "u_noura", note: "Approved for publication (demo)." },
 ];
 
+// The reviewed content set (data/content/cards) is the source of truth: skip a demo answer when content already
+// covers the same topic under its own id, so visitors never see two approved answers to one question.
+export const EQUIVALENT: Record<string, string> = {
+  "answer:quran-authorship": "answer:quran_authorship",
+  "answer:islam-sword": "answer:spread_by_sword",
+  "answer:scholars-differ": "answer:why_rulings_differ",
+  "answer:five-pillars": "answer:five_pillars",
+  "answer:mosque-visit": "answer:visit_mosque",
+};
+
 export const ASK_CARDS: SeedCard[] = [
   {
     id: "answer:quran-authorship",
@@ -203,15 +213,6 @@ export async function seed(q: Queryable) {
     return;
   }
   let n = 0;
-  // The reviewed content set (data/content/cards) is the source of truth: skip a demo answer when content already
-  // covers the same topic under its own id, so visitors never see two approved answers to one question.
-  const EQUIVALENT: Record<string, string> = {
-    "answer:quran-authorship": "answer:quran_authorship",
-    "answer:islam-sword": "answer:spread_by_sword",
-    "answer:scholars-differ": "answer:why_rulings_differ",
-    "answer:five-pillars": "answer:five_pillars",
-    "answer:mosque-visit": "answer:visit_mosque",
-  };
   for (const c of ASK_CARDS) {
     const ids = [c.id, EQUIVALENT[c.id]].filter(Boolean);
     const exists = (await q.query("select 1 from cards where id = any($1::text[])", [ids])).rows.length;

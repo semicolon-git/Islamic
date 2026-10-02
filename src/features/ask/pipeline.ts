@@ -654,7 +654,11 @@ function glossaryAnswer(term: GlossaryTerm, mode: "meaning" | "translate", cat: 
   d.badge = { kind: "glossary", source: term.source };
   d.evidence.add(`G:${term.id}`);
   // Plain language first (an approved answer card for this term), then the term, then the verses.
-  const card = cat.cards.find((c) => c.kind === "answer" && c.glossary_terms.includes(term.id)) ?? null;
+  // Prefer the card written about this term (answer:<term>) over one that merely uses it.
+  const card =
+    cat.cards.find((c) => c.kind === "answer" && c.id === `answer:${term.id}`) ??
+    cat.cards.find((c) => c.kind === "answer" && c.glossary_terms.includes(term.id)) ??
+    null;
   if (card && mode === "meaning") {
     const e = pickLang(card.explanation, lang);
     const cites = [`C:${card.id}`, ...card.verses.map((v) => `Q:${v.key}`)];
