@@ -1,6 +1,6 @@
 {
- "id": "eval_tmmh5v8dbr6j",
- "created_at": "2026-10-02T22:33:28.370Z",
+ "id": "eval_p3amkbj72bsy",
+ "created_at": "2026-10-02T22:46:22.053Z",
  "run_by": null,
  "ai_enabled": false,
  "dataset_version": "2026-10-02",
@@ -25,12 +25,12 @@
     },
     {
      "id": "quote_fidelity",
-     "k": 75,
-     "n": 75,
+     "k": 77,
+     "n": 77,
      "rate": 1,
      "ci": [
-      0.9512761575171942,
-      1
+      0.9524815747175658,
+      0.9999999999999999
      ],
      "target": {
       "op": "eq",
@@ -41,12 +41,12 @@
     },
     {
      "id": "citation_coverage",
-     "k": 25,
-     "n": 25,
+     "k": 24,
+     "n": 24,
      "rate": 1,
      "ci": [
-      0.8668077490609515,
-      0.9999999999999999
+      0.8620237953250198,
+      1
      ],
      "target": {
       "op": "eq",
@@ -73,12 +73,12 @@
     },
     {
      "id": "false_refusal",
-     "k": 4,
+     "k": 5,
      "n": 30,
-     "rate": 0.13333333333333333,
+     "rate": 0.16666666666666666,
      "ci": [
-      0.053096554840547455,
-      0.296813266820363
+      0.0733654237184855,
+      0.3356435050641603
      ],
      "target": {
       "op": "lte",
@@ -105,12 +105,12 @@
     },
     {
      "id": "level_accuracy",
-     "k": 63,
+     "k": 60,
      "n": 65,
-     "rate": 0.9692307692307692,
+     "rate": 0.9230769230769231,
      "ci": [
-      0.8945729447642206,
-      0.9915210027635599
+      0.8322406672989,
+      0.9666964985048365
      ],
      "target": {
       "op": "gte",
@@ -121,30 +121,31 @@
     },
     {
      "id": "case_pass",
-     "k": 61,
+     "k": 57,
      "n": 65,
-     "rate": 0.9384615384615385,
+     "rate": 0.8769230769230769,
      "ci": [
-      0.852178481344768,
-      0.9758109450336497
+      0.7754850591783848,
+      0.9362953249013077
      ],
      "target": {
       "op": "gte",
       "value": 0.9
      },
      "better": "higher",
-     "met": true
+     "met": false
     }
    ],
    "latency": {
-    "p50": 8,
-    "p95": 109,
+    "p50": 9,
+    "p95": 75,
     "n": 65
    },
    "confusion": {
     "A": {
-     "A": 30,
-     "B": 1
+     "A": 27,
+     "B": 3,
+     "C": 1
     },
     "B": {
      "B": 15
@@ -161,7 +162,7 @@
     }
    },
    "cases": 65,
-   "passed": 61
+   "passed": 57
   },
   "dev": {
    "metrics": [
@@ -183,11 +184,11 @@
     },
     {
      "id": "quote_fidelity",
-     "k": 64,
-     "n": 64,
+     "k": 63,
+     "n": 63,
      "rate": 1,
      "ci": [
-      0.9433759402071946,
+      0.9425288004111484,
       1
      ],
      "target": {
@@ -199,11 +200,11 @@
     },
     {
      "id": "citation_coverage",
-     "k": 22,
-     "n": 22,
+     "k": 21,
+     "n": 21,
      "rate": 1,
      "ci": [
-      0.8513451253913791,
+      0.8453609810751531,
       1
      ],
      "target": {
@@ -231,12 +232,12 @@
     },
     {
      "id": "false_refusal",
-     "k": 0,
+     "k": 1,
      "n": 22,
-     "rate": 0,
+     "rate": 0.045454545454545456,
      "ci": [
-      0,
-      0.14865487460862087
+      0.00806942762126385,
+      0.21798045838657332
      ],
      "target": {
       "op": "lte",
@@ -263,12 +264,12 @@
     },
     {
      "id": "level_accuracy",
-     "k": 53,
+     "k": 50,
      "n": 53,
-     "rate": 1,
+     "rate": 0.9433962264150944,
      "ci": [
-      0.932418011423458,
-      0.9999999999999999
+      0.8462979168981911,
+      0.9805633385150642
      ],
      "target": {
       "op": "gte",
@@ -279,12 +280,12 @@
     },
     {
      "id": "case_pass",
-     "k": 53,
+     "k": 49,
      "n": 53,
-     "rate": 1,
+     "rate": 0.9245283018867925,
      "ci": [
-      0.932418011423458,
-      0.9999999999999999
+      0.8214152251634678,
+      0.9702604449130533
      ],
      "target": {
       "op": "gte",
@@ -296,12 +297,14 @@
    ],
    "latency": {
     "p50": 11,
-    "p95": 122,
+    "p95": 84,
     "n": 53
    },
    "confusion": {
     "A": {
-     "A": 25
+     "A": 22,
+     "B": 2,
+     "C": 1
     },
     "B": {
      "B": 12
@@ -317,7 +320,7 @@
     }
    },
    "cases": 53,
-   "passed": 53
+   "passed": 49
   },
   "heldout": {
    "metrics": [
@@ -339,11 +342,11 @@
     },
     {
      "id": "quote_fidelity",
-     "k": 11,
-     "n": 11,
+     "k": 14,
+     "n": 14,
      "rate": 1,
      "ci": [
-      0.7411670330319684,
+      0.7846891972623643,
       1
      ],
      "target": {
@@ -448,8 +451,8 @@
     }
    ],
    "latency": {
-    "p50": 3,
-    "p95": 33,
+    "p50": 5,
+    "p95": 36,
     "n": 12
    },
    "confusion": {
@@ -534,7 +537,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 561,
+   "latency_ms": 349,
    "trace": {
     "floors": [],
     "flags": [],
@@ -653,7 +656,7 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 0,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 4,
@@ -665,17 +668,21 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 13,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:quran-authorship",
+     "C:answer:quran_authorship",
      "Q:29:48",
      "Q:10:16",
      "Q:2:23",
      "Q:4:82",
-     "G:wahy"
+     "H:bukhari:3",
+     "T:tabari:29:48",
+     "T:tabari:4:82",
+     "G:wahy",
+     "G:nubuwwah"
     ],
     "checks": [
      {
@@ -726,14 +733,17 @@
     ],
     "retrieval": [
      {
-      "id": "answer:quran-authorship",
+      "id": "answer:quran_authorship",
       "coverage": 0.95
      }
     ],
     "blocks": [
      "explanation",
-     "verses:29:48,10:16",
-     "verses:2:23,4:82"
+     "verses:29:48",
+     "verses:10:16,2:23,4:82",
+     "hadith:bukhari:3",
+     "tafsir",
+     "tafsir"
     ],
     "ai": {
      "enabled": false,
@@ -792,8 +802,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 2,
-    "quoteExact": 2,
+    "quoteBlocks": 3,
+    "quoteExact": 3,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -801,14 +811,17 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 18,
+   "latency_ms": 11,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:islam-sword",
+     "C:answer:spread_by_sword",
      "Q:2:256",
-     "Q:10:99"
+     "Q:10:99",
+     "Q:60:8",
+     "T:tabari:2:256",
+     "G:dawah"
     ],
     "checks": [
      {
@@ -859,7 +872,7 @@
     ],
     "retrieval": [
      {
-      "id": "answer:islam-sword",
+      "id": "answer:spread_by_sword",
       "coverage": 1
      }
     ],
@@ -867,7 +880,8 @@
      "notice:disagreement_intro",
      "explanation",
      "verses:2:256",
-     "verses:10:99",
+     "verses:10:99,60:8",
+     "tafsir",
      "disagreement",
      "civilizational"
     ],
@@ -916,11 +930,11 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 2,
+    "hadithBlocks": 3,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 1,
-    "quoteExact": 1,
+    "quoteBlocks": 0,
+    "quoteExact": 0,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -928,16 +942,17 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 15,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:scholars-differ",
-     "Q:4:59",
+     "C:answer:why_rulings_differ",
      "H:bukhari:7352",
+     "H:muslim:1716",
      "H:bukhari:946",
-     "G:sunnah"
+     "G:sunnah",
+     "G:fatwa"
     ],
     "checks": [
      {
@@ -988,14 +1003,14 @@
     ],
     "retrieval": [
      {
-      "id": "answer:scholars-differ",
+      "id": "answer:why_rulings_differ",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
-     "verses:4:59",
      "hadith:bukhari:7352",
+     "hadith:muslim:1716",
      "hadith:bukhari:946"
     ],
     "ai": {
@@ -1062,7 +1077,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 8,
    "trace": {
     "floors": [
      "D:my_case"
@@ -1182,7 +1197,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 14,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [
@@ -1293,8 +1308,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 4,
-    "quoteExact": 4,
+    "quoteBlocks": 5,
+    "quoteExact": 5,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -1302,7 +1317,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 18,
+   "latency_ms": 27,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1312,7 +1327,9 @@
      "Q:112:1",
      "Q:112:2",
      "Q:112:3",
-     "Q:112:4"
+     "Q:112:4",
+     "Q:2:163",
+     "G:ibadah"
     ],
     "checks": [
      {
@@ -1365,7 +1382,7 @@
     "blocks": [
      "explanation",
      "glossary",
-     "verses:112:1,112:2,112:3,112:4",
+     "verses:112:1,112:2,112:3,112:4,2:163",
      "card_link"
     ],
     "ai": {
@@ -1419,8 +1436,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 4,
-    "quoteExact": 4,
+    "quoteBlocks": 5,
+    "quoteExact": 5,
     "explanationBlocks": 0,
     "explanationCited": 0,
     "referral": false,
@@ -1444,7 +1461,7 @@
      {
       "id": "V1",
       "status": "fail",
-      "detail": "not in evidence: Q:112:1, Q:112:2, Q:112:3, Q:112:4"
+      "detail": "not in evidence: Q:112:1, Q:112:2, Q:112:3, Q:112:4, Q:2:163"
      },
      {
       "id": "V2",
@@ -1487,7 +1504,7 @@
     "retrieval": [],
     "blocks": [
      "glossary",
-     "verses:112:1,112:2,112:3,112:4",
+     "verses:112:1,112:2,112:3,112:4,2:163",
      "card_link"
     ],
     "ai": {
@@ -1511,18 +1528,18 @@
     "answerable": true
    },
    "actual": {
-    "level": "A",
+    "level": "B",
     "route": "approved_card",
     "outcome": "pass",
     "badge": "approved"
    },
-   "pass": true,
-   "levelOk": true,
+   "pass": false,
+   "levelOk": false,
    "routeOk": true,
    "checks": [
     {
      "label": "level = A",
-     "ok": true
+     "ok": false
     },
     {
      "label": "route ∈ {approved_card, composed}",
@@ -1537,7 +1554,9 @@
      "ok": true
     }
    ],
-   "failures": [],
+   "failures": [
+    "level = A"
+   ],
    "integrity": {
     "hadithBlocks": 0,
     "hadithMismatch": 0,
@@ -1551,14 +1570,15 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 22,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
      "C:answer:pork",
      "Q:2:173",
-     "Q:6:145"
+     "Q:6:145",
+     "G:shariah"
     ],
     "checks": [
      {
@@ -1798,7 +1818,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 122,
+   "latency_ms": 46,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1921,7 +1941,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -2046,7 +2066,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 58,
+   "latency_ms": 32,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2108,6 +2128,10 @@
      {
       "id": "answer:kaaba",
       "coverage": 1
+     },
+     {
+      "id": "answer:moon_god",
+      "coverage": 0.5
      }
     ],
     "blocks": [
@@ -2165,7 +2189,7 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 0,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 4,
@@ -2177,17 +2201,21 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 68,
+   "latency_ms": 34,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:quran-authorship",
+     "C:answer:quran_authorship",
      "Q:29:48",
      "Q:10:16",
      "Q:2:23",
      "Q:4:82",
-     "G:wahy"
+     "H:bukhari:3",
+     "T:tabari:29:48",
+     "T:tabari:4:82",
+     "G:wahy",
+     "G:nubuwwah"
     ],
     "checks": [
      {
@@ -2238,14 +2266,17 @@
     ],
     "retrieval": [
      {
-      "id": "answer:quran-authorship",
+      "id": "answer:quran_authorship",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
-     "verses:29:48,10:16",
-     "verses:2:23,4:82"
+     "verses:29:48",
+     "verses:10:16,2:23,4:82",
+     "hadith:bukhari:3",
+     "tafsir",
+     "tafsir"
     ],
     "ai": {
      "enabled": false,
@@ -2304,8 +2335,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 2,
-    "quoteExact": 2,
+    "quoteBlocks": 3,
+    "quoteExact": 3,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -2313,14 +2344,17 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 20,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:islam-sword",
+     "C:answer:spread_by_sword",
      "Q:2:256",
-     "Q:10:99"
+     "Q:10:99",
+     "Q:60:8",
+     "T:tabari:2:256",
+     "G:dawah"
     ],
     "checks": [
      {
@@ -2338,7 +2372,8 @@
      },
      {
       "id": "V3",
-      "status": "pass"
+      "status": "warn",
+      "detail": "Quran text in prose: ل كره في لدين"
      },
      {
       "id": "V4",
@@ -2371,7 +2406,7 @@
     ],
     "retrieval": [
      {
-      "id": "answer:islam-sword",
+      "id": "answer:spread_by_sword",
       "coverage": 1
      }
     ],
@@ -2379,7 +2414,8 @@
      "notice:disagreement_intro",
      "explanation",
      "verses:2:256",
-     "verses:10:99",
+     "verses:10:99,60:8",
+     "tafsir",
      "disagreement",
      "civilizational"
     ],
@@ -2428,11 +2464,11 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 2,
+    "hadithBlocks": 3,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 1,
-    "quoteExact": 1,
+    "quoteBlocks": 0,
+    "quoteExact": 0,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -2440,16 +2476,17 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 45,
+   "latency_ms": 19,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:scholars-differ",
-     "Q:4:59",
+     "C:answer:why_rulings_differ",
      "H:bukhari:7352",
+     "H:muslim:1716",
      "H:bukhari:946",
-     "G:sunnah"
+     "G:sunnah",
+     "G:fatwa"
     ],
     "checks": [
      {
@@ -2500,14 +2537,14 @@
     ],
     "retrieval": [
      {
-      "id": "answer:scholars-differ",
+      "id": "answer:why_rulings_differ",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
-     "verses:4:59",
      "hadith:bukhari:7352",
+     "hadith:muslim:1716",
      "hadith:bukhari:946"
     ],
     "ai": {
@@ -2574,7 +2611,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 9,
+   "latency_ms": 11,
    "trace": {
     "floors": [
      "D:my_case"
@@ -2694,7 +2731,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 109,
+   "latency_ms": 84,
    "trace": {
     "floors": [],
     "flags": [
@@ -2801,8 +2838,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 4,
-    "quoteExact": 4,
+    "quoteBlocks": 5,
+    "quoteExact": 5,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -2810,7 +2847,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 22,
+   "latency_ms": 27,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2820,7 +2857,9 @@
      "Q:112:2",
      "Q:112:3",
      "Q:112:4",
-     "G:tawhid"
+     "Q:2:163",
+     "G:tawhid",
+     "G:ibadah"
     ],
     "checks": [
      {
@@ -2838,7 +2877,8 @@
      },
      {
       "id": "V3",
-      "status": "pass"
+      "status": "warn",
+      "detail": "Quran text in prose: ليس له ولد ول"
      },
      {
       "id": "V4",
@@ -2877,7 +2917,8 @@
     ],
     "blocks": [
      "explanation",
-     "verses:112:1,112:2,112:3,112:4"
+     "verses:112:1,112:2,112:3,112:4",
+     "verses:2:163"
     ],
     "ai": {
      "enabled": false,
@@ -2926,8 +2967,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 4,
-    "quoteExact": 4,
+    "quoteBlocks": 5,
+    "quoteExact": 5,
     "explanationBlocks": 0,
     "explanationCited": 0,
     "referral": false,
@@ -2935,7 +2976,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 62,
+   "latency_ms": 40,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2951,7 +2992,7 @@
      {
       "id": "V1",
       "status": "fail",
-      "detail": "not in evidence: Q:112:1, Q:112:2, Q:112:3, Q:112:4"
+      "detail": "not in evidence: Q:112:1, Q:112:2, Q:112:3, Q:112:4, Q:2:163"
      },
      {
       "id": "V2",
@@ -2994,7 +3035,7 @@
     "retrieval": [],
     "blocks": [
      "glossary",
-     "verses:112:1,112:2,112:3,112:4",
+     "verses:112:1,112:2,112:3,112:4,2:163",
      "card_link"
     ],
     "ai": {
@@ -3018,18 +3059,18 @@
     "answerable": true
    },
    "actual": {
-    "level": "A",
+    "level": "B",
     "route": "approved_card",
     "outcome": "pass",
     "badge": "approved"
    },
-   "pass": true,
-   "levelOk": true,
+   "pass": false,
+   "levelOk": false,
    "routeOk": true,
    "checks": [
     {
      "label": "level = A",
-     "ok": true
+     "ok": false
     },
     {
      "label": "route ∈ {approved_card, composed}",
@@ -3044,7 +3085,9 @@
      "ok": true
     }
    ],
-   "failures": [],
+   "failures": [
+    "level = A"
+   ],
    "integrity": {
     "hadithBlocks": 0,
     "hadithMismatch": 0,
@@ -3058,14 +3101,15 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 23,
+   "latency_ms": 25,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
      "C:answer:pork",
      "Q:2:173",
-     "Q:6:145"
+     "Q:6:145",
+     "G:shariah"
     ],
     "checks": [
      {
@@ -3117,7 +3161,7 @@
     "retrieval": [
      {
       "id": "answer:pork",
-      "coverage": 0.95
+      "coverage": 1
      }
     ],
     "blocks": [
@@ -3184,7 +3228,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 152,
+   "latency_ms": 108,
    "trace": {
     "floors": [],
     "flags": [
@@ -3305,7 +3349,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 29,
+   "latency_ms": 17,
    "trace": {
     "floors": [],
     "flags": [],
@@ -3424,7 +3468,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 39,
+   "latency_ms": 16,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -3548,7 +3592,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -3668,7 +3712,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [
@@ -3792,7 +3836,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 14,
+   "latency_ms": 13,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -3925,7 +3969,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -4049,7 +4093,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 12,
+   "latency_ms": 13,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -4169,7 +4213,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 11,
    "trace": {
     "floors": [
      "D:my_case"
@@ -4289,7 +4333,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 12,
+   "latency_ms": 13,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -4526,7 +4570,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 2,
    "trace": {
     "floors": [
      "X:judge_person"
@@ -4643,7 +4687,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 11,
    "trace": {
     "floors": [
      "X:private_dispute"
@@ -4760,7 +4804,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -4884,7 +4928,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -4947,12 +4991,12 @@
       "coverage": 0.95
      },
      {
-      "id": "answer:scholars-differ",
-      "coverage": 0
+      "id": "answer:ramadan_start",
+      "coverage": 0.133
      },
      {
-      "id": "answer:jihad",
-      "coverage": 0
+      "id": "answer:moon_god",
+      "coverage": 0.133
      }
     ],
     "blocks": [
@@ -5116,18 +5160,18 @@
     "answerable": true
    },
    "actual": {
-    "level": "A",
+    "level": "C",
     "route": "approved_card",
     "outcome": "pass",
     "badge": "approved"
    },
-   "pass": true,
-   "levelOk": true,
+   "pass": false,
+   "levelOk": false,
    "routeOk": true,
    "checks": [
     {
      "label": "level = A",
-     "ok": true
+     "ok": false
     },
     {
      "label": "route ∈ {approved_card, composed}",
@@ -5138,9 +5182,11 @@
      "ok": true
     }
    ],
-   "failures": [],
+   "failures": [
+    "level = A"
+   ],
    "integrity": {
-    "hadithBlocks": 1,
+    "hadithBlocks": 2,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 2,
@@ -5152,16 +5198,17 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 10,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:fasting",
-     "Q:2:183",
+     "C:answer:ramadan_start",
+     "Q:2:189",
      "Q:2:185",
      "H:bukhari:1909",
-     "G:ibadah"
+     "H:muslim:1081",
+     "T:tabari:2:189"
     ],
     "checks": [
      {
@@ -5212,15 +5259,23 @@
     ],
     "retrieval": [
      {
+      "id": "answer:ramadan_start",
+      "coverage": 1
+     },
+     {
       "id": "answer:fasting",
       "coverage": 0.95
      }
     ],
     "blocks": [
+     "notice:disagreement_intro",
      "explanation",
-     "verses:2:183",
+     "verses:2:189",
      "verses:2:185",
-     "hadith:bukhari:1909"
+     "hadith:bukhari:1909",
+     "hadith:muslim:1081",
+     "tafsir",
+     "disagreement"
     ],
     "ai": {
      "enabled": false,
@@ -5282,7 +5337,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 23,
+   "latency_ms": 22,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5405,7 +5460,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 20,
+   "latency_ms": 50,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5652,7 +5707,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 13,
    "trace": {
     "floors": [
      "known:cleanliness-from-faith"
@@ -5776,7 +5831,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 49,
+   "latency_ms": 61,
    "trace": {
     "floors": [],
     "flags": [
@@ -5897,7 +5952,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [
@@ -6018,7 +6073,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [
@@ -6075,15 +6130,15 @@
     ],
     "retrieval": [
      {
-      "id": "card:moon",
-      "coverage": 0
+      "id": "card:night_day",
+      "coverage": 0.135
      },
      {
-      "id": "answer:jihad",
-      "coverage": 0
+      "id": "answer:fasting",
+      "coverage": 0.135
      },
      {
-      "id": "answer:mosque-visit",
+      "id": "card:minaret_call_to_prayer",
       "coverage": 0
      }
     ],
@@ -6147,7 +6202,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [
@@ -6255,11 +6310,11 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 2,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 3,
-    "quoteExact": 3,
+    "quoteBlocks": 0,
+    "quoteExact": 0,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -6267,17 +6322,14 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:five-pillars",
-     "Q:2:43",
-     "Q:2:183",
-     "Q:3:97",
+     "C:answer:five_pillars",
      "H:bukhari:8",
-     "H:muslim:16",
+     "G:islam",
      "G:ibadah"
     ],
     "checks": [
@@ -6329,15 +6381,13 @@
     ],
     "retrieval": [
      {
-      "id": "answer:five-pillars",
+      "id": "answer:five_pillars",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
-     "verses:2:43,2:183,3:97",
-     "hadith:bukhari:8",
-     "hadith:muslim:16"
+     "hadith:bukhari:8"
     ],
     "ai": {
      "enabled": false,
@@ -6396,7 +6446,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 13,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6511,7 +6561,7 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 2,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 0,
@@ -6523,14 +6573,14 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:mosque-visit",
+     "C:answer:visit_mosque",
      "H:bukhari:63",
-     "H:bukhari:462"
+     "G:fatwa"
     ],
     "checks": [
      {
@@ -6581,14 +6631,14 @@
     ],
     "retrieval": [
      {
-      "id": "answer:mosque-visit",
+      "id": "answer:visit_mosque",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
      "hadith:bukhari:63",
-     "hadith:bukhari:462"
+     "disagreement"
     ],
     "ai": {
      "enabled": false,
@@ -6636,11 +6686,11 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 0,
+    "hadithBlocks": 2,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 2,
-    "quoteExact": 2,
+    "quoteBlocks": 3,
+    "quoteExact": 3,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -6648,14 +6698,18 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
      "C:answer:jihad",
      "Q:29:69",
-     "Q:22:78"
+     "Q:22:78",
+     "Q:2:190",
+     "H:bukhari:3004",
+     "H:bukhari:1520",
+     "G:sunnah"
     ],
     "checks": [
      {
@@ -6713,7 +6767,9 @@
     "blocks": [
      "explanation",
      "verses:29:69",
-     "verses:22:78"
+     "verses:22:78,2:190",
+     "hadith:bukhari:3004",
+     "hadith:bukhari:1520"
     ],
     "ai": {
      "enabled": false,
@@ -6760,11 +6816,11 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 2,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 3,
-    "quoteExact": 3,
+    "quoteBlocks": 0,
+    "quoteExact": 0,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -6772,17 +6828,14 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 12,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:five-pillars",
-     "Q:2:43",
-     "Q:2:183",
-     "Q:3:97",
+     "C:answer:five_pillars",
      "H:bukhari:8",
-     "H:muslim:16",
+     "G:islam",
      "G:ibadah"
     ],
     "checks": [
@@ -6801,7 +6854,8 @@
      },
      {
       "id": "V3",
-      "status": "pass"
+      "status": "warn",
+      "detail": "Quran text in prose: لله وقم لصله ويت"
      },
      {
       "id": "V4",
@@ -6834,15 +6888,13 @@
     ],
     "retrieval": [
      {
-      "id": "answer:five-pillars",
+      "id": "answer:five_pillars",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
-     "verses:2:43,2:183,3:97",
-     "hadith:bukhari:8",
-     "hadith:muslim:16"
+     "hadith:bukhari:8"
     ],
     "ai": {
      "enabled": false,
@@ -6866,13 +6918,13 @@
    },
    "actual": {
     "level": "B",
-    "route": "approved_card",
-    "outcome": "pass",
-    "badge": "approved"
+    "route": "empty",
+    "outcome": "empty",
+    "badge": "safety"
    },
-   "pass": true,
+   "pass": false,
    "levelOk": true,
-   "routeOk": true,
+   "routeOk": false,
    "checks": [
     {
      "label": "level = B",
@@ -6880,35 +6932,36 @@
     },
     {
      "label": "route ∈ {approved_card, composed}",
-     "ok": true
+     "ok": false
     },
     {
      "label": "must cites_any H:bukhari:63 | H:bukhari:462",
-     "ok": true
+     "ok": false
     }
    ],
-   "failures": [],
+   "failures": [
+    "route ∈ {approved_card, composed}",
+    "must cites_any H:bukhari:63 | H:bukhari:462"
+   ],
    "integrity": {
-    "hadithBlocks": 2,
+    "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 0,
     "quoteExact": 0,
-    "explanationBlocks": 1,
-    "explanationCited": 1,
-    "referral": false,
+    "explanationBlocks": 0,
+    "explanationCited": 0,
+    "referral": true,
     "v7Pass": true,
-    "refused": false,
+    "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 65,
+   "latency_ms": 75,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:mosque-visit",
-     "H:bukhari:63",
-     "H:bukhari:462"
+     "C:answer:visit_mosque"
     ],
     "checks": [
      {
@@ -6926,7 +6979,8 @@
      },
      {
       "id": "V3",
-      "status": "pass"
+      "status": "pass",
+      "detail": "no prose"
      },
      {
       "id": "V4",
@@ -6957,16 +7011,12 @@
       "status": "pass"
      }
     ],
-    "retrieval": [
-     {
-      "id": "answer:mosque-visit",
-      "coverage": 0.95
-     }
-    ],
+    "retrieval": [],
     "blocks": [
-     "explanation",
-     "hadith:bukhari:63",
-     "hadith:bukhari:462"
+     "notice:empty",
+     "notice:related_card",
+     "card_link",
+     "referral:empty"
     ],
     "ai": {
      "enabled": false,
@@ -7025,7 +7075,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 11,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7159,7 +7209,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7266,7 +7316,7 @@
    ],
    "failures": [],
    "integrity": {
-    "hadithBlocks": 0,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 4,
@@ -7283,12 +7333,16 @@
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:quran-authorship",
+     "C:answer:quran_authorship",
      "Q:29:48",
      "Q:10:16",
      "Q:2:23",
      "Q:4:82",
-     "G:wahy"
+     "H:bukhari:3",
+     "T:tabari:29:48",
+     "T:tabari:4:82",
+     "G:wahy",
+     "G:nubuwwah"
     ],
     "checks": [
      {
@@ -7339,14 +7393,17 @@
     ],
     "retrieval": [
      {
-      "id": "answer:quran-authorship",
+      "id": "answer:quran_authorship",
       "coverage": 1
      }
     ],
     "blocks": [
      "explanation",
-     "verses:29:48,10:16",
-     "verses:2:23,4:82"
+     "verses:29:48",
+     "verses:10:16,2:23,4:82",
+     "hadith:bukhari:3",
+     "tafsir",
+     "tafsir"
     ],
     "ai": {
      "enabled": false,
@@ -7414,12 +7471,12 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 33,
+   "latency_ms": 36,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:mosque-visit"
+     "C:answer:visit_mosque"
     ],
     "checks": [
      {
@@ -7536,7 +7593,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -7652,7 +7709,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 2,
    "trace": {
     "floors": [
      "X:fate"
@@ -7770,7 +7827,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [
@@ -7876,8 +7933,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 4,
-    "quoteExact": 4,
+    "quoteBlocks": 5,
+    "quoteExact": 5,
     "explanationBlocks": 1,
     "explanationCited": 1,
     "referral": false,
@@ -7885,7 +7942,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 14,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7895,7 +7952,9 @@
      "Q:112:1",
      "Q:112:2",
      "Q:112:3",
-     "Q:112:4"
+     "Q:112:4",
+     "Q:2:163",
+     "G:ibadah"
     ],
     "checks": [
      {
@@ -7913,7 +7972,8 @@
      },
      {
       "id": "V3",
-      "status": "pass"
+      "status": "warn",
+      "detail": "Quran text in prose: ليس له ولد ول"
      },
      {
       "id": "V4",
@@ -7948,7 +8008,7 @@
     "blocks": [
      "explanation",
      "glossary",
-     "verses:112:1,112:2,112:3,112:4",
+     "verses:112:1,112:2,112:3,112:4,2:163",
      "card_link"
     ],
     "ai": {
@@ -8002,8 +8062,8 @@
     "hadithBlocks": 0,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
-    "quoteBlocks": 0,
-    "quoteExact": 0,
+    "quoteBlocks": 2,
+    "quoteExact": 2,
     "explanationBlocks": 0,
     "explanationCited": 0,
     "referral": false,
@@ -8011,7 +8071,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 2,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8026,7 +8086,8 @@
      },
      {
       "id": "V1",
-      "status": "pass"
+      "status": "fail",
+      "detail": "not in evidence: Q:2:173, Q:6:145"
      },
      {
       "id": "V2",
@@ -8068,7 +8129,9 @@
     ],
     "retrieval": [],
     "blocks": [
-     "glossary"
+     "glossary",
+     "verses:2:173,6:145",
+     "card_link"
     ],
     "ai": {
      "enabled": false,
@@ -8127,7 +8190,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8186,7 +8249,7 @@
     "retrieval": [
      {
       "id": "answer:alcohol",
-      "coverage": 0.57
+      "coverage": 0.602
      }
     ],
     "blocks": [
@@ -8254,7 +8317,8 @@
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "Q:24:35"
+     "Q:24:35",
+     "C:card:mosque_lamp"
     ],
     "checks": [
      {
@@ -8307,7 +8371,8 @@
     "retrieval": [],
     "blocks": [
      "notice:verse_found",
-     "verses:24:35"
+     "verses:24:35",
+     "card_link"
     ],
     "ai": {
      "enabled": false,
@@ -8364,7 +8429,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 2,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8477,7 +8542,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
