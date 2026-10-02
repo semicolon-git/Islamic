@@ -13,3 +13,4 @@ next-env.d.ts
 .env
 coverage/
 data/manuscripts/scripts/node_modules/
+.claude/
