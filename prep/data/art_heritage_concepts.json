@@ -1,0 +1,217 @@
+{
+ "notes": "Art & heritage concepts for Signs Around You. Verse keys were checked with prep/scripts/match_inscription.py helpers against KFGQPC v18 on 2026-10-02. Every card text needs an approved source and sharia sign-off before publishing.",
+ "concepts": [
+  {
+   "id": "calligraphy_inscription",
+   "track": "art",
+   "recognition": "vision closed list -> inscription flow",
+   "card": "What Arabic calligraphy is; the main scripts (Kufic, Naskh, Thuluth, Diwani, Maghribi, Nastaliq) shown as \"Looks like: Thuluth\" tiers, never as certainty.",
+   "verses": [],
+   "flow": "Transcribe the text (vision, structured tokens + uncertain flags) -> match_inscription.py -> exact: show canonical verse + approved translation; near: show the real verse and the difference; none: \"not a Quranic verse we can identify\".",
+   "level": "A for matched verses; style notes are historical (non-sharia) and need an academic source",
+   "demo_prop": "Printed thuluth panel of Al-Ikhlas 112:1-4 (open-licence image)"
+  },
+  {
+   "id": "pen_and_ink",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "The calligrapher's reed pen (qalam) and ink; why writing is central to the tradition.",
+   "verses": [
+    {
+     "key": "96:4",
+     "relation": "the Pen taught knowledge",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    },
+    {
+     "key": "68:1",
+     "relation": "oath by the pen",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    },
+    {
+     "key": "31:27",
+     "relation": "all trees as pens",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    },
+    {
+     "key": "18:109",
+     "relation": "the sea as ink for the words of Allah",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "A",
+   "sensitivity": "Keep 68:1 as the oath by the pen; do not explain the disconnected letter ن.",
+   "demo_prop": "A reed pen or fountain pen + inkwell"
+  },
+  {
+   "id": "mihrab",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "The niche in a mosque wall that shows the direction of prayer (qibla) towards the Kaaba.",
+   "verses": [
+    {
+     "key": "2:144",
+     "relation": "turning towards the Sacred Mosque (qibla)",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "A",
+   "sensitivity": "The Quranic word mihrab (3:37, 3:39, 19:11, 38:21) means a prayer chamber/sanctuary (Zakariya, Maryam), not the architectural niche. Do not claim the Quran mentions the niche. Pairs with R6 Q1 (the Kaaba is a direction, not an object of worship).",
+   "demo_prop": "Printed photo of a mihrab"
+  },
+  {
+   "id": "minaret_call_to_prayer",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "Minarets as the place of the call to prayer (adhan); the words of the adhan.",
+   "verses": [
+    {
+     "key": "62:9",
+     "relation": "the call to Friday prayer",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    },
+    {
+     "key": "5:58",
+     "relation": "when you call to prayer",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "hadith_to_verify": [
+    "Bukhari 604 (beginning of the call to prayer) - check on dorar"
+   ],
+   "level": "A",
+   "sensitivity": "The Quran mentions the call to prayer, not minarets. Minaret history is architectural, so cite an academic source.",
+   "demo_prop": "Printed minaret photo"
+  },
+  {
+   "id": "mosque_dome",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "The mosque as a place of prayer open to visitors; domes as an architectural form.",
+   "verses": [
+    {
+     "key": "72:18",
+     "relation": "mosques belong to Allah",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    },
+    {
+     "key": "9:18",
+     "relation": "those who maintain the mosques",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "A",
+   "sensitivity": "Pair with the over-refusal guard \"Can I visit a mosque as a non-Muslim?\". The answer must be general information, not a ruling.",
+   "demo_prop": "Printed mosque photo"
+  },
+  {
+   "id": "mosque_lamp",
+   "track": "art",
+   "recognition": "vision closed list -> inscription flow",
+   "card": "Glass mosque lamps (e.g., Mamluk enamelled lamps) were often inscribed with the Light Verse.",
+   "verses": [
+    {
+     "key": "24:35",
+     "relation": "the Light Verse: a niche, a lamp, a glass",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "B (24:35 is a parable and needs a tafsir excerpt)",
+   "sensitivity": "Explain the parable only from approved tafsir; no mystical readings.",
+   "demo_prop": "Open-access museum image of a Mamluk mosque lamp (check the object inscription and its licence)"
+  },
+  {
+   "id": "geometric_pattern",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "Star and polygon patterns built from compass-and-ruler geometry; links to mathematics in Muslim civilisation.",
+   "verses": [],
+   "level": "historical (non-sharia)",
+   "sensitivity": "No verse attached: a card does not need a verse, and force-fitting one is a fidelity risk. Interpretations such as \"infinity reflects tawhid\" are art historians' readings: attribute them or leave them out. \"Why does Islamic art avoid images?\" is fiqh disagreement (level C), so use the level-C template.",
+   "demo_prop": "Printed geometric tile or mashrabiya panel"
+  },
+  {
+   "id": "arabesque",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "Vegetal scroll ornament (islimi / arabesque).",
+   "verses": [],
+   "level": "historical (non-sharia)",
+   "sensitivity": "Same rules as geometric_pattern.",
+   "demo_prop": "Printed tile"
+  },
+  {
+   "id": "muqarnas",
+   "track": "art",
+   "recognition": "vision closed list",
+   "card": "Honeycomb vaulting in domes and portals.",
+   "verses": [],
+   "level": "historical (non-sharia)",
+   "sensitivity": "Architecture only; no verse.",
+   "demo_prop": "Printed photo"
+  },
+  {
+   "id": "illuminated_mushaf",
+   "track": "art",
+   "recognition": "vision closed list (+ inscription flow on the text)",
+   "card": "Hand-copied, illuminated Quran manuscripts (tazhib), and how the Quran text was preserved and copied. Bridge: the Madinah mushaf script used in this app comes from the King Fahd Complex.",
+   "verses": [
+    {
+     "key": "96:4",
+     "relation": "the Pen",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "A/B",
+   "sensitivity": "85:22 (the Preserved Tablet) and 80:13 (honoured scrolls) are not about physical manuscripts. Do not use them to describe a decorated mushaf.",
+   "demo_prop": "Open-access image of a Quran folio (Kufic or Naskh)"
+  },
+  {
+   "id": "astrolabe",
+   "track": "heritage",
+   "recognition": "item code / registered-item closed list",
+   "card": "Astrolabes measured the sun and stars for timekeeping, prayer times and qibla.",
+   "verses": [
+    {
+     "key": "6:97",
+     "relation": "stars for guidance in darkness",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "historical; the verse is a reflection, not a proof",
+   "sources": [
+    "King, D. A. (1996) Astronomy and Islamic society"
+   ],
+   "demo_prop": "Open-access astrolabe image or a museum replica"
+  },
+  {
+   "id": "manuscript_page",
+   "track": "heritage",
+   "recognition": "item code (published from the portal)",
+   "card": "The page the institution transcribed and approved in the portal.",
+   "verses": [],
+   "level": "per page content",
+   "demo_prop": "The portal demo page"
+  },
+  {
+   "id": "kiswa_textile",
+   "track": "heritage",
+   "recognition": "item code / registered-item closed list",
+   "card": "The Kaaba covering: its weaving and its embroidered Quranic inscriptions.",
+   "verses": [
+    {
+     "key": "2:144",
+     "relation": "qibla",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    },
+    {
+     "key": "3:96",
+     "relation": "the first House established for mankind",
+     "status": "lexically verified in KFGQPC v18 (keyword present); suitability needs sharia sign-off"
+    }
+   ],
+   "level": "A",
+   "sensitivity": "R6 Q1: Muslims worship Allah alone; the Kaaba is the direction of prayer. Inscriptions go through the inscription flow.",
+   "demo_prop": "Image (check licence)"
+  }
+ ]
+}

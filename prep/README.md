@@ -10,6 +10,8 @@ python3 prep/scripts/count_moon.py                       # 27 tokens in 26 verse
 python3 prep/scripts/build_concepts.py                   # -> data/concepts_verified.json, data/concept_counts.csv
 python3 prep/scripts/make_example_card.py                # -> data/card_example_moon.json (all text inserted by code)
 python3 prep/scripts/verify_card.py prep/data/card_example_moon.json   # pre-publish gate, exit 1 on any FAIL
+python3 prep/scripts/match_inscription.py --test     # inscription / misquote matcher: 15/15 cases
+python3 prep/scripts/match_inscription.py "الله نور السموات والأرض"   # match any Arabic text to the Quran
 ```
 
 Tested on 2026-10-02: a fresh fetch reproduces `concepts_verified.json`, `concept_counts.csv` and `card_example_moon.json` byte for byte, and the moon card passes 14/14 checks.
@@ -21,6 +23,8 @@ Tested on 2026-10-02: a fresh fetch reproduces `concepts_verified.json`, `concep
 | `data/concepts_verified.json`, `data/concepts_table.md`, `data/concept_counts.csv` | The closed concept list for the nature track. Each concept has QAC lemma sets, occurrence and verse counts, candidate verse keys with KFGQPC text, camera and demo notes, and a sensitivity level. | Lexically verified only: the key exists, QAC tags the lemma in that verse, and the keyword is in the KFGQPC text. **Mahmoud must sign off on whether each verse suits its card.** |
 | `data/hadith_seed_verified.json` | 15 Bukhari/Muslim seed hadith mapped to concepts | Text verified in a mirror only. **Check each on dorar.net/hadith** and record the grade, grader and URL. |
 | `data/card_example_moon.json` | A complete example card (10:5, 41:37, 36:39, a count with its rule, a Tabari excerpt, hadith, a civilisational note with source) | `auto_draft`. Pin the translation to Quranpedia edition 1947 and re-fetch the tafsir from an approved source before publishing. |
+| `data/art_heritage_concepts.json` | 13 art and heritage concepts (calligraphy, mihrab, mosque lamp, pen and ink, astrolabe…). Each has a verse link only where the link is real, plus sensitivity notes. See review §17. | Verse keys checked against the Quran text; card texts need an approved source and sign-off. |
+| `scripts/match_inscription.py` | Matches OCR'd inscriptions or typed quotes to the Quran. Outputs exact, near (with a word diff), none, or too short. Lists every location. | Tested: 15/15 cases. |
 | `data/moon_count_output.txt` | The fact-check of the slide's "27 times" claim across three text editions plus QAC | 27 is correct as a lemma count (27 tokens, 26 verses). The exact form «القمر» alone gives 5. |
 | `data/sources_probe_2026-10-02.tsv`, `scripts/source_urls.txt`, `scripts/probe_sources.sh` | Which source endpoints answered from a cloud sandbox | Many approved sites (dorar, quranenc, quranpedia, dawa.center) were blocked there. Re-probe from a normal network. |
 

@@ -682,3 +682,97 @@ It is **not** the LLM pipeline, which a competitor could copy in weeks.
 9. Who owns IP in submissions, and may the team (or Semicolon) operate the product after the challenge?
 10. Are there constraints on sending images and questions to a foreign-hosted LLM API (PDPL cross-border transfer), or a preference for a local model such as ALLaM?
 11. Which body should level-D referrals go to in the demo, and is there a recommended partner da'wah association for the "talk to a person" handoff?
+---
+
+## 16. Art & heritage track (added Oct 2)
+
+The deck sells "from beauty to question, from question to understanding" (S3) and names a "Signs in Heritage" experience (S6). The first review designed nature cards in depth but treated art mostly as visual identity. This section designs art and heritage as content, using the same safety rules as the rest of the app.
+
+### 16.1 Three entry points, one pipeline
+
+| Entry | What the visitor points at | How it is recognised | What they get |
+|---|---|---|---|
+| **A. Inscription** | Calligraphy with readable text: a museum panel, a mosque lamp, a building frieze, a mushaf page | Vision transcribes the Arabic (structured tokens with `uncertain` flags). `match_inscription.py` finds the verse. | The **exact** verse in KFGQPC script with an approved translation, or "this quotes 24:35 but differs here", or "not a Quranic verse we can identify" |
+| **B. Art form** | A category: geometric tiles, arabesque, muqarnas, mihrab, minaret, dome, pen and ink, an illuminated mushaf | The same closed-list vision call as nature, with art concepts added (`prep/data/art_heritage_concepts.json`, 10 art + 3 heritage) | An approved art card. A verse appears **only** where the link is real (mihrab → qibla 2:144); otherwise there is no verse. |
+| **C. Specific object** | *This* astrolabe, *this* manuscript, *this* kiswa panel | **Item code**: a QR code on the label, or 4 characters typed in. Fallback: a closed list of the venue's registered items plus "none". | The institution's own approved card, with credit line and licence |
+
+Rules that keep it honest:
+1. **A card doesn't need a verse.** Force-fitting verses to decoration is the art-track version of hallucination. Geometric patterns, arabesque and muqarnas get history and mathematics, with no verse.
+2. **Never identify an unregistered object as a specific historical item.** Without a code or a registered match, the app answers at category level only ("looks like an astrolabe").
+3. **No free translation of inscriptions.** Matched verses use the approved translation. Unmatched text is shown as "AI reading, may contain errors", with no translation, plus "Ask a person".
+4. **Script style is a tier, not a fact.** Show "Looks like: Thuluth" with a "why?" note from an approved style card.
+5. **No AI-generated calligraphy, ever.** Image generators garble Arabic, which is the S2 problem again. Share cards are typeset in code from database text with the KFGQPC font.
+6. **"Why doesn't Islamic art show people?"** is fiqh disagreement. It goes to the level-C template, not a confident answer.
+7. **Venue scoping without tracking.** The visitor scans one venue QR at the entrance, which narrows recognition to that institution's items. No GPS and no account.
+
+### 16.2 The inscription matcher (built and tested)
+
+`prep/scripts/match_inscription.py` matches any Arabic text against KFGQPC v18. It compares letter skeletons with spaces and alef removed, so Uthmani spellings (يامريم / يا مريم, السموات / السماوات) and OCR word splits still match, and a word-order check catches swapped words. It handles quotes that cross verse boundaries and lists **every** location: the opening of Ayat al-Kursi is in both 2:255 and 3:2, and the basmala is in both 1:1 and 27:30. Run `python3 prep/scripts/match_inscription.py --test` for **15/15** cases in about 0.4 s:
+
+| Input | Result |
+|---|---|
+| قل هو الله أحد الله الصمد | exact · 112:1–2 (crosses a verse boundary) |
+| هو الذي جعل القمر ضياء والشمس نورا | near · 10:5, sun and moon swapped (**R6 Q11**) |
+| الله لا اله الا هو الحي القيم … | near · 2:255, OCR dropped a letter (القيم → القيوم) |
+| الله لا إله إلا هو الحي القيوم | exact · 2 locations: 2:255 and 3:2 |
+| الله نور السماوات والارض | exact · 24:35, modern spelling of the Uthmani السموات |
+| ولا غالب إلا الله (Alhambra motto) | none: not a Quranic verse |
+| لا إله إلا الله محمد رسول الله | none: the shahada is built from phrases, not one verse |
+| النظافة من الإيمان | none: a popular saying, not Quran |
+| الله أكبر | too short to identify a verse |
+
+The same function is the misquote check for typed questions (§9, R6 Q11), so the art track costs one vision prompt and one route, not a new subsystem. **Stretch goal:** run the same matcher over the Bukhari and Muslim matn text so a hadith inscription shows its collection, number and grade.
+
+### 16.3 Concept list (all verse keys checked against the Quran text; needs sharia sign-off)
+
+| Concept | Verse link | Watch out |
+|---|---|---|
+| Calligraphy / inscription | Whatever the matcher finds | Style shown as a tier only |
+| Pen & ink | 96:4, 68:1, 31:27, 18:109 | — |
+| Mihrab | 2:144 (qibla) | The Quranic *mihrab* (3:37, 3:39, 19:11, 38:21) means a sanctuary, not the niche |
+| Minaret / adhan | 62:9, 5:58 | The Quran mentions the call to prayer, not minarets. Bukhari 604 to check on dorar. |
+| Mosque / dome | 72:18, 9:18 | Pair with "can I visit a mosque?" (general info, not a ruling) |
+| Mosque lamp | 24:35 (Light Verse) | Level B: tafsir excerpt required |
+| Illuminated mushaf | 96:4 | **Don't** use 85:22 or 80:13 for physical manuscripts |
+| Geometric pattern, arabesque, muqarnas | **none** | Attribute "infinity = tawhid" readings to art historians, or omit them |
+| Astrolabe (heritage) | 6:97 as reflection | Historical source: King (1996) |
+| Kiswa (heritage) | 2:144, 3:96 | R6 Q1: the Kaaba is a direction of prayer |
+
+A nice bridge for the pitch: the Quran text in the app is the King Fahd Complex's Madinah mushaf script. Every card already shows a living calligraphy tradition.
+
+### 16.4 Institution portal additions
+
+- **Register item:** photos; title, date, origin, material; collection; image licence and credit line (both required); venue. It runs through the same 4-stage approval. On publish, the portal generates the item's QR code and short code.
+- **Student task: "Read the inscription".** The student transcribes the inscription region. The matcher proposes verses. The student links them and writes a plain-language description, and the researcher confirms. This makes students' work measurable (+points) and it is real scholarly labour that museums need.
+- **Schema:** `heritage_items(id, institution_id, venue_id, kind, title_ar, title_en, date_text, origin, material, images[], image_license, credit_line, item_code, status)` and `inscriptions(id, item_id, bbox, transcription, match_status, verse_keys[], verified_by)`. Items reuse `item_versions` and `reviews`.
+
+### 16.5 Fitting it into the 3 days
+
+| When | Who | Task | Effort |
+|---|---|---|---|
+| Oct 3 | Liqaa | Pick 6–8 open-licence images (Met / Cleveland / Wellcome / Wikimedia): a Mamluk lamp with 24:35, a Kufic or Naskh Quran folio, a thuluth Al-Ikhlas panel, an astrolabe, the Alhambra motto. Log each in `data/licenses.csv`. Print them as props. | 2 h |
+| Oct 3 | Mahmoud | Approve 4 art cards (calligraphy, mihrab, mosque lamp, pen & ink), 3 script-style notes, and the astrolabe heritage card | 1.5 h |
+| Day 2 | Mohamed | `/api/inscribe`: one vision call (structured transcription) → the matcher → card or honest "none". Add the art concepts to the snap enum. | 2–3 h |
+| Day 2 | Mahmoud | Portal: "Register item" with QR generation; the inscription task | 1.5 h |
+| Day 3 AM | Mohamed | Item-code entry plus closed-list recognition of 3 registered items | 1 h |
+| Cut | — | Hadith-inscription matching, VR gallery, AR overlays, full style classifier | Roadmap |
+
+**Demo change.** Replace the typed-misquote beat (0:55–1:25) with:
+1. Snap the printed mosque lamp. The app reads «الله نور السموات والأرض…» and returns **exact 24:35**, with the approved lamp card and its museum credit.
+2. Snap the Alhambra motto. The app says **"not a Quranic verse; we won't pretend it is."**
+
+It proves the same matcher, covers R6 Q11 and the art track together, and is far more visual. Narration: «من الجمال إلى السؤال: نقرأ النقش، ونعرض الآية بنصها المعتمد، ولا ننسب إلى القرآن ما ليس منه.» The typed Q11 case stays on the eval board.
+
+### 16.6 Liqaa's VR expertise: scoped
+
+- **MVP:** a shareable "verse card" image rendered on a canvas with the KFGQPC font and database text, credit line included. It's cheap, beautiful and safe.
+- **Roadmap slide:** a "Signs in Heritage" 3D/VR gallery where each object opens its approved card. It's built from the same `heritage_items`, so every partner museum's registrations feed it automatically.
+
+**Partner targets for this track (to approach after the challenge):**
+- Prince Mohammed bin Salman Global Center for Arabic Calligraphy (Madinah)
+- King Abdulaziz Complex for the Holy Kaaba Kiswa
+- The Islamic Arts Biennale (2027 edition)
+- Ithra
+- Manuscript libraries already listed in §14
+
+**Question to add to §15:** may the demo use open-licence museum images, and do the organizers have a preferred partner museum or library?
