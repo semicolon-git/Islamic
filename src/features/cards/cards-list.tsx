@@ -143,17 +143,19 @@ export function CardsList({ initial, canCreate }: { initial: ListData; canCreate
           <Search className="size-4 absolute start-3.5 top-1/2 -translate-y-1/2 text-ink-3 pointer-events-none" aria-hidden />
           <Input ref={searchRef} type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={t("cards.search")} aria-label={t("cards.searchLabel")} className="ps-10" aria-keyshortcuts="/" />
         </div>
-        <Select aria-label={t("cards.filter.kind")} value={kind} onChange={(e) => setKind(e.target.value)} className="w-auto min-w-40">
+        <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex">
+        <Select aria-label={t("cards.filter.kind")} value={kind} onChange={(e) => setKind(e.target.value)} className="sm:w-44!">
           <option value="">{t("cards.filter.allKinds")}</option>
           <option value="concept">{t("cards.kind.concept")}</option>
           <option value="answer">{t("cards.kind.answer")}</option>
         </Select>
-        <Select aria-label={t("cards.filter.track")} value={track} onChange={(e) => setTrack(e.target.value)} className="w-auto min-w-36">
+        <Select aria-label={t("cards.filter.track")} value={track} onChange={(e) => setTrack(e.target.value)} className="sm:w-40!">
           <option value="">{t("cards.filter.allTracks")}</option>
           <option value="nature">{t("cards.track.nature")}</option>
           <option value="art">{t("cards.track.art")}</option>
           <option value="heritage">{t("cards.track.heritage")}</option>
         </Select>
+        </div>
         <Chip selected={mine} onClick={() => setMine((m) => !m)} className="h-11">{t("cards.filter.mine")}</Chip>
         {filtered && (
           <Button variant="ghost" size="md" onClick={clear}>{t("cards.filter.clear")}</Button>

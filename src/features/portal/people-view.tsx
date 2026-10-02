@@ -105,7 +105,7 @@ export function PeopleView({ initial, canReveal, demo }: { initial: Data; canRev
                 const members = data.people.filter((p) => p.institution_id === inst.id);
                 return (
                   <li key={inst.id} className="flex flex-col gap-2">
-                    <p className="text-sm font-medium text-ink">{locale === "ar" ? inst.name_ar : inst.name_en}{tag(inst)} <span className="text-ink-3 font-normal">· {t("portal.people.members", { n: fmtNumber(members.length, locale) })}</span></p>
+                    <p className="text-sm font-medium text-ink">{locale === "ar" ? inst.name_ar : inst.name_en}{tag(inst)} <span className="text-ink-3 font-normal">· {members.length === 1 ? t("portal.people.members1") : t("portal.people.members", { n: fmtNumber(members.length, locale) })}</span></p>
                     <div className="flex flex-wrap gap-1.5">
                       {members.map((m) => (
                         <span key={m.id} className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 ps-1 pe-3 h-8 text-xs">

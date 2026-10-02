@@ -228,6 +228,26 @@ export async function seed(q: Queryable) {
   }
   log(`${n} demo workflow cards`);
 
+  // Learning points for approved student submissions of seeded content (same rule as the live workflow: +15 per approval).
+  const approved = (
+    await q.query<{ card_id: string; version: number | null; submitter: string; at: string }>(
+      `select a.entity_id as card_id, a.version, s.reviewer_id as submitter, a.created_at as at
+         from reviews a
+         join lateral (select reviewer_id from reviews s where s.entity_type = 'card' and s.entity_id = a.entity_id and s.decision = 'submit' and s.created_at <= a.created_at order by s.created_at desc limit 1) s on true
+         join users u on u.id = s.reviewer_id and u.role = 'student'
+        where a.entity_type = 'card' and a.decision = 'approve'`,
+    )
+  ).rows;
+  let p = 0;
+  for (const a of approved) {
+    const ref = `${a.card_id}@v${a.version ?? 1}`;
+    if ((await q.query("select 1 from points_ledger where user_id = $1 and reason = 'card_approved' and ref = $2", [a.submitter, ref])).rows.length) continue;
+    await q.query("insert into points_ledger (user_id, delta, reason, ref, created_at) values ($1,15,'card_approved',$2,$3)", [a.submitter, ref, a.at]);
+    await q.query("update users set points = points + 15 where id = $1", [a.submitter]);
+    p++;
+  }
+  if (p) log(`${p} learning-point awards backfilled`);
+
   let r = 0;
   const moonCard = (await q.query<{ id: string }>("select id from cards where id = 'card:moon' and status = 'published'")).rows[0]?.id ?? null;
   for (const [ci, [concept, topic, count, status, h]] of REQUESTS.entries()) {

@@ -78,7 +78,7 @@ export function VersePicker({ value, onChange, resolved, onHits, disabled, missi
                       value={v.role}
                       disabled={disabled}
                       onChange={(e) => onChange(value.map((x, j) => (j === i ? { ...x, role: e.target.value as "primary" | "supporting" } : x)))}
-                      className="h-9 w-auto text-sm py-0"
+                      className="h-9 w-auto! text-sm py-0"
                     >
                       <option value="primary">{t("cards.verses.role.primary")}</option>
                       <option value="supporting">{t("cards.verses.role.supporting")}</option>

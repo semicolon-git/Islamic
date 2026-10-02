@@ -193,7 +193,7 @@ function ThreadPane({ id, onChanged }: { id: string; onChanged: () => void }) {
           </p>
         </div>
         {open ? (
-          <Button size="sm" variant="secondary" onClick={() => setConfirmClose(true)}><X className="size-4" aria-hidden />{t("inbox.close")}</Button>
+          <Button size="sm" variant="secondary" onClick={() => setConfirmClose(true)} aria-label={t("inbox.close")}><X className="size-4" aria-hidden /><span className="hidden sm:inline">{t("inbox.close")}</span></Button>
         ) : (
           <Badge tone="neutral">{t("inbox.closed")}</Badge>
         )}
@@ -252,7 +252,7 @@ function ThreadPane({ id, onChanged }: { id: string; onChanged: () => void }) {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={t("inbox.composer")}
-              className="min-h-[52px] max-h-48"
+              className="min-h-[52px]! max-h-48"
               data-testid="reply-box"
               onKeyDown={(e) => {
                 if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
@@ -265,7 +265,7 @@ function ThreadPane({ id, onChanged }: { id: string; onChanged: () => void }) {
               <Send className="size-4 rtl:-scale-x-100" aria-hidden /><span className="hidden sm:inline">{t("inbox.send")}</span>
             </Button>
           </div>
-          <p className="text-xs text-ink-3 flex items-center gap-1.5"><Info className="size-3.5" aria-hidden />{t("inbox.enterHint")} · {t("inbox.rulingReminder")}</p>
+          <p className="text-xs text-ink-3 hidden sm:flex items-center gap-1.5"><Info className="size-3.5 shrink-0" aria-hidden />{t("inbox.enterHint")} · {t("inbox.rulingReminder")}</p>
           {sendError && <p className="text-sm text-bad" role="alert">{sendError}</p>}
         </form>
       )}

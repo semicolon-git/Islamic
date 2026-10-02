@@ -157,13 +157,13 @@ export function HistoryTab({
           <h2 className="font-semibold me-auto">{t("cards.hist.compare")}</h2>
           <label className="flex items-center gap-2 text-sm">
             {t("cards.hist.from")}
-            <Select value={a} onChange={(e) => setA(Number(e.target.value))} className="h-9 w-auto py-0" aria-label={t("cards.hist.from")}>
+            <Select value={a} onChange={(e) => setA(Number(e.target.value))} className="h-9 w-auto! py-0" aria-label={t("cards.hist.from")}>
               {sorted.map((v) => <option key={v.version} value={v.version}>{t("cards.hist.v", { v: v.version })}</option>)}
             </Select>
           </label>
           <label className="flex items-center gap-2 text-sm">
             {t("cards.hist.to")}
-            <Select value={b} onChange={(e) => setB(Number(e.target.value))} className="h-9 w-auto py-0" aria-label={t("cards.hist.to")}>
+            <Select value={b} onChange={(e) => setB(Number(e.target.value))} className="h-9 w-auto! py-0" aria-label={t("cards.hist.to")}>
               {sorted.map((v) => <option key={v.version} value={v.version}>{t("cards.hist.v", { v: v.version })}</option>)}
             </Select>
           </label>

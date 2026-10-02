@@ -452,7 +452,7 @@ export function CardEditor(props: EditorProps) {
         <Segmented label={t("cards.tabsLabel")} value={tab} onChange={setTab} options={[{ value: "edit", label: t("cards.tab.edit") }, { value: "history", label: t("cards.tab.history"), count: detail.versions.length }]} />
         {tab === "edit" && (
           <div className="lg:hidden">
-            <Segmented size="sm" label={t("cards.tab.preview")} value={mobileView} onChange={setMobileView} options={[{ value: "form", label: <span className="inline-flex items-center gap-1.5"><PencilLine className="size-3.5" aria-hidden />{t("cards.tab.edit")}</span> }, { value: "preview", label: <span className="inline-flex items-center gap-1.5"><Eye className="size-3.5" aria-hidden />{t("cards.tab.preview")}</span> }]} />
+            <Segmented size="sm" label={t("cards.tab.preview")} value={mobileView} onChange={setMobileView} options={[{ value: "form", label: <span className="inline-flex items-center gap-1.5"><PencilLine className="size-3.5" aria-hidden />{t("cards.tab.form")}</span> }, { value: "preview", label: <span className="inline-flex items-center gap-1.5"><Eye className="size-3.5" aria-hidden />{t("cards.tab.preview")}</span> }]} />
           </div>
         )}
       </div>

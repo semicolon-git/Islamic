@@ -138,6 +138,7 @@ export const portal: Messages = {
     "portal.noAccess.title": "This area isn't part of your role",
     "portal.noAccess.body": "Your persona works elsewhere in the portal. The home page shows your next task.",
     "portal.noAccess.home": "Go to your next task",
+    "portal.people.members1": "1 member",
   },
   ar: {
     "portal.nav.home": "الرئيسية",
@@ -272,5 +273,6 @@ export const portal: Messages = {
     "portal.noAccess.title": "هذا القسم ليس ضمن دورك",
     "portal.noAccess.body": "تعمل شخصيتك في قسم آخر من البوابة، وتعرض الصفحة الرئيسية مهمتك التالية.",
     "portal.noAccess.home": "انتقل إلى مهمتك التالية",
+    "portal.people.members1": "عضو واحد",
   },
 };

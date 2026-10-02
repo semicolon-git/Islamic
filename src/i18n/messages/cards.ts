@@ -382,6 +382,7 @@ export const cards: Messages = {
     "demand.privacy": "Requests carry no names or accounts — only an anonymous device hash, to count each visitor once.",
     "cards.pv.more": "Show full text",
     "cards.pv.less": "Show less",
+    "cards.tab.form": "Form",
   },
   ar: {
     "cards.title": "البطاقات",
@@ -747,5 +748,6 @@ export const cards: Messages = {
     "demand.privacy": "لا تحمل الطلبات أسماء ولا حسابات، بل بصمة مجهولة للجهاز فقط ليُحتسب كل زائر مرة واحدة.",
     "cards.pv.more": "اعرض النص كاملًا",
     "cards.pv.less": "اعرض أقل",
+    "cards.tab.form": "النموذج",
   },
 };

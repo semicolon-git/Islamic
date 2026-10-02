@@ -70,7 +70,7 @@ export async function recentActivity(user: SessionUser, limit = 18): Promise<Act
        left join card_requests r on a.entity_type = 'card_request' and r.id = a.entity_id
        left join concepts k on k.id = r.concept_id
       where a.action not in ('card.save') and ${scope}
-      order by a.id desc limit ${Number(limit) * 2}`,
+      order by a.created_at desc, a.id desc limit ${Number(limit) * 2}`,
     params,
   );
   return plain(rows).filter((r) => isFeedWorthy(r.action)).slice(0, limit).map(activityFromAudit);

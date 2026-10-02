@@ -68,6 +68,11 @@ export function TalkApp({ card, initialQuestion }: { card: { id: string; title_e
   const [endOpen, setEndOpen] = useState(false);
   const [endedBy, setEndedBy] = useState<"visitor" | "specialist">("visitor");
   const [online, setOnline] = useState(true);
+  const endRef = useRef<HTMLDivElement>(null);
+  const msgCount = (data?.messages.length ?? 0) + outbox.length;
+  useEffect(() => {
+    if (phase === "thread" && msgCount > 1) endRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
+  }, [msgCount, phase]);
 
   const load = useCallback(async (id: string, tok: string) => {
     const r = await api<ThreadData>(`/api/threads/${id}`, { headers: { "x-device-token": tok } });
@@ -295,6 +300,7 @@ export function TalkApp({ card, initialQuestion }: { card: { id: string; title_e
         )}
       </div>
 
+      <div ref={endRef} />
       <Composer onSend={send} />
 
       <Sheet
@@ -350,7 +356,7 @@ function Composer({ onSend }: { onSend: (body: string) => Promise<void> }) {
           }
         }}
         placeholder={t("inbox.talk.composer")}
-        className="min-h-11 max-h-36 border-0 focus:ring-0 resize-none bg-transparent"
+        className="min-h-11! max-h-36 border-0 focus:ring-0 resize-none bg-transparent py-2.5"
         data-testid="talk-input"
       />
       <Button type="submit" disabled={!text.trim()} className="size-11 p-0 rounded-full shrink-0" aria-label={t("inbox.talk.send")}>

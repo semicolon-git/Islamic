@@ -98,7 +98,7 @@ export function DemandBoard({ initial, canDismiss, canCreate }: { initial: Deman
         value={tab}
         onChange={setTab}
         options={(["needs", "fulfilled", "dismissed", "all"] as const).map((k) => ({ value: k, label: t(`demand.tab.${k}`), count: counts[k] }))}
-        className="self-start max-w-full overflow-x-auto"
+        className="self-start max-w-full overflow-x-auto [&_button]:whitespace-nowrap [&_button]:shrink-0"
       />
 
       {error && (
