@@ -56,7 +56,7 @@ export function GlossaryChips({ terms }: { terms: TermView[] }) {
 
 /* ─────────────────────────────── "Why trust this?" provenance sheet */
 export interface ProvenanceView {
-  stages: { key: string; title: string; who: string | null; role: string | null; institution: string | null; demo: boolean; date: string | null; note: string | null; done: boolean }[];
+  stages: { key: string; title: string; who: string | null; role: string | null; institution: string | null; demo: boolean; date: string | null; note: string | null; desc?: string | null; done: boolean }[];
   checks: string[];
   footer: string;
 }
@@ -100,6 +100,7 @@ export function ProvenanceButton({ data, variant = "chip" }: { data: ProvenanceV
                 )}
                 {s.institution && <span className="text-sm text-ink-3">{s.institution}</span>}
                 {s.date && <span className="text-xs text-ink-3">{s.date}</span>}
+                {s.desc && <span className="text-sm text-ink-2">{s.desc}</span>}
                 {s.note && <span className="text-sm text-ink-2 italic mt-1">“{s.note}”</span>}
               </div>
             </li>

@@ -64,15 +64,15 @@ export default async function Home() {
             {t("beneficiary.home.title")}
           </h1>
           <p className="text-white/80 text-[1.02rem] leading-relaxed max-w-[38ch]">{t("beneficiary.home.subtitle")}</p>
-          <div className="flex flex-col gap-2 mt-2">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2">
             <Link
               href="/snap"
-              className="inline-flex items-center justify-center gap-3 h-[3.75rem] rounded-[18px] bg-[#36dcb8] text-[#052a22] text-[1.06rem] font-semibold shadow-[0_8px_30px_rgb(54_220_184/0.35)] transition-transform active:scale-[0.98] hover:bg-[#5ae6c7]"
+              className="inline-flex items-center justify-center gap-3 h-[3.75rem] sm:px-7 rounded-[18px] bg-[#36dcb8] text-[#052a22] text-[1.06rem] font-semibold shadow-[0_8px_30px_rgb(54_220_184/0.35)] transition-transform active:scale-[0.98] hover:bg-[#5ae6c7]"
             >
               <Camera className="size-6" aria-hidden />
               {t("beneficiary.home.cta")}
             </Link>
-            <Link href="/snap?pick=1" className="inline-flex items-center justify-center gap-2 h-11 rounded-[14px] text-sm font-medium text-white/85 hover:text-white hover:bg-white/10">
+            <Link href="/snap?pick=1" className="inline-flex items-center justify-center gap-2 h-11 sm:px-4 rounded-[14px] text-sm font-medium text-white/85 hover:text-white hover:bg-white/10">
               <LayoutGrid className="size-4" aria-hidden />
               {t("beneficiary.home.ctaPick")}
             </Link>

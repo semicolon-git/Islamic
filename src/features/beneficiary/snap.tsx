@@ -292,8 +292,8 @@ export function Snap({ concepts, samples, aiOn, startWithPicker, initialTrack }:
             </div>}
             {samples.length > 0 && (
               <div className="flex flex-col gap-2">
-                <p className="px-5 text-xs font-medium uppercase tracking-[0.08em] text-white/60" id="samples-h">{t("beneficiary.snap.samples")}</p>
-                <ul className="flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none]" aria-labelledby="samples-h">
+                <p className="px-5 text-xs font-medium uppercase tracking-[0.08em] text-white/60 sm:text-center" id="samples-h">{t("beneficiary.snap.samples")}</p>
+                <ul className="flex gap-2.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-auto sm:max-w-full sm:w-fit" aria-labelledby="samples-h">
                   {samples.map((s) => (
                     <li key={s.id} className="shrink-0">
                       <button

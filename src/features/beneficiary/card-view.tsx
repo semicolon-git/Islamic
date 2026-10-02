@@ -54,7 +54,8 @@ function buildProvenance(r: ResolvedCard, locale: Locale, t: T, demo: boolean): 
       institution: null,
       demo: false,
       date: null,
-      note: t("beneficiary.trust.stage.draftNote"),
+      note: null,
+      desc: t("beneficiary.trust.stage.draftNote"),
       done: true,
     },
     ...r.provenance.map((p) => ({
@@ -145,7 +146,7 @@ export async function CardView({ resolved, justApproved = false, showAsk = true 
       {/* Header */}
       <header className="flex flex-col gap-4">
         <div className="relative">
-          <ConceptImage src={image} alt="" hue={hue} className="aspect-[16/9] w-full rounded-[22px]" />
+          <ConceptImage src={image} alt="" hue={hue} className="aspect-[16/9] sm:aspect-[21/9] w-full rounded-[22px]" />
           <div className="pointer-events-none absolute inset-0 rounded-[22px] bg-gradient-to-t from-[rgb(8_10_30/0.55)] via-transparent to-transparent" aria-hidden />
           {approvedLine && (
             <span className="absolute bottom-3 start-3 end-3 sm:end-auto inline-flex items-center gap-1.5 rounded-full bg-[rgb(8_10_30/0.72)] backdrop-blur px-3 py-1.5 text-[0.8rem] font-medium text-white w-fit max-w-[calc(100%-1.5rem)]">

@@ -84,7 +84,7 @@ export function NoCard({
   return (
     <div className="flex flex-col gap-6 pb-10">
       <div className="relative">
-        <ConceptImage src={image} alt="" hue={hue} className="aspect-[16/9] w-full rounded-[22px] opacity-90" />
+        <ConceptImage src={image} alt="" hue={hue} className="aspect-[16/9] sm:aspect-[21/9] w-full rounded-[22px] opacity-90" />
         <span className="absolute bottom-3 start-3 inline-flex items-center gap-1.5 rounded-full bg-[rgb(8_10_30/0.72)] backdrop-blur px-3 py-1.5 text-[0.8rem] font-medium text-white">
           {label}
         </span>

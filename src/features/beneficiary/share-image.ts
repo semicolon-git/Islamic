@@ -136,9 +136,42 @@ export async function renderShareCard(d: ShareCardData): Promise<Blob> {
   const maxW = W - PAD * 2;
   ctx.textAlign = "center";
   if (d.verse) {
+    // Budget the vertical space so the verse, translation and reference never run into the footer.
+    const BOTTOM = H - 236;
+    const withTr = d.locale === "en" && !!d.verse.translation;
+    const refBlock = 52 + (withTr && d.verse.edition ? 30 : 0);
+    const quranFont = (px: number) => `${px}px "${QURAN_FONT}", "Amiri", serif`;
+    const trFont = (px: number) => `400 ${px}px ${UI_FONT}`;
+    const fullFit = (text: string, font: (px: number) => string, width: number, room: number, from: number, min: number, lhK: number) => {
+      for (let px = from; px >= min; px -= 2) {
+        ctx.font = font(px);
+        const lines = wrapWords((t) => ctx.measureText(t).width, text, width);
+        if (lines.length * Math.round(px * lhK) <= room) return { px, lines };
+      }
+      return null;
+    };
+    const verseHeight = (f: { px: number; lines: string[] }) => f.lines.length * Math.round(f.px * 1.9) + Math.round(f.px * 1.9 * 0.2) + 68;
+    let v = fit(ctx, d.verse.text, quranFont, maxW, 7, 64, 34);
+    let tr: { px: number; lines: string[] } | null = null;
+    for (let start = 64; start >= 30; start -= 4) {
+      ctx.direction = "rtl";
+      v = fit(ctx, d.verse.text, quranFont, maxW, 7, start, 30);
+      if (!withTr) break;
+      ctx.direction = "ltr";
+      tr = fullFit(`“${d.verse.translation}”`, trFont, maxW - 40, BOTTOM - refBlock - 10 - (y + verseHeight(v)), 34, 22, 1.5);
+      if (tr) break;
+    }
+    if (withTr && !tr) {
+      ctx.direction = "ltr";
+      const room = BOTTOM - refBlock - 10 - (y + verseHeight(v));
+      tr = fit(ctx, `“${d.verse.translation}”`, trFont, maxW - 40, Math.max(2, Math.floor(room / 33)), 22, 22);
+    }
+    // Centre the block vertically in the space between the title and the footer.
+    const total = verseHeight(v) + (tr ? tr.lines.length * Math.round(tr.px * 1.5) + 10 : 0) + refBlock;
+    y += Math.max(0, Math.floor((BOTTOM - y - total) / 2));
     ctx.direction = "rtl";
-    const v = fit(ctx, d.verse.text, (px) => `${px}px "${QURAN_FONT}", "Amiri", serif`, maxW, 7, 64, 38);
     const lh = Math.round(v.px * 1.9);
+    ctx.font = quranFont(v.px);
     ctx.fillStyle = "#ffffff";
     y += lh * 0.6;
     for (const line of v.lines) {
@@ -146,7 +179,7 @@ export async function renderShareCard(d: ShareCardData): Promise<Blob> {
       y += lh;
     }
     // Ornament.
-    y += 4;
+    y += 4 - lh * 0.4;
     ctx.strokeStyle = "rgba(54,220,184,0.6)";
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -159,9 +192,9 @@ export async function renderShareCard(d: ShareCardData): Promise<Blob> {
     y += 64;
 
     ctx.direction = "ltr";
-    if (d.locale === "en" && d.verse.translation) {
-      const tr = fit(ctx, `“${d.verse.translation}”`, (px) => `400 ${px}px ${UI_FONT}`, maxW - 40, 7, 36, 24);
+    if (tr) {
       const tlh = Math.round(tr.px * 1.5);
+      ctx.font = trFont(tr.px);
       ctx.fillStyle = "#d3d6f0";
       for (const line of tr.lines) {
         ctx.fillText(line, W / 2, y);
