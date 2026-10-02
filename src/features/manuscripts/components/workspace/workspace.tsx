@@ -46,6 +46,21 @@ export function Workspace({ initial }: { initial: PageDetail }) {
 
   useEffect(() => setDetail(initial), [initial]);
 
+  // Deep link / reload: ?line=<id> selects that line; the selection is kept in the URL.
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("line");
+    if (id && initial.lines.some((l) => l.id === id)) {
+      setSelectedId(id);
+      setTimeout(() => image.current?.zoomToLine(id), 150);
+    }
+  }, [initial.page.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const u = new URL(window.location.href);
+    if (selectedId) u.searchParams.set("line", selectedId);
+    else u.searchParams.delete("line");
+    window.history.replaceState(window.history.state, "", u);
+  }, [selectedId]);
+
   const reload = useCallback(async () => {
     try {
       setDetail(await api<PageDetail>(`/api/ms/pages/${initial.page.id}`));

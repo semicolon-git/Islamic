@@ -68,16 +68,40 @@ export const LineSession = forwardRef<SessionHandle, Props>(function LineSession
   const genre = (detail.manuscript.genre ?? "general") as Genre;
   const readOnly = !me.canEdit || lock === "other";
 
+  // Unsaved text survives a reload (per browser, per line and base version).
+  const stashKey = `ms-unsaved:${line.id}`;
+  const stash = useCallback((toks: Tok[], norm: string | null) => {
+    try { localStorage.setItem(stashKey, JSON.stringify({ base: stateRef.current.base, tokens: toks, normalized: norm })); } catch { /* storage unavailable */ }
+  }, [stashKey]);
+  const unstash = useCallback(() => { try { localStorage.removeItem(stashKey); } catch { /* ignore */ } }, [stashKey]);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(stashKey);
+      if (!raw) return;
+      const saved = JSON.parse(raw) as { base: number; tokens: Tok[]; normalized: string | null };
+      if (saved.base === line.current_version && JSON.stringify(saved.tokens) !== JSON.stringify(line.version?.tokens ?? [])) {
+        setTokensState(saved.tokens);
+        setNormalized(saved.normalized);
+        dirtyRef.current = true;
+        setState("dirty");
+        toast({ tone: "info", text: t("manuscripts.ed.restoredUnsaved") });
+      } else localStorage.removeItem(stashKey);
+    } catch { /* ignore */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stashKey]);
+
   const setTokens = useCallback((next: Tok[]) => {
     setTokensState(next);
     dirtyRef.current = true;
     setState("dirty");
-  }, []);
+    stash(next, stateRef.current.normalized);
+  }, [stash]);
   const setNorm = useCallback((s: string | null) => {
     setNormalized(s);
     dirtyRef.current = true;
     setState("dirty");
-  }, []);
+    stash(stateRef.current.tokens, s);
+  }, [stash]);
 
   // Someone else saved this line while it was open and we have nothing unsaved: take their version.
   useEffect(() => {
@@ -130,6 +154,7 @@ export const LineSession = forwardRef<SessionHandle, Props>(function LineSession
         json: { base_version: cur.base, tokens: cur.tokens, normalized_text: cur.normalized },
       });
       dirtyRef.current = false;
+      unstash();
       setBase(r.version.version);
       setTokensState(r.version.tokens);
       setNormalized(r.version.normalized_text);
@@ -151,7 +176,7 @@ export const LineSession = forwardRef<SessionHandle, Props>(function LineSession
       setError(e instanceof ApiError ? e.message : t("manuscripts.error.generic"));
       return false;
     }
-  }, [line.id, line.version, lock, me.canEdit, onSaved, t, toast]);
+  }, [line.id, line.version, lock, me.canEdit, onSaved, t, toast, unstash]);
 
   const save = useCallback(() => {
     if (!savingRef.current) savingRef.current = doSave().finally(() => { savingRef.current = null; });
@@ -266,6 +291,7 @@ export const LineSession = forwardRef<SessionHandle, Props>(function LineSession
           filter={filter}
           onTheirs={() => {
             dirtyRef.current = false;
+            unstash();
             setTokensState(conflict.theirs.tokens);
             setNormalized(conflict.theirs.normalized_text);
             setBase(conflict.theirs.version);
