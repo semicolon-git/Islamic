@@ -340,7 +340,7 @@ export async function CardView({ resolved, justApproved = false, showAsk = true 
         <section className="flex flex-col gap-3" aria-labelledby="terms-h">
           <h2 id="terms-h" className={SECTION_LABEL}>{t("beneficiary.card.keyTerms")}</h2>
           <GlossaryChips
-            terms={r.terms.map((g) => ({ id: g.id, term_ar: g.term_ar, term_en: g.term_en, rule: locale === "ar" ? g.rule_ar : g.rule_en, source: g.source }))}
+            terms={r.terms.map((g) => ({ id: g.id, term_ar: g.term_ar, term_en: g.term_en, rule: locale === "ar" ? g.meaning_ar || g.rule_ar : g.meaning_en || g.rule_en, source: g.source }))}
           />
         </section>
       )}

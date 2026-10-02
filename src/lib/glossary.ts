@@ -6,6 +6,9 @@ export interface GlossaryTerm {
   term_en: string;
   rule_en: string;
   rule_ar: string;
+  /** Plain-language meaning for visitors (rule_* is the editors' translation rule). */
+  meaning_en?: string | null;
+  meaning_ar?: string | null;
   variants: string[];
   banned_renderings: string[];
   source: string;

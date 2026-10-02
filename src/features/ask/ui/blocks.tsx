@@ -240,7 +240,7 @@ export function GlossaryBlock({ block, t, lang }: { block: Extract<AnswerBlock, 
         </span>
       </div>
       <p lang={lang} className="text-[0.98rem] leading-relaxed text-ink">
-        {lang === "ar" ? g.rule_ar : g.rule_en}
+        {lang === "ar" ? g.meaning_ar || g.rule_ar : g.meaning_en || g.rule_en}
       </p>
       <p className="text-xs text-ink-3">{t("ask.glossary.source", { source: g.source })}</p>
     </section>

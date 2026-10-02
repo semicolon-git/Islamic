@@ -10,7 +10,9 @@
    "muslim religion"
   ],
   "banned_renderings": [],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "Submitting to Allah alone: worshipping Him and following what He revealed. It is also the name of the religion brought by the Prophet Muhammad ﷺ.",
+  "meaning_ar": "الاستسلام لله وحده بالتوحيد والانقياد له بالطاعة، وهو اسم الدين الذي جاء به النبي محمد ﷺ."
  },
  {
   "id": "tawhid",
@@ -27,7 +29,9 @@
   "banned_renderings": [
    "unity"
   ],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "Believing that Allah is One: the only Creator and Lord, the only one who deserves worship, and unique in His names and attributes.",
+  "meaning_ar": "إفراد الله بالربوبية والألوهية والأسماء والصفات؛ فهو وحده الخالق المدبّر، ووحده المستحق للعبادة، ولا يماثله أحد في أسمائه وصفاته."
  },
  {
   "id": "ibadah",
@@ -41,7 +45,9 @@
    "worship"
   ],
   "banned_renderings": [],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "Worship: everything Allah loves, in words and deeds, inward and outward. It includes prayer and fasting, and also honesty, kindness and good work done for His sake.",
+  "meaning_ar": "العبادة اسم جامع لكل ما يحبه الله ويرضاه من الأقوال والأعمال الظاهرة والباطنة، كالصلاة والصيام، والصدق والإحسان إذا قُصد بها وجه الله."
  },
  {
   "id": "nubuwwah",
@@ -55,7 +61,9 @@
    "prophecy"
   ],
   "banned_renderings": [],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "Prophethood: Allah choosing certain people to receive His revelation and convey it. Muslims believe in all the prophets, and that Muhammad ﷺ is the last of them.",
+  "meaning_ar": "اصطفاء الله من شاء من عباده ليوحي إليهم ويبلّغوا رسالته. ويؤمن المسلمون بجميع الأنبياء، وبأن محمدًا ﷺ خاتمهم."
  },
  {
   "id": "wahy",
@@ -70,7 +78,9 @@
   "banned_renderings": [
    "inspiration"
   ],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "Revelation: Allah making His message known to His prophets. The Quran is the revelation brought by the angel Jibril (Gabriel) to the Prophet Muhammad ﷺ.",
+  "meaning_ar": "إعلام الله أنبياءه بما يريد تبليغه. والقرآن هو الوحي الذي نزل به جبريل عليه السلام على النبي محمد ﷺ."
  },
  {
   "id": "shariah",
@@ -87,7 +97,9 @@
   "banned_renderings": [
    "islamic penal code"
   ],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "The path Allah laid down in the Quran and Sunnah, covering belief, worship, character and dealings with others. It is wider than 'law' alone.",
+  "meaning_ar": "ما شرعه الله لعباده في القرآن والسنة من عقائد وعبادات وأخلاق ومعاملات، وهي أوسع من مجرد القانون."
  },
  {
   "id": "hadith",
@@ -100,7 +112,9 @@
    "hadeeth"
   ],
   "banned_renderings": [],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "A report of what the Prophet ﷺ said, did or approved. Scholars grade each report by how reliably it was passed on.",
+  "meaning_ar": "ما نُقل عن النبي ﷺ من قول أو فعل أو تقرير، ويحكم العلماء على كل حديث بحسب ثبوت نقله."
  },
  {
   "id": "sunnah",
@@ -113,7 +127,9 @@
    "sunna"
   ],
   "banned_renderings": [],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "The Prophet's ﷺ teaching and way, known through authentic hadith. Together with the Quran it is a source of guidance. In jurisprudence the word can also mean 'recommended'.",
+  "meaning_ar": "ما ثبت عن النبي ﷺ من قول أو فعل أو تقرير، وهي مع القرآن مصدر للهداية والتشريع. وقد تأتي في اصطلاح الفقهاء بمعنى المستحب."
  },
  {
   "id": "fatwa",
@@ -127,7 +143,9 @@
    "religious ruling"
   ],
   "banned_renderings": [],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "A qualified scholar's answer to a question about an Islamic ruling, given for that question and the asker's situation.",
+  "meaning_ar": "بيان عالمٍ مؤهَّل للحكم الشرعي جوابًا عن سؤال، بحسب السؤال وحال السائل."
  },
  {
   "id": "dawah",
@@ -144,6 +162,8 @@
   "banned_renderings": [
    "proselytizing"
   ],
-  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary",
+  "meaning_en": "Inviting people to Islam with wisdom and kind words. No one may be forced into faith.",
+  "meaning_ar": "دعوة الناس إلى الإسلام بالحكمة والموعظة الحسنة، ولا إكراه في الدين."
  }
 ]

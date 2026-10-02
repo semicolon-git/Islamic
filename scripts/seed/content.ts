@@ -16,11 +16,12 @@ export async function seed(q: Queryable) {
     const terms = readJson<Record<string, unknown>[]>("data/content/glossary.json");
     for (const t of terms)
       await q.query(
-        `insert into glossary_terms (id, term_ar, term_en, rule_en, rule_ar, variants, banned_renderings, source, status)
-         values ($1,$2,$3,$4,$5,$6,$7,$8,'approved')
+        `insert into glossary_terms (id, term_ar, term_en, rule_en, rule_ar, meaning_en, meaning_ar, variants, banned_renderings, source, status)
+         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'approved')
          on conflict (id) do update set term_ar=excluded.term_ar, term_en=excluded.term_en, rule_en=excluded.rule_en, rule_ar=excluded.rule_ar,
+           meaning_en=excluded.meaning_en, meaning_ar=excluded.meaning_ar,
            variants=excluded.variants, banned_renderings=excluded.banned_renderings, source=excluded.source`,
-        [t.id, t.term_ar, t.term_en, t.rule_en, t.rule_ar, t.variants ?? [], t.banned_renderings ?? [], t.source],
+        [t.id, t.term_ar, t.term_en, t.rule_en, t.rule_ar, t.meaning_en ?? null, t.meaning_ar ?? null, t.variants ?? [], t.banned_renderings ?? [], t.source],
       );
     log(`${terms.length} glossary terms`);
   }

@@ -140,3 +140,12 @@ export function answerQuestion(question: string, opts: AskOptions, overrides: Pa
 export async function contextCardTitle(cardId: string): Promise<{ id: string; title_en: string; title_ar: string } | null> {
   return one("select id, title_en, title_ar from cards where id=$1 and status='published'", [cardId]);
 }
+
+/** The published card behind a published heritage item (label code such as AST-7), for ?item= links. */
+export async function cardIdForItem(code: string): Promise<string | null> {
+  const r = await one<{ card_id: string | null }>(
+    "select h.card_id from heritage_items h join cards c on c.id = h.card_id and c.status = 'published' where upper(h.item_code) = upper($1) and h.status = 'published'",
+    [code.slice(0, 40)],
+  );
+  return r?.card_id ?? null;
+}

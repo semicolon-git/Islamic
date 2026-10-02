@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { X } from "lucide-react";
 import { cn } from "./cn";
 
@@ -29,6 +29,8 @@ export function Sheet({
   closeLabel?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+  const descId = useId();
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
@@ -38,6 +40,8 @@ export function Sheet({
   return (
     <dialog
       ref={ref}
+      aria-labelledby={titleId}
+      aria-describedby={description ? descId : undefined}
       onClose={onClose}
       onCancel={(e) => {
         e.preventDefault();
@@ -65,8 +69,8 @@ export function Sheet({
         {side === "bottom" && <div className="mx-auto mt-2.5 h-1.5 w-10 rounded-full bg-line-strong sm:hidden" aria-hidden />}
         <header className="flex items-start gap-3 px-5 pt-4 pb-3">
           <div className="flex-1 min-w-0">
-            <h2 className="text-lg font-semibold">{title}</h2>
-            {description && <p className="text-sm text-ink-2 mt-0.5">{description}</p>}
+            <h2 id={titleId} className="text-lg font-semibold">{title}</h2>
+            {description && <p id={descId} className="text-sm text-ink-2 mt-0.5">{description}</p>}
           </div>
           <button onClick={onClose} aria-label={closeLabel} className="size-10 -me-2 -mt-1 grid place-items-center rounded-full text-ink-2 hover:bg-surface-2">
             <X className="size-5" />

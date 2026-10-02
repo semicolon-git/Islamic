@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/i18n/client";
@@ -6,8 +7,24 @@ import { useI18n } from "@/i18n/client";
 /** Non-modal, dismissible card that sits above the tab bar (mobile) or in the corner (desktop). */
 export function InstallBanner({ ios, onInstall, onDismiss }: { ios: boolean; onInstall: () => void; onDismiss: () => void }) {
   const { t } = useI18n();
+  const ref = useRef<HTMLElement>(null);
+  // Publish the banner's height so toasts stack above it instead of covering it.
+  useEffect(() => {
+    const el = ref.current;
+    const root = document.documentElement;
+    if (!el) return;
+    const set = () => root.style.setProperty("--pwa-offset", `${el.offsetHeight + 12}px`);
+    set();
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(set) : null;
+    ro?.observe(el);
+    return () => {
+      ro?.disconnect();
+      root.style.removeProperty("--pwa-offset");
+    };
+  }, []);
   return (
     <section
+      ref={ref}
       role="region"
       aria-label={t("pwa.install.label")}
       data-testid="pwa-install-banner"

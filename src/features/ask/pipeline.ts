@@ -666,7 +666,7 @@ function glossaryAnswer(term: GlossaryTerm, mode: "meaning" | "translate", cat: 
     d.blocks.push({ type: "explanation", text: e.text, lang: e.lang, cites, source: "card" });
     d.composed.push({ type: "explanation", text: e.text, cites });
   }
-  d.blocks.push({ type: "glossary", term: { id: term.id, term_ar: term.term_ar, term_en: term.term_en, rule_en: term.rule_en, rule_ar: term.rule_ar, source: term.source } });
+  d.blocks.push({ type: "glossary", term: { id: term.id, term_ar: term.term_ar, term_en: term.term_en, rule_en: term.rule_en, rule_ar: term.rule_ar, meaning_en: term.meaning_en ?? null, meaning_ar: term.meaning_ar ?? null, source: term.source } });
   if (card) {
     const keys = card.verses.map((v) => v.key);
     if (keys.length) {
@@ -691,7 +691,7 @@ function loadedTermAnswer(lt: LoadedTerm, cat: Catalogue, lang: Lang): Draft {
   }
   if (lt.glossary) {
     const g = cat.glossary.find((t) => t.id === lt.glossary);
-    if (g) d.blocks.push({ type: "glossary", term: { id: g.id, term_ar: g.term_ar, term_en: g.term_en, rule_en: g.rule_en, rule_ar: g.rule_ar, source: g.source } });
+    if (g) d.blocks.push({ type: "glossary", term: { id: g.id, term_ar: g.term_ar, term_en: g.term_en, rule_en: g.rule_en, rule_ar: g.rule_ar, meaning_en: g.meaning_en ?? null, meaning_ar: g.meaning_ar ?? null, source: g.source } });
   }
   const card = lt.concept ? cat.cards.find((c) => c.concept_id === lt.concept && c.kind !== "answer") ?? null : null;
   if (card) {

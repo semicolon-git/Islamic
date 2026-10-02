@@ -99,7 +99,7 @@ export type AnswerBlock =
   | { type: "civilizational"; text: string; lang: Lang; sources: { citation: string; url?: string }[] }
   | { type: "disagreement"; intro: boolean; text?: string; lang: Lang; views: { text: string; cites: string[] }[] }
   | { type: "fact"; label_en: string; label_ar: string; tokens: number; verses: number; rule: string }
-  | { type: "glossary"; term: { id: string; term_ar: string; term_en: string; rule_en: string; rule_ar: string; source: string } }
+  | { type: "glossary"; term: { id: string; term_ar: string; term_en: string; rule_en: string; rule_ar: string; meaning_en?: string | null; meaning_ar?: string | null; source: string } }
   | { type: "term_lock"; term: string; correction_en: string; correction_ar: string; cites: string[] }
   | { type: "misquote"; input: string; candidates: { verses: string[]; similarity: number; differences: { op: string; given: string; quran: string }[] }[] }
   | { type: "notice"; kind: NoticeKind; tone: "neutral" | "warn" | "ok" | "accent" | "violet"; vars?: Record<string, string> }
