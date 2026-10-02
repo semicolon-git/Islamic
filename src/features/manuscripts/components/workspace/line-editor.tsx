@@ -88,6 +88,16 @@ export const LineEditor = forwardRef<LineEditorHandle, LineEditorProps>(function
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  // Caret moves that React does not report as "select" (programmatic, IME): follow document selectionchange.
+  useEffect(() => {
+    const onSel = () => {
+      const el = ta.current;
+      if (el && document.activeElement === el) setSel((cur) => (cur[0] === el.selectionStart && cur[1] === el.selectionEnd ? cur : [el.selectionStart, el.selectionEnd]));
+    };
+    document.addEventListener("selectionchange", onSel);
+    return () => document.removeEventListener("selectionchange", onSel);
+  }, []);
+
   // Restore the selection after a programmatic edit (markup, undo) re-rendered the textarea value.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
@@ -361,6 +371,38 @@ export const LineEditor = forwardRef<LineEditorHandle, LineEditorProps>(function
         </div>
       )}
 
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[0.72rem] font-semibold uppercase tracking-wide text-ink-3" id={`${id}-layer`}>{t("manuscripts.ed.layerLabel")}</span>
+        {readOnly && <span className="text-[0.72rem] text-ink-3">{t("manuscripts.ed.readonly")}</span>}
+      </div>
+      <div className={cn("relative grid rounded-[12px] border bg-surface transition-colors", readOnly ? "border-line" : "border-line-strong focus-within:border-violet focus-within:ring-2 focus-within:ring-violet/25")}>
+        <Backdrop tokens={tokens} />
+        <textarea
+          ref={ta}
+          id={id}
+          dir="rtl"
+          lang="ar"
+          rows={1}
+          spellCheck={false}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          readOnly={readOnly}
+          aria-label={label}
+          aria-describedby={`${id}-layer`}
+          value={str}
+          onChange={(e) => {
+            const raw = e.target.value.replace(/[\r\n]+/g, " ");
+            commit(applyTextEdit(tokens, str, raw, e.target.selectionEnd), undefined, "type");
+          }}
+          onSelect={(e) => setSel([e.currentTarget.selectionStart, e.currentTarget.selectionEnd])}
+          onKeyUp={(e) => setSel([e.currentTarget.selectionStart, e.currentTarget.selectionEnd])}
+          onMouseUp={(e) => setSel([e.currentTarget.selectionStart, e.currentTarget.selectionEnd])}
+          onKeyDown={onKeyDown}
+          className={cn(EDITOR_TEXT, "[grid-area:1/1] relative w-full h-full resize-none overflow-hidden bg-transparent text-ink caret-ink outline-none")}
+        />
+      </div>
+
       {panel && !readOnly && (
         <div className="rounded-[12px] border border-line bg-surface p-3 animate-pop flex flex-col gap-3" role="group" aria-label={t(`manuscripts.tool.${panel}`)}>
           <div className="flex items-center justify-between gap-2">
@@ -509,36 +551,6 @@ export const LineEditor = forwardRef<LineEditorHandle, LineEditorProps>(function
         </div>
       )}
 
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-[0.72rem] font-semibold uppercase tracking-wide text-ink-3" id={`${id}-layer`}>{t("manuscripts.ed.layerLabel")}</span>
-        {readOnly && <span className="text-[0.72rem] text-ink-3">{t("manuscripts.ed.readonly")}</span>}
-      </div>
-      <div className={cn("relative grid rounded-[12px] border bg-surface transition-colors", readOnly ? "border-line" : "border-line-strong focus-within:border-violet focus-within:ring-2 focus-within:ring-violet/25")}>
-        <Backdrop tokens={tokens} />
-        <textarea
-          ref={ta}
-          id={id}
-          dir="rtl"
-          lang="ar"
-          rows={1}
-          spellCheck={false}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          readOnly={readOnly}
-          aria-label={label}
-          aria-describedby={`${id}-layer`}
-          value={str}
-          onChange={(e) => {
-            const raw = e.target.value.replace(/[\r\n]+/g, " ");
-            commit(applyTextEdit(tokens, str, raw, e.target.selectionEnd), undefined, "type");
-          }}
-          onSelect={(e) => setSel([e.currentTarget.selectionStart, e.currentTarget.selectionEnd])}
-          onKeyDown={onKeyDown}
-          className={cn(EDITOR_TEXT, "[grid-area:1/1] relative w-full h-full resize-none overflow-hidden bg-transparent text-ink caret-ink outline-none")}
-        />
-      </div>
-
       {msg && <p role="status" className="text-sm text-warn">{msg}</p>}
 
       {typedMarks.length > 0 && (
@@ -563,7 +575,7 @@ export const LineEditor = forwardRef<LineEditorHandle, LineEditorProps>(function
           </div>
           <div className="flex flex-wrap items-center gap-1.5">
             {(unclearAtCaret.alts ?? []).map((a, i) => (
-              <button key={a} type="button" onClick={() => acceptAlt(a)} disabled={readOnly} title={t("manuscripts.ed.accept", { w: a })}
+              <button key={a} type="button" onClick={() => acceptAlt(a)} disabled={readOnly} title={t("manuscripts.ed.accept", { w: a })} aria-label={t("manuscripts.ed.accept", { w: a })}
                 className="inline-flex items-center gap-1.5 h-9 ps-1.5 pe-3 rounded-full border border-line-strong bg-surface hover:border-accent hover:bg-accent-soft transition-colors">
                 <Kbd>{i + 1}</Kbd><span className="font-ms text-lg leading-none" dir="rtl">{a}</span>
               </button>

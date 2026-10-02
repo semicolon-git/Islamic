@@ -238,7 +238,7 @@ export function Workspace({ initial }: { initial: PageDetail }) {
       {detail.page.status === "published" && (
         <div className="flex items-center gap-2 px-4 py-2 bg-ok-soft text-ok text-sm border-b border-line" data-testid="published-banner">
           <Lock className="size-4 shrink-0" />
-          <span className="truncate">{t("manuscripts.wf.publishedBanner", { v: num(detail.page.published_version ?? 1, locale), sha: (detail.page.published_sha ?? "").slice(0, 12) })}</span>
+          <span className="truncate">{t("manuscripts.wf.publishedBanner", { v: num(detail.page.published_version ?? 1, locale) })} <bdi className="mono text-xs" title={detail.page.published_sha ?? undefined}>sha256:{(detail.page.published_sha ?? "").slice(0, 12)}…</bdi></span>
         </div>
       )}
       {detail.page.status !== "published" && !v.canEdit && (v.role === "institution_admin" || detail.page.status === "researcher_approved" || detail.page.status === "student_submitted") && (
@@ -256,14 +256,14 @@ export function Workspace({ initial }: { initial: PageDetail }) {
         <div className="flex items-center gap-2 min-w-0 flex-1">
           <Link href={`/portal/manuscripts/${detail.manuscript.id}`} className="flex items-center gap-2 min-w-0 rounded-[10px] hover:bg-surface-2 px-1.5 py-1">
             {detail.manuscript.siglum && <span className="size-9 shrink-0 rounded-[10px] bg-sand text-sand-ink grid place-items-center font-ms text-xl leading-none"><span className="inline-block translate-y-[0.14em]">{detail.manuscript.siglum}</span></span>}
-            <span className="flex flex-col min-w-0 leading-tight">
+            <span className="hidden sm:flex flex-col min-w-0 leading-tight">
               <span className="text-sm font-semibold truncate">{title}</span>
               <span className="text-xs text-ink-3 truncate"><bdi>{detail.manuscript.shelfmark}</bdi> · {detail.page.label ?? t("manuscripts.page.n", { n: num(detail.page.seq, locale) })}</span>
             </span>
           </Link>
           <nav className="flex items-center shrink-0" aria-label={t("manuscripts.pageOf", { i: num(detail.neighbours.index, locale), n: num(detail.neighbours.total, locale) })}>
             <button type="button" disabled={!detail.neighbours.prev} onClick={() => goPage(detail.neighbours.prev)} className="size-8 grid place-items-center rounded-full text-ink-2 hover:bg-surface-2 disabled:opacity-30" aria-label={t("manuscripts.prevPage")}><Prev className="size-4" /></button>
-            <span className="text-xs text-ink-3 tabular whitespace-nowrap">{t("manuscripts.pageOf", { i: num(detail.neighbours.index, locale), n: num(detail.neighbours.total, locale) })}</span>
+            <span className="hidden sm:inline text-xs text-ink-3 tabular whitespace-nowrap">{t("manuscripts.pageOf", { i: num(detail.neighbours.index, locale), n: num(detail.neighbours.total, locale) })}</span>
             <button type="button" disabled={!detail.neighbours.next} onClick={() => goPage(detail.neighbours.next)} className="size-8 grid place-items-center rounded-full text-ink-2 hover:bg-surface-2 disabled:opacity-30" aria-label={t("manuscripts.nextPage")}><Next className="size-4" /></button>
           </nav>
         </div>
@@ -282,7 +282,7 @@ export function Workspace({ initial }: { initial: PageDetail }) {
         <WorkflowActions detail={detail} onChanged={reload} beforeAction={async () => (session.current?.dirty() ? session.current.flush() : true)} />
       </header>
 
-      <div className="flex-1 min-h-0 grid grid-rows-[minmax(280px,42dvh)_1fr] lg:grid-rows-1 lg:grid-cols-[minmax(0,1.12fr)_minmax(420px,1fr)]">
+      <div className="flex-1 min-h-0 grid grid-cols-[minmax(0,1fr)] grid-rows-[minmax(280px,42dvh)_minmax(0,1fr)] lg:grid-rows-1 lg:grid-cols-[minmax(0,1.12fr)_minmax(420px,1fr)]">
         <ImagePane
           ref={image}
           detail={detail}
@@ -300,7 +300,7 @@ export function Workspace({ initial }: { initial: PageDetail }) {
           myId={v.id}
           extraOverlay={studioExtensions.map((x) => x.imageOverlay && <g key={x.id}>{x.imageOverlay(ctx)}</g>)}
         />
-        <div className="min-h-0 border-t lg:border-t-0 lg:border-s border-line">
+        <div className="min-h-0 min-w-0 border-t lg:border-t-0 lg:border-s border-line">
           <TextPane
             ref={session}
             detail={detail}

@@ -125,7 +125,7 @@ export const ImagePane = forwardRef<ImagePaneHandle, Props>(function ImagePane(p
   const onSvgPointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
     if (!layoutMode || tool === "select") return;
     e.preventDefault();
-    (e.target as Element).setPointerCapture?.(e.pointerId);
+    try { (e.target as Element).setPointerCapture?.(e.pointerId); } catch { /* synthetic or finished pointer */ }
     const pt = toContent(e);
     drag.current = { mode: "draw", start: pt };
     setDraft({ x: pt[0], y: pt[1], w: 0, h: 0 });
@@ -172,7 +172,7 @@ export const ImagePane = forwardRef<ImagePaneHandle, Props>(function ImagePane(p
     e.stopPropagation();
     e.preventDefault();
     setLayoutSel({ kind, id });
-    (svg.current as unknown as Element)?.setPointerCapture?.(e.pointerId);
+    try { (svg.current as unknown as Element)?.setPointerCapture?.(e.pointerId); } catch { /* synthetic or finished pointer */ }
     drag.current = { mode: corner === undefined ? "move" : "resize", start: toContent(e), orig: poly, corner, id, kind };
   };
 
@@ -328,7 +328,7 @@ export const ImagePane = forwardRef<ImagePaneHandle, Props>(function ImagePane(p
 
       {/* Controls */}
       <div className="absolute top-3 start-3 flex flex-col gap-2 items-start">
-        <div role="toolbar" aria-label={t("manuscripts.img.label")} className="flex items-center gap-0.5 rounded-[12px] bg-surface/95 backdrop-blur border border-line shadow-card p-1">
+        <div role="toolbar" aria-label={t("manuscripts.img.label")} className="flex flex-wrap items-center gap-0.5 rounded-[12px] bg-surface/95 backdrop-blur border border-line shadow-card p-1 max-w-[calc(100vw-2rem)] lg:max-w-none">
           {ctl(t("manuscripts.img.zoomIn"), <ZoomIn className="size-4" />, () => zp.current?.zoomIn(0.35, 200))}
           {ctl(t("manuscripts.img.zoomOut"), <ZoomOut className="size-4" />, () => zp.current?.zoomOut(0.35, 200))}
           {ctl(t("manuscripts.img.fit"), <Maximize className="size-4" />, () => zp.current?.fitToView({ animationTime: 250 }))}
@@ -388,7 +388,7 @@ export const ImagePane = forwardRef<ImagePaneHandle, Props>(function ImagePane(p
               {layoutSel && (
                 <button type="button" onClick={deleteSelected} className="h-9 px-2.5 rounded-[9px] inline-flex items-center gap-1.5 text-sm text-bad hover:bg-bad-soft"><Trash className="size-4" />{t("manuscripts.layout.delete")}</button>
               )}
-              {!detail.lines.some((l) => l.has_human) && (
+              {!detail.lines.some((l) => l.has_human) && detail.page.layout_source !== "dataset" && (
                 <button type="button" onClick={autoDetect} disabled={busy} className="h-9 px-2.5 rounded-[9px] inline-flex items-center gap-1.5 text-sm text-ink-2 hover:bg-surface-2 disabled:opacity-50">
                   <WandSparkles className="size-4" />{detail.lines.length ? t("manuscripts.layout.autoReplace") : t("manuscripts.layout.auto")}
                 </button>

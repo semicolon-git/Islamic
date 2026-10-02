@@ -213,7 +213,7 @@ export const LineSession = forwardRef<SessionHandle, Props>(function LineSession
       onBlur={(e) => {
         if (box.current && !box.current.contains(e.relatedTarget as Node | null) && dirtyRef.current && !conflict) save();
       }}>
-      <LineCrop src={detail.page.image_path} width={detail.page.width} height={detail.page.height} polygon={line.polygon} context={context ? 1.2 : 0} filter={filter}
+      <LineCrop src={detail.page.image_path} width={detail.page.width} height={detail.page.height} polygon={line.polygon} baseline={line.baseline} rotateLabel={t("manuscripts.ed.rotate")} context={context ? 1.2 : 0} filter={filter}
         label={t("manuscripts.ed.crop", { n: num(line.n, locale) })} maxHeight={context ? 240 : 120} legible />
       <div className="flex items-center justify-between gap-2 -mt-1">
         <label className="inline-flex items-center gap-2 text-xs text-ink-3 cursor-pointer">

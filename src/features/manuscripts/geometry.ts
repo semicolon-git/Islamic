@@ -79,3 +79,16 @@ export function orderLines<L extends { region_id: string | null; seq: number }, 
   const key = (l: L) => (l.region_id && rs.has(l.region_id) ? rs.get(l.region_id)! : Number.MAX_SAFE_INTEGER);
   return [...lines].sort((a, b) => key(a) - key(b) || a.seq - b.seq);
 }
+
+export type Turn = "none" | "cw" | "ccw";
+
+/** Marginal glosses are often written vertically; turn their crop so the line reads horizontally (memo §1.3). */
+export function autoTurn(polygon: Polygon, baseline?: Polygon | null): Turn {
+  const b = bbox(polygon);
+  if (b.h < b.w * 1.6) return "none";
+  if (baseline && baseline.length >= 2) {
+    const dy = baseline[baseline.length - 1][1] - baseline[0][1];
+    if (dy > 0) return "ccw";
+  }
+  return "cw";
+}

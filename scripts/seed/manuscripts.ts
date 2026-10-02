@@ -56,7 +56,11 @@ function loadClaudeDraft(ms: string, page: string): ClaudeDraft | null {
 
 function parseTokens(raw: unknown[]): Tok[] | null {
   const out: Tok[] = [];
-  for (const r of raw) {
+  for (const r0 of raw) {
+    // Model scores are stored on a 0–100 scale (like Tesseract); offline drafts may use 0–1.
+    const r = r0 && typeof r0 === "object" && typeof (r0 as { conf?: unknown }).conf === "number" && (r0 as { conf: number }).conf <= 1
+      ? { ...(r0 as object), conf: Math.round((r0 as { conf: number }).conf * 100) }
+      : r0;
     const p = tokSchema.safeParse(r);
     if (!p.success) return null;
     out.push(p.data as Tok);

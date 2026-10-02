@@ -76,6 +76,23 @@ test("edit a line with an unclear mark and an abbreviation; saving adds a versio
   await expect(page.getByTestId("history").locator("[data-version]")).toHaveCount(before + 1);
 });
 
+test("clicking an uncertain word shows its alternatives; accepting one makes it certain text", async ({ page }) => {
+  await loginAs(page, "u_omar");
+  const pg = "umich-isl-22_03";
+  const id = lineId(pg, 5);
+  await openWorkspace(page, MS, pg);
+  await page.locator(`[data-line-row="${id}"] [data-kind="unclear"]`).first().click();
+  await expect(page.locator(`[data-line-row="${id}"][aria-current="true"]`)).toBeVisible();
+  const alt = page.getByRole("button", { name: "Accept «حُفَاءَةُ»" });
+  await expect(alt).toBeVisible();
+  await alt.click();
+  await expect(editor(page, id)).toHaveValue(/حُفَاءَةُ/);
+  await page.keyboard.press("Control+KeyS");
+  await expect(page.getByTestId("save-state")).toContainText("Saved");
+  const vs = await versions(page, id);
+  expect(vs[0].tokens.some((k) => k.t === "unclear" && k.v === "جُفَاءَةُ")).toBe(false);
+});
+
 test("a 409 conflict opens the merge dialog with both versions", async ({ browser }) => {
   const pg = "umich-isl-22_01";
   const id = lineId(pg, 8);
@@ -165,14 +182,15 @@ test("page workflow: submit, approve, publish with four eyes", async ({ browser,
   await expect(sara.getByTestId("save-state")).toContainText("Saved");
   await sara.locator('[data-decision="submit"]').click();
   await sara.getByTestId("wf-confirm").click();
-  await expect(sara.getByText("Submitted for review").first()).toBeVisible();
+  await expect(sara.locator(`[aria-current="step"]`)).toContainText("Student");
+  await expect(sara.locator(`[data-decision="submit"]`)).toHaveCount(0);
   await sara.context().close();
 
   const huda = await userPage(browser, "u_huda");
   await openWorkspace(huda, ms, pg);
   await huda.locator('[data-decision="approve"]').click();
   await huda.getByTestId("wf-confirm").click();
-  await expect(huda.getByText("Page approved")).toBeVisible();
+  await expect(huda.locator(`[aria-current="step"]`)).toContainText("Researcher");
   await expect(huda.locator('[data-decision="publish"]')).toHaveCount(0); // a researcher can't publish
   await huda.context().close();
 
