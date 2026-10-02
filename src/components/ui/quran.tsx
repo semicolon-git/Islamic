@@ -1,5 +1,6 @@
 import { cn } from "./cn";
 
+const ENDS_WITH_NUMBER = /[\u0660-\u0669]+\s*$/;
 const toArabicDigits = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
 
 export interface VerseView {
@@ -41,7 +42,8 @@ export function VerseBlock({
         {verses.map((v) => (
           <span key={v.key}>
             {v.text_uthmani}
-            <span className="ayah-mark">﴿{toArabicDigits(v.aya)}﴾</span>{" "}
+            {/* KFGQPC v18 text already ends with the verse number (drawn as the end-of-ayah glyph by the font). */}
+            {!ENDS_WITH_NUMBER.test(v.text_uthmani) && <span className="ayah-mark">﴿{toArabicDigits(v.aya)}﴾</span>}{" "}
           </span>
         ))}
       </blockquote>
