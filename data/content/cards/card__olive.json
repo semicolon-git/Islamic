@@ -1,0 +1,89 @@
+{
+ "id": "card:olive",
+ "kind": "concept",
+ "concept_id": "olive",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Olive (and the Fig)",
+ "title_ar": "الزيتون (والتين)",
+ "match_phrases": [
+  "olive",
+  "olive oil",
+  "fig",
+  "الزيتون",
+  "زيت الزيتون",
+  "التين"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked keys. 95:1 has several readings in the early tafsir; the card states al-Tabari's view and says others exist."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "95:1",
+    "role": "primary"
+   },
+   {
+    "key": "23:20",
+    "role": "supporting"
+   },
+   {
+    "key": "16:11",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "95:1",
+    "excerpt_ar": "التين: هو التين الذي يُؤكل، والزيتون: هو الزيتون الذي يُعصر منه الزيت، لأن ذلك هو المعروف عند العرب",
+    "excerpt_en": "The fig is the fig that is eaten, and the olive is the olive pressed for its oil, because that is what the Arabs know by these words. (Researcher's paraphrase of al-Tabari, who also reports other early views.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/95/1.json"
+   },
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "23:20",
+    "excerpt_ar": "ويعني بها: شجرة الزيتون.",
+    "excerpt_en": "By it He means the olive tree. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/23/20.json"
+   }
+  ],
+  "explanation": {
+   "en": "A chapter of the Quran opens with an oath by the fig and the olive (95:1). Early commentators discussed what is meant; al-Tabari took the words in their familiar sense, the fig that is eaten and the olive pressed for oil, while recording other views. The Quran also mentions a tree growing from Mount Sinai that yields oil and food (23:20), which al-Tabari identifies as the olive, and it lists olives with crops, palms and grapes among the gifts that grow with rain, a sign for people who reflect (16:11).",
+   "ar": "تُفتتح إحدى سور القرآن بالقسم بالتين والزيتون (التين ١). وقد تكلّم المفسرون الأوائل في المراد بهما، فحملهما الطبري على المعنى المعروف: التين الذي يؤكل، والزيتون الذي يُعصر منه الزيت، مع ذكره أقوالًا أخرى. ويذكر القرآن شجرة تنبت في طور سيناء يُستخرج منها الزيت ويُؤتدم به (المؤمنون ٢٠)، وفسّرها الطبري بشجرة الزيتون، ويعدّ الزيتون مع الزرع والنخيل والأعناب مما ينبته الله بالماء، وفي ذلك آية لمن يتفكر (النحل ١١)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:mosque_lamp",
+   "card:date_palm"
+  ],
+  "sensitivity_flags": [
+   "tafsir-views-differ"
+  ]
+ }
+}

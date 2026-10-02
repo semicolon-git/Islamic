@@ -1,0 +1,70 @@
+{
+ "id": "answer:pork",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "B",
+ "certainty": "established",
+ "title_en": "Why is pork forbidden in Islam?",
+ "title_ar": "لماذا يحرّم الإسلام لحم الخنزير؟",
+ "match_phrases": [
+  "why is pork forbidden",
+  "why is pork haram",
+  "why can't muslims eat pork",
+  "why don't muslims eat pork",
+  "why don't muslims eat bacon",
+  "what's wrong with pork",
+  "pork ban makes no sense",
+  "لماذا يحرم لحم الخنزير",
+  "لماذا لا يأكل المسلمون لحم الخنزير",
+  "تحريم لحم الخنزير",
+  "ما الحكمة من تحريم الخنزير"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level B, hostile-to-gentle framing. No medical proof claimed; wisdom only as 'some scholars mention'."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:173",
+    "role": "primary"
+   },
+   {
+    "key": "6:145",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "It is a fair question. Muslims do not eat pork because the Quran forbids it in clear words, together with carrion, blood and what is dedicated to other than Allah (2:173), and it describes pork as impure (6:145). For Muslims the main reason is that it is Allah's command; some scholars have mentioned possible wisdoms behind it, but the prohibition does not depend on any one explanation, and this app does not claim a medical proof. The same verses add that someone forced by necessity, without desiring it or going beyond need, bears no sin (2:173; 6:145).",
+   "ar": "سؤال في محلّه. لا يأكل المسلمون لحم الخنزير لأن القرآن حرّمه بنصّ صريح، مع الميتة والدم وما ذُبح لغير الله (البقرة ١٧٣)، ويصفه بأنه رجس (الأنعام ١٤٥). والسبب الأول عند المسلمين أنه أمر الله؛ وقد ذكر بعض العلماء حِكَمًا محتملة، لكن التحريم لا يتوقف على تفسير بعينه، ولا يدّعي هذا التطبيق دليلًا طبيًا. وتضيف الآيات نفسها أن من اضطُرّ إليه دون رغبة فيه ولا تجاوز لقدر الحاجة فلا إثم عليه (البقرة ١٧٣؛ الأنعام ١٤٥)."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "shariah"
+  ],
+  "related_cards": [
+   "answer:why_rulings_differ"
+  ],
+  "sensitivity_flags": [
+   "hostile-to-gentle",
+   "no-medical-proof",
+   "wisdom-as-scholars-mention"
+  ]
+ }
+}

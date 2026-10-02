@@ -1,0 +1,83 @@
+{
+ "id": "card:date_palm",
+ "kind": "concept",
+ "concept_id": "date_palm",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Date Palm",
+ "title_ar": "النخلة",
+ "match_phrases": [
+  "date palm",
+  "dates",
+  "palm tree",
+  "النخلة",
+  "التمر",
+  "الرطب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "19:25",
+    "role": "primary"
+   },
+   {
+    "key": "50:10",
+    "role": "supporting"
+   },
+   {
+    "key": "6:99",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:61"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "50:10",
+    "excerpt_ar": "وأنبتنا بالماء الذي أنزلنا من السماء النخل طوالا",
+    "excerpt_en": "And with the water We sent down from the sky, We grew the palm trees tall. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/50/10.json"
+   }
+  ],
+  "explanation": {
+   "en": "The date palm is one of the trees the Quran names. In the story of Maryam (Mary), the mother of Jesus, she is told to shake the trunk of a palm tree so that fresh, ripe dates fall to her (19:25). The Quran also points to tall palms with fruit stacked in layers (50:10), and to their low-hanging clusters among the gifts that grow with rain (6:99). The Prophet ﷺ asked his companions to name a tree whose leaves do not fall and which is like a Muslim, then told them it was the date palm (al-Bukhari 61).",
+   "ar": "النخلة من الأشجار التي يسمّيها القرآن. ففي قصة مريم أمّ عيسى عليهما السلام قيل لها أن تهزّ جذع النخلة فيتساقط عليها رطب طريّ ناضج (مريم ٢٥). ويذكر القرآن النخل الطوال ذوات الطلع المتراكب (ق ١٠)، وعناقيدها الدانية مما يخرجه الله بالماء (الأنعام ٩٩). وسأل النبي ﷺ أصحابه عن شجرة لا يسقط ورقها وهي مثل المسلم، ثم أخبرهم أنها النخلة (البخاري ٦١)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:olive",
+   "card:tree_leaf",
+   "card:rain_water"
+  ],
+  "sensitivity_flags": [
+   "shared-heritage-respectful"
+  ]
+ }
+}

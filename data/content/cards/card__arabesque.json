@@ -1,0 +1,64 @@
+{
+ "id": "card:arabesque",
+ "kind": "art",
+ "concept_id": "arabesque",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Arabesque",
+ "title_ar": "الزخرفة النباتية (الأرابيسك)",
+ "match_phrases": [
+  "arabesque",
+  "islimi",
+  "floral pattern",
+  "الأرابيسك",
+  "الزخرفة النباتية",
+  "الرقش"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "No verse by design. Historical note sourced (Ettinghausen, Grabar & Jenkins-Madina 2001)."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "The arabesque is an ornament of scrolling stems, leaves and split palmettes that grows and repeats without a fixed end; in Persian and Turkish it is often called islimi. It decorates mosques, manuscripts, ceramics and textiles across the Muslim world, often alongside geometric patterns and calligraphy. No verse is attached to this card: it presents an art form and its history.",
+   "ar": "الأرابيسك زخرفة من سيقان ملتفّة وأوراق وأنصاف مراوح نخيلية تنمو وتتكرر بلا نهاية محددة، ويُسمّى في الفارسية والتركية «إسليمي» في الغالب. ويزيّن المساجد والمخطوطات والخزف والمنسوجات في أنحاء العالم الإسلامي، وكثيرًا ما يجتمع مع الزخارف الهندسية والخط. ولا تُرفق بهذه البطاقة آية: فهي تعرض فنًّا وتاريخه."
+  },
+  "civilizational_note": {
+   "en": "Historians of Islamic art trace the arabesque to the vine scrolls of late antique art, which craftsmen in the early Islamic centuries transformed into a more abstract, endlessly continuing design.",
+   "ar": "يردّ مؤرخو الفن الإسلامي الأرابيسك إلى زخارف الكرمة الملتفّة في فن العصور القديمة المتأخرة، التي حوّلها الصنّاع في القرون الإسلامية الأولى إلى تصميم أكثر تجريدًا يمتد بلا انقطاع.",
+   "sources": [
+    {
+     "citation": "Ettinghausen, R., Grabar, O., & Jenkins-Madina, M. (2001). Islamic Art and Architecture 650–1250. New Haven: Yale University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:geometric_pattern",
+   "card:illuminated_mushaf"
+  ],
+  "sensitivity_flags": [
+   "historical-non-sharia",
+   "no-verse-by-design"
+  ]
+ }
+}

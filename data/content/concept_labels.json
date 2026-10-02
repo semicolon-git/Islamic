@@ -1,0 +1,373 @@
+{
+ "moon": {
+  "label_en": "The Moon", "label_ar": "القمر",
+  "blurb_en": "Its phases have marked months for people for thousands of years.",
+  "blurb_ar": "منازله تعدّ الشهور للناس منذ آلاف السنين.",
+  "visual_hints": "A full, gibbous or crescent moon in a night or twilight sky; a pale disc or crescent, often with grey surface markings; printed or on-screen photos of the moon count. Not: street lamps, round ceiling lights, the sun, a white plate.",
+  "sort": 1, "enabled": true
+ },
+ "sun": {
+  "label_en": "The Sun", "label_ar": "الشمس",
+  "blurb_en": "A daily sign that rises and sets over everyone alike.",
+  "blurb_ar": "آية يومية تشرق وتغرب على الناس جميعًا.",
+  "visual_hints": "The sun in the sky, a sunrise or sunset with the sun's disc visible, or bright sunlight with a visible sun flare. Not: a lamp or bulb, the moon, a sun-shaped logo.",
+  "sort": 2, "enabled": true
+ },
+ "stars": {
+  "label_en": "Stars", "label_ar": "النجوم",
+  "blurb_en": "For travellers, the night sky was once the map.",
+  "blurb_ar": "كانت السماء ليلًا خريطة المسافرين.",
+  "visual_hints": "A night sky with many points of light, star fields, the Milky Way, or a planetarium or printed star image. Not: fairy lights, a star-shaped decoration, a single street light.",
+  "sort": 13, "enabled": true
+ },
+ "night_day": {
+  "label_en": "Night & day", "label_ar": "الليل والنهار",
+  "blurb_en": "Sunset and sunrise: the rhythm that shapes every day.",
+  "blurb_ar": "الغروب والشروق: إيقاع يصوغ كل يوم.",
+  "visual_hints": "A sunset or sunrise scene, the sky changing from day to night (dusk, twilight, golden hour), a horizon with the sun low. Not: a lamp-lit room, a photo of only the sun's disc.",
+  "sort": 14, "enabled": true
+ },
+ "clouds": {
+  "label_en": "Clouds", "label_ar": "السحاب",
+  "blurb_en": "Look up: clouds carry the rain that revives the land.",
+  "blurb_ar": "انظر إلى الأعلى: السحاب يحمل المطر الذي يحيي الأرض.",
+  "visual_hints": "Clouds filling much of the frame: cumulus, rain clouds, overcast sky, clouds seen through a window. Not: smoke, steam, cotton wool, fog at ground level.",
+  "sort": 18, "enabled": true
+ },
+ "rain_water": {
+  "label_en": "Rain & water", "label_ar": "المطر والماء",
+  "blurb_en": "A glass of water starts with rain from the sky.",
+  "blurb_ar": "كوب الماء يبدأ بمطر ينزل من السماء.",
+  "visual_hints": "Rain falling, raindrops on a window, puddles, or drinking water: a glass, cup or bottle of clear water. Not: other drinks (juice, milk, tea), the sea, a river.",
+  "sort": 7, "enabled": true
+ },
+ "water_life": {
+  "label_en": "Water & life", "label_ar": "الماء والحياة",
+  "blurb_en": "Water and the living things that depend on it.",
+  "blurb_ar": "الماء وما يقوم عليه من حياة.",
+  "visual_hints": "Disabled: overlaps with rain & water; its usual verse (21:30) is often framed as a scientific proof, which this app avoids.",
+  "sort": 90, "enabled": false
+ },
+ "lightning": {
+  "label_en": "Lightning & thunder", "label_ar": "البرق والرعد",
+  "blurb_en": "A flash in a stormy sky, and the sound that follows.",
+  "blurb_ar": "ومضة في سماء عاصفة، وصوت يتبعها.",
+  "visual_hints": "Disabled for camera use: lightning is rarely photographed live. A printed photo would show bright jagged bolts in a dark, stormy sky.",
+  "sort": 91, "enabled": false
+ },
+ "wind": {
+  "label_en": "Wind", "label_ar": "الرياح",
+  "blurb_en": "Unseen, yet it moves clouds, ships and trees.",
+  "blurb_ar": "لا تُرى، لكنها تسوق السحاب والسفن وتحرّك الشجر.",
+  "visual_hints": "Disabled: wind is invisible to a camera; flags, bending trees or turbines are ambiguous. One commonly cited verse (15:22) is often framed as a scientific proof.",
+  "sort": 92, "enabled": false
+ },
+ "shadow": {
+  "label_en": "Shadow", "label_ar": "الظل",
+  "blurb_en": "Watch a shadow stretch and shrink as the day moves.",
+  "blurb_ar": "تأمّل الظل وهو يمتد وينقبض مع مسير النهار.",
+  "visual_hints": "A clear cast shadow of an object or person on a floor, wall or table, e.g. from a desk lamp or sunlight; a sundial. Not: a dark photo with no clear light source, silhouettes against a bright sky.",
+  "sort": 15, "enabled": true
+ },
+ "mountain": {
+  "label_en": "Mountains", "label_ar": "الجبال",
+  "blurb_en": "Firm, high and still: an invitation to look closely.",
+  "blurb_ar": "راسخة شامخة ساكنة: دعوة إلى النظر والتأمل.",
+  "visual_hints": "Mountains or rocky peaks in a landscape photo or print; a mountain range on the horizon. Not: a small rock or pebble, sand dunes, buildings.",
+  "sort": 11, "enabled": true
+ },
+ "sea": {
+  "label_en": "The Sea", "label_ar": "البحر",
+  "blurb_en": "Food, pearls and ships: the sea as a gift to people.",
+  "blurb_ar": "طعام وحلية وسفن: البحر نعمة مسخّرة للناس.",
+  "visual_hints": "Open sea or ocean, waves, a coastline, a boat on the water, a seascape print. Not: a swimming pool, a glass of water, a river or lake with near banks on both sides.",
+  "sort": 12, "enabled": true
+ },
+ "river": {
+  "label_en": "River", "label_ar": "النهر",
+  "blurb_en": "Running water that carries life through the land.",
+  "blurb_ar": "ماء جارٍ يحمل الحياة في الأرض.",
+  "visual_hints": "A river or stream flowing between banks, a waterfall feeding a river. Not: the sea, a still lake, a canal in a city with no visible flow.",
+  "sort": 30, "enabled": true
+ },
+ "stone": {
+  "label_en": "Stone", "label_ar": "الحجر",
+  "blurb_en": "Rock and stone in the world around you.",
+  "blurb_ar": "الحجارة والصخور من حولك.",
+  "visual_hints": "Disabled: a pebble is hard to tell apart from many objects, and the best-known verse (2:74) is a rebuke that needs careful context for a first encounter.",
+  "sort": 93, "enabled": false
+ },
+ "soil": {
+  "label_en": "Soil", "label_ar": "التراب",
+  "blurb_en": "The earth that plants grow from.",
+  "blurb_ar": "التراب الذي ينبت منه الزرع.",
+  "visual_hints": "Disabled: soil photographs poorly, and related verses are often pulled into embryology claims that this app avoids.",
+  "sort": 94, "enabled": false
+ },
+ "iron": {
+  "label_en": "Iron", "label_ar": "الحديد",
+  "blurb_en": "The strong metal used in tools and buildings.",
+  "blurb_ar": "المعدن القوي في الأدوات والبناء.",
+  "visual_hints": "Disabled: metal objects are hard to identify as iron, and the usual verse (57:25) is widely framed as a scientific proof, which this app avoids.",
+  "sort": 95, "enabled": false
+ },
+ "ships": {
+  "label_en": "Ships & boats", "label_ar": "السفن والفلك",
+  "blurb_en": "Vessels that sail the sea and carry people and goods.",
+  "blurb_ar": "سفن تجري في البحر تحمل الناس والمتاع.",
+  "visual_hints": "A ship, sailing boat, dhow or fishing boat, on water or in a picture; a toy or model boat. Not: a car, a plane, a bathtub.",
+  "sort": 31, "enabled": true
+ },
+ "salt_fresh": {
+  "label_en": "Salt & fresh water", "label_ar": "العذب والملح",
+  "blurb_en": "Two kinds of water, side by side.",
+  "blurb_ar": "ماءان متجاوران، عذب وملح.",
+  "visual_hints": "Disabled: salt and fresh water look identical to a camera, and the related verses (25:53) are commonly framed as an oceanography proof.",
+  "sort": 96, "enabled": false
+ },
+ "pearl_coral": {
+  "label_en": "Pearls & coral", "label_ar": "اللؤلؤ والمرجان",
+  "blurb_en": "Treasures brought up from the sea.",
+  "blurb_ar": "كنوز تُستخرج من البحر.",
+  "visual_hints": "Pearls (necklace, single pearls, oyster with pearl) or red/pink coral, real or in jewellery. Not: white beads that are clearly plastic, shells without pearls.",
+  "sort": 32, "enabled": true
+ },
+ "date_palm": {
+  "label_en": "Date palm & dates", "label_ar": "النخلة والرطب",
+  "blurb_en": "The tree at the heart of Arabian life, and its sweet fruit.",
+  "blurb_ar": "شجرة حاضرة في حياة الجزيرة العربية، وثمرها الحلو.",
+  "visual_hints": "A date palm tree (tall trunk, crown of long feathery fronds), clusters of dates on the tree, or dates in a box or bowl (brown, oval, glossy). Not: raisins, prunes, chocolate; other palms without dates are a weak match.",
+  "sort": 3, "enabled": true
+ },
+ "olive": {
+  "label_en": "Olive & olive oil", "label_ar": "الزيتون وزيته",
+  "blurb_en": "A blessed tree, its fruit and its golden oil.",
+  "blurb_ar": "شجرة مباركة، وثمرها، وزيتها الذهبي.",
+  "visual_hints": "Olives (green or black, in a bowl or jar), an olive branch or tree with silvery leaves, or a bottle of olive oil. Not: grapes, capers, other cooking oils without olive labelling.",
+  "sort": 6, "enabled": true
+ },
+ "fig": {
+  "label_en": "Fig", "label_ar": "التين",
+  "blurb_en": "A fruit named in the oath that opens a chapter of the Quran.",
+  "blurb_ar": "ثمرة ذُكرت في القسم الذي تبدأ به إحدى سور القرآن.",
+  "visual_hints": "Fresh figs (purple or green, teardrop-shaped, pink inside when cut) or dried figs. Not: onions, plums, dates.",
+  "sort": 19, "enabled": true
+ },
+ "pomegranate": {
+  "label_en": "Pomegranate", "label_ar": "الرمان",
+  "blurb_en": "A crown-topped fruit full of ruby seeds.",
+  "blurb_ar": "ثمرة متوّجة ممتلئة بحبّ كالياقوت.",
+  "visual_hints": "A whole pomegranate (red, round, with a small crown) or one cut open showing red seeds. Not: apples, tomatoes, red onions.",
+  "sort": 33, "enabled": true
+ },
+ "grapes": {
+  "label_en": "Grapes", "label_ar": "العنب",
+  "blurb_en": "Clusters on the vine, among the fruits the Quran names.",
+  "blurb_ar": "عناقيد على الكرمة، من الثمار التي يسمّيها القرآن.",
+  "visual_hints": "Bunches of grapes (green, red or black) or a grapevine with clusters. Not: olives, berries, cherry tomatoes.",
+  "sort": 34, "enabled": true
+ },
+ "tree_leaf": {
+  "label_en": "Trees & leaves", "label_ar": "الشجر والورق",
+  "blurb_en": "Not a single leaf falls unnoticed.",
+  "blurb_ar": "لا تسقط ورقة إلا في علم الله.",
+  "visual_hints": "A tree, a potted plant with visible leaves, a branch, or a single leaf (green or autumn). Not: a date palm specifically (prefer date palm), artificial flowers, a printed leaf logo.",
+  "sort": 8, "enabled": true
+ },
+ "grain": {
+  "label_en": "Grain & seeds", "label_ar": "الحب والسنابل",
+  "blurb_en": "One seed, seven ears: a picture of generosity.",
+  "blurb_ar": "حبة واحدة وسبع سنابل: صورة للعطاء.",
+  "visual_hints": "Ears of wheat or barley, a field of grain, a handful of seeds or grains (wheat, barley, rice). Not: bread alone, sand, sugar.",
+  "sort": 17, "enabled": true
+ },
+ "milk": {
+  "label_en": "Milk", "label_ar": "اللبن",
+  "blurb_en": "A pure drink, and a lesson in the grazing animals.",
+  "blurb_ar": "شراب خالص، وعبرة في الأنعام.",
+  "visual_hints": "A glass, cup, bottle or carton of milk; white liquid clearly labelled or presented as milk. Not: water, yoghurt pots without milk, white paint.",
+  "sort": 16, "enabled": true
+ },
+ "honey_bee": {
+  "label_en": "Bees & honey", "label_ar": "النحل والعسل",
+  "blurb_en": "A chapter of the Quran is named after the bee.",
+  "blurb_ar": "في القرآن سورة تحمل اسم النحل.",
+  "visual_hints": "A honey jar or honey dripping from a spoon or comb; honeycomb; a bee on a flower or a beehive. Not: syrup or oil with no honey label, wasps, flies.",
+  "sort": 5, "enabled": true
+ },
+ "onion_garlic": {
+  "label_en": "Onion, garlic & lentils", "label_ar": "البصل والفوم والعدس",
+  "blurb_en": "Everyday foods named in a story of the Children of Israel.",
+  "blurb_ar": "أطعمة يومية ذُكرت في قصة بني إسرائيل.",
+  "visual_hints": "Disabled: the only verse (2:61) needs heavy context about the story of the Children of Israel and reads poorly as a first encounter.",
+  "sort": 97, "enabled": false
+ },
+ "ant": {
+  "label_en": "Ant", "label_ar": "النمل",
+  "blurb_en": "A tiny creature with a whole chapter named after it.",
+  "blurb_ar": "مخلوق صغير سُمّيت باسمه سورة كاملة.",
+  "visual_hints": "Ants (close-up photo or print), an ant trail or anthill. Not: spiders, beetles, specks of dirt.",
+  "sort": 35, "enabled": true
+ },
+ "spider": {
+  "label_en": "Spider", "label_ar": "العنكبوت",
+  "blurb_en": "A web as a parable.",
+  "blurb_ar": "بيت العنكبوت مثلًا.",
+  "visual_hints": "Disabled: its verse (29:41) is a parable about false protectors, which needs context and reads as a rebuke in a first encounter.",
+  "sort": 98, "enabled": false
+ },
+ "birds": {
+  "label_en": "Birds", "label_ar": "الطير",
+  "blurb_en": "Wings spread and folded: who holds them up?",
+  "blurb_ar": "أجنحة تبسط وتقبض: من يمسكها في الجو؟",
+  "visual_hints": "One or more birds, flying or perched: pigeons, sparrows, falcons, flocks in the sky, a printed bird photo. Not: planes, kites, insects, feathers alone.",
+  "sort": 9, "enabled": true
+ },
+ "camel": {
+  "label_en": "Camel", "label_ar": "الإبل",
+  "blurb_en": "An invitation to look closely at the camel, and how it was made.",
+  "blurb_ar": "دعوة قرآنية إلى النظر في الإبل وكيف خُلقت.",
+  "visual_hints": "A camel (one or two humps, long neck, long legs), real, in a print, or as a toy or figurine. Not: horses, llamas, sand dunes without a camel.",
+  "sort": 10, "enabled": true
+ },
+ "livestock": {
+  "label_en": "Livestock", "label_ar": "الأنعام",
+  "blurb_en": "Sheep, cattle and goats: food, wool and companions of daily life.",
+  "blurb_ar": "الغنم والبقر والمعز: طعام وصوف ورفقة في الحياة اليومية.",
+  "visual_hints": "Sheep, goats or cattle in a field or pen, or wool and leather goods shown with an animal. Not: camels (prefer camel), horses, pets such as cats and dogs.",
+  "sort": 36, "enabled": true
+ },
+ "horse": {
+  "label_en": "Horse", "label_ar": "الخيل",
+  "blurb_en": "Strength and beauty, long honoured in Arabia.",
+  "blurb_ar": "قوة وجمال، ولها مكانة قديمة في الجزيرة العربية.",
+  "visual_hints": "A horse (real, print, statue or toy), possibly with a rider. Not: donkeys, camels, zebras.",
+  "sort": 37, "enabled": true
+ },
+ "fish": {
+  "label_en": "Fish & whale", "label_ar": "الحوت والسمك",
+  "blurb_en": "Remembered in the story of the prophet Yunus (Jonah).",
+  "blurb_ar": "حاضر في قصة النبي يونس عليه السلام.",
+  "visual_hints": "A fish or whale (live, in an aquarium, on a plate, or in a print). Not: dolphins shown as toys, seafood such as prawns.",
+  "sort": 38, "enabled": true
+ },
+ "pen": {
+  "label_en": "Pen & writing", "label_ar": "القلم والكتابة",
+  "blurb_en": "The first revealed words began with \"Read\".",
+  "blurb_ar": "أول ما نزل من الوحي بدأ بكلمة «اقرأ».",
+  "visual_hints": "A pen or pencil (ballpoint, fountain pen, marker), writing on paper, a hand holding a pen. Not: a calligrapher's reed pen with ink pot (prefer pen & ink), chopsticks, a stylus on a tablet.",
+  "sort": 4, "enabled": true
+ },
+ "lamp": {
+  "label_en": "Lamp & light", "label_ar": "السراج والمصباح",
+  "blurb_en": "A lamp that lights a room, and a verse about light.",
+  "blurb_ar": "مصباح يضيء المكان، وآية عن النور.",
+  "visual_hints": "A desk lamp, table lamp, lantern or oil lamp that is switched on. Not: a decorated glass mosque lamp (prefer mosque lamp), the sun, a phone torch.",
+  "sort": 39, "enabled": true
+ },
+ "qibla": {
+  "label_en": "Qibla direction", "label_ar": "القبلة",
+  "blurb_en": "One direction for prayer, wherever you are in the world.",
+  "blurb_ar": "وجهة واحدة للصلاة حيثما كنت في العالم.",
+  "visual_hints": "A qibla compass, a phone compass app pointing to Makkah, a prayer mat, a qibla sign or arrow in a hotel room or airport. Not: an ordinary map, a clock.",
+  "sort": 20, "enabled": true
+ },
+ "time_asr": {
+  "label_en": "Time", "label_ar": "العصر والوقت",
+  "blurb_en": "A whole chapter begins with an oath by time.",
+  "blurb_ar": "سورة كاملة تبدأ بالقسم بالعصر.",
+  "visual_hints": "A wall clock, wristwatch, hourglass or a phone clock screen; late-afternoon light. Not: a compass, a calendar.",
+  "sort": 21, "enabled": true
+ },
+ "calligraphy_inscription": {
+  "label_en": "Arabic calligraphy", "label_ar": "الخط العربي",
+  "blurb_en": "Point at an inscription and we will try to find its verse.",
+  "blurb_ar": "وجّه الكاميرا إلى نقش وسنحاول أن نجد آيته.",
+  "visual_hints": "Arabic script written as art: a calligraphy panel, a framed inscription, a frieze of letters on a building, tiles or textiles with Arabic writing, a page of elegant Arabic text. Not: printed modern signage or menus, Persian or Urdu shop signs, non-Arabic scripts.",
+  "sort": 101, "enabled": true
+ },
+ "pen_and_ink": {
+  "label_en": "Reed pen & ink", "label_ar": "القلم والمداد",
+  "blurb_en": "The calligrapher's qalam, cut by hand from a reed.",
+  "blurb_ar": "قلم الخطاط، يُبرى باليد من القصب.",
+  "visual_hints": "A calligrapher's reed or bamboo pen (qalam) with a slanted nib, an inkwell or ink pot, a pen case, a calligrapher's desk. Not: an ordinary ballpoint (prefer pen), paintbrushes.",
+  "sort": 104, "enabled": true
+ },
+ "mihrab": {
+  "label_en": "Mihrab", "label_ar": "المحراب",
+  "blurb_en": "The niche that shows which way to face in prayer.",
+  "blurb_ar": "التجويف الذي يدلّ على وجهة الصلاة.",
+  "visual_hints": "An arched niche set into the wall of a prayer hall, often richly decorated with tiles, marble or inscriptions, usually with a pulpit (minbar) beside it. Not: a doorway, a window, a fireplace, a church apse.",
+  "sort": 103, "enabled": true
+ },
+ "minaret_call_to_prayer": {
+  "label_en": "Minaret & call to prayer", "label_ar": "المئذنة والأذان",
+  "blurb_en": "The tower, and the call to prayer it is known for.",
+  "blurb_ar": "البرج، والنداء إلى الصلاة الذي يرتبط به.",
+  "visual_hints": "A minaret: a tall, slender tower beside or on a mosque, often with balconies and a pointed or bulbous top. Not: church towers with crosses, clock towers, lighthouses, telecom masts.",
+  "sort": 108, "enabled": true
+ },
+ "mosque_dome": {
+  "label_en": "Mosque & dome", "label_ar": "المسجد والقبة",
+  "blurb_en": "A place of prayer, and the domes that crown many mosques.",
+  "blurb_ar": "مكان للصلاة، وقباب تعلو كثيرًا من المساجد.",
+  "visual_hints": "A mosque building or interior prayer hall; a large dome on a mosque, often with minarets nearby; rows of carpets in a prayer hall. Not: churches, palaces or government buildings with domes, planetariums.",
+  "sort": 107, "enabled": true
+ },
+ "mosque_lamp": {
+  "label_en": "Mosque lamp", "label_ar": "قنديل المسجد",
+  "blurb_en": "Glass lamps that often carry the Light Verse.",
+  "blurb_ar": "قناديل زجاجية كثيرًا ما تحمل آية النور.",
+  "visual_hints": "A glass hanging lamp with a wide flared neck and a rounded body, often enamelled or gilded with Arabic inscriptions and suspension loops; museum photos of Mamluk lamps. Not: modern chandeliers, ordinary light bulbs, lanterns without glass.",
+  "sort": 102, "enabled": true
+ },
+ "geometric_pattern": {
+  "label_en": "Geometric patterns", "label_ar": "الزخارف الهندسية",
+  "blurb_en": "Stars and polygons drawn with only a compass and a ruler.",
+  "blurb_ar": "نجوم ومضلعات تُرسم بالفرجار والمسطرة.",
+  "visual_hints": "Interlacing star-and-polygon patterns (8-, 10- or 12-point stars) on tiles, woodwork, mashrabiya screens, plaster or metal; repeating tessellations. Not: checkerboards, modern logos, floral patterns (prefer arabesque).",
+  "sort": 105, "enabled": true
+ },
+ "arabesque": {
+  "label_en": "Arabesque", "label_ar": "الزخرفة النباتية (الأرابيسك)",
+  "blurb_en": "Endless scrolling stems and leaves.",
+  "blurb_ar": "سيقان وأوراق متصلة تمتد بلا نهاية.",
+  "visual_hints": "Curving, interlacing vegetal scrolls with stylised leaves and split palmettes on tiles, carved plaster, book covers, carpets or metalwork. Not: realistic flower paintings, geometric star patterns (prefer geometric patterns).",
+  "sort": 106, "enabled": true
+ },
+ "muqarnas": {
+  "label_en": "Muqarnas", "label_ar": "المقرنصات",
+  "blurb_en": "Honeycomb vaults that turn ceilings into light and shadow.",
+  "blurb_ar": "عقود كخلايا النحل تجعل السقوف ضوءًا وظلًا.",
+  "visual_hints": "Three-dimensional honeycomb or stalactite-like vaulting made of many small niches, under domes, in portals or on minaret balconies. Not: flat geometric tiles, natural caves, egg cartons.",
+  "sort": 112, "enabled": true
+ },
+ "illuminated_mushaf": {
+  "label_en": "Illuminated Quran manuscript", "label_ar": "المصحف المذهّب",
+  "blurb_en": "Hand-written copies of the Quran, decorated in gold.",
+  "blurb_ar": "مصاحف كُتبت باليد وزُيّنت بالذهب.",
+  "visual_hints": "A page or open copy of a hand-written Quran with gold and coloured illumination: decorated chapter headings, gold verse markers, ornamented frontispieces; museum images of Quran folios. Not: a modern printed mushaf without illumination (prefer calligraphy for reading the text), non-Arabic illuminated books.",
+  "sort": 109, "enabled": true
+ },
+ "astrolabe": {
+  "label_en": "Astrolabe", "label_ar": "الأسطرلاب",
+  "blurb_en": "A brass model of the sky, used to tell time by the stars.",
+  "blurb_ar": "نموذج نحاسي للسماء، يُعرف به الوقت من النجوم.",
+  "visual_hints": "A round brass instrument with a ring for hanging, an engraved plate and an openwork star map (rete) on top, sometimes with a sighting rule on the back. Shown at category level only, never as a specific museum object. Not: clocks, compasses, coins, armillary spheres.",
+  "sort": 110, "enabled": true
+ },
+ "manuscript_page": {
+  "label_en": "Manuscript page", "label_ar": "صفحة مخطوطة",
+  "blurb_en": "A page transcribed and approved by an institution.",
+  "blurb_ar": "صفحة نسختها مؤسسة واعتمدتها.",
+  "visual_hints": "Disabled for camera recognition: specific manuscript pages are opened by item code or QR from the heritage section, never guessed from a photo.",
+  "sort": 113, "enabled": false
+ },
+ "kiswa_textile": {
+  "label_en": "Kiswa of the Kaaba", "label_ar": "كسوة الكعبة",
+  "blurb_en": "The black cloth that covers the Kaaba, embroidered in gold.",
+  "blurb_ar": "الثوب الأسود الذي يكسو الكعبة، مطرّز بالذهب.",
+  "visual_hints": "Black silk cloth with gold- or silver-embroidered Arabic inscriptions in a band, or a photo of the Kaaba draped in black. Not: other black fabrics, flags, tapestries without Arabic embroidery.",
+  "sort": 111, "enabled": true
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "id": "card:mihrab",
+ "kind": "art",
+ "concept_id": "mihrab",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Mihrab",
+ "title_ar": "المحراب",
+ "match_phrases": [
+  "mihrab",
+  "prayer niche",
+  "niche in a mosque",
+  "المحراب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked keys. Card does not claim the Quranic word mihrab means the niche."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:144",
+    "role": "primary"
+   },
+   {
+    "key": "106:3",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "The mihrab is the niche in a mosque wall that shows the qibla, the direction of the Kaaba in Makkah, which Muslims face in prayer wherever they are (2:144). Facing one direction gathers worshippers in rows towards the same point, while the worship itself is directed to the Lord of the House, not to the building or the niche (106:3).",
+   "ar": "المحراب تجويف في جدار المسجد يدلّ على القبلة، أي جهة الكعبة في مكة التي يستقبلها المسلمون في صلاتهم حيثما كانوا (البقرة ١٤٤). فيجتمع المصلّون صفوفًا متجهين إلى جهة واحدة، أما العبادة فلربّ البيت، لا للبناء ولا للمحراب (قريش ٣)."
+  },
+  "civilizational_note": {
+   "en": "Historians of Islamic art date the concave mihrab niche to the early eighth century, when the Prophet's Mosque in Madinah was rebuilt under the Umayyad caliph al-Walid I; it soon became a standard feature of mosques.",
+   "ar": "يؤرّخ مؤرخو الفن الإسلامي المحراب المجوّف بأوائل القرن الثامن الميلادي، حين أُعيد بناء المسجد النبوي في المدينة في عهد الخليفة الأموي الوليد بن عبد الملك، ثم صار من المعالم الثابتة في المساجد.",
+   "sources": [
+    {
+     "citation": "Ettinghausen, R., Grabar, O., & Jenkins-Madina, M. (2001). Islamic Art and Architecture 650–1250. New Haven: Yale University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "ibadah"
+  ],
+  "related_cards": [
+   "answer:kaaba",
+   "card:kiswa_textile",
+   "card:mosque_dome"
+  ],
+  "sensitivity_flags": [
+   "quranic-mihrab-is-not-the-niche",
+   "correct-misconception-gently"
+  ]
+ }
+}

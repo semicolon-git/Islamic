@@ -1,0 +1,80 @@
+{
+ "id": "answer:jihad",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "B",
+ "certainty": "established",
+ "title_en": "What does jihad mean?",
+ "title_ar": "ما معنى الجهاد؟",
+ "match_phrases": [
+  "what does jihad mean",
+  "what is jihad",
+  "jihad meaning",
+  "what does jihad actually mean",
+  "is jihad violence",
+  "jihad definition",
+  "ما معنى الجهاد",
+  "ما هو الجهاد",
+  "معنى الجهاد",
+  "مفهوم الجهاد"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level B. Defines the word from the sources; armed jihad mentioned with 2:190 and referred to scholars for conditions."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "29:69",
+    "role": "primary"
+   },
+   {
+    "key": "22:78",
+    "role": "supporting"
+   },
+   {
+    "key": "2:190",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:3004"
+   },
+   {
+    "id": "bukhari:1520"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "Jihad is an Arabic word meaning striving, exerting oneself with effort. In the Quran and the Sunnah it covers many kinds of striving for the sake of Allah: those who strive for Him are promised guidance (29:69), and believers are told to strive for Allah as He deserves, in a religion that places no hardship on them (22:78). When a man asked permission to go out for jihad, the Prophet ﷺ asked whether his parents were alive and told him to strive in serving them, and when Aisha asked about jihad he told her that the best jihad is a Hajj that is accepted (al-Bukhari 3004; al-Bukhari 1520). Jihad also includes fighting in defined circumstances: the Quran ties it to those who fight and forbids transgression (2:190), and scholars set out its conditions in detail, so specific questions belong with qualified scholars.",
+   "ar": "الجهاد كلمة عربية معناها بذل الجهد واستفراغ الوسع. وهو في القرآن والسنة يشمل أنواعًا كثيرة من السعي في سبيل الله: فالذين يجاهدون في الله موعودون بالهداية (العنكبوت ٦٩)، ويُؤمر المؤمنون أن يجاهدوا في الله حق الجهاد في دين لم يُجعل فيه عليهم حرج (الحج ٧٨). ولما استأذن رجل النبيَّ ﷺ في الجهاد سأله عن والديه، فلما علم أنهما حيّان أمره أن يجاهد في برّهما، ولما سألته عائشة عن الجهاد أخبرها أن أفضل الجهاد حج مبرور (البخاري ٣٠٠٤؛ البخاري ١٥٢٠). ويشمل الجهاد القتال في أحوال محددة: فالقرآن يربطه بمن يقاتل المسلمين وينهى عن الاعتداء (البقرة ١٩٠)، وقد فصّل العلماء شروطه، فالأسئلة التفصيلية تُوجَّه إلى أهل العلم المؤهلين."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "sunnah"
+  ],
+  "related_cards": [
+   "answer:spread_by_sword"
+  ],
+  "sensitivity_flags": [
+   "term-lock-jihad",
+   "no-war-only-rendering",
+   "refer-specific-questions"
+  ]
+ }
+}

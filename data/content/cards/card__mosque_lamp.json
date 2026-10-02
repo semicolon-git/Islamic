@@ -1,0 +1,92 @@
+{
+ "id": "card:mosque_lamp",
+ "kind": "art",
+ "concept_id": "mosque_lamp",
+ "level": "B",
+ "certainty": "established",
+ "title_en": "The Mosque Lamp and the Light Verse",
+ "title_ar": "قنديل المسجد وآية النور",
+ "match_phrases": [
+  "mosque lamp",
+  "glass lamp",
+  "light verse",
+  "قنديل",
+  "آية النور"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level B: the parable is explained only through al-Tabari, and the card says other readings exist."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "24:35",
+    "role": "primary"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "24:35",
+    "excerpt_ar": "هادي من في السماوات والأرض، فهم بنوره إلى الحق يهتدون، وبهداه من حيرة الضلالة يعتصمون.",
+    "excerpt_en": "He guides all who are in the heavens and the earth: by His light they are guided to the truth, and by His guidance they are protected from the confusion of going astray. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/24/35.json"
+   },
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "24:35",
+    "excerpt_ar": "ذلك مثل ضربه الله للقرآن في قلب أهل الإيمان به",
+    "excerpt_en": "It is a parable Allah gave for the Quran in the hearts of those who believe in it. (Researcher's paraphrase of al-Tabari's preferred reading, among several he reports.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/24/35.json"
+   }
+  ],
+  "explanation": {
+   "en": "Glass mosque lamps, especially those made in Mamluk Egypt and Syria, were often decorated with the Light Verse (24:35). The verse calls Allah the Light of the heavens and the earth and offers a parable of a lamp in a niche, inside a glass like a shining star, lit with oil from a blessed olive tree (24:35). Al-Tabari explains the opening as Allah guiding all who are in the heavens and the earth, and reads the parable as the light of the Quran in the hearts of believers, while reporting that early commentators read it in several ways.",
+   "ar": "كانت قناديل المساجد الزجاجية، ولا سيما ما صُنع منها في مصر والشام في العصر المملوكي، تُزيَّن كثيرًا بآية النور (النور ٣٥). وتصف الآية الله بأنه نور السماوات والأرض، وتضرب مثلًا بمصباح في مشكاة، داخل زجاجة كأنها نجم متلألئ، يُوقد من زيت شجرة زيتون مباركة (النور ٣٥). ويفسّر الطبري مطلع الآية بأن الله هادي أهل السماوات والأرض، ويحمل المثل على نور القرآن في قلوب المؤمنين، مع ذكره أن المفسرين الأوائل اختلفوا في تأويله."
+  },
+  "civilizational_note": {
+   "en": "Enamelled and gilded glass lamps were a celebrated craft of the Mamluk period (1250–1517). Many were made for mosques and religious foundations in Cairo, and many carry the Light Verse among their inscriptions.",
+   "ar": "كانت القناديل الزجاجية المموّهة بالمينا والمذهّبة من أشهر صناعات العصر المملوكي (١٢٥٠–١٥١٧م)، وصُنع كثير منها للمساجد والمنشآت الدينية في القاهرة، ويحمل كثير منها آية النور في نقوشه.",
+   "sources": [
+    {
+     "citation": "Blair, S. S., & Bloom, J. M. (1994). The Art and Architecture of Islam 1250–1800. New Haven: Yale University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:olive",
+   "card:calligraphy_inscription",
+   "card:mosque_dome"
+  ],
+  "sensitivity_flags": [
+   "parable-needs-tafsir",
+   "no-mystical-readings"
+  ]
+ }
+}

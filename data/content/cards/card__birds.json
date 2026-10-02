@@ -1,0 +1,74 @@
+{
+ "id": "card:birds",
+ "kind": "concept",
+ "concept_id": "birds",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Birds",
+ "title_ar": "الطير",
+ "match_phrases": [
+  "bird",
+  "birds",
+  "pigeon",
+  "الطير",
+  "الطيور"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "67:19",
+    "role": "primary"
+   },
+   {
+    "key": "16:79",
+    "role": "supporting"
+   },
+   {
+    "key": "24:41",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "67:19",
+    "excerpt_ar": "وإنما عُنِي بذلك أنها تصُفُّ أجنحتها أحيانا، وتقبض أحيانا.",
+    "excerpt_en": "What is meant is that they spread their wings at times and fold them at times. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/67/19.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran invites people to watch the birds above them, spreading their wings and folding them, and to notice that none holds them up but the Most Merciful (67:19). An everyday sight becomes, in its words, a sign for people who believe (16:79). It also describes the birds, wings outspread, among all who glorify Allah, each knowing its own prayer and praise (24:41).",
+   "ar": "يدعو القرآن إلى النظر إلى الطير فوق الناس، تبسط أجنحتها حينًا وتقبضها حينًا، وما يمسكها في الجو إلا الرحمن (الملك ١٩). فيصير مشهد يومي مألوف آيةً لمن يؤمن (النحل ٧٩). ويذكر أن الطير وهي باسطة أجنحتها ممن يسبّح لله، وكلٌّ منها يعرف صلاته وتسبيحه (النور ٤١)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:tree_leaf"
+  ],
+  "sensitivity_flags": []
+ }
+}

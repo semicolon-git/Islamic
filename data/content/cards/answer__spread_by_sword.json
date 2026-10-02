@@ -1,0 +1,103 @@
+{
+ "id": "answer:spread_by_sword",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "C",
+ "certainty": "disputed",
+ "title_en": "Did Islam spread by the sword?",
+ "title_ar": "هل انتشر الإسلام بالسيف؟",
+ "match_phrases": [
+  "did islam spread by the sword",
+  "was islam spread by force",
+  "were people forced to convert to islam",
+  "forced conversion islam",
+  "how did islam spread",
+  "islam spread by violence",
+  "هل انتشر الإسلام بالسيف",
+  "هل انتشر الإسلام بالقوة",
+  "الإكراه على الإسلام",
+  "كيف انتشر الإسلام"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level C: doctrine from 2:256 and 10:99, history left to historians with no blanket claim; disagreement note checked for neutrality."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:256",
+    "role": "primary"
+   },
+   {
+    "key": "10:99",
+    "role": "supporting"
+   },
+   {
+    "key": "60:8",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "2:256",
+    "excerpt_ar": "اختلف أهل التأويل في معنى ذلك.",
+    "excerpt_en": "The commentators differed over the meaning of this. (Researcher's translation of the opening line of al-Tabari's discussion of 2:256.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/2/256.json"
+   }
+  ],
+  "explanation": {
+   "en": "On belief itself, the Quran states that there is to be no compulsion in religion (2:256), and it asks the Prophet whether he would compel people until they believe (10:99). It also says that Allah does not forbid kindness and justice towards those who do not fight Muslims over religion or drive them from their homes (60:8). How Islam actually spread in different regions is a question of history, where historians describe a mixed picture rather than a single answer; see the note on differing views.",
+   "ar": "أما الإيمان نفسه فيقرر القرآن ألّا إكراه في الدين (البقرة ٢٥٦)، ويسأل النبيَّ سؤال إنكار: هل يُكره الناسَ على الإيمان؟ (يونس ٩٩). ويقرر أن الله لا ينهى عن البرّ والعدل مع من لم يقاتلوا المسلمين في الدين ولم يخرجوهم من ديارهم (الممتحنة ٨). أما كيف انتشر الإسلام فعلًا في المناطق المختلفة فمسألة تاريخية، يصف فيها المؤرخون صورة مركّبة لا جوابًا واحدًا؛ انظر بيان اختلاف الآراء."
+  },
+  "disagreement_note": {
+   "en": "Views differ, and we state no preference. (1) Many historians separate the expansion of Muslim rule, which often came through military campaigns, from the conversion of populations, which in many regions happened gradually over centuries. (2) Others stress how conquest, taxation and social advantage shaped conversion where Muslims ruled. (3) In regions such as South-East Asia and parts of Africa, trade, travelling scholars and Sufi orders played the larger role. Classical Muslim commentators also discussed the occasion and scope of 2:256 in detail. A historian or a qualified scholar can take this further.",
+   "ar": "تتعدد الآراء، ولا نرجّح بينها. (١) يفرّق كثير من المؤرخين بين اتساع الحكم الإسلامي، الذي جاء كثيرًا عن طريق الحملات العسكرية، وبين دخول الشعوب في الإسلام، الذي جرى في مناطق كثيرة تدريجيًا على مدى قرون. (٢) ويؤكد آخرون أثر الفتح والضرائب والمكانة الاجتماعية في دخول الناس الإسلام حيث حكم المسلمون. (٣) وفي مناطق مثل جنوب شرق آسيا وأجزاء من أفريقيا كان للتجارة والعلماء الرحّالة والطرق الصوفية الدور الأكبر. وقد ناقش المفسرون المسلمون الأوائل سبب نزول آية البقرة ٢٥٦ ونطاقها بالتفصيل. ويمكن لمؤرخ أو عالم مؤهل التوسع في ذلك."
+  },
+  "civilizational_note": {
+   "en": "For the historical picture, see Bulliet's study of conversion in the medieval Middle East and Lapidus's general history of Islamic societies.",
+   "ar": "للاطلاع على الصورة التاريخية: دراسة بوليت عن التحوّل إلى الإسلام في الشرق الأوسط في العصور الوسطى، وتاريخ لابيدوس العام للمجتمعات الإسلامية.",
+   "sources": [
+    {
+     "citation": "Bulliet, R. W. (1979). Conversion to Islam in the Medieval Period: An Essay in Quantitative History. Cambridge, MA: Harvard University Press.",
+     "kind": "academic"
+    },
+    {
+     "citation": "Lapidus, I. M. (2014). A History of Islamic Societies (3rd ed.). Cambridge: Cambridge University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "dawah"
+  ],
+  "related_cards": [
+   "answer:jihad"
+  ],
+  "sensitivity_flags": [
+   "level-c-history",
+   "no-blanket-claim",
+   "no-tarjih"
+  ]
+ }
+}

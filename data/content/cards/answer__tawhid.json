@@ -1,0 +1,83 @@
+{
+ "id": "answer:tawhid",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "A",
+ "certainty": "established",
+ "title_en": "What does Tawhid mean?",
+ "title_ar": "ما معنى التوحيد؟",
+ "match_phrases": [
+  "what is tawhid",
+  "what does tawhid mean",
+  "tawheed meaning",
+  "do muslims believe in one god",
+  "what do muslims believe about god",
+  "oneness of god in islam",
+  "translate tawhid",
+  "ما معنى التوحيد",
+  "ما هو التوحيد",
+  "التوحيد",
+  "بماذا يؤمن المسلمون عن الله"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Newcomer template: plain sentence, then the term (R8 wording), then 112:1–4."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "112:1",
+    "role": "primary"
+   },
+   {
+    "key": "112:2",
+    "role": "primary"
+   },
+   {
+    "key": "112:3",
+    "role": "primary"
+   },
+   {
+    "key": "112:4",
+    "role": "primary"
+   },
+   {
+    "key": "2:163",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "At its heart, Islam teaches that there is one God, who alone created everything and who alone deserves worship. Muslims call this Tawhid (the Oneness of God): singling out Allah as the only Lord, the only one worshipped, and describing Him by the names and attributes He revealed. A short chapter of the Quran sums it up: Allah is One, the One on whom all depend, He has no child and no parent, and nothing is equal to Him (112:1–4). The Quran also says that your God is one God, the Most Merciful, besides whom none is worthy of worship (2:163).",
+   "ar": "جوهر الإسلام أن الله واحد، هو وحده الخالق، وهو وحده المستحق للعبادة. ويسمي المسلمون ذلك «التوحيد»: إفراد الله بالربوبية والألوهية، ووصفه بما وصف به نفسه من الأسماء الحسنى والصفات. وتلخّصه سورة قصيرة من القرآن: فالله أحد، صمد يقصده الخلق، ليس له ولد ولا والد، ولا يكافئه أحد (الإخلاص ١–٤). ويقرر القرآن أن إله الناس إله واحد، لا معبود بحق سواه، وهو الرحمن الرحيم (البقرة ١٦٣)."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "tawhid",
+   "ibadah"
+  ],
+  "related_cards": [
+   "answer:moon_god",
+   "answer:five_pillars"
+  ],
+  "sensitivity_flags": [
+   "newcomer-template",
+   "term-lock-tawhid"
+  ]
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "id": "card:stars",
+ "kind": "concept",
+ "concept_id": "stars",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Stars",
+ "title_ar": "النجوم",
+ "match_phrases": [
+  "stars",
+  "night sky",
+  "النجوم",
+  "الكواكب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "6:97",
+    "role": "primary"
+   },
+   {
+    "key": "16:16",
+    "role": "supporting"
+   },
+   {
+    "key": "37:6",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "6:97",
+    "excerpt_ar": "والله الذي جعل لكم، أيها الناس، النجوم أدلةً في البر والبحر إذا ضللتم الطريق، أو تحيرتم فلم تهتدوا فيها ليلا تستدلّون بها على المحجَّة، فتهتدون بها إلى الطريق والمحجة",
+    "excerpt_en": "Allah made the stars signposts for you on land and sea: when you lose your way, or are unsure of the road at night, you take your bearings from them and so find the path. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/6/97.json"
+   }
+  ],
+  "explanation": {
+   "en": "Long before satellite maps, travellers crossed deserts and seas by the stars, and the Quran points to this as a sign: Allah placed the stars as guides through the darkness of land and sea (6:97). It mentions landmarks, and the stars by which people find their way (16:16), and it speaks of the stars as an adornment of the nearest sky (37:6). In al-Tabari's early commentary, the stars are signposts for anyone who loses the road at night.",
+   "ar": "قبل الخرائط الحديثة كان المسافرون يقطعون الصحارى والبحار مهتدين بالنجوم، ويشير القرآن إلى ذلك آيةً من آيات الله: فقد جعل النجوم هاديةً للناس في ظلمة الليل برًّا وبحرًا (الأنعام ٩٧). ويذكر العلامات، والنجمَ الذي يهتدي به الناس في طريقهم (النحل ١٦)، ويذكر الكواكب زينةً للسماء الدنيا (الصافات ٦). وفي تفسير الطبري أن النجوم أدلة لمن ضلّ الطريق في الليل."
+  },
+  "civilizational_note": {
+   "en": "Many star names used in astronomy today come from Arabic, for example Aldebaran, Altair and Vega, a legacy of the star catalogues of astronomers in Muslim civilisation.",
+   "ar": "كثير من أسماء النجوم المستعملة في علم الفلك اليوم أصلها عربي، مثل الدَّبَران، والنسر الطائر (Altair)، والنسر الواقع (Vega)، وهي من أثر فهارس النجوم عند الفلكيين في الحضارة الإسلامية.",
+   "sources": [
+    {
+     "citation": "Kunitzsch, P., & Smart, T. (2006). A Dictionary of Modern Star Names: A Short Guide to 254 Star Names and Their Derivations. Cambridge, MA: Sky Publishing.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:astrolabe",
+   "card:moon",
+   "card:night_day"
+  ],
+  "sensitivity_flags": [
+   "no-astrology"
+  ]
+ }
+}

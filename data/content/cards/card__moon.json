@@ -9,7 +9,9 @@
  "match_phrases": [
   "moon",
   "the moon in the quran",
-  "القمر"
+  "crescent",
+  "القمر",
+  "الهلال"
  ],
  "institution_id": "inst_uni",
  "workflow": [
@@ -56,24 +58,25 @@
    {
     "source_id": "tabari",
     "book_ar": "جامع البيان عن تأويل آي القرآن",
-    "book_en": "Jami' al-Bayan",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
     "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
     "author_en": "al-Tabari (d. 310 AH)",
     "verse_key": "10:5",
     "excerpt_ar": "هو الذي أضاء الشمسَ وأنار القمر= ﴿وقدّره منازل﴾ ، يقول: قضاه فسوّاه منازلَ، لا يجاوزها ولا يقصر دُونها، على حالٍ واحدةٍ أبدًا.",
-    "url": "https://github.com/spa5k/tafsir_api (mirror) — verify on dorar.net/tafseer"
+    "excerpt_en": "He is the One who made the sun shine and the moon give light, and He set the moon's stations: He decreed and ordered them so that it neither passes them nor falls short of them, always in the same way. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/10/5.json"
    }
   ],
   "explanation": {
-   "en": "The Quran presents the sun and the moon as signs pointing to their Creator: He made the sun a source of brightness and the moon a light, and set the moon's phases so people can count the years and keep time (10:5). The Quran also says that the sun and the moon are not to be worshipped — prostration belongs to Allah who created them (41:37). The Prophet Muhammad ﷺ taught that eclipses are among the signs of Allah and do not happen because of anyone's death or birth (al-Bukhari 1042), and that the month of fasting begins when the new crescent is seen (al-Bukhari 1909).",
-   "ar": "يعرض القرآن الشمس والقمر آيتين دالتين على خالقهما: جعل الشمس ضياءً والقمر نورًا، وقدّر القمر منازل ليعلم الناس عدد السنين والحساب (يونس ٥). ويبيّن أن الشمس والقمر لا يُسجد لهما، وإنما السجود لله الذي خلقهن (فصلت ٣٧). وأخبر النبي ﷺ أن الكسوف من آيات الله، ولا يكون لموت أحد ولا لحياته (البخاري ١٠٤٢)، وأن صوم رمضان يبدأ برؤية الهلال (البخاري ١٩٠٩)."
+   "en": "The Quran presents the sun and the moon as signs pointing to their Creator: He made the sun a source of brightness and the moon a light, and set the moon's phases so people can count the years and keep time (10:5; 36:39). The Quran also says that the sun and the moon are not to be worshipped; prostration belongs to Allah who created them (41:37). The Prophet Muhammad ﷺ taught that eclipses are among the signs of Allah and do not happen because of anyone's death or birth (al-Bukhari 1042), and he linked the start and end of the Ramadan fast to sighting the new crescent (al-Bukhari 1909).",
+   "ar": "يعرض القرآن الشمس والقمر آيتين دالتين على خالقهما: فالشمس ضياء والقمر نور، وقد قدّر الله للقمر منازل ليعرف الناس عدد السنين والحساب (يونس ٥؛ يس ٣٩). ويبيّن أن الشمس والقمر لا يُسجد لهما، وإنما السجود لله الذي خلقهن (فصلت ٣٧). وأخبر النبي ﷺ أن الكسوف من آيات الله، ولا يكون لموت أحد ولا لحياته (البخاري ١٠٤٢)، وربط بدء صيام رمضان والفطر منه برؤية الهلال (البخاري ١٩٠٩)."
   },
   "civilizational_note": {
    "en": "Because Islamic months begin with the new crescent, astronomers in Muslim civilisation developed tables and instruments for timekeeping and for predicting when the crescent becomes visible.",
    "ar": "لأن الشهور الهجرية تبدأ برؤية الهلال، طوّر الفلكيون في الحضارة الإسلامية جداول وآلات لضبط الوقت والتنبؤ بإمكان رؤية الهلال.",
    "sources": [
     {
-     "citation": "King, D. A. (1996). Astronomy and Islamic society: Qibla, gnomonics and timekeeping. In R. Rashed (Ed.), Encyclopedia of the History of Arabic Science, vol. 1. Routledge.",
+     "citation": "King, D. A. (1996). Astronomy and Islamic society: Qibla, gnomonics and timekeeping. In R. Rashed (Ed.), Encyclopedia of the History of Arabic Science, vol. 1. London: Routledge.",
      "kind": "academic"
     }
    ]
@@ -81,6 +84,9 @@
   "show_count": true,
   "glossary_terms": [],
   "related_cards": [
+   "card:sun",
+   "answer:ramadan_start",
+   "answer:moon_god",
    "answer:fasting"
   ],
   "sensitivity_flags": [

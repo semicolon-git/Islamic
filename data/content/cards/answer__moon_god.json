@@ -1,0 +1,73 @@
+{
+ "id": "answer:moon_god",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Is Allah a moon god?",
+ "title_ar": "هل الله إله للقمر؟",
+ "match_phrases": [
+  "is allah a moon god",
+  "allah moon god",
+  "do muslims worship the moon",
+  "why is the crescent a symbol of islam",
+  "is allah the moon",
+  "who is allah",
+  "هل الله إله القمر",
+  "هل يعبد المسلمون القمر",
+  "هل الله هو القمر",
+  "من هو الله"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Gentle correction of a false premise; 41:37 as the core evidence."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "41:37",
+    "role": "primary"
+   },
+   {
+    "key": "1:2",
+    "role": "supporting"
+   },
+   {
+    "key": "29:46",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "No, and it is a common misunderstanding. In Islam, Allah is the one God, the Creator of everything, the moon included: the Quran names the sun and the moon among His signs and tells people not to prostrate to the sun or the moon, but to Allah who created them (41:37). The opening chapter of the Quran praises Allah as Lord of all the worlds (1:2), and the Quran teaches Muslims to tell Jews and Christians that their God and ours is one (29:46).",
+   "ar": "لا، وهذا فهم شائع لكنه خاطئ. فالله في الإسلام هو الإله الواحد خالق كل شيء، ومن ذلك القمر: يذكر القرآن الشمس والقمر من آياته، وينهى عن السجود للشمس والقمر، ويأمر بالسجود لله الذي خلقهن (فصلت ٣٧). وتبدأ فاتحة الكتاب بحمد الله رب العالمين (الفاتحة ٢)، ويعلّم القرآن المسلمين أن يقولوا لليهود والنصارى إن إلهنا وإلههم واحد (العنكبوت ٤٦)."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "tawhid"
+  ],
+  "related_cards": [
+   "card:moon",
+   "answer:tawhid"
+  ],
+  "sensitivity_flags": [
+   "correct-misconception-gently",
+   "term-lock-moon-god"
+  ]
+ }
+}

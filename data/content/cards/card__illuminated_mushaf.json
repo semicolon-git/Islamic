@@ -1,0 +1,73 @@
+{
+ "id": "card:illuminated_mushaf",
+ "kind": "art",
+ "concept_id": "illuminated_mushaf",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Illuminated Mushaf",
+ "title_ar": "المصحف المذهّب",
+ "match_phrases": [
+  "illuminated quran",
+  "quran manuscript",
+  "mushaf",
+  "المصحف",
+  "مصحف مخطوط",
+  "التذهيب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "96:4 only. 85:22 and 80:13 deliberately not used for physical manuscripts."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "96:4",
+    "role": "primary"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "An illuminated mushaf is a hand-written copy of the Quran decorated with gold and colour: chapter headings, verse markers and ornamented opening pages. The Quran honours writing: Allah is the One who taught by the pen (96:4). Copying the Quran was a lifelong craft for many calligraphers, and illuminators added ornament around the text. The Quran text in this app comes from the King Fahd Complex in Madinah, a modern continuation of that tradition of careful copying.",
+   "ar": "المصحف المذهّب نسخة من القرآن مكتوبة باليد ومزيّنة بالذهب والألوان: عناوين السور، وفواصل الآيات، وصفحات افتتاح مزخرفة. ويعظّم القرآن شأن الكتابة، فالله هو الذي علّم بالقلم (العلق ٤). وكان نسخ المصحف صنعة العمر عند كثير من الخطاطين، ويضيف المذهّبون الزخرفة حول النص. ونص القرآن في هذا التطبيق مأخوذ من مجمع الملك فهد في المدينة المنورة، امتدادًا حديثًا لهذا التقليد في النسخ المتقن."
+  },
+  "civilizational_note": {
+   "en": "Manuscript specialists study how Quran copies were made: the parchment or paper, the ruling of lines, the scripts, and the illumination added by separate craftsmen.",
+   "ar": "يدرس المتخصصون في المخطوطات كيفية صناعة المصاحف: الرقّ أو الورق، وتسطير الأسطر، والخطوط، والتذهيب الذي يضيفه صنّاع مختصون.",
+   "sources": [
+    {
+     "citation": "Déroche, F. (2006). Islamic Codicology: An Introduction to the Study of Manuscripts in Arabic Script. London: Al-Furqān Islamic Heritage Foundation.",
+     "kind": "academic"
+    },
+    {
+     "citation": "Blair, S. S. (2006). Islamic Calligraphy. Edinburgh: Edinburgh University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:pen",
+   "card:calligraphy_inscription",
+   "answer:what_is_quran"
+  ],
+  "sensitivity_flags": [
+   "no-85-22-or-80-13-for-manuscripts"
+  ]
+ }
+}

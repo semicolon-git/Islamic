@@ -1,0 +1,70 @@
+{
+ "id": "card:milk",
+ "kind": "concept",
+ "concept_id": "milk",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Milk",
+ "title_ar": "اللبن",
+ "match_phrases": [
+  "milk",
+  "اللبن",
+  "الحليب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked: no physiology framing of 16:66; hadith 5576 matches the text."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "16:66",
+    "role": "primary"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:5576"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "16:66",
+    "excerpt_ar": "وإن لكم أيها الناس لعظة في الأنعام التي نُسقيكم مما في بطونه.",
+    "excerpt_en": "There is a lesson for you, people, in the grazing animals from whose bellies We give you drink. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/16/66.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran points to grazing animals as a lesson: from what is inside them comes pure milk, pleasant to drink (16:66). On the Night Journey, the Prophet ﷺ was offered a cup of wine and a cup of milk and chose the milk, and Gabriel praised Allah who had guided him to the natural way, al-fitra (al-Bukhari 5576).",
+   "ar": "يجعل القرآن في الأنعام عبرةً للناس: فمما في بطونها يخرج لبن صافٍ يسيغه الشاربون (النحل ٦٦). وفي ليلة الإسراء أُتي النبي ﷺ بقدحين من خمر ولبن، فأخذ اللبن، فحمد جبريل الله الذي هداه للفطرة (البخاري ٥٥٧٦)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:camel"
+  ],
+  "sensitivity_flags": [
+   "no-ijaz-framing"
+  ]
+ }
+}

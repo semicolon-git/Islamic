@@ -1,0 +1,46 @@
+{
+ "id": "card:muqarnas",
+ "kind": "art",
+ "concept_id": "muqarnas",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Muqarnas",
+ "title_ar": "المقرنصات",
+ "match_phrases": [
+  "muqarnas",
+  "honeycomb vault",
+  "stalactite vault",
+  "المقرنصات"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [],
+ "content": {
+  "verses": [],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "Muqarnas is a three-dimensional ornament made of many small niche-like cells arranged in tiers. It is used under domes, in portals and on minaret balconies, so that a vault seems to dissolve into a honeycomb of light and shadow. No verse is attached to this card: it presents architecture.",
+   "ar": "المقرنصات زخرفة مجسّمة من خلايا صغيرة تشبه الحنايا، مرتّبة في طبقات. وتُستعمل تحت القباب وفي المداخل وشرفات المآذن، فيبدو السقف كأنه خلية نحل من ضوء وظل. ولا تُرفق بهذه البطاقة آية: فهي تعرض فنًّا معماريًا."
+  },
+  "civilizational_note": {
+   "en": "Muqarnas vaulting appears from around the eleventh century and spread from Iraq and Iran to North Africa and al-Andalus, where the Alhambra has some of its most famous examples.",
+   "ar": "ظهرت المقرنصات نحو القرن الحادي عشر الميلادي، وانتشرت من العراق وإيران إلى شمال أفريقيا والأندلس، وفي قصر الحمراء بعض أشهر نماذجها.",
+   "sources": [
+    {
+     "citation": "Tabbaa, Y. (1985). The muqarnas dome: Its origin and meaning. Muqarnas, 3, 61–74.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:geometric_pattern",
+   "card:mosque_dome"
+  ],
+  "sensitivity_flags": [
+   "historical-non-sharia",
+   "no-verse-by-design"
+  ]
+ }
+}

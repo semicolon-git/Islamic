@@ -1,0 +1,79 @@
+{
+ "id": "card:tree_leaf",
+ "kind": "concept",
+ "concept_id": "tree_leaf",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Trees and Leaves",
+ "title_ar": "الشجر والورق",
+ "match_phrases": [
+  "tree",
+  "leaf",
+  "plant",
+  "الشجرة",
+  "الورقة"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "6:59",
+    "role": "primary"
+   },
+   {
+    "key": "14:24",
+    "role": "supporting"
+   },
+   {
+    "key": "14:25",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:2320"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "6:59",
+    "excerpt_ar": "ولا تسقط ورقةٌ في الصحاري والبراري، ولا في الأمصار والقرى، إلا الله يعلمها",
+    "excerpt_en": "No leaf falls in the deserts and open country, or in the cities and villages, but Allah knows it. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/6/59.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran says that no leaf falls without Allah knowing it (6:59): even the smallest event in nature is within His knowledge. It compares a good word to a good tree, firmly rooted, its branches reaching into the sky, giving fruit in every season by its Lord's permission (14:24–25). And the Prophet ﷺ said that when a Muslim plants a tree or sows a crop and a bird, a person or an animal eats from it, it counts as charity for him (al-Bukhari 2320).",
+   "ar": "يخبر القرآن أن الورقة الواحدة حين تسقط لا تغيب عن علم الله (الأنعام ٥٩)، فأصغر ما يجري في الطبيعة محيط به علمه. ويشبّه الكلمة الطيبة بشجرة طيبة راسخة الجذور، تمتد فروعها في السماء، وتثمر في كل وقت بإذن ربها (إبراهيم ٢٤–٢٥). وأخبر النبي ﷺ أن المسلم إذا غرس شجرة أو زرع زرعًا فأكل منه طير أو إنسان أو بهيمة كان له به صدقة (البخاري ٢٣٢٠)."
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:date_palm",
+   "card:grain"
+  ],
+  "sensitivity_flags": []
+ }
+}

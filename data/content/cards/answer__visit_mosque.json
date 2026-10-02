@@ -1,0 +1,70 @@
+{
+ "id": "answer:visit_mosque",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "B",
+ "certainty": "established",
+ "title_en": "Can a non-Muslim visit a mosque?",
+ "title_ar": "هل يمكن لغير المسلم زيارة المسجد؟",
+ "match_phrases": [
+  "can non-muslims visit a mosque",
+  "can a non-muslim visit a mosque",
+  "can i go inside a mosque",
+  "can i enter a mosque",
+  "am i allowed in a mosque",
+  "can christians go into a mosque",
+  "mosque etiquette",
+  "visiting a mosque",
+  "زيارة غير المسلم للمسجد",
+  "دخول غير المسلم المسجد",
+  "هل يمكن لغير المسلم زيارة المسجد",
+  "آداب زيارة المسجد"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "General information only, not a ruling. Common practice is described as practice; the visitor is pointed to the mosque itself."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [],
+  "hadith": [
+   {
+    "id": "bukhari:63"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "Many mosques around the world welcome visitors of other faiths, and some hold open days and guided tours. In the Prophet's own mosque in Madinah, a man from another tribe rode in, asked him searching questions about Islam, and was told to ask whatever he wished (al-Bukhari 63). Practice differs from place to place, so it is best to contact the mosque beforehand, ask about visiting times, and follow its simple etiquette, such as modest dress and removing shoes in the prayer hall. This is general information, not a ruling on any particular case.",
+   "ar": "ترحّب مساجد كثيرة حول العالم بزوّار من أديان أخرى، وبعضها ينظّم أيامًا مفتوحة وجولات تعريفية. وفي مسجد النبي ﷺ بالمدينة دخل رجل من قبيلة أخرى على جمله، فسأل النبيَّ ﷺ أسئلة دقيقة عن الإسلام، فقال له: سل عمّا بدا لك (البخاري ٦٣). وتختلف الممارسة من مكان إلى آخر، فالأفضل التواصل مع المسجد مسبقًا، والسؤال عن أوقات الزيارة، ومراعاة آدابه البسيطة كالاحتشام وخلع الحذاء في قاعة الصلاة. وهذه معلومات عامة، وليست حكمًا في حالة بعينها."
+  },
+  "disagreement_note": {
+   "en": "Scholars of the different schools discuss whether, when and which mosques non-Muslims may enter, and some places, such as the Sacred Mosque in Makkah, have their own rules. For a specific situation, ask the mosque or a qualified local authority.",
+   "ar": "يتناول علماء المذاهب المختلفة مسألة دخول غير المسلمين المساجد ومتى وأيّها، ولبعض الأماكن، كالمسجد الحرام في مكة، أحكام خاصة. وللحالة المعيّنة يُسأل المسجد نفسه أو جهة علمية مؤهلة."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "fatwa"
+  ],
+  "related_cards": [
+   "card:mosque_dome",
+   "card:mihrab"
+  ],
+  "sensitivity_flags": [
+   "general-info-not-ruling",
+   "no-ruling-directed-at-reader"
+  ]
+ }
+}

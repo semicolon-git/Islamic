@@ -1,0 +1,84 @@
+{
+ "id": "card:shadow",
+ "kind": "concept",
+ "concept_id": "shadow",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Shadow",
+ "title_ar": "الظل",
+ "match_phrases": [
+  "shadow",
+  "shade",
+  "sundial",
+  "الظل"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "25:45",
+    "role": "primary"
+   },
+   {
+    "key": "25:46",
+    "role": "supporting"
+   },
+   {
+    "key": "16:48",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "25:45",
+    "excerpt_ar": "ثم دللناكم أيها الناس بنسخ الشمس إياه عند طلوعها عليه، أنه خلْق من خلق ربكم، يوجده إذا شاء، ويفنيه إذا أراد",
+    "excerpt_en": "Then We showed you, people, by the sun removing the shadow when it rises upon it, that the shadow is one of your Lord's creations: He brings it into being when He wills and ends it when He wishes. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/25/45.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran asks the reader to consider how the Lord stretches out the shadow, which He could have left still, makes the sun its guide, and then draws it in little by little (25:45–46). It describes the shadows of things turning to the right and to the left as a humble prostration to Allah (16:48). Al-Tabari explains that the sun, by moving the shadow, shows that the shadow too is something created, brought into being and removed as Allah wills.",
+   "ar": "يدعو القرآن إلى التأمل في امتداد الظل، وأن الله لو شاء لأبقاه ساكنًا، وقد جعل الشمس دليلًا عليه، ثم يقبضه شيئًا فشيئًا (الفرقان ٤٥–٤٦). ويصف ظلال الأشياء وهي تميل يمينًا وشمالًا ساجدةً لله خاضعة (النحل ٤٨). ويبيّن الطبري أن الشمس بنسخها الظل تدلّ على أنه خلقٌ من خلق الله، يوجده إذا شاء ويفنيه إذا أراد."
+  },
+  "civilizational_note": {
+   "en": "Because the times of the daily prayers follow the sun's position, scholars in Muslim civilisation developed sundials and shadow tables (gnomonics) to tell the time from the length and direction of a shadow.",
+   "ar": "لأن أوقات الصلوات اليومية مرتبطة بموضع الشمس، طوّر العلماء في الحضارة الإسلامية المزاول وجداول الظل (علم المزاول) لمعرفة الوقت من طول الظل واتجاهه.",
+   "sources": [
+    {
+     "citation": "King, D. A. (1996). Astronomy and Islamic society: Qibla, gnomonics and timekeeping. In R. Rashed (Ed.), Encyclopedia of the History of Arabic Science, vol. 1. London: Routledge.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:sun",
+   "card:astrolabe"
+  ],
+  "sensitivity_flags": []
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "id": "card:grain",
+ "kind": "concept",
+ "concept_id": "grain",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Grain and Seeds",
+ "title_ar": "الحب والسنابل",
+ "match_phrases": [
+  "grain",
+  "wheat",
+  "seed",
+  "الحب",
+  "السنبلة",
+  "القمح"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "Draft ready: 2:261 parable plus 6:95; the planting hadith is reused from the tree card."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:261",
+    "role": "primary"
+   },
+   {
+    "key": "6:95",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:2320"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "The Quran uses a single grain to picture generosity: spending for the sake of Allah is like a grain that sprouts seven ears, each holding a hundred grains, and Allah multiplies the reward for whom He wills (2:261). It describes Allah as the One who splits open the grain and the date stone so that new life comes out (6:95). The Prophet ﷺ said that whatever a Muslim sows, if a bird, a person or an animal eats from it, counts as charity for him (al-Bukhari 2320).",
+   "ar": "يضرب القرآن بالحبة الواحدة مثلًا للعطاء: فالإنفاق في سبيل الله كحبة تنبت منها سبع سنابل، وفي السنبلة الواحدة مئة حبة، ويضاعف الله الأجر لمن يشاء (البقرة ٢٦١). ويصف الله بأنه يشقّ الحبّ والنوى فيُخرج منهما حياة جديدة (الأنعام ٩٥). وأخبر النبي ﷺ أن ما يزرعه المسلم فيأكل منه طير أو إنسان أو بهيمة يكون له به صدقة (البخاري ٢٣٢٠)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:tree_leaf",
+   "card:rain_water"
+  ],
+  "sensitivity_flags": []
+ }
+}

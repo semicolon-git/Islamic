@@ -1,0 +1,82 @@
+{
+ "id": "card:pen_and_ink",
+ "kind": "art",
+ "concept_id": "pen_and_ink",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Reed Pen and Ink",
+ "title_ar": "القلم والمداد",
+ "match_phrases": [
+  "reed pen",
+  "qalam",
+  "ink",
+  "calligraphy pen",
+  "قلم القصب",
+  "المداد",
+  "الحبر"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked keys. 68:1: the card does not explain the letter nun."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "96:4",
+    "role": "primary"
+   },
+   {
+    "key": "68:1",
+    "role": "supporting"
+   },
+   {
+    "key": "31:27",
+    "role": "supporting"
+   },
+   {
+    "key": "18:109",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "Calligraphers traditionally write with a reed pen, the qalam, cut and shaped by hand, and with carefully prepared ink. The Quran honours the pen: Allah is the One who taught by the pen (96:4), and one chapter opens with an oath by the pen and by what people write (68:1). It also uses pens and ink to suggest the endlessness of Allah's words: if every tree on earth were a pen and the sea were ink, replenished by seven more seas, His words would still not run out (31:27; 18:109).",
+   "ar": "يكتب الخطاطون في العادة بقلم من القصب يُبرى ويُقَطّ باليد، وبمداد يُعَدّ بعناية. ويعظّم القرآن شأن القلم، فالله هو الذي علّم بالقلم (العلق ٤)، وتُفتتح إحدى السور بالقسم بالقلم وبما يكتبه الناس (القلم ١). ويضرب بالأقلام والمداد مثلًا لسعة كلمات الله: فلو صارت أشجار الأرض كلها أقلامًا والبحر مدادًا تمدّه سبعة أبحر، لما انتهت كلماته (لقمان ٢٧؛ الكهف ١٠٩)."
+  },
+  "civilizational_note": {
+   "en": "Calligraphers cut their reed pens with a slanted nib and prepared their own inks; the tools and the training to use them were passed from master to student.",
+   "ar": "كان الخطاطون يبرون أقلام القصب بقطّة مائلة ويعدّون مدادهم بأنفسهم، وتنتقل الأدوات وطرق استعمالها من الأستاذ إلى تلميذه.",
+   "sources": [
+    {
+     "citation": "Blair, S. S. (2006). Islamic Calligraphy. Edinburgh: Edinburgh University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:pen",
+   "card:calligraphy_inscription",
+   "card:illuminated_mushaf"
+  ],
+  "sensitivity_flags": [
+   "do-not-explain-nun"
+  ]
+ }
+}

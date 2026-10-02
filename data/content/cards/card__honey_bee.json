@@ -1,0 +1,84 @@
+{
+ "id": "card:honey_bee",
+ "kind": "concept",
+ "concept_id": "honey_bee",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Bees and Honey",
+ "title_ar": "النحل والعسل",
+ "match_phrases": [
+  "bee",
+  "honey",
+  "النحل",
+  "العسل"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked keys and excerpts. Kept away from medical claims; questions about treatment go to the level-D path."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "16:68",
+    "role": "primary"
+   },
+   {
+    "key": "16:69",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "16:68",
+    "excerpt_ar": "وألهم ربك يا محمد النحل إيحاء إليها",
+    "excerpt_en": "Your Lord, O Muhammad, instilled this in the bee. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/16/68.json"
+   },
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "16:69",
+    "excerpt_ar": "يخرج من بطون النحل شراب، وهو العسل، مختلف ألوانه، لأن فيها أبيض وأحمر وأسحر، وغير ذلك من الألوان.",
+    "excerpt_en": "From the bellies of the bees comes a drink, honey, of varied colours: white, red, reddish-white and other colours. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/16/69.json"
+   }
+  ],
+  "explanation": {
+   "en": "In the chapter named after the bee, the Quran describes how its Lord guided the bee to make its homes in the mountains, in the trees and in what people build (16:68), to eat from every kind of fruit and follow the paths made easy for it (16:69). From the bees comes a drink of varied colours, honey, in which the Quran says there is healing for people, and it calls all this a sign for people who reflect (16:69). This card is a reflection on the verse, not medical advice.",
+   "ar": "في السورة التي تحمل اسم النحل يصف القرآن كيف ألهم الله النحل أن تتخذ بيوتها في الجبال والشجر وفيما يبنيه الناس (النحل ٦٨)، وأن تأكل من الثمرات وتسلك السبل التي يسّرها لها (النحل ٦٩). ويخرج منها شراب متعدد الألوان هو العسل، يذكر القرآن أن فيه شفاءً للناس، ويجعل ذلك آية لمن يتفكر (النحل ٦٩). وهذه البطاقة تأمّل في الآية، وليست نصيحة طبية."
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:mountain",
+   "card:tree_leaf"
+  ],
+  "sensitivity_flags": [
+   "not-medical-advice",
+   "treatment-questions-level-d"
+  ]
+ }
+}

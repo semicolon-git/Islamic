@@ -1,0 +1,80 @@
+{
+ "id": "card:mountain",
+ "kind": "concept",
+ "concept_id": "mountain",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Mountains",
+ "title_ar": "الجبال",
+ "match_phrases": [
+  "mountain",
+  "mountains",
+  "الجبل",
+  "الجبال"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "78:7 deliberately left out (often framed as a geology proof). Hadith number checked."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "88:19",
+    "role": "primary"
+   },
+   {
+    "key": "16:81",
+    "role": "supporting"
+   },
+   {
+    "key": "59:21",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:4083"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "88:19",
+    "excerpt_ar": "وإلى الجبال كيف أقيمت منتصبة لا تسقط،",
+    "excerpt_en": "And at the mountains: how they were set up standing, without falling. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/88/19.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran asks its listeners to look at the mountains and how they were set up (88:19), and counts the shelter people find in them among Allah's favours (16:81). It also uses a mountain to convey the weight of revelation: had the Quran been sent down on a mountain, it would have humbled itself and split apart in awe of Allah, an example given so that people reflect (59:21). The Prophet ﷺ once said of a mountain that it loves us and we love it (al-Bukhari 4083).",
+   "ar": "يدعو القرآن إلى النظر في الجبال وكيف أُقيمت (الغاشية ١٩)، ويعدّ ما جعله الله للناس فيها من أكنانٍ يأوون إليها من نعمه (النحل ٨١). ويضرب بالجبل مثلًا لعِظم الوحي: لو نزل القرآن على جبل لخشع وتصدّع من خشية الله، مثلًا يُضرب للناس ليتفكروا (الحشر ٢١). وقال النبي ﷺ عن جبلٍ إنه يحبنا ونحبه (البخاري ٤٠٨٣)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:camel",
+   "card:honey_bee"
+  ],
+  "sensitivity_flags": [
+   "no-ijaz-framing"
+  ]
+ }
+}
