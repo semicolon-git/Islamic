@@ -94,7 +94,7 @@ export function HeritageExplorer({ items }: { items: ItemSummary[] }) {
 
   return (
     <>
-      <section aria-labelledby="code-label" className="relative z-10 -mt-14 mx-1 sm:mx-6 rounded-[var(--radius-lg)] border border-line bg-surface p-4 sm:p-6 shadow-pop animate-rise">
+      <section className="relative z-10 -mt-14 mx-1 sm:mx-6 rounded-[var(--radius-lg)] border border-line bg-surface p-4 sm:p-6 shadow-pop animate-rise">
         <form
           onSubmit={(e) => {
             e.preventDefault();

@@ -6,10 +6,11 @@ import { Khatam, Skeleton } from "@/components/ui";
 import { ConceptImage } from "@/components/ui/concept-image";
 import { getI18n } from "@/i18n/server";
 import { HeritageExplorer, SectionHead } from "@/features/heritage/components/heritage-explorer";
+import { HeroImage, StarOutline } from "@/features/heritage/components/hero-art";
 import type { ItemSummary } from "@/features/heritage/components/item-tile";
 import { artConcepts, conceptImage, publishedItems, publishedManuscripts } from "@/features/heritage/queries";
 import { thumbOf } from "@/features/heritage/uploads";
-import { loc, num } from "@/features/heritage/l10n";
+import { conceptLabel, loc, num } from "@/features/heritage/l10n";
 
 export const dynamic = "force-dynamic";
 
@@ -38,9 +39,9 @@ export default async function HeritagePage() {
   return (
     <div className="flex flex-col gap-8 pb-12">
       {/* Hero */}
-      <section className="relative -mx-4 sm:mx-0 sm:mt-1" aria-labelledby="heritage-h1">
+      <section className="relative -mx-4 -mt-4 sm:mx-0 sm:mt-1" aria-labelledby="heritage-h1">
         <div className="relative h-[19rem] sm:h-[22rem] overflow-hidden sm:rounded-[var(--radius-lg)] bg-brand">
-          <ConceptImage src={conceptImage("hero_heritage")} alt={t("heritage.hero.title")} className="absolute inset-0 size-full" rounded={false} hue={230} />
+          <HeroImage src={conceptImage("hero_heritage")} alt={t("heritage.hero.eyebrow")} />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(7_10_34/0.15)_0%,rgb(7_10_34/0.35)_45%,rgb(7_10_34/0.88)_100%)]" aria-hidden />
           <div className="absolute inset-x-0 bottom-0 px-5 sm:px-8 pb-20 flex flex-col gap-2 text-white">
             <span className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-white/80">
@@ -65,7 +66,7 @@ export default async function HeritagePage() {
           data-testid="inscription-cta"
         >
           <span className="absolute -end-6 -top-6 text-sand-ink/10" aria-hidden>
-            <Khatam size={140} strokeWidth={0.8} />
+            <StarOutline size={140} strokeWidth={0.7} />
           </span>
           <span className="relative size-12 shrink-0 rounded-full bg-surface grid place-items-center text-accent shadow-card">
             <ScanText className="size-6" aria-hidden />
@@ -83,7 +84,7 @@ export default async function HeritagePage() {
             <SectionHead id="art-h" title={t("heritage.art.title")} subtitle={t("heritage.art.subtitle")} />
             <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {art.map((c) => {
-                const label = loc(locale, c.label_en, c.label_ar);
+                const label = conceptLabel(t, locale, c);
                 return (
                   <li key={c.id}>
                     <Link href={`/c/${c.id}`} className="group relative block overflow-hidden rounded-[var(--radius)] border border-line bg-brand" data-testid="art-tile">
@@ -131,7 +132,7 @@ export default async function HeritagePage() {
           ) : (
             <div className="relative overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface p-6 flex gap-4 items-start" data-testid="manuscripts-soon">
               <span className="absolute -end-10 -bottom-10 text-ink/[0.05]" aria-hidden>
-                <Khatam size={180} strokeWidth={0.6} />
+                <StarOutline size={180} strokeWidth={0.6} />
               </span>
               <span className="relative size-12 shrink-0 rounded-2xl bg-sand text-sand-ink grid place-items-center">
                 <ScrollText className="size-6" aria-hidden />

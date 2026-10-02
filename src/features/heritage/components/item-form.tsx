@@ -7,7 +7,7 @@ import { useToast } from "@/components/ui/toast";
 import { ConceptImage } from "@/components/ui/concept-image";
 import { useI18n } from "@/i18n/client";
 import { ITEM_KINDS } from "../codes";
-import { loc } from "../l10n";
+import { conceptLabel, loc } from "../l10n";
 import { LICENSES, LICENSE_TEXT } from "../schemas";
 import type { ItemImage } from "../types";
 import type { FormOptions } from "../portal-queries";
@@ -186,7 +186,9 @@ export function ItemForm({
           <Field label={t("heritage.form.concept")} htmlFor={id("concept")}>
             <Select id={id("concept")} name="concept_id" value={v.concept_id} onChange={(e) => set("concept_id", e.target.value)}>
               <option value="">{t("heritage.form.noConcept")}</option>
-              {options.concepts.map(opt)}
+              {options.concepts.map((c) => (
+                <option key={c.id} value={c.id}>{conceptLabel(t, locale, c)}</option>
+              ))}
             </Select>
           </Field>
           <Field label={t("heritage.form.card")} htmlFor={id("card")}>

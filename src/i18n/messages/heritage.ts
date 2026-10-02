@@ -88,6 +88,20 @@ export const heritage: Messages = {
     "heritage.item.prevImage": "Previous image",
     "heritage.item.nextImage": "Next image",
 
+    // ── Fallback labels for art & heritage concepts (when the content set has none)
+    "heritage.concept.calligraphy_inscription": "Calligraphy & inscriptions",
+    "heritage.concept.pen_and_ink": "Reed pen & ink",
+    "heritage.concept.mihrab": "Mihrab",
+    "heritage.concept.minaret_call_to_prayer": "Minaret & the call to prayer",
+    "heritage.concept.mosque_dome": "Mosque & dome",
+    "heritage.concept.mosque_lamp": "Mosque lamp",
+    "heritage.concept.geometric_pattern": "Geometric pattern",
+    "heritage.concept.arabesque": "Arabesque",
+    "heritage.concept.muqarnas": "Muqarnas",
+    "heritage.concept.illuminated_mushaf": "Illuminated mushaf",
+    "heritage.concept.astrolabe": "Astrolabe",
+    "heritage.concept.manuscript_page": "Manuscript page",
+    "heritage.concept.kiswa_textile": "Kiswa textile",
     // ── Kinds & scripts
     "heritage.kind.astrolabe": "Astrolabe",
     "heritage.kind.lamp": "Mosque lamp",
@@ -405,6 +419,20 @@ export const heritage: Messages = {
     "heritage.item.prevImage": "الصورة السابقة",
     "heritage.item.nextImage": "الصورة التالية",
 
+    // ── Fallback labels for art & heritage concepts
+    "heritage.concept.calligraphy_inscription": "الخط العربي والنقوش",
+    "heritage.concept.pen_and_ink": "القلم والمداد",
+    "heritage.concept.mihrab": "المحراب",
+    "heritage.concept.minaret_call_to_prayer": "المئذنة والأذان",
+    "heritage.concept.mosque_dome": "المسجد والقبة",
+    "heritage.concept.mosque_lamp": "قنديل المسجد",
+    "heritage.concept.geometric_pattern": "الزخرفة الهندسية",
+    "heritage.concept.arabesque": "الزخرفة النباتية (الأرابيسك)",
+    "heritage.concept.muqarnas": "المقرنصات",
+    "heritage.concept.illuminated_mushaf": "المصحف المذهَّب",
+    "heritage.concept.astrolabe": "الأسطرلاب",
+    "heritage.concept.manuscript_page": "صفحة مخطوط",
+    "heritage.concept.kiswa_textile": "نسيج الكسوة",
     // ── Kinds & scripts
     "heritage.kind.astrolabe": "أسطرلاب",
     "heritage.kind.lamp": "قنديل مسجد",

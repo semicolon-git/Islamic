@@ -129,9 +129,12 @@ export default async function ItemPage({ params }: Props) {
             return (
               <div key={ins.id} className="rounded-[var(--radius-lg)] border border-line bg-surface overflow-hidden shadow-card">
                 <div className="bg-sand px-5 py-4 flex flex-col gap-1">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-sand-ink">
-                    <Quote className="size-3.5" aria-hidden />
-                    {t("heritage.item.inscriptionReads")} · <span className="normal-case tracking-normal font-normal">{t("heritage.item.asRead")}</span>
+                  <span className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-sand-ink">
+                      <Quote className="size-3.5" aria-hidden />
+                      {t("heritage.item.inscriptionReads")}
+                    </span>
+                    <span className="text-xs text-sand-ink/75">{t("heritage.item.asRead")}</span>
                   </span>
                   <p lang="ar" dir="rtl" className="font-[family-name:var(--font-ms)] text-[1.5rem] leading-[2.1] text-sand-ink">{ins.transcription}</p>
                 </div>

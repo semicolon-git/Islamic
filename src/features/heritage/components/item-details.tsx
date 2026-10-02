@@ -6,7 +6,7 @@ import { Button, Card } from "@/components/ui";
 import { ConceptImage } from "@/components/ui/concept-image";
 import { useI18n } from "@/i18n/client";
 import { useEvents } from "@/lib/use-events";
-import { loc } from "../l10n";
+import { conceptLabel, loc } from "../l10n";
 import type { FormOptions } from "../portal-queries";
 import { ItemForm, type ItemFormValue } from "./item-form";
 
@@ -19,6 +19,7 @@ export function ItemDetails({ value, options, itemId, editable }: { value: ItemF
     const o = list.find((x) => x.id === id);
     return o ? loc(locale, o.label_en, o.label_ar) : "";
   };
+  const concept = options.concepts.find((x) => x.id === value.concept_id);
   const rows: [string, string][] = (
     [
       [t("heritage.form.kind"), t(`heritage.kind.${value.kind}`)],
@@ -26,7 +27,7 @@ export function ItemDetails({ value, options, itemId, editable }: { value: ItemF
       [t("heritage.item.date"), loc(locale, value.date_text, value.date_text_ar)],
       [t("heritage.item.origin"), loc(locale, value.origin, value.origin_ar)],
       [t("heritage.item.material"), loc(locale, value.material, value.material_ar)],
-      [t("heritage.form.concept"), find(options.concepts, value.concept_id)],
+      [t("heritage.form.concept"), concept ? conceptLabel(t, locale, concept) : ""],
       [t("heritage.form.card"), find(options.cards, value.card_id)],
       [t("heritage.form.manuscript"), find(options.manuscripts, value.manuscript_id)],
     ] as [string, string][]
