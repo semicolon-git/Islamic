@@ -10,6 +10,7 @@ import "./globals.css";
 import { getI18n } from "@/i18n/server";
 import { I18nProvider } from "@/i18n/client";
 import { ToastProvider } from "@/components/ui/toast";
+import { PwaProvider } from "@/features/pwa/pwa-provider";
 
 export const metadata: Metadata = {
   title: { default: "Signs Around You · آيات حولك", template: "%s · Signs Around You" },
@@ -41,6 +42,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-dvh">
         <I18nProvider locale={locale}>
           <ToastProvider>{children}</ToastProvider>
+          <PwaProvider />
         </I18nProvider>
       </body>
     </html>
