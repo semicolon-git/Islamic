@@ -41,7 +41,8 @@ export function VerseBlock({
         {verses.map((v) => (
           <span key={v.key}>
             {v.text_uthmani}
-            <span className="ayah-mark">﴿{toArabicDigits(v.aya)}﴾</span>{" "}
+            {/* KFGQPC v18 text already ends with the aya number (rendered as the end-of-aya ornament by the font). */}
+            {!/[٠-٩]\s*$/.test(v.text_uthmani) && <span className="ayah-mark">﴿{toArabicDigits(v.aya)}﴾</span>}{" "}
           </span>
         ))}
       </blockquote>
