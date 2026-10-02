@@ -1,0 +1,70 @@
+{
+ "id": "card:camel",
+ "kind": "concept",
+ "concept_id": "camel",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Camel",
+ "title_ar": "الإبل",
+ "match_phrases": [
+  "camel",
+  "camels",
+  "الجمل",
+  "الإبل",
+  "الناقة"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Kept to 88:17; the naqa verses (Thamud) are not used on this card."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "88:17",
+    "role": "primary"
+   },
+   {
+    "key": "88:18",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "88:17",
+    "excerpt_ar": "أفلا ينظرون إلى الإبل فيعتبرون بها، ويعلمون أن القُدرة التي قدر بها على خلقها، لن يُعجزه خلق ما شابهها.",
+    "excerpt_en": "Will they not look at the camels and take a lesson from them, and know that the power by which He created them is not unable to create what resembles them? (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/88/17.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran asks whether people will not look at the camel and how it was created (88:17), and in the same breath turns their gaze to the sky and how it was raised high (88:18). Al-Tabari explains the invitation: look at the camel, take a lesson from it, and recognise the power that created it.",
+   "ar": "يدعو القرآن الناس إلى النظر في الإبل وكيف خُلقت (الغاشية ١٧)، ثم إلى السماء وكيف رُفعت (الغاشية ١٨). ويبيّن الطبري مقصد هذه الدعوة: أن ينظروا إلى الإبل فيعتبروا بها، ويعلموا أن القدرة التي خلقتها لا يعجزها شيء."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:mountain"
+  ],
+  "sensitivity_flags": []
+ }
+}

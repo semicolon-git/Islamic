@@ -8,13 +8,18 @@
  "title_ar": "هل يعبد المسلمون الكعبة؟",
  "match_phrases": [
   "do muslims worship the kaaba",
+  "why do muslims worship the kaaba",
   "worship the kaaba",
   "why do muslims pray towards mecca",
+  "why do muslims face mecca",
+  "why face mecca",
+  "what is the black cube in mecca",
   "black stone",
   "qibla",
-  "why face mecca",
-  "يعبد المسلمون الكعبة",
+  "هل يعبد المسلمون الكعبة",
+  "لماذا يعبد المسلمون الكعبة",
   "عبادة الكعبة",
+  "لماذا يتجه المسلمون إلى مكة",
   "القبلة",
   "الحجر الأسود"
  ],
@@ -54,14 +59,17 @@
   ],
   "tafsir": [],
   "explanation": {
-   "en": "No — Muslims worship Allah alone. The Kaaba in Makkah is the qibla: the direction Muslims face when they pray, which unites them in one direction wherever they are (2:144). The Quran calls people to worship \"the Lord of this House\", not the House itself (106:3). When the Caliph Umar kissed the Black Stone, he said he knew it was only a stone that could neither benefit nor harm, and that he kissed it only because he had seen the Prophet ﷺ do so (al-Bukhari 1597).",
-   "ar": "لا، فالمسلمون يعبدون الله وحده. والكعبة في مكة هي القبلة: الجهة التي يستقبلها المسلمون في صلاتهم، فتجمعهم على وجهة واحدة حيثما كانوا (البقرة ١٤٤). ويدعو القرآن إلى عبادة «رب هذا البيت» لا البيت نفسه (قريش ٣). ولما قبّل عمر بن الخطاب رضي الله عنه الحجر الأسود قال إنه يعلم أنه حجر لا يضر ولا ينفع، ولولا أنه رأى النبي ﷺ يقبّله ما قبّله (البخاري ١٥٩٧)."
+   "en": "No: Muslims worship Allah alone. The Kaaba in Makkah is the qibla, the direction Muslims face when they pray, wherever they are in the world (2:144). The Quran calls people to worship \"the Lord of this House\", not the House itself (106:3). When the Caliph Umar kissed the Black Stone, he said he knew it was only a stone that could neither benefit nor harm, and that he kissed it only because he had seen the Prophet ﷺ do so (al-Bukhari 1597).",
+   "ar": "لا، فالمسلمون يعبدون الله وحده. والكعبة في مكة هي القبلة: الجهة التي يستقبلها المسلمون في صلاتهم حيثما كانوا في العالم (البقرة ١٤٤). ويدعو القرآن إلى عبادة «رب هذا البيت» لا البيت نفسه (قريش ٣). ولما قبّل عمر بن الخطاب رضي الله عنه الحجر الأسود قال إنه يعلم أنه حجر لا يضر ولا ينفع، ولولا أنه رأى النبي ﷺ يقبّله ما قبّله (البخاري ١٥٩٧)."
   },
   "show_count": false,
   "glossary_terms": [
    "ibadah"
   ],
-  "related_cards": [],
+  "related_cards": [
+   "card:mihrab",
+   "card:kiswa_textile"
+  ],
   "sensitivity_flags": [
    "correct-misconception-gently"
   ]

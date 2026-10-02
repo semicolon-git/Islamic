@@ -1,0 +1,81 @@
+{
+ "id": "card:rain_water",
+ "kind": "concept",
+ "concept_id": "rain_water",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Rain and Water",
+ "title_ar": "المطر والماء",
+ "match_phrases": [
+  "rain",
+  "water",
+  "glass of water",
+  "المطر",
+  "الماء"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "50:9",
+    "role": "primary"
+   },
+   {
+    "key": "16:10",
+    "role": "supporting"
+   },
+   {
+    "key": "30:50",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:1032"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "50:9",
+    "excerpt_ar": "مطرا مباركا، فأنبتنا به بساتين أشجارا، وحبّ الزرع المحصود من البرّ والشعير، وسائر أنواع الحبوب.",
+    "excerpt_en": "Blessed rain, by which We grew orchards of trees and the harvested grain of the fields: wheat, barley and every other kind of grain. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/50/9.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran calls the water sent down from the sky blessed: with it grow gardens and harvests of grain (50:9). From it people drink, and from it grows the greenery where their animals graze (16:10). It invites people to look at how rain brings dry, lifeless land back to life, as a trace of Allah's mercy (30:50). Whenever the Prophet ﷺ saw rain, he prayed for it to be a beneficial rain (al-Bukhari 1032).",
+   "ar": "يصف القرآن الماء النازل من السماء بأنه مبارك، تنبت به البساتين وحبّ الحصيد (ق ٩). منه يشرب الناس، ومنه ينبت الشجر الذي ترعى فيه أنعامهم (النحل ١٠). ويدعو إلى النظر في آثار رحمة الله وكيف تعود الحياة بالمطر إلى الأرض الميتة (الروم ٥٠). وكان النبي ﷺ إذا رأى المطر دعا أن يكون مطرًا نافعًا (البخاري ١٠٣٢)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:grain",
+   "card:date_palm"
+  ],
+  "sensitivity_flags": [
+   "no-ijaz-framing"
+  ]
+ }
+}

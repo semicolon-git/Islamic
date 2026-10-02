@@ -1,0 +1,84 @@
+{
+ "id": "card:minaret_call_to_prayer",
+ "kind": "art",
+ "concept_id": "minaret_call_to_prayer",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Minaret and the Call to Prayer",
+ "title_ar": "المئذنة والأذان",
+ "match_phrases": [
+  "minaret",
+  "call to prayer",
+  "adhan",
+  "azan",
+  "المئذنة",
+  "الأذان"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked 62:9 and al-Bukhari 604. 5:58 left out for tone."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "62:9",
+    "role": "primary"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:604"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "62:9",
+    "excerpt_ar": "وذلك هو النداء، ينادي بالدعاء إلى صلاة الجمعة عند قعود الإمام على المنبر للخطبة",
+    "excerpt_en": "That is the call: the call inviting people to the Friday prayer when the imam sits on the pulpit for the sermon. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/62/9.json"
+   }
+  ],
+  "explanation": {
+   "en": "A minaret is the tower from which the call to prayer (adhan) is traditionally given. The Quran mentions the call to prayer, for example the call to the Friday prayer (62:9), but it does not mention minarets. When the Muslims first came to Madinah they gathered for prayer by estimating its time; after people suggested a bell or a horn, Umar suggested sending a man to call to prayer, and the Prophet ﷺ told Bilal to stand and call (al-Bukhari 604).",
+   "ar": "المئذنة برج يُرفع منه الأذان في العادة. ويذكر القرآن النداء إلى الصلاة، كالنداء لصلاة الجمعة (الجمعة ٩)، ولا يذكر المآذن. ولما قدم المسلمون المدينة كانوا يجتمعون ويتحيّنون وقت الصلاة، فاقترح بعضهم ناقوسًا وبعضهم بوقًا، فأشار عمر بأن يُبعث رجل ينادي بالصلاة، فأمر النبي ﷺ بلالًا أن يقوم فينادي بها (البخاري ٦٠٤)."
+  },
+  "civilizational_note": {
+   "en": "The earliest mosques had no minarets. Tall towers became common later and took many regional forms, from square towers in North Africa and al-Andalus to slender, pencil-shaped minarets in Ottoman lands.",
+   "ar": "لم تكن للمساجد الأولى مآذن، ثم شاعت الأبراج العالية لاحقًا واتخذت أشكالًا إقليمية متنوعة، من الأبراج المربعة في شمال أفريقيا والأندلس إلى المآذن الرشيقة الشبيهة بالأقلام في البلاد العثمانية.",
+   "sources": [
+    {
+     "citation": "Bloom, J. M. (1989). Minaret: Symbol of Islam. Oxford Studies in Islamic Art VII. Oxford: Oxford University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:mosque_dome",
+   "card:mihrab"
+  ],
+  "sensitivity_flags": [
+   "quran-mentions-adhan-not-minarets"
+  ]
+ }
+}

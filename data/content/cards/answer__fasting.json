@@ -8,11 +8,15 @@
  "title_ar": "لماذا يصوم المسلمون رمضان؟",
  "match_phrases": [
   "why do muslims fast",
+  "why do muslims fast in ramadan",
+  "what is ramadan",
   "ramadan",
   "fasting",
-  "what is ramadan",
   "sawm",
+  "why don't muslims eat during the day in ramadan",
   "لماذا يصوم المسلمون",
+  "لماذا يصوم المسلمون رمضان",
+  "ما هو رمضان",
   "الصيام",
   "رمضان"
  ],
@@ -52,15 +56,17 @@
   ],
   "tafsir": [],
   "explanation": {
-   "en": "Muslims fast because Allah prescribed it, as He prescribed it for those before them, so that they may grow in mindfulness of Him (taqwa) (2:183). Ramadan is the month in which the Quran was first revealed as guidance for people, and the Quran says Allah intends ease, not hardship, for them (2:185). The month begins when the new crescent is seen (al-Bukhari 1909).",
-   "ar": "يصوم المسلمون لأن الله كتب عليهم الصيام كما كتبه على الذين من قبلهم لعلهم يتقون (البقرة ١٨٣). ورمضان هو الشهر الذي أُنزل فيه القرآن هدى للناس، ويريد الله بعباده اليسر لا العسر (البقرة ١٨٥). ويبدأ الشهر برؤية الهلال (البخاري ١٩٠٩)."
+   "en": "Muslims fast because Allah prescribed it, as He prescribed it for those before them, so that they may grow in mindfulness of Him (taqwa) (2:183). Ramadan is the month in which the Quran was first revealed as guidance for people, and the Quran says Allah intends ease, not hardship, for them (2:185). The Prophet ﷺ linked the start and end of the fast to sighting the new crescent (al-Bukhari 1909).",
+   "ar": "يصوم المسلمون لأن الله كتب عليهم الصيام كما كتبه على الذين من قبلهم لعلهم يتقون (البقرة ١٨٣). ورمضان هو الشهر الذي بدأ فيه نزول القرآن هدايةً للناس، ويريد الله بعباده اليسر لا العسر (البقرة ١٨٥). وربط النبي ﷺ بدء الصيام والفطر برؤية الهلال (البخاري ١٩٠٩)."
   },
   "show_count": false,
   "glossary_terms": [
    "ibadah"
   ],
   "related_cards": [
-   "card:moon"
+   "card:moon",
+   "answer:ramadan_start",
+   "answer:five_pillars"
   ],
   "sensitivity_flags": []
  }

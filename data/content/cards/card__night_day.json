@@ -1,0 +1,76 @@
+{
+ "id": "card:night_day",
+ "kind": "concept",
+ "concept_id": "night_day",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Night and Day",
+ "title_ar": "الليل والنهار",
+ "match_phrases": [
+  "night and day",
+  "sunset",
+  "sunrise",
+  "الليل والنهار",
+  "الغروب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "3:190",
+    "role": "primary"
+   },
+   {
+    "key": "28:73",
+    "role": "supporting"
+   },
+   {
+    "key": "25:62",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "3:190",
+    "excerpt_ar": "تدبروا أيها الناس واعتبروا، ففيما أنشأته فخلقته من السموات والأرض لمعاشكم وأقواتكم وأرزاقكم، وفيما عقَّبت بينه من الليل والنهار فجعلتهما يختلفان ويعتقبان عليكم",
+    "excerpt_en": "Reflect, people, and take a lesson from what I created of the heavens and the earth for your living, food and provision, and from the night and day that I made to alternate, one following the other for you. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/3/190.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Quran counts the alternation of night and day among the signs for people of understanding (3:190). It presents this daily rhythm as a mercy: the night to rest, and the day to seek a living, so that people may be grateful (28:73). Each follows the other for anyone who wishes to remember Allah or to give thanks (25:62).",
+   "ar": "يعدّ القرآن اختلاف الليل والنهار من الآيات لأولي الألباب (آل عمران ١٩٠). ويقدّم هذا الإيقاع اليومي رحمةً من الله: الليل للسكن والراحة، والنهار لطلب الرزق، لعل الناس يشكرون (القصص ٧٣). فكلٌّ منهما يخلف صاحبه لمن أراد أن يتذكر أو أراد الشكر (الفرقان ٦٢)."
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:sun",
+   "card:stars",
+   "card:shadow"
+  ],
+  "sensitivity_flags": []
+ }
+}

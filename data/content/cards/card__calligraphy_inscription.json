@@ -1,0 +1,69 @@
+{
+ "id": "card:calligraphy_inscription",
+ "kind": "art",
+ "concept_id": "calligraphy_inscription",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Arabic Calligraphy",
+ "title_ar": "الخط العربي",
+ "match_phrases": [
+  "calligraphy",
+  "arabic calligraphy",
+  "inscription",
+  "الخط العربي",
+  "النقش"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "Draft: what calligraphy is; no verse attached, the inscription matcher supplies verses."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Historical note sourced (Blair 2006; Schimmel 1984). Styles are shown as tiers only."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "Arabic calligraphy is the art of beautiful writing. In Muslim civilisation it became one of the most honoured arts, used in copies of the Quran and on buildings, lamps, tiles and textiles. Calligraphers developed many scripts, such as Kufic, Naskh, Thuluth, Diwani, Maghribi and Nasta'liq; this app names a style only as a \"looks like\" guess, never as a certainty. If you photograph an inscription, the app tries to match its words to the Quran text and shows the exact verse, or says honestly that it cannot identify one.",
+   "ar": "الخط العربي فنّ الكتابة الجميلة، وقد صار في الحضارة الإسلامية من أرفع الفنون منزلة، فكُتبت به المصاحف وزُيّنت به المباني والقناديل والبلاطات والمنسوجات. وطوّر الخطاطون أقلامًا كثيرة، منها الكوفي والنسخ والثلث والديواني والمغربي والنستعليق، ولا يذكر هذا التطبيق نوع الخط إلا على سبيل «يشبه» دون جزم. وإذا صوّرت نقشًا حاول التطبيق مطابقة كلماته بنص القرآن، فيعرض الآية بنصها، أو يقول بصدق إنه لم يتعرّف عليها."
+  },
+  "civilizational_note": {
+   "en": "Calligraphy was the most highly regarded visual art in the Islamic lands, and inscriptions, very often Quranic, appear on architecture and objects of every scale, from mosque walls to coins.",
+   "ar": "كان الخط أرفع الفنون البصرية مكانةً في البلاد الإسلامية، وتظهر النقوش الكتابية، وكثير منها قرآني، على العمارة والتحف بمختلف أحجامها، من جدران المساجد إلى النقود.",
+   "sources": [
+    {
+     "citation": "Blair, S. S. (2006). Islamic Calligraphy. Edinburgh: Edinburgh University Press.",
+     "kind": "academic"
+    },
+    {
+     "citation": "Schimmel, A. (1984). Calligraphy and Islamic Culture. New York: New York University Press.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:pen_and_ink",
+   "card:illuminated_mushaf",
+   "card:mosque_lamp"
+  ],
+  "sensitivity_flags": [
+   "historical-non-sharia",
+   "style-as-tier-only",
+   "no-ai-calligraphy"
+  ]
+ }
+}

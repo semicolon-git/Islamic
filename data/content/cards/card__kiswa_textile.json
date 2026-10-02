@@ -1,0 +1,62 @@
+{
+ "id": "card:kiswa_textile",
+ "kind": "art",
+ "concept_id": "kiswa_textile",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Kiswa of the Kaaba",
+ "title_ar": "كسوة الكعبة",
+ "match_phrases": [
+  "kiswa",
+  "kiswah",
+  "kaaba cover",
+  "كسوة الكعبة",
+  "الكسوة"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "Draft: verses 3:96, 2:144 and 106:3, framed around R6 Q1."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Verses fine. The institution should confirm the description of the kiswa itself, or add a source, before publishing."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "3:96",
+    "role": "primary"
+   },
+   {
+    "key": "2:144",
+    "role": "supporting"
+   },
+   {
+    "key": "106:3",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "The kiswa is the black cloth that covers the Kaaba in Makkah, embroidered with Quranic inscriptions. The Quran describes the House in Makkah as the first house of worship set up for people, blessed and a guidance (3:96), and Muslims everywhere turn towards it in prayer (2:144). Muslims worship the Lord of the House, not the House or its covering (106:3).",
+   "ar": "الكسوة هي الثوب الأسود الذي يكسو الكعبة في مكة، وتُطرَّز عليه آيات من القرآن. ويصف القرآن البيت الذي بمكة بأنه أول بيت أُقيم لعبادة الناس، مباركًا وهدى (آل عمران ٩٦)، ويتجه إليه المسلمون في صلاتهم حيثما كانوا (البقرة ١٤٤). والمسلمون يعبدون ربّ البيت، لا البيت ولا كسوته (قريش ٣)."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "ibadah"
+  ],
+  "related_cards": [
+   "answer:kaaba",
+   "card:mihrab"
+  ],
+  "sensitivity_flags": [
+   "correct-misconception-gently"
+  ]
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "id": "card:sun",
+ "kind": "concept",
+ "concept_id": "sun",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Sun",
+ "title_ar": "الشمس",
+ "match_phrases": [
+  "sun",
+  "the sun in the quran",
+  "sunlight",
+  "الشمس"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "91:1",
+    "role": "primary"
+   },
+   {
+    "key": "25:61",
+    "role": "supporting"
+   },
+   {
+    "key": "41:37",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:1042"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "91:1",
+    "excerpt_ar": "قسم أقسم ربنا تعالى ذكره بالشمس وضحاها؛ ومعنى الكلام: أقسم بالشمس، وبضحى الشمس.",
+    "excerpt_en": "An oath our Lord swore by the sun and its brightness; the meaning is: I swear by the sun and by the sun's morning light. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/91/1.json"
+   },
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "25:61",
+    "excerpt_ar": "ووجهوا تأويل ذلك إلى أنه جعل فيها الشمس، وهي السراج",
+    "excerpt_en": "Those who read it this way explained it as: He placed the sun in the sky, and the sun is the lamp. (Researcher's paraphrase of al-Tabari, reporting the reading followed in this mushaf.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/25/61.json"
+   }
+  ],
+  "explanation": {
+   "en": "One chapter of the Quran opens with an oath by the sun and its brightness, drawing attention to something people see every day (91:1). It speaks of a lamp that the Creator placed in the sky, which early commentators identified as the sun (25:61), and says plainly that it is a sign to reflect on, not something to worship: prostration belongs to Allah who created it (41:37). The Prophet ﷺ taught that the sun and the moon do not eclipse because of anyone's death or birth; they are two of Allah's signs (al-Bukhari 1042).",
+   "ar": "تُفتتح إحدى سور القرآن بالقسم بالشمس وضحاها، لافتةً النظر إلى ما يراه الناس كل يوم (الشمس ١). ويذكر سراجًا جعله الخالق في السماء، فسّره المفسرون الأوائل بالشمس (الفرقان ٦١)، ويبيّن أنها آية يُتفكَّر فيها لا معبود يُسجد له، فالسجود لله الذي خلقها (فصلت ٣٧). وأخبر النبي ﷺ أن الشمس والقمر لا ينكسفان لموت أحد ولا لحياته، وإنما هما آيتان من آيات الله (البخاري ١٠٤٢)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:moon",
+   "card:shadow",
+   "card:night_day"
+  ],
+  "sensitivity_flags": [
+   "no-ijaz-framing"
+  ]
+ }
+}

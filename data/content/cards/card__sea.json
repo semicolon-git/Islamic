@@ -1,0 +1,53 @@
+{
+ "id": "card:sea",
+ "kind": "concept",
+ "concept_id": "sea",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Sea",
+ "title_ar": "البحر",
+ "match_phrases": [
+  "sea",
+  "ocean",
+  "البحر"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "Draft: 16:14 and 45:12. Kept 25:53 out."
+  },
+  {
+   "decision": "return",
+   "by": "u_huda",
+   "note": "Good start. Before I approve: please add al-Tabari's explanation of «لحمًا طريًّا» (fish) and «حلية» (pearls and coral) as a tafsir excerpt, so visitors read the verse through early commentary rather than modern claims. Keep 25:53 out of this card as agreed."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "16:14",
+    "role": "primary"
+   },
+   {
+    "key": "45:12",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "The Quran describes the sea as placed in service to people: from it they eat fresh food and bring out ornaments to wear, and on it ships cut their way (16:14). Ships sail on it by Allah's command, so that people can seek His bounty and perhaps be grateful (45:12).",
+   "ar": "يصف القرآن البحر بأنه مسخّر للناس: يأكلون منه طعامًا طريًّا، ويستخرجون منه زينة يتحلّون بها، وتشقّه السفن في جريانها (النحل ١٤). وتجري السفن فيه بأمر الله ليطلب الناس من فضله، لعلهم يشكرون (الجاثية ١٢)."
+  },
+  "show_count": true,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:pen_and_ink"
+  ],
+  "sensitivity_flags": [
+   "no-ijaz-framing"
+  ]
+ }
+}

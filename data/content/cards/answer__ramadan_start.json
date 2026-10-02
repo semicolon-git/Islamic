@@ -1,0 +1,90 @@
+{
+ "id": "answer:ramadan_start",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "C",
+ "certainty": "disputed",
+ "title_en": "When does Ramadan begin?",
+ "title_ar": "متى يبدأ شهر رمضان؟",
+ "match_phrases": [
+  "when does ramadan start",
+  "when does ramadan begin",
+  "how is the start of ramadan decided",
+  "moon sighting ramadan",
+  "why does ramadan change every year",
+  "متى يبدأ رمضان",
+  "كيف يحدد بداية رمضان",
+  "رؤية الهلال",
+  "متى يبدأ شهر رمضان"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level C: sighting vs calculation and local vs global sighting described with no preference."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:189",
+    "role": "primary"
+   },
+   {
+    "key": "2:185",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:1909"
+   },
+   {
+    "id": "muslim:1081"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "2:189",
+    "excerpt_ar": "ذكر أن رسول الله ﷺ سُئل عن زيادة الأهلة ونقصانها واختلاف أحوالها، فأنزل الله تعالى ذكره هذه الآية، جوابا لًهُم فيما سألوا عنه.",
+    "excerpt_en": "It is reported that the Messenger of Allah ﷺ was asked about the waxing and waning of the new moons and their changing states, and Allah revealed this verse in answer to what they asked. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/2/189.json"
+   }
+  ],
+  "explanation": {
+   "en": "The Islamic calendar is lunar: the Quran describes the new crescents as markers of time for people and for the pilgrimage (2:189). Ramadan, the month in which the Quran was revealed (2:185), begins with the new crescent: the Prophet ﷺ told people to start and end the fast on sighting it, and to complete the count of thirty days if it is hidden by cloud (al-Bukhari 1909; Muslim 1081). How the start is established today differs between communities; see the note on differing views.",
+   "ar": "التقويم الهجري قمري: يصف القرآن الأهلة بأنها مواقيت للناس والحج (البقرة ١٨٩). ويبدأ رمضان، الشهر الذي نزل فيه القرآن (البقرة ١٨٥)، بالهلال الجديد: فقد أمر النبي ﷺ بالصيام والفطر لرؤيته، وبإكمال العدة ثلاثين يومًا إن حال دونه الغيم (البخاري ١٩٠٩؛ مسلم ١٠٨١). أما طريقة إثبات بداية الشهر اليوم فتختلف بين المجتمعات؛ انظر بيان اختلاف الآراء."
+  },
+  "disagreement_note": {
+   "en": "Scholars and communities differ on how to establish the start of the month, and we state no preference. (1) Many rely on an actual sighting of the crescent, as described in the hadith. (2) Some accept astronomical calculation, either fully or to rule out sightings that are impossible. (3) They also differ on whether a sighting in one country applies to others, or each region follows its own sighting. Local religious authorities announce the start for their communities.",
+   "ar": "يختلف العلماء والمجتمعات في طريقة إثبات بداية الشهر، ولا نرجّح بين الأقوال. (١) يعتمد كثيرون على الرؤية الفعلية للهلال كما في الحديث. (٢) ويقبل بعضهم الحساب الفلكي، إما مطلقًا وإما لنفي رؤية مستحيلة. (٣) ويختلفون كذلك في سريان الرؤية في بلد على غيره، أو أن لكل بلد رؤيته. وتعلن الجهات الدينية المحلية بداية الشهر لمجتمعاتها."
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:moon",
+   "answer:fasting",
+   "answer:why_rulings_differ"
+  ],
+  "sensitivity_flags": [
+   "level-c-fiqh",
+   "no-tarjih"
+  ]
+ }
+}

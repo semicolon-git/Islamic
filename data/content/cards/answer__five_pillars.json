@@ -1,0 +1,61 @@
+{
+ "id": "answer:five_pillars",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "A",
+ "certainty": "established",
+ "title_en": "What are the five pillars of Islam?",
+ "title_ar": "ما أركان الإسلام الخمسة؟",
+ "match_phrases": [
+  "what are the five pillars",
+  "five pillars of islam",
+  "pillars of islam",
+  "what do muslims have to do",
+  "main practices of islam",
+  "أركان الإسلام",
+  "ما أركان الإسلام الخمسة",
+  "أركان الإسلام الخمسة",
+  "بني الإسلام على خمس"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "al-Bukhari 8 checked; order follows that narration."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [],
+  "hadith": [
+   {
+    "id": "bukhari:8"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "The Prophet ﷺ said that Islam is built on five: bearing witness that there is no god but Allah and that Muhammad is the Messenger of Allah; establishing the prayer; giving zakat, the obligatory charity; the pilgrimage (Hajj); and fasting in Ramadan (al-Bukhari 8). Muslims call these the five pillars of Islam.",
+   "ar": "أخبر النبي ﷺ أن الإسلام بُني على خمس: شهادة أن لا إله إلا الله وأن محمدًا رسول الله، وإقام الصلاة، وإيتاء الزكاة، والحج، وصوم رمضان (البخاري ٨). ويسمّيها المسلمون أركان الإسلام الخمسة."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "islam",
+   "ibadah"
+  ],
+  "related_cards": [
+   "answer:fasting",
+   "answer:tawhid"
+  ],
+  "sensitivity_flags": []
+ }
+}

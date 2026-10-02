@@ -1,0 +1,75 @@
+{
+ "id": "answer:who_is_muhammad",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Who is Muhammad ﷺ?",
+ "title_ar": "من هو محمد ﷺ؟",
+ "match_phrases": [
+  "who is muhammad",
+  "who was muhammad",
+  "who is the prophet muhammad",
+  "who was the prophet of islam",
+  "what does pbuh mean",
+  "what does ﷺ mean",
+  "من هو محمد",
+  "من هو النبي محمد",
+  "من هو رسول الله",
+  "نبي الإسلام"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "33:40",
+    "role": "primary"
+   },
+   {
+    "key": "21:107",
+    "role": "supporting"
+   },
+   {
+    "key": "68:4",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:3"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "For Muslims, Muhammad ﷺ is the Messenger of Allah and the last of the prophets (33:40). He used to retreat to worship in the cave of Hira near Makkah, and it was there that the angel came to him with the first revelation of the Quran (al-Bukhari 3). The Quran says he was sent as a mercy to all the worlds (21:107), and praises his great moral character (68:4). The sign ﷺ after his name stands for a prayer: may Allah bless him and grant him peace.",
+   "ar": "محمد ﷺ عند المسلمين رسولٌ من عند الله، وآخر الأنبياء (الأحزاب ٤٠). وكان يخلو للعبادة في غار حراء قرب مكة، وهناك جاءه الملَك بأول الوحي من القرآن (البخاري ٣). ويخبر القرآن أنه أُرسل رحمة للعالمين (الأنبياء ١٠٧)، ويثني على خُلُقه العظيم (القلم ٤). والرمز ﷺ بعد اسمه دعاء معناه: صلّى الله عليه وسلّم."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "nubuwwah",
+   "wahy"
+  ],
+  "related_cards": [
+   "answer:quran_authorship",
+   "answer:what_is_quran"
+  ],
+  "sensitivity_flags": []
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "id": "card:pen",
+ "kind": "concept",
+ "concept_id": "pen",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Pen",
+ "title_ar": "القلم",
+ "match_phrases": [
+  "pen",
+  "writing",
+  "read",
+  "القلم",
+  "الكتابة",
+  "اقرأ"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked keys; 96:2 deliberately not shown (kept away from embryology framing)."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "96:1",
+    "role": "primary"
+   },
+   {
+    "key": "96:3",
+    "role": "supporting"
+   },
+   {
+    "key": "96:4",
+    "role": "supporting"
+   },
+   {
+    "key": "96:5",
+    "role": "supporting"
+   },
+   {
+    "key": "68:1",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:3"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "96:4",
+    "excerpt_ar": "يقول: اقرأ يا محمد وربك الأكرم ﴿الَّذِي عَلَّمَ بِالْقَلَمِ﴾ خَلْقَهُ للكتابة والخط.",
+    "excerpt_en": "He says: Read, O Muhammad, for your Lord is the Most Generous, who taught His creation by the pen to write and to inscribe. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/96/4.json"
+   }
+  ],
+  "explanation": {
+   "en": "In al-Bukhari's account of how revelation began, the angel's first word to Muhammad ﷺ in the cave of Hira was \"Read!\", and he answered that he was not one who could read (al-Bukhari 3). The verses revealed then begin with reading in the name of the Lord who created (96:1), and praise the Most Generous, who taught by the pen and taught people what they did not know (96:3–5). Another chapter opens with an oath by the pen and by what people write (68:1).",
+   "ar": "في رواية البخاري لبدء الوحي، كانت أول كلمة قالها الملَك لمحمد ﷺ في غار حراء: «اقرأ»، فأجاب بأنه ليس بقارئ (البخاري ٣). وتبدأ الآيات التي نزلت حينئذ بالأمر بالقراءة باسم الرب الذي خلق (العلق ١)، وتثني على كرم الله الذي جعل القلم وسيلة للتعليم، وعلّم الناس ما كانوا يجهلون (العلق ٣–٥). وتُفتتح سورة أخرى بالقسم بالقلم وبما يكتبه الناس (القلم ١)."
+  },
+  "show_count": true,
+  "glossary_terms": [
+   "wahy"
+  ],
+  "related_cards": [
+   "card:pen_and_ink",
+   "card:illuminated_mushaf",
+   "answer:what_is_quran"
+  ],
+  "sensitivity_flags": [
+   "no-embryology-framing",
+   "do-not-explain-nun"
+  ]
+ }
+}

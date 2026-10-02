@@ -1,0 +1,68 @@
+{
+ "id": "card:geometric_pattern",
+ "kind": "art",
+ "concept_id": "geometric_pattern",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Geometric Patterns",
+ "title_ar": "الزخارف الهندسية",
+ "match_phrases": [
+  "geometric pattern",
+  "islamic geometry",
+  "star pattern",
+  "زخارف هندسية",
+  "الزخرفة الهندسية"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "No verse by design. Historical note sourced (Necipoğlu 1995; Lu & Steinhardt 2007)."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [],
+  "hadith": [],
+  "tafsir": [],
+  "explanation": {
+   "en": "Interlacing star and polygon patterns are among the most recognisable features of art across the Muslim world, on tiles, woodwork, plaster, metal and book covers. Craftsmen built them with a compass and a straightedge on simple grids, so that one small repeating unit can cover a whole wall. No verse is attached to this card: the pattern is an art form, and the card presents its history.",
+   "ar": "الزخارف النجمية والمضلعة المتشابكة من أوضح سمات الفن في العالم الإسلامي، على البلاطات والأخشاب والجص والمعادن وجلود الكتب. وكان الصنّاع يرسمونها بالفرجار والمسطرة على شبكات بسيطة، فتكفي وحدة صغيرة متكررة لتغطية جدار كامل. ولا تُرفق بهذه البطاقة آية: فهذه الزخرفة فنّ، والبطاقة تعرض تاريخه."
+  },
+  "civilizational_note": {
+   "en": "Pattern scrolls such as the Topkapı Scroll show how master builders designed these patterns on paper. Some later patterns, for example on the Darb-i Imam shrine in Isfahan (1453), use five- and ten-fold symmetry in ways that mathematicians have studied closely.",
+   "ar": "تبيّن لفائف التصاميم، مثل لفافة طوب قابي، كيف كان كبار البنّائين يرسمون هذه الزخارف على الورق. وتستعمل بعض الزخارف المتأخرة، كما في مزار درب إمام في أصفهان (١٤٥٣م)، تناظرًا خماسيًا وعشاريًا درسه علماء الرياضيات عن قرب.",
+   "sources": [
+    {
+     "citation": "Necipoğlu, G. (1995). The Topkapı Scroll: Geometry and Ornament in Islamic Architecture. Santa Monica: Getty Center for the History of Art and the Humanities.",
+     "kind": "academic"
+    },
+    {
+     "citation": "Lu, P. J., & Steinhardt, P. J. (2007). Decagonal and quasi-crystalline tilings in medieval Islamic architecture. Science, 315(5815), 1106–1110.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:arabesque",
+   "card:muqarnas"
+  ],
+  "sensitivity_flags": [
+   "historical-non-sharia",
+   "no-verse-by-design",
+   "image-question-is-level-c"
+  ]
+ }
+}

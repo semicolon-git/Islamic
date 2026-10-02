@@ -1,0 +1,81 @@
+{
+ "id": "answer:what_is_quran",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "A",
+ "certainty": "established",
+ "title_en": "What is the Quran?",
+ "title_ar": "ما هو القرآن؟",
+ "match_phrases": [
+  "what is the quran",
+  "what is the koran",
+  "what is the holy book of islam",
+  "what language is the quran in",
+  "what does the quran contain",
+  "ما هو القرآن",
+  "ما القرآن",
+  "تعريف القرآن",
+  "كتاب المسلمين"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys against KFGQPC, hadith numbers and the tafsir excerpt."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:185",
+    "role": "primary"
+   },
+   {
+    "key": "12:2",
+    "role": "supporting"
+   },
+   {
+    "key": "2:2",
+    "role": "supporting"
+   },
+   {
+    "key": "15:9",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:3"
+   },
+   {
+    "id": "bukhari:5027"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "The Quran is the scripture of Islam, which Muslims believe is the word of Allah revealed to Muhammad ﷺ, beginning in the month of Ramadan as guidance for people (2:185). It was revealed in Arabic so that people might understand (12:2); it calls itself a Book in which there is no doubt, guidance for the mindful (2:2), and says that Allah Himself will preserve it (15:9). Its revelation began in the cave of Hira when the angel brought the first verses to the Prophet ﷺ (al-Bukhari 3), and he told his followers that the best among them are those who learn the Quran and teach it (al-Bukhari 5027). The Arabic text in this app comes from the King Fahd Complex in Madinah, and every translation is labelled as a translation of the meaning.",
+   "ar": "القرآن كتاب الإسلام، ويؤمن المسلمون بأنه كلام الله أُنزل على محمد ﷺ، وبدأ نزوله في شهر رمضان هدايةً للناس (البقرة ١٨٥). وأُنزل بلسان عربي ليعقله الناس (يوسف ٢)، ويصف نفسه بأنه كتاب لا شك فيه، يهدي المتقين (البقرة ٢)، ويخبر أن الله تكفّل بحفظه (الحجر ٩). وبدأ نزوله في غار حراء حين جاء الملَك بأول آياته إلى النبي ﷺ (البخاري ٣)، وأخبر النبي ﷺ أن خير أمته من تعلّم القرآن وعلّمه (البخاري ٥٠٢٧). والنص العربي في هذا التطبيق مأخوذ من مجمع الملك فهد في المدينة المنورة، وكل ترجمة موسومة بأنها ترجمة للمعاني."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "wahy"
+  ],
+  "related_cards": [
+   "answer:quran_authorship",
+   "card:illuminated_mushaf",
+   "card:pen"
+  ],
+  "sensitivity_flags": []
+ }
+}

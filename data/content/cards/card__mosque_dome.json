@@ -1,0 +1,98 @@
+{
+ "id": "card:mosque_dome",
+ "kind": "art",
+ "concept_id": "mosque_dome",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Mosque and its Dome",
+ "title_ar": "المسجد وقبته",
+ "match_phrases": [
+  "mosque",
+  "dome",
+  "masjid",
+  "المسجد",
+  "القبة",
+  "الجامع"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked keys and both excerpts. 9:18 left out (reads as exclusionary next to the visiting question)."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "72:18",
+    "role": "primary"
+   },
+   {
+    "key": "24:36",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "72:18",
+    "excerpt_ar": "ولا تشركوا به فيها شيئا، ولكن أفردوا له التوحيد، وأخلصوا له العبادة.",
+    "excerpt_en": "Associate nothing with Him in them; single Him out in worship and make your worship sincerely His. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/72/18.json"
+   },
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "24:36",
+    "excerpt_ar": "وعنى بالبيوت المساجد.",
+    "excerpt_en": "By \"houses\" He meant the mosques. (Researcher's paraphrase of al-Tabari; some early commentators read it as all houses.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/24/36.json"
+   }
+  ],
+  "explanation": {
+   "en": "A mosque is first of all a place of prayer. The Quran says the mosques belong to Allah, so no one is to be called upon there alongside Him (72:18). It speaks of houses that Allah has permitted to be raised and in which His name is remembered, morning and evening (24:36), and al-Tabari explains that these houses are the mosques. Domes are one of many forms mosque architecture has taken.",
+   "ar": "المسجد قبل كل شيء مكان للصلاة. ويقرر القرآن أن المساجد لله، فلا يُدعى فيها أحد معه (الجن ١٨). ويذكر بيوتًا أذن الله أن تُبنى ويُذكر اسمه فيها صباحًا ومساءً (النور ٣٦)، ويبيّن الطبري أن المراد بهذه البيوت المساجد. والقباب شكل من أشكال كثيرة اتخذتها عمارة المساجد."
+  },
+  "civilizational_note": {
+   "en": "Large central domes became a hallmark of the great Ottoman mosques, above all those designed by the architect Sinan in the sixteenth century.",
+   "ar": "صارت القباب المركزية الكبيرة سمةً بارزة للجوامع العثمانية الكبرى، ولا سيما التي صمّمها المعمار سنان في القرن السادس عشر الميلادي.",
+   "sources": [
+    {
+     "citation": "Necipoğlu, G. (2005). The Age of Sinan: Architectural Culture in the Ottoman Empire. London: Reaktion Books.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "tawhid"
+  ],
+  "related_cards": [
+   "answer:visit_mosque",
+   "card:minaret_call_to_prayer",
+   "card:mihrab"
+  ],
+  "sensitivity_flags": [
+   "pair-with-visiting-question"
+  ]
+ }
+}

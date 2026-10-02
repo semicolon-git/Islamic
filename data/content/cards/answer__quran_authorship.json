@@ -1,0 +1,109 @@
+{
+ "id": "answer:quran_authorship",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "B",
+ "certainty": "established",
+ "title_en": "Did Muhammad write the Quran?",
+ "title_ar": "هل ألّف محمد ﷺ القرآن؟",
+ "match_phrases": [
+  "did muhammad write the quran",
+  "who wrote the quran",
+  "who is the author of the quran",
+  "did the prophet make up the quran",
+  "is the quran written by muhammad",
+  "how do muslims know the quran is from god",
+  "is the quran man made",
+  "هل كتب محمد القرآن",
+  "من ألف القرآن",
+  "من كتب القرآن",
+  "هل القرآن من تأليف محمد",
+  "هل القرآن كلام محمد",
+  "مصدر القرآن"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level B: presents the evidence the sources give, without polemic or i'jaz padding."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "29:48",
+    "role": "primary"
+   },
+   {
+    "key": "10:16",
+    "role": "supporting"
+   },
+   {
+    "key": "2:23",
+    "role": "supporting"
+   },
+   {
+    "key": "4:82",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:3"
+   }
+  ],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "29:48",
+    "excerpt_ar": "ولم تكن تكتب بيمينك، ولكنك كنت أمِّيًّا",
+    "excerpt_en": "You did not write with your right hand; rather, you were unlettered. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/29/48.json"
+   },
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "4:82",
+    "excerpt_ar": "لاتِّساق معانيه، وائتلاف أحكامه، وتأييد بعضه بعضًا بالتصديق، وشهادة بعضه لبعض بالتحقيق",
+    "excerpt_en": "Because its meanings are consistent, its rulings fit together, and its parts confirm and bear witness to one another. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/4/82.json"
+   }
+  ],
+  "explanation": {
+   "en": "Muslims believe the Quran is the word of Allah revealed to Muhammad ﷺ, not something he composed. The Quran points out that before it he did not recite any scripture or write one with his hand (29:48), and that he had lived among his people for a lifetime before it came (10:16); in al-Bukhari's account of the first revelation, he told the angel he was not one who could read (al-Bukhari 3). The Quran invites anyone in doubt to bring a chapter like it (2:23), and to reflect on it, saying that a text from anyone other than Allah would contain much inconsistency (4:82). These are the reasons the sources themselves give, and readers are welcome to examine them for themselves.",
+   "ar": "يؤمن المسلمون بأن القرآن كلام الله أُنزل على محمد ﷺ، وليس من تأليفه. ويذكر القرآن أنه لم يكن قبله يتلو كتابًا ولا يخطّه بيده (العنكبوت ٤٨)، وأنه لبث في قومه عمرًا قبل نزوله (يونس ١٦)؛ وفي رواية البخاري لبدء الوحي أنه أجاب الملَك بأنه ليس بقارئ (البخاري ٣). ويدعو القرآن من كان في شك منه أن يأتي بسورة مثله (البقرة ٢٣)، ويدعو إلى تدبّره، ويقرر أنه لو كان من مصدر آخر غير الله لظهر فيه تناقض كثير (النساء ٨٢). هذه هي الأسباب التي تذكرها المصادر نفسها، وللقارئ أن ينظر فيها بنفسه."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "wahy",
+   "nubuwwah"
+  ],
+  "related_cards": [
+   "answer:what_is_quran",
+   "answer:who_is_muhammad",
+   "card:pen"
+  ],
+  "sensitivity_flags": [
+   "no-ijaz-framing",
+   "no-polemic"
+  ]
+ }
+}

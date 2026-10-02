@@ -1,0 +1,79 @@
+{
+ "id": "card:astrolabe",
+ "kind": "art",
+ "concept_id": "astrolabe",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "The Astrolabe",
+ "title_ar": "الأسطرلاب",
+ "match_phrases": [
+  "astrolabe",
+  "الأسطرلاب",
+  "الاسطرلاب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_omar",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Historical card (King 1996). 6:97 is a reflection, not a description of the instrument."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "6:97",
+    "role": "primary"
+   }
+  ],
+  "hadith": [],
+  "tafsir": [
+   {
+    "source_id": "tabari",
+    "book_ar": "جامع البيان عن تأويل آي القرآن",
+    "book_en": "Jami' al-Bayan 'an Ta'wil Ay al-Quran",
+    "author_ar": "ابن جرير الطبري (ت ٣١٠هـ)",
+    "author_en": "al-Tabari (d. 310 AH)",
+    "verse_key": "6:97",
+    "excerpt_ar": "والله الذي جعل لكم، أيها الناس، النجوم أدلةً في البر والبحر إذا ضللتم الطريق، أو تحيرتم فلم تهتدوا فيها ليلا تستدلّون بها على المحجَّة، فتهتدون بها إلى الطريق والمحجة",
+    "excerpt_en": "Allah made the stars signposts for you on land and sea: when you lose your way, or are unsure of the road at night, you take your bearings from them and so find the path. (Researcher's paraphrase of al-Tabari.)",
+    "url": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/ar-tafsir-al-tabari/6/97.json"
+   }
+  ],
+  "explanation": {
+   "en": "An astrolabe is a hand-held model of the sky: brass plates and a rotating star map used to tell the time from the sun or the stars, to measure a star's height, and to solve many problems of astronomy. The Quran speaks of the stars as guides through the darkness of land and sea (6:97); the verse is offered here as a reflection, not as a description of the instrument. Building on Greek models, scholars and craftsmen in the Muslim world refined the astrolabe and used it in timekeeping, including the times of prayer, and in finding the qibla.",
+   "ar": "الأسطرلاب نموذج للسماء يُحمل باليد: صفائح نحاسية وخريطة نجوم دوّارة، تُعرف بها الساعة من الشمس أو النجوم، ويُقاس بها ارتفاع النجم، وتُحلّ بها مسائل فلكية كثيرة. ويذكر القرآن النجوم هاديةً للناس في ظلمة الليل برًّا وبحرًا (الأنعام ٩٧)، والآية هنا للتأمل، لا وصفًا للآلة. وقد طوّر العلماء والصنّاع في العالم الإسلامي الأسطرلاب بناءً على نماذج يونانية، واستعملوه في ضبط الأوقات، ومنها أوقات الصلاة، وفي تحديد القبلة."
+  },
+  "civilizational_note": {
+   "en": "Timekeeping by the sun and stars for the daily prayers, and finding the direction of the qibla, became specialised sciences in Muslim civilisation, served by instruments such as the astrolabe.",
+   "ar": "صار ضبط الأوقات بالشمس والنجوم لأجل الصلوات اليومية، وتحديد جهة القبلة، علومًا متخصصة في الحضارة الإسلامية، خدمتها آلات مثل الأسطرلاب.",
+   "sources": [
+    {
+     "citation": "King, D. A. (1996). Astronomy and Islamic society: Qibla, gnomonics and timekeeping. In R. Rashed (Ed.), Encyclopedia of the History of Arabic Science, vol. 1. London: Routledge.",
+     "kind": "academic"
+    }
+   ]
+  },
+  "show_count": false,
+  "glossary_terms": [],
+  "related_cards": [
+   "card:stars",
+   "card:shadow"
+  ],
+  "sensitivity_flags": [
+   "historical-non-sharia",
+   "verse-as-reflection-only",
+   "category-level-only"
+  ]
+ }
+}

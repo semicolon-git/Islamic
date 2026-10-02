@@ -1,0 +1,70 @@
+{
+ "id": "answer:why_rulings_differ",
+ "kind": "answer",
+ "concept_id": null,
+ "level": "B",
+ "certainty": "established",
+ "title_en": "Why do scholars' rulings differ?",
+ "title_ar": "لماذا تختلف آراء العلماء؟",
+ "match_phrases": [
+  "why do scholars disagree",
+  "why do scholars' rulings differ",
+  "why are there different opinions in islam",
+  "why do muslims disagree on rulings",
+  "different madhhabs",
+  "why so many fatwas",
+  "لماذا يختلف العلماء",
+  "لماذا تختلف الفتاوى",
+  "سبب اختلاف العلماء",
+  "اختلاف المذاهب"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Level B (a question about disagreement, not a disputed ruling). Hadith texts read: 7352 / 1716 and 946."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [],
+  "hadith": [
+   {
+    "id": "bukhari:7352"
+   },
+   {
+    "id": "muslim:1716"
+   },
+   {
+    "id": "bukhari:946"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "Muslim scholars share the same sources, the Quran and the Sunnah, but a text can sometimes be understood in more than one sound way, and new situations call for careful reasoning (ijtihad). The Prophet ﷺ said that when a judge strives to reach the right judgement and gets it right he has two rewards, and when he strives and errs he still has one reward (al-Bukhari 7352; Muslim 1716). Once he told his companions not to pray the afternoon prayer until they reached Banu Qurayza; when the time came on the way, some prayed and some waited, and he blamed neither group (al-Bukhari 946).",
+   "ar": "يرجع علماء المسلمين إلى المصادر نفسها، القرآن والسنة، لكن النص قد يحتمل أكثر من فهم سائغ، وتحتاج الوقائع الجديدة إلى اجتهاد. وقد أخبر النبي ﷺ أن الحاكم إذا اجتهد فأصاب فله أجران، وإذا اجتهد فأخطأ فله أجر (البخاري ٧٣٥٢؛ مسلم ١٧١٦). وأمر أصحابه ألّا يصلّوا العصر إلا في بني قريظة، فأدركتهم الصلاة في الطريق، فصلّى بعضهم وأخّر بعضهم، فلم يعنّف أحدًا من الفريقين (البخاري ٩٤٦)."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "sunnah",
+   "fatwa"
+  ],
+  "related_cards": [
+   "answer:ramadan_start"
+  ],
+  "sensitivity_flags": [
+   "question-about-disagreement-is-level-b",
+   "no-tarjih"
+  ]
+ }
+}
