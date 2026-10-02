@@ -130,7 +130,7 @@ def near_hits(qtoks, q):
     return out
 
 
-def diff_words(qtoks, s, e):  
+def diff_words(qtoks, s, e):  # normalised skeleton words (no marks/alef); the UI shows canonical_uthmani
     sm = difflib.SequenceMatcher(None, qtoks, TOKS[s:e + 1], autojunk=False)
     return [{'op': op, 'given': ' '.join(qtoks[a1:a2]), 'quran': ' '.join(TOKS[s:e + 1][b1:b2])}
             for op, a1, a2, b1, b2 in sm.get_opcodes() if op != 'equal']
