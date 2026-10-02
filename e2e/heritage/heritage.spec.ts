@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { expectAccessible, setLang } from "../helpers";
+import { settle } from "./settle";
 
 test.describe("Heritage home & items", () => {
   test("home shows the code entry, published objects, art forms and manuscripts", async ({ page }) => {
@@ -10,6 +11,7 @@ test.describe("Heritage home & items", () => {
     expect(codes).toEqual(["AST-7", "LMP-3", "QMS-1"]); // TIL-2 is still awaiting the researcher
     await expect(page.getByTestId("art-tile").first()).toBeVisible();
     await expect(page.getByTestId("manuscripts-section")).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
   });
 
@@ -23,6 +25,7 @@ test.describe("Heritage home & items", () => {
     await expect(page.getByText("Generated illustration — not the actual object")).toBeVisible();
     await expect(page.getByTestId("item-institution")).toHaveText("Al-Noor Manuscript Library (demo)");
     await expect(page.getByRole("link", { name: "Ask about this object" })).toHaveAttribute("href", "/ask?item=AST-7");
+    await settle(page);
     await expectAccessible(page);
   });
 
@@ -82,10 +85,12 @@ test.describe("Heritage home & items", () => {
     await page.goto("/heritage");
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
     await expect(page.getByRole("heading", { level: 1, name: "حكايات تحملها المقتنيات" })).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
     await page.goto("/heritage/item/AST-7");
     await expect(page.getByRole("heading", { level: 1, name: "أسطرلاب مسطّح" })).toBeVisible();
     await expect(page.getByTestId("generated-label")).toHaveText("صورة توضيحية (مولَّدة)");
+    await settle(page);
     await expectAccessible(page);
   });
 });

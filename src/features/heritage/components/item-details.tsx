@@ -48,7 +48,8 @@ export function ItemDetails({ value, options, itemId, editable }: { value: ItemF
                 )}
               </div>
               <figcaption className="mt-1 text-[0.72rem] text-ink-3 leading-snug">
-                <bdi>{im.credit}</bdi> · <bdi>{im.license}</bdi>
+                <span dir="auto" className="block">{im.credit}</span>
+                <span dir="auto" className="block">{im.license}</span>
               </figcaption>
             </figure>
           ))}

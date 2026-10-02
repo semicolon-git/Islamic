@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { expectAccessible, loginAs, setLang } from "../helpers";
+import { settle } from "./settle";
 
 // A real (tiny) PNG: the server re-encodes it with sharp and strips metadata.
 const PNG = Buffer.from(
@@ -18,6 +19,7 @@ test.describe("Portal: heritage items", () => {
   test("register → submit → approve → publish → QR label", async ({ page }) => {
     await as(page, "u_sara", "/portal/items");
     await expect(page.getByRole("heading", { level: 1, name: "Heritage items" })).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
     await page.getByTestId("register-item").click();
     await expect(page.getByRole("heading", { level: 1, name: "Register an item" })).toBeVisible();
@@ -35,6 +37,7 @@ test.describe("Portal: heritage items", () => {
     await expect(page.getByText("Every image needs a licence and a credit line.").first()).toBeVisible();
     await page.getByTestId("image-license").selectOption({ label: "Institution's own photo, all rights reserved" });
     await page.getByTestId("image-credit").fill("Photo © Al-Noor Library (demo)");
+    await settle(page);
     await expectAccessible(page);
     await page.getByTestId("item-save").click();
 
@@ -55,6 +58,7 @@ test.describe("Portal: heritage items", () => {
     const code = (await page.getByTestId("item-code").textContent())!.trim();
     expect(code).toMatch(/^MTL-\d+$/);
     await expect(page.getByTestId("item-qr").locator("svg")).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
 
     await page.getByTestId("print-label").click();
@@ -65,6 +69,7 @@ test.describe("Portal: heritage items", () => {
     await expect(label).toContainText("Brass Quran stand (demo)");
     await expect(label).toContainText("Photo © Al-Noor Library (demo)");
     await expect(label.locator("svg").first()).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
 
     // Live in the visitor app under its new code (typed forgivingly).
@@ -107,6 +112,7 @@ test.describe("Portal: heritage items", () => {
     const row = panel.getByTestId("inscription-row").filter({ hasText: "لتهتدوا" });
     await expect(row).toHaveAttribute("data-status", "suggested");
     await expect(row.getByText("Someone other than the reader confirms.")).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
 
     // Not visible to visitors until confirmed.
@@ -128,6 +134,7 @@ test.describe("Portal: heritage items", () => {
     await expect(page.getByRole("heading", { level: 1, name: "مقتنيات التراث" })).toBeVisible();
     await page.goto("/portal/items/item_tile");
     await expect(page.getByTestId("workflow-panel")).toContainText("اعتماد");
+    await settle(page);
     await expectAccessible(page);
   });
 

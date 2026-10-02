@@ -168,9 +168,12 @@ export function HeritageExplorer({ items }: { items: ItemSummary[] }) {
                 toast({ tone: "info", text: t("heritage.venue.left") });
               }}
               data-testid="leave-venue"
+              aria-label={t("heritage.venue.leave")}
+              title={t("heritage.venue.leave")}
+              className="shrink-0 size-11 px-0 sm:size-auto sm:h-9 sm:px-3"
             >
               <X className="size-4" aria-hidden />
-              {t("heritage.venue.leave")}
+              <span className="hidden sm:inline">{t("heritage.venue.leave")}</span>
             </Button>
           </div>
         ) : (

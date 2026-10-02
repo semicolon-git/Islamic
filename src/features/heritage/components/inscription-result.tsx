@@ -137,7 +137,7 @@ function Candidate({ c, primary }: { c: ViewCandidate; primary: boolean }) {
   const { t, locale } = useI18n();
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid gap-3 md:grid-cols-2">
+      <div className="grid gap-3 md:grid-cols-2 items-start">
         <section className="rounded-[var(--radius-lg)] border border-line bg-sand/60 p-4" aria-label={t("heritage.ins.reads")}>
           <h3 className="text-xs font-semibold uppercase tracking-wider text-sand-ink mb-1">{t("heritage.ins.reads")}</h3>
           <Words words={c.alignment.inscription} testId={primary ? "near-inscription" : "near-inscription-alt"} />

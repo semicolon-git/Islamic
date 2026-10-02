@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { expectAccessible, setLang } from "../helpers";
+import { settle } from "./settle";
 
 const input = (page: import("@playwright/test").Page) => page.getByTestId("inscription-input");
 const result = (page: import("@playwright/test").Page) => page.getByTestId("inscription-result");
@@ -8,6 +9,7 @@ test.describe("Read an inscription", () => {
   test("Light Verse opening → exact 24:35 with the verse and its translation", async ({ page }) => {
     await page.goto("/inscription");
     await expect(page.getByRole("heading", { level: 1, name: "Read an inscription" })).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
     await input(page).fill("الله نور السموات والأرض مثل نوره");
     await page.getByRole("button", { name: "Check the text" }).click();
@@ -17,6 +19,7 @@ test.describe("Read an inscription", () => {
     await expect(page.getByTestId("coverage")).toHaveText("Part of the verse");
     await expect(result(page).locator("blockquote.quran")).toBeVisible();
     await expect(result(page).getByText("Translation of the meaning · Saheeh International")).toBeVisible();
+    await settle(page);
     await expectAccessible(page);
   });
 
@@ -42,6 +45,7 @@ test.describe("Read an inscription", () => {
     await expect(page.getByTestId("differences").locator("tbody tr")).toHaveCount(2);
     // Never call the inscription "wrong".
     await expect(result(page)).not.toContainText(/wrong|incorrect|error/i);
+    await settle(page);
     await expectAccessible(page);
   });
 
@@ -77,6 +81,7 @@ test.describe("Read an inscription", () => {
     await kb.getByRole("button", { name: "ه", exact: true }).click();
     await kb.getByRole("button", { name: "Delete a letter" }).click();
     await expect(input(page)).toHaveValue("قل ");
+    await settle(page);
     await expectAccessible(page);
   });
 
@@ -95,6 +100,7 @@ test.describe("Read an inscription", () => {
     await expect(page.getByRole("heading", { level: 1, name: "اقرأ نقشًا" })).toBeVisible();
     await page.getByRole("button", { name: "مطلع آية النور" }).click();
     await expect(result(page).getByRole("heading", { level: 2 })).toHaveText("هذا النقش يقتبس من سورة النور، الآية ٣٥");
+    await settle(page);
     await expectAccessible(page);
   });
 });

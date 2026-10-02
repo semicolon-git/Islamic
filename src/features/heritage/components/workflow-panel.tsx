@@ -132,7 +132,7 @@ export function WorkflowPanel({
                   {t(`heritage.wf.decision.${h.decision}`)}
                 </span>
                 <span className="block text-xs text-ink-3">{fmtDate(h.created_at, locale, { dateStyle: "medium", timeStyle: "short" })}</span>
-                {h.note && <span className="block text-ink-2 mt-0.5">“{h.note}”</span>}
+                {h.note && <span dir="auto" className="block text-ink-2 mt-0.5 italic">{h.note}</span>}
               </li>
             ))}
           </ol>
