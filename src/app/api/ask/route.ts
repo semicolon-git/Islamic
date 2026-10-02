@@ -20,7 +20,7 @@ const Input = z.object({
  */
 export const POST = handler(async (req: Request) => {
   const ip = (req.headers.get("x-forwarded-for") ?? "local").split(",")[0].trim();
-  if (!rateLimit(`ask:${ip}`, 30, 60_000)) return fail(429, "rate_limited", "Too many questions in a short time. Please wait a minute.");
+  if (!rateLimit(`ask:${ip}`, 60, 60_000)) return fail(429, "rate_limited", "Too many questions in a short time. Please wait a minute.");
   const input = await body(req, Input);
 
   if (!(req.headers.get("accept") ?? "").includes("application/x-ndjson")) {
