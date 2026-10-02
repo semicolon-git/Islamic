@@ -4,6 +4,8 @@
  "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
  "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
  "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+ "gt_reliability": "low",
+ "gt_note": "The source transcription of this copy is character-identical (incl. vowel signs and slips) to the Isl. Ms. 22 transcription over ~800 shared words: it was evidently bootstrapped from that copy and re-split into lines, and it does NOT always follow this manuscript. Verified example: on scan 00000016 (our page 01, line l16) the manuscript reads بذأه كمنعه الرجل الفاحش وقد بذأ ويثلث ... (it skips رأى منه حالا كرهها واحتقره وذمه والأرض ذم مرعاها وكبديع), but gt_text has the Michigan wording. Treat gt_text here as an unverified reference text (gt_status reference_unverified).",
  "holding_library": "Staatsbibliothek zu Berlin - Preußischer Kulturbesitz, Orientabteilung",
  "holding_library_ar": "مكتبة الدولة في برلين",
  "shelfmark": "Ms. or. fol. 215 (Ahlwardt 6973)",
@@ -20,7 +22,7 @@
  "pages": [
   {
    "page_id": "sbb-or-fol-215_01",
-   "label": "scan 00000016 (marginal glosses)",
+   "label": "Bāb al-hamza, entries ألاء … بوأ; oblique marginal glosses",
    "folio": null,
    "image": "pages/sbb-or-fol-215_01.jpg",
    "thumb": "thumbs/sbb-or-fol-215_01.jpg",
@@ -39,7 +41,7 @@
   },
   {
    "page_id": "sbb-or-fol-215_02",
-   "label": "scan 00000017 (entries بوأ / بتأ ...)",
+   "label": "Bāb al-hamza, entries بوأ (cont.) … بدأ",
    "folio": null,
    "image": "pages/sbb-or-fol-215_02.jpg",
    "thumb": "thumbs/sbb-or-fol-215_02.jpg",
@@ -58,7 +60,7 @@
   },
   {
    "page_id": "sbb-or-fol-215_03",
-   "label": "scan 00000018 (entries جبأ ...)",
+   "label": "Bāb al-hamza, entries جبأ (cont.) … (incl. جزأ)",
    "folio": null,
    "image": "pages/sbb-or-fol-215_03.jpg",
    "thumb": "thumbs/sbb-or-fol-215_03.jpg",

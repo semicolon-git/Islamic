@@ -4,6 +4,8 @@
  "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
  "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
  "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+ "gt_reliability": "medium",
+ "gt_note": "Independent unvocalised transcription; real copy variants vs. the other two copies, plus some transcriber typos (e.g. لغب for لقب, الحسير for الحسين on page 02, line 1).",
  "holding_library": "Bibliothèque nationale de France, Département des Manuscrits",
  "holding_library_ar": "المكتبة الوطنية الفرنسية، قسم المخطوطات",
  "shelfmark": "Arabe 5341",
@@ -20,7 +22,7 @@
  "pages": [
   {
    "page_id": "bnf-arabe-5341_01",
-   "label": "excerpt page 3 (end of بأبأ ... )",
+   "label": "Bāb al-hamza, entries بأبأ … بطأ",
    "folio": null,
    "image": "pages/bnf-arabe-5341_01.jpg",
    "thumb": "thumbs/bnf-arabe-5341_01.jpg",
@@ -39,7 +41,7 @@
   },
   {
    "page_id": "bnf-arabe-5341_02",
-   "label": "excerpt page 4 (entries بطأ / بكأ)",
+   "label": "Bāb al-hamza, entries بطأ (cont.) … بوأ",
    "folio": null,
    "image": "pages/bnf-arabe-5341_02.jpg",
    "thumb": "thumbs/bnf-arabe-5341_02.jpg",
@@ -58,7 +60,7 @@
   },
   {
    "page_id": "bnf-arabe-5341_03",
-   "label": "excerpt page 5 (entries ثطأ ... )",
+   "label": "Bāb al-hamza, entries ثطأ … (incl. جزأ)",
    "folio": null,
    "image": "pages/bnf-arabe-5341_03.jpg",
    "thumb": "thumbs/bnf-arabe-5341_03.jpg",
@@ -77,7 +79,7 @@
   },
   {
    "page_id": "bnf-arabe-5341_04",
-   "label": "excerpt page 7 (marginal notes)",
+   "label": "Bāb al-hamza, entries حتأ … حلأ; marginal notes",
    "folio": null,
    "image": "pages/bnf-arabe-5341_04.jpg",
    "thumb": "thumbs/bnf-arabe-5341_04.jpg",

@@ -17,11 +17,10 @@ const N = Number(process.env.OCR_WORKERS || 4);
 const crops = JSON.parse(fs.readFileSync(path.join(WORK, 'crops', 'index.json'), 'utf8'));
 const outPath = path.join(WORK, 'ocr.json');
 const out = {};
-const cache = path.join(WORK, 'tesseract-cache');
-fs.mkdirSync(cache, { recursive: true });
 
+// cacheMethod 'none': with a cache, parallel workers raced on the first (cold) run and failed to load 'ara'
 async function makeWorker() {
-  const w = await createWorker('ara', OEM.LSTM_ONLY, { langPath: TESSDATA, gzip: false, cachePath: cache });
+  const w = await createWorker('ara', OEM.LSTM_ONLY, { langPath: TESSDATA, gzip: false, cacheMethod: 'none' });
   await w.setParameters({ tessedit_pageseg_mode: PSM.SINGLE_LINE, preserve_interword_spaces: '1' });
   return w;
 }

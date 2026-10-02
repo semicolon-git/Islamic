@@ -2,7 +2,7 @@
  "page_id": "umich-isl-22_03",
  "manuscript_id": "umich-isl-22",
  "folio": null,
- "label": "excerpt page 3 (entries جشأ / جفأ ... حبأ)",
+ "label": "Bāb al-hamza, entries جشأ … حلأ",
  "image": "pages/umich-isl-22_03.jpg",
  "thumb": "thumbs/umich-isl-22_03.jpg",
  "width": 1343,
@@ -15,6 +15,11 @@
   "source_width": 2393,
   "source_height": 3563,
   "scale": 0.56122
+ },
+ "gt_source": {
+  "by": "OpenITI arabic_ms_data (human transcription, eScriptorium)",
+  "reliability": "medium-high",
+  "note": "Fully vocalised human transcription; spot checks match the image. Occasional dotting/vowel slips."
  },
  "regions": [
   {
@@ -5209,7 +5214,7 @@
    "oem": "LSTM_ONLY",
    "psm": "SINGLE_LINE (7)"
   },
-  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, 6 px padding",
+  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, autocontrast + Otsu binarisation, 6 px padding",
   "cer_page": 0.7647,
   "cer_folded_page": 0.7538,
   "gt_chars": 3574,

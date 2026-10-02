@@ -2,7 +2,7 @@
  "page_id": "umich-isl-22_02",
  "manuscript_id": "umich-isl-22",
  "folio": null,
- "label": "excerpt page 2 (entries باء / بوأ)",
+ "label": "Bāb al-hamza, entries بكأ (cont.) … (incl. بوأ, جزأ)",
  "image": "pages/umich-isl-22_02.jpg",
  "thumb": "thumbs/umich-isl-22_02.jpg",
  "width": 1332,
@@ -15,6 +15,11 @@
   "source_width": 2364,
   "source_height": 3550,
   "scale": 0.563452
+ },
+ "gt_source": {
+  "by": "OpenITI arabic_ms_data (human transcription, eScriptorium)",
+  "reliability": "medium-high",
+  "note": "Fully vocalised human transcription; spot checks match the image. Occasional dotting/vowel slips."
  },
  "regions": [
   {
@@ -4569,7 +4574,7 @@
    "oem": "LSTM_ONLY",
    "psm": "SINGLE_LINE (7)"
   },
-  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, 6 px padding",
+  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, autocontrast + Otsu binarisation, 6 px padding",
   "cer_page": 0.7551,
   "cer_folded_page": 0.7388,
   "gt_chars": 3495,

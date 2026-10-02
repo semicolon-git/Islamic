@@ -48,6 +48,8 @@ _UM22 = 'university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_
 MANUSCRIPTS = [
     {
         'id': 'umich-isl-22',
+        'gt_reliability': 'medium-high',
+        'gt_note': 'Fully vocalised human transcription; spot checks match the image. Occasional dotting/vowel slips.',
         'holding_library': 'University of Michigan Library, Special Collections Research Center (Ann Arbor)',
         'holding_library_ar': 'مكتبة جامعة ميشيغان، آن آربر',
         'shelfmark': 'Isl. Ms. 22',
@@ -80,6 +82,13 @@ MANUSCRIPTS = [
     },
     {
         'id': 'sbb-or-fol-215',
+        'gt_reliability': 'low',
+        'gt_note': 'The source transcription of this copy is character-identical (incl. vowel signs and slips) to the '
+                   'Isl. Ms. 22 transcription over ~800 shared words: it was evidently bootstrapped from that copy and '
+                   're-split into lines, and it does NOT always follow this manuscript. Verified example: on scan '
+                   '00000016 (our page 01, line l16) the manuscript reads بذأه كمنعه الرجل الفاحش وقد بذأ ويثلث ... '
+                   '(it skips رأى منه حالا كرهها واحتقره وذمه والأرض ذم مرعاها وكبديع), but gt_text has the Michigan '
+                   'wording. Treat gt_text here as an unverified reference text (gt_status reference_unverified).',
         'holding_library': 'Staatsbibliothek zu Berlin - Preußischer Kulturbesitz, Orientabteilung',
         'holding_library_ar': 'مكتبة الدولة في برلين',
         'shelfmark': 'Ms. or. fol. 215 (Ahlwardt 6973)',
@@ -106,6 +115,9 @@ MANUSCRIPTS = [
     },
     {
         'id': 'bnf-arabe-5341',
+        'gt_reliability': 'medium',
+        'gt_note': 'Independent unvocalised transcription; real copy variants vs. the other two copies, plus some '
+                   'transcriber typos (e.g. لغب for لقب, الحسير for الحسين on page 02, line 1).',
         'holding_library': 'Bibliothèque nationale de France, Département des Manuscrits',
         'holding_library_ar': 'المكتبة الوطنية الفرنسية، قسم المخطوطات',
         'shelfmark': 'Arabe 5341',

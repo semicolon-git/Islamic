@@ -17,7 +17,9 @@ ALTO notes (eScriptorium export, ALTO v4):
   each such line gets its own synthetic region (polygon = line polygon) whose type is inferred from
   position (margin if the line centre lies outside the main text block, else other); source_type says so.
   Line ids/order follow reading order: title, main, catchword, marginal material, unassigned.
-  Empty CONTENT = segmented but not transcribed (mostly marginal glosses) -> gt_text null.
+  Empty CONTENT = segmented but not transcribed (mostly marginal glosses) -> gt_text null, gt_status untranscribed.
+  gt_status is 'reference_unverified' for copies whose source transcription is known to be derived from
+  another copy (config gt_reliability == 'low'), else 'transcribed'.
 """
 import json
 import math
@@ -163,6 +165,7 @@ def build_page(ms, pg, idx):
             bg = v
             break
 
+    gt_ok = 'reference_unverified' if ms.get('gt_reliability') == 'low' else 'transcribed'
     page_id = f"{ms['id']}_{idx:02d}"
     ms_dir = os.path.join(C.OUT, ms['id'])
     os.makedirs(f'{ms_dir}/pages', exist_ok=True)
@@ -214,7 +217,7 @@ def build_page(ms, pg, idx):
             gt = l['text'] or None
             lines.append({'id': lid, 'region_id': rid, 'order': len(lines) + 1,
                           'polygon': sc(l['polygon']), 'baseline': sc(l['baseline']),
-                          'gt_text': gt, 'gt_status': 'transcribed' if gt else 'untranscribed',
+                          'gt_text': gt, 'gt_status': (gt_ok if gt else 'untranscribed'),
                           'source_id': l['alto_id']})
             crop, angle = line_crop(gray, bg, l['polygon'], l['baseline'])
             cpath = f'{crop_dir}/{lid}.png'
@@ -227,6 +230,8 @@ def build_page(ms, pg, idx):
         'source': {'repo': C.SOURCE_REPO, 'commit': C.SOURCE_COMMIT,
                    'alto': f"{C.WORK_DIR}/{pg['src']}.xml", 'image': f"{C.WORK_DIR}/{pg['src']}.{pg['img_ext']}",
                    'source_width': W, 'source_height': H, 'scale': round(sx, 6)},
+        'gt_source': {'by': 'OpenITI arabic_ms_data (human transcription, eScriptorium)',
+                      'reliability': ms.get('gt_reliability'), 'note': ms.get('gt_note')},
         'regions': regions, 'lines': lines,
     }
     with open(f'{ms_dir}/pages/{page_id}.json', 'w', encoding='utf-8') as f:

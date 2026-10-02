@@ -7,3 +7,4 @@ export * from "./avatar";
 export * from "./khatam";
 export * from "./quran";
 export * from "./cn";
+export * from "./concept-image";

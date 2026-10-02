@@ -2,7 +2,7 @@
  "page_id": "sbb-or-fol-215_02",
  "manuscript_id": "sbb-or-fol-215",
  "folio": null,
- "label": "scan 00000017 (entries بوأ / بتأ ...)",
+ "label": "Bāb al-hamza, entries بوأ (cont.) … بدأ",
  "image": "pages/sbb-or-fol-215_02.jpg",
  "thumb": "thumbs/sbb-or-fol-215_02.jpg",
  "width": 1319,
@@ -15,6 +15,11 @@
   "source_width": 2241,
   "source_height": 3399,
   "scale": 0.588577
+ },
+ "gt_source": {
+  "by": "OpenITI arabic_ms_data (human transcription, eScriptorium)",
+  "reliability": "low",
+  "note": "The source transcription of this copy is character-identical (incl. vowel signs and slips) to the Isl. Ms. 22 transcription over ~800 shared words: it was evidently bootstrapped from that copy and re-split into lines, and it does NOT always follow this manuscript. Verified example: on scan 00000016 (our page 01, line l16) the manuscript reads بذأه كمنعه الرجل الفاحش وقد بذأ ويثلث ... (it skips رأى منه حالا كرهها واحتقره وذمه والأرض ذم مرعاها وكبديع), but gt_text has the Michigan wording. Treat gt_text here as an unverified reference text (gt_status reference_unverified)."
  },
  "regions": [
   {
@@ -768,7 +773,7 @@
     ]
    ],
    "gt_text": "عَدَلَهُ وَبِفُلَانٍ قِتُلَ بِه فَقَاوَمَه كأَبَاءَهُ وَبَاوَأهُ وَتَبَاوأَ اتعاَدلَا وَبَوَاءَهُ مَنْزِلا وَفيه أَنَزَلهُ َكأبَاءَهُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_e27a926a",
    "draft_text": "ا",
    "draft_conf": 50,
@@ -942,7 +947,7 @@
     ]
    ],
    "gt_text": "والاِسْمُ ٱلْبِيْئَة بالكسْرِ وَٱلرُمخ نَحْوَه قابَلهُ بِه والمكان جَلَهُ وَاَقَامَ كآباءَ بِه وَتَبَوأَ والمبَاة",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_5b2bb708",
    "draft_text": "الا د د ل اا",
    "draft_conf": 34,
@@ -1160,7 +1165,7 @@
     ]
    ],
    "gt_text": "المنَزل كالبِيئَةِ وَالبآءة وَبيت النحل فى الجَبل ومُتَبَوَاه ٱلوَلَد مَن ٱلرَحِمِ وَكَنَاسُ الثَورَ وَالمَعطِن",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_d021a89e",
    "draft_text": "الا ل لل",
    "draft_conf": 26,
@@ -1238,7 +1243,7 @@
     ]
    ],
    "gt_text": "وَأباءَ الابل رَدَها إِلَيْه وَمِنَهُ فَرَّ والاديم جَعَلُه في الدِبَاغ وَالبَوَآءُ السَوَآء والكفؤ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_6e59f547",
    "draft_text": "| 2713 أن بل ٌهَاا ليد ينه كاتا وير كد فيا وناج وآ ابَاءً عاذيتَتْنْذ",
    "draft_conf": 25,
@@ -1424,7 +1429,7 @@
     ]
    ],
    "gt_text": "وَوَادٍ بِتَمة وَاجَابُوْا عَن بَوَاءٍ وَاحِدٍ أي بَجَوابٍ وَاحِدٍ والبِيئَة بِالكَسْر الحَالة وَفَلاة تبئُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_8d70ce44",
    "draft_text": "واو يتاع فأحا كلع كاجدا وتاب كاج لي علدلا بي|",
    "draft_conf": 35,
@@ -1558,7 +1563,7 @@
     ]
    ],
    "gt_text": "في فَلَاةٍ تَذهَبُ وَحَاجَة مُبيئَة شَدِيدَة",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_cb537e36",
    "draft_text": "| عاك ذف بَعَاعِتَيْبز ريت‎٠‏",
    "draft_conf": 32,
@@ -1684,7 +1689,7 @@
     ]
    ],
    "gt_text": "بَهَاءَ بِهِ مثلَثَة اَلهآء بَهَاءِ وَبَهُوءًا وَبَهاءً اَنِس كَاْبتَهَاءَ وكَقطَامِ امرأة ومَا بَهَاءْتُ لَهُ مَا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_6e910b0e",
    "draft_text": "ا بد ةا نَأ ةويا يَِاِبَاء كالما يعَاماهما",
    "draft_conf": 14,
@@ -1770,7 +1775,7 @@
     ]
    ],
    "gt_text": "فَطِنْتُ وَنَاقَة بَهَآءُ بَسُوْءٌ وَبَهَاء البَيتَ كَمَنَعَ أَخلَاهُ مِنَ ٱلمَتاع اَوْخَرَّقَهُ كَأبهَاءَهُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_d7805fa7",
    "draft_text": "قلًا 25 عَم برا نا أو مواكاعبباءه",
    "draft_conf": 26,
@@ -2124,7 +2129,7 @@
     ]
    ],
    "gt_text": "فَصل التَّاءِ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_b2744728",
    "draft_text": "اك اا اك اتلان",
    "draft_conf": 30,
@@ -2254,7 +2259,7 @@
     ]
    ],
    "gt_text": "التَاءتَاءُ حِكَايَهُ الصَوْتِ وَتَردُدُ التَاتَاءِ فيِ التَاءِ وَدُعَاء ٱلتَيس لِلسُفَادِ كَا تَاتَاء وَهىَ ٱيضًا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_4f04f22e",
    "draft_text": "1 5 0ا",
    "draft_conf": 43,
@@ -2356,7 +2361,7 @@
     ]
    ],
    "gt_text": "مَشْى ٱلطِفْلِ وَٱلتَبَخَتَر في الحَربِ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_988c8825",
    "draft_text": "ع ندري ترببد",
    "draft_conf": 18,
@@ -2574,7 +2579,7 @@
     ]
    ],
    "gt_text": "التَيْتَاءُ وَالتِّيْتَاءُ وَٱلتِئْتَاءُ مَن يُحْدِث عِنْدَ الجَماعَ اَو يُنزل قبل الاِيلاج",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_697b9d51",
    "draft_text": "الل",
    "draft_conf": 44,
@@ -2672,7 +2677,7 @@
     ]
    ],
    "gt_text": "تفئ كَفَرِحَ ٱحتَدَ وَغَضِبَ وَتفيئَهُ الشَئِ حِينُهُ وَرُبَانَهُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_1b5a1f62",
    "draft_text": "| لوك ركب بها نااه",
    "draft_conf": 36,
@@ -2762,7 +2767,7 @@
     ]
    ],
    "gt_text": "تَنَاءَ كَجَعَلَ تُنُواُّ أَقَامَ وَٱلاِسْمُ كالكَتَابَةِ وَٱلتَانِئ اَلدِهقان ج كَسِكَانِ وَاَبرَهيمُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_adc43200",
    "draft_text": "| ب وجتزنن )سكا تع كاتا بوه ري كسا عاضتنام",
    "draft_conf": 27,
@@ -2872,7 +2877,7 @@
     ]
    ],
    "gt_text": "بن يَزيد ومُحَمد بن عَبْدِ اللهِ وَمُحَمَدُ بَن عُمَر بن تانئةَ ٱلتَانِئونَ مُحدِثّونَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_67a87d89",
    "draft_text": "يرن وب كدان كاعا نكر ُزناغبرثأنا ادََحِجعرد",
    "draft_conf": 16,
@@ -3014,7 +3019,7 @@
     ]
    ],
    "gt_text": "فَصْلُ الثَّاءٍ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_a9b88743",
    "draft_text": "#ه___.-__برائيقاس",
    "draft_conf": 7,
@@ -3088,7 +3093,7 @@
     ]
    ],
    "gt_text": "ثَاءْثَاءَ الاِبِلَ أَرَوْاَهَا وَعَطَشَهَا ضِدٌ وَعَن ٱلقَوْمِ دَفَعَ وَحَبَسَ وَسَكَنَ وأزال عن مَكَانه والنَارَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_a30997ce",
    "draft_text": "نضا اا يق دكا عا مشتسياب كا ليت كا بكر سانا حايدوا",
    "draft_conf": 32,
@@ -3218,7 +3223,7 @@
     ]
    ],
    "gt_text": "اطْفَأهَا وَبِٱلتيس دَعَاهُ وٱلاِبل عَطِشَتْ وَرَوِيَتْ ضِدَ وَثَلَأثاءَ اَرادَ سَفَرًا ثُمَ بَدَ الهُ المُقَامُ ومنهُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_73a80a05",
    "draft_text": "وواضني راء تالبأ كت تين عد تان ا سك نب بلَة ًاقينا",
    "draft_conf": 25,
@@ -3332,7 +3337,7 @@
     ]
    ],
    "gt_text": "هَابَهُ وَالثَاثاءُ دُعَاءُ التَيس للِسفَادِ وَأَثَاتهُ فِي ثَ وَا وَوَهِمَ الجَوْهَرِي فَذَكَرَهُ هُنَا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_3324e34b",
    "draft_text": "ابوِوَالكناء 2 جا بات تاد كان ا فهظا قا و دا َي تُدْروْاه",
    "draft_conf": 28,
@@ -3554,7 +3559,7 @@
     ]
    ],
    "gt_text": "الثدّاءُ كَزُنَارِ نَبْت وَاحِدَتُه بِهَاءٍ وَيَنْبُتَ في أَصْلِهَا الطَراثيْثُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_391cb875",
    "draft_text": "اكيت لاج تام ويلانيد",
    "draft_conf": 30,
@@ -3788,7 +3793,7 @@
     ]
    ],
    "gt_text": "ٱلثُنْدَاة لَكَ كالثَديِ لَهَا اوهي مَغِزرُ ٱلثَدْىِ اَو ٱللَحْمِ حَوِله وَاَذَا فَتَحْتَ ٱلكَلَمَة فَلَا تَهِْمِز هى ثَنُدُوَة كَفَعْلُوَه",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_dd43f9d6",
    "draft_text": "الَتشيل0ض",
    "draft_conf": 42,
@@ -3894,7 +3899,7 @@
     ]
    ],
    "gt_text": "الثِرطئَهُ باِلكَسْر الرجَلُ الثَقيْلُ وَٱلقَصِيْرُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_8ec0c4dd",
    "draft_text": "الل",
    "draft_conf": 42,
@@ -4072,7 +4077,7 @@
     ]
    ],
    "gt_text": "ثَطَاءَهُ كَجَعَلَهُ وَطِئَهُ وَكفَرَحَ حَمُقَ والثُطأَه بِٱلضَمِ وَالفَتح دُوَيْبَةَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_ca9c581b",
    "draft_text": "| يا سد وده كتج عا شاه عقرجاه",
    "draft_conf": 30,
@@ -4214,7 +4219,7 @@
     ]
    ],
    "gt_text": "اَلثُفَاءُ كَقُراءٍ اَلَخَردَلُ أو الحُرف وَاحِدَتُهُ بِهَآءٍ وَثَفَاءَ القِدْرَ كَمَنَعَ كَسَرَ غَلَيَانَهَا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_1b9dff27",
    "draft_text": "اللااحرف ئ الداناه",
    "draft_conf": 21,
@@ -4364,7 +4369,7 @@
     ]
    ],
    "gt_text": "ثمأهَم كجَعَلَ اَطْعَمَهُم ٱلدَسَمَ وَرَاسَهُ شَدَحَهُ فَانْثَمَاءَ والخُبزَ ثَرَدَهُ وَاَلكَماءَةِ طَرَحَهَا في ٱَلسَّمن وَبِالحِنََّاء",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_f8c4fb27",
    "draft_text": "ال0",
    "draft_conf": 42,
@@ -4570,7 +4575,7 @@
     ]
    ],
    "gt_text": "صَبَغَ وَمَا في بَطِنه رَمَاهُ ثَاءَةُ ع ببلَادِ هُذَيْلِ وَاَثَاءتهُ بِسَهْم اثَاءَهً رَمَيْتُهُ وذكر فِي اَثَ اَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_d0e3db33",
    "draft_text": "3 اي تلكا ِ ممايه يفيت نا بكرفآنآًْ'",
    "draft_conf": 25,
@@ -4744,7 +4749,7 @@
     ]
    ],
    "gt_text": "فَصْلُ الجِيْم",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_360cd071",
    "draft_text": "ابيب __اتح",
    "draft_conf": 24,
@@ -4830,7 +4835,7 @@
     ]
    ],
    "gt_text": "الجَاءْجَاء بالمَّدُ الهِزَيْمَةُ وَكَهدُهُد الصَدْرُ ج جَأَجِئُ وة بِالبَحْرَين وَجَاءْجَاءَ بِالاِبل دَعَاهَا لِلشَرْبِ بِجِئ جِئ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_a4eeb3a0",
    "draft_text": "ال",
    "draft_conf": 54,
@@ -5024,7 +5029,7 @@
     ]
    ],
    "gt_text": "والِاسْمِ الجِئُ بِالكَسْرِ وَتجَاَءجَاء كَفَّ وَنَكَصَ وَاَنْتَهَى وَعَنْهُ هَابَهُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_dac47c52",
    "draft_text": "7 كِ تت كب دك تا كابر؛",
    "draft_conf": 27,
@@ -5274,7 +5279,7 @@
     ]
    ],
    "gt_text": "جَبَاءَ كَمَنَعَ وَفَرِحَ ٱرْتَدَ وَكِرَهَ وَخَرَجَ وَتَوَاَريْ وَبَاعَ الجَأبَ اي ٱلمَغَرهَ وَعَنُقَهُ اَمَالهَا وَٱلبَصَرُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_3d9e4858",
    "draft_text": "ا",
    "draft_conf": 32,
@@ -5512,7 +5517,7 @@
     ]
    ],
    "gt_text": "وَالسَيْفُ نَبَاءَ والجَبْءُ اَلكَمَئَهُ وَٱلَاكَمَةُ ونقِير يجتمع فيه الماء ج اجْبُؤَّ وَجِبَاَّءَة كَقِردَةٍ وَجَبَاءَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_ef91ce6d",
    "draft_text": "لأس تر هته تو مربي جواب ا وما كبوًا",
    "draft_conf": 20,
@@ -5806,7 +5811,7 @@
     ]
    ],
    "gt_text": "كَنَبَاءٍ وَاَجْبَأَ المَكَانُ كَثُرَ بِه الكَمءُ وٱلزَرْعَ بَاعَهُ قبل بُدَوء صَلَاحِهِ، وَٱلشَئَ واراهُ وعلي",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_4d7da16b",
    "draft_text": "7 11ا الت و اسرتذعبورع",
    "draft_conf": 30,
@@ -6565,11 +6570,12 @@
    "oem": "LSTM_ONLY",
    "psm": "SINGLE_LINE (7)"
   },
-  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, 6 px padding",
+  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, autocontrast + Otsu binarisation, 6 px padding",
   "cer_page": 0.8199,
   "cer_folded_page": 0.8085,
   "gt_chars": 2010,
-  "note": "Draft only - expected to be poor on manuscripts. Ground truth (gt_text) is the human transcription from OpenITI arabic_ms_data."
+  "note": "Draft only - expected to be poor on manuscripts. Ground truth (gt_text) is the human transcription from OpenITI arabic_ms_data.",
+  "gt_words_found": 0.0221
  },
  "quran_hits": []
 }

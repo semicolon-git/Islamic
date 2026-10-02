@@ -1,0 +1,69 @@
+{
+ "id": "answer:kaaba",
+ "kind": "answer",
+ "concept_id": "qibla",
+ "level": "A",
+ "certainty": "established",
+ "title_en": "Do Muslims worship the Kaaba?",
+ "title_ar": "هل يعبد المسلمون الكعبة؟",
+ "match_phrases": [
+  "do muslims worship the kaaba",
+  "worship the kaaba",
+  "why do muslims pray towards mecca",
+  "black stone",
+  "qibla",
+  "why face mecca",
+  "يعبد المسلمون الكعبة",
+  "عبادة الكعبة",
+  "القبلة",
+  "الحجر الأسود"
+ ],
+ "institution_id": "inst_uni",
+ "workflow": [
+  {
+   "decision": "submit",
+   "by": "u_sara",
+   "note": "First draft from approved sources."
+  },
+  {
+   "decision": "approve",
+   "by": "u_huda",
+   "note": "Checked verse keys, tafsir excerpt and hadith numbers."
+  },
+  {
+   "decision": "publish",
+   "by": "u_noura",
+   "note": "Approved for publication (demo)."
+  }
+ ],
+ "content": {
+  "verses": [
+   {
+    "key": "2:144",
+    "role": "primary"
+   },
+   {
+    "key": "106:3",
+    "role": "supporting"
+   }
+  ],
+  "hadith": [
+   {
+    "id": "bukhari:1597"
+   }
+  ],
+  "tafsir": [],
+  "explanation": {
+   "en": "No — Muslims worship Allah alone. The Kaaba in Makkah is the qibla: the direction Muslims face when they pray, which unites them in one direction wherever they are (2:144). The Quran calls people to worship \"the Lord of this House\", not the House itself (106:3). When the Caliph Umar kissed the Black Stone, he said he knew it was only a stone that could neither benefit nor harm, and that he kissed it only because he had seen the Prophet ﷺ do so (al-Bukhari 1597).",
+   "ar": "لا، فالمسلمون يعبدون الله وحده. والكعبة في مكة هي القبلة: الجهة التي يستقبلها المسلمون في صلاتهم، فتجمعهم على وجهة واحدة حيثما كانوا (البقرة ١٤٤). ويدعو القرآن إلى عبادة «رب هذا البيت» لا البيت نفسه (قريش ٣). ولما قبّل عمر بن الخطاب رضي الله عنه الحجر الأسود قال إنه يعلم أنه حجر لا يضر ولا ينفع، ولولا أنه رأى النبي ﷺ يقبّله ما قبّله (البخاري ١٥٩٧)."
+  },
+  "show_count": false,
+  "glossary_terms": [
+   "ibadah"
+  ],
+  "related_cards": [],
+  "sensitivity_flags": [
+   "correct-misconception-gently"
+  ]
+ }
+}

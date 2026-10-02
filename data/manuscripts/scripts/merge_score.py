@@ -172,7 +172,8 @@ def main():
     stats = {'engine': engine, 'draft_label': DRAFT_LABEL, 'normalisation':
              'CER = Levenshtein(draft, gt) / len(gt) on text with diacritics/tatweel stripped, punctuation and '
              'separators removed, whitespace collapsed (spaces count). cer_folded additionally folds alef/hamza '
-             'seats, alef maqsura and ta marbuta.', 'pages': {}, 'manuscripts': {}}
+             'seats, alef maqsura and ta marbuta. chance_baseline_cer scores every line against the draft of a '
+             'different line of the same copy: a draft is only informative where cer is clearly below it.', 'pages': {}, 'manuscripts': {}}
     pages_by_ms = {}
     all_q = []
     tot = {'e': 0, 'n': 0, 'ef': 0, 'nf': 0, 'lines': 0}
@@ -204,7 +205,7 @@ def main():
             q = quran_scan(page)
             page['draft'] = {'label': DRAFT_LABEL, 'label_ar': DRAFT_LABEL_AR, 'engine': engine,
                              'line_crop': 'source-resolution crop of the line polygon (dilated 6 px, outside masked to '
-                                          'paper tone), rotated by the baseline angle, 6 px padding',
+                                          'paper tone), rotated by the baseline angle, autocontrast + Otsu binarisation, 6 px padding',
                              'cer_page': round(pe / max(1, pn), 4), 'cer_folded_page': round(pef / max(1, pnf), 4),
                              'gt_chars': pn, 'note': 'Draft only - expected to be poor on manuscripts. Ground truth '
                              '(gt_text) is the human transcription from OpenITI arabic_ms_data.'}
@@ -233,7 +234,11 @@ def main():
             pages_by_ms[ms['id']].append(page)
             print(f"{pid}: CER {page['draft']['cer_page']:.3f} (folded {page['draft']['cer_folded_page']:.3f}) "
                   f"over {pn} chars; quran hits {len(q)}")
-        stats['manuscripts'][ms['id']] = {'cer': round(msum['e'] / max(1, msum['n']), 4),
+        # chance control: score each line against the draft of a DIFFERENT line (shift by 7) of the same copy
+        TL = [l for pg in pages_by_ms[ms['id']] for l in pg['lines'] if l['gt_text']]
+        ce = sum(lev(norm_cer(TL[(k + 7) % len(TL)]['draft_text']), norm_cer(l['gt_text'])) for k, l in enumerate(TL))
+        stats['manuscripts'][ms['id']] = {'chance_baseline_cer': round(ce / max(1, msum['n']), 4),
+                                          'cer': round(msum['e'] / max(1, msum['n']), 4),
                                           'cer_folded': round(msum['ef'] / max(1, msum['nf']), 4), 'gt_chars': msum['n']}
     stats['overall'] = {'cer': round(tot['e'] / tot['n'], 4), 'cer_folded': round(tot['ef'] / tot['nf'], 4),
                         'gt_chars': tot['n'], 'transcribed_lines': tot['lines'],

@@ -1,0 +1,149 @@
+[
+ {
+  "id": "islam",
+  "term_ar": "الإسلام",
+  "term_en": "Islam",
+  "rule_en": "Submission to Allah through tawhid and obedience to Him. Explain it by context; do not reduce it to a general cultural meaning.",
+  "rule_ar": "دين الاستسلام لله بالتوحيد والانقياد له بالطاعة، ويشرح بحسب السياق ولا يختزل في معنى ثقافي عام.",
+  "variants": [
+   "islam",
+   "muslim religion"
+  ],
+  "banned_renderings": [],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "tawhid",
+  "term_ar": "التوحيد",
+  "term_en": "Tawhid / Oneness of God",
+  "rule_en": "Prefer keeping the term and explaining it: singling out Allah in lordship, in worship, and in His names and attributes as revealed. Do not reduce the translation to mere numerical 'unity'.",
+  "rule_ar": "يفضل إبقاء المصطلح مع شرح معناه إفراد الله بالربوبية والألوهية ووصفه بما جاء به من أسمائه الحسنى؛ ولا يختزل في ترجمة قد توحي بمجرد الوحدانية العددية.",
+  "variants": [
+   "tawhid",
+   "tawheed",
+   "oneness of god",
+   "monotheism"
+  ],
+  "banned_renderings": [
+   "unity"
+  ],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "ibadah",
+  "term_ar": "العبادة",
+  "term_en": "Worship",
+  "rule_en": "Includes the acts of the heart, speech and deeds by which a servant draws close to Allah; not limited to rituals.",
+  "rule_ar": "تشمل أعمال القلب والقول والعمل التي يتقرب بها العبد إلى الله، ولا تحصر في الشعائر فقط.",
+  "variants": [
+   "ibadah",
+   "ibada",
+   "worship"
+  ],
+  "banned_renderings": [],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "nubuwwah",
+  "term_ar": "النبوة",
+  "term_en": "Prophethood",
+  "rule_en": "Allah's choosing of prophets through revelation; distinguish it from human religious leadership.",
+  "rule_ar": "تستخدم للدلالة على اصطفاء الأنبياء بالوحي، مع التمييز بينها وبين القيادة الدينية البشرية.",
+  "variants": [
+   "prophethood",
+   "nubuwwah",
+   "prophecy"
+  ],
+  "banned_renderings": [],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "wahy",
+  "term_ar": "الوحي",
+  "term_en": "Revelation",
+  "rule_en": "What Allah revealed to His prophets; avoid loose uses that suggest personal inspiration.",
+  "rule_ar": "يشرح بوصفه ما أوحاه الله إلى أنبيائه، مع تجنب استعمالات فضفاضة قد توهم الإلهام الشخصي.",
+  "variants": [
+   "wahy",
+   "revelation"
+  ],
+  "banned_renderings": [
+   "inspiration"
+  ],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "shariah",
+  "term_ar": "الشريعة",
+  "term_en": "Sharia / Islamic law and guidance",
+  "rule_en": "Explain by context; do not reduce it to penalties or criminal law.",
+  "rule_ar": "يشرح بحسب السياق، ولا يختزل في العقوبات أو القانون الجنائي.",
+  "variants": [
+   "sharia",
+   "shariah",
+   "shari'ah",
+   "islamic law"
+  ],
+  "banned_renderings": [
+   "islamic penal code"
+  ],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "hadith",
+  "term_ar": "الحديث",
+  "term_en": "Hadith",
+  "rule_en": "What is reported from the Prophet ﷺ of his sayings, actions or approvals; state its grade of authenticity when used as evidence.",
+  "rule_ar": "ما نُقل عن النبي ﷺ من قول أو فعل أو تقرير ونحو ذلك، مع بيان درجة الثبوت عند الاستدلال.",
+  "variants": [
+   "hadith",
+   "hadeeth"
+  ],
+  "banned_renderings": [],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "sunnah",
+  "term_ar": "السنة",
+  "term_en": "Sunnah",
+  "rule_en": "The guidance and way of the Prophet ﷺ; the intended meaning is set by the scholarly context.",
+  "rule_ar": "هدي النبي ﷺ وطريقته، ويحدد المقصود بحسب السياق العلمي.",
+  "variants": [
+   "sunnah",
+   "sunna"
+  ],
+  "banned_renderings": [],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "fatwa",
+  "term_ar": "الفتوى",
+  "term_en": "Fatwa",
+  "rule_en": "A sharia answer issued by a qualified person on a specific case or question; not equal to general information.",
+  "rule_ar": "جواب شرعي يصدره مؤهل في واقعة أو سؤال؛ ولا يساوى بالمعلومة العامة.",
+  "variants": [
+   "fatwa",
+   "fatwah",
+   "religious ruling"
+  ],
+  "banned_renderings": [],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ },
+ {
+  "id": "dawah",
+  "term_ar": "الدعوة",
+  "term_en": "Da'wah / Invitation to Islam",
+  "rule_en": "Introducing Islam and inviting to it with wisdom; choose the equivalent by context and audience.",
+  "rule_ar": "التعريف بالإسلام والدعوة إليه بالحكمة، ويختار المقابل بحسب السياق والجمهور.",
+  "variants": [
+   "dawah",
+   "da'wah",
+   "dawa",
+   "invitation to islam"
+  ],
+  "banned_renderings": [
+   "proselytizing"
+  ],
+  "source": "Challenge reference pack (R8) — sample core-terms dictionary"
+ }
+]

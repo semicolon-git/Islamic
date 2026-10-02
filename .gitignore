@@ -12,3 +12,4 @@ next-env.d.ts
 .env*.local
 .env
 coverage/
+data/manuscripts/scripts/node_modules/

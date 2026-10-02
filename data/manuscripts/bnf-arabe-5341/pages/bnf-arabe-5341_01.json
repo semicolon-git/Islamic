@@ -2,7 +2,7 @@
  "page_id": "bnf-arabe-5341_01",
  "manuscript_id": "bnf-arabe-5341",
  "folio": null,
- "label": "excerpt page 3 (end of بأبأ ... )",
+ "label": "Bāb al-hamza, entries بأبأ … بطأ",
  "image": "pages/bnf-arabe-5341_01.jpg",
  "thumb": "thumbs/bnf-arabe-5341_01.jpg",
  "width": 1382,
@@ -15,6 +15,11 @@
   "source_width": 2061,
   "source_height": 2982,
   "scale": 0.670548
+ },
+ "gt_source": {
+  "by": "OpenITI arabic_ms_data (human transcription, eScriptorium)",
+  "reliability": "medium",
+  "note": "Independent unvocalised transcription; real copy variants vs. the other two copies, plus some transcriber typos (e.g. لغب for لقب, الحسير for الحسين on page 02, line 1)."
  },
  "regions": [
   {
@@ -10115,11 +10120,12 @@
    "oem": "LSTM_ONLY",
    "psm": "SINGLE_LINE (7)"
   },
-  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, 6 px padding",
+  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, autocontrast + Otsu binarisation, 6 px padding",
   "cer_page": 0.5295,
   "cer_folded_page": 0.5016,
   "gt_chars": 1900,
-  "note": "Draft only - expected to be poor on manuscripts. Ground truth (gt_text) is the human transcription from OpenITI arabic_ms_data."
+  "note": "Draft only - expected to be poor on manuscripts. Ground truth (gt_text) is the human transcription from OpenITI arabic_ms_data.",
+  "gt_words_found": 0.0254
  },
  "quran_hits": []
 }

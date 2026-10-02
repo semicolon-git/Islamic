@@ -8,11 +8,12 @@
   "psm": "SINGLE_LINE (7)"
  },
  "draft_label": "Tesseract (open-source OCR) draft",
- "normalisation": "CER = Levenshtein(draft, gt) / len(gt) on text with diacritics/tatweel stripped, punctuation and separators removed, whitespace collapsed (spaces count). cer_folded additionally folds alef/hamza seats, alef maqsura and ta marbuta.",
+ "normalisation": "CER = Levenshtein(draft, gt) / len(gt) on text with diacritics/tatweel stripped, punctuation and separators removed, whitespace collapsed (spaces count). cer_folded additionally folds alef/hamza seats, alef maqsura and ta marbuta. chance_baseline_cer scores every line against the draft of a different line of the same copy: a draft is only informative where cer is clearly below it.",
  "pages": {
   "umich-isl-22_01": {
    "cer": 0.7388,
    "cer_folded": 0.7195,
+   "gt_words_found_in_draft": 0.0283,
    "gt_chars": 3258,
    "lines": 35,
    "transcribed_lines": 35,
@@ -23,6 +24,7 @@
   "umich-isl-22_02": {
    "cer": 0.7551,
    "cer_folded": 0.7388,
+   "gt_words_found_in_draft": 0.0146,
    "gt_chars": 3495,
    "lines": 37,
    "transcribed_lines": 37,
@@ -33,6 +35,7 @@
   "umich-isl-22_03": {
    "cer": 0.7647,
    "cer_folded": 0.7538,
+   "gt_words_found_in_draft": 0.0238,
    "gt_chars": 3574,
    "lines": 37,
    "transcribed_lines": 37,
@@ -43,6 +46,7 @@
   "sbb-or-fol-215_01": {
    "cer": 0.7832,
    "cer_folded": 0.7686,
+   "gt_words_found_in_draft": 0.0089,
    "gt_chars": 2459,
    "lines": 49,
    "transcribed_lines": 33,
@@ -53,6 +57,7 @@
   "sbb-or-fol-215_02": {
    "cer": 0.8199,
    "cer_folded": 0.8085,
+   "gt_words_found_in_draft": 0.0221,
    "gt_chars": 2010,
    "lines": 39,
    "transcribed_lines": 32,
@@ -63,6 +68,7 @@
   "sbb-or-fol-215_03": {
    "cer": 0.819,
    "cer_folded": 0.8071,
+   "gt_words_found_in_draft": 0.0092,
    "gt_chars": 2530,
    "lines": 44,
    "transcribed_lines": 33,
@@ -73,6 +79,7 @@
   "bnf-arabe-5341_01": {
    "cer": 0.5295,
    "cer_folded": 0.5016,
+   "gt_words_found_in_draft": 0.0254,
    "gt_chars": 1900,
    "lines": 30,
    "transcribed_lines": 27,
@@ -83,6 +90,7 @@
   "bnf-arabe-5341_02": {
    "cer": 0.5306,
    "cer_folded": 0.5157,
+   "gt_words_found_in_draft": 0.0402,
    "gt_chars": 1747,
    "lines": 32,
    "transcribed_lines": 26,
@@ -93,6 +101,7 @@
   "bnf-arabe-5341_03": {
    "cer": 0.5172,
    "cer_folded": 0.5018,
+   "gt_words_found_in_draft": 0.0442,
    "gt_chars": 1690,
    "lines": 31,
    "transcribed_lines": 27,
@@ -103,6 +112,7 @@
   "bnf-arabe-5341_04": {
    "cer": 0.5234,
    "cer_folded": 0.5116,
+   "gt_words_found_in_draft": 0.0573,
    "gt_chars": 1859,
    "lines": 35,
    "transcribed_lines": 27,
@@ -113,16 +123,19 @@
  },
  "manuscripts": {
   "umich-isl-22": {
+   "chance_baseline_cer": 0.8083,
    "cer": 0.7533,
    "cer_folded": 0.7379,
    "gt_chars": 10327
   },
   "sbb-or-fol-215": {
+   "chance_baseline_cer": 0.8471,
    "cer": 0.8067,
    "cer_folded": 0.794,
    "gt_chars": 6999
   },
   "bnf-arabe-5341": {
+   "chance_baseline_cer": 0.7847,
    "cer": 0.5253,
    "cer_folded": 0.5076,
    "gt_chars": 7196

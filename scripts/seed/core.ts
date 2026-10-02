@@ -92,9 +92,11 @@ export async function seedCore(q: Queryable) {
   const art = readJson<{ concepts: (Concept & { track: string; card: string })[] }>("prep/data/art_heritage_concepts.json").concepts;
   const labels = exists("data/content/concept_labels.json") ? readJson<Record<string, { label_en?: string; label_ar?: string; blurb_en?: string; blurb_ar?: string; visual_hints?: string; sort?: number; enabled?: boolean }>>("data/content/concept_labels.json") : {};
   let sort = 0;
+  // Prefer vendored local images (npm run assets:fetch); otherwise the Higgsfield CDN URL from the manifest.
+  const remote = exists("data/content/concept_images.json") ? readJson<{ images: Record<string, string> }>("data/content/concept_images.json").images : {};
   const imgFor = (id: string) => {
     for (const ext of ["webp", "jpg", "png"]) if (fs.existsSync(path.join(ROOT, "public/images/concepts", `${id}.${ext}`))) return `/images/concepts/${id}.${ext}`;
-    return null;
+    return remote[id] ?? null;
   };
   for (const c of nature) {
     const l = labels[c.id] ?? {};

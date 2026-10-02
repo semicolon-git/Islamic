@@ -2,7 +2,7 @@
  "page_id": "sbb-or-fol-215_01",
  "manuscript_id": "sbb-or-fol-215",
  "folio": null,
- "label": "scan 00000016 (marginal glosses)",
+ "label": "Bāb al-hamza, entries ألاء … بوأ; oblique marginal glosses",
  "image": "pages/sbb-or-fol-215_01.jpg",
  "thumb": "thumbs/sbb-or-fol-215_01.jpg",
  "width": 1306,
@@ -15,6 +15,11 @@
   "source_width": 2219,
   "source_height": 3399,
   "scale": 0.588553
+ },
+ "gt_source": {
+  "by": "OpenITI arabic_ms_data (human transcription, eScriptorium)",
+  "reliability": "low",
+  "note": "The source transcription of this copy is character-identical (incl. vowel signs and slips) to the Isl. Ms. 22 transcription over ~800 shared words: it was evidently bootstrapped from that copy and re-split into lines, and it does NOT always follow this manuscript. Verified example: on scan 00000016 (our page 01, line l16) the manuscript reads بذأه كمنعه الرجل الفاحش وقد بذأ ويثلث ... (it skips رأى منه حالا كرهها واحتقره وذمه والأرض ذم مرعاها وكبديع), but gt_text has the Michigan wording. Treat gt_text here as an unverified reference text (gt_status reference_unverified)."
  },
  "regions": [
   {
@@ -344,7 +349,7 @@
     ]
    ],
    "gt_text": "الأَلاَءُ كالعَلَاءِ وَيُقْصَرُ سَحَرَ مَر وَدَادِيمُ مَألُوءُ دُبِغَ بِه وَذَكَرهُ الجَوهَرِي في المَعتَلِ وَهمًا •",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_2bcb5589",
    "draft_text": "ال277ب0",
    "draft_conf": 28,
@@ -422,7 +427,7 @@
     ]
    ],
    "gt_text": "ااَءَ كَعَاعٍ ثَمَرٍ شَجَرٍ وَاحِدتُهُ بِهَاء َواُوْتُ الادِيْمَ دَبَغْتُهُ وَالاَصْلُ اُوْدتُ فَهْوَ مَوْءُوء و",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_63212f45",
    "draft_text": "كتاج لتر كا اتا واو الْكوتريد دكأتلا تبالغزتَْمَبَفُد.",
    "draft_conf": 21,
@@ -652,7 +657,7 @@
     ]
    ],
    "gt_text": "وَالاَصْلُ اُوْدتُ فَهْوَ مَوْءُوء وحَكَايَة اَصْوَاتَ وَزَجْره لِلإبل • اَلأيئَة كَالهيئةِ لَفظاً وَمَعناً • فصل البَاِء",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_c1ad6249",
    "draft_text": "| وال اوسن اعيبربارا",
    "draft_conf": 24,
@@ -866,7 +871,7 @@
     ]
    ],
    "gt_text": "بَاءبَاءَهُ وَبِهِ قَالَ لَه بَابِيِ أَنْتَ وَاْلصَبِىَ قَالَ بَابَا وَاَلبَؤُبَؤُ كَهَدُهُدٍ الأَصْلُ وٱلسَيدُ الظِّريفُ وَرَاسُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_88f48ca9",
    "draft_text": "ايآ ب كبا انتمالع وال بزو يدك نم زفي انام زايديتايج",
    "draft_conf": 30,
@@ -1156,7 +1161,7 @@
     ]
    ],
    "gt_text": "ٱلمكحلةِ وَبَدَن الحَرَادَةَ وانْسَانُ العين وَوَسَط ٱلشَئ وَكَسُر سُوْرَ وَدَخَدَاحٍ ٱلعَالِمُ وَتَبَابَاً عَدَا ىَىَاءَ بٱلمَكَانِ كَمَنَعَ اَقَامَ • كَبَثَاءَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_0058ff76",
    "draft_text": "ا كهود نوو ربعو\" جا وركلابن",
    "draft_conf": 27,
@@ -1242,7 +1247,7 @@
     ]
    ],
    "gt_text": "بَداءَ بِهِ كَمَنَعَ ابتَدَأَ وَٱلشَئ وَفَعَلَهُ ٱبِتْداءً كَابْدَاهُ وَٱبتَدَاهُ وَمِنْ ٱرضِهِ خَرَجَ وَاللهُ الخَلْقَ خَلَقَهُم",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_bd68482e",
    "draft_text": "تع ايا داق تكد ياتا باشعا يداني يع آم ا َوكَكَتَهُمَ",
    "draft_conf": 28,
@@ -1440,7 +1445,7 @@
     ]
    ],
    "gt_text": "كابتَدَاءَ فِيهَما وَلَك ٱلبَدْاءُ وَالبدْاءَة ويُضَمَّان وَالبَدِيئَة أَي لَكَ اَنْ تَبْدأ وَالبَدِيْئَة",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_80a94451",
    "draft_text": "ءادها اكه ين وادأ 05 بدت بخ (",
    "draft_conf": 40,
@@ -1710,7 +1715,7 @@
     ]
    ],
    "gt_text": "البَدِيهَة كَٱلبدَأةِ وَٱفعَلْهُ بَدءًا وأوَلُ بَدْءٍ وَبَادِئَ بَدْءٍ وَبَادِيَ بَدِيّ وَبَادِي بَدْءَاةٍ وَبَدءَ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_716cd677",
    "draft_text": "ةا جاو َتنا وات ادن كام ُجِرَيزديا لااارا",
    "draft_conf": 23,
@@ -2028,7 +2033,7 @@
     ]
    ],
    "gt_text": "ذِي بَدءٍ وَبَدْأَةَ ذى بَدأَةٍ وَبَدْاة بَدْءٍ وَبَدِي بَدْءٍ وَبَادِيْ بَدِيٍءٍ وَبادِيْ بَدِئٍ كَكَتِفٍ وَبَدئَ دي بَدءٍ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_78660ccd",
    "draft_text": "ا وجول واوا كاد وديمو كلزكر",
    "draft_conf": 23,
@@ -2118,7 +2123,7 @@
     ]
    ],
    "gt_text": "وَبَادِئ بَدَئٍ وَبادِيَ بَدَا وَبَدَا بَدْءٍ وَبَدءَة بَدءَة وَبَادِي بَدٍ وَبَادِيْ بَدَا ايَّ اَوَلُ شَئٍ وَرَجَع",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_81276c82",
    "draft_text": "ا",
    "draft_conf": 36,
@@ -2200,7 +2205,7 @@
     ]
    ],
    "gt_text": "عَوْدُهُ عَلَيْ بَدْئِهِ وَفِي عَوْدَتِهِ وَبَدُائِهِ وَعَوْداً وَبَدَاءً أَي فيِ ٱلطَرِيقِ ٱلذَى",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_d0f8d98d",
    "draft_text": "|| َيه كدو ةزب وق عَو َك ددهي وََوْذَا بز أوئسية الشْروَالِيت|",
    "draft_conf": 29,
@@ -2378,7 +2383,7 @@
     ]
    ],
    "gt_text": "جَآءَ مِنْهُ وَمَا يُبْدِئ وَمَا يُعِيدَ مَا يَتَكَلمُ بِبَادِئَة وَلَاعَائِدَةٍ وَالبَدءُ ٱلسَيِدُ وَٱلشَابُ ٱلعَاقِلُ واَلنَصِيْبُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_fda7acdd",
    "draft_text": "وين واد أت وزو رواسا زف؛",
    "draft_conf": 24,
@@ -2512,7 +2517,7 @@
     ]
    ],
    "gt_text": "مِنَ الجُزُورِ كالبَدأة ج اَبدَاء وَبُدوُء وَكَالبَدِيعُ المخلوقَ والأَمْرُ ٱلمُبْدَعُ والبِئرُ ٱلإِسْلَاميَةِ وَالاَوَلُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_b0555913",
    "draft_text": "ْ , فد كدوج باذعدوي بر كاين وَلْأعَتَبيوَآبِيْاْةٍا",
    "draft_conf": 26,
@@ -2678,7 +2683,7 @@
     ]
    ],
    "gt_text": "كاُلبَدْءِ وَبُدِئ بِالضَمّ بَدْءًاأَحذرَ او حُصِبَ بِٱلحَضبَةِ وَبَدَاءَ كَكَتانٍ اسْمُ حَماعَةٍ وَٱلبُدءَةِ بِاَلضَمّ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_4d86f6f4",
    "draft_text": "| بذ نشبا جد هيب السب وار كك تا لجز ةُالمّج'",
    "draft_conf": 24,
@@ -2964,7 +2969,7 @@
     ]
    ],
    "gt_text": "نَبتَ وَكَانَ ذَلِكْ في بَدَء تَنَا مَثَلَثَة البَاءِ وَفي بَدَأتِنَا مُحَركَةً وَفِي مُبدإِنَا وَمَبْدَئتَنا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_191003e5",
    "draft_text": "]شتوو م تيف مانا تاجو ري رما عرز رَفمْكَا ملاوما",
    "draft_conf": 26,
@@ -3142,7 +3147,7 @@
     ]
    ],
    "gt_text": "بَدَاءَهُ كَمَنَعَهَ رَأَىْ مِنْهُ حَالاً كِرَهِهَا وَاَحْتَقَرَهُ وَذَمَهُ وٱلأَرْضَ ذَم مَرَعَاهَا وكَبَدِيع ٱلرَجَلُ الفَاحِشُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_c566838f",
    "draft_text": "217لَاحِْرُوَا وَبلتْ باوه 5 لكي بد ولاه الاسم‎١‏",
    "draft_conf": 24,
@@ -3372,7 +3377,7 @@
     ]
    ],
    "gt_text": "بَراءَ اللهُ الخَلْقَ كَجَعَلَ بَرْءَا وَبُرُوءً اخَلَقَهُمْ وَٱلمرِيْض يبْرأءُ ويبُرُؤ بُرْءا بِالضَمّ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_7d9ded9a",
    "draft_text": "| بساك فك م ؤياناء تبن تاليش يتراج ةشر|",
    "draft_conf": 32,
@@ -3462,7 +3467,7 @@
     ]
    ],
    "gt_text": "وَبُرُوءًَا وَبَِرُؤ كَكَرُمَ وَفَرِح بَرءَا وَبُرْءَّا وَبُرُوءً انَقِهَ وَأَنَرأَهُ اللهُ فَهوَ بَارِئ وبِرئ ح كِكَرامٍ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_29daa4f7",
    "draft_text": "| كاز كك رك ونا ين ١د‏ رذ وجا مَذِِه ار و بكر",
    "draft_conf": 30,
@@ -3564,7 +3569,7 @@
     ]
    ],
    "gt_text": "وَبَرءَا مِنَ الأمْرِ يَبْرَاءُ ويَبْرُؤ نَادِر بَرَاءً وبَرَاءَةً وَبَرُوءاً ٱتبراءَ وَابرَاكَ مِنهُ وَبَرَأكَ وَأَنْتَ بَرِئ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_3037f61c",
    "draft_text": "ل كرات بعاد بادا ورَاءةٌ وبرفءا ةا دين وك فَا ليب|",
    "draft_conf": 23,
@@ -3754,7 +3759,7 @@
     ]
    ],
    "gt_text": "ج بَرِيْؤوْنَ وَكَفُقَهَاء وَكِرامٍ وَٱشَرافٍ وَانصِبَا وَرحالٍ وَهي بَهآءِ ح بِرَيئَات وَبَريَّاتَ وَبَرَايَا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_869577c2",
    "draft_text": "اج تيه كت وار كانهف تبجا كنز مهاج بَِِاُوبتكا",
    "draft_conf": 24,
@@ -3876,7 +3881,7 @@
     ]
    ],
    "gt_text": "كخَطَاَيَا وَأَنَاَ بََراء مِنْهُ لَايثَني وَلَايُجمَعُ وَلَا يُؤنَثَ أي بَرِيء وَالبَرَاءُ اَوَلُ لَيْلةِ أوَ يَوْمِ مَن الشَهِر",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_d4ed8308",
    "draft_text": "إتتفااا) ب ين لاش وا حسم تاد تن تاماه ود اكعشرا",
    "draft_conf": 37,
@@ -3998,7 +4003,7 @@
     ]
    ],
    "gt_text": "أوُ أَحِرُهَا أَو أَخِرُهُ، كَاِبْن البَراء وَأَبَرَاء دَخَلَ فيِهِ وَٱسْمُ وَبَنُ مالكِ وَعَارِبِ وأَوْسِ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_e260d39e",
    "draft_text": "الل ل لل",
    "draft_conf": 19,
@@ -4064,7 +4069,7 @@
     ]
    ],
    "gt_text": "وَٱلمَعَروُزُ الصَحَابُيونَ وَبَارَاَهُ فَارَقَهُ وَٱلمرأَةَ صَالَحَها عَلَي الفِرَاقِ وَٱسْتَبِرُاَهَا لَمْ يَطاَهَا حَتَى",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_714adb45",
    "draft_text": "يندا لخد الَو كينا ؛ بغرت كا ماعَطااا",
    "draft_conf": 22,
@@ -4150,7 +4155,7 @@
     ]
    ],
    "gt_text": "تَحِيض وَالذَكَر استَنْقَاهُ مِنَ البَولِ وكالجُرْعَةِ قُترَةُ الصَائِدِ•",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_c885a5bf",
    "draft_text": "||تِّءَا م كَرَتسَرتَاه نا لاحو قَنرَةصلِرء",
    "draft_conf": 14,
@@ -4280,7 +4285,7 @@
     ]
    ],
    "gt_text": "بَسَاءَ بِه كَجَعَلَ بَسْئا وَبَسَأ وَبَسَاَءُ َوَبُسْوءًا أَيِسَ وَبَسَاءَ بِاَلأَمْرِ بَسْاءَ وَبُسُوءًا",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_09578abc",
    "draft_text": "لا",
    "draft_conf": 41,
@@ -4462,7 +4467,7 @@
     ]
    ],
    "gt_text": "مَرَنَ رَبَهِ تَهَاوَنَ وَنَاقَهُ بَسْوءُ لاتَمَنعَ الحَالِبَ • ىَشَاءة بٱلمَد ع",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_e106a990",
    "draft_text": "ادوفاد الا منولهكزان",
    "draft_conf": 6,
@@ -4576,7 +4581,7 @@
     ]
    ],
    "gt_text": "بَطُوءَ كَكَرُمَ نُطاءَ بِالضَمّ ونَطآءَ كَكَنَانٍ وَاَنطَاءَ ضِدُ اَسْرَعَ وٱلبَطِئُ كَامِيْر لَقَبُ اَحْمَد بَن الحُسَيْن",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_85d81cf3",
    "draft_text": "بط وك هجون كاب تابنا بالَزبرَسٍِغْر بأشف",
    "draft_conf": 10,
@@ -4726,7 +4731,7 @@
     ]
    ],
    "gt_text": "التاتُولي المحدث وَاَنطَاءُ وَااذَا كَانَتْ دَوَابُهُم بَطاء وَلَمْ اَفعَله بَطء يا هَذَا وَكبشَرى أي ٱلدَهّرُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_2a1e1977",
    "draft_text": "ال اا",
    "draft_conf": 32,
@@ -4796,7 +4801,7 @@
     ]
    ],
    "gt_text": "وَبطْأنً ذا حُرُوْحًا وَيُفتح اي بَطُؤَ وَبَطأ عَلَيْهِ بِالاَمْر تَبْطِيْئاً وَاَنطَاءَ بِه أخَرَهُ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_342a5897",
    "draft_text": "ا",
    "draft_conf": 40,
@@ -4930,7 +4935,7 @@
     ]
    ],
    "gt_text": "بكَاءِتَ النَاقَةُ كَجَعَلَ وَكَرُمَ بََكَاء وَبَكاءَةً وَبكوُءا وَبَكاءً فَهى بَكِئ وَبِكَيئة قَل لَبَنَها ج",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_8bdf4d47",
    "draft_text": "2 تآس َِكَلَحَز كا ك2 اوكا 77 وبماج|",
    "draft_conf": 42,
@@ -5068,7 +5073,7 @@
     ]
    ],
    "gt_text": "كِكَرامٍ وَخَطَايَا وَٱلبَكْءُ نَبَاتُ كالبَكَا مَقصُوْرَة وَاحِدَتُهَما بِهَآءٍ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_ee53d9e2",
    "draft_text": "كيرز تتا واكك + ات كانباُقَمُورَةُلايجا",
    "draft_conf": 21,
@@ -5214,7 +5219,7 @@
     ]
    ],
    "gt_text": "بَاءَ إِليْهِ رَحَعَ أوِ اَنْقَطَعَ وَبُؤْت بهِ اِليه وَاىَاءتهُ وَبُؤتُهُ وَالبَاءَة وَٱلبَاءُ ٱلنِكَاحُ وَبَّوَأ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_24cde4cb",
    "draft_text": "رودتارا",
    "draft_conf": 26,
@@ -5440,7 +5445,7 @@
     ]
    ],
    "gt_text": "تَبِويئًا نكحَ وَبَاء وَاقَفَ وَبِدمِهِ أقَرَ وَبَذنبِهِ بَوَءًا وَبَوَاءً ٱحْتَمَلهُ أَوِ ٱعْتَرَفَ بِه وَدَمُهُ بَدمِهِ",
-   "gt_status": "transcribed",
+   "gt_status": "reference_unverified",
    "source_id": "eSc_line_c8bb3e29",
    "draft_text": "ايد نوز ينوه وشكة او اخلكيدوكا",
    "draft_conf": 17,
@@ -7616,11 +7621,12 @@
    "oem": "LSTM_ONLY",
    "psm": "SINGLE_LINE (7)"
   },
-  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, 6 px padding",
+  "line_crop": "source-resolution crop of the line polygon (dilated 6 px, outside masked to paper tone), rotated by the baseline angle, autocontrast + Otsu binarisation, 6 px padding",
   "cer_page": 0.7832,
   "cer_folded_page": 0.7686,
   "gt_chars": 2459,
-  "note": "Draft only - expected to be poor on manuscripts. Ground truth (gt_text) is the human transcription from OpenITI arabic_ms_data."
+  "note": "Draft only - expected to be poor on manuscripts. Ground truth (gt_text) is the human transcription from OpenITI arabic_ms_data.",
+  "gt_words_found": 0.0089
  },
  "quran_hits": []
 }
