@@ -21,7 +21,7 @@ export function ConceptImage({ src, alt, className, hue = 170, rounded = true }:
       {show ? (
         <img ref={ref} src={src!} alt={alt} loading="lazy" decoding="async" onError={() => setFailed(true)} className="absolute inset-0 size-full object-cover" />
       ) : (
-        <div className="absolute inset-0 grid place-items-center" style={{ background: `linear-gradient(135deg, oklch(0.42 0.08 ${hue}), oklch(0.28 0.06 ${hue + 40}))` }} role="img" aria-label={alt}>
+        <div className="absolute inset-0 grid place-items-center" style={{ background: `linear-gradient(135deg, oklch(0.42 0.08 ${hue}), oklch(0.28 0.06 ${hue + 40}))` }} role={alt ? "img" : undefined} aria-label={alt || undefined} aria-hidden={alt ? undefined : true}>
           <span className="text-white/60"><Khatam size={44} /></span>
         </div>
       )}
