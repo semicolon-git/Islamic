@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { CircleCheck, CircleX, CircleMinus, CircleAlert } from "lucide-react";
 import { Sheet } from "@/components/ui/sheet";
 import { cn } from "@/components/ui/cn";
@@ -24,6 +25,7 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 /** "Why this answer?" — the trace, in plain language: level, route, evidence, checks, timing. */
 export function WhySheet({ open, onClose, r, t }: { open: boolean; onClose: () => void; r: AskResult; t: T }) {
   const tr = r.trace;
+  const [copied, setCopied] = useState(false);
   const aiText = tr.ai.error ? t("ask.why.ai.fallback") : tr.ai.calls ? t("ask.why.ai.on", { calls: tr.ai.calls }) : t("ask.why.ai.off");
   return (
     <Sheet open={open} onClose={onClose} title={t("ask.why.title")} description={t("ask.why.desc")} closeLabel={t("action.close")}>
@@ -76,7 +78,18 @@ export function WhySheet({ open, onClose, r, t }: { open: boolean; onClose: () =
             </Row>
           )}
           <Row label={t("ask.why.id")}>
-            <code className="mono text-xs" dir="ltr">{r.id}</code>
+            <span className="inline-flex items-center gap-2">
+              <code className="mono text-xs" dir="ltr">{r.id}</code>
+              <button
+                type="button"
+                onClick={() => {
+                  void navigator.clipboard?.writeText(r.id).then(() => setCopied(true), () => {});
+                }}
+                className="h-9 px-2.5 rounded-[8px] text-xs font-medium text-ink-2 border border-line hover:bg-surface-2"
+              >
+                {copied ? t("action.copied") : t("action.copy")}
+              </button>
+            </span>
           </Row>
         </dl>
         <section className="flex flex-col gap-2">

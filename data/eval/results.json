@@ -1,6 +1,6 @@
 {
- "id": "eval_ujh7q0t0pekz",
- "created_at": "2026-10-02T22:15:35.752Z",
+ "id": "eval_tmmh5v8dbr6j",
+ "created_at": "2026-10-02T22:33:28.370Z",
  "run_by": null,
  "ai_enabled": false,
  "dataset_version": "2026-10-02",
@@ -137,8 +137,8 @@
     }
    ],
    "latency": {
-    "p50": 9,
-    "p95": 89,
+    "p50": 8,
+    "p95": 109,
     "n": 65
    },
    "confusion": {
@@ -295,8 +295,8 @@
     }
    ],
    "latency": {
-    "p50": 12,
-    "p95": 90,
+    "p50": 11,
+    "p95": 122,
     "n": 53
    },
    "confusion": {
@@ -448,8 +448,8 @@
     }
    ],
    "latency": {
-    "p50": 5,
-    "p95": 36,
+    "p50": 3,
+    "p95": 33,
     "n": 12
    },
    "confusion": {
@@ -534,7 +534,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 369,
+   "latency_ms": 561,
    "trace": {
     "floors": [],
     "flags": [],
@@ -665,7 +665,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [],
@@ -801,7 +801,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 18,
    "trace": {
     "floors": [],
     "flags": [],
@@ -928,7 +928,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 15,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1062,7 +1062,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 6,
    "trace": {
     "floors": [
      "D:my_case"
@@ -1182,7 +1182,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 14,
    "trace": {
     "floors": [],
     "flags": [
@@ -1302,7 +1302,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 16,
+   "latency_ms": 18,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1428,7 +1428,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1551,7 +1551,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1677,7 +1677,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [
@@ -1798,7 +1798,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 64,
+   "latency_ms": 122,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1921,7 +1921,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 11,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -2046,7 +2046,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 35,
+   "latency_ms": 58,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2177,7 +2177,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 34,
+   "latency_ms": 68,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2313,7 +2313,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 12,
+   "latency_ms": 20,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2440,7 +2440,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 21,
+   "latency_ms": 45,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2574,7 +2574,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 9,
    "trace": {
     "floors": [
      "D:my_case"
@@ -2694,7 +2694,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 90,
+   "latency_ms": 109,
    "trace": {
     "floors": [],
     "flags": [
@@ -2810,7 +2810,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 19,
+   "latency_ms": 22,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2935,7 +2935,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 48,
+   "latency_ms": 62,
    "trace": {
     "floors": [],
     "flags": [],
@@ -3058,7 +3058,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 19,
+   "latency_ms": 23,
    "trace": {
     "floors": [],
     "flags": [],
@@ -3184,7 +3184,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 115,
+   "latency_ms": 152,
    "trace": {
     "floors": [],
     "flags": [
@@ -3305,7 +3305,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 18,
+   "latency_ms": 29,
    "trace": {
     "floors": [],
     "flags": [],
@@ -3424,7 +3424,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 20,
+   "latency_ms": 39,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -3668,7 +3668,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [
@@ -3925,7 +3925,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 12,
+   "latency_ms": 11,
    "trace": {
     "floors": [],
     "flags": [
@@ -4049,7 +4049,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 12,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -4169,7 +4169,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 8,
    "trace": {
     "floors": [
      "D:my_case"
@@ -4409,7 +4409,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 3,
    "trace": {
     "floors": [
      "X:judge_person"
@@ -4526,7 +4526,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 19,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "X:judge_person"
@@ -4643,7 +4643,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 10,
+   "latency_ms": 5,
    "trace": {
     "floors": [
      "X:private_dispute"
@@ -4760,7 +4760,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 21,
+   "latency_ms": 7,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -4884,7 +4884,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [
@@ -5018,7 +5018,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 27,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5152,7 +5152,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 17,
+   "latency_ms": 10,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5282,7 +5282,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 25,
+   "latency_ms": 23,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5405,7 +5405,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 55,
+   "latency_ms": 20,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5652,7 +5652,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 11,
    "trace": {
     "floors": [
      "known:cleanliness-from-faith"
@@ -5776,7 +5776,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 66,
+   "latency_ms": 49,
    "trace": {
     "floors": [],
     "flags": [
@@ -5897,7 +5897,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 6,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -6018,7 +6018,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [
@@ -6147,7 +6147,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [
@@ -6267,7 +6267,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 15,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6523,7 +6523,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6648,7 +6648,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6772,7 +6772,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 15,
+   "latency_ms": 13,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6901,7 +6901,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 89,
+   "latency_ms": 65,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7025,7 +7025,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7159,7 +7159,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7278,7 +7278,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 14,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7414,7 +7414,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 36,
+   "latency_ms": 33,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7652,7 +7652,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 2,
+   "latency_ms": 3,
    "trace": {
     "floors": [
      "X:fate"
@@ -7770,7 +7770,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 9,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -7885,7 +7885,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 12,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8127,7 +8127,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8249,7 +8249,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8364,7 +8364,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 2,
    "trace": {
     "floors": [],
     "flags": [],
