@@ -1,0 +1,48 @@
+{
+  "id": "/",
+  "name": "Signs Around You · آيات حولك",
+  "short_name": "Signs",
+  "description": "Point your camera at the world and discover what the Quran says — only from content approved by scholarly institutions.",
+  "lang": "en",
+  "dir": "auto",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#10143a",
+  "theme_color": "#10143a",
+  "categories": ["education", "books"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/monochrome-512.png", "sizes": "512x512", "type": "image/png", "purpose": "monochrome" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Snap something you see",
+      "short_name": "Snap",
+      "description": "Point your camera at something and see what the Quran says about it",
+      "url": "/snap?source=pwa-shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Ask a question",
+      "short_name": "Ask",
+      "description": "Ask and get an answer only from approved sources",
+      "url": "/ask?source=pwa-shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Heritage & manuscripts",
+      "short_name": "Heritage",
+      "description": "Enter an item code or scan a museum QR code",
+      "url": "/heritage?source=pwa-shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
