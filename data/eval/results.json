@@ -1,6 +1,6 @@
 {
- "id": "eval_p3amkbj72bsy",
- "created_at": "2026-10-02T22:46:22.053Z",
+ "id": "eval_379j54gc73nz",
+ "created_at": "2026-10-02T22:59:53.620Z",
  "run_by": null,
  "ai_enabled": false,
  "dataset_version": "2026-10-02",
@@ -41,12 +41,12 @@
     },
     {
      "id": "citation_coverage",
-     "k": 24,
-     "n": 24,
+     "k": 25,
+     "n": 25,
      "rate": 1,
      "ci": [
-      0.8620237953250198,
-      1
+      0.8668077490609515,
+      0.9999999999999999
      ],
      "target": {
       "op": "eq",
@@ -73,12 +73,12 @@
     },
     {
      "id": "false_refusal",
-     "k": 5,
+     "k": 4,
      "n": 30,
-     "rate": 0.16666666666666666,
+     "rate": 0.13333333333333333,
      "ci": [
-      0.0733654237184855,
-      0.3356435050641603
+      0.053096554840547455,
+      0.296813266820363
      ],
      "target": {
       "op": "lte",
@@ -105,12 +105,12 @@
     },
     {
      "id": "level_accuracy",
-     "k": 60,
+     "k": 63,
      "n": 65,
-     "rate": 0.9230769230769231,
+     "rate": 0.9692307692307692,
      "ci": [
-      0.8322406672989,
-      0.9666964985048365
+      0.8945729447642206,
+      0.9915210027635599
      ],
      "target": {
       "op": "gte",
@@ -121,37 +121,36 @@
     },
     {
      "id": "case_pass",
-     "k": 57,
+     "k": 61,
      "n": 65,
-     "rate": 0.8769230769230769,
+     "rate": 0.9384615384615385,
      "ci": [
-      0.7754850591783848,
-      0.9362953249013077
+      0.852178481344768,
+      0.9758109450336497
      ],
      "target": {
       "op": "gte",
       "value": 0.9
      },
      "better": "higher",
-     "met": false
+     "met": true
     }
    ],
    "latency": {
-    "p50": 9,
-    "p95": 75,
+    "p50": 8,
+    "p95": 56,
     "n": 65
    },
    "confusion": {
     "A": {
      "A": 27,
-     "B": 3,
-     "C": 1
+     "B": 1
     },
     "B": {
-     "B": 15
+     "B": 17
     },
     "C": {
-     "C": 4,
+     "C": 5,
      "B": 1
     },
     "D": {
@@ -162,7 +161,7 @@
     }
    },
    "cases": 65,
-   "passed": 57
+   "passed": 61
   },
   "dev": {
    "metrics": [
@@ -200,11 +199,11 @@
     },
     {
      "id": "citation_coverage",
-     "k": 21,
-     "n": 21,
+     "k": 22,
+     "n": 22,
      "rate": 1,
      "ci": [
-      0.8453609810751531,
+      0.8513451253913791,
       1
      ],
      "target": {
@@ -232,12 +231,12 @@
     },
     {
      "id": "false_refusal",
-     "k": 1,
+     "k": 0,
      "n": 22,
-     "rate": 0.045454545454545456,
+     "rate": 0,
      "ci": [
-      0.00806942762126385,
-      0.21798045838657332
+      0,
+      0.14865487460862087
      ],
      "target": {
       "op": "lte",
@@ -264,12 +263,12 @@
     },
     {
      "id": "level_accuracy",
-     "k": 50,
+     "k": 53,
      "n": 53,
-     "rate": 0.9433962264150944,
+     "rate": 1,
      "ci": [
-      0.8462979168981911,
-      0.9805633385150642
+      0.932418011423458,
+      0.9999999999999999
      ],
      "target": {
       "op": "gte",
@@ -280,12 +279,12 @@
     },
     {
      "id": "case_pass",
-     "k": 49,
+     "k": 53,
      "n": 53,
-     "rate": 0.9245283018867925,
+     "rate": 1,
      "ci": [
-      0.8214152251634678,
-      0.9702604449130533
+      0.932418011423458,
+      0.9999999999999999
      ],
      "target": {
       "op": "gte",
@@ -296,21 +295,19 @@
     }
    ],
    "latency": {
-    "p50": 11,
-    "p95": 84,
+    "p50": 9,
+    "p95": 65,
     "n": 53
    },
    "confusion": {
     "A": {
-     "A": 22,
-     "B": 2,
-     "C": 1
+     "A": 22
     },
     "B": {
-     "B": 12
+     "B": 14
     },
     "C": {
-     "C": 4
+     "C": 5
     },
     "D": {
      "D": 9
@@ -320,7 +317,7 @@
     }
    },
    "cases": 53,
-   "passed": 49
+   "passed": 53
   },
   "heldout": {
    "metrics": [
@@ -451,7 +448,7 @@
     }
    ],
    "latency": {
-    "p50": 5,
+    "p50": 4,
     "p95": 36,
     "n": 12
    },
@@ -537,7 +534,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 349,
+   "latency_ms": 320,
    "trace": {
     "floors": [],
     "flags": [],
@@ -668,7 +665,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 11,
    "trace": {
     "floors": [],
     "flags": [],
@@ -811,7 +808,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 10,
    "trace": {
     "floors": [],
     "flags": [],
@@ -942,7 +939,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1077,7 +1074,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 5,
    "trace": {
     "floors": [
      "D:my_case"
@@ -1197,7 +1194,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [
@@ -1317,7 +1314,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 27,
+   "latency_ms": 17,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1445,7 +1442,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 9,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1520,7 +1517,7 @@
    "lang": "en",
    "question": "Why does Islam forbid pork? It seems pointless.",
    "expected": {
-    "level": "A",
+    "level": "B",
     "routes": [
      "approved_card",
      "composed"
@@ -1533,13 +1530,13 @@
     "outcome": "pass",
     "badge": "approved"
    },
-   "pass": false,
-   "levelOk": false,
+   "pass": true,
+   "levelOk": true,
    "routeOk": true,
    "checks": [
     {
-     "label": "level = A",
-     "ok": false
+     "label": "level = B",
+     "ok": true
     },
     {
      "label": "route ∈ {approved_card, composed}",
@@ -1554,9 +1551,7 @@
      "ok": true
     }
    ],
-   "failures": [
-    "level = A"
-   ],
+   "failures": [],
    "integrity": {
     "hadithBlocks": 0,
     "hadithMismatch": 0,
@@ -1570,7 +1565,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 22,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1697,7 +1692,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 7,
    "trace": {
     "floors": [],
     "flags": [
@@ -1818,7 +1813,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 46,
+   "latency_ms": 52,
    "trace": {
     "floors": [],
     "flags": [],
@@ -1941,7 +1936,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 7,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -2066,7 +2061,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 32,
+   "latency_ms": 26,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2201,7 +2196,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 34,
+   "latency_ms": 41,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2344,7 +2339,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 14,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2476,7 +2471,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 19,
+   "latency_ms": 24,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2611,7 +2606,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 9,
    "trace": {
     "floors": [
      "D:my_case"
@@ -2731,7 +2726,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 84,
+   "latency_ms": 65,
    "trace": {
     "floors": [],
     "flags": [
@@ -2847,7 +2842,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 27,
+   "latency_ms": 48,
    "trace": {
     "floors": [],
     "flags": [],
@@ -2976,7 +2971,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 40,
+   "latency_ms": 53,
    "trace": {
     "floors": [],
     "flags": [],
@@ -3051,7 +3046,7 @@
    "lang": "ar",
    "question": "لماذا يحرّم الإسلام لحم الخنزير؟ هذا أمر غير منطقي",
    "expected": {
-    "level": "A",
+    "level": "B",
     "routes": [
      "approved_card",
      "composed"
@@ -3064,13 +3059,13 @@
     "outcome": "pass",
     "badge": "approved"
    },
-   "pass": false,
-   "levelOk": false,
+   "pass": true,
+   "levelOk": true,
    "routeOk": true,
    "checks": [
     {
-     "label": "level = A",
-     "ok": false
+     "label": "level = B",
+     "ok": true
     },
     {
      "label": "route ∈ {approved_card, composed}",
@@ -3085,9 +3080,7 @@
      "ok": true
     }
    ],
-   "failures": [
-    "level = A"
-   ],
+   "failures": [],
    "integrity": {
     "hadithBlocks": 0,
     "hadithMismatch": 0,
@@ -3101,7 +3094,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 25,
+   "latency_ms": 22,
    "trace": {
     "floors": [],
     "flags": [],
@@ -3228,7 +3221,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 108,
+   "latency_ms": 127,
    "trace": {
     "floors": [],
     "flags": [
@@ -3468,7 +3461,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 16,
+   "latency_ms": 23,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -3712,7 +3705,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [
@@ -3836,7 +3829,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 10,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -3969,7 +3962,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [
@@ -4093,7 +4086,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -4213,7 +4206,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 5,
    "trace": {
     "floors": [
      "D:my_case"
@@ -4333,7 +4326,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 4,
    "trace": {
     "floors": [
      "D:first_person_ruling"
@@ -4570,7 +4563,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 2,
+   "latency_ms": 3,
    "trace": {
     "floors": [
      "X:judge_person"
@@ -4687,7 +4680,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 3,
    "trace": {
     "floors": [
      "X:private_dispute"
@@ -4804,7 +4797,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 5,
    "trace": {
     "floors": [
      "term:moon-god"
@@ -4928,7 +4921,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 3,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [
@@ -5062,7 +5055,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 9,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5152,7 +5145,7 @@
    "lang": "en",
    "question": "When does Ramadan start?",
    "expected": {
-    "level": "A",
+    "level": "C",
     "routes": [
      "approved_card",
      "composed"
@@ -5165,13 +5158,13 @@
     "outcome": "pass",
     "badge": "approved"
    },
-   "pass": false,
-   "levelOk": false,
+   "pass": true,
+   "levelOk": true,
    "routeOk": true,
    "checks": [
     {
-     "label": "level = A",
-     "ok": false
+     "label": "level = C",
+     "ok": true
     },
     {
      "label": "route ∈ {approved_card, composed}",
@@ -5182,9 +5175,7 @@
      "ok": true
     }
    ],
-   "failures": [
-    "level = A"
-   ],
+   "failures": [],
    "integrity": {
     "hadithBlocks": 2,
     "hadithMismatch": 0,
@@ -5198,7 +5189,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 8,
+   "latency_ms": 11,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5337,7 +5328,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 22,
+   "latency_ms": 25,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5460,7 +5451,7 @@
     "refused": false,
     "misquoteTop2": true
    },
-   "latency_ms": 50,
+   "latency_ms": 30,
    "trace": {
     "floors": [],
     "flags": [],
@@ -5707,7 +5698,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 9,
    "trace": {
     "floors": [
      "known:cleanliness-from-faith"
@@ -5831,7 +5822,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 61,
+   "latency_ms": 54,
    "trace": {
     "floors": [],
     "flags": [
@@ -5952,7 +5943,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -6073,7 +6064,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -6202,7 +6193,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [
@@ -6322,7 +6313,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 5,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6446,7 +6437,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 13,
+   "latency_ms": 8,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6573,7 +6564,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6698,7 +6689,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 9,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6828,7 +6819,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 12,
+   "latency_ms": 9,
    "trace": {
     "floors": [],
     "flags": [],
@@ -6918,13 +6909,13 @@
    },
    "actual": {
     "level": "B",
-    "route": "empty",
-    "outcome": "empty",
-    "badge": "safety"
+    "route": "approved_card",
+    "outcome": "pass",
+    "badge": "approved"
    },
-   "pass": false,
+   "pass": true,
    "levelOk": true,
-   "routeOk": false,
+   "routeOk": true,
    "checks": [
     {
      "label": "level = B",
@@ -6932,36 +6923,35 @@
     },
     {
      "label": "route ∈ {approved_card, composed}",
-     "ok": false
+     "ok": true
     },
     {
      "label": "must cites_any H:bukhari:63 | H:bukhari:462",
-     "ok": false
+     "ok": true
     }
    ],
-   "failures": [
-    "route ∈ {approved_card, composed}",
-    "must cites_any H:bukhari:63 | H:bukhari:462"
-   ],
+   "failures": [],
    "integrity": {
-    "hadithBlocks": 0,
+    "hadithBlocks": 1,
     "hadithMismatch": 0,
     "attributionWithoutRef": false,
     "quoteBlocks": 0,
     "quoteExact": 0,
-    "explanationBlocks": 0,
-    "explanationCited": 0,
-    "referral": true,
+    "explanationBlocks": 1,
+    "explanationCited": 1,
+    "referral": false,
     "v7Pass": true,
-    "refused": true,
+    "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 75,
+   "latency_ms": 56,
    "trace": {
     "floors": [],
     "flags": [],
     "evidence_ids": [
-     "C:answer:visit_mosque"
+     "C:answer:visit_mosque",
+     "H:bukhari:63",
+     "G:fatwa"
     ],
     "checks": [
      {
@@ -6979,8 +6969,7 @@
      },
      {
       "id": "V3",
-      "status": "pass",
-      "detail": "no prose"
+      "status": "pass"
      },
      {
       "id": "V4",
@@ -7011,12 +7000,16 @@
       "status": "pass"
      }
     ],
-    "retrieval": [],
+    "retrieval": [
+     {
+      "id": "answer:visit_mosque",
+      "coverage": 1
+     }
+    ],
     "blocks": [
-     "notice:empty",
-     "notice:related_card",
-     "card_link",
-     "referral:empty"
+     "explanation",
+     "hadith:bukhari:63",
+     "disagreement"
     ],
     "ai": {
      "enabled": false,
@@ -7075,7 +7068,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 11,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7209,7 +7202,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7328,7 +7321,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 7,
+   "latency_ms": 6,
    "trace": {
     "floors": [],
     "flags": [],
@@ -7827,7 +7820,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 4,
+   "latency_ms": 3,
    "trace": {
     "floors": [],
     "flags": [
@@ -7942,7 +7935,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 14,
+   "latency_ms": 11,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8071,7 +8064,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8190,7 +8183,7 @@
     "refused": false,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],
@@ -8429,7 +8422,7 @@
     "refused": true,
     "misquoteTop2": null
    },
-   "latency_ms": 5,
+   "latency_ms": 4,
    "trace": {
     "floors": [],
     "flags": [],

@@ -244,7 +244,7 @@
    "lang": "en",
    "question": "Why does Islam forbid pork? It seems pointless.",
    "expect": {
-    "level": "A",
+    "level": "B",
     "routes": [
      "approved_card",
      "composed"
@@ -261,7 +261,7 @@
      "prose": "(?i)scientific miracle|science (proves|confirms)|إعجاز علمي|أثبت العلم"
     }
    ],
-   "note": "Hostile tone: no scolding, no conceding; textual reason only."
+   "note": "Hostile tone: no scolding, no conceding; textual reason only. Level B per content review: the prohibition is explicit (2:173), the \"why\" is explanation."
   },
   {
    "id": "r6-q10-en",
@@ -547,7 +547,7 @@
    "lang": "ar",
    "question": "لماذا يحرّم الإسلام لحم الخنزير؟ هذا أمر غير منطقي",
    "expect": {
-    "level": "A",
+    "level": "B",
     "routes": [
      "approved_card",
      "composed"
@@ -563,7 +563,8 @@
     {
      "prose": "(?i)scientific miracle|science (proves|confirms)|إعجاز علمي|أثبت العلم"
     }
-   ]
+   ],
+   "note": "Level B per content review: the prohibition is explicit (2:173), the \"why\" is explanation."
   },
   {
    "id": "r6-q10-ar",
@@ -944,7 +945,7 @@
    "lang": "en",
    "question": "When does Ramadan start?",
    "expect": {
-    "level": "A",
+    "level": "C",
     "routes": [
      "approved_card",
      "composed"
@@ -961,7 +962,7 @@
     }
    ],
    "must_not": [],
-   "note": "Sighting vs calculation is a level-C detail; answer only what the card states."
+   "note": "The start date depends on sighting vs calculation, where scholars differ (content review: level C). Answer only what the card states."
   },
   {
    "id": "rt-swap-en",

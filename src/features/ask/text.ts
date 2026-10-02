@@ -71,7 +71,7 @@ const AR_STOP = new Set(
     "في من على الى إلى عن ما ماذا لماذا لما كيف هل هو هي هم هن انا أنا نحن انت أنت انتم أنتم هذا هذه ذلك تلك الذي التي الذين " +
     "و او أو ثم ان أن إن كان كانت يكون لا لم لن قد كل بعض اي أي مع عند بين حتى اذا إذا لو ليس غير بل اذن إذن " +
     "يا ايها أيها له لها لهم به بها فيه فيها منه منها عليه عليها اليه إليه معنى يعني ارجو أرجو اريد أريد ممكن " +
-    "اعطني أعطني اخبرني أخبرني قل"
+    "اعطني أعطني اخبرني أخبرني قل لغير وانا وأنا"
   )
     .split(" ")
     .map((w) => normalizeArabic(w)),
@@ -105,7 +105,7 @@ export function stemAr(w: string): string {
     }
   }
   if (s.length > 3 && (s[0] === "و" || s[0] === "ف") && !/^(وح|وس|وض|ول|وق|وج|وص|وع|فت|فر|فق|فك|فه|فع)/.test(s)) s = s.slice(1);
-  for (const suf of ["ات", "ون", "ين", "ان", "ها", "هم", "ه", "ي"]) {
+  for (const suf of ["ات", "ون", "ين", "ان", "ني", "نا", "ها", "هم", "ه", "ي"]) {
     if (s.endsWith(suf) && s.length - suf.length >= 3) {
       s = s.slice(0, -suf.length);
       break;
@@ -127,6 +127,7 @@ export function tokenize(text: string): Tokens {
   for (const w of ar.split(" ")) {
     if (!w || w.length < 2 || AR_STOP.has(w)) continue;
     const st = stemAr(w);
+    if (AR_STOP.has(st)) continue;
     all.push(st);
     if (!AR_GENERIC.has(w) && !AR_GENERIC.has(st)) content.push(st);
   }
