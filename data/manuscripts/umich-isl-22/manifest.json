@@ -1,0 +1,77 @@
+{
+ "id": "umich-isl-22",
+ "title_ar": "القاموس المحيط والقابوس الوسيط",
+ "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+ "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+ "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+ "holding_library": "University of Michigan Library, Special Collections Research Center (Ann Arbor)",
+ "holding_library_ar": "مكتبة جامعة ميشيغان، آن آربر",
+ "shelfmark": "Isl. Ms. 22",
+ "copy_date": null,
+ "copy_date_note": "Not verified: the U-M / HathiTrust catalogue record could not be reached from this environment. Fill in from the catalogue before publication.",
+ "script_description": "Fully vocalised naskh in black ink, red rubrics (headwords / abbreviation marks), ruled gold-and-black frame; page 1 has an illuminated headpiece band \"باب الهمزة فصل الألف\". Clean, regular hand - the \"easy\" copy.",
+ "licence": "Public domain (manuscript and faithful scans; U-M states it does not hold copyright in the manuscripts and asks for attribution). Scans distributed via HathiTrust (watermark \"Digitized by / Original from University of Michigan\" visible in the margins).",
+ "licence_confidence": "medium",
+ "licence_note": "U-M Islamic Manuscripts guide (Citation & Permissions): \"The University of Michigan does not hold the copyright for the manuscripts and so cannot grant or deny permission\"; attribution requested and the curator (Evyn Kropf) asks to be notified of reproductions. HathiTrust per-volume rights code not checked (site unreachable) - verify it reads \"pd\".",
+ "credit_line": "Isl. Ms. 22, University of Michigan Library (Special Collections Research Center), Ann Arbor. Digitized by the University of Michigan Library (via HathiTrust). Layout + transcription: OpenITI arabic_ms_data.",
+ "source_url": "https://guides.lib.umich.edu/islamicmss/digitized",
+ "catalogue_url": "https://catalog.hathitrust.org/  (search: \"isl. ms. 22\")",
+ "iiif": null,
+ "pages": [
+  {
+   "page_id": "umich-isl-22_01",
+   "label": "excerpt page 1 (illuminated heading: باب الهمزة)",
+   "folio": null,
+   "image": "pages/umich-isl-22_01.jpg",
+   "thumb": "thumbs/umich-isl-22_01.jpg",
+   "json": "pages/umich-isl-22_01.json",
+   "width": 1343,
+   "height": 2000,
+   "lines": 35,
+   "transcribed_lines": 35,
+   "region_types": [
+    "main"
+   ],
+   "draft_cer": 0.7388,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_page_1.xml"
+  },
+  {
+   "page_id": "umich-isl-22_02",
+   "label": "excerpt page 2 (entries باء / بوأ)",
+   "folio": null,
+   "image": "pages/umich-isl-22_02.jpg",
+   "thumb": "thumbs/umich-isl-22_02.jpg",
+   "json": "pages/umich-isl-22_02.json",
+   "width": 1332,
+   "height": 2000,
+   "lines": 37,
+   "transcribed_lines": 37,
+   "region_types": [
+    "main"
+   ],
+   "draft_cer": 0.7551,
+   "quran_hits": 1,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_page_2.xml"
+  },
+  {
+   "page_id": "umich-isl-22_03",
+   "label": "excerpt page 3 (entries جشأ / جفأ ... حبأ)",
+   "folio": null,
+   "image": "pages/umich-isl-22_03.jpg",
+   "thumb": "thumbs/umich-isl-22_03.jpg",
+   "json": "pages/umich-isl-22_03.json",
+   "width": 1343,
+   "height": 2000,
+   "lines": 37,
+   "transcribed_lines": 37,
+   "region_types": [
+    "main"
+   ],
+   "draft_cer": 0.7647,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_page_3.xml"
+  }
+ ],
+ "draft_cer": 0.7533
+}

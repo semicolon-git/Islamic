@@ -1,0 +1,16 @@
+{
+  "institutions": [
+    { "id": "inst_lib", "slug": "noor-library", "kind": "library", "name_en": "Al-Noor Manuscript Library", "name_ar": "مكتبة النور للمخطوطات", "review_policy": { "four_eyes": true, "requires_researcher": true } },
+    { "id": "inst_uni", "slug": "college-of-sharia", "kind": "university", "name_en": "College of Sharia — Demo University", "name_ar": "كلية الشريعة — الجامعة التجريبية", "review_policy": { "four_eyes": true, "requires_researcher": true } },
+    { "id": "inst_dawah", "slug": "bayan-association", "kind": "dawah", "name_en": "Bayan Da'wah Association", "name_ar": "جمعية بيان الدعوية", "review_policy": { "four_eyes": true } }
+  ],
+  "users": [
+    { "id": "u_sara", "role": "student", "institution_id": "inst_uni", "display_name_en": "Sara Al-Harbi", "display_name_ar": "سارة الحربي", "title_en": "Student · Islamic Studies", "title_ar": "طالبة · الدراسات الإسلامية", "avatar_hue": 330 },
+    { "id": "u_omar", "role": "student", "institution_id": "inst_uni", "display_name_en": "Omar Haddad", "display_name_ar": "عمر حداد", "title_en": "Student · Arabic Language", "title_ar": "طالب · اللغة العربية", "avatar_hue": 40 },
+    { "id": "u_huda", "role": "researcher", "institution_id": "inst_uni", "display_name_en": "Dr. Huda Al-Qahtani", "display_name_ar": "د. هدى القحطاني", "title_en": "Researcher · Manuscripts & Hadith", "title_ar": "باحثة · المخطوطات والحديث", "avatar_hue": 170 },
+    { "id": "u_khalid", "role": "institution_admin", "institution_id": "inst_lib", "display_name_en": "Khalid Al-Otaibi", "display_name_ar": "خالد العتيبي", "title_en": "Head of Collections", "title_ar": "رئيس قسم المقتنيات", "avatar_hue": 250 },
+    { "id": "u_noura", "role": "institution_admin", "institution_id": "inst_uni", "display_name_en": "Dr. Noura Al-Saleh", "display_name_ar": "د. نورة الصالح", "title_en": "Vice Dean · College of Sharia", "title_ar": "وكيلة كلية الشريعة", "avatar_hue": 290 },
+    { "id": "u_yusuf", "role": "specialist", "institution_id": "inst_dawah", "display_name_en": "Yusuf Rahman", "display_name_ar": "يوسف رحمن", "title_en": "Specialist · Visitor conversations", "title_ar": "مختص · محادثات الزوار", "avatar_hue": 205 },
+    { "id": "u_admin", "role": "platform_admin", "institution_id": null, "display_name_en": "Platform Admin", "display_name_ar": "مشرف المنصة", "title_en": "Platform administrator", "title_ar": "مشرف المنصة", "avatar_hue": 0 }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+ "corpus": "Signs Around You - manuscript transcription demo corpus",
+ "work": {
+  "title_ar": "القاموس المحيط والقابوس الوسيط",
+  "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+  "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+  "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)"
+ },
+ "source": {
+  "repo": "https://github.com/OpenITI/arabic_ms_data",
+  "commit": "c131f89270ca373eb8899e37decb9fd131e57e41",
+  "licence_note": "Layout + ground-truth transcriptions come from the OpenITI arabic_ms_data repository (no licence file in the repo at this commit - see README). Page images: see each manuscript's licence."
+ },
+ "draft_engine": "Tesseract (open-source OCR) draft",
+ "collation": "collation.json",
+ "stats": "stats.json",
+ "manuscripts": [
+  {
+   "id": "umich-isl-22",
+   "title_ar": "القاموس المحيط والقابوس الوسيط",
+   "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+   "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+   "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+   "holding_library": "University of Michigan Library, Special Collections Research Center (Ann Arbor)",
+   "holding_library_ar": "مكتبة جامعة ميشيغان، آن آربر",
+   "shelfmark": "Isl. Ms. 22",
+   "copy_date": null,
+   "copy_date_note": "Not verified: the U-M / HathiTrust catalogue record could not be reached from this environment. Fill in from the catalogue before publication.",
+   "script_description": "Fully vocalised naskh in black ink, red rubrics (headwords / abbreviation marks), ruled gold-and-black frame; page 1 has an illuminated headpiece band \"باب الهمزة فصل الألف\". Clean, regular hand - the \"easy\" copy.",
+   "licence": "Public domain (manuscript and faithful scans; U-M states it does not hold copyright in the manuscripts and asks for attribution). Scans distributed via HathiTrust (watermark \"Digitized by / Original from University of Michigan\" visible in the margins).",
+   "licence_confidence": "medium",
+   "licence_note": "U-M Islamic Manuscripts guide (Citation & Permissions): \"The University of Michigan does not hold the copyright for the manuscripts and so cannot grant or deny permission\"; attribution requested and the curator (Evyn Kropf) asks to be notified of reproductions. HathiTrust per-volume rights code not checked (site unreachable) - verify it reads \"pd\".",
+   "credit_line": "Isl. Ms. 22, University of Michigan Library (Special Collections Research Center), Ann Arbor. Digitized by the University of Michigan Library (via HathiTrust). Layout + transcription: OpenITI arabic_ms_data.",
+   "source_url": "https://guides.lib.umich.edu/islamicmss/digitized",
+   "catalogue_url": "https://catalog.hathitrust.org/  (search: \"isl. ms. 22\")",
+   "iiif": null,
+   "manifest": "umich-isl-22/manifest.json",
+   "pages": [
+    {
+     "page_id": "umich-isl-22_01",
+     "label": "excerpt page 1 (illuminated heading: باب الهمزة)",
+     "folio": null,
+     "image": "umich-isl-22/pages/umich-isl-22_01.jpg",
+     "thumb": "umich-isl-22/thumbs/umich-isl-22_01.jpg",
+     "json": "umich-isl-22/pages/umich-isl-22_01.json",
+     "width": 1343,
+     "height": 2000,
+     "lines": 35,
+     "transcribed_lines": 35,
+     "region_types": [
+      "main"
+     ],
+     "draft_cer": 0.7388,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_page_1.xml"
+    },
+    {
+     "page_id": "umich-isl-22_02",
+     "label": "excerpt page 2 (entries باء / بوأ)",
+     "folio": null,
+     "image": "umich-isl-22/pages/umich-isl-22_02.jpg",
+     "thumb": "umich-isl-22/thumbs/umich-isl-22_02.jpg",
+     "json": "umich-isl-22/pages/umich-isl-22_02.json",
+     "width": 1332,
+     "height": 2000,
+     "lines": 37,
+     "transcribed_lines": 37,
+     "region_types": [
+      "main"
+     ],
+     "draft_cer": 0.7551,
+     "quran_hits": 1,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_page_2.xml"
+    },
+    {
+     "page_id": "umich-isl-22_03",
+     "label": "excerpt page 3 (entries جشأ / جفأ ... حبأ)",
+     "folio": null,
+     "image": "umich-isl-22/pages/umich-isl-22_03.jpg",
+     "thumb": "umich-isl-22/thumbs/umich-isl-22_03.jpg",
+     "json": "umich-isl-22/pages/umich-isl-22_03.json",
+     "width": 1343,
+     "height": 2000,
+     "lines": 37,
+     "transcribed_lines": 37,
+     "region_types": [
+      "main"
+     ],
+     "draft_cer": 0.7647,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/university_of_michigan_isl_ms_22/university_of_michigan_isl_ms_221.pdf_page_3.xml"
+    }
+   ]
+  },
+  {
+   "id": "sbb-or-fol-215",
+   "title_ar": "القاموس المحيط والقابوس الوسيط",
+   "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+   "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+   "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+   "holding_library": "Staatsbibliothek zu Berlin - Preußischer Kulturbesitz, Orientabteilung",
+   "holding_library_ar": "مكتبة الدولة في برلين",
+   "shelfmark": "Ms. or. fol. 215 (Ahlwardt 6973)",
+   "copy_date": null,
+   "copy_date_note": "Not verified (Qalamos record DE1Book_manuscript_00002352 unreachable from this environment).",
+   "script_description": "Fully vocalised naskh, red rubrics and red section heads (فصل ...), double-ruled frame, many marginal glosses written obliquely (marginal regions are annotated but NOT transcribed in the source data - good \"help us transcribe\" targets).",
+   "licence": "Public Domain Mark 1.0 (SBB digitised collections / \"Orientalische Handschriften digital\").",
+   "licence_confidence": "medium",
+   "licence_note": "SBB marks its digitised out-of-copyright oriental manuscripts with PDM 1.0 (as shown on their Deutsche Digitale Bibliothek records). Item-level statement for this shelfmark not checked (digital.staatsbibliothek-berlin.de unreachable); older SBB scans carried CC BY-NC-SA 3.0 DE.",
+   "credit_line": "Staatsbibliothek zu Berlin - Preußischer Kulturbesitz, Orientabteilung, Ms. or. fol. 215 (Public Domain Mark 1.0). Layout + transcription: OpenITI arabic_ms_data.",
+   "source_url": "https://digital.staatsbibliothek-berlin.de/",
+   "catalogue_url": "https://qalamos.net/receive/DE1Book_manuscript_00002352",
+   "iiif": null,
+   "manifest": "sbb-or-fol-215/manifest.json",
+   "pages": [
+    {
+     "page_id": "sbb-or-fol-215_01",
+     "label": "scan 00000016 (marginal glosses)",
+     "folio": null,
+     "image": "sbb-or-fol-215/pages/sbb-or-fol-215_01.jpg",
+     "thumb": "sbb-or-fol-215/thumbs/sbb-or-fol-215_01.jpg",
+     "json": "sbb-or-fol-215/pages/sbb-or-fol-215_01.json",
+     "width": 1306,
+     "height": 2000,
+     "lines": 49,
+     "transcribed_lines": 33,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.7832,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/sbzb_ms_or_fol_215/00000016.xml"
+    },
+    {
+     "page_id": "sbb-or-fol-215_02",
+     "label": "scan 00000017 (entries بوأ / بتأ ...)",
+     "folio": null,
+     "image": "sbb-or-fol-215/pages/sbb-or-fol-215_02.jpg",
+     "thumb": "sbb-or-fol-215/thumbs/sbb-or-fol-215_02.jpg",
+     "json": "sbb-or-fol-215/pages/sbb-or-fol-215_02.json",
+     "width": 1319,
+     "height": 2000,
+     "lines": 39,
+     "transcribed_lines": 32,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.8199,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/sbzb_ms_or_fol_215/00000017.xml"
+    },
+    {
+     "page_id": "sbb-or-fol-215_03",
+     "label": "scan 00000018 (entries جبأ ...)",
+     "folio": null,
+     "image": "sbb-or-fol-215/pages/sbb-or-fol-215_03.jpg",
+     "thumb": "sbb-or-fol-215/thumbs/sbb-or-fol-215_03.jpg",
+     "json": "sbb-or-fol-215/pages/sbb-or-fol-215_03.json",
+     "width": 1306,
+     "height": 2000,
+     "lines": 44,
+     "transcribed_lines": 33,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.819,
+     "quran_hits": 1,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/sbzb_ms_or_fol_215/00000018.xml"
+    }
+   ]
+  },
+  {
+   "id": "bnf-arabe-5341",
+   "title_ar": "القاموس المحيط والقابوس الوسيط",
+   "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+   "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+   "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+   "holding_library": "Bibliothèque nationale de France, Département des Manuscrits",
+   "holding_library_ar": "المكتبة الوطنية الفرنسية، قسم المخطوطات",
+   "shelfmark": "Arabe 5341",
+   "copy_date": null,
+   "copy_date_note": "Not verified (Gallica / BnF Archives et manuscrits unreachable from this environment).",
+   "script_description": "Unvocalised, cursive and crowded naskh-type hand; grayscale (microfilm-derived) scan; large bold section heads (فصل ...), interlinear and marginal notes. The \"hard\" copy.",
+   "licence": "Gallica terms: free NON-COMMERCIAL reuse with the credit \"Source gallica.bnf.fr / BnF\"; commercial reuse requires a paid BnF licence.",
+   "licence_confidence": "high (for the general Gallica terms); item not individually checked",
+   "licence_note": "If the platform is or becomes commercial, either obtain a BnF licence or swap this copy for a public-domain one (e.g. Penn LJS 387 on OPenn, or SBB Glaser 33 which overlaps the same entries).",
+   "credit_line": "Source gallica.bnf.fr / Bibliothèque nationale de France, Département des Manuscrits, Arabe 5341. Layout + transcription: OpenITI arabic_ms_data.",
+   "source_url": "https://gallica.bnf.fr/",
+   "catalogue_url": "https://archivesetmanuscrits.bnf.fr/  (search: \"Arabe 5341\")",
+   "iiif": null,
+   "manifest": "bnf-arabe-5341/manifest.json",
+   "pages": [
+    {
+     "page_id": "bnf-arabe-5341_01",
+     "label": "excerpt page 3 (end of بأبأ ... )",
+     "folio": null,
+     "image": "bnf-arabe-5341/pages/bnf-arabe-5341_01.jpg",
+     "thumb": "bnf-arabe-5341/thumbs/bnf-arabe-5341_01.jpg",
+     "json": "bnf-arabe-5341/pages/bnf-arabe-5341_01.json",
+     "width": 1382,
+     "height": 2000,
+     "lines": 30,
+     "transcribed_lines": 27,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.5295,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_3.xml"
+    },
+    {
+     "page_id": "bnf-arabe-5341_02",
+     "label": "excerpt page 4 (entries بطأ / بكأ)",
+     "folio": null,
+     "image": "bnf-arabe-5341/pages/bnf-arabe-5341_02.jpg",
+     "thumb": "bnf-arabe-5341/thumbs/bnf-arabe-5341_02.jpg",
+     "json": "bnf-arabe-5341/pages/bnf-arabe-5341_02.json",
+     "width": 1479,
+     "height": 2000,
+     "lines": 32,
+     "transcribed_lines": 26,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.5306,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_4.xml"
+    },
+    {
+     "page_id": "bnf-arabe-5341_03",
+     "label": "excerpt page 5 (entries ثطأ ... )",
+     "folio": null,
+     "image": "bnf-arabe-5341/pages/bnf-arabe-5341_03.jpg",
+     "thumb": "bnf-arabe-5341/thumbs/bnf-arabe-5341_03.jpg",
+     "json": "bnf-arabe-5341/pages/bnf-arabe-5341_03.json",
+     "width": 1383,
+     "height": 2000,
+     "lines": 31,
+     "transcribed_lines": 27,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.5172,
+     "quran_hits": 1,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_5.xml"
+    },
+    {
+     "page_id": "bnf-arabe-5341_04",
+     "label": "excerpt page 7 (marginal notes)",
+     "folio": null,
+     "image": "bnf-arabe-5341/pages/bnf-arabe-5341_04.jpg",
+     "thumb": "bnf-arabe-5341/thumbs/bnf-arabe-5341_04.jpg",
+     "json": "bnf-arabe-5341/pages/bnf-arabe-5341_04.json",
+     "width": 1382,
+     "height": 2000,
+     "lines": 35,
+     "transcribed_lines": 27,
+     "region_types": [
+      "main",
+      "margin"
+     ],
+     "draft_cer": 0.5234,
+     "quran_hits": 0,
+     "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_7.xml"
+    }
+   ]
+  }
+ ]
+}

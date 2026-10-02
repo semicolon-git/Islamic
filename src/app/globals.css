@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+/* Theme toggle via [data-theme] on <html>; system default via prefers-color-scheme. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ─────────────────────────────────────────── Fonts */
+@font-face {
+  font-family: "KFGQPC Hafs";
+  src: url("/fonts/hafs.18.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* ─────────────────────────────────────────── Tokens (light) */
+:root {
+  /* Night ink & paper. Brand navy, mint accent, violet secondary, sand for manuscript surfaces. */
+  --bg: #f4f5f9;
+  --surface: #ffffff;
+  --surface-2: #eceef5;
+  --surface-3: #e2e5f0;
+  --ink: #12163a;
+  --ink-2: #474d75;
+  --ink-3: #5f6589;
+  --line: #dadeeb;
+  --line-strong: #c3c8db;
+  --brand: #10143a;
+  --brand-ink: #f2f3fb;
+  --accent: #077a67;
+  --accent-hover: #06685a;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcf2ec;
+  --violet: #5747e0;
+  --violet-soft: #ebe8ff;
+  --sand: #f3eee4;
+  --sand-ink: #4a3b22;
+  --ok: #1a6e45;
+  --ok-soft: #e0f3e8;
+  --warn: #8f5a00;
+  --warn-soft: #fbefd4;
+  --bad: #b3261e;
+  --bad-soft: #fbe3e1;
+  --focus: #5747e0;
+  --shadow: 0 1px 2px rgb(16 20 58 / 0.06), 0 4px 16px rgb(16 20 58 / 0.06);
+  --shadow-lg: 0 8px 40px rgb(16 20 58 / 0.16);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-lg: 22px;
+  --tab-h: 64px;
+  --text-scale: 1;
+  color-scheme: light;
+}
+
+/* ─────────────────────────────────────────── Tokens (dark) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0e29;
+    --surface: #131737;
+    --surface-2: #1a1f46;
+    --surface-3: #232958;
+    --ink: #eceefa;
+    --ink-2: #b5badb;
+    --ink-3: #8b91ba;
+    --line: #2a3066;
+    --line-strong: #3a417c;
+    --brand: #070a22;
+    --brand-ink: #eceefa;
+    --accent: #36dcb8;
+    --accent-hover: #5ae6c7;
+    --accent-ink: #052a22;
+    --accent-soft: #113c3c;
+    --violet: #a094ff;
+    --violet-soft: #29255e;
+    --sand: #2a2620;
+    --sand-ink: #eadfc8;
+    --ok: #6fd9a0;
+    --ok-soft: #12382a;
+    --warn: #f2c45a;
+    --warn-soft: #3a2e10;
+    --bad: #ff8a80;
+    --bad-soft: #42181a;
+    --focus: #a094ff;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+    --shadow-lg: 0 8px 40px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0e29;
+  --surface: #131737;
+  --surface-2: #1a1f46;
+  --surface-3: #232958;
+  --ink: #eceefa;
+  --ink-2: #b5badb;
+  --ink-3: #8b91ba;
+  --line: #2a3066;
+  --line-strong: #3a417c;
+  --brand: #070a22;
+  --brand-ink: #eceefa;
+  --accent: #36dcb8;
+  --accent-hover: #5ae6c7;
+  --accent-ink: #052a22;
+  --accent-soft: #113c3c;
+  --violet: #a094ff;
+  --violet-soft: #29255e;
+  --sand: #2a2620;
+  --sand-ink: #eadfc8;
+  --ok: #6fd9a0;
+  --ok-soft: #12382a;
+  --warn: #f2c45a;
+  --warn-soft: #3a2e10;
+  --bad: #ff8a80;
+  --bad-soft: #42181a;
+  --focus: #a094ff;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 8px 40px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+/* Map tokens to Tailwind utilities: bg-surface, text-ink-2, border-line, bg-accent-soft … */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-sand: var(--sand);
+  --color-sand-ink: var(--sand-ink);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --radius-card: var(--radius);
+  --radius-pill: 999px;
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+  --font-ui: "Readex Pro Variable", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", "Readex Pro Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-ms: "Amiri", "Traditional Arabic", serif;
+  --font-quran: "KFGQPC Hafs", "Amiri", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ─────────────────────────────────────────── Base */
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: calc(16px * var(--text-scale));
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+html[lang="ar"] body {
+  font-family: var(--font-arabic);
+  line-height: 1.75;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-ui);
+  text-wrap: balance;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 {
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+p { text-wrap: pretty; }
+:focus-visible {
+  outline: 2.5px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+::selection { background: var(--violet-soft); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* ─────────────────────────────────────────── Quran & manuscript type */
+.quran {
+  font-family: var(--font-quran);
+  font-size: 1.65rem;
+  line-height: 2.25;
+  direction: rtl;
+  text-align: right;
+  font-feature-settings: normal;
+  word-spacing: 0.04em;
+  color: var(--ink);
+}
+.quran-lg { font-size: 2rem; line-height: 2.35; }
+.ms-text {
+  font-family: var(--font-ms);
+  font-size: 1.35rem;
+  line-height: 2.1;
+  direction: rtl;
+}
+.ayah-mark {
+  font-family: var(--font-quran);
+  color: var(--accent);
+  margin-inline: 0.2em;
+}
+.mono { font-family: var(--font-mono); font-feature-settings: "zero"; }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* ─────────────────────────────────────────── Utilities */
+.safe-bottom { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--tab-h)); }
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+.khatam-bg {
+  background-image:
+    radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--ink) 9%, transparent) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+.scrollbar-thin { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-3) 50%, var(--surface-2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes pop { 0% { transform: scale(0.96); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+.animate-pop { animation: pop 0.2s ease-out both; }

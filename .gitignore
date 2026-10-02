@@ -1,3 +1,14 @@
 prep/data/raw/
 __pycache__/
 .DS_Store
+node_modules/
+.next/
+out/
+.data/
+test-results/
+playwright-report/
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.env
+coverage/

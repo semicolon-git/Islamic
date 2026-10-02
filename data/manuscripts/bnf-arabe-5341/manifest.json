@@ -1,0 +1,99 @@
+{
+ "id": "bnf-arabe-5341",
+ "title_ar": "القاموس المحيط والقابوس الوسيط",
+ "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+ "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+ "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+ "holding_library": "Bibliothèque nationale de France, Département des Manuscrits",
+ "holding_library_ar": "المكتبة الوطنية الفرنسية، قسم المخطوطات",
+ "shelfmark": "Arabe 5341",
+ "copy_date": null,
+ "copy_date_note": "Not verified (Gallica / BnF Archives et manuscrits unreachable from this environment).",
+ "script_description": "Unvocalised, cursive and crowded naskh-type hand; grayscale (microfilm-derived) scan; large bold section heads (فصل ...), interlinear and marginal notes. The \"hard\" copy.",
+ "licence": "Gallica terms: free NON-COMMERCIAL reuse with the credit \"Source gallica.bnf.fr / BnF\"; commercial reuse requires a paid BnF licence.",
+ "licence_confidence": "high (for the general Gallica terms); item not individually checked",
+ "licence_note": "If the platform is or becomes commercial, either obtain a BnF licence or swap this copy for a public-domain one (e.g. Penn LJS 387 on OPenn, or SBB Glaser 33 which overlaps the same entries).",
+ "credit_line": "Source gallica.bnf.fr / Bibliothèque nationale de France, Département des Manuscrits, Arabe 5341. Layout + transcription: OpenITI arabic_ms_data.",
+ "source_url": "https://gallica.bnf.fr/",
+ "catalogue_url": "https://archivesetmanuscrits.bnf.fr/  (search: \"Arabe 5341\")",
+ "iiif": null,
+ "pages": [
+  {
+   "page_id": "bnf-arabe-5341_01",
+   "label": "excerpt page 3 (end of بأبأ ... )",
+   "folio": null,
+   "image": "pages/bnf-arabe-5341_01.jpg",
+   "thumb": "thumbs/bnf-arabe-5341_01.jpg",
+   "json": "pages/bnf-arabe-5341_01.json",
+   "width": 1382,
+   "height": 2000,
+   "lines": 30,
+   "transcribed_lines": 27,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.5295,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_3.xml"
+  },
+  {
+   "page_id": "bnf-arabe-5341_02",
+   "label": "excerpt page 4 (entries بطأ / بكأ)",
+   "folio": null,
+   "image": "pages/bnf-arabe-5341_02.jpg",
+   "thumb": "thumbs/bnf-arabe-5341_02.jpg",
+   "json": "pages/bnf-arabe-5341_02.json",
+   "width": 1479,
+   "height": 2000,
+   "lines": 32,
+   "transcribed_lines": 26,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.5306,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_4.xml"
+  },
+  {
+   "page_id": "bnf-arabe-5341_03",
+   "label": "excerpt page 5 (entries ثطأ ... )",
+   "folio": null,
+   "image": "pages/bnf-arabe-5341_03.jpg",
+   "thumb": "thumbs/bnf-arabe-5341_03.jpg",
+   "json": "pages/bnf-arabe-5341_03.json",
+   "width": 1383,
+   "height": 2000,
+   "lines": 31,
+   "transcribed_lines": 27,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.5172,
+   "quran_hits": 1,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_5.xml"
+  },
+  {
+   "page_id": "bnf-arabe-5341_04",
+   "label": "excerpt page 7 (marginal notes)",
+   "folio": null,
+   "image": "pages/bnf-arabe-5341_04.jpg",
+   "thumb": "thumbs/bnf-arabe-5341_04.jpg",
+   "json": "pages/bnf-arabe-5341_04.json",
+   "width": 1382,
+   "height": 2000,
+   "lines": 35,
+   "transcribed_lines": 27,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.5234,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341/bibliotheque_nationale_de_france_departement_des_manuscrits_arabe_5341.pdf_page_7.xml"
+  }
+ ],
+ "draft_cer": 0.5253
+}

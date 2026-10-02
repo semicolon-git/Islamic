@@ -1,0 +1,9 @@
+{
+  "name": "qamus-demo-corpus-scripts",
+  "private": true,
+  "type": "module",
+  "description": "OCR step for the al-Qamus demo corpus (tesseract.js, Arabic LSTM model from a local tessdata dir)",
+  "dependencies": {
+    "tesseract.js": "7.0.0"
+  }
+}

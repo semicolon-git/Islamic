@@ -1,0 +1,80 @@
+{
+ "id": "sbb-or-fol-215",
+ "title_ar": "القاموس المحيط والقابوس الوسيط",
+ "title_en": "al-Qāmūs al-muḥīṭ wa-l-qābūs al-wasīṭ (The Encompassing Ocean), Arabic lexicon",
+ "author_ar": "مجد الدين محمد بن يعقوب الفيروزآبادي (ت. 817هـ)",
+ "author_en": "Majd al-Dīn Muḥammad b. Yaʿqūb al-Fīrūzābādī (d. 817/1415)",
+ "holding_library": "Staatsbibliothek zu Berlin - Preußischer Kulturbesitz, Orientabteilung",
+ "holding_library_ar": "مكتبة الدولة في برلين",
+ "shelfmark": "Ms. or. fol. 215 (Ahlwardt 6973)",
+ "copy_date": null,
+ "copy_date_note": "Not verified (Qalamos record DE1Book_manuscript_00002352 unreachable from this environment).",
+ "script_description": "Fully vocalised naskh, red rubrics and red section heads (فصل ...), double-ruled frame, many marginal glosses written obliquely (marginal regions are annotated but NOT transcribed in the source data - good \"help us transcribe\" targets).",
+ "licence": "Public Domain Mark 1.0 (SBB digitised collections / \"Orientalische Handschriften digital\").",
+ "licence_confidence": "medium",
+ "licence_note": "SBB marks its digitised out-of-copyright oriental manuscripts with PDM 1.0 (as shown on their Deutsche Digitale Bibliothek records). Item-level statement for this shelfmark not checked (digital.staatsbibliothek-berlin.de unreachable); older SBB scans carried CC BY-NC-SA 3.0 DE.",
+ "credit_line": "Staatsbibliothek zu Berlin - Preußischer Kulturbesitz, Orientabteilung, Ms. or. fol. 215 (Public Domain Mark 1.0). Layout + transcription: OpenITI arabic_ms_data.",
+ "source_url": "https://digital.staatsbibliothek-berlin.de/",
+ "catalogue_url": "https://qalamos.net/receive/DE1Book_manuscript_00002352",
+ "iiif": null,
+ "pages": [
+  {
+   "page_id": "sbb-or-fol-215_01",
+   "label": "scan 00000016 (marginal glosses)",
+   "folio": null,
+   "image": "pages/sbb-or-fol-215_01.jpg",
+   "thumb": "thumbs/sbb-or-fol-215_01.jpg",
+   "json": "pages/sbb-or-fol-215_01.json",
+   "width": 1306,
+   "height": 2000,
+   "lines": 49,
+   "transcribed_lines": 33,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.7832,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/sbzb_ms_or_fol_215/00000016.xml"
+  },
+  {
+   "page_id": "sbb-or-fol-215_02",
+   "label": "scan 00000017 (entries بوأ / بتأ ...)",
+   "folio": null,
+   "image": "pages/sbb-or-fol-215_02.jpg",
+   "thumb": "thumbs/sbb-or-fol-215_02.jpg",
+   "json": "pages/sbb-or-fol-215_02.json",
+   "width": 1319,
+   "height": 2000,
+   "lines": 39,
+   "transcribed_lines": 32,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.8199,
+   "quran_hits": 0,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/sbzb_ms_or_fol_215/00000017.xml"
+  },
+  {
+   "page_id": "sbb-or-fol-215_03",
+   "label": "scan 00000018 (entries جبأ ...)",
+   "folio": null,
+   "image": "pages/sbb-or-fol-215_03.jpg",
+   "thumb": "thumbs/sbb-or-fol-215_03.jpg",
+   "json": "pages/sbb-or-fol-215_03.json",
+   "width": 1306,
+   "height": 2000,
+   "lines": 44,
+   "transcribed_lines": 33,
+   "region_types": [
+    "main",
+    "margin"
+   ],
+   "draft_cer": 0.819,
+   "quran_hits": 1,
+   "source_alto": "firuzabadi_al_qamus_al_muhit/sbzb_ms_or_fol_215/00000018.xml"
+  }
+ ],
+ "draft_cer": 0.8067
+}
