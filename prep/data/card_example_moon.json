@@ -1,0 +1,176 @@
+{
+ "id": "card.nature.moon.v1",
+ "track": "nature",
+ "concept_id": "moon",
+ "level": "A",
+ "languages": [
+  "ar",
+  "en"
+ ],
+ "title": {
+  "ar": "القمر",
+  "en": "The Moon"
+ },
+ "verses": [
+  {
+   "key": "10:5",
+   "role": "primary",
+   "arabic": "هُوَ ٱلَّذِي جَعَلَ ٱلشَّمۡسَ ضِيَآءٗ وَٱلۡقَمَرَ نُورٗا وَقَدَّرَهُۥ مَنَازِلَ لِتَعۡلَمُواْ عَدَدَ ٱلسِّنِينَ وَٱلۡحِسَابَۚ مَا خَلَقَ ٱللَّهُ ذَٰلِكَ إِلَّا بِٱلۡحَقِّۚ يُفَصِّلُ ٱلۡأٓيَٰتِ لِقَوۡمٖ يَعۡلَمُونَ ٥",
+   "arabic_sha": "9808ec86a12ee568",
+   "text_source": "kfgqpc-hafs-v18",
+   "translation": {
+    "lang": "en",
+    "edition_id": "quranenc:english_saheeh",
+    "text": "It is He who made the sun a shining light and the moon a derived light and determined for it phases - that you may know the number of years and account [of time]. Allah has not created this except in truth. He details the signs for a people who know",
+    "text_status": "FROM-MIRROR(fawazahmed0 eng-ummmuhammad) - replace with QuranEnc/Quranpedia fetch before publish"
+   }
+  },
+  {
+   "key": "41:37",
+   "role": "supporting",
+   "arabic": "وَمِنۡ ءَايَٰتِهِ ٱلَّيۡلُ وَٱلنَّهَارُ وَٱلشَّمۡسُ وَٱلۡقَمَرُۚ لَا تَسۡجُدُواْ لِلشَّمۡسِ وَلَا لِلۡقَمَرِ وَٱسۡجُدُواْۤ لِلَّهِۤ ٱلَّذِي خَلَقَهُنَّ إِن كُنتُمۡ إِيَّاهُ تَعۡبُدُونَ ٣٧",
+   "arabic_sha": "4c3b9fa80003dd45",
+   "text_source": "kfgqpc-hafs-v18",
+   "translation": {
+    "lang": "en",
+    "edition_id": "quranenc:english_saheeh",
+    "text": "And of His signs are the night and day and the sun and moon. Do not prostrate to the sun or to the moon, but prostate to Allah, who created them, if it should be Him that you worship",
+    "text_status": "FROM-MIRROR(fawazahmed0 eng-ummmuhammad) - replace with QuranEnc/Quranpedia fetch before publish"
+   }
+  },
+  {
+   "key": "36:39",
+   "role": "supporting",
+   "arabic": "وَٱلۡقَمَرَ قَدَّرۡنَٰهُ مَنَازِلَ حَتَّىٰ عَادَ كَٱلۡعُرۡجُونِ ٱلۡقَدِيمِ ٣٩",
+   "arabic_sha": "d4b7d21658277155",
+   "text_source": "kfgqpc-hafs-v18",
+   "translation": {
+    "lang": "en",
+    "edition_id": "quranenc:english_saheeh",
+    "text": "And the moon - We have determined for it phases, until it returns [appearing] like the old date stalk",
+    "text_status": "FROM-MIRROR(fawazahmed0 eng-ummmuhammad) - replace with QuranEnc/Quranpedia fetch before publish"
+   }
+  }
+ ],
+ "count": {
+  "lemmas": [
+   "qamar"
+  ],
+  "tokens": 27,
+  "verses": 26,
+  "rule_id": "qac-lemma-word-token@0.4",
+  "source": "Quranic Arabic Corpus v0.4 (corpus.quran.com) - GPL, verbatim",
+  "display": {
+   "en": "The word for 'moon' (qamar) occurs 27 times in 26 verses.",
+   "ar": "وردت كلمة «القمر» 27 مرة في 26 آية."
+  }
+ },
+ "tafsir": [
+  {
+   "source_id": "tafsir.tabari",
+   "book": "جامع البيان عن تأويل آي القرآن",
+   "author": "ابن جرير الطبري (ت 310هـ)",
+   "verse_key": "10:5",
+   "excerpt_ar": "هو الذي أضاء الشمسَ وأنار القمر= ﴿وقدّره منازل﴾ ، يقول: قضاه فسوّاه منازلَ، لا يجاوزها ولا يقصر دُونها، على حالٍ واحدةٍ أبدًا.",
+   "excerpt_sha": "785926070556c716",
+   "is_commentator_words": true,
+   "retrieved_from": "spa5k/tafsir_api mirror (ar-tafsir-al-tabari/10/5) -> re-fetch from Quranpedia dump/API before publish",
+   "translation_en": null,
+   "translation_status": "to be written by researcher; or use Al-Mukhtasar EN if organizers approve"
+  }
+ ],
+ "hadith": [
+  {
+   "collection": "bukhari",
+   "number": 1042,
+   "topic": "eclipse (short): sun & moon do not eclipse for anyone's death; they are two signs of Allah",
+   "arabic": "حَدَّثَنَا أَصْبَغُ، قَالَ أَخْبَرَنِي ابْنُ وَهْبٍ، قَالَ أَخْبَرَنِي عَمْرٌو، عَنْ عَبْدِ الرَّحْمَنِ بْنِ الْقَاسِمِ، حَدَّثَهُ عَنْ أَبِيهِ، عَنِ ابْنِ عُمَرَ ـ رضى الله عنهما ـ أَنَّهُ كَانَ يُخْبِرُ عَنِ النَّبِيِّ صلى الله عليه وسلم‏.‏ ‏ \"‏ إِنَّ الشَّمْسَ وَالْقَمَرَ لاَ يَخْسِفَانِ لِمَوْتِ أَحَدٍ وَلاَ لِحَيَاتِهِ، وَلَكِنَّهُمَا آيَتَانِ مِنْ آيَاتِ اللَّهِ، فَإِذَا رَأَيْتُمُوهَا فَصَلُّوا ‏\"‏‏.‏",
+   "english_mirror": "Narrated Ibn `Umar:The Prophet (ﷺ) said, \"The sun and the moon do not eclipse because of the death or life (i.e. birth) of someone but they are two signs amongst the signs of Allah. When you see them offer the prayer",
+   "grade": "صحيح (في صحيح البخاري)",
+   "numbering_scheme": "bukhari-fath-al-bari",
+   "grader": "inclusion in Sahih al-Bukhari",
+   "grade_source_url": null,
+   "status": "VERIFY on dorar.net/hadith"
+  },
+  {
+   "collection": "bukhari",
+   "number": 1909,
+   "topic": "fast when you see it (the crescent) - lunar calendar",
+   "arabic": "حَدَّثَنَا آدَمُ، حَدَّثَنَا شُعْبَةُ، حَدَّثَنَا مُحَمَّدُ بْنُ زِيَادٍ، قَالَ سَمِعْتُ أَبَا هُرَيْرَةَ ـ رضى الله عنه ـ يَقُولُ قَالَ النَّبِيُّ صلى الله عليه وسلم أَوْ قَالَ قَالَ أَبُو الْقَاسِمِ صلى الله عليه وسلم ‏ \"‏ صُومُوا لِرُؤْيَتِهِ، وَأَفْطِرُوا لِرُؤْيَتِهِ، فَإِنْ غُبِّيَ عَلَيْكُمْ فَأَكْمِلُوا عِدَّةَ شَعْبَانَ ثَلاَثِينَ ‏\"‏‏.‏",
+   "english_mirror": "Narrated Abu Huraira:The Prophet (ﷺ) or Abul-Qasim said, \"Start fasting on seeing the crescent (of Ramadan), and give up fasting on seeing the crescent (of Shawwal), and if the sky is overcast (and you cannot see it), complete thirty days of Sha'ban",
+   "grade": "صحيح (في صحيح البخاري)",
+   "numbering_scheme": "bukhari-fath-al-bari",
+   "grader": "inclusion in Sahih al-Bukhari",
+   "grade_source_url": null,
+   "status": "VERIFY on dorar.net/hadith"
+  }
+ ],
+ "civilizational_note": {
+  "kind": "historical (non-sharia)",
+  "en": "Because the Islamic months begin with the crescent moon, Muslim astronomers developed tables and instruments for timekeeping and crescent visibility.",
+  "sources": [
+   {
+    "citation": "King, D. A. (1996). Astronomy and Islamic society: Qibla, gnomonics and timekeeping. In R. Rashed (Ed.), Encyclopedia of the History of Arabic Science, Vol. 1, pp. 128-184. Routledge.",
+    "status": "TO-VERIFY page range"
+   }
+  ]
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "text_en": "Allah made the sun a shining light and the moon a light, and determined phases for it so people know the count of years.",
+   "evidence": [
+    "v:10:5"
+   ]
+  },
+  {
+   "id": "c2",
+   "text_en": "Muslims do not worship the sun or moon; the Quran forbids prostrating to them.",
+   "evidence": [
+    "v:41:37"
+   ]
+  },
+  {
+   "id": "c3",
+   "text_en": "The Prophet taught that eclipses are signs of Allah, not caused by anyone's death or birth.",
+   "evidence": [
+    "h:bukhari:1042"
+   ]
+  },
+  {
+   "id": "c4",
+   "text_en": "Islamic months (e.g., Ramadan) begin by sighting the crescent.",
+   "evidence": [
+    "h:bukhari:1909"
+   ]
+  }
+ ],
+ "sensitivity": {
+  "flags": [
+   "no-ijaz-framing",
+   "no-numerology"
+  ],
+  "notes": "Do not present 54:1 or counts as scientific/numerical miracles."
+ },
+ "review": {
+  "stage": "auto_draft",
+  "history": [
+   {
+    "stage": "auto_draft",
+    "actor": "script:make_example_card.py",
+    "at": "2026-10-03T00:00:00Z"
+   }
+  ],
+  "reviewer_id": null,
+  "institution_id": null
+ },
+ "version": 1,
+ "provenance": {
+  "data_versions": {
+   "kfgqpc": "hafs v18 (2021-10-25)",
+   "qac": "0.4",
+   "hadith_mirror": "fawazahmed0/hadith-api@1",
+   "tafsir_mirror": "spa5k/tafsir_api@main"
+  }
+ }
+}

@@ -1,0 +1,23 @@
+== ara-quransimple.json: total verses 6236
+rule1 exact standalone token 'القمر' (no prefix): 5
+rule3 token containing 'القمر' or ending 'لقمر' (definite, any prefix): 26
+rule2 any token containing root string 'قمر' (definite+indefinite, any prefix/suffix): 27 tokens in 26 verses
+forms: {'القمر': 5, 'والقمر': 20, 'وقمرا': 1, 'للقمر': 1}
+verses: 6:77 6:96 7:54 10:5 12:4 13:2 14:33 16:12 21:33 22:18 25:61 29:61 31:29 35:13 36:39 36:40 39:5 41:37 54:1 55:5 71:16 74:32 75:8 75:9 84:18 91:2
+verses with >1 occurrence: [(41, 37)]
+== ara-quranuthmanihaf1.json: total verses 6236
+rule1 exact standalone token 'القمر' (no prefix): 5
+rule3 token containing 'القمر' or ending 'لقمر' (definite, any prefix): 26
+rule2 any token containing root string 'قمر' (definite+indefinite, any prefix/suffix): 27 tokens in 26 verses
+forms: {'القمر': 5, 'والقمر': 20, 'وقمر': 1, 'للقمر': 1}
+verses: 6:77 6:96 7:54 10:5 12:4 13:2 14:33 16:12 21:33 22:18 25:61 29:61 31:29 35:13 36:39 36:40 39:5 41:37 54:1 55:5 71:16 74:32 75:8 75:9 84:18 91:2
+verses with >1 occurrence: [(41, 37)]
+== ara-quranuthmanihaf.json: total verses 6236
+rule1 exact standalone token 'القمر' (no prefix): 5
+rule3 token containing 'القمر' or ending 'لقمر' (definite, any prefix): 26
+rule2 any token containing root string 'قمر' (definite+indefinite, any prefix/suffix): 27 tokens in 26 verses
+forms: {'القمر': 5, 'والقمر': 20, 'وقمرࣰ': 1, 'للقمر': 1}
+verses: 6:77 6:96 7:54 10:5 12:4 13:2 14:33 16:12 21:33 22:18 25:61 29:61 31:29 35:13 36:39 36:40 39:5 41:37 54:1 55:5 71:16 74:32 75:8 75:9 84:18 91:2
+verses with >1 occurrence: [(41, 37)]
+== Quranic Arabic Corpus v0.4 (mustafa0x fork) LEM:قَمَر segments: 27; distinct verses: 26
+ROOT:قمر segments: 27

@@ -1,0 +1,19 @@
+source	endpoint_tested	result_from_sandbox	notes
+QuranEnc API	https://quranenc.com/api/v1/translation/aya/english_saheeh/10/5 (+/sura/, /translations/list)	BLOCKED (egress 403)	endpoints documented (sura/aya); keys english_saheeh, english_hilali_khan, english_rwwad confirmed via search
+alquran.cloud	https://api.alquran.cloud/v1/ayah/10:5/quran-uthmani	BLOCKED	not an R3 source; Tanzil-based
+Tanzil	tanzil.net download + license	BLOCKED	CC BY-ND 3.0 header seen inside QAC 0.4 file
+Quran.com API v4	api.quran.com	BLOCKED	not R3
+Quranpedia	quranpedia.net, api.quranpedia.net, /dumps	BLOCKED	R3-approved; official versioned dumps + API (120/min, 10k/day) per search + third-party repo docs
+Dorar hadith API	https://dorar.net/dorar_api.json?skey=...	BLOCKED	documented at dorar.net/article/389; JSONP/HTML payload, 15 results; wrapper AhmedElTabarani/dorar-hadith-api
+dorar.net/tafseer	page	BLOCKED	no public tafsir API known -> manual copy with URL
+HadeethEnc API	https://hadeethenc.com/api/v1/languages ...	BLOCKED	Postman docs documenter.getpostman.com/view/5211979/TVev3j7q ; terms: no modification + attribution
+sunnah.com API	https://api.sunnah.com/v1/collections	BLOCKED	needs X-API-Key (request via GitHub issue) - not feasible by Oct 4
+dawa.center	https://dawa.center/file/7937	BLOCKED	format unknown -> check on Oct 3 from normal network
+islamic-content.com	https://islamic-content.com/dictionary	BLOCKED	export unknown -> manual/semiauto for ~30 terms
+Quranic Arabic Corpus	corpus.quran.com	BLOCKED	mirror OK: raw.githubusercontent.com/cltk/arabic_morphology_quranic-corpus (v0.4 verbatim, GPL header)
+KFGQPC data (GitHub mirror)	git clone thetruetruth/quran-data-kfgqpc	OK	hafs/data/hafsData_v18.json 6236 ayat; source qurancomplex.gov.sa/techquran/dev
+fawazahmed0 quran-api	raw.githubusercontent.com/fawazahmed0/quran-api/1/editions/*.json	OK	492 editions; 77 sourced from quranenc, 26 from qurancomplex; Arabic OCR'd -> never display, cross-check only
+fawazahmed0 hadith-api	raw.githubusercontent.com/fawazahmed0/hadith-api/1/editions/*.json	OK	Bukhari/Muslim/Sunan, grades for Sunan (Albani/Shakir/Zubair/Bashar)
+spa5k tafsir_api	raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/{slug}/{s}/{a}.json	OK	123 editions incl. Tabari, Ibn Abi Hatim, Mawsu'at al-Tafsir al-Ma'thur, Muyassar, Sa'di, Mukhtasar (EN/FR/ES/ZH...)
+Met / Cleveland / AIC / Smithsonian / Wellcome / LoC / QDL / BL / HSM / Europeana / Wikimedia	various API roots	BLOCKED	run 10_fetch_heritage on Oct 3 from normal network
+npm registry / PyPI	registry.npmjs.org, pypi.org	OK (direct)	not needed
