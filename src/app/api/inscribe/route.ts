@@ -4,6 +4,7 @@ import { hasArabic } from "@/lib/quran/normalize";
 import { InscribeInput } from "@/features/heritage/schemas";
 import { readInscriptionText } from "@/features/heritage/verses";
 import { transcribeInscription } from "@/features/heritage/vision";
+import { rateLimit } from "@/features/ask/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +15,9 @@ export const dynamic = "force-dynamic";
 export const POST = handler(async (req: Request) => {
   const input = await body(req, InscribeInput);
   if (input.image) {
+    // The photo path is a paid vision call: a light per-IP limit stops accidental floods.
+    const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "local";
+    if (!rateLimit(`inscribe:${ip}`, 30, 10 * 60_000)) throw new HttpError(429, "rate_limited", "Too many photos in a short time. Please wait a few minutes.");
     if (!aiEnabled()) throw new HttpError(503, "ai_disabled", "Photo reading isn't available on this server. Type the text instead.");
     let reading;
     try {

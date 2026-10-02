@@ -1,4 +1,5 @@
 import { eventsAfter, latestEventId } from "@/lib/events";
+import { getUser } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -7,10 +8,15 @@ export const runtime = "nodejs";
  * Server-Sent Events over the `events` table.
  * GET /api/events?scopes=a,b&after=<id>   (after omitted → start from now)
  * GET /api/events?scopes=a,b&after=<id>&poll=1 → JSON snapshot (fallback for clients without SSE)
+ * Visitors (no session) may only follow visitor scopes; portal activity needs a signed-in user.
  */
+const PUBLIC_SCOPES = /^(concept|thread|item):[\w:.-]{1,120}$/;
+
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const scopes = (url.searchParams.get("scopes") || "").split(",").map((s) => s.trim()).filter(Boolean).slice(0, 20);
+  const requested = (url.searchParams.get("scopes") || "").split(",").map((s) => s.trim()).filter(Boolean).slice(0, 20);
+  const signedIn = requested.some((s) => !PUBLIC_SCOPES.test(s)) ? !!(await getUser().catch(() => null)) : true;
+  const scopes = signedIn ? requested : requested.filter((s) => PUBLIC_SCOPES.test(s));
   const afterParam = url.searchParams.get("after");
   let after = afterParam ? Number(afterParam) || 0 : await latestEventId();
 
