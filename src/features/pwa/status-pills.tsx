@@ -55,9 +55,9 @@ export function UpdateToast({ onRefresh, onLater }: { onRefresh: () => void; onL
       role="status"
       aria-live="polite"
       data-testid="pwa-update-toast"
-      className="fixed z-[96] inset-x-3 bottom-[calc(var(--tab-h)+env(safe-area-inset-bottom)+12px)] sm:inset-x-auto sm:start-1/2 sm:-translate-x-1/2 rtl:sm:translate-x-1/2 sm:bottom-6 animate-rise"
+      className="fixed z-[96] inset-x-3 bottom-[calc(var(--tab-h)+env(safe-area-inset-bottom)+12px)] sm:inset-x-auto sm:start-1/2 sm:-translate-x-1/2 rtl:sm:translate-x-1/2 animate-rise"
     >
-      <div className="flex items-center gap-3 rounded-[16px] bg-brand py-2 ps-4 pe-2 text-brand-ink shadow-pop sm:min-w-[380px]">
+      <div className="flex items-center gap-3 rounded-[16px] border border-white/10 bg-brand py-2 ps-4 pe-2 text-brand-ink shadow-pop sm:min-w-[380px]">
         <RefreshCw className={cn("size-5 shrink-0 text-[#36dcb8]", busy && "animate-spin")} aria-hidden />
         <span className="min-w-0 flex-1 text-sm">
           <strong className="font-semibold">{t("pwa.update.title")}</strong>

@@ -127,8 +127,32 @@
   document.getElementById("retry").addEventListener("click", function () { location.reload(); });
   window.addEventListener("online", function () { location.reload(); });
 
-  // List pages this device has saved (titles come from the cached HTML itself).
   if (!("caches" in window)) return;
+
+  // Use the app's own fonts when the worker already holds them (their file names are content-hashed by the build).
+  var FACES = [
+    { re: /readex-pro-latin-wght-normal[^/]*\.woff2$/, family: "Readex Pro Variable", weight: "100 900", range: "U+0000-024F, U+2000-206F, U+20AC" },
+    { re: /readex-pro-arabic-wght-normal[^/]*\.woff2$/, family: "Readex Pro Variable", weight: "100 900", range: "U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF" },
+    { re: /ibm-plex-sans-arabic-arabic-400-normal[^/]*\.woff2$/, family: "IBM Plex Sans Arabic", weight: "400", range: "U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF" },
+    { re: /ibm-plex-sans-arabic-arabic-600-normal[^/]*\.woff2$/, family: "IBM Plex Sans Arabic", weight: "600", range: "U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF" }
+  ];
+  if (window.FontFace && document.fonts) {
+    caches.keys().then(function (names) {
+      return Promise.all(names.filter(function (n) { return n.indexOf("say-static-") === 0; }).map(function (n) {
+        return caches.open(n).then(function (c) { return c.keys(); });
+      }));
+    }).then(function (groups) {
+      var urls = [].concat.apply([], groups).map(function (r) { return r.url; });
+      FACES.forEach(function (f) {
+        var url = urls.filter(function (u) { return f.re.test(u); })[0];
+        if (!url) return;
+        var face = new FontFace(f.family, "url(" + JSON.stringify(url) + ")", { weight: f.weight, unicodeRange: f.range, display: "swap" });
+        face.load().then(function (loaded) { document.fonts.add(loaded); }).catch(function () {});
+      });
+    }).catch(function () {});
+  }
+
+  // List pages this device has saved (titles come from the cached HTML itself).
   var section = document.getElementById("saved");
   var list = document.getElementById("saved-list");
   var empty = document.getElementById("saved-empty");
