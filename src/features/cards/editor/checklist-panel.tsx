@@ -27,6 +27,7 @@ export function ChecklistPanel({
   ack,
   onAck,
   disabled,
+  title,
 }: {
   items: CheckItem[];
   pending: boolean;
@@ -34,6 +35,7 @@ export function ChecklistPanel({
   ack: boolean;
   onAck: (v: boolean) => void;
   disabled?: boolean;
+  title?: string;
 }) {
   const { t, locale } = useI18n();
   const failing = items.filter((i) => !i.ok).length;
@@ -41,7 +43,7 @@ export function ChecklistPanel({
   return (
     <section aria-labelledby="checklist-h" className="bg-surface rounded-[var(--radius)] border border-line shadow-card p-4 flex flex-col gap-3" data-testid="checklist">
       <div className="flex items-center justify-between gap-2">
-        <h2 id="checklist-h" className="font-semibold text-ink">{t("cards.check.title")}</h2>
+        <h2 id="checklist-h" className="font-semibold text-ink">{title ?? t("cards.check.title")}</h2>
         <span className={cn("text-xs font-medium rounded-full px-2 py-0.5", failing ? "bg-warn-soft text-warn" : "bg-ok-soft text-ok")} aria-live="polite">
           {failing ? t("cards.check.remaining", { n: fmtNumber(failing, locale) }) : t("cards.check.allGood")}
         </span>

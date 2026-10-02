@@ -383,6 +383,9 @@ export const cards: Messages = {
     "cards.pv.more": "Show full text",
     "cards.pv.less": "Show less",
     "cards.tab.form": "Form",
+    "cards.review.title": "You are reviewing version {v}",
+    "cards.review.body": "Check every reference in the live preview and the checklist, then choose an action above. The author cannot edit while it is with you.",
+    "cards.check.titleReview": "Validation checklist",
   },
   ar: {
     "cards.title": "البطاقات",
@@ -749,5 +752,8 @@ export const cards: Messages = {
     "cards.pv.more": "اعرض النص كاملًا",
     "cards.pv.less": "اعرض أقل",
     "cards.tab.form": "النموذج",
+    "cards.review.title": "أنت تراجع الإصدار {v}",
+    "cards.review.body": "تحقّق من كل إحالة في المعاينة الحيّة وقائمة الفحص، ثم اختر إجراءً من الأعلى. لا يستطيع الكاتب التحرير ما دامت البطاقة عندك.",
+    "cards.check.titleReview": "قائمة الفحص",
   },
 };

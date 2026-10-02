@@ -440,8 +440,12 @@ export function CardEditor(props: EditorProps) {
         </Callout>
       )}
       {saveError && <Callout tone="bad">{saveError}</Callout>}
-      {!canEdit && stage !== "archived" && ["student_submitted", "researcher_approved"].includes(stage) && (
-        <Callout tone="violet" icon={<Lock className="size-4" />} title={t("cards.locked.title")}>{t("cards.locked.body")}</Callout>
+      {!canEdit && ["student_submitted", "researcher_approved"].includes(stage) && (
+        decisions.length > 0 ? (
+          <Callout tone="violet" icon={<Eye className="size-4" />} title={t("cards.review.title", { v: base })}>{t("cards.review.body")}</Callout>
+        ) : (
+          <Callout tone="violet" icon={<Lock className="size-4" />} title={t("cards.locked.title")}>{t("cards.locked.body")}</Callout>
+        )
       )}
       {locked && <Callout tone="violet" icon={<Lock className="size-4" />} title={t("cards.locked.title")}>{t("cards.locked.body")}</Callout>}
       {stage === "archived" && <Callout tone="neutral" icon={<Archive className="size-4" />}>{t("cards.archived.body")}</Callout>}
@@ -591,7 +595,7 @@ export function CardEditor(props: EditorProps) {
           </div>
 
           <aside className={cn("flex flex-col gap-4 lg:sticky lg:top-20 lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto scrollbar-thin lg:pe-1", mobileView === "form" && "hidden lg:flex")} aria-label={t("cards.pv.title")}>
-            <ChecklistPanel items={checklist} pending={pendingRefs} lint={lint} ack={ack} onAck={setAck} />
+            <ChecklistPanel items={checklist} pending={pendingRefs} lint={lint} ack={ack} onAck={setAck} title={["student_submitted", "researcher_approved", "published"].includes(stage) ? t("cards.check.titleReview") : undefined} />
             {preview}
           </aside>
         </div>
