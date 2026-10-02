@@ -1,6 +1,15 @@
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import { expectAccessible } from "../helpers";
 
+// Returning visitors: first-time visitors see the welcome screen, where nothing else (install banner) interrupts.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try {
+      localStorage.setItem("say.welcomed", "1");
+    } catch {}
+  });
+});
+
 /**
  * Service worker journeys against the production build. Under automation the worker is opt-in (`?sw=1`, see
  * src/features/pwa/logic.ts) so other suites never run behind it.

@@ -17,7 +17,7 @@ test("home shows the three tracks, approved marks and recent cards", async ({ pa
   for (const tr of ["nature", "art", "heritage"]) await expect(page.getByTestId(`track-${tr}`)).toBeVisible();
   await expect(page.getByRole("link", { name: "Moon · Approved card" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Recently approved" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Do Muslims worship the Kaaba\?/ })).toBeVisible();
+  await expect(page.locator('section[aria-labelledby="recent-h"] li a')).toHaveCount(5);
   await expectAccessible(page);
 });
 

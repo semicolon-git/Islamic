@@ -7,10 +7,11 @@ import { log } from "./util";
 /**
  * Demo workflow states for the portal (B3). Never touches the published content cards from data/content.
  * Real verse keys and hadith ids only; every id below was checked against the seeded KFGQPC and hadith tables.
- *   card:demo-stars       student draft (Sara) — Arabic explanation still missing
- *   card:demo-rain        submitted by Omar, awaiting a researcher
- *   card:demo-honey       returned to Sara with a note (uses "scientific miracle" framing the lint flags)
- *   card:demo-date-palm   approved by Dr. Huda, awaiting the institution's publication (+15 points to Omar)
+ * They use enabled concepts the reviewed content set does not cover yet, so no concept ever shows two cards.
+ *   card:demo-fig          student draft (Sara) — Arabic explanation still missing
+ *   card:demo-clouds       submitted by Omar, awaiting a researcher
+ *   card:demo-ant          returned to Sara with a note (uses "scientific miracle" framing the lint flags)
+ *   card:demo-pomegranate  approved by Dr. Huda, awaiting the institution's publication (+15 points to Omar)
  * Plus visitor requests (card_requests) for the demand board. Idempotent.
  */
 
@@ -35,26 +36,26 @@ const meta = (title_en: string, title_ar: string, concept_id: string): VersionMe
 
 const CARDS: DemoCard[] = [
   {
-    id: "card:demo-stars",
+    id: "card:demo-fig",
     kind: "concept",
-    concept_id: "stars",
+    concept_id: "fig",
     author: "u_sara",
     createdH: 20,
     status: "ai_draft",
-    meta: meta("The Stars", "النجوم", "stars"),
+    meta: meta("The Fig", "التين", "fig"),
     versions: [
       {
         h: 20,
         note: "Created",
-        content: { verses: [{ key: "6:97", role: "primary" }, { key: "16:16", role: "supporting" }] },
+        content: { verses: [{ key: "95:1", role: "primary" }, { key: "95:2", role: "supporting" }, { key: "95:3", role: "supporting" }] },
       },
       {
         h: 3,
         note: "Draft explanation",
         content: {
-          verses: [{ key: "6:97", role: "primary" }, { key: "16:16", role: "supporting" }],
+          verses: [{ key: "95:1", role: "primary" }, { key: "95:2", role: "supporting" }, { key: "95:3", role: "supporting" }],
           explanation: {
-            en: "The Quran presents the stars as a sign and a gift for travellers: Allah placed them so that people can find their way through the darkness of land and sea (6:97), and by the stars they are guided (16:16).",
+            en: "Surat at-Tin opens with an oath: “By the fig and the olive” (95:1), followed by Mount Sinai (95:2) and “this secure city”, Makkah (95:3). In the Quran an oath draws attention to what is sworn by, so an everyday fruit is set beside places where revelation came.",
             ar: "",
           },
         },
@@ -63,23 +64,23 @@ const CARDS: DemoCard[] = [
     reviews: [],
   },
   {
-    id: "card:demo-rain",
+    id: "card:demo-clouds",
     kind: "concept",
-    concept_id: "rain_water",
+    concept_id: "clouds",
     author: "u_omar",
     createdH: 50,
     status: "student_submitted",
-    meta: meta("Rain from the sky", "المطر النازل من السماء", "rain_water"),
+    meta: meta("The Clouds", "السحاب", "clouds"),
     versions: [
       {
         h: 30,
         note: "Ready for review",
         content: {
-          verses: [{ key: "50:9", role: "primary" }, { key: "30:48", role: "supporting" }],
-          hadith: [{ id: "bukhari:1032" }],
+          verses: [{ key: "24:43", role: "primary" }, { key: "30:48", role: "supporting" }],
+          hadith: [{ id: "bukhari:3206" }],
           explanation: {
-            en: "The Quran describes rain as a blessing sent down from the sky that brings gardens and harvests to life (50:9). It describes Allah sending the winds that stir the clouds and spread them across the sky until rain falls, and people rejoice when it reaches them (30:48). When the Prophet ﷺ saw rain, he would pray for it to be a beneficial rain (al-Bukhari 1032).",
-            ar: "يصف القرآن المطر بأنه ماء مبارك ينزل من السماء فتنبت به الجنات وحبّ الحصيد (ق ٩). ويذكر أن الله يرسل الرياح فتثير السحاب ويبسطه في السماء كيف يشاء، فينزل المطر ويستبشر به الناس (الروم ٤٨). وكان النبي ﷺ إذا رأى المطر دعا أن يكون صيّبًا نافعًا (البخاري ١٠٣٢).",
+            en: "The Quran asks the reader to notice how Allah drives the clouds, gathers them into a mass and brings rain out from within them (24:43). It describes the winds that stir the clouds and spread them across the sky until rain falls, and people rejoice when it reaches them (30:48). Aisha reported that when the Prophet ﷺ saw a cloud, concern showed on his face until it rained (al-Bukhari 3206).",
+            ar: "يدعو القرآن القارئ إلى التأمل في أن الله يزجي السحاب ثم يؤلّف بينه ثم يجعله ركامًا فيخرج المطر من خلاله (النور ٤٣). ويصف الرياح التي تثير السحاب وتبسطه في السماء حتى ينزل المطر، فيستبشر به الناس (الروم ٤٨). وذكرت عائشة رضي الله عنها أن النبي ﷺ كان إذا رأى سحابًا عُرف ذلك في وجهه حتى يمطر (البخاري ٣٢٠٦).",
           },
           show_count: true,
         },
@@ -88,27 +89,26 @@ const CARDS: DemoCard[] = [
     reviews: [{ decision: "submit", by: "u_omar", note: "Ready for review.", h: 26, from: "ai_draft", to: "student_submitted" }],
   },
   {
-    id: "card:demo-honey",
+    id: "card:demo-ant",
     kind: "concept",
-    concept_id: "honey_bee",
+    concept_id: "ant",
     author: "u_sara",
     createdH: 72,
     status: "returned",
-    meta: meta("The Bee and Honey", "النحل والعسل", "honey_bee"),
+    meta: meta("The Ant", "النملة", "ant"),
     versions: [
       {
         h: 70,
         note: "Created",
-        content: { verses: [{ key: "16:68", role: "primary" }, { key: "16:69", role: "supporting" }] },
+        content: { verses: [{ key: "27:18", role: "primary" }, { key: "27:19", role: "supporting" }] },
       },
       {
         h: 48,
-        note: "Explanation and hadith",
+        note: "Explanation",
         content: {
-          verses: [{ key: "16:68", role: "primary" }, { key: "16:69", role: "supporting" }],
-          hadith: [{ id: "bukhari:5684" }],
+          verses: [{ key: "27:18", role: "primary" }, { key: "27:19", role: "supporting" }],
           explanation: {
-            en: "The Quran says Allah inspired the bee to make its homes in the mountains, in the trees and in what people build (16:68), and that from its belly comes a drink of varying colours in which there is healing for people (16:69). Modern science confirms that honey heals every illness.",
+            en: "In Surat an-Naml, an ant warns the other ants to enter their dwellings so that Solomon and his soldiers do not crush them unknowingly (27:18). Solomon smiles at her words and asks Allah to help him be grateful (27:19). Modern science confirms that this verse foresaw how ants communicate.",
             ar: "",
           },
         },
@@ -122,18 +122,18 @@ const CARDS: DemoCard[] = [
         h: 20,
         from: "student_submitted",
         to: "returned",
-        note: "Please remove the “modern science confirms” sentence: we don't use scientific-miracle framing, and 16:69 speaks of “healing”, not of healing every illness. Then add the Arabic explanation.",
+        note: "Please remove the “modern science confirms” sentence: we don't use scientific-miracle framing, and the passage is about Solomon's gratitude, not about biology. Then add the Arabic explanation.",
       },
     ],
   },
   {
-    id: "card:demo-date-palm",
+    id: "card:demo-pomegranate",
     kind: "concept",
-    concept_id: "date_palm",
+    concept_id: "pomegranate",
     author: "u_omar",
     createdH: 96,
     status: "researcher_approved",
-    meta: meta("The Date Palm", "النخلة", "date_palm"),
+    meta: meta("The Pomegranate", "الرمان", "pomegranate"),
     versions: [
       {
         h: 90,
@@ -142,13 +142,12 @@ const CARDS: DemoCard[] = [
       },
       {
         h: 60,
-        note: "Added supporting verses and hadith",
+        note: "Added supporting verses",
         content: {
-          verses: [{ key: "6:99", role: "primary" }, { key: "55:11", role: "supporting" }, { key: "80:29", role: "supporting" }],
-          hadith: [{ id: "bukhari:61" }],
+          verses: [{ key: "6:99", role: "primary" }, { key: "6:141", role: "supporting" }, { key: "55:68", role: "supporting" }],
           explanation: {
-            en: "The Quran mentions the date palm among the signs of Allah's care: rain brings out gardens, grain, and palm trees with clusters of dates hanging low (6:99). Palm trees bearing sheathed fruit are named among His gifts (55:11), alongside the olive (80:29). The Prophet ﷺ compared a Muslim to the date palm, a tree whose leaves do not fall (al-Bukhari 61).",
-            ar: "يذكر القرآن النخل في سياق آيات الله ونعمه: فبالمطر تخرج الجنات والحبّ، ومن النخل قنوان دانية (الأنعام ٩٩)، والنخل ذات الأكمام من نعمه (الرحمن ١١)، ومعه الزيتون (عبس ٢٩). وشبّه النبي ﷺ المسلمَ بالنخلة، شجرةٍ لا يسقط ورقها (البخاري ٦١).",
+            en: "The Quran names the pomegranate among the fruits that rain brings out, “similar yet varied”, and invites people to look at the fruit as it ripens, for in that are signs (6:99). It mentions pomegranates again among the gardens Allah causes to grow, with the instruction to give their due on harvest day (6:141), and among the fruits of Paradise (55:68).",
+            ar: "يذكر القرآن الرمان من الثمار التي يخرجها الله بالمطر «مشتبهًا وغير متشابه»، ويدعو إلى النظر إلى ثمره إذا أثمر وينعه، فإن في ذلك آيات (الأنعام ٩٩). ويذكره مرة أخرى في الجنات التي أنشأها الله مع الأمر بإيتاء حقه يوم حصاده (الأنعام ١٤١)، ومن فاكهة الجنة (الرحمن ٦٨).",
           },
           show_count: true,
           related_cards: [],
@@ -157,7 +156,7 @@ const CARDS: DemoCard[] = [
     ],
     reviews: [
       { decision: "submit", by: "u_omar", h: 50, from: "ai_draft", to: "student_submitted" },
-      { decision: "approve", by: "u_huda", note: "Checked the verse keys and the hadith number. Ready for the institution.", h: 8, from: "student_submitted", to: "researcher_approved" },
+      { decision: "approve", by: "u_huda", note: "Checked the verse keys. Ready for the institution.", h: 8, from: "student_submitted", to: "researcher_approved" },
     ],
     points: { user: "u_omar", delta: 15 },
   },
@@ -165,11 +164,11 @@ const CARDS: DemoCard[] = [
 
 // visitor requests for the demand board: [concept_id | null, topic | null, count, status, hoursAgo of the latest]
 const REQUESTS: [string | null, string | null, number, "open" | "fulfilled", number][] = [
-  ["mountain", null, 5, "open", 2],
-  ["date_palm", null, 4, "open", 5],
-  ["honey_bee", null, 3, "open", 26],
-  ["stars", null, 2, "open", 30],
-  ["sea", null, 1, "open", 70],
+  ["horse", null, 5, "open", 2],
+  ["pomegranate", null, 4, "open", 5],
+  ["ant", null, 3, "open", 26],
+  ["fig", null, 2, "open", 30],
+  ["grapes", null, 1, "open", 70],
   [null, "Why is the Quran in Arabic?", 2, "open", 9],
   ["moon", null, 3, "fulfilled", 120],
 ];

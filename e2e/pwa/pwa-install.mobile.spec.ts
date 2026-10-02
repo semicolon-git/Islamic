@@ -1,6 +1,15 @@
 import { expect, test, type Page } from "@playwright/test";
 import { expectAccessible } from "../helpers";
 
+// Returning visitors: first-time visitors see the welcome screen, where nothing else (install banner) interrupts.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try {
+      localStorage.setItem("say.welcomed", "1");
+    } catch {}
+  });
+});
+
 /** Fire a synthetic `beforeinstallprompt`, recording whether the app calls prompt(). */
 async function firePrompt(page: Page, outcome: "accepted" | "dismissed" = "accepted") {
   await page.evaluate((outcome) => {

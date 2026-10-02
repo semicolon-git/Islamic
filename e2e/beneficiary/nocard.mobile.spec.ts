@@ -10,11 +10,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("concept without a card → notify me → request stored for this device", async ({ page }) => {
-  await page.goto("/c/sun");
+  await page.goto("/c/grapes");
   await expect(page.getByRole("heading", { level: 1, name: "No reviewed card yet — we won't guess" })).toBeVisible();
-  await expect(page.getByText(/Every card about “Sun” must be checked/)).toBeVisible();
-  await expect(page.getByRole("link", { name: "Ask a question instead" })).toHaveAttribute("href", "/ask?concept=sun");
-  await expect(page.getByRole("link", { name: "Talk to a person" })).toHaveAttribute("href", "/talk?concept=sun");
+  await expect(page.getByText(/Every card about “Grapes” must be checked/)).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ask a question instead" })).toHaveAttribute("href", "/ask?concept=grapes");
+  await expect(page.getByRole("link", { name: "Talk to a person" })).toHaveAttribute("href", "/talk?concept=grapes");
   await expectAccessible(page);
 
   const posted = page.waitForResponse((r) => r.url().endsWith("/api/requests") && r.request().method() === "POST");
@@ -27,7 +27,7 @@ test("concept without a card → notify me → request stored for this device", 
   const token = await page.evaluate(() => localStorage.getItem("say.device_token"));
   expect(token).toMatch(/^[A-Za-z0-9_-]{16,}$/);
   const list = await (await page.request.get("/api/requests", { headers: { "x-device-token": token! } })).json();
-  expect(list.data.map((r: { concept_id: string }) => r.concept_id)).toContain("sun");
+  expect(list.data.map((r: { concept_id: string }) => r.concept_id)).toContain("grapes");
 
   // Survives reload.
   await page.reload();

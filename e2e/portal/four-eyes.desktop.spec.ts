@@ -29,20 +29,20 @@ test("four-eyes: the person who approved a version cannot also publish it", asyn
 
 test("server refuses workflow actions outside a role, whatever the client sends", async ({ request }) => {
   await request.post("/api/session", { data: { userId: "u_sara", pin: "1448" } });
-  const publish = await request.post(`/api/cards/${enc("card:demo-date-palm")}/transition`, { data: { decision: "publish" } });
+  const publish = await request.post(`/api/cards/${enc("card:demo-pomegranate")}/transition`, { data: { decision: "publish" } });
   expect(publish.status()).toBe(403);
-  const approve = await request.post(`/api/cards/${enc("card:demo-date-palm")}/transition`, { data: { decision: "approve" } });
+  const approve = await request.post(`/api/cards/${enc("card:demo-pomegranate")}/transition`, { data: { decision: "approve" } });
   expect([403, 409]).toContain(approve.status());
 
   // a return without a note is refused
   await request.post("/api/session", { data: { userId: "u_huda", pin: "1448" } });
-  const ret = await request.post(`/api/cards/${enc("card:demo-date-palm")}/transition`, { data: { decision: "return", note: "" } });
+  const ret = await request.post(`/api/cards/${enc("card:demo-pomegranate")}/transition`, { data: { decision: "return", note: "" } });
   expect(ret.status()).toBe(400);
   expect((await ret.json()).error.code).toBe("note_required");
 
   // another institution's approver can't publish it
   await request.post("/api/session", { data: { userId: "u_khalid", pin: "1448" } });
-  const other = await request.post(`/api/cards/${enc("card:demo-date-palm")}/transition`, { data: { decision: "publish" } });
+  const other = await request.post(`/api/cards/${enc("card:demo-pomegranate")}/transition`, { data: { decision: "publish" } });
   expect([403, 404]).toContain(other.status());
 
   // a specialist can't touch cards at all
@@ -51,11 +51,11 @@ test("server refuses workflow actions outside a role, whatever the client sends"
 
   // visitors (no session) can't either
   await request.delete("/api/session");
-  expect((await request.put(`/api/cards/${enc("card:demo-stars")}`, { data: {} })).status()).toBe(401);
+  expect((await request.put(`/api/cards/${enc("card:demo-fig")}`, { data: {} })).status()).toBe(401);
 });
 
 test("submitting is blocked until the validation checklist passes", async ({ page, request }) => {
-  await as(page, "u_sara", `/portal/cards/${enc("card:demo-stars")}`);
+  await as(page, "u_sara", `/portal/cards/${enc("card:demo-fig")}`);
   await expect(page.getByTestId("checklist").locator("[data-check=explanation_bilingual]")).toHaveAttribute("data-ok", "false");
   await page.locator("[data-decision=submit]").click();
   const dialog = page.getByRole("dialog");
@@ -64,6 +64,6 @@ test("submitting is blocked until the validation checklist passes", async ({ pag
   await dialog.getByRole("button", { name: "Cancel" }).click();
   // and the server agrees
   await request.post("/api/session", { data: { userId: "u_sara", pin: "1448" } });
-  const r = await request.post(`/api/cards/${enc("card:demo-stars")}/transition`, { data: { decision: "submit" } });
+  const r = await request.post(`/api/cards/${enc("card:demo-fig")}/transition`, { data: { decision: "submit" } });
   expect(r.status()).toBe(422);
 });

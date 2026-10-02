@@ -35,7 +35,7 @@ test("home and art concepts show Arabic labels, never raw ids", async ({ page })
 });
 
 test("no-card screen in Arabic", async ({ page }) => {
-  await page.goto("/c/astrolabe");
+  await page.goto("/c/grapes");
   await expect(page.getByRole("heading", { level: 1, name: "لا توجد بطاقة مُراجَعة بعد — ولن نخمّن" })).toBeVisible();
   await expect(page.getByRole("button", { name: "نبّهني عند اعتمادها" })).toBeVisible();
 });

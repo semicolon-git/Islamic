@@ -1,13 +1,13 @@
 {
  "moon": {
-  "label_en": "The Moon", "label_ar": "القمر",
+  "label_en": "Moon", "label_ar": "القمر",
   "blurb_en": "Its phases have marked months for people for thousands of years.",
   "blurb_ar": "منازله تعدّ الشهور للناس منذ آلاف السنين.",
   "visual_hints": "A full, gibbous or crescent moon in a night or twilight sky; a pale disc or crescent, often with grey surface markings; printed or on-screen photos of the moon count. Not: street lamps, round ceiling lights, the sun, a white plate.",
   "sort": 1, "enabled": true
  },
  "sun": {
-  "label_en": "The Sun", "label_ar": "الشمس",
+  "label_en": "Sun", "label_ar": "الشمس",
   "blurb_en": "A daily sign that rises and sets over everyone alike.",
   "blurb_ar": "آية يومية تشرق وتغرب على الناس جميعًا.",
   "visual_hints": "The sun in the sky, a sunrise or sunset with the sun's disc visible, or bright sunlight with a visible sun flare. Not: a lamp or bulb, the moon, a sun-shaped logo.",
@@ -77,7 +77,7 @@
   "sort": 11, "enabled": true
  },
  "sea": {
-  "label_en": "The Sea", "label_ar": "البحر",
+  "label_en": "Sea", "label_ar": "البحر",
   "blurb_en": "Food, pearls and ships: the sea as a gift to people.",
   "blurb_ar": "طعام وحلية وسفن: البحر نعمة مسخّرة للناس.",
   "visual_hints": "Open sea or ocean, waves, a coastline, a boat on the water, a seascape print. Not: a swimming pool, a glass of water, a river or lake with near banks on both sides.",
