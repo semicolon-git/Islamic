@@ -1,5 +1,7 @@
 # Demo video
 
+The latest cut is committed at [`docs/demo/signs-around-you-demo.mp4`](../../docs/demo/signs-around-you-demo.mp4) (1080p, 3:07).
+
 This folder produces a ~3-minute 1080p demo of the **real, running platform**. A script drives the app; nothing is mocked up or generated. The app runs inside a branded stage with a phone frame and a desktop frame, and the stage adds animated bilingual captions, a cursor, click ripples and highlight rings.
 
 ```bash

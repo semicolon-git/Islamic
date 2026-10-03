@@ -13,6 +13,8 @@ Entry for the **AI Challenge: Serving Islamic Content** (تحدي الذكاء �
 
 > **Content status.** The cards, glossary meanings and demo answers were written for the demo and still need sign-off by a qualified scholar before any public launch. See [`docs/content/CONTENT_REVIEW.md`](docs/content/CONTENT_REVIEW.md). The seeded people, institutions and approvals are personas, shown as **(demo)**.
 
+**Demo video:** [`docs/demo/signs-around-you-demo.mp4`](docs/demo/signs-around-you-demo.mp4) (3 minutes, real platform footage). To re-record it, see [`scripts/demo-video`](scripts/demo-video/README.md).
+
 ## Quick start
 
 Requirements: Node 20+ and about 1 GB of disk. No external database is needed.
