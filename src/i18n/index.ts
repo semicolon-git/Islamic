@@ -9,10 +9,11 @@ import { heritage } from "./messages/heritage";
 import { evalMessages } from "./messages/eval-alias";
 import { pwa } from "./messages/pwa";
 import { portal } from "./messages/portal";
+import { msCollab } from "./messages/ms-collab";
 
 export * from "./core";
 
-const parts: Messages[] = [common, beneficiary, ask, cards, inbox, manuscripts, heritage, evalMessages, pwa, portal];
+const parts: Messages[] = [common, beneficiary, ask, cards, inbox, manuscripts, heritage, evalMessages, pwa, portal, msCollab];
 export const messages: Messages = {
   en: Object.assign({}, ...parts.map((p) => p.en)),
   ar: Object.assign({}, ...parts.map((p) => p.ar)),
