@@ -400,8 +400,11 @@ const RULING_EN = [
   /\bwhat\s+is\s+the\s+(islamic\s+|sharia\s+|religious\s+)?ruling\b/i,
   /\b(is|are)\s+(it|[\w'’ -]{2,40}?)\s+(really\s+)?(halal|haram|permissible|permitted|forbidden|prohibited|lawful|unlawful|allowed\s+in\s+islam|a\s+sin)\b/i,
   /\bis\s+it\s+(halal|haram|permissible|permitted|allowed|forbidden|a\s+sin)\s+to\b/i,
+  // first-person permission questions ("Can I take a bank loan?"): an approved card may answer ("Can I visit a mosque?"),
+  // otherwise the visitor is referred — never "no reference yet" for what is really a request for a ruling
+  /(^|[.!?؟]\s*)((so|and|but|hi|hello|please|ok|okay),?\s+)?(can|may|should|must|could)\s+(i|we)\s+(still\s+|really\s+)?(?!ask\b|see\b|talk\b|speak\b|learn\b|read\b|find\b|contact\b|use\s+this\b|get\s+help\b|request\b)\w+/i,
 ];
-const RULING_AR = [/(ما|ماهو|ما\s+هو)\s+حكم\s/, /هل\s+\S+(\s+\S+){0,4}\s+(حلال|حرام|جائز|محرم|مكروه)/, /هل\s+يجوز\s+(أن|ان)\s/, /هل\s+يحرم\s/];
+const RULING_AR = [/(ما|ماهو|ما\s+هو)\s+حكم\s/, /هل\s+(يمكنني|يمكننا|أستطيع|استطيع|نستطيع|يمكن\s+لي)\s+(?!(أن\s+|ان\s+)?(أسأل|اسأل|أتحدث|اتحدث|أتكلم|اتكلم|أقرأ|اقرأ|أتعلم|اتعلم))/, /هل\s+\S+(\s+\S+){0,4}\s+(حلال|حرام|جائز|محرم|مكروه)/, /هل\s+يجوز\s+(أن|ان)\s/, /هل\s+يحرم\s/];
 export function isRulingQuestion(q: string): boolean {
   return RULING_EN.some((r) => r.test(q)) || RULING_AR.some((r) => r.test(q));
 }

@@ -101,6 +101,18 @@ describe("deterministic routes (no API key)", () => {
     expect(r.badge.kind).toBe("glossary");
   });
 
+  it("first-person permission questions: an approved card answers, otherwise the visitor is referred", async () => {
+    const loan = await ask("Can I take a bank loan for my house?");
+    expect(loan.route).toBe("refer_d");
+    expect(loan.level).toBe("D");
+    const mosque = await ask("Can I visit a mosque?");
+    expect(mosque.route).toBe("approved_card");
+    const mosqueAr = await ask("هل يمكنني زيارة مسجد وأنا غير مسلم؟");
+    expect(mosqueAr.route).toBe("approved_card");
+    const meta = await ask("Can I ask about the moon in the Quran?");
+    expect(meta.route).not.toBe("refer_d");
+  });
+
   it("term-lock: corrects 'moon god' with 41:37", async () => {
     const r = await ask("Why do Muslims worship a moon god?");
     expect(r.route).toBe("term_correction");
