@@ -48,8 +48,10 @@ export interface StudioExtension {
   toolbarExtras?: (ctx: WorkspaceContext) => ReactNode;
   /** Side panels opened from the tools bar. */
   panels?: WorkspacePanel[];
-  /** Extra realtime event scopes to subscribe to, and a handler for page events. */
-  onEvent?: (ev: { type: string; payload: Record<string, unknown>; actor_id: string | null }, ctx: WorkspaceContext) => void;
+  /** Handler for page events. Return true when the event is fully handled (the page is then not re-fetched). */
+  onEvent?: (ev: { type: string; payload: Record<string, unknown>; actor_id: string | null }, ctx: WorkspaceContext) => void | boolean;
+  /** Extra rows for the keyboard-shortcuts overlay: i18n keys for the group title and each label. */
+  shortcuts?: { group: string; rows: [string[], string][] }[];
   /** SVG drawn above the line overlay, in image pixel coordinates (e.g. presence avatars, annotation pins). */
   imageOverlay?: (ctx: WorkspaceContext) => ReactNode;
 }

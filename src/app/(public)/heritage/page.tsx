@@ -110,6 +110,7 @@ export default async function HeritagePage() {
         {/* Manuscripts */}
         <section aria-labelledby="ms-h" className="flex flex-col gap-3" data-testid="manuscripts-section">
           <SectionHead id="ms-h" title={t("heritage.ms.title")} subtitle={t("heritage.ms.subtitle")} />
+          {manuscripts.length > 0 && <Link href="/heritage/manuscripts" className="self-start text-sm font-medium text-accent hover:underline min-h-11 inline-flex items-center" data-testid="manuscripts-all">{t("collab.pub.browseAll")}</Link>}
           {manuscripts.length ? (
             <ul className="flex flex-col gap-3">
               {manuscripts.map((m) => (

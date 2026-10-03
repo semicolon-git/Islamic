@@ -4,5 +4,6 @@
  * (one import + one entry); the core workspace renders them through the slots defined in extensions.ts.
  */
 import type { StudioExtension } from "./extensions";
+import { collabExtension } from "../ms-collab/components/studio/extension";
 
-export const studioExtensions: StudioExtension[] = [];
+export const studioExtensions: StudioExtension[] = [collabExtension];
