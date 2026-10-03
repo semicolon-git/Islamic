@@ -1,0 +1,18 @@
+# Demo video: voiceover script (optional)
+
+The video is silent by design. The judges include scholars, and many prefer no instrumental music. If you want narration, record these lines over the matching timecodes. Each block is about 8–20 seconds at a calm pace. The timecodes are approximate, so re-check them after re-recording.
+
+| Time | Scene | English | العربية |
+|---|---|---|---|
+| 0:00 | Title | Signs Around You: point at the world and read the signs. Only what scholars have approved. | آيات حولك: وجّه هاتفك نحو العالم، واقرأ الآيات من حولك، بمحتوى اعتمده العلماء فقط. |
+| 0:07 | 01 Discover | A visitor opens the app and taps the moon. The Quran text comes word for word from the King Fahd Complex. The translation is labelled as a translation. The count is computed by code, and the hadith shows its collection, number and grade. "Why trust this?" shows who drafted, reviewed and approved it. | يفتح الزائر التطبيق ويختار القمر. نص القرآن من مجمع الملك فهد حرفًا بحرف، والترجمة موسومة بأنها ترجمة للمعاني، والإحصاء محسوب بالبرمجة، والحديث بمصدره ورقمه ودرجته. و«لماذا نثق بهذا؟» يبيّن من أعدّ ومن راجع ومن اعتمد. |
+| 0:32 | 02 Snap | Snap something, or simply choose it. Recognition only suggests; the visitor confirms. Photos are never stored. | صوّر ما تراه أو اختره بنفسك؛ التعرّف يقترح فقط والزائر يؤكد، ولا تُحفظ الصور. |
+| 0:44 | 03 Ask | Ask a question, and the answer comes only from approved evidence, with its level shown. A personal ruling is referred to scholars, never answered by the machine. A misquoted verse is caught and shown as revealed. | اسأل، فتأتي الإجابة من الأدلة المعتمدة فقط مع بيان درجتها. أما الفتوى الشخصية فتُحال إلى أهل العلم، والآية المنقولة خطأً تُصحَّح بنصها كما أُنزلت. |
+| 1:14 | 04 Art & heritage | In a mosque or a museum, type or photograph the calligraphy. It is matched letter by letter: An-Nūr, verse 35. | في المسجد أو المتحف، اكتب الخط أو صوّره فيُطابَق حرفًا بحرف: سورة النور، الآية ٣٥. |
+| 1:26 | 05 Live | When there's no card yet, we don't guess. The visitor asks to be notified, and the request appears on the institution's board at once. | إن لم توجد بطاقة لا نخمّن؛ يطلب الزائر التنبيه فيظهر طلبه فورًا عند المؤسسة. |
+| 1:36 | 06 Review | Every card goes from student to researcher to institution. A checklist enforces the rules, and no one approves their own work. | كل بطاقة تمر من الطالب إلى الباحث إلى المؤسسة، بقائمة تحقق، ولا يعتمد أحدٌ عمله بنفسه. |
+| 1:48 | 07 Manuscript Studio | The Manuscript Studio: a machine draft, then human reading. The page image and the text stay in sync. Uncertainty is recorded, and the manuscript is never "corrected". | استوديو المخطوطات: مسودة آلية ثم قراءة بشرية، والصورة والنص متزامنان، ويُسجَّل الشك دون أن نغيّر حرفًا مما كتبه الناسخ. |
+| 2:08 | 08 Read together | Hard words are read by two students, blind. If they agree, that is the reading. If they don't, a researcher decides. Quran quotations inside the manuscript are found by code and confirmed by a person, and copies of the same work are compared word by word. | الكلمات الصعبة يقرؤها طالبان دون أن يرى أحدهما قراءة الآخر؛ فإن اتفقا ثبتت القراءة، وإن اختلفا حكم الباحث. والاقتباسات القرآنية يكتشفها النظام ويؤكدها باحث، وتُقابَل نسخ العمل الواحد كلمةً كلمة. |
+| 2:44 | 09 Published | Published with four-eyes approval for everyone: as written, or as read, beside the page image, with every contributor credited. | يُنشر بعد اعتماد شخصين مختلفين ليقرأه الجميع: كما كُتب أو كما يُقرأ، بجانب صورة الصفحة، مع نسبة العمل لأصحابه. |
+| 2:56 | Arabic | Arabic first, right to left, in light and dark. | عربيٌّ أولًا، من اليمين إلى اليسار، بالوضعين الفاتح والداكن. |
+| 3:00 | Outro | Built for institutions. Trusted by visitors. Signs Around You. | منصة تبنيها المؤسسات… ويثق بها الزوار. آيات حولك. |
