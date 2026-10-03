@@ -82,7 +82,7 @@ export function LibraryView({ manuscripts, role, demo }: { manuscripts: MsSummar
               {t("manuscripts.work.copies", { n: num(copies.length, locale) })}
               <span className="text-ink-3"> · {locale === "ar" ? copies[0].author_ar : copies[0].author_en}</span>
             </p>
-            <p className="text-xs text-ink-3">{t("manuscripts.work.collation")} · <Link href={`/portal/manuscripts/${copies[0].id}/compare`} className="text-accent hover:underline" data-testid="compare-link">{t("collab.compare.link")}</Link></p>
+            <p className="text-xs text-ink-3">{t("manuscripts.work.collation")} · <Link href={`/portal/manuscripts/${copies[0].id}/compare`} className="text-accent underline underline-offset-2" data-testid="compare-link">{t("collab.compare.link")}</Link></p>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {copies.map((m) => <li key={m.id}><ManuscriptCard m={m} demo={demo} /></li>)}

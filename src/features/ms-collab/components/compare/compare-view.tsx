@@ -28,7 +28,7 @@ function PagePane({ title, siglum, image, polygons, focus, href }: {
       <figcaption className="flex items-center gap-2 text-sm">
         <Siglum s={siglum} size="sm" />
         <span className="font-medium truncate">{title}</span>
-        <Link href={href} className="ms-auto inline-flex items-center gap-1 text-xs text-accent hover:underline shrink-0">{t("collab.compare.openPage")}<ExternalLink className="size-3" /></Link>
+        <Link href={href} className="ms-auto inline-flex items-center gap-1 text-xs text-accent underline underline-offset-2 shrink-0">{t("collab.compare.openPage")}<ExternalLink className="size-3" /></Link>
       </figcaption>
       <div className="rounded-[12px] border border-line bg-sand overflow-hidden">
         <svg viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} className="block w-full h-[clamp(200px,42vh,460px)]" preserveAspectRatio="xMidYMid meet" role="img" aria-label={t("collab.compare.imageOf", { s: siglum ?? "" })}>

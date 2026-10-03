@@ -164,7 +164,7 @@ export function ReviewView({ initial }: { initial: ReviewPage }) {
                   <div className="flex flex-wrap items-center gap-2 border-t border-line pt-2" onClick={(e) => e.stopPropagation()}>
                     {l.status !== "approved" && <Button size="sm" onClick={() => accept(l)} loading={busy === `a${l.id}`} data-testid="line-accept"><Check className="size-4" />{t("collab.review.accept")} <span className="text-[0.7rem] opacity-80">A</span></Button>}
                     {l.changed && <Button size="sm" variant="secondary" onClick={() => setRevert({ id: l.id, note: "" })}><Undo2 className="size-4" />{t("collab.review.revert")} <span className="text-[0.7rem] opacity-80">R</span></Button>}
-                    <Link href={`${pageUrl}?line=${encodeURIComponent(l.id)}`} className="ms-auto inline-flex items-center gap-1 text-sm text-accent hover:underline">{t("collab.review.openLine")}<ExternalLink className="size-3.5" /></Link>
+                    <Link href={`${pageUrl}?line=${encodeURIComponent(l.id)}`} className="ms-auto inline-flex items-center gap-1 text-sm text-accent underline underline-offset-2">{t("collab.review.openLine")}<ExternalLink className="size-3.5" /></Link>
                   </div>
                 )}
                 {revert?.id === l.id && (
@@ -214,7 +214,7 @@ export function ReviewView({ initial }: { initial: ReviewPage }) {
                 <p className="text-xs text-ink-3">{t("collab.review.approveHint")}</p>
               </div>
             )}
-            <Link href={pageUrl} className="text-sm text-accent hover:underline inline-flex items-center gap-1">{t("collab.review.openWorkspace")}<ExternalLink className="size-3.5" /></Link>
+            <Link href={pageUrl} className="text-sm text-accent underline underline-offset-2 inline-flex items-center gap-1">{t("collab.review.openWorkspace")}<ExternalLink className="size-3.5" /></Link>
           </section>
         </aside>
       </div>

@@ -49,6 +49,8 @@ export function KeyingView({ pageId }: { pageId?: string }) {
   }, [pageId, t]);
   useEffect(() => { void load([]); }, [load]);
   useEffect(() => { if (result) requestAnimationFrame(() => nextBtn.current?.focus()); }, [result]);
+  // keyboard-first: the reading box has focus whenever a new word is shown
+  useEffect(() => { if (item && !result) input.current?.focus({ preventScroll: true }); }, [item, result]);
 
   const submit = async (answer: Keying) => {
     if (!item || busy) return;
@@ -123,7 +125,7 @@ export function KeyingView({ pageId }: { pageId?: string }) {
         </Card>
       )}
       {item && (
-        <Card className="p-4 sm:p-6 flex flex-col gap-5" data-testid="hard-card-item" data-item={item.id}>
+        <Card className="p-4 sm:p-6 flex flex-col gap-5" data-testid="hard-card-item" data-item={item.id} data-line={item.line_id}>
           <div className="flex flex-wrap items-center gap-2 text-sm">
             <Siglum s={item.siglum} size="sm" />
             <span className="font-ms text-base" dir="rtl" lang="ar">{locale === "ar" ? item.ms_title_ar : item.ms_title_en}</span>

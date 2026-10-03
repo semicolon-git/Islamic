@@ -75,12 +75,12 @@ function DisputeCard({ item, active, onFocus, onDecided }: { item: AdjudicationI
   const href = `/portal/manuscripts/${item.ms_id}/pages/${item.page_id}?line=${encodeURIComponent(item.line_id)}`;
   return (
     <article ref={ref} onFocus={onFocus} onClick={onFocus} tabIndex={-1}
-      className={cn("bg-surface rounded-[var(--radius)] border border-line shadow-card p-4 sm:p-5 flex flex-col gap-4 transition-shadow", active ? "ring-2 ring-accent/60 shadow-pop" : "")} data-testid="dispute" data-item={item.id}>
+      className={cn("bg-surface rounded-[var(--radius)] border border-line shadow-card p-4 sm:p-5 flex flex-col gap-4 transition-shadow", active ? "ring-2 ring-accent/60 shadow-pop" : "")} data-testid="dispute" data-item={item.id} data-line={item.line_id}>
       <div className="flex flex-wrap items-center gap-2 text-sm">
         <Siglum s={item.siglum} size="sm" />
         <span className="font-ms text-base" dir="rtl" lang="ar">{locale === "ar" ? item.ms_title_ar : item.ms_title_en}</span>
         <span className="text-ink-3">· {t("collab.pageN", { n: num(item.page_seq, locale) })} · {t("collab.lineN", { n: num(item.line_n, locale) })}</span>
-        <Link href={href} className="ms-auto inline-flex items-center gap-1 text-xs text-accent hover:underline">{t("collab.adj.openLine")}<ExternalLink className="size-3" /></Link>
+        <Link href={href} className="ms-auto inline-flex items-center gap-1 text-xs text-accent underline underline-offset-2">{t("collab.adj.openLine")}<ExternalLink className="size-3" /></Link>
       </div>
       <WordCrop image={item.image} polygon={item.polygon} baseline={item.baseline} box={item.approx_box} label={t("collab.hard.cropLabel", { n: num(item.line_n, locale) })} height={130} />
       <p className="ms-text text-[1.25rem] leading-[2.1] rounded-[12px] bg-surface-2 px-4 py-1.5" dir="rtl" lang="ar">
@@ -193,7 +193,7 @@ export function AdjudicateView({ pageId }: { pageId?: string }) {
                 <span className="text-ink-3">{t("collab.pageN", { n: num(a.page_seq, locale) })} · {t("collab.lineN", { n: num(a.line_n, locale) })}</span>
                 <span className="font-ms text-xl" dir="rtl">{a.final_text ?? (a.final_gap ? t(`collab.hard.cant.${a.final_gap}`) : "")}</span>
                 <span className="text-xs text-ink-3">{t("collab.adj.was", { w: a.machine })}</span>
-                <Link href={`/portal/manuscripts/${a.ms_id}/pages/${a.page_id}?line=${encodeURIComponent(a.line_id)}`} className="ms-auto text-xs text-accent hover:underline">{t("collab.adj.openLine")}</Link>
+                <Link href={`/portal/manuscripts/${a.ms_id}/pages/${a.page_id}?line=${encodeURIComponent(a.line_id)}`} className="ms-auto text-xs text-accent underline underline-offset-2">{t("collab.adj.openLine")}</Link>
               </li>
             ))}
           </ul>
