@@ -10,7 +10,7 @@ import { getDb } from "../src/lib/db";
 import { env } from "../src/lib/env";
 import { seedCore } from "./seed/core";
 
-const FEATURES = ["content", "cards", "beneficiary", "manuscripts", "heritage", "inbox", "ask", "eval"];
+const FEATURES = ["content", "cards", "beneficiary", "manuscripts", "heritage", "inbox", "ask", "eval", "ms-collab"];
 
 async function main() {
   const t0 = Date.now();
