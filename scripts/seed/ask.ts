@@ -222,6 +222,7 @@ export async function seed(q: Queryable) {
     const sha = createHash("sha256").update(json).digest("hex").slice(0, 16);
     let status = "ai_draft";
     let t = Date.now() - 1000 * 60 * 60 * 24 * 5;
+    const drafted = new Date(t - 1000 * 60 * 60 * 2).toISOString(); // the draft precedes its first review
     const reviews: unknown[][] = [];
     for (const step of WORKFLOW) {
       const to = ({ submit: "student_submitted", approve: "researcher_approved", publish: "published" } as Record<string, string>)[step.decision];
@@ -230,11 +231,11 @@ export async function seed(q: Queryable) {
       status = to;
     }
     await q.query(
-      `insert into cards (id, kind, concept_id, level, certainty, title_en, title_ar, match_phrases, status, current_version, published_version, institution_id, created_by, published_at)
-       values ($1,'answer',$2,$3,$4,$5,$6,$7,'published',1,1,'inst_uni','u_sara',$8)`,
-      [c.id, c.concept_id ?? null, c.level, c.certainty, c.title_en, c.title_ar, c.match_phrases, new Date(t).toISOString()],
+      `insert into cards (id, kind, concept_id, level, certainty, title_en, title_ar, match_phrases, status, current_version, published_version, institution_id, created_by, published_at, created_at, updated_at)
+       values ($1,'answer',$2,$3,$4,$5,$6,$7,'published',1,1,'inst_uni','u_sara',$8,$9,$8)`,
+      [c.id, c.concept_id ?? null, c.level, c.certainty, c.title_en, c.title_ar, c.match_phrases, new Date(t).toISOString(), drafted],
     );
-    await q.query("insert into card_versions (card_id, version, content, content_sha, author_id, note) values ($1,1,$2,$3,'u_sara','Initial version')", [c.id, json, sha]);
+    await q.query("insert into card_versions (card_id, version, content, content_sha, author_id, note, created_at) values ($1,1,$2,$3,'u_sara','Initial version',$4)", [c.id, json, sha, drafted]);
     await insertMany(q, "reviews", ["entity_type", "entity_id", "version", "reviewer_id", "from_status", "to_status", "decision", "note", "created_at"], reviews);
     n++;
   }

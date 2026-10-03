@@ -43,6 +43,7 @@ export async function seed(q: Queryable) {
     const wf = c.workflow ?? [];
     let status = "ai_draft";
     let t = Date.now() - 1000 * 60 * 60 * 24 * 6; // workflow history spread over the last days
+    const drafted = new Date(t - 1000 * 60 * 60 * 2).toISOString(); // the draft precedes its first review
     const reviews: unknown[][] = [];
     for (const step of wf) {
       const to = ({ submit: "student_submitted", approve: "researcher_approved", publish: "published", return: "returned", archive: "archived" } as Record<string, string>)[step.decision];
@@ -53,11 +54,11 @@ export async function seed(q: Queryable) {
     }
     const published = status === "published";
     await q.query(
-      `insert into cards (id, kind, concept_id, level, certainty, title_en, title_ar, match_phrases, status, current_version, published_version, institution_id, created_by, published_at)
-       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,1,$10,$11,$12,$13)`,
-      [c.id, c.kind, c.concept_id, c.level, c.certainty, c.title_en, c.title_ar, c.match_phrases ?? [], status, published ? 1 : null, c.institution_id ?? null, wf[0]?.by ?? null, published ? new Date(t).toISOString() : null],
+      `insert into cards (id, kind, concept_id, level, certainty, title_en, title_ar, match_phrases, status, current_version, published_version, institution_id, created_by, published_at, created_at, updated_at)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,1,$10,$11,$12,$13,$14,$15)`,
+      [c.id, c.kind, c.concept_id, c.level, c.certainty, c.title_en, c.title_ar, c.match_phrases ?? [], status, published ? 1 : null, c.institution_id ?? null, wf[0]?.by ?? null, published ? new Date(t).toISOString() : null, drafted, wf.length ? new Date(t).toISOString() : drafted],
     );
-    await q.query("insert into card_versions (card_id, version, content, content_sha, author_id, note) values ($1,1,$2,$3,$4,$5)", [c.id, json, sha, wf[0]?.by ?? null, "Initial version"]);
+    await q.query("insert into card_versions (card_id, version, content, content_sha, author_id, note, created_at) values ($1,1,$2,$3,$4,$5,$6)", [c.id, json, sha, wf[0]?.by ?? null, "Initial version", drafted]);
     if (reviews.length) await insertMany(q, "reviews", ["entity_type", "entity_id", "version", "reviewer_id", "from_status", "to_status", "decision", "note", "created_at"], reviews);
     n++;
   }
