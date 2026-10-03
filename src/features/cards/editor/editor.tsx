@@ -672,10 +672,10 @@ export function CardEditor(props: EditorProps) {
 }
 
 function SaveIndicator({ state, version, editable, onSave }: { state: SaveState; version: number; editable: boolean; onSave: () => void }) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   if (!editable) return null;
   const map = {
-    saved: { icon: Cloud, text: t("cards.save.saved", { v: version }), cls: "text-ok" },
+    saved: { icon: Cloud, text: t("cards.save.saved", { v: fmtNumber(version, locale) }), cls: "text-ok" },
     dirty: { icon: PencilLine, text: t("cards.save.dirty"), cls: "text-ink-2" },
     saving: { icon: Loader2, text: t("cards.save.saving"), cls: "text-ink-2" },
     offline: { icon: CloudOff, text: t("cards.save.offline"), cls: "text-warn" },
