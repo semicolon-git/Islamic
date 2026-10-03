@@ -16,7 +16,7 @@ const variants: Record<Variant, string> = {
   danger: "bg-bad text-white hover:opacity-90",
 };
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-3 text-sm rounded-[10px]",
+  sm: "h-9 px-3 text-sm rounded-[10px] pointer-coarse:h-11",
   md: "h-11 px-4 text-[0.95rem] rounded-[12px]",
   lg: "h-12 px-5 text-base rounded-[14px]",
   xl: "h-14 px-6 text-lg rounded-[18px]",
@@ -72,7 +72,7 @@ export const IconButton = forwardRef<HTMLButtonElement, React.ButtonHTMLAttribut
         title={label}
         className={cn(
           "inline-flex items-center justify-center rounded-full transition-colors shrink-0",
-          size === "sm" ? "size-9" : "size-11",
+          size === "sm" ? "size-9 pointer-coarse:size-11" : "size-11",
           variant === "ghost" && "text-ink-2 hover:bg-surface-2 hover:text-ink",
           variant === "secondary" && "bg-surface border border-line text-ink hover:bg-surface-2",
           variant === "brand" && "bg-brand text-brand-ink",

@@ -33,7 +33,8 @@ export function fmtDate(d: string | Date, locale: Locale, opts: Intl.DateTimeFor
 
 export function fmtRelative(d: string | Date, locale: Locale) {
   const diff = (new Date(d).getTime() - Date.now()) / 1000;
-  const rtf = new Intl.RelativeTimeFormat(locale === "ar" ? "ar" : "en", { numeric: "auto" });
+  // ar-SA gives Arabic-Indic digits, matching fmtNumber/fmtDate (SPEC §7.6).
+  const rtf = new Intl.RelativeTimeFormat(locale === "ar" ? "ar-SA" : "en", { numeric: "auto" });
   const abs = Math.abs(diff);
   if (abs < 60) return rtf.format(Math.round(diff), "second");
   if (abs < 3600) return rtf.format(Math.round(diff / 60), "minute");

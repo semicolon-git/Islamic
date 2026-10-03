@@ -25,14 +25,14 @@ export function PublicShell({ children, demo }: { children: React.ReactNode; dem
       {!immersive && (
         <header className="sticky top-0 z-40 safe-top bg-[color-mix(in_oklab,var(--bg)_85%,transparent)] backdrop-blur-md border-b border-line/60">
           <div className="mx-auto w-full max-w-3xl h-14 px-4 flex items-center gap-2">
-            <Link href="/" className="me-auto rounded-lg" aria-label={t("nav.home")}>
+            <Link href="/" className="me-auto rounded-lg inline-flex items-center min-h-11" aria-label={t("nav.home")}>
               <Logo label={t("app.name")} />
             </Link>
             {demo && <span className="hidden sm:inline text-[0.7rem] uppercase tracking-wider text-ink-3 border border-line rounded-full px-2 py-0.5">{t("badge.demo")}</span>}
-            <button onClick={() => setLocale(locale === "ar" ? "en" : "ar")} className="h-9 px-3 rounded-full text-sm font-medium text-ink-2 hover:bg-surface-2 hover:text-ink" lang={locale === "ar" ? "en" : "ar"}>
+            <button onClick={() => setLocale(locale === "ar" ? "en" : "ar")} className="h-11 px-3 rounded-full text-sm font-medium text-ink-2 hover:bg-surface-2 hover:text-ink" lang={locale === "ar" ? "en" : "ar"}>
               {t("lang.toggle")}
             </button>
-            <button onClick={() => setSettings(true)} aria-label={t("nav.settings")} className="size-10 grid place-items-center rounded-full text-ink-2 hover:bg-surface-2 hover:text-ink">
+            <button onClick={() => setSettings(true)} aria-label={t("nav.settings")} className="size-11 grid place-items-center rounded-full text-ink-2 hover:bg-surface-2 hover:text-ink">
               <Settings2 className="size-5" />
             </button>
           </div>

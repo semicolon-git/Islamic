@@ -31,7 +31,7 @@ export function Chip({
       type="button"
       aria-pressed={selected}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full h-9 px-3.5 text-sm font-medium border transition-colors",
+        "inline-flex items-center gap-1.5 rounded-full h-9 pointer-coarse:h-11 px-3.5 text-sm font-medium border transition-colors",
         selected ? "bg-ink text-bg border-ink" : cn(tones[tone], "border-transparent hover:border-line-strong"),
         className,
       )}
