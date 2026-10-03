@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { getI18n } from "@/i18n/server";
+import { Logo } from "@/components/ui/khatam";
+import { NotFoundView } from "@/components/shell/not-found-view";
 
+/** Unmatched URLs (outside any layout): a branded page with ways back into the app. */
 export default async function NotFound() {
-  const { locale } = await getI18n();
+  const { t } = await getI18n();
   return (
-    <main className="min-h-dvh grid place-items-center p-6 text-center">
-      <div className="flex flex-col gap-3 items-center">
-        <p className="mono text-ink-3">404</p>
-        <h1 className="text-2xl font-semibold">{locale === "ar" ? "لم نجد هذه الصفحة" : "We couldn't find that page"}</h1>
-        <Link href="/" className="text-accent underline underline-offset-4">{locale === "ar" ? "العودة إلى الرئيسية" : "Back to home"}</Link>
-      </div>
-    </main>
+    <div className="min-h-dvh flex flex-col">
+      <header className="h-14 px-4 flex items-center border-b border-line/60">
+        <Link href="/" className="inline-flex items-center min-h-11 rounded-lg" aria-label={t("nav.home")}>
+          <Logo label={t("app.name")} />
+        </Link>
+      </header>
+      <main className="flex-1 grid place-items-center">
+        <NotFoundView t={t} />
+      </main>
+    </div>
   );
 }

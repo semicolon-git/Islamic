@@ -67,7 +67,7 @@ export function InboxApp({ initial, selectedId }: { initial: InboxThread[]; sele
                   const shared = consentSummary(th.consent);
                   return (
                     <li key={th.id}>
-                      <Link href={`/portal/inbox/${th.id}`} aria-current={active ? "page" : undefined} className={cn("flex flex-col gap-1.5 px-4 py-3 hover:bg-surface-2", active && "bg-accent-soft hover:bg-accent-soft")}>
+                      <Link href={`/portal/inbox/${th.id}`} aria-current={active ? "page" : undefined} className={cn("flex flex-col gap-1.5 px-4 py-3 hover:bg-surface-2", active && "bg-accent-soft hover:bg-accent-soft [&_.text-ink-3]:text-ink-2")}>
                         <span className="flex items-center gap-2">
                           <span className="font-medium text-ink">{t("inbox.visitor", { code: code(th.id) })}</span>
                           <Badge tone="neutral" title={t(`inbox.langFull.${th.lang === "en" || th.lang === "ar" ? th.lang : "und"}`)}>{t(`inbox.lang.${th.lang === "en" || th.lang === "ar" ? th.lang : "und"}`)}</Badge>

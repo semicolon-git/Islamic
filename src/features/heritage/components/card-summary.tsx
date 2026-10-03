@@ -9,11 +9,12 @@ import { loc } from "../l10n";
  * Compact view of an approved card linked to an item (the full card lives at /card/<id>).
  * Quran text comes from the resolved card's verses (database), never from the item.
  */
-export function CardSummary({ rc, locale, t, demo }: { rc: ResolvedCard; locale: Locale; t: (k: string, v?: Record<string, string | number>) => string; demo: boolean }) {
+export function CardSummary({ rc, locale, t, demo, shownVerseKeys = [] }: { rc: ResolvedCard; locale: Locale; t: (k: string, v?: Record<string, string | number>) => string; demo: boolean; shownVerseKeys?: string[] }) {
   const inst = rc.institution ? loc(locale, rc.institution.name_en, rc.institution.name_ar) + (demo && rc.institution.is_demo ? ` (${t("badge.demo")})` : "") : "";
   const explanation = loc(locale, rc.content.explanation.en, rc.content.explanation.ar);
   const short = explanation.length > 320 ? explanation.slice(0, 300).replace(/\s+\S*$/, "") + "…" : explanation;
-  const primary = rc.verses.slice(0, 1);
+  // Don't repeat a verse the page already shows in full (e.g. the inscription quotes the card's primary verse).
+  const primary = rc.verses.slice(0, 1).filter((v) => !shownVerseKeys.includes(v.key));
   return (
     <article className="rounded-[var(--radius-lg)] border border-line bg-surface shadow-card overflow-hidden" data-testid="linked-card">
       <header className="flex flex-col gap-1.5 px-5 pt-4">

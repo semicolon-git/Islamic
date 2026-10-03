@@ -58,13 +58,13 @@ export function ItemsTable({ rows }: { rows: ItemListRow[] }) {
         <div className="overflow-x-auto rounded-[var(--radius)] border border-line bg-surface shadow-card">
           <table className="w-full text-sm" data-testid="items-table">
             <thead>
-              <tr className="text-start text-xs uppercase tracking-wider text-ink-3 bg-surface-2">
-                <th scope="col" className="text-start font-semibold px-4 py-2.5">{t("heritage.portal.colItem")}</th>
-                <th scope="col" className="text-start font-semibold px-4 py-2.5">{t("heritage.portal.colCode")}</th>
-                <th scope="col" className="text-start font-semibold px-4 py-2.5 hidden md:table-cell">{t("heritage.portal.colVenue")}</th>
-                <th scope="col" className="text-start font-semibold px-4 py-2.5">{t("heritage.portal.colStatus")}</th>
-                <th scope="col" className="text-start font-semibold px-4 py-2.5 hidden lg:table-cell">{t("heritage.portal.colInscriptions")}</th>
-                <th scope="col" className="text-start font-semibold px-4 py-2.5 hidden lg:table-cell">{t("heritage.portal.colUpdated")}</th>
+              <tr className="text-start text-sm text-ink-2 bg-surface-2">
+                <th scope="col" className="text-start font-medium px-4 py-2.5">{t("heritage.portal.colItem")}</th>
+                <th scope="col" className="text-start font-medium px-4 py-2.5">{t("heritage.portal.colCode")}</th>
+                <th scope="col" className="text-start font-medium px-4 py-2.5 hidden md:table-cell">{t("heritage.portal.colVenue")}</th>
+                <th scope="col" className="text-start font-medium px-4 py-2.5">{t("heritage.portal.colStatus")}</th>
+                <th scope="col" className="text-start font-medium px-4 py-2.5 hidden lg:table-cell">{t("heritage.portal.colInscriptions")}</th>
+                <th scope="col" className="text-start font-medium px-4 py-2.5 hidden lg:table-cell">{t("heritage.portal.colUpdated")}</th>
               </tr>
             </thead>
             <tbody>

@@ -167,7 +167,7 @@ export default async function ItemPage({ params }: Props) {
       {card && (
         <section aria-labelledby="card-h" className="flex flex-col gap-3">
           <h2 id="card-h" className="text-lg font-semibold text-ink">{t("heritage.item.card")}</h2>
-          <CardSummary rc={card} locale={locale} t={t} demo={env.demoMode} />
+          <CardSummary rc={card} locale={locale} t={t} demo={env.demoMode} shownVerseKeys={verses.map((v) => v.key)} />
         </section>
       )}
 
@@ -207,11 +207,11 @@ export default async function ItemPage({ params }: Props) {
       )}
 
       <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
-        <ButtonLink href={ask} size="lg" className="flex-1">
+        <ButtonLink href={ask} size="lg" className="sm:flex-1">
           <MessageCircleQuestion className="size-5" aria-hidden />
           {t("heritage.item.ask")}
         </ButtonLink>
-        <ButtonLink href={talk} size="lg" variant="secondary" className="flex-1">
+        <ButtonLink href={talk} size="lg" variant="secondary" className="sm:flex-1">
           <MessageCircle className="size-5" aria-hidden />
           {t("heritage.item.talk")}
         </ButtonLink>

@@ -44,6 +44,11 @@ export const common: Messages = {
     "quran.verse": "Verse",
     "privacy.short": "No account. We don't store your photos or track your beliefs.",
     "demo.banner": "Demo content — pending review by a qualified scholar.",
+    "notFound.title": "We couldn't find that page",
+    "notFound.body": "The link may be old or mistyped. Try one of these instead.",
+    "notFound.home": "Back to home",
+    "notFound.choose": "Choose what you see",
+    "notFound.ask": "Ask a question",
   },
   ar: {
     "app.name": "آيات حولك",
@@ -88,5 +93,10 @@ export const common: Messages = {
     "quran.verse": "آية",
     "privacy.short": "بلا حساب. لا نحفظ صورك ولا نتتبّع معتقدك.",
     "demo.banner": "محتوى تجريبي — بانتظار مراجعة مختص شرعي.",
+    "notFound.title": "لم نجد هذه الصفحة",
+    "notFound.body": "ربما الرابط قديم أو فيه خطأ في الكتابة. جرّب أحد هذه الخيارات.",
+    "notFound.home": "العودة إلى الرئيسية",
+    "notFound.choose": "اختر ما تراه",
+    "notFound.ask": "اطرح سؤالًا",
   },
 };

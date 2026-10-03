@@ -11,6 +11,7 @@ import { cn } from "@/components/ui/cn";
 import { api } from "@/features/portal/client";
 import { personHasJoined, type Consent } from "./logic";
 import { MessagesView, type ChatMessage } from "./messages-view";
+import { scrollBehavior } from "@/components/ui/motion";
 
 const K_TOKEN = "talk.device";
 const K_THREAD = "talk.thread";
@@ -71,7 +72,7 @@ export function TalkApp({ card, initialQuestion }: { card: { id: string; title_e
   const endRef = useRef<HTMLDivElement>(null);
   const msgCount = (data?.messages.length ?? 0) + outbox.length;
   useEffect(() => {
-    if (phase === "thread" && msgCount > 1) endRef.current?.scrollIntoView({ block: "end", behavior: "smooth" });
+    if (phase === "thread" && msgCount > 1) endRef.current?.scrollIntoView({ block: "end", behavior: scrollBehavior() });
   }, [msgCount, phase]);
 
   const load = useCallback(async (id: string, tok: string) => {

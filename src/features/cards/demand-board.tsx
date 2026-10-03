@@ -109,7 +109,7 @@ export function DemandBoard({ initial, canDismiss, canCreate }: { initial: Deman
 
       {shown.length === 0 ? (
         <Card>
-          <EmptyState icon={<Inbox className="size-6" />} title={t("demand.empty.title")} body={t("demand.empty.body")} />
+          <EmptyState icon={<Inbox className="size-6" />} title={t(tab === "fulfilled" || tab === "dismissed" ? `demand.empty.${tab}.title` : "demand.empty.title")} body={t(tab === "fulfilled" || tab === "dismissed" ? `demand.empty.${tab}.body` : "demand.empty.body")} />
         </Card>
       ) : (
         <ul className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3" data-testid="demand-groups">
@@ -127,7 +127,7 @@ export function DemandBoard({ initial, canDismiss, canCreate }: { initial: Deman
                 </div>
                 <div className="flex items-baseline gap-3 flex-wrap">
                   <span className="text-3xl font-semibold tabular text-ink" data-testid="demand-count">{fmtNumber(g.status === "fulfilled" ? g.fulfilled : g.open || g.total, locale)}</span>
-                  <span className="text-sm text-ink-2">{(g.open || g.total) === 1 ? t("demand.request1") : t("demand.requests", { n: "" }).trim()}</span>
+                  <span className="text-sm text-ink-2">{(g.status === "fulfilled" ? g.fulfilled : g.open || g.total) === 1 ? t("demand.unit1") : t("demand.unitN")}</span>
                   {g.recent > 0 && <Badge tone="violet" className="tabular">{t("demand.week", { n: fmtNumber(g.recent, locale) })}</Badge>}
                 </div>
                 <p className="text-xs text-ink-3" suppressHydrationWarning>{t("demand.last", { when: fmtRelative(g.last_at, locale) })}</p>

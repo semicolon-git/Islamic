@@ -9,6 +9,7 @@ import { hasArabic } from "@/lib/quran/normalize";
 import type { InscriptionView } from "../inscription-view";
 import { ArabicKeyboard } from "./arabic-keyboard";
 import { InscriptionResult } from "./inscription-result";
+import { scrollBehavior } from "@/components/ui/motion";
 
 /** Try-it examples. These are visitor inputs for the matcher, never displayed as Quran text. */
 export const EXAMPLES = [
@@ -63,7 +64,7 @@ export function InscriptionReader({ aiEnabled }: { aiEnabled: boolean }) {
   useEffect(() => () => void (preview && URL.revokeObjectURL(preview)), [preview]);
 
   const showResult = useCallback(() => {
-    requestAnimationFrame(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    requestAnimationFrame(() => resultRef.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" }));
   }, []);
 
   const check = useCallback(
