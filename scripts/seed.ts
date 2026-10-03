@@ -2,6 +2,7 @@
  * Seed the database. Idempotent. Usage:
  *   npm run seed            (uses DATA_DIR / DATABASE_URL like the app)
  *   npm run seed -- --reset (drop the embedded database first; PGlite only)
+ *   npm run seed -- --if-empty (skip when the database already holds the Quran text — used on server start)
  * Feature builders add modules in scripts/seed/<feature>.ts exporting `seed(q)`; they run after core, in FEATURES order.
  */
 import fs from "node:fs";
@@ -19,6 +20,14 @@ async function main() {
     console.log(`reset ${env.dataDir}`);
   }
   const db = await getDb();
+  if (process.argv.includes("--if-empty")) {
+    const n = (await db.query<{ n: number }>("select count(*)::int as n from quran_ayah")).rows[0]?.n ?? 0;
+    if (n > 0) {
+      console.log(`database already seeded (${n} verses) — skipping`);
+      await db.close();
+      return;
+    }
+  }
   console.log(`seeding ${env.databaseUrl ? "Postgres (DATABASE_URL)" : `PGlite at ${env.dataDir}`}`);
   await db.transaction((q) => seedCore(q));
   for (const f of FEATURES) {

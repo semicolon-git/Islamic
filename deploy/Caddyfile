@@ -1,0 +1,12 @@
+# HTTPS for {$DOMAIN} with automatic Let's Encrypt certificates.
+# Phones need HTTPS for the camera and to install the app (PWA).
+{$DOMAIN} {
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+	reverse_proxy app:3000
+}

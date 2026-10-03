@@ -135,14 +135,15 @@ Every AI output is labelled as an AI draft, and every AI path has a tested no-ke
 
 ## Deploy
 
-Any Node host works: Vercel, Render, Fly or a VM.
+**Your own server (recommended):** one command on a clean Ubuntu/Debian server installs Docker, Postgres and automatic HTTPS (Caddy), seeds the data and starts the app:
 
-1. **Create a Postgres database** (Supabase, Neon or another) and enable `pg_trgm`. Set `DATABASE_URL`.
-2. **Set `SESSION_SECRET`** to a long random string, and `PUBLIC_BASE_URL` / `NEXT_PUBLIC_SITE_URL` to your domain. These are used in QR labels and social previews.
-3. **Seed once** from a machine with the sources: `npm run setup` with the same `DATABASE_URL`.
-4. **Build and start:** `npm run build && npm start`.
+```bash
+curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/claude/dreamy-volta-iu1o2t/deploy/install.sh | sudo bash -s -- your.domain.com
+```
 
-Uploaded files go to `UPLOAD_DIR`. On serverless hosts, point it at persistent storage or keep uploads off.
+Full guide, everyday commands, backups and troubleshooting: [`deploy/README.md`](deploy/README.md).
+
+**Any other Node host:** set `DATABASE_URL` (Postgres 15+ with `pg_trgm`), `SESSION_SECRET` and `PUBLIC_BASE_URL`, then run `npm run build && npx tsx scripts/seed.ts --if-empty && npm start`.
 
 ## Data and licences
 - **Quran:**

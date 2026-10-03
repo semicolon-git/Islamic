@@ -1,0 +1,66 @@
+# Signs Around You · آيات حولك — single-server deployment: app + Postgres + Caddy (automatic HTTPS).
+# Settings come from deploy/.env (created by install.sh). Run from the repo root:
+#   docker compose -f deploy/docker-compose.yml up -d --build
+name: signs
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: signs
+      POSTGRES_USER: signs
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in deploy/.env}
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U signs -d signs"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: signs-around-you:latest
+    init: true
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://signs:${DB_PASSWORD}@db:5432/signs
+      SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET in deploy/.env}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      DEMO_PIN: ${DEMO_PIN:-1448}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      PUBLIC_BASE_URL: https://${DOMAIN}
+      NEXT_PUBLIC_SITE_URL: https://${DOMAIN}
+      UPLOAD_DIR: /data/uploads
+    volumes:
+      - uploads:/data/uploads
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN in deploy/.env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  db:
+  uploads:
+  caddy_data:
+  caddy_config:
