@@ -15,6 +15,7 @@ import { diffChars } from "../../text";
 import type { LineDTO, LineVersionDTO, PageDetail } from "../../types";
 import { api, ApiError, num, pct } from "../api";
 import { TokenText } from "../token-view";
+import { studioExtensions } from "../../studio-extensions";
 import { MOD_LABEL } from "./keys";
 
 // ───────────────────────────────────────────── History
@@ -275,6 +276,7 @@ export function ShortcutsSheet({ open, onClose }: { open: boolean; onClose: () =
       ],
     },
     { title: t("manuscripts.keys.image"), rows: [[["+", "−"], t("manuscripts.keys.zoom")], [["0", "1"], t("manuscripts.keys.fit")], [["L", `${M} ⇧ L`], t("manuscripts.keys.zoomLine")], [["I"], t("manuscripts.keys.filter")], [["O"], t("manuscripts.keys.overlays")], [["R"], t("manuscripts.keys.reading")]] },
+    ...studioExtensions.flatMap((x) => x.shortcuts ?? []).map((g) => ({ title: t(g.group), rows: g.rows.map(([k, l]) => [k.map((x) => x.replace("Ctrl", M)), t(l)] as [string[], string]) })),
   ];
   return (
     <Sheet open={open} onClose={onClose} side="end" title={t("manuscripts.keys.title")} description={t("manuscripts.keys.desc")} closeLabel={t("action.close")}>

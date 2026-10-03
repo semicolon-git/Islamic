@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { BookOpenText, Library, Plus, ScrollText, Upload } from "lucide-react";
+import { BookOpenText, ClipboardCheck, Library, Plus, ScrollText, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/chip";
 import { EmptyState } from "@/components/ui/feedback";
@@ -42,6 +42,7 @@ export function LibraryView({ manuscripts, role, demo }: { manuscripts: MsSummar
           <p className="text-ink-2 text-[0.98rem]">{t("manuscripts.subtitle")}</p>
         </div>
         <div className="flex gap-2 shrink-0">
+          <Link href="/portal/manuscripts/queue" className="inline-flex items-center justify-center gap-2 h-11 px-4 rounded-[12px] font-medium bg-accent-soft text-ink hover:brightness-95" data-testid="my-work-link"><ClipboardCheck className="size-4" />{t("collab.queue.link")}</Link>
           {canUpload && manuscripts.length > 0 && (
             <Button variant="secondary" onClick={() => setUploading(true)}><Upload className="size-4" />{t("manuscripts.upload")}</Button>
           )}
@@ -81,7 +82,7 @@ export function LibraryView({ manuscripts, role, demo }: { manuscripts: MsSummar
               {t("manuscripts.work.copies", { n: num(copies.length, locale) })}
               <span className="text-ink-3"> · {locale === "ar" ? copies[0].author_ar : copies[0].author_en}</span>
             </p>
-            <p className="text-xs text-ink-3">{t("manuscripts.work.collation")}</p>
+            <p className="text-xs text-ink-3">{t("manuscripts.work.collation")} · <Link href={`/portal/manuscripts/${copies[0].id}/compare`} className="text-accent underline underline-offset-2" data-testid="compare-link">{t("collab.compare.link")}</Link></p>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {copies.map((m) => <li key={m.id}><ManuscriptCard m={m} demo={demo} /></li>)}

@@ -114,7 +114,9 @@ export function Workspace({ initial }: { initial: PageDetail }) {
     setLive(true);
     const mine = ev.actor_id === detail.viewer.id;
     const p = ev.payload as Record<string, string>;
-    for (const x of studioExtensions) x.onEvent?.({ type: ev.type, payload: ev.payload, actor_id: ev.actor_id }, ctx);
+    let handled = false;
+    for (const x of studioExtensions) if (x.onEvent?.({ type: ev.type, payload: ev.payload, actor_id: ev.actor_id }, ctx) === true) handled = true;
+    if (handled) return;
     if (mine && (ev.type === "line.saved" || ev.type === "line.locked" || ev.type === "line.unlocked")) return;
     if (ev.type === "line.locked" || ev.type === "line.unlocked") {
       setDetail((d) => ({

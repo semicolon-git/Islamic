@@ -15,6 +15,7 @@ import { cn } from "@/components/ui/cn";
 import { getDashboard, type Queue } from "@/features/portal/server";
 import { ActivityFeed } from "@/features/portal/activity-feed";
 import type { TaskKind } from "@/features/portal/logic";
+import { MsWorkCard } from "@/features/ms-collab/components/dashboard-card";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Portal" };
@@ -113,6 +114,7 @@ export default async function PortalHome() {
           <ActivityFeed initial={d.activity} canInbox={canInbox} />
         </Card>
         <div className="flex flex-col gap-5">
+          <MsWorkCard user={user} />
           <Card className="p-5 flex flex-col gap-3 bg-sand border-transparent">
             <div className="flex items-center gap-3">
               <span className="size-10 rounded-xl bg-surface/70 grid place-items-center text-sand-ink"><ScrollText className="size-5" aria-hidden /></span>

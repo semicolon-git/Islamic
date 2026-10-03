@@ -109,7 +109,7 @@ export function ManuscriptView({ manuscript: m, pages, siblings, role, demo }: {
             {m.script_description && <p className="text-xs text-ink-3 leading-relaxed pt-1" dir="ltr">{m.script_description}</p>}
             {siblings.length > 0 && (
               <div className="pt-2 flex flex-col gap-1.5">
-                <span className="text-xs font-medium text-ink-3">{t("manuscripts.meta.otherCopies")}</span>
+                <span className="text-xs font-medium text-ink-3 flex items-center justify-between gap-2">{t("manuscripts.meta.otherCopies")}<Link href={`/portal/manuscripts/${m.id}/compare`} className="text-accent underline underline-offset-2 font-normal" data-testid="compare-link">{t("collab.compare.link")}</Link></span>
                 <div className="flex flex-wrap gap-2">
                   {siblings.map((s) => (
                     <Link key={s.id} href={`/portal/manuscripts/${s.id}`} className="inline-flex items-center gap-2 rounded-full border border-line px-3 h-9 text-sm hover:bg-surface-2">
