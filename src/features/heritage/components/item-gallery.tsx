@@ -14,6 +14,8 @@ export function ItemGallery({ images, title, hue = 200 }: { images: ItemImage[];
   const img = images[i];
   const n = images.length;
   const alt = img ? loc(locale, img.alt_en, img.alt_ar) || title : title;
+  // Generated illustrations carry an English-only credit/licence; show the localised wording in Arabic.
+  const localise = (s: string, key: string) => (img?.generated && locale === "ar" && !/[\u0600-\u06FF]/.test(s) ? t(key) : s);
   return (
     <figure className="flex flex-col gap-2.5" data-testid="item-gallery">
       <div className="relative overflow-hidden rounded-[var(--radius-lg)] bg-brand shadow-card">
@@ -42,10 +44,10 @@ export function ItemGallery({ images, title, hue = 200 }: { images: ItemImage[];
         <figcaption className={cn("flex flex-wrap items-baseline gap-x-3 gap-y-1 px-1 text-xs text-ink-3")}>
           {img.generated && <span className="text-ink-2">{t("heritage.item.illustrativeNote")}</span>}
           <span>
-            <span className="font-medium text-ink-2">{t("heritage.item.credit")}:</span> <bdi>{img.credit}</bdi>
+            <span className="font-medium text-ink-2">{t("heritage.item.credit")}:</span> <bdi>{localise(img.credit, "heritage.item.generatedCredit")}</bdi>
           </span>
           <span>
-            <span className="font-medium text-ink-2">{t("heritage.item.license")}:</span> <bdi>{img.license}</bdi>
+            <span className="font-medium text-ink-2">{t("heritage.item.license")}:</span> <bdi>{localise(img.license, "heritage.license.generated")}</bdi>
           </span>
           {img.source_url && (
             <a href={img.source_url} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1 text-accent underline underline-offset-2">

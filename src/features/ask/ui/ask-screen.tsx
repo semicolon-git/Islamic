@@ -10,6 +10,7 @@ import { MAX_QUESTION, detectLang } from "../text";
 import type { AskResult, Stage } from "../types";
 import { AnswerCard } from "./answer-card";
 import { Rich } from "./blocks";
+import { scrollBehavior } from "@/components/ui/motion";
 
 interface Turn {
   id: string;
@@ -78,7 +79,7 @@ export function AskScreen({ context, initialQuestion }: { context: { id: string;
     } catch {}
   }, [turns]);
   useEffect(() => {
-    if (turns.length) endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    if (turns.length) endRef.current?.scrollIntoView({ behavior: scrollBehavior(), block: "end" });
   }, [turns]);
 
   const autosize = () => {

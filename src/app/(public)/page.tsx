@@ -127,7 +127,7 @@ export default async function Home() {
                     )}
                     <span className="flex-1 min-w-0 flex flex-col">
                       <span className="font-medium text-ink truncate">{locale === "ar" ? r.title_ar : r.title_en}</span>
-                      <span className="text-xs text-ink-3 truncate">
+                      <span className="text-xs text-ink-3 line-clamp-2">
                         <BadgeCheck className="inline size-3.5 text-ok -mt-0.5 me-1" aria-hidden />
                         {inst ? t("beneficiary.home.approvedBy", { institution: inst }) : t("beneficiary.tile.approved")}
                         {demo && r.institution_demo ? ` (${t("badge.demo")})` : ""}

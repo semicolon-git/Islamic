@@ -149,9 +149,10 @@ export async function CardView({ resolved, justApproved = false, showAsk = true 
           <ConceptImage src={image} alt="" hue={hue} className="aspect-[16/9] sm:aspect-[21/9] w-full rounded-[22px]" />
           <div className="pointer-events-none absolute inset-0 rounded-[22px] bg-gradient-to-t from-[rgb(8_10_30/0.55)] via-transparent to-transparent" aria-hidden />
           {approvedLine && (
-            <span className="absolute bottom-3 start-3 end-3 sm:end-auto inline-flex items-center gap-1.5 rounded-full bg-[rgb(8_10_30/0.72)] backdrop-blur px-3 py-1.5 text-[0.8rem] font-medium text-white w-fit max-w-[calc(100%-1.5rem)]">
+            <span className="absolute bottom-3 start-3 end-3 sm:end-auto inline-flex items-center gap-1.5 rounded-[14px] bg-[rgb(8_10_30/0.72)] backdrop-blur px-3 py-1.5 text-[0.8rem] font-medium leading-snug text-white w-fit max-w-[calc(100%-1.5rem)]">
               <BadgeCheck className="size-4 text-[#36dcb8] shrink-0" aria-hidden />
-              <span className="truncate">{approvedLine}</span>
+              {/* Never truncate: the "(demo)" honesty label sits at the end of this line. */}
+              <span className="line-clamp-2">{approvedLine}</span>
             </span>
           )}
         </div>
@@ -366,12 +367,12 @@ export async function CardView({ resolved, justApproved = false, showAsk = true 
       {/* Next steps */}
       {showAsk && (
         <section className="relative overflow-hidden rounded-[22px] bg-brand text-brand-ink p-5 sm:p-6 flex flex-col gap-4" aria-labelledby="next-h">
-          <span className="pointer-events-none absolute -bottom-10 -end-8 text-[#36dcb8] opacity-15" aria-hidden><Khatam size={160} strokeWidth={0.8} /></span>
-          <div className="flex flex-col gap-1">
+          <span className="pointer-events-none absolute -top-12 -end-12 text-[#36dcb8] opacity-15" aria-hidden><Khatam size={150} strokeWidth={0.8} /></span>
+          <div className="relative flex flex-col gap-1">
             <h2 id="next-h" className="text-xl font-semibold">{t("beneficiary.card.curious")}</h2>
             <p className="text-brand-ink/80 text-sm">{t("beneficiary.card.curiousBody")}</p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="relative flex flex-col sm:flex-row gap-2">
             <ButtonLink href={`/ask?card=${encodeURIComponent(card.id)}`} size="lg" className="bg-[#36dcb8] text-[#052a22] hover:bg-[#5ae6c7] shadow-none">
               <MessageCircleQuestion className="size-5" aria-hidden />
               {t("beneficiary.card.ask")}
