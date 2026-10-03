@@ -36,6 +36,9 @@ import { WorkflowBar } from "./workflow-bar";
 import { ChecklistPanel } from "./checklist-panel";
 import { HistoryTab } from "./history";
 
+/** Bidi-isolate free text typed in another language (e.g. an English note shown in the Arabic UI) so punctuation stays put. */
+const isolate = (s: string) => (s ? `\u2068${s}\u2069` : s);
+
 export interface EditorProps {
   detail: CardDetail;
   user: { id: string; role: Role; display_name_en: string; display_name_ar: string };
@@ -395,7 +398,7 @@ export function CardEditor(props: EditorProps) {
         <WorkflowBar steps={steps} />
         {returnedBy && (
           <Callout tone="warn" icon={<CornerUpLeft className="size-4" />}>
-            <span data-testid="returned-note">{t("cards.wf.returnedNote", { name: (locale === "ar" ? returnedBy.reviewer_ar : returnedBy.reviewer_en) ?? "", note: returnedBy.note ?? "" })}</span>
+            <span data-testid="returned-note">{t("cards.wf.returnedNote", { name: (locale === "ar" ? returnedBy.reviewer_ar : returnedBy.reviewer_en) ?? "", note: isolate(returnedBy.note ?? "") })}</span>
           </Callout>
         )}
         {decisions.length > 0 && (
@@ -453,7 +456,7 @@ export function CardEditor(props: EditorProps) {
 
       {/* tabs */}
       <div className="flex flex-wrap items-center gap-3">
-        <Segmented label={t("cards.tabsLabel")} value={tab} onChange={setTab} options={[{ value: "edit", label: t("cards.tab.edit") }, { value: "history", label: t("cards.tab.history"), count: detail.versions.length }]} />
+        <Segmented label={t("cards.tabsLabel")} value={tab} onChange={setTab} options={[{ value: "edit", label: editable ? t("cards.tab.edit") : t("cards.tab.content") }, { value: "history", label: t("cards.tab.history"), count: detail.versions.length }]} />
         {tab === "edit" && (
           <div className="lg:hidden">
             <Segmented size="sm" label={t("cards.tab.preview")} value={mobileView} onChange={setMobileView} options={[{ value: "form", label: <span className="inline-flex items-center gap-1.5"><PencilLine className="size-3.5" aria-hidden />{t("cards.tab.form")}</span> }, { value: "preview", label: <span className="inline-flex items-center gap-1.5"><Eye className="size-3.5" aria-hidden />{t("cards.tab.preview")}</span> }]} />

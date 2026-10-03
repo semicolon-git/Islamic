@@ -61,7 +61,7 @@ export default async function PortalHome() {
       </header>
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">
-        <section aria-labelledby="next-task" className={cn("relative overflow-hidden rounded-[var(--radius-lg)] border p-6 lg:p-7 flex flex-col gap-4 shadow-card", urgent ? "bg-brand text-brand-ink border-transparent" : "bg-surface border-line")}>
+        <section aria-labelledby="next-task" className={cn("relative overflow-hidden rounded-[var(--radius-lg)] border p-6 lg:p-7 flex flex-col gap-4 shadow-card", urgent ? "bg-brand text-brand-ink border-line-strong" : "bg-surface border-line")}>
           {urgent && <div className="absolute inset-0 khatam-bg opacity-[0.08] pointer-events-none" aria-hidden />}
           <p id="next-task" className={cn("relative text-xs font-semibold uppercase tracking-[0.12em]", urgent ? "text-brand-ink/80" : "text-ink-3")}>{t("portal.dash.nextTask")}</p>
           <div className="relative flex items-start gap-4">

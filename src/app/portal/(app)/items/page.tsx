@@ -55,7 +55,7 @@ export default async function ItemsPage() {
           {t("heritage.portal.register")}
         </ButtonLink>
       </header>
-      <div className="grid gap-6 xl:grid-cols-[1fr_300px] items-start">
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_300px] items-start">
         <ItemsTable rows={rows} />
         {venueQrs.length > 0 && (
           <aside className="flex flex-col gap-3" aria-labelledby="venue-qr-h">

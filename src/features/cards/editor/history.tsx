@@ -118,7 +118,7 @@ export function HistoryTab({
                     {v.version === publishedVersion && <Badge tone="ok">{t("cards.hist.published")}</Badge>}
                   </span>
                   <span className="text-xs text-ink-3 truncate" suppressHydrationWarning>
-                    {name(v.author_en, v.author_ar)} · {fmtRelative(v.created_at, locale)}{v.note ? ` · ${v.note}` : ""}
+                    {name(v.author_en, v.author_ar)} · {fmtRelative(v.created_at, locale)}{v.note ? <> · <bdi>{v.note}</bdi></> : ""}
                   </span>
                   <span className="mono text-[0.7rem] text-ink-3" dir="ltr">{v.content_sha}</span>
                 </span>

@@ -1,7 +1,7 @@
 "use client";
 import { Check, CornerUpLeft } from "lucide-react";
 import { useI18n } from "@/i18n/client";
-import { fmtRelative } from "@/i18n/core";
+import { fmtNumber, fmtRelative } from "@/i18n/core";
 import { cn } from "@/components/ui/cn";
 import type { Step } from "../stages";
 
@@ -37,7 +37,7 @@ export function WorkflowBar({ steps }: { steps: Step[] }) {
               )}
               aria-hidden
             >
-              {s.state === "done" ? <Check className="size-3.5" /> : s.state === "returned" ? <CornerUpLeft className="size-3.5" /> : i + 1}
+              {s.state === "done" ? <Check className="size-3.5" /> : s.state === "returned" ? <CornerUpLeft className="size-3.5" /> : fmtNumber(i + 1, locale)}
             </span>
             <span className="flex flex-col min-w-0">
               <span className="text-sm font-medium text-ink truncate">{s.state === "returned" ? t("cards.wf.returned") : t(LABEL[s.key])}</span>

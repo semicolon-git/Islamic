@@ -41,7 +41,7 @@ export function isTyping(e: KeyboardEvent) {
 export function fmtDuration(fromIso: string, locale: "en" | "ar") {
   const s = Math.max(0, (Date.now() - new Date(fromIso).getTime()) / 1000);
   const [value, unit] = s < 3600 ? [Math.max(1, Math.round(s / 60)), "minute"] : s < 86400 ? [Math.round(s / 3600), "hour"] : [Math.round(s / 86400), "day"];
-  return new Intl.NumberFormat(locale === "ar" ? "ar" : "en", { style: "unit", unit: unit as string, unitDisplay: "short" }).format(value as number);
+  return new Intl.NumberFormat(locale === "ar" ? "ar-SA" : "en", { style: "unit", unit: unit as string, unitDisplay: "short" }).format(value as number);
 }
 
 /** Debounced value. */

@@ -73,7 +73,6 @@ function MetricTile({ m }: { m: Metric }) {
 function Confusion({ s }: { s: SplitSummary }) {
   const { t, locale } = useI18n();
   const rows = LEVELS.filter((e) => s.confusion[e]);
-  const max = Math.max(1, ...Object.values(s.confusion).flatMap((r) => Object.values(r)));
   return (
     <section className="flex flex-col gap-3 rounded-[16px] border border-line bg-surface p-4 shadow-card">
       <div>
@@ -113,11 +112,10 @@ function Confusion({ s }: { s: SplitSummary }) {
                       className={cn(
                         "h-12 w-14 rounded-[8px] text-center tabular font-semibold",
                         n === 0 && "text-ink-3 bg-surface-2/50",
-                        n > 0 && diag && "text-accent-ink",
+                        n > 0 && diag && "bg-accent-soft text-ink ring-1 ring-inset ring-accent/50",
                         n > 0 && !diag && !under && "bg-warn-soft text-warn",
                         under && "bg-bad text-white ring-2 ring-bad/40",
                       )}
-                      style={n > 0 && diag ? { background: `color-mix(in oklab, var(--accent) ${35 + (n / max) * 65}%, var(--surface))` } : undefined}
                     >
                       {under && <ShieldAlert className="inline size-3.5 me-0.5 -mt-0.5" aria-hidden />}
                       {fmtNumber(n, locale)}
