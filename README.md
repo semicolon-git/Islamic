@@ -61,7 +61,7 @@ All AI features work without an API key through deterministic fallbacks. Set `AN
 | `/portal/cards` | A structured card editor with a validation checklist and lint (for example, no "scientific miracle" framing), the workflow (student → researcher → institution, four-eyes rule) and version diffs. |
 | `/portal/demand` | Live visitor requests grouped by concept or topic, with one-click "Create card". |
 | `/portal/inbox` | Specialist conversations, live. |
-| `/portal/manuscripts` | **Manuscript Studio.** See below. |
+| `/portal/manuscripts` | **Manuscript Studio:** library, page workspace, `…/queue` (My work, review queue, assignments), `…/queue/hard-words` (blind double-keying and adjudication), `…/[msId]/compare` (copies side by side). See below. |
 | `/portal/items` | Heritage items, printable QR labels, inscription confirmation. |
 | `/portal/eval` | The Ask safety scoreboard: fabricated hadith, quote fidelity, citation coverage, false refusals, levels. Can be run from the UI. |
 | `/portal/people` | Learning points from accepted work. Students are shown by initials. |
