@@ -29,7 +29,7 @@ function PageRow({ p, href, cta, icon }: { p: ReviewQueueItem; href: string; cta
         <span className="flex items-center gap-2 text-sm font-semibold"><Siglum s={p.siglum} size="sm" />{t("collab.pageN", { n: num(p.page_seq, locale) })} · <span className="font-ms font-normal text-base" dir="rtl" lang="ar">{locale === "ar" ? p.ms_title_ar : p.ms_title_en}</span></span>
         <span className="text-xs text-ink-3 flex flex-wrap items-center gap-x-2 gap-y-1">
           {who && <span className="inline-flex items-center gap-1"><Avatar name={who} hue={p.submitted_by!.hue} size={16} />{who}</span>}
-          {p.submitted_at && <span>{fmtRelative(p.submitted_at, locale)}</span>}
+          {p.submitted_at && <span suppressHydrationWarning>{fmtRelative(p.submitted_at, locale)}</span>}
           <span>{t("collab.review.linesChecked", { n: num(p.lines_changed, locale), total: num(p.lines_total, locale) })}</span>
           {p.open_suggestions > 0 && <Badge tone="violet"><GitPullRequestArrow className="size-3" />{num(p.open_suggestions, locale)}</Badge>}
           {p.open_comments > 0 && <Badge tone="violet"><AtSign className="size-3" />{num(p.open_comments, locale)}</Badge>}
@@ -132,7 +132,7 @@ export function QueueView({ initial, progress }: { initial: QueueData; progress:
               <li key={m.id}>
                 <Link href={`/portal/manuscripts/${m.ms_id}/pages/${m.page_id}${m.line_id ? `?line=${encodeURIComponent(m.line_id)}` : ""}`} className="flex flex-col px-2 py-1.5 rounded-[10px] hover:bg-surface-2">
                   <span className="text-sm line-clamp-2" dir="auto">{m.body}</span>
-                  <span className="text-xs text-ink-3">{locale === "ar" ? m.author_ar : m.author_en}{m.line_n ? ` · ${t("collab.lineN", { n: num(m.line_n, locale) })}` : ""} · {fmtRelative(m.created_at, locale)}</span>
+                  <span className="text-xs text-ink-3">{locale === "ar" ? m.author_ar : m.author_en}{m.line_n ? ` · ${t("collab.lineN", { n: num(m.line_n, locale) })}` : ""} · <span suppressHydrationWarning>{fmtRelative(m.created_at, locale)}</span></span>
                 </Link>
               </li>
             ))}

@@ -480,6 +480,7 @@ export const msCollab: Messages = {
     "collab.pub.source": "See the manuscript at the library",
     "collab.pub.verseTitle": "Quran quotation",
     "collab.pub.verseInMs": "In the manuscript (lines {a}–{b}):",
+    "collab.pub.verseInMs1": "In the manuscript (line {a}):",
     "collab.pub.verseNote": "The verse is shown from the King Fahd Complex text. The manuscript's own wording is kept as the scribe wrote it.",
 
     // ── dashboard card
@@ -963,6 +964,7 @@ export const msCollab: Messages = {
     "collab.pub.source": "اطّلع على المخطوط في المكتبة",
     "collab.pub.verseTitle": "اقتباس قرآني",
     "collab.pub.verseInMs": "في المخطوط (الأسطر {a}–{b}):",
+    "collab.pub.verseInMs1": "في المخطوط (السطر {a}):",
     "collab.pub.verseNote": "تُعرض الآية من نص مجمّع الملك فهد، ويبقى لفظ المخطوط كما كتبه الناسخ.",
 
     "collab.dash.title": "عمل المخطوطات",

@@ -41,7 +41,7 @@ export function KeyingView({ pageId }: { pageId?: string }) {
       setItem(r.item);
       setReading("");
       setResult(null);
-      requestAnimationFrame(() => input.current?.focus());
+      requestAnimationFrame(() => input.current?.focus({ preventScroll: true }));
     } catch (e) {
       setError(e instanceof ApiError ? e.message : t("collab.error.load"));
       setItem(null);
@@ -153,9 +153,9 @@ export function KeyingView({ pageId }: { pageId?: string }) {
                 placeholder={t("collab.hard.placeholder")} data-testid="hw-input" />
               <div className="flex flex-wrap items-center gap-2">
                 <Button type="submit" size="lg" loading={busy} disabled={!reading.trim()} data-testid="hw-submit">{t("collab.hard.submit")} <Kbd>↵</Kbd></Button>
-                <Button type="button" variant="secondary" onClick={() => void cant("illegible")} disabled={busy} data-testid="hw-cant"><EyeOff className="size-4" />{t("collab.hard.cantRead")} <Kbd>{M} ⇧ U</Kbd></Button>
-                <Button type="button" variant="ghost" onClick={() => void cant("damage")} disabled={busy}>{t("collab.hard.damaged")} <Kbd>{M} ⇧ D</Kbd></Button>
-                <Button type="button" variant="ghost" onClick={skip} disabled={busy} className="ms-auto" data-testid="hw-skip"><SkipForward className="size-4" />{t("collab.hard.skip")} <Kbd>Esc</Kbd></Button>
+                <Button type="button" variant="secondary" onClick={() => void cant("illegible")} disabled={busy} data-testid="hw-cant"><EyeOff className="size-4" />{t("collab.hard.cantRead")} <span className="hidden sm:inline"><Kbd>{M} ⇧ U</Kbd></span></Button>
+                <Button type="button" variant="ghost" onClick={() => void cant("damage")} disabled={busy}>{t("collab.hard.damaged")} <span className="hidden sm:inline"><Kbd>{M} ⇧ D</Kbd></span></Button>
+                <Button type="button" variant="ghost" onClick={skip} disabled={busy} className="ms-auto" data-testid="hw-skip"><SkipForward className="size-4" />{t("collab.hard.skip")} <span className="hidden sm:inline"><Kbd>Esc</Kbd></span></Button>
               </div>
               <p className="text-xs text-ink-3">{t("collab.hard.blind")}</p>
             </form>

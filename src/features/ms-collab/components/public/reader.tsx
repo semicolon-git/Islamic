@@ -178,7 +178,7 @@ export function PublicReader({ manuscript: m, pages, demo }: { manuscript: Publi
           <div className="flex flex-col gap-4" data-testid="verse-sheet">
             <VerseBlock verses={verse.verses} locale={locale} translationLabel={t("collab.quote.translation")} />
             <div className="rounded-[12px] bg-sand px-3 py-2">
-              <p className="text-xs text-sand-ink">{t("collab.pub.verseInMs", { a: num(verse.from_n, locale), b: num(verse.to_n, locale) })}</p>
+              <p className="text-xs text-sand-ink">{verse.from_n === verse.to_n ? t("collab.pub.verseInMs1", { a: num(verse.from_n, locale) }) : t("collab.pub.verseInMs", { a: num(verse.from_n, locale), b: num(verse.to_n, locale) })}</p>
               <p className="ms-text text-[1.25rem]" dir="rtl" lang="ar">{verse.ms_text}</p>
             </div>
             <p className="text-xs text-ink-3">{t("collab.pub.verseNote")}</p>

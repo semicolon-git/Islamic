@@ -31,7 +31,7 @@ function PagePane({ title, siglum, image, polygons, focus, href }: {
         <Link href={href} className="ms-auto inline-flex items-center gap-1 text-xs text-accent underline underline-offset-2 shrink-0">{t("collab.compare.openPage")}<ExternalLink className="size-3" /></Link>
       </figcaption>
       <div className="rounded-[12px] border border-line bg-sand overflow-hidden">
-        <svg viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} className="block w-full h-[clamp(200px,42vh,460px)]" preserveAspectRatio="xMidYMid meet" role="img" aria-label={t("collab.compare.imageOf", { s: siglum ?? "" })}>
+        <svg viewBox={`${v.x} ${v.y} ${v.w} ${v.h}`} className="block w-full h-[clamp(180px,34vh,380px)]" preserveAspectRatio="xMidYMid meet" role="img" aria-label={t("collab.compare.imageOf", { s: siglum ?? "" })}>
           <image href={image.src} x={0} y={0} width={image.width} height={image.height} />
           {Object.entries(polygons).map(([id, p]) => (
             <polygon key={id} points={toPoints(p)} fill={focus.includes(id) ? "#f2c45a" : "#36dcb8"} fillOpacity={focus.includes(id) ? 0.32 : 0.07}
@@ -116,7 +116,7 @@ export function CompareView({ data }: { data: CollationView }) {
           </div>
 
           {passage && (
-            <div className="grid gap-5 2xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start">
+            <div className="grid gap-5 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
               <section className="flex flex-col gap-4 min-w-0" aria-labelledby="cmp-text">
                 <div className="flex flex-wrap items-center gap-2">
                   <h2 id="cmp-text" className="text-lg font-semibold">{t("collab.compare.baseText", { s: data.base.siglum ?? "" })}</h2>
@@ -165,7 +165,7 @@ export function CompareView({ data }: { data: CollationView }) {
                   <p className="text-xs text-ink-3 inline-flex items-start gap-1.5"><Info className="size-3.5 mt-0.5 shrink-0" />{t("collab.compare.how")}</p>
                 </section>
               </section>
-              <section className="grid gap-3 sm:grid-cols-2 2xl:grid-cols-1 min-w-0" aria-label={t("collab.compare.images")}>
+              <section className="grid gap-3 sm:grid-cols-2 xl:sticky xl:top-20 min-w-0" aria-label={t("collab.compare.images")}>
                 <PagePane title={`${t("collab.compare.baseCopy")} · ${t("collab.pageN", { n: num(passage.base_page_seq, locale) })}`} siglum={data.base.siglum} image={passage.base_image} polygons={passage.base_polygons} focus={baseFocus}
                   href={`/portal/manuscripts/${data.base.id}/pages/${passage.base_page_id}${baseFocus[0] ? `?line=${encodeURIComponent(baseFocus[0])}` : ""}`} />
                 {passage.witnesses.map((w) => (
