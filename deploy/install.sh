@@ -28,6 +28,17 @@ if ! command -v docker >/dev/null || ! docker compose version >/dev/null 2>&1; t
 fi
 systemctl enable --now docker >/dev/null 2>&1 || true
 
+# Containers can't use the systemd-resolved stub (127.0.0.53); give Docker the server's real DNS servers.
+if [ ! -s /etc/docker/daemon.json ] && grep -q '^nameserver 127\.0\.0\.53' /etc/resolv.conf 2>/dev/null; then
+  UPSTREAM=$(grep '^nameserver' /run/systemd/resolve/resolv.conf 2>/dev/null | awk '{print $2}' | grep -v '^127\.' | grep -v ':' | head -3)
+  [ -n "$UPSTREAM" ] || UPSTREAM="1.1.1.1
+8.8.8.8"
+  say "Configuring Docker DNS: $(echo $UPSTREAM)"
+  mkdir -p /etc/docker
+  printf '{ "dns": [%s] }\n' "$(echo "$UPSTREAM" | sed 's/.*/"&"/' | paste -sd, -)" > /etc/docker/daemon.json
+  systemctl restart docker
+fi
+
 # The production build needs ~3 GB of memory; add swap on small servers.
 MEM_MB=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo)
 if [ "$MEM_MB" -lt 3500 ] && [ "$(swapon --show | wc -l)" -eq 0 ]; then
@@ -45,6 +56,9 @@ else
   git clone --depth 1 --branch "$BRANCH" "$REPO" "$DIR"
 fi
 cd "$DIR"
+
+say "Downloading the pinned Quran, hadith and translation sources (sha256-checked)"
+bash prep/fetch_sources.sh
 
 ENV_FILE="$DIR/deploy/.env"
 if [ ! -f "$ENV_FILE" ]; then

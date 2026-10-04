@@ -7,11 +7,10 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
 COPY . .
-# Pinned Quran / hadith / translation sources (sha256-checked); skipped if already present in the build context.
-RUN if [ ! -s prep/data/raw/quran_kfgqpc_hafs_v18.json ]; then \
-      apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && rm -rf /var/lib/apt/lists/* \
-      && bash prep/fetch_sources.sh; \
-    fi
+# The pinned Quran / hadith / translation sources are downloaded on the host before the build
+# (install.sh runs prep/fetch_sources.sh, sha256-checked), so the image needs no OS packages or extra downloads.
+RUN test -s prep/data/raw/quran_kfgqpc_hafs_v18.json \
+    || (echo "Missing prep/data/raw: run 'bash prep/fetch_sources.sh' (or 'npm run data:fetch') before building." && exit 1)
 # Vendor the generated concept images so the app works offline and on venue Wi-Fi (falls back to the CDN if unreachable).
 RUN npm run assets:fetch || echo "concept images: CDN unreachable, the app will load them remotely"
 RUN npx next build

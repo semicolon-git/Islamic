@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/main/deploy/i
 
 Leave off the domain to use the `sslip.io` address. The script:
 1. installs Docker;
-2. clones the repo to `/opt/signs-around-you`;
+2. clones the repo to `/opt/signs-around-you` and downloads the pinned Quran, hadith and translation sources;
 3. writes `deploy/.env` with fresh random secrets;
 4. builds and starts everything;
 5. waits until the app is healthy, then prints the URLs.

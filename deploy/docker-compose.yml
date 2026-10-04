@@ -23,6 +23,7 @@ services:
     build:
       context: ..
       dockerfile: deploy/Dockerfile
+      network: host   # builds use the server's own network and DNS
     image: signs-around-you:latest
     init: true
     restart: unless-stopped
