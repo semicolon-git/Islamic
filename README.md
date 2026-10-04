@@ -138,7 +138,7 @@ Every AI output is labelled as an AI draft, and every AI path has a tested no-ke
 **Your own server (recommended):** one command on a clean Ubuntu/Debian server installs Docker, Postgres and automatic HTTPS (Caddy), seeds the data and starts the app:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/claude/dreamy-volta-iu1o2t/deploy/install.sh | sudo bash -s -- your.domain.com
+curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/main/deploy/install.sh | sudo bash -s -- your.domain.com
 ```
 
 Full guide, everyday commands, backups and troubleshooting: [`deploy/README.md`](deploy/README.md).

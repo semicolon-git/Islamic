@@ -5,7 +5,7 @@ Prepared on 2 October 2026 for Mahmoud Abuzaid, team lead, ahead of the build da
 **How to read the evidence tags:**
 - **S#** is a pitch slide.
 - **R#** is a page of the reference pack: R2 = scope and levels A–D; R3–R4 = approved sources; R5 = the 8 mandatory standards; R6 = the 12 example test questions; R8 = the terms dictionary. R7 is blank.
-- `prep/` is the prep kit committed with this review (branch `claude/dreamy-volta-iu1o2t`). Run `prep/fetch_sources.sh` once to download the pinned raw sources into `prep/data/raw/`. Then the scripts in `prep/scripts/` regenerate the concept list, counts and example card; this regeneration has been tested.
+- `prep/` is the prep kit committed with this review (branch `main`). Run `prep/fetch_sources.sh` once to download the pinned raw sources into `prep/data/raw/`. Then the scripts in `prep/scripts/` regenerate the concept list, counts and example card; this regeneration has been tested.
 - **(unverified)** marks claims that rest only on search snippets, because the sandbox blocked dorar.net, quranenc.com, quranpedia.net, dawa.center, islamic-content.com, huggingface.co and the challenge site.
 
 ---

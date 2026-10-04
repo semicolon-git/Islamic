@@ -18,7 +18,7 @@ This puts the whole platform on one Linux server. Three containers run under Doc
 SSH into the server and run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/claude/dreamy-volta-iu1o2t/deploy/install.sh | sudo bash -s -- signs.example.com
+curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/main/deploy/install.sh | sudo bash -s -- signs.example.com
 ```
 
 Leave off the domain to use the `sslip.io` address. The script:

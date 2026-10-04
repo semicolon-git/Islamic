@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-command install of Signs Around You · آيات حولك on a clean Ubuntu/Debian server.
 #
-#   curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/claude/dreamy-volta-iu1o2t/deploy/install.sh | sudo bash -s -- your.domain.com
+#   curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/main/deploy/install.sh | sudo bash -s -- your.domain.com
 #
 # Without a domain argument it uses <server-ip>.sslip.io, so HTTPS still works (phones need HTTPS for the camera).
 # Safe to re-run: it keeps the existing secrets and data and just updates and restarts.
@@ -9,7 +9,7 @@ set -euo pipefail
 
 DOMAIN="${1:-${DOMAIN:-}}"
 REPO="${REPO:-https://github.com/semicolon-git/Islamic.git}"
-BRANCH="${BRANCH:-claude/dreamy-volta-iu1o2t}"
+BRANCH="${BRANCH:-main}"
 DIR="${DIR:-/opt/signs-around-you}"
 
 say() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }

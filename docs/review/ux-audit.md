@@ -1,6 +1,6 @@
 # UX audit: Signs Around You · آيات حولك
 
-UX1 · 2026-10-03 · branch `claude/dreamy-volta-iu1o2t` (all features merged)
+UX1 · 2026-10-03 · branch `main` (all features merged)
 
 ## Method
 
