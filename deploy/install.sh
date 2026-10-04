@@ -74,6 +74,14 @@ if command -v ufw >/dev/null && ufw status | grep -q "Status: active"; then
   ufw allow 80/tcp >/dev/null; ufw allow 443/tcp >/dev/null; ufw allow 443/udp >/dev/null
 fi
 
+# Some cloud images (e.g. Oracle Cloud Ubuntu) ship iptables rules that REJECT everything but SSH.
+if command -v iptables >/dev/null && iptables -S INPUT 2>/dev/null | grep -q -- '-j REJECT'; then
+  say "Opening ports 80 and 443 in the host firewall (iptables)"
+  for p in 80 443; do iptables -C INPUT -p tcp --dport "$p" -j ACCEPT 2>/dev/null || iptables -I INPUT 1 -p tcp --dport "$p" -j ACCEPT; done
+  iptables -C INPUT -p udp --dport 443 -j ACCEPT 2>/dev/null || iptables -I INPUT 1 -p udp --dport 443 -j ACCEPT
+  if command -v netfilter-persistent >/dev/null; then netfilter-persistent save >/dev/null 2>&1 || true; fi
+fi
+
 say "Building and starting (first time: about 5–10 minutes)"
 docker compose -f deploy/docker-compose.yml --env-file "$ENV_FILE" up -d --build
 

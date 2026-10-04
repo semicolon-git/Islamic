@@ -58,6 +58,11 @@ gunzip -c backup-YYYY-MM-DD.sql.gz | $C exec -T db psql -U signs signs
 ```
 
 ## Troubleshooting
+First run the doctor, and send its output when asking for help:
+```bash
+curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/main/deploy/doctor.sh | sudo bash
+```
+
 - **No HTTPS certificate:**
   - Check that ports 80 and 443 are reachable from the internet, and that the domain's A record points at this server.
   - Then check Caddy's logs: `$C logs caddy`.
