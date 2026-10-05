@@ -97,6 +97,7 @@ A manuscript is never "corrected". The **diplomatic layer** records exactly what
 ## Rules the code enforces
 - **Quran text** comes only by reference from the KFGQPC Hafs v18 table and is rendered in the KFGQPC font. It is never generated or typed.
 - **Quran recitation** is a human recording looked up by verse key (Al-Husary, murattal, Hafs), never synthesised speech. Every verse shows a "Listen" button; an invalid key gets no audio. `npm run recitation:check` verifies the recordings' numbering against KFGQPC in all 114 suras, that first verses are recorded without the bismillah (matching the text), and the pinned sha256 of every verse the cards cite.
+- **Word highlighting** follows the recitation using word timings made for the exact file that plays. `npm run recitation:segments` keeps a verse only if its word list matches the KFGQPC words one for one (letter skeletons compared) and its timings are complete and in order: 6,181 of 6,236 verses (99.1%, including every verse a card cites). The other 55 play without highlighting rather than risk lighting the wrong word.
 - **Hadith** come only by id (Bukhari, standard numbering; Muslim, Abd al-Baqi numbering) and always show the collection, number and grade.
 - **Counts** are computed by code from the Quranic Arabic Corpus, and the counting rule is shown.
 - **Ask** answers only from approved cards. It abstains when the evidence is empty, refers fatwa-type questions (level D) to a person, and never confirms "scientific miracle" framing.
@@ -151,7 +152,8 @@ Full guide, everyday commands, backups and troubleshooting: [`deploy/README.md`]
   - Text: KFGQPC Hafs v18 (King Fahd Glorious Quran Printing Complex).
   - Translation: Saheeh International.
   - Morphology: Quranic Arabic Corpus 0.4 (GPL, used verbatim for counts).
-  - Recitation: Sheikh Mahmoud Khalil Al-Husary (murattal), verse-by-verse files streamed from EveryAyah.com; checksums of the cited verses are pinned in [`data/content/recitation/husary.json`](data/content/recitation/husary.json). EveryAyah publishes no licence terms, so **confirm permission before commercial use**.
+  - Recitation: Sheikh Mahmoud Khalil Al-Husary (murattal), verse-by-verse files (64 kbps) streamed from EveryAyah.com; checksums of the cited verses are pinned in [`data/content/recitation/husary.json`](data/content/recitation/husary.json). EveryAyah publishes no licence terms, so **confirm permission before commercial use**.
+  - Word timings: Quran.com API v4 (recitation 6), stored in [`data/content/recitation/husary-segments.json`](data/content/recitation/husary-segments.json). Check the Quran.com / Quran Foundation terms before commercial use.
 - **Hadith:** Sahih al-Bukhari and Sahih Muslim, from the fawazahmed0 hadith-api mirror. Re-verify each one on dorar.net before launch.
 - **Manuscript images:** the bundled pages come from public collections. The holding library, shelfmark, licence and credit line are stored for every copy and shown wherever an image appears. **Check each licence before commercial use** (some are non-commercial).
 - **Decorative images:** generated, and they contain no letters. No AI-generated calligraphy or fake manuscripts are used anywhere.

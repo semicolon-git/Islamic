@@ -16,6 +16,7 @@
     "eval": "tsx scripts/eval.ts",
     "ai:check": "tsx scripts/ai-check.ts",
     "recitation:check": "tsx scripts/recitation-check.mts",
+    "recitation:segments": "tsx scripts/recitation-segments.mts",
     "verify": "npm run typecheck && npm run lint && npm test && npm run build && npm run test:e2e",
     "assets:fetch": "node scripts/fetch-assets.mjs"
   },

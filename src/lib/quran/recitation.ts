@@ -5,6 +5,8 @@
  * Its numbering matches KFGQPC Hafs v18 (6,236 verses), and a sura's first verse is recorded without the
  * bismillah, matching the verse text the app shows (only 1:1 is the bismillah). Both are verified by
  * `npx tsx scripts/recitation-check.mts`, which also pins checksums for every verse the cards cite.
+ * The 64 kbps files are used because they are the exact files the word timings were made for
+ * (scripts/recitation-segments.mts), so the highlighted word follows the recitation.
  * Shared by server and client code: no server-only imports here.
  */
 
@@ -17,7 +19,7 @@ export const RECITER = {
   style: "murattal",
   riwaya: "Hafs ʿan ʿĀṣim",
   source: "EveryAyah.com",
-  base_url: "https://everyayah.com/data/Husary_128kbps",
+  base_url: "https://everyayah.com/data/Husary_64kbps",
 } as const;
 
 /** Verses per sura in the Hafs (Kufan) count, sura 1 first. Sums to 6,236; checked against KFGQPC v18 in the tests. */
@@ -47,8 +49,37 @@ export function recitationFile(key: string): string | null {
   return `${String(v.sura).padStart(3, "0")}${String(v.aya).padStart(3, "0")}.mp3`;
 }
 
+/**
+ * Split KFGQPC verse text into display tokens. Tokens with letters are the verse's words, numbered from 0; the
+ * verse-number glyph and marks written as their own token (۞) are not words. Word timings (husary-segments.json)
+ * are indexed by this same numbering, so the generator and the highlighter must both use this function.
+ */
+export function verseTokens(text: string): { text: string; word: number | null }[] {
+  let n = 0;
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((t) => ({ text: t, word: /\p{L}/u.test(t) ? n++ : null }));
+}
+
 /** The recording URL for a verse, or null for an invalid key (so a wrong key can never play another verse). */
 export function recitationUrl(key: string): string | null {
   const file = recitationFile(key);
   return file ? `${RECITER.base_url}/${file}` : null;
+}
+
+/** After a verse's last word ends, keep it lit this long (the reciter's final madd often runs past the timing). */
+const TAIL_MS = 400;
+
+/** Index of the word being recited at `ms`: the last word that has started, or -1 before the first / after the last. */
+export function wordAt(spans: [number, number][], ms: number): number {
+  if (!spans.length || ms < spans[0][0] || ms > spans[spans.length - 1][1] + TAIL_MS) return -1;
+  let lo = 0;
+  let hi = spans.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1;
+    if (spans[mid][0] <= ms) lo = mid;
+    else hi = mid - 1;
+  }
+  return lo;
 }
