@@ -1,4 +1,5 @@
 import { cn } from "./cn";
+import { RecitationButton } from "./recitation";
 
 const ENDS_WITH_NUMBER = /[\u0660-\u0669]+\s*$/;
 const toArabicDigits = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[+d]);
@@ -23,6 +24,7 @@ export function VerseBlock({
   size = "md",
   className,
   translationLabel,
+  recitation = true,
 }: {
   verses: VerseView[];
   locale: "en" | "ar";
@@ -30,6 +32,8 @@ export function VerseBlock({
   size?: "md" | "lg";
   className?: string;
   translationLabel: string;
+  /** Show the "Listen" button: the human recitation of these verses, looked up by key. */
+  recitation?: boolean;
 }) {
   if (!verses.length) return null;
   const first = verses[0];
@@ -50,6 +54,7 @@ export function VerseBlock({
       <figcaption className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-2">
         <span className="font-medium text-ink">{locale === "ar" ? `سورة ${first.sura_name_ar}` : `Surah ${first.sura_name_en}`}</span>
         <span className="mono text-ink-3" dir="ltr">{ref}</span>
+        {recitation && <RecitationButton keys={verses.map((v) => v.key)} locale={locale} className="ms-auto" />}
       </figcaption>
       {showTranslation && verses.some((v) => v.translation) && (
         <div className="rounded-[12px] bg-surface-2 px-4 py-3">
