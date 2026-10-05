@@ -19,6 +19,8 @@ sec "containers"
 $C ps -a 2>&1
 sec "app health (inside the container)"
 $C exec -T app node deploy/healthcheck.mjs >/dev/null 2>&1 && echo "app: HEALTHY" || echo "app: NOT healthy"
+sec "AI (Claude)"
+if grep -q '^ANTHROPIC_API_KEY=.' "$DIR/deploy/.env" 2>/dev/null; then $C exec -T app npx tsx scripts/ai-check.ts 2>&1 | tail -6; else echo "AI off (no ANTHROPIC_API_KEY): deterministic fallbacks in use"; fi
 sec "local HTTP through Caddy"
 [ -n "$D" ] && curl -sS -m 10 -o /dev/null -w "http://127.0.0.1 (Host: $D) -> %{http_code} %{redirect_url}\n" -H "Host: $D" http://127.0.0.1/
 [ -n "$D" ] && curl -sS -m 10 -k -o /dev/null -w "https://$D via 127.0.0.1 -> %{http_code}\n" --resolve "$D:443:127.0.0.1" "https://$D/api/health"

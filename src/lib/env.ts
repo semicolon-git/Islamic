@@ -7,6 +7,8 @@ export const env = {
   demoMode: (process.env.DEMO_MODE ?? "true") !== "false",
   demoPin: process.env.DEMO_PIN || "1448",
   anthropicKey: process.env.ANTHROPIC_API_KEY || "",
+  /** Only for keys not scoped to a workspace (Console → Settings → Workspaces, id starts with wrkspc_). */
+  anthropicWorkspaceId: process.env.ANTHROPIC_WORKSPACE_ID || "",
   models: {
     vision: process.env.AI_MODEL_VISION || "claude-opus-5-5",
     router: process.env.AI_MODEL_ROUTER || "claude-opus-5-5",

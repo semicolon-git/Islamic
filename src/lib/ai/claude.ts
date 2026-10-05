@@ -24,7 +24,15 @@ export const aiEnabled = () => !!env.anthropicKey;
 let client: Anthropic | null = null;
 export function getClient(): Anthropic {
   if (!aiEnabled()) throw new AiFailure("disabled", "AI is not configured (ANTHROPIC_API_KEY missing).");
-  if (!client) client = new Anthropic({ apiKey: env.anthropicKey, maxRetries: 2, timeout: 60_000 });
+  if (!client) {
+    client = new Anthropic({
+      apiKey: env.anthropicKey,
+      maxRetries: 2,
+      timeout: 60_000,
+      // Keys that are not scoped to a workspace must name one on every request.
+      defaultHeaders: env.anthropicWorkspaceId ? { "anthropic-workspace-id": env.anthropicWorkspaceId } : undefined,
+    });
+  }
   return client;
 }
 /** Test hook: inject a fake client. */
@@ -81,7 +89,11 @@ export async function callStructured<S extends z.ZodType>(req: StructuredCall<S>
     );
   } catch (e) {
     if (e instanceof Anthropic.APIConnectionTimeoutError) throw new AiFailure("timeout", "The AI service timed out.");
-    if (e instanceof Anthropic.APIError) throw new AiFailure("api", `AI service error (${e.status ?? "?"}).`);
+    if (e instanceof Anthropic.APIError) {
+      // Visible in the server log so a misconfigured key or workspace doesn't hide behind the fallbacks.
+      console.warn(`[ai] ${req.agent} (${model}) failed: ${e.status ?? "?"} ${e.message}`);
+      throw new AiFailure("api", `AI service error (${e.status ?? "?"}).`);
+    }
     throw new AiFailure("api", e instanceof Error ? e.message : "AI call failed.");
   }
   if (res.stop_reason === "refusal") throw new AiFailure("refusal", "The model declined this request.");

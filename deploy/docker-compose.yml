@@ -36,6 +36,7 @@ services:
       DEMO_MODE: ${DEMO_MODE:-true}
       DEMO_PIN: ${DEMO_PIN:-1448}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_WORKSPACE_ID: ${ANTHROPIC_WORKSPACE_ID:-}
       PUBLIC_BASE_URL: https://${DOMAIN}
       NEXT_PUBLIC_SITE_URL: https://${DOMAIN}
       UPLOAD_DIR: /data/uploads

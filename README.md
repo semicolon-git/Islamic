@@ -131,7 +131,7 @@ npx tsx scripts/sql.mts "select count(*) from cards"   # quick SQL against the l
 - manuscript line drafts;
 - "explain this line" glosses.
 
-Every AI output is labelled as an AI draft, and every AI path has a tested no-key fallback. Models default to `claude-opus-5-5` and can be overridden per agent (`AI_MODEL_*`, see [`.env.example`](.env.example)).
+Every AI output is labelled as an AI draft, and every AI path has a tested no-key fallback. Models default to `claude-opus-5-5` and can be overridden per agent (`AI_MODEL_*`, see [`.env.example`](.env.example)). `npm run ai:check` makes one tiny call per configured model and says what is wrong if the key or workspace is misconfigured.
 
 ## Deploy
 

@@ -76,6 +76,8 @@ DEMO_MODE=true
 DEMO_PIN=1448
 # Optional: switches on the AI paths (photo recognition, composed answers, manuscript drafts)
 ANTHROPIC_API_KEY=
+# Only for keys not scoped to a workspace (Console → Settings → Workspaces, starts with wrkspc_)
+ANTHROPIC_WORKSPACE_ID=
 ENV
   chmod 600 "$ENV_FILE"
 elif [ -n "$DOMAIN" ]; then

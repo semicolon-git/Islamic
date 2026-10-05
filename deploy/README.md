@@ -44,7 +44,8 @@ $C restart app              # restart after editing deploy/.env
 sudo bash deploy/install.sh # update to the latest code (keeps data and secrets)
 ```
 
-**Switch on AI:** put your key in `deploy/.env` as `ANTHROPIC_API_KEY=...`, then run `$C up -d app`.
+**Switch on AI:** put your key in `deploy/.env` as `ANTHROPIC_API_KEY=...`, then run `$C up -d app`. Check it with `$C exec app npx tsx scripts/ai-check.ts`.
+If the check says the key "is not scoped to a workspace", also set `ANTHROPIC_WORKSPACE_ID=wrkspc_...` (Claude Console → Settings → Workspaces), or create the key inside a workspace instead.
 
 **Reset the demo data** (wipes the database and re-seeds it on start):
 ```bash
