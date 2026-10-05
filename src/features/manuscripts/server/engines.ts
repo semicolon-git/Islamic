@@ -66,35 +66,67 @@ export function modelTokensToTokens(words: ModelTok[]): Tok[] {
   return normalizeTokens(mergeAdjacent(out)).tokens;
 }
 
-/** Claude vision draft: batches of several line crops per call, structured tokens. */
-export async function draftWithClaude(crops: LineCrop[], opts: { batch?: number; context?: string } = {}): Promise<DraftOutput> {
+/**
+ * Line crops are only ~50–70 px tall at page resolution; doubling them (≤ 2600 px wide) measurably steadies the model:
+ * page CER 12–13% vs 14–42% run to run at native size (scripts/ms-draft-bench.ts, bnf-arabe-5341_03).
+ */
+export async function enlargeForVision(png: Buffer, maxWidth = 2600): Promise<Buffer> {
+  try {
+    const sharp = (await import("sharp")).default;
+    const m = await sharp(png).metadata();
+    const w = m.width ?? 0;
+    const k = Math.min(2, maxWidth / Math.max(1, w));
+    if (!w || k <= 1.05) return png;
+    return await sharp(png).resize({ width: Math.round(w * k), kernel: "lanczos3" }).png().toBuffer();
+  } catch {
+    return png; // unreadable image: send as is and let the model (or the fallback) deal with it
+  }
+}
+
+/**
+ * Claude vision draft: batches of several line crops per call, structured tokens.
+ * A batch whose answer comes back cut off or malformed is retried once as two smaller batches, so one bad batch
+ * doesn't send the whole page to the open-source fallback. Refusals and API errors still fail the draft.
+ */
+export async function draftWithClaude(crops: LineCrop[], opts: { batch?: number; context?: string; effort?: "low" | "medium" | "high" } = {}): Promise<DraftOutput> {
   const size = opts.batch ?? 6;
   const lines: DraftLine[] = [];
   let model = env.models.draft;
-  for (let i = 0; i < crops.length; i += size) {
-    const chunk = crops.slice(i, i + size);
+  const run = async (chunk: LineCrop[], retry: boolean): Promise<void> => {
     const user = [
       opts.context ? `Manuscript: ${opts.context}` : "",
       `Transcribe these ${chunk.length} line images in order. Image k corresponds to line_id:`,
       ...chunk.map((c, k) => `Image ${k + 1} → line_id "${c.line_id}"`),
     ].filter(Boolean).join("\n");
-    const r = await callStructured({
-      agent: "draft",
-      system: DRAFT_SYSTEM,
-      user,
-      images: chunk.map((c) => ({ mediaType: "image/png" as const, base64: c.png.toString("base64") })),
-      schema: draftSchema,
-      effort: "medium",
-      maxTokens: 400 + chunk.length * 500,
-      timeoutMs: 90_000,
-    });
+    let r;
+    try {
+      r = await callStructured({
+        agent: "draft",
+        system: DRAFT_SYSTEM,
+        user,
+        images: await Promise.all(chunk.map(async (c) => ({ mediaType: "image/png" as const, base64: (await enlargeForVision(c.png)).toString("base64") }))),
+        schema: draftSchema,
+        effort: opts.effort ?? "medium",
+        maxTokens: 400 + chunk.length * 500,
+        timeoutMs: 90_000,
+      });
+    } catch (e) {
+      if (retry && chunk.length > 1 && e instanceof AiFailure && (e.kind === "parse" || e.kind === "max_tokens")) {
+        const half = Math.ceil(chunk.length / 2);
+        await run(chunk.slice(0, half), false);
+        await run(chunk.slice(half), false);
+        return;
+      }
+      throw e;
+    }
     model = r.model;
     const byId = new Map(r.data.lines.map((l) => [l.line_id, l]));
     for (const c of chunk) {
       const l = byId.get(c.line_id);
       if (l) lines.push({ line_id: c.line_id, tokens: modelTokensToTokens(l.tokens) });
     }
-  }
+  };
+  for (let i = 0; i < crops.length; i += size) await run(crops.slice(i, i + size), true);
   return { engine: `claude:${model}`, lines };
 }
 

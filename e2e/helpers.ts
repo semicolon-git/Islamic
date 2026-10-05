@@ -13,6 +13,11 @@ export async function setLang(page: Page, lang: "en" | "ar") {
 
 /** Fail on serious/critical accessibility violations. */
 export async function expectAccessible(page: Page, opts: { exclude?: string[] } = {}) {
+  // Let entrance fades (rise/pop) finish first: axe measures contrast on half-transparent text mid-animation,
+  // which made these checks flaky on a loaded machine. Infinite loaders (shimmer) are ignored.
+  await page
+    .waitForFunction(() => document.getAnimations().every((a) => a.effect?.getComputedTiming().iterations === Infinity || a.playState !== "running"), null, { timeout: 5000 })
+    .catch(() => {});
   let b = new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]);
   for (const s of opts.exclude ?? []) b = b.exclude(s);
   const r = await b.analyze();

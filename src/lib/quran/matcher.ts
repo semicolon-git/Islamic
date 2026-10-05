@@ -1,4 +1,4 @@
-import { diffTokens, levenshtein, skeleton } from "./normalize";
+import { diffTokens, levenshtein, normalizeArabic, skeleton } from "./normalize";
 
 /**
  * Find Quranic passages in arbitrary Arabic text (OCR'd inscription, typed quote, manuscript line).
@@ -159,7 +159,8 @@ export function matchQuran(ix: QuranIndex, text: string): MatchResult {
   const nt = skeleton(text);
   const q = nt.replace(/ /g, "");
   const qtoks = nt.split(" ").filter(Boolean);
-  if (q.length < MIN_CHARS) return { status: "too_short", input: text };
+  // Count real letters (alef aside), before the skeleton writes doubled letters once.
+  if (normalizeArabic(text).replace(/[ ا]/g, "").length < MIN_CHARS) return { status: "too_short", input: text };
   const hits = exactHits(ix, q);
   if (hits.length) return { status: "exact", input: text, locations: hits.map(([a, b]) => span(ix, a, b)) };
   const near = nearHits(ix, qtoks, q);

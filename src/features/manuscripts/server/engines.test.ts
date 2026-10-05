@@ -54,6 +54,23 @@ describe("machine draft engines", () => {
     expect(out.lines[7]).toEqual({ line_id: "l8", tokens: [{ t: "text", v: "سطر l8 " }, { t: "unclear", v: "وة", alts: ["وه"] }] });
   });
 
+  it("retries a cut-off batch as two smaller batches instead of dropping the page to OCR", async () => {
+    vi.stubEnv("ANTHROPIC_API_KEY", "sk-test");
+    const claude = await import("@/lib/ai/claude");
+    const parse = vi.fn().mockImplementation(async (req: { messages: { content: { type: string; text?: string }[] }[] }) => {
+      const text = req.messages[0].content.find((c) => c.type === "text")!.text!;
+      const ids = [...text.matchAll(/line_id "([^"]+)"/g)].map((m) => m[1]);
+      if (ids.length > 3) throw new Error("Failed to parse structured output: SyntaxError: Unexpected end of JSON input");
+      return { stop_reason: "end_turn", model: "claude-opus-5-5", usage: { input_tokens: 1, output_tokens: 1 }, parsed_output: { lines: ids.map((id) => ({ line_id: id, tokens: [{ t: "text", v: id }] })) } };
+    });
+    claude.__setClientForTests({ beta: { messages: { parse } } });
+    const { draftLines } = await import("./engines");
+    const out = await draftLines(Array.from({ length: 6 }, (_, i) => ({ line_id: `l${i + 1}`, png: Buffer.from([i]) })));
+    expect(out.engine).toBe("claude:claude-opus-5-5");
+    expect(out.lines.map((l) => l.line_id)).toEqual(["l1", "l2", "l3", "l4", "l5", "l6"]);
+    expect(parse).toHaveBeenCalledTimes(3);
+  });
+
   it("falls back to open-source OCR when the AI call fails", async () => {
     vi.stubEnv("ANTHROPIC_API_KEY", "sk-test");
     const claude = await import("@/lib/ai/claude");

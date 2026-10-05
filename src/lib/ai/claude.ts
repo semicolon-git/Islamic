@@ -94,6 +94,8 @@ export async function callStructured<S extends z.ZodType>(req: StructuredCall<S>
       console.warn(`[ai] ${req.agent} (${model}) failed: ${e.status ?? "?"} ${e.message}`);
       throw new AiFailure("api", `AI service error (${e.status ?? "?"}).`);
     }
+    // The SDK throws when the structured answer is cut off or isn't valid JSON.
+    if (e instanceof Error && /parse structured output/i.test(e.message)) throw new AiFailure("parse", "The model's answer did not match the expected format.");
     throw new AiFailure("api", e instanceof Error ? e.message : "AI call failed.");
   }
   if (res.stop_reason === "refusal") throw new AiFailure("refusal", "The model declined this request.");

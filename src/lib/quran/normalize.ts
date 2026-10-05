@@ -5,6 +5,14 @@ const MARKS = /[ؐ-ًؚ-ٰٟۖ-ۭـ࣓-ࣿ‌-‏]/g;
 export function normalizeArabic(s: string): string {
   return s
     .normalize("NFC")
+    // Uthmani rasm writes a long ā on a bare waw seat (ٱلصَّلَوٰةَ, صَلَوٰتَكَ, كَمِشۡكَوٰةٖ, ٱلرِّبَوٰاْ); standard spelling has alef
+    // (الصلاة, صلاتك, كمشكاة, الربا). Only a waw with no vowel of its own (dagger directly after it), so ٱلسَّمَٰوَٰتِ stays السموات.
+    .replace(/وٰ(?:[ۡۖ-ۭ]*)ا/g, "ا")
+    .replace(/وٰ/g, "ا")
+    // Alef maqṣūra with a dagger alef inside a word is a plain alef in standard spelling (ءَاتَىٰهُمُ = آتاهم, ٱلتَّوۡرَىٰةَ = التوراة).
+    .replace(/ىٰ(?=[ً-ْٰۖ-ۭ]*[ء-ي])/g, "ا")
+    // The small high yeh is a real yā' (إِبۡرَٰهِـۧمَ = إبراهيم, ٱلنَّبِيِّـۧنَ = النبيين).
+    .replace(/ۧ/g, "ي")
     .replace(MARKS, "")
     .replace(/[إأآٱ]/g, "ا")
     .replace(/ى/g, "ي")
@@ -17,9 +25,24 @@ export function normalizeArabic(s: string): string {
     .trim();
 }
 
-/** Letter skeleton for matching: normalizeArabic without alef (Uthmani dagger-alef vs. full alef spellings). */
+/**
+ * Letter skeleton for matching only: spelling-agnostic between the Uthmani mushaf and standard (imlā'ī) orthography.
+ * On top of normalizeArabic it drops alef and hamza seats on yā' (شَيۡـًٔا / شيئا, يَسۡتَهۡزِءُونَ / يستهزئون), reduces a final
+ * hamza-on-waw + alef to alef (نَبَؤُاْ / نبأ), compares a final open tā' as tā' marbūṭa (رَحۡمَتِ / رحمة), and writes doubled letters once (ٱلَّيۡلَ / الليل, ٱلنَّبِيِّـۧنَ / النبيين).
+ * A full sweep of the KFGQPC text checks that every verse in Uthmani script matches itself (normalize.test.ts).
+ */
 export function skeleton(s: string): string {
-  return normalizeArabic(s).replace(/ا/g, "").replace(/\s+/g, " ").trim();
+  const pre = s
+    .normalize("NFC")
+    .replace(/ئ/g, "ء")
+    .replace(/ؤ[ً-ْٰۖ-ۭ]*ا(?=[ً-ْٰۖ-ۭ]*(?:\s|$))/g, "ا");
+  return normalizeArabic(pre)
+    .replace(/ا/g, "")
+    // Open tā' (نِعۡمَتَ, رَحۡمَتِ) vs tā' marbūṭa (نعمة, رحمة): same word, so a word-final ت compares as ه.
+    .replace(/ت(?= |$)/g, "ه")
+    .replace(/([^ ])\1+/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function hasArabic(s: string) {

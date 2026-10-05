@@ -74,7 +74,7 @@ A manuscript is never "corrected". The **diplomatic layer** records exactly what
 - **Machine first draft:**
   - Claude vision (transcription only, line by line) with a key, Tesseract without one.
   - Uncertain words are marked `unclear` with a model score; the score is not a probability.
-  - Measured character error rate is 5–18% per page on the bundled pages.
+  - Measured character error rate on the 10 bundled pages: live Claude drafts 11–20% per page (13.6% overall, stable across runs; `npx tsx --conditions=react-server scripts/ms-draft-bench.ts`), Tesseract 50–80%. The seeded demo drafts measure 5–18%.
 - **Workspace:**
   - The page image with zoomable regions and line sync.
   - An RTL line editor whose markup covers unclear words, gaps (with a reason), supplied text, deletions, additions, abbreviations, red and gold ink, and scribal marks (sic / ضبة / ظ / collation).
@@ -110,7 +110,7 @@ npm run typecheck      # tsc
 npm run lint           # eslint
 npm test               # vitest (unit)
 npm run test:e2e       # playwright (builds nothing: run `npm run build` first; it seeds its own database)
-npm run eval           # Ask evaluation on data/eval/cases.json → data/eval/results.json
+npm run eval           # Ask evaluation on data/eval/cases.json → data/eval/results.json (committed run: AI on; results.nokey.json: deterministic path)
 npm run verify         # all of the above
 npx tsx scripts/sql.mts "select count(*) from cards"   # quick SQL against the local DB
 ```
@@ -131,7 +131,7 @@ npx tsx scripts/sql.mts "select count(*) from cards"   # quick SQL against the l
 - manuscript line drafts;
 - "explain this line" glosses.
 
-Every AI output is labelled as an AI draft, and every AI path has a tested no-key fallback. Models default to `claude-opus-5-5` and can be overridden per agent (`AI_MODEL_*`, see [`.env.example`](.env.example)). `npm run ai:check` makes one tiny call per configured model and says what is wrong if the key or workspace is misconfigured.
+Every AI output is labelled as an AI draft, and every AI path has a tested no-key fallback. Keys that are not scoped to a workspace also need `ANTHROPIC_WORKSPACE_ID`. Models default to `claude-opus-5-5` and can be overridden per agent (`AI_MODEL_*`, see [`.env.example`](.env.example)). `npm run ai:check` makes one tiny call per configured model and says what is wrong if the key or workspace is misconfigured.
 
 ## Deploy
 
