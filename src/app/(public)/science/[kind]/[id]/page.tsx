@@ -7,7 +7,7 @@ import { fmtDate } from "@/i18n/core";
 import { BackLink } from "@/features/beneficiary/back-link";
 import { conceptHref } from "@/features/beneficiary/labels";
 import { listConcepts } from "@/features/beneficiary/data";
-import { entry, holdingsFor, names, scientistsLinkedTo, type Instrument, type Scientist, type Work } from "@/features/science/server";
+import { entry, holdingsFor, names, scientistsLinkedTo, type Holding, type Instrument, type Scientist, type Work } from "@/features/science/server";
 import { Block, Chips, Eyebrow, L, Sources, starHref } from "@/features/science/ui/parts";
 
 export const dynamic = "force-dynamic";
@@ -37,6 +37,22 @@ function Stars({ stars, title }: { stars: string[]; title: string }) {
         ))}
       </ul>
     </Block>
+  );
+}
+
+async function HoldingCard({ h }: { h: Holding }) {
+  const { t, locale } = await getI18n();
+  return (
+    <li className="rounded-[16px] border border-line bg-surface p-4 flex flex-col gap-1.5">
+      <span className="font-medium text-ink">{L(locale, h.object_en, h.object_ar)}</span>
+      <span className="text-sm text-ink-2 inline-flex items-center gap-1"><MapPin className="size-4 text-accent" aria-hidden />{L(locale, h.museum_en, h.museum_ar)}{locale === "ar" ? "، " : ", "}{L(locale, h.city_en, h.city_ar)}</span>
+      <span className="text-xs text-ink-3">
+        {[h.maker_en || h.maker_ar ? `${t("science.by")} ${L(locale, h.maker_en, h.maker_ar)}` : null, h.date_text, h.accession ? t("science.accession", { n: h.accession }) : null].filter(Boolean).join(" · ")}
+      </span>
+      {L(locale, h.note_en, h.note_ar) && <span className="text-xs text-ink-3">{L(locale, h.note_en, h.note_ar)}</span>}
+      <a href={h.url} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-accent min-h-11">{t("science.museumPage")}<ExternalLink className="size-3.5" aria-hidden /></a>
+      <span className="text-[0.7rem] text-ink-3">{t("science.verified", { date: fmtDate(h.verified_on, locale) })}</span>
+    </li>
   );
 }
 
@@ -114,20 +130,15 @@ export default async function ScienceEntryPage({ params }: Props) {
       <Stars stars={i.stars} title={t("science.stars")} />
       <Block title={t("science.where")}>
         {holdings.length ? (
-          <ul className="grid gap-3 sm:grid-cols-2" data-testid="holdings">
-            {holdings.map((h) => (
-              <li key={h.id} className="rounded-[16px] border border-line bg-surface p-4 flex flex-col gap-1.5">
-                <span className="font-medium text-ink">{L(locale, h.object_en, h.object_ar)}</span>
-                <span className="text-sm text-ink-2 inline-flex items-center gap-1"><MapPin className="size-4 text-accent" aria-hidden />{L(locale, h.museum_en, h.museum_ar)}, {L(locale, h.city_en, h.city_ar)}</span>
-                <span className="text-xs text-ink-3">
-                  {[h.maker_en || h.maker_ar ? `${t("science.by")} ${L(locale, h.maker_en, h.maker_ar)}` : null, h.date_text, h.accession ? t("science.accession", { n: h.accession }) : null].filter(Boolean).join(" · ")}
-                </span>
-                {L(locale, h.note_en, h.note_ar) && <span className="text-xs text-ink-3">{L(locale, h.note_en, h.note_ar)}</span>}
-                <a href={h.url} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 text-sm font-medium text-accent min-h-11">{t("science.museumPage")}<ExternalLink className="size-3.5" aria-hidden /></a>
-                <span className="text-[0.7rem] text-ink-3">{t("science.verified", { date: fmtDate(h.verified_on, locale) })}</span>
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul className="grid gap-3 sm:grid-cols-2" data-testid="holdings">{holdings.slice(0, 6).map((h) => <HoldingCard key={h.id} h={h} />)}</ul>
+            {holdings.length > 6 && (
+              <details className="group">
+                <summary className="cursor-pointer list-none min-h-11 inline-flex items-center text-sm font-semibold text-accent">{t("science.showAll", { n: holdings.length })}</summary>
+                <ul className="grid gap-3 sm:grid-cols-2 mt-2">{holdings.slice(6).map((h) => <HoldingCard key={h.id} h={h} />)}</ul>
+              </details>
+            )}
+          </>
         ) : (
           <p>{t("science.whereNone")}</p>
         )}

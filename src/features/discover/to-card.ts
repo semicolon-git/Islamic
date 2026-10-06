@@ -6,6 +6,10 @@ import { createCard, saveCard } from "@/features/cards/server";
 import { CardContent } from "@/lib/cards/types";
 import { CardMetaSchema } from "@/features/cards/version";
 import { getDiscovery } from "./server";
+import { TAFSIR_SOURCES } from "@/features/cards/tafsir-sources";
+
+/** Library book id → the card editor's tafsir preset (same labels everywhere). */
+const PRESET: Record<string, string> = { "tafsir-muyassar": "muyassar", "tafsir-saadi": "saadi", "tafsir-ibn-kathir": "ibn_kathir", "tafsir-tabari": "tabari" };
 
 /**
  * The review flywheel: turn a visitor's discovery into a DRAFT card (status ai_draft). Every verse, hadith and tafsir
@@ -28,10 +32,12 @@ export async function cardFromDiscovery(user: SessionUser, key: string): Promise
   const content = CardContent.parse({
     verses: d.verses.map((v) => ({ key: v.verse.key, role: v.relation === "direct" ? "primary" : "supporting" })),
     hadith: d.hadith.filter((h) => /^H:(bukhari|muslim):\d+[a-z]?$/.test(h.id)).map((h) => ({ id: h.id.slice(2) })),
-    tafsir: d.verses.filter((v) => v.tafsir).map((v) => ({
-      source_id: v.tafsir!.book_id, book_ar: v.tafsir!.title_ar, book_en: v.tafsir!.title_en, author_ar: v.tafsir!.author_ar, author_en: v.tafsir!.author_en,
-      verse_key: v.verse.key, excerpt_ar: v.tafsir!.text,
-    })),
+    tafsir: d.verses.filter((v) => v.tafsir).map((v) => {
+      const preset = PRESET[v.tafsir!.book_id];
+      return preset
+        ? { source_id: preset, ...TAFSIR_SOURCES[preset], verse_key: v.verse.key, excerpt_ar: v.tafsir!.text }
+        : { source_id: v.tafsir!.book_id, book_ar: v.tafsir!.title_ar, book_en: v.tafsir!.title_en, author_ar: v.tafsir!.author_ar, author_en: v.tafsir!.author_en, verse_key: v.verse.key, excerpt_ar: v.tafsir!.text };
+    }),
     explanation: d.summary ? { en: strip(d.summary.en), ar: strip(d.summary.ar) } : { en: "", ar: "" },
     sensitivity_flags: d.status === "sensitive" ? ["sensitive_subject"] : [],
   });

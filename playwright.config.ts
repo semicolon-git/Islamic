@@ -31,6 +31,6 @@ export default defineConfig({
     url: `http://127.0.0.1:${PORT}/api/health`,
     reuseExistingServer: false,
     timeout: 120_000,
-    env: { DATA_DIR: `.data/e2e-${PORT}`, UPLOAD_DIR: `.data/e2e-uploads-${PORT}`, DEMO_MODE: "true", ANTHROPIC_API_KEY: "", NODE_ENV: "production", INSECURE_COOKIES: "1" },
+    env: { DATA_DIR: `.data/e2e-${PORT}`, UPLOAD_DIR: `.data/e2e-uploads-${PORT}`, DEMO_MODE: "true", ANTHROPIC_API_KEY: "", NODE_ENV: "production", INSECURE_COOKIES: "1", LIBRARY_EDITIONS: "core" },
   },
 });

@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { BadgeCheck, BookOpen, CameraOff, Check, ImagePlus, LayoutGrid, RefreshCw, ScanText, UserX, WifiOff, X, Info, ChevronRight } from "lucide-react";
+import { BadgeCheck, BookOpen, CameraOff, Telescope, Check, ImagePlus, LayoutGrid, RefreshCw, ScanText, UserX, WifiOff, X, Info, ChevronRight } from "lucide-react";
 import { cn } from "@/components/ui/cn";
 import { ConceptImage } from "@/components/ui/concept-image";
 import { useI18n } from "@/i18n/client";
@@ -292,6 +292,9 @@ export function Snap({ concepts, samples, aiOn, startWithPicker, initialTrack }:
                 <LayoutGrid className="size-6" aria-hidden />
               </button>
             </div>}
+            <Link href="/sky" className="self-center inline-flex items-center gap-2 h-11 px-4 rounded-full bg-white/10 backdrop-blur text-sm font-medium hover:bg-white/20" data-testid="snap-sky">
+              <Telescope className="size-4 text-[#f3d27a]" aria-hidden />{t("science.skyChip")}
+            </Link>
             {samples.length > 0 && (
               <div className="flex flex-col gap-2">
                 <p className="px-5 text-xs font-medium uppercase tracking-[0.08em] text-white/60 sm:text-center" id="samples-h">{t("beneficiary.snap.samples")}</p>

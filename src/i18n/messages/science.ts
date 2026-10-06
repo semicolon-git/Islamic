@@ -46,6 +46,10 @@ export const science: Messages = {
     "science.sectionMore": "Explore Muslim science",
     "science.sky": "Look at the sky now",
     "science.skyBody": "Point your phone at a star to see its name — many come from Arabic.",
+    "science.skyChip": "Night sky? Use Sky mode",
+    "science.showAll": "Show all {n}",
+    "science.homeTitle": "Stars, instruments and the scholars behind them",
+    "science.homeBody": "Arabic star names, the astrolabe, al-Biruni, Ibn al-Haytham — and the museums where you can see their instruments.",
   },
   ar: {
     "science.title": "من إسهامات علماء المسلمين",
@@ -91,5 +95,9 @@ export const science: Messages = {
     "science.sectionMore": "استكشف إسهامات علماء المسلمين",
     "science.sky": "انظر إلى السماء الآن",
     "science.skyBody": "وجّه هاتفك إلى نجم لتعرف اسمه، وكثير من أسماء النجوم عربي الأصل.",
+    "science.skyChip": "السماء ليلاً؟ استخدم وضع السماء",
+    "science.showAll": "عرض الكل ({n})",
+    "science.homeTitle": "النجوم والآلات والعلماء من ورائها",
+    "science.homeBody": "أسماء النجوم العربية، والأسطرلاب، والبيروني، وابن الهيثم، والمتاحف التي تعرض آلاتهم.",
   },
 };

@@ -77,6 +77,7 @@ export function BookDetail({ initial, passages: initialPassages, role, userId }:
         {book.kind === "hadith" && <p className="text-sm text-ink-3">{t("library.gradeOkOnly")}</p>}
         <div className="flex flex-wrap gap-2 mt-1" data-testid="book-actions">
           {canApprove && <Button onClick={() => act("approve")} loading={acting === "approve"}>{t("library.action.approve")}</Button>}
+          {!admin && book.status === "draft" && <span className="text-sm text-ink-3 self-center">{t("library.adminApproves")}</span>}
           {admin && book.status === "draft" && book.origin === "upload" && book.created_by === userId && role !== "platform_admin" && <span className="text-sm text-ink-3 self-center">{t("library.fourEyes")}</span>}
           {book.origin === "upload" && <a href={`/api/library/books/${book.id}/file`} className="inline-flex items-center gap-2 h-11 px-4 rounded-[12px] border border-line-strong bg-surface text-ink text-[0.95rem] font-medium hover:bg-surface-2"><Download className="size-4" aria-hidden />{t("library.download")}</a>}
           {book.origin === "upload" && (book.status === "failed" || book.status === "draft") && <Button variant="secondary" onClick={() => act("retry")} loading={acting === "retry"}>{t("library.action.retry")}</Button>}
