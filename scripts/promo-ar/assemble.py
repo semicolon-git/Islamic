@@ -45,7 +45,13 @@ def norm(s):
 scenes = film["scenes"]
 for sc in scenes:
     n = sc["n"]
-    raw = fetch(sc["audio"], os.path.join(OUT, f"n{n}.mp3"))
+    if film.get("audio_zip"):  # all narration takes in one archive: s<n>.mp3
+        zdir = os.path.join(OUT, "narration")
+        if not os.path.isdir(zdir):
+            sh("unzip", "-q", "-o", fetch(film["audio_zip"], os.path.join(OUT, "narration.zip")), "-d", zdir)
+        raw = os.path.join(zdir, f"s{n}.mp3")
+    else:
+        raw = fetch(sc["audio"], os.path.join(OUT, f"n{n}.mp3"))
     wav = os.path.join(OUT, f"n{n}.wav")
     tempo = sc.get("tempo", film.get("tempo", 1.0))
     # leading silence only: trimming the tail (areverse) clipped final words; tempo stays 1.0 unless asked
