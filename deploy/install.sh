@@ -59,6 +59,10 @@ cd "$DIR"
 
 say "Downloading the pinned Quran, hadith and translation sources (sha256-checked)"
 bash prep/fetch_sources.sh
+if ! command -v node >/dev/null 2>&1; then
+  say "Downloading the library: tafsir and hadith collections (sha256-checked)"
+  docker run --rm --network host -v "$DIR:/app" -w /app node:22-bookworm-slim node scripts/library/fetch.mjs
+fi
 
 ENV_FILE="$DIR/deploy/.env"
 if [ ! -f "$ENV_FILE" ]; then

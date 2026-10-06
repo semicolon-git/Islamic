@@ -4,7 +4,7 @@
 1. **Any photo gets an answer.** Snap and Explore should work for any photo, not only the 43 curated concepts. The answer must rest on verified sources: the Quran by reference, Bukhari and Muslim by number, and other known books.
 2. **Muslim scientific contributions.** Add a layer on Muslim science, for example: star, then its Arabic name, then the astrolabe, then the scholars who perfected it, then where to see one in a museum.
 
-Status: analysis and plan. Nothing here is built yet.
+Status: **built** (2026-10-06): phases 1–4 below, including tier-2 books and PDF upload. Test results: `docs/review/open-world-test.md`.
 
 ---
 

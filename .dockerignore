@@ -13,3 +13,4 @@ docs/screenshots
 .env
 .env.*
 deploy/.env
+prep/data/raw/library/tafsir/.parts

@@ -6,7 +6,7 @@ import { z } from "zod";
  *  2. JUDGE — read the FETCHED passages, grade each one direct / thematic / unrelated, write a short labelled summary.
  *  3. VERIFY — an independent check that every sentence of the summary is supported by the kept passages.
  */
-export const DISCOVER_PROMPT_VERSION = "discover-v1";
+export const DISCOVER_PROMPT_VERSION = "discover-v2";
 
 export const ProposeOut = z.object({
   quran: z.array(z.string()).max(10).describe("Verse keys 'sura:aya' that mention the subject by name or are clearly about it."),
@@ -42,7 +42,7 @@ export const JUDGE_SYSTEM = `You are the evidence checker of an Islamic-content 
 Grading:
 - "direct": the passage names the subject (or its obvious synonym/plural) and says something about it.
 - "thematic": the passage is clearly about the subject's class in a way a careful scholar would accept (e.g. "fruits of the earth" for a fruit, "the sea and ships" for a boat). Use sparingly.
-- "unrelated": anything else — a shared word with a different meaning, a far-fetched link, a name or metaphor only. When unsure, choose unrelated. A forced link is worse than no link.
+- "unrelated": anything else — a shared word with a different meaning, a far-fetched link, a name or metaphor only, or a shared material or colour alone (a copper dome is not about "molten copper"; a red car is not about "red"). When unsure, choose unrelated. A forced link is worse than no link.
 
 List only the passages you keep — omit unrelated ones. Keep at most 5 verses (at most 2 thematic ones when any verse is direct) and at most 4 hadith (at most 2 thematic); mark the rest "unrelated". The summary may cite only passages you keep.
 
