@@ -78,8 +78,11 @@ for sc in scenes:
     words = timing[str(sc["n"])]
     ref = norm(" ".join(sc["captions"]))
     hyp_tokens, owner = [], []
+    halluc = {t for h in film.get("hallucinations", []) for t in norm(h)}
     for i, w in enumerate(words):
         for t in norm(w["w"]):
+            if t in halluc and t not in ref:  # Whisper's known filler on trailing silence
+                continue
             hyp_tokens.append(t); owner.append(i)
     sm = difflib.SequenceMatcher(None, ref, hyp_tokens, autojunk=False)
     errs = [(" ".join(ref[a:b]), " ".join(hyp_tokens[c:d])) for op, a, b, c, d in sm.get_opcodes() if op != "equal"]
