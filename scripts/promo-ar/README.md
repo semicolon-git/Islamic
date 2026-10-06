@@ -1,4 +1,6 @@
-# Arabic promo film (≈2:15, 1080p)
+# Arabic promo film (2:29, 1080p)
+
+**Latest cut:** https://d2ol7oe51mr4n9.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/3e5292d6-8ab8-44fb-a3e0-45de40b3e2d7.mp4 (H.264 + AAC, 48 MB). Contact sheet: https://d2ol7oe51mr4n9.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/f0a8911e-d399-4f4f-a081-3cba73589da7.jpg
 
 A narrated Arabic film about the platform's impact and use cases. Every screen in it is the real app, recorded in Arabic.
 
