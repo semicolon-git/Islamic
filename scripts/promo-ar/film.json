@@ -1,5 +1,5 @@
 {
- "output": "signs-around-you-promo-ar.mp4",
+ "output": "signs-around-you-promo-ar-saudi.mp4",
  "tempo": 1.0,
  "gap": 0.3,
  "lead": 0.7,
@@ -46,6 +46,10 @@
   [
    "صريحا",
    "صريحه"
+  ],
+  [
+   "حديثا",
+   "حديثه"
   ]
  ],
  "broll": {
@@ -313,5 +317,6 @@
  "hallucinations": [
   "ترجمة نانسي قنقر",
   "اشتركوا في القناة"
- ]
+ ],
+ "audio_zip": "https://d2ol7oe51mr4n9.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/90ec0e58-47c8-4666-bada-5d10a8f73de4.zip"
 }
