@@ -58,6 +58,8 @@ timing_file = os.path.join(OUT, "timing.json")
 if "--preview" in sys.argv:  # layout check only: spread the words evenly
     timing = {str(sc["n"]): [{"w": w, "s": i * sc["dur"] / len(" ".join(sc["captions"]).split()), "e": 0}
               for i, w in enumerate(" ".join(sc["captions"]).split())] for sc in scenes}
+elif film.get("timing_url"):  # word timings from an earlier verified transcription (verify.json shows the same check)
+    timing = json.load(open(fetch(film["timing_url"], timing_file)))
 elif os.path.exists(timing_file) and film.get("reuse_timing"):
     timing = json.load(open(timing_file))
 else:
@@ -106,6 +108,8 @@ for r in report:
     print("scene", r["scene"], r["dur"], "s", "OK" if not r["unexplained"] else f"MISMATCH {r['unexplained']}", r["errors"] if r["errors"] else "")
 if failed and not film.get("force"):
     sys.exit("narration does not match the script — stopping")
+if "--timing-only" in sys.argv:
+    sys.exit(0)
 
 # ───────────────────────── 2. timeline
 GAP, LEAD = film.get("gap", 0.45), film.get("lead", 0.7)
