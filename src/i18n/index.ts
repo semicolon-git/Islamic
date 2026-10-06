@@ -13,10 +13,11 @@ import { msCollab } from "./messages/ms-collab";
 import { library } from "./messages/library";
 import { discover } from "./messages/discover";
 import { science } from "./messages/science";
+import { sky } from "./messages/sky";
 
 export * from "./core";
 
-const parts: Messages[] = [common, beneficiary, ask, cards, inbox, manuscripts, heritage, evalMessages, pwa, portal, msCollab, library, discover, science];
+const parts: Messages[] = [common, beneficiary, ask, cards, inbox, manuscripts, heritage, evalMessages, pwa, portal, msCollab, library, discover, science, sky];
 export const messages: Messages = {
   en: Object.assign({}, ...parts.map((p) => p.en)),
   ar: Object.assign({}, ...parts.map((p) => p.ar)),
