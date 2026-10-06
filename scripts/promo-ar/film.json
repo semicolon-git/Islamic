@@ -1,10 +1,10 @@
 {
  "output": "signs-around-you-promo-ar.mp4",
- "tempo": 1.06,
- "gap": 0.45,
+ "tempo": 1.1,
+ "gap": 0.35,
  "lead": 0.7,
  "tail": 0.9,
- "endcard": 5.5,
+ "endcard": 5.0,
  "min_speed": 0.7,
  "hafs_font": "https://79-72-0-206.sslip.io/fonts/hafs.18.woff2",
  "verse": {
@@ -34,6 +34,10 @@
   [
    "يدري",
    "يدر"
+  ],
+  [
+   "الاسطرلاب",
+   "الاسطر لاب"
   ]
  ],
  "broll": {
@@ -157,7 +161,7 @@
   },
   {
    "n": 6,
-   "audio": "TBD",
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_090448_afac1703-c570-48af-8aaa-47a36a197688.mp3",
    "captions": [
     "وفي الليل، ارفع هاتفك نحو السماء:",
     "هذا «النسر الواقع»، اسمٌ عربيّ قديم،",
@@ -224,7 +228,7 @@
   },
   {
    "n": 8,
-   "audio": "TBD",
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_090449_17a34a27-01ef-455f-b769-1eb410944d93.mp3",
    "captions": [
     "للزائر في المتحف، وللطالب في درسه،",
     "وللأسرة في نزهتها،",

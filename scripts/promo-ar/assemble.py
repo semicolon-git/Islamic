@@ -54,7 +54,10 @@ for sc in scenes:
     sc["wav"], sc["dur"] = wav, dur(wav)
 
 timing_file = os.path.join(OUT, "timing.json")
-if os.path.exists(timing_file) and film.get("reuse_timing"):
+if "--preview" in sys.argv:  # layout check only: spread the words evenly
+    timing = {str(sc["n"]): [{"w": w, "s": i * sc["dur"] / len(" ".join(sc["captions"]).split()), "e": 0}
+              for i, w in enumerate(" ".join(sc["captions"]).split())] for sc in scenes}
+elif os.path.exists(timing_file) and film.get("reuse_timing"):
     timing = json.load(open(timing_file))
 else:
     from faster_whisper import WhisperModel
@@ -166,6 +169,9 @@ json.dump(layers, open(spec, "w"), ensure_ascii=False)
 if not DRY or not os.path.exists(f"{L}/bg.png"):
     sh("node", os.path.join(HERE, "render.mjs"), spec, env={**os.environ, "FONTS_CSS": FONT_CSS})
 
+if "--layers" in sys.argv or "--preview" in sys.argv:
+    sys.exit(0)
+
 # ───────────────────────── 4. sources
 src = {}
 for k, url in film["broll"].items():
@@ -197,7 +203,7 @@ json.dump(plan, open(os.path.join(OUT, "plan.json"), "w"), ensure_ascii=False, i
 if DRY:
     sys.exit(0)
 
-ENC = ["-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS)]
+ENC = ["-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS)]
 for i, p in enumerate(plan):
     d = p["t1"] - p["t0"]
     out = os.path.join(SEG, f"s{i:03d}.mp4")
