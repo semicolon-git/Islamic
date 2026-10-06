@@ -203,6 +203,9 @@ p { text-wrap: pretty; }
   color: var(--ink);
 }
 .quran-lg { font-size: 2rem; line-height: 2.35; }
+/* The word being recited (RecitationButton). Colour and background only, so the line never reflows. */
+.quran-word { border-radius: 0.4em; transition: color 120ms, background-color 120ms; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.quran-word.is-reciting { color: var(--accent); background-color: color-mix(in oklab, var(--accent) 14%, transparent); }
 .ms-text {
   font-family: var(--font-ms);
   font-size: 1.35rem;
