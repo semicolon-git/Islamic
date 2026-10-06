@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>آيات حولك · العرض التقديمي v8</title>
+<style>
+@font-face{font-family:"Readex";src:url(fonts/readex-pro-arabic-wght-normal.woff2) format("woff2");font-weight:160 700;unicode-range:U+0600-06FF,U+0750-077F,U+0870-08FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200E,U+2010-2011,U+204F,U+2E41}
+@font-face{font-family:"Readex";src:url(fonts/readex-pro-latin-wght-normal.woff2) format("woff2");font-weight:160 700;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--navy:#0d1442;--ink:#0b0e29;--card:rgba(39,46,120,.55);--card2:rgba(26,32,92,.75);--line:rgba(140,150,255,.28);--teal:#36dcb8;--teal-d:#0f5e52;--violet:#6d5dfc;--amber:#f2b84b;--rose:#f0727a;--txt:#ffffff;--mute:#b9bfe6;--dim:#8a91c4}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#060a26}
+body{font-family:"Readex",system-ui,sans-serif;color:var(--txt);-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1920px;height:1080px;overflow:hidden;background:#0f1650 url(assets/bg.jpg) center/cover no-repeat;page-break-after:always;break-after:page}
+@media screen{.slide{margin:24px auto;box-shadow:0 10px 40px rgba(0,0,0,.5)}}
+.logo{position:absolute;top:84px;left:150px;height:62px}
+.kicker{position:absolute;top:96px;right:150px;color:var(--teal);font-size:28px;font-weight:500}
+h1.t{position:absolute;top:150px;right:150px;left:150px;font-size:66px;font-weight:700;line-height:1.25}
+p.sub{position:absolute;top:252px;right:150px;left:150px;font-size:30px;color:var(--mute);font-weight:300;line-height:1.45}
+.body{position:absolute;top:330px;right:150px;left:150px;bottom:110px}
+.foot{position:absolute;bottom:42px;right:150px;left:150px;display:flex;justify-content:space-between;color:var(--dim);font-size:20px}
+.foot .n{font-family:"Readex";direction:ltr}
+.teal{color:var(--teal)} .mute{color:var(--mute)} .dim{color:var(--dim)} .amber{color:var(--amber)}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:26px 30px}
+.chip{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 16px;font-size:19px;font-weight:500;border:1.5px solid var(--line);background:rgba(255,255,255,.06)}
+.chip.ok{background:rgba(54,220,184,.14);border-color:rgba(54,220,184,.55);color:#8ff2da}
+.chip.next{background:rgba(242,184,75,.12);border-color:rgba(242,184,75,.55);color:#ffd88f}
+.ico{width:66px;height:66px;border-radius:50%;background:var(--teal);display:grid;place-items:center;flex:none}
+.ico svg{width:34px;height:34px;stroke:#0b2e29;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ico.v{background:var(--violet)} .ico.v svg{stroke:#fff}
+.ico.s{width:50px;height:50px} .ico.s svg{width:26px;height:26px}
+/* screenshots + annotation pins */
+.shot{position:relative;border-radius:18px;overflow:hidden;border:2px solid rgba(160,170,255,.35);box-shadow:0 20px 60px rgba(0,0,0,.45);background:#0b0e29}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top right}
+.phone{border-radius:38px;border:7px solid #232a6b;padding:0;box-shadow:0 0 0 2px rgba(160,170,255,.35),0 24px 60px rgba(0,0,0,.5)}
+.pin{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:var(--teal);color:#06302a;font-weight:700;font-size:23px;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(54,220,184,.3),0 6px 16px rgba(0,0,0,.5);z-index:3;direction:ltr}
+.pin.am{background:var(--amber);box-shadow:0 0 0 5px rgba(242,184,75,.3),0 6px 16px rgba(0,0,0,.5);color:#3a2600}
+.box{position:absolute;border:3px solid var(--teal);border-radius:12px;box-shadow:0 0 0 4px rgba(54,220,184,.18),0 0 26px rgba(54,220,184,.35);z-index:2}
+.box.am{border-color:var(--amber);box-shadow:0 0 0 4px rgba(242,184,75,.18)}
+.tag{position:absolute;z-index:4;background:var(--teal);color:#05302a;font-weight:600;font-size:19px;padding:6px 14px;border-radius:10px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+ol.legend{list-style:none;display:flex;flex-direction:column;gap:18px}
+ol.legend li{display:flex;gap:16px;align-items:flex-start;font-size:23px;line-height:1.45}
+ol.legend li b{display:block;font-size:25px;font-weight:600;margin-bottom:2px}
+ol.legend li .pin{position:static;margin:0;flex:none;width:40px;height:40px;font-size:21px}
+ol.legend li span.d{color:var(--mute);font-weight:300}
+/* diagrams */
+.flow{display:flex;align-items:stretch;gap:0}
+.node{background:var(--card2);border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;font-size:20px;line-height:1.4}
+.node b{display:block;font-size:22px;font-weight:600;margin-bottom:4px}
+.node.ai{border-color:rgba(109,93,252,.9);background:rgba(60,48,170,.45)}
+.node.code{border-color:rgba(54,220,184,.75);background:rgba(15,94,82,.38)}
+.node.hum{border-color:rgba(242,184,75,.8);background:rgba(120,82,10,.35)}
+.arrow{align-self:center;color:var(--teal);font-size:34px;padding:0 8px;line-height:1}
+.legend-row{display:flex;gap:22px;font-size:19px;color:var(--mute);align-items:center}
+.sw{display:inline-block;width:18px;height:18px;border-radius:5px;vertical-align:-3px;margin-left:8px}
+table.cmp{width:100%;border-collapse:collapse;font-size:22px;border-radius:12px;overflow:hidden}
+table.cmp th{background:#2a3285;color:var(--teal);text-align:right;padding:16px 22px;font-weight:600}
+table.cmp td{padding:15px 22px;border-top:1px solid var(--line);color:var(--mute);background:rgba(20,26,80,.6)}
+table.cmp td:first-child{color:#fff;font-weight:600;direction:ltr;text-align:right}
+table.cmp tr.us td{background:var(--teal);color:#05302a;font-weight:600}
+.metric{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px 26px;display:flex;flex-direction:column;gap:6px}
+.metric .v{font-size:58px;font-weight:700;color:var(--teal);direction:ltr;text-align:right;line-height:1.1}
+.metric .l{font-size:23px;font-weight:600}
+.metric .h{font-size:17px;color:var(--dim);line-height:1.45}
+.metric .h code{font-family:"Readex";direction:ltr;unicode-bidi:isolate;color:var(--mute)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="head" viewBox="0 0 24 24"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></symbol>
+  <symbol id="help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></symbol>
+  <symbol id="alert" viewBox="0 0 24 24"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="quote" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
+  <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+  <symbol id="users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="bank" viewBox="0 0 24 24"><path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="m12 2 8 5H4z"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+  <symbol id="badge" viewBox="0 0 24 24"><path d="M3.9 8.6a4 4 0 0 1 4.7-4.7 4 4 0 0 1 6.8 0 4 4 0 0 1 4.7 4.7 4 4 0 0 1 0 6.8 4 4 0 0 1-4.7 4.7 4 4 0 0 1-6.8 0 4 4 0 0 1-4.7-4.7 4 4 0 0 1 0-6.8"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></symbol>
+  <symbol id="target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></symbol>
+  <symbol id="scroll" viewBox="0 0 24 24"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.7 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2 6.4-6.4 2 2-6.4z"/></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+  <symbol id="db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+  <symbol id="refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.8 9.8 0 0 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.8 9.8 0 0 1-6.7-2.7L3 16"/><path d="M8 16H3v5"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+</svg>
+
+<!-- 1 · الآية في البداية -->
+<section class="slide">
+  <img src="assets/aic-logo.png" style="position:absolute;top:70px;left:150px;height:80px" alt="">
+  <img src="assets/bathel.png" style="position:absolute;top:66px;right:150px;height:96px" alt="">
+  <img src="assets/verse.png" style="position:absolute;top:360px;left:50%;transform:translateX(-50%);width:1500px" alt="سنريهم آياتنا في الآفاق وفي أنفسهم">
+  <div style="position:absolute;top:740px;width:100%;text-align:center;color:var(--teal);font-size:28px">سورة فصّلت، الآية ٥٣</div>
+</section>
+
+<!-- 2 · الغلاف -->
+<section class="slide">
+  <img src="assets/aic-logo.png" style="position:absolute;top:70px;left:150px;height:80px" alt="">
+  <img src="assets/bathel.png" style="position:absolute;top:66px;right:150px;height:96px" alt="">
+  <img src="assets/hero.png" style="position:absolute;top:250px;left:80px;width:760px" alt="">
+  <div style="position:absolute;top:360px;right:150px;width:960px">
+    <div style="font-size:110px;font-weight:700;line-height:1.2">آيات حولك</div>
+    <div class="teal ltr" style="font-size:44px;font-weight:400;margin-top:6px;text-align:right">Signs Around You</div>
+    <div class="teal" style="font-size:40px;font-weight:500;margin-top:22px">صوّر ما حولك، واكتشف الإسلام بمحتوى موثّق</div>
+    <div class="mute" style="font-size:28px;font-weight:300;margin-top:26px;line-height:1.6">منصة تبدأ مما يراه غير المسلم حوله، ولا تعرض إلا ما اعتمدته مؤسسة علمية، ومختص بشري على بُعد لمسة</div>
+  </div>
+  <div style="position:absolute;bottom:100px;left:150px;right:150px;border-top:1.5px solid var(--line)"></div>
+  <div class="foot"><span>فريق آيات حولك</span><span>أكتوبر 2026</span></div>
+</section>
+
+<!-- 3 · المشكلة -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">المشكلة</div>
+  <h1 class="t">الفضول موجود، والإجابة الموثّقة غائبة</h1>
+  <p class="sub">يتعرّف كثير من غير المسلمين على الإسلام عبر محركات البحث وأدوات الذكاء الاصطناعي العامة</p>
+  <div class="body" style="display:flex;gap:80px;align-items:center">
+    <div style="flex:1;display:flex;flex-direction:column;gap:34px">
+      <div style="display:flex;gap:26px;align-items:center"><div class="ico v"><svg><use href="#alert"/></svg></div><div><div style="font-size:30px;font-weight:600">إجابات عامة قد تكون غير موثّقة أو مشوّهة</div><div class="mute" style="font-size:23px;font-weight:300">لا تُعرف مصادرها، ولا من راجعها</div></div></div>
+      <div style="display:flex;gap:26px;align-items:center"><div class="ico v"><svg><use href="#quote"/></svg></div><div><div style="font-size:30px;font-weight:600">نص آية غير دقيق، وحديث بلا مصدر أو درجة</div><div class="mute" style="font-size:23px;font-weight:300">أخطاء في أدق ما يجب أن يُنقل حرفيًا</div></div></div>
+      <div style="display:flex;gap:26px;align-items:center"><div class="ico v"><svg><use href="#eye"/></svg></div><div><div style="font-size:30px;font-weight:600">لا تجربة تبدأ مما يراه الشخص حوله</div><div class="mute" style="font-size:23px;font-weight:300">القمر، النخلة، المخطوطة في المتحف</div></div></div>
+      <div style="display:flex;gap:26px;align-items:center"><div class="ico v"><svg><use href="#user"/></svg></div><div><div style="font-size:30px;font-weight:600">لا إنسان يكمل الحوار</div><div class="mute" style="font-size:23px;font-weight:300">حين يريد السائل أن يسأل شخصًا متخصصًا</div></div></div>
+    </div>
+    <div style="width:720px;position:relative;height:620px;flex:none">
+      <div style="position:absolute;left:220px;top:0;width:300px;height:610px;border-radius:34px;background:#f4f5fb;border:7px solid #2a3170;padding:22px 16px;color:#222;font-size:15px">
+        <div style="color:#555;font-weight:600;direction:ltr;text-align:left">● General AI chat</div>
+        <div style="background:#6d5dfc;color:#fff;border-radius:12px;padding:10px 12px;margin:16px 0 16px 40px;direction:ltr;text-align:left">What does the Quran say about the moon?</div>
+        <div style="border:1px solid #dde;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px">
+          <i style="height:9px;background:#d8daea;border-radius:5px"></i><i style="height:9px;background:#d8daea;border-radius:5px;width:80%"></i>
+          <i style="height:14px;background:#d9c99b;border-radius:5px;outline:2.5px solid #f0727a;outline-offset:2px"></i>
+          <i style="height:9px;background:#d8daea;border-radius:5px"></i><i style="height:9px;background:#d8daea;border-radius:5px;width:70%;outline:2.5px solid #f0727a;outline-offset:2px"></i>
+          <i style="height:9px;background:#d8daea;border-radius:5px;width:85%"></i><i style="height:9px;background:#d8daea;border-radius:5px;width:60%"></i>
+        </div>
+        <div style="position:absolute;bottom:18px;left:14px;right:14px;border:1px solid #ccd;border-radius:20px;padding:9px 14px;color:#999;direction:ltr;text-align:left">Ask anything…</div>
+      </div>
+      <svg width="720" height="620" style="position:absolute;inset:0;overflow:visible" fill="none" stroke="#f0727a" stroke-width="2" stroke-dasharray="5 5"><path d="M470 92 L560 92"/><path d="M450 180 L560 150"/><path d="M300 262 L190 300"/><path d="M490 582 L560 560"/></svg>
+      <div class="tag" style="background:#1d2466;color:#fff;border:2px solid var(--rose);top:72px;left:560px">إجابة عامة لا ترتبط<br>بعالم السائل</div>
+      <div class="tag" style="background:#1d2466;color:#fff;border:2px solid var(--rose);top:150px;left:560px">نص آية غير دقيق</div>
+      <div class="tag" style="background:#1d2466;color:#fff;border:2px solid var(--rose);top:282px;left:-10px">حديث بلا مصدر<br>أو درجة</div>
+      <div class="tag" style="background:#1d2466;color:#fff;border:2px solid var(--rose);top:540px;left:560px">لا إنسان يكمل الحوار</div>
+      <div style="position:absolute;left:226px;top:0;width:288px;height:610px;pointer-events:none"><i style="position:absolute;left:44px;top:96px;width:6px;height:6px;border-radius:50%;background:#f0727a"></i></div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">3</span></div>
+</section>
+
+<!-- 4 · الحل: رحلة المستفيد -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">الحل</div>
+  <h1 class="t">من فضول اللحظة إلى فهم الرسالة</h1>
+  <p class="sub">تطبيق للمستفيد يبدأ من الكاميرا، ومحتواه تبنيه وتعتمده المؤسسات العلمية في بوابتها</p>
+  <div class="body" style="display:flex;gap:56px;align-items:flex-start">
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;padding-top:6px">
+      <div style="display:flex;gap:22px;align-items:center"><div class="ico s"><svg><use href="#camera"/></svg></div><div><b style="font-size:27px">١ · صوّر</b> <span class="mute" style="font-size:22px;font-weight:300">— القمر، نخلة، قطعة في متحف، أو نقش آية</span></div></div>
+      <div style="display:flex;gap:22px;align-items:center"><div class="ico s"><svg><use href="#book"/></svg></div><div><b style="font-size:27px">٢ · اكتشف</b> <span class="mute" style="font-size:22px;font-weight:300">— آيات بنص مجمع الملك فهد، وحديث بدرجته، وتفسير معتمد</span></div></div>
+      <div style="display:flex;gap:22px;align-items:center"><div class="ico s"><svg><use href="#head"/></svg></div><div><b style="font-size:27px">٣ · استمع</b> <span class="mute" style="font-size:22px;font-weight:300">— تلاوة الحصري، وتُظلَّل كل كلمة لحظة تلاوتها</span></div></div>
+      <div style="display:flex;gap:22px;align-items:center"><div class="ico s"><svg><use href="#help"/></svg></div><div><b style="font-size:27px">٤ · اسأل</b> <span class="mute" style="font-size:22px;font-weight:300">— إجابات من البطاقات المعتمدة فقط، والفتوى تُحال إلى مختص</span></div></div>
+      <div style="display:flex;gap:22px;align-items:center"><div class="ico s"><svg><use href="#chat"/></svg></div><div><b style="font-size:27px">٥ · تواصل</b> <span class="mute" style="font-size:22px;font-weight:300">— محادثة مع مختص بشري بطلب الزائر، دون تتبّع معتقده</span></div></div>
+      <div class="card" style="margin-top:10px;padding:18px 24px;font-size:21px;line-height:1.5"><span class="teal" style="font-weight:600">ثلاث شارات صادقة على كل نتيجة:</span> <span class="chip ok" style="margin:0 6px">بطاقة معتمدة</span><span class="chip next" style="margin:0 6px">مصادر موثقة لم تُراجَع بعد</span><span class="chip" style="margin:0 6px">لن نخمّن</span></div>
+    </div>
+    <div style="display:flex;gap:26px">
+      <div style="text-align:center"><div class="shot phone" style="width:270px;height:585px"><img src="shots/m-home.png" alt=""></div><div class="mute" style="font-size:20px;margin-top:12px">الرئيسية</div></div>
+      <div style="text-align:center"><div class="shot phone" style="width:270px;height:585px"><img src="shots/m-discover.png" alt=""><span class="pin" style="left:50%;top:21%">٢</span></div><div class="mute" style="font-size:20px;margin-top:12px">اكتشف: الرمّان</div></div>
+      <div style="text-align:center"><div class="shot phone" style="width:270px;height:585px"><img src="shots/m-ask.jpg" alt=""><span class="pin" style="left:88%;top:31%">٤</span></div><div class="mute" style="font-size:20px;margin-top:12px">اسأل</div></div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">4</span></div>
+</section>
+
+<!-- 5 · كيف تعمل: من الصورة إلى بطاقة موثقة -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">كيف تعمل</div>
+  <h1 class="t">الذكاء الاصطناعي يقترح، والكود يتحقق</h1>
+  <p class="sub">الذكاء الاصطناعي لا يكتب نص آية ولا حديث أبدًا؛ يقترح أرقامًا فقط، والنص يُجلب من المصدر بالمرجع</p>
+  <div class="body">
+    <div class="flow" style="gap:6px">
+      <div class="node" style="flex:1"><b>صورة أو سؤال</b>كاميرا · نص · عربي/إنجليزي</div><div class="arrow">←</div>
+      <div class="node ai" style="flex:1"><b>١ · التعرّف</b>ما الذي في الصورة؟ (الأشخاص لا يُبحث عنهم)</div><div class="arrow">←</div>
+      <div class="node ai" style="flex:1"><b>٢ · الاقتراح</b>أرقام آيات وأحاديث فقط — لا نص</div><div class="arrow">←</div>
+      <div class="node code" style="flex:1"><b>٣ · البحث والجلب</b>بحث لفظي + جلب النص بالمرجع، وحذف ما لا وجود له</div><div class="arrow">←</div>
+      <div class="node ai" style="flex:1"><b>٤ · الحكم</b>كل نص: مباشر / موضوعي / غير متصل</div><div class="arrow">←</div>
+      <div class="node code" style="flex:1"><b>٥ · التدقيق</b>لا نص قرآني داخل الشرح · إعادة صياغة واحدة</div><div class="arrow">←</div>
+      <div class="node ai" style="flex:1"><b>٦ · تحقق مستقل</b>استدعاء ثانٍ يراجع الملخص؛ إن فشل يُحذف</div>
+    </div>
+    <div style="display:flex;gap:18px;margin-top:20px;align-items:center" class="legend-row">
+      <span><i class="sw" style="background:#3c30aa;border:1.5px solid #6d5dfc"></i>ذكاء اصطناعي (Claude)</span>
+      <span><i class="sw" style="background:#0f5e52;border:1.5px solid #36dcb8"></i>كود حتمي ومصادر محلية</span>
+      <span><i class="sw" style="background:#785210;border:1.5px solid #f2b84b"></i>إنسان</span>
+      <span style="margin-right:auto">+ مقتطف تفسير حرفي لكل آية · نتائج مخزّنة ٣٠ يومًا</span>
+    </div>
+    <div style="display:flex;gap:30px;margin-top:30px">
+      <div style="flex:1;display:flex;gap:22px;align-items:flex-start" class="card">
+        <div class="shot phone" style="width:190px;height:330px;flex:none;border-width:5px;border-radius:26px"><img src="shots/m-moon.png" alt=""></div>
+        <div><span class="chip ok">🟢 بطاقة معتمدة</span><div style="font-size:22px;margin-top:14px;line-height:1.5">مفهوم له بطاقة اعتمدتها مؤسسة عبر البوابة: تُعرض كما اعتُمدت.</div><div class="dim" style="font-size:19px;margin-top:8px">مثال: القمر</div></div>
+      </div>
+      <div style="flex:1;display:flex;gap:22px;align-items:flex-start" class="card">
+        <div class="shot phone" style="width:190px;height:330px;flex:none;border-width:5px;border-radius:26px"><img src="shots/m-discover.png" alt=""></div>
+        <div><span class="chip next">🟡 مصادر موثقة · لم تُراجَع</span><div style="font-size:22px;margin-top:14px;line-height:1.5">ملخص يحيل إلى كل مصدر، ويُرسل إلى «طلبات الزوار» في البوابة لتعتمده مؤسسة.</div><div class="dim" style="font-size:19px;margin-top:8px">مثال: الرمّان</div></div>
+      </div>
+      <div style="flex:1;display:flex;gap:22px;align-items:flex-start" class="card">
+        <div class="shot phone" style="width:190px;height:330px;flex:none;border-width:5px;border-radius:26px"><img src="shots/m-wontguess.png" alt=""></div>
+        <div><span class="chip">⚪ لن نخمّن</span><div style="font-size:22px;margin-top:14px;line-height:1.5">لا آية ولا حديث صحيح عن الموضوع؟ نقولها بصراحة، ونعرض طلب المراجعة أو الحديث مع مختص.</div><div class="dim" style="font-size:19px;margin-top:8px">مثال: سيارة</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">5</span></div>
+</section>
+
+<!-- 6 · بوابة المؤسسات: نظرة عامة -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">بوابة المؤسسات</div>
+  <h1 class="t">قلب المنصة: بوابة تعمل فيها المؤسسة بفريقها</h1>
+  <p class="sub">لكل مؤسسة مساحة عمل وأدوار وسياسة مراجعة، ولا يصل شيء إلى الزائر قبل اعتمادها</p>
+  <div class="body" style="display:flex;gap:46px">
+    <div class="shot" style="width:1040px;height:650px;flex:none"><img src="shots/d-portal.png" alt="">
+      <span class="box" style="right:21%;top:19%;width:59%;height:28%"></span><span class="pin" style="right:21%;top:19%;left:auto;margin:-22px -22px 0 0">١</span>
+      <span class="box" style="right:21%;top:54%;width:77%;height:20%"></span><span class="pin" style="left:auto;right:21%;top:54%;margin:-22px -22px 0 0">٢</span>
+      <span class="box" style="right:84%;top:19%;width:14%;height:28%;right:auto;left:2%"></span><span class="pin" style="left:2%;top:19%">٣</span>
+      <span class="box am" style="left:83%;top:9%;width:16%;height:38%"></span><span class="pin am" style="left:99%;top:9%">٤</span>
+      <span class="box" style="right:21%;top:77%;width:46%;height:22%"></span><span class="pin" style="left:auto;right:21%;top:77%;margin:-22px -22px 0 0">٥</span>
+    </div>
+    <ol class="legend" style="flex:1">
+      <li><span class="pin">١</span><div><b>مهمتك التالية</b><span class="d">البوابة تقترح على كل دور خطوته التالية: «انشر ٢ من البطاقات المعتمدة»</span></div></li>
+      <li><span class="pin">٢</span><div><b>قوائم حسب المرحلة</b><span class="d">معادة بملاحظات · بانتظار مراجعة الباحث · بانتظار النشر</span></div></li>
+      <li><span class="pin">٣</span><div><b>مؤشرات المؤسسة</b><span class="d">بطاقات منشورة، طلبات زوار مفتوحة، محادثات، نقاط تعلّم الطلاب</span></div></li>
+      <li><span class="pin am">٤</span><div><b>٩ وحدات عمل</b><span class="d">المخطوطات · البطاقات · مقتنيات التراث · المكتبة · طلبات الزوار · المحادثات · لوحة السلامة · الأشخاص</span></div></li>
+      <li><span class="pin">٥</span><div><b>النشاط المباشر</b><span class="d">كل قراءة وتصحيح واعتماد يُسجَّل لحظيًا في سجل تدقيق</span></div></li>
+      <li style="margin-top:6px"><div style="display:flex;flex-wrap:wrap;gap:10px"><span class="chip">طالب</span><span class="chip">باحث</span><span class="chip">معتمد المؤسسة</span><span class="chip">مختص يحاور الزوار</span><span class="chip">مشرف المنصة</span></div></li>
+    </ol>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">6</span></div>
+</section>
+
+<!-- 7 · سير العمل: من طلب الزائر إلى بطاقة معتمدة -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">بوابة المؤسسات · سير العمل</div>
+  <h1 class="t">من سؤال زائر إلى بطاقة معتمدة: أربع أعين على الأقل</h1>
+  <p class="sub">فضول الزوار يصنع جدول أعمال المؤسسة، والتحقق المتدرج يضمن ألا يُنشر شيء دون مراجعة علمية</p>
+  <div class="body">
+    <div class="flow" style="gap:4px">
+      <div class="node" style="width:200px"><b>زائر يسأل أو يصوّر</b>نتيجة 🟡 أو ⚪، أو «اطلب مراجعة»</div><div class="arrow">←</div>
+      <div class="node code" style="width:210px"><b>لوحة طلبات الزوار</b>الطلبات مرتبة بعدد السائلين</div><div class="arrow">←</div>
+      <div class="node ai" style="width:210px"><b>مسودة بطاقة</b>من المصادر المجلوبة + فحص آلي (lint)</div><div class="arrow">←</div>
+      <div class="node hum" style="width:200px"><b>١ · الطالب</b>يحرر ويصحح ويترجم تحت إشراف</div><div class="arrow">←</div>
+      <div class="node hum" style="width:200px"><b>٢ · الباحث</b>يراجع ويضيف الرأي العلمي أو يعيدها بملاحظات</div><div class="arrow">←</div>
+      <div class="node hum" style="width:210px"><b>٣ · معتمد المؤسسة</b>الاعتماد النهائي — <span class="amber">لا يعتمد أحد عمله</span></div><div class="arrow">←</div>
+      <div class="node code" style="width:180px"><b>نشر 🟢</b>نسخة مؤرّخة + سجل تدقيق</div>
+    </div>
+    <div style="display:flex;gap:34px;margin-top:34px">
+      <div style="flex:1.05">
+        <div class="shot" style="height:420px"><img src="shots/d-demand.png" alt=""><span class="box" style="left:3%;top:24%;width:76%;height:44%"></span><span class="tag" style="left:3%;top:72%">الطلبات الأكثر سؤالًا أولًا، وزر «صِغ بطاقة»</span></div>
+        <div class="mute" style="font-size:20px;margin-top:10px">طلبات الزوار <span class="dim ltr">/portal/demand</span></div>
+      </div>
+      <div style="flex:1.05">
+        <div class="shot" style="height:420px"><img src="shots/d-cards.png" alt=""><span class="box" style="left:3%;top:20%;width:76%;height:9%"></span><span class="tag" style="left:3%;top:32%">كل بطاقة بمرحلتها ومستواها ونسخها</span></div>
+        <div class="mute" style="font-size:20px;margin-top:10px">البطاقات <span class="dim ltr">/portal/cards</span></div>
+      </div>
+      <div style="width:400px;display:flex;flex-direction:column;gap:16px">
+        <div class="card" style="padding:20px 24px"><div class="teal" style="font-size:23px;font-weight:600">قاعدة الأعين الأربع</div><div style="font-size:20px;line-height:1.5;margin-top:6px" class="mute">يفرضها الكود في البطاقات، ورفع الكتب للمكتبة، ونشر صفحات المخطوطات، ومقتنيات التراث، والكلمات الصعبة.</div></div>
+        <div class="card" style="padding:20px 24px"><div class="teal" style="font-size:23px;font-weight:600">الطالب يتعلّم بالمساهمة</div><div style="font-size:20px;line-height:1.5;margin-top:6px" class="mute">نقاط تعلّم تُمنح عند قبول عمله، ويرى ملاحظات الباحث على كل تعديل.</div></div>
+        <div class="card" style="padding:20px 24px"><div class="teal" style="font-size:23px;font-weight:600">مستويات المحتوى A–D</div><div style="font-size:20px;line-height:1.5;margin-top:6px" class="mute">المستوى D (الفتوى) لا يولّد له النظام إجابة، ويُحال دائمًا إلى مختص.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">7</span></div>
+</section>
+
+<!-- 8 · استوديو المخطوطات -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">بوابة المؤسسات · استوديو المخطوطات</div>
+  <h1 class="t">مخطوطة تُقرأ سطرًا سطرًا</h1>
+  <p class="sub">الآلة تكتب المسودة، والطالب يصحح، والباحث يراجع، والمؤسسة تعتمد وتنشر للعامة</p>
+  <div class="body" style="display:flex;gap:46px">
+    <div class="shot" style="width:1060px;height:663px;flex:none"><img src="shots/d-workspace.png" alt="">
+      <span class="box" style="left:50%;top:54.5%;width:21%;height:3%"></span><span class="pin" style="left:72%;top:56%">١</span>
+      <span class="box" style="left:1.5%;top:33.5%;width:36%;height:10.5%"></span><span class="pin" style="left:1.5%;top:33.5%">٢</span>
+      <span class="box" style="left:1.5%;top:57%;width:36%;height:14.5%"></span><span class="pin" style="left:1.5%;top:57%">٣</span>
+      <span class="box am" style="left:1.5%;top:72.5%;width:36%;height:12.5%"></span><span class="pin am" style="left:1.5%;top:72.5%">٤</span>
+      <span class="box" style="left:50%;top:7%;width:33%;height:5.5%"></span><span class="pin" style="left:50%;top:7%">٥</span>
+      <span class="box" style="left:1%;top:7.5%;width:9.5%;height:4%"></span><span class="pin" style="left:10.5%;top:7.5%">٦</span>
+    </div>
+    <ol class="legend" style="flex:1;gap:13px">
+      <li><span class="pin">١</span><div><b>الصورة والنص متزامنان</b><span class="d">اضغط سطرًا في المخطوطة فيُفتح نصه، والعكس</span></div></li>
+      <li><span class="pin">٢</span><div><b>قصاصة السطر</b><span class="d">يرى المصحح السطر نفسه فوق نصه دائمًا</span></div></li>
+      <li><span class="pin">٣</span><div><b>«كما في المخطوط» و«النص المقروء»</b><span class="d">نسخ أمين للرسم، وقراءة مستقلة له</span></div></li>
+      <li><span class="pin am">٤</span><div><b>قراءات بديلة بدرجة ثقة النموذج</b><span class="d">الكلمات غير المؤكدة تُظلَّل ولا تُعتمد آليًا</span></div></li>
+      <li><span class="pin">٥</span><div><b>مراحل الصفحة</b><span class="d">مسودة ← تصحيح ← مراجعة ← اعتماد ← نشر</span></div></li>
+      <li><span class="pin">٦</span><div><b>إرسال للمراجعة</b><span class="d">مع سجل كامل لكل نسخة من كل سطر</span></div></li>
+      <li style="margin-top:2px"><div class="card" style="padding:14px 18px;font-size:19px;line-height:1.45"><span class="teal" style="font-weight:600">مقاس:</span> خطأ الحروف في المسودة الآلية <b class="teal ltr">10.5%</b> مقابل <b class="ltr">70.2%</b> لأداة <span class="ltr">Tesseract</span> (٣١٤ سطرًا)</div></li>
+    </ol>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">8</span></div>
+</section>
+
+<!-- 9 · الكلمات الصعبة ومقابلة النسخ -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">بوابة المؤسسات · التحقق التعاوني</div>
+  <h1 class="t">قراءة عمياء مزدوجة، ومقابلة النسخ كلمةً كلمة</h1>
+  <p class="sub">الكلمة الصعبة يقرؤها شخصان دون أن يرى أحدهما قراءة الآخر؛ إن اتفقا اعتُمدت، وإن اختلفا حكّم بينهما باحث</p>
+  <div class="body" style="display:flex;gap:34px">
+    <div style="flex:1">
+      <div class="shot" style="height:540px"><img src="shots/d-hardwords.png" alt="" style="object-position:top right">
+        <span class="box" style="left:4%;top:26%;width:79%;height:18%"></span><span class="pin" style="left:4%;top:26%">١</span>
+        <span class="box" style="left:4%;top:58%;width:79%;height:8%"></span><span class="pin" style="left:4%;top:58%">٢</span>
+      </div>
+      <ol class="legend" style="margin-top:20px;gap:12px"><li style="font-size:23px"><span class="pin">١</span><div>الكلمة مقصوصة من الصورة، والقارئ لا يرى قراءة زميله</div></li><li style="font-size:23px"><span class="pin">٢</span><div>اتفاق ← اعتماد · اختلاف ← تحكيم الباحث ← قراءة نهائية</div></li></ol>
+    </div>
+    <div style="flex:1">
+      <div class="shot" style="height:540px"><img src="shots/d-compare.png" alt="">
+        <span class="box" style="left:44%;top:29%;width:36%;height:68%"></span><span class="pin" style="left:44%;top:29%">٣</span>
+        <span class="box am" style="left:4%;top:13%;width:76%;height:6%"></span><span class="pin am" style="left:4%;top:13%">٤</span>
+      </div>
+      <ol class="legend" style="margin-top:20px;gap:12px"><li style="font-size:23px"><span class="pin">٣</span><div>مقابلة ثلاث نسخ من الكتاب نفسه، وفروقها مرقّمة كلمةً كلمة</div></li><li style="font-size:23px"><span class="pin am">٤</span><div>كشف الآيات المقتبسة في المخطوطة ومطابقتها بنص المصحف</div></li></ol>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">9</span></div>
+</section>
+
+<!-- 10 · دورة التحسين المستمر -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">دورة التحسين المستمر</div>
+  <h1 class="t">كل مراجعة بشرية تعود إلى النموذج فيتحسن</h1>
+  <p class="sub">كل تصحيح واعتماد ورفض يُحفظ بياناتِ تدريب لنموذج عربي مفتوح، فتتحسن المسودة التالية</p>
+  <div class="body" style="display:flex;gap:40px">
+    <div style="width:870px;height:600px;position:relative;flex:none">
+      <svg viewBox="0 0 870 600" width="870" height="600" style="position:absolute;inset:0">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#36dcb8"/></marker></defs>
+        <ellipse cx="430" cy="300" rx="330" ry="215" fill="none" stroke="#36dcb8" stroke-width="2" stroke-dasharray="4 10" opacity=".45"/>
+        <path d="M716 192 L719 196 L722 200 L726 204 L729 208 L731 213 L734 217 L737 221 L739 225 L742 229 L744 234 L746 238 L748 242 L750 247 L751 251 L753 255 L754 260 L755 264 L756 269 L757 273 L758 278" fill="none" stroke="#36dcb8" stroke-width="4" marker-end="url(#ah)"/><path d="M675 444 L671 447 L666 450 L661 454 L656 457 L651 460 L646 463 L640 466 L635 468 L630 471 L624 474 L618 477 L613 479 L607 482 L601 484 L595 486 L589 488 L583 491 L577 493 L571 495 L564 496" fill="none" stroke="#36dcb8" stroke-width="4" marker-end="url(#ah)"/><path d="M296 496 L289 495 L283 493 L277 491 L271 488 L265 486 L259 484 L253 482 L247 479 L242 477 L236 474 L230 471 L225 468 L220 466 L214 463 L209 460 L204 457 L199 454 L194 450 L189 447 L185 444" fill="none" stroke="#36dcb8" stroke-width="4" marker-end="url(#ah)"/><path d="M102 278 L103 273 L104 269 L105 264 L106 260 L107 255 L109 251 L110 247 L112 242 L114 238 L116 234 L118 229 L121 225 L123 221 L126 217 L129 213 L131 208 L134 204 L138 200 L141 196 L144 192" fill="none" stroke="#36dcb8" stroke-width="4" marker-end="url(#ah)"/><path d="M361 90 L368 89 L375 88 L382 87 L389 87 L396 86 L402 86 L409 85 L416 85 L423 85 L430 85 L437 85 L444 85 L451 85 L458 86 L464 86 L471 87 L478 87 L485 88 L492 89 L499 90" fill="none" stroke="#36dcb8" stroke-width="4" marker-end="url(#ah)"/>
+      </svg>
+      <div style="position:absolute;left:330px;top:225px;width:200px;text-align:center"><div class="ico" style="margin:0 auto 10px;width:84px;height:84px"><svg style="width:44px;height:44px"><use href="#refresh"/></svg></div><div style="font-size:24px;font-weight:600;line-height:1.35">جهد بشري أقل<br>ودقة أعلى</div><div class="dim" style="font-size:18px;margin-top:4px">مع كل دورة</div></div>
+      <div class="node ai" style="position:absolute;left:504px;top:76px;width:240px"><b>١ · مسودة آلية</b>تفريغ سطر أو مسودة بطاقة</div>
+      <div class="node hum" style="position:absolute;left:624px;top:316px;width:240px"><b>٢ · تصحيح ومراجعة</b>طالب ← باحث ← مؤسسة</div>
+      <div class="node code" style="position:absolute;left:310px;top:470px;width:240px"><b>٣ · يُحفظ كل قرار</b>كل نسخة سطر وكل اعتماد ورفض</div>
+      <div class="node code" style="position:absolute;left:0;top:316px;width:240px"><b>٤ · مجموعة تدريب</b>المعتمد فقط، بإذن، ومجهّلة</div>
+      <div class="node" style="position:absolute;left:116px;top:66px;width:250px;border-color:#f0727a;background:rgba(120,30,60,.45)"><b>٥ · ضبط دقيق + تقييم</b>نموذج عربي مفتوح، ولا يُعتمد إن تراجع</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:25px;font-weight:600" class="teal">ماذا يتعلّم النموذج من كل عمل بشري؟</div>
+      <table class="cmp" style="font-size:19px">
+        <tr><th>العمل في البوابة</th><th>يصبح بيانات تدريب</th></tr>
+        <tr><td style="direction:rtl">تصحيح الطالب لسطر</td><td>زوج (مسودة الآلة ← النص الصحيح) لتعلّم قراءة الخط</td></tr>
+        <tr><td style="direction:rtl">قراءة مزدوجة + تحكيم</td><td>حقيقة أرضية للكلمات الصعبة نفسها</td></tr>
+        <tr><td style="direction:rtl">إعادة الباحث بملاحظة</td><td>زوج تفضيل: المرفوض مقابل المعتمد، مع السبب</td></tr>
+        <tr><td style="direction:rtl">اعتماد بطاقة</td><td>مثال ذهبي لإجابة مسندة بمستواها ومصادرها</td></tr>
+        <tr><td style="direction:rtl">مقابلة النسخ</td><td>فروق النسخ لنموذج يفهم اختلاف الرسم</td></tr>
+      </table>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;font-size:20px">
+        <div><span class="chip ok">يعمل اليوم</span> &nbsp;كل نسخة وقرار محفوظ في قاعدة البيانات مع سجل تدقيق</div>
+        <div><span class="chip ok">يعمل اليوم</span> &nbsp;تصدير الأسطر المعتمدة (<span class="ltr">JSONL · TEI</span>) بإذن التدريب</div>
+        <div><span class="chip next">المرحلة التالية</span> &nbsp;أول دورة ضبط دقيق بعد التحدي</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">10</span></div>
+</section>
+
+<!-- 11 · وضع السماء: التقنية -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">وضع السماء · التقنية</div>
+  <h1 class="t">حساب فلكي على الجهاز، بلا ذكاء اصطناعي</h1>
+  <p class="sub">ارفع هاتفك نحو السماء: الموقع والوقت والبوصلة تكفي لمعرفة النجم واسمه العربي</p>
+  <div class="body" style="display:flex;gap:40px">
+    <div style="display:flex;gap:22px;flex:none">
+      <div class="shot phone" style="width:265px;height:574px"><img src="shots/m-sky.png" alt=""><span class="pin" style="left:88%;top:28%">١</span><span class="pin" style="left:88%;top:55%">٢</span></div>
+      <div class="shot phone" style="width:265px;height:574px"><img src="shots/m-star.png" alt=""><span class="pin" style="left:88%;top:13%">٣</span><span class="pin am" style="left:88%;top:75%">٤</span></div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+      <div class="flow" style="gap:4px">
+        <div class="node" style="flex:1"><b>المُدخلات</b><span class="mute">الموقع (مقرّب إلى ~١ كم) · البوصلة والميل <span class="ltr" style="font-size:16px">deviceorientation</span> · الساعة</span></div><div class="arrow">←</div>
+        <div class="node code" style="flex:1.1"><b>الحساب</b><span class="mute">مكتبة <span class="ltr">astronomy-engine</span>: الشمس والقمر و٥ كواكب، و<b>١٧٧</b> نجمًا من كتالوج <span class="ltr">HYG v4.1</span> (نسخة مثبّتة ببصمة <span class="ltr">sha256</span>)</span></div><div class="arrow">←</div>
+        <div class="node code" style="flex:1"><b>الإشارة</b><span class="mute">اتجاه الهاتف ← ارتفاع وسمت · أقرب جرم في مجال ١٢° مع ترجيح الألمع</span></div>
+      </div>
+      <ol class="legend" style="gap:12px;margin-top:6px">
+        <li><span class="pin">١</span><div><b>التاريخ الهجري وطور القمر الليلة</b><span class="d">تقويم أم القرى من محرك المتصفح نفسه، ومُختبر على ١ رمضان و١ شوال ١٤٤٧، مع الغروب والشروق</span></div></li>
+        <li><span class="pin">٢</span><div><b>السماء فوقك الآن</b><span class="d">بإذنك فقط؛ الموقع لا يُحفظ ولا يُرسل. بدونه: ١١ مدينة جاهزة</span></div></li>
+        <li><span class="pin">٣</span><div><b>صفحة لكل نجم باسمه العربي</b><span class="d">٩١ نجمًا اسمها عربي الأصل، مثل «النسر الواقع» (Vega)، بمصدر علمي (Kunitzsch &amp; Smart 2006)</span></div></li>
+        <li><span class="pin am">٤</span><div><b>من النجم إلى الآية والتراث</b><span class="d">الأنعام ٩٧ والنحل ١٦ بالمرجع، ورابط إلى الأسطرلاب وما أضافه علماء الحضارة الإسلامية</span></div></li>
+      </ol>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px"><span class="chip ok">بلا ذكاء اصطناعي</span><span class="chip ok">الحساب على الجهاز دون اتصال</span><span class="chip ok">لا يُخزَّن الموقع</span><span class="chip ok">يعمل على iOS وأندرويد</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">11</span></div>
+</section>
+
+<!-- 12 · البنية التقنية -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">البنية التقنية</div>
+  <h1 class="t">قاعدة معرفة موثّقة واحدة، وتدفّقان</h1>
+  <p class="sub">المستفيد يقرأ من المحتوى المعتمد، والمؤسسات تبنيه وتعتمده، والمعتمد يحسّن النموذج</p>
+  <div class="body">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:12px 18px;align-items:stretch">
+      <div class="node" style="background:#2a3285;display:grid;place-items:center;font-weight:600;font-size:22px">تطبيق المستفيد</div>
+      <div class="flow" style="gap:4px"><div class="node" style="flex:1"><b>صورة أو سؤال</b>PWA بلا حساب · عربي/إنجليزي</div><div class="arrow">←</div><div class="node ai" style="flex:1"><b>التعرّف والتوجيه</b>مستوى المحتوى A–D واللغة</div><div class="arrow">←</div><div class="node code" style="flex:1"><b>الاسترجاع</b>بطاقات معتمدة أولًا، ثم المصادر</div><div class="arrow">←</div><div class="node ai" style="flex:1"><b>الصياغة + التحقق</b>من الأدلة فقط · مدقق مستقل</div><div class="arrow">←</div><div class="node" style="flex:1"><b>إجابة بمراجعها</b>+ «تحدّث مع مختص»</div></div>
+      <div class="node" style="background:#0f5e52;display:grid;place-items:center;font-weight:600;font-size:22px;text-align:center">قاعدة المعرفة<br>الموثّقة</div>
+      <div style="display:flex;gap:12px">
+        <div class="node code" style="flex:1"><b>القرآن</b>نص مجمع الملك فهد (حفص v18) · ٦٬٢٣٦ آية</div>
+        <div class="node code" style="flex:1"><b>الحديث</b>١٠٬٥١٦ من الصحيحين + ٢١٬١٢٤ من السنن والموطأ بدرجاتها</div>
+        <div class="node code" style="flex:1"><b>التفسير</b>٥ تفاسير (الميسر، السعدي، ابن كثير، الطبري)</div>
+        <div class="node code" style="flex:1"><b>المكتبة</b>٥٨٤ ملفًا ببصمة <span class="ltr">sha256</span> + كتب ترفعها المؤسسات</div>
+        <div class="node code" style="flex:1"><b>المعتمد</b>بطاقات · صفحات مخطوطات · مقتنيات تراث</div>
+      </div>
+      <div class="node" style="background:#785210;display:grid;place-items:center;font-weight:600;font-size:22px">بوابة المؤسسات</div>
+      <div class="flow" style="gap:4px"><div class="node hum" style="flex:1"><b>رفع مخطوطة أو طلب بطاقة</b></div><div class="arrow">←</div><div class="node ai" style="flex:1"><b>مسودة آلية</b>تخطيط الأسطر + قراءة + أعلام عدم اليقين</div><div class="arrow">←</div><div class="node hum" style="flex:1"><b>طالب ← باحث ← مؤسسة</b>أعين أربع</div><div class="arrow">←</div><div class="node code" style="flex:1"><b>نشر</b>نسخة مؤرخة + سجل تدقيق</div></div>
+      <div class="node" style="background:#5a1e3c;display:grid;place-items:center;font-weight:600;font-size:22px">دورة التعلّم</div>
+      <div class="flow" style="gap:4px"><div class="node code" style="flex:1"><b>مجموعة تدريب</b>المعتمد فقط وبإذن</div><div class="arrow">←</div><div class="node" style="flex:1;border-color:#f0727a"><b>ضبط دقيق لنموذج عربي مفتوح</b></div><div class="arrow">←</div><div class="node code" style="flex:1"><b>بوابة تقييم</b>لوحة السلامة لا تتراجع</div><div class="arrow">←</div><div class="node ai" style="flex:1"><b>نموذج أفضل للمسودة التالية</b></div></div>
+    </div>
+    <div class="dim" style="font-size:19px;margin-top:16px;text-align:center"><span class="ltr">Next.js 15 · React 19 · PostgreSQL · Claude API (vision + agents) · astronomy-engine · Docker</span> — كل مسار ذكاء اصطناعي له بديل يعمل دون مفتاح</div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">12</span></div>
+</section>
+
+<!-- 13 · أرقام مقاسة -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">القيمة المضافة</div>
+  <h1 class="t">أرقام مقاسة، لا وعود</h1>
+  <p class="sub">كل رقم هنا ناتج تشغيل فعلي محفوظ في المستودع، ويُعاد قياسه من «لوحة السلامة» داخل البوابة بضغطة زر</p>
+  <div class="body" style="display:flex;gap:36px">
+    <div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-content:start">
+      <div class="metric"><div class="v">0 / 65</div><div class="l">حديث مختلق</div><div class="h">مسار «اسأل» على ٦٥ حالة اختبار، بالذكاء الاصطناعي الحقيقي · ٥ أكتوبر ٢٠٢٦</div></div>
+      <div class="metric"><div class="v">80 / 80</div><div class="l">آية منقولة حرفيًا</div><div class="h">كل آية معروضة تطابق نص مجمع الملك فهد بايتًا ببايت</div></div>
+      <div class="metric"><div class="v">10 / 10</div><div class="l">أسئلة فتوى أُحيلت لمختص</div><div class="h">المستوى D لا يولّد له النظام إجابة أبدًا</div></div>
+      <div class="metric"><div class="v">62 / 65</div><div class="l">حالة اجتازت كل الفحوص</div><div class="h">٥٣/٥٣ في مجموعة التطوير · ٩/١٢ في الحالات المحجوزة التي لم يُضبط عليها النظام</div></div>
+      <div class="metric"><div class="v">10.5%</div><div class="l">خطأ الحروف في مسودة المخطوطات</div><div class="h">مقابل ٧٠.٢٪ لأداة Tesseract، على ٣١٤ سطرًا و٢٤٬٥٢٢ حرفًا من ٣ مخطوطات</div></div>
+      <div class="metric"><div class="v">99.1%</div><div class="l">من الآيات تُظلَّل كلماتها</div><div class="h">٦٬١٨١ من ٦٬٢٣٦ آية متزامنة مع تلاوة الحصري، بمطابقة حرفًا بحرف</div></div>
+      <div class="metric"><div class="v">0</div><div class="l">مرجع مختلق في الاكتشاف</div><div class="h">٣٠ صورة من موضوعات مفتوحة: ٢٧ وجدت مصادر، و٣ قيل فيها «لن نخمّن»</div></div>
+      <div class="metric"><div class="v">685 / 685</div><div class="l">اختبار وحدة ناجح</div><div class="h">٤٧ ملف اختبار، أعيد تشغيلها في ٦ أكتوبر ٢٠٢٦</div></div>
+      <div class="metric"><div class="v">1 / 30</div><div class="l">رفض خاطئ فقط</div><div class="h">سؤال مشروع رُفض مرة واحدة من ٣٠ (الهدف ≤ ١٠٪)</div></div>
+    </div>
+    <div style="width:520px;flex:none">
+      <div class="shot" style="height:560px"><img src="shots/d-eval.png" alt="" style="object-position:62% 0"></div>
+      <div class="mute" style="font-size:19px;margin-top:12px;line-height:1.5">لوحة السلامة في البوابة: كل رقم بصيغة k/n مع فترة ثقة ويلسون ٩٥٪، والحالات المحجوزة كُتبت قبل الضبط</div>
+    </div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">13</span></div>
+</section>
+
+<!-- 14 · المنافسون -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">المنافسون</div>
+  <h1 class="t">غيرنا يجيب عن الأسئلة، ونحن نبدأ مما تراه العين</h1>
+  <p class="sub">أدوات اليوم تحل جزءًا واحدًا من التجربة</p>
+  <div class="body">
+    <table class="cmp">
+      <tr><th style="width:24%">المنتج</th><th>ما يُتقنه</th><th>ما ينقصه مقارنةً بنا</th></tr>
+      <tr><td>Ansari</td><td>إجابات بمصادرها ودرجات الأحاديث</td><td>لا كاميرا ولا مسار تراث، ولا إحالة إلى مختص</td></tr>
+      <tr><td>Fanar-Sadiq</td><td>استرجاع إسلامي مع تحقق من اقتباس الآيات</td><td>لا سلسلة اعتماد مؤسسي ولا مختص بشري</td></tr>
+      <tr><td>Ayah</td><td>كاميرا تعرض موضع الكلمة في القرآن</td><td>لمتعلمي العربية، ولا طبقة تحقق</td></tr>
+      <tr><td>Muslim Pro وتطبيقات مشابهة</td><td>انتشار واسع</td><td>توليد حر من الصور، وهو ما تمنعه معايير التحدي</td></tr>
+      <tr><td>Transkribus / eScriptorium</td><td>تفريغ المخطوطات العربية</td><td>لا يقدّم محتوى للتعريف بالإسلام</td></tr>
+      <tr><td>Rawdah · WhyIslam</td><td>دعوة بشرية مباشرة</td><td>لا مدخل بالذكاء الاصطناعي ولا كاميرا</td></tr>
+      <tr class="us"><td style="color:#05302a">آيات حولك</td><td>يبدأ مما يراه الزائر، ومختص بشري عند الطلب</td><td>يجمع ذلك كله، ولا يعرض إلا ما اعتمدته مؤسسة</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">14</span></div>
+</section>
+
+<!-- 15 · نموذج العمل (بلا تكلفة) -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">نموذج العمل</div>
+  <h1 class="t">رسالة دعوية تديرها مؤسسة، وتقنية تُشغَّل باستدامة</h1>
+  <p class="sub">التطبيق مجاني للمستفيد دائمًا، والمحتوى ملك للمؤسسات العلمية التي تعتمده قبل نشره</p>
+  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+    <div class="card" style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:18px;align-items:center"><div class="ico"><svg><use href="#users"/></svg></div><b style="font-size:29px">المستفيدون</b></div><div class="mute" style="font-size:23px;line-height:1.55">زوار غير مسلمين، ومؤسسات علمية، وطلاب وباحثون يتعلّمون بالمساهمة</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:18px;align-items:center"><div class="ico"><svg><use href="#badge"/></svg></div><b style="font-size:29px">القيمة المقدّمة</b></div><div class="mute" style="font-size:23px;line-height:1.55">محتوى اعتمدته مؤسسة، يبدأ مما يراه الزائر، ومختص بشري عند الطلب</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:18px;align-items:center"><div class="ico"><svg><use href="#heart"/></svg></div><b style="font-size:29px">الشركاء الرئيسيون</b></div><div class="mute" style="font-size:23px;line-height:1.55">جامعات، ومكتبات مخطوطات، وجمعيات دعوية، ومتاحف ومعارض</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:18px;align-items:center"><div class="ico"><svg><use href="#qr"/></svg></div><b style="font-size:29px">القنوات</b></div><div class="mute" style="font-size:23px;line-height:1.55">تطبيق ويب بلا تثبيت عبر رموز QR في المعارض، وبرامج زوار المساجد، ومكاتب الجاليات، وتطبيق أندرويد</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:18px;align-items:center"><div class="ico"><svg><use href="#leaf"/></svg></div><b style="font-size:29px">الاستدامة</b></div><div class="mute" style="font-size:23px;line-height:1.55">منحة تأسيس، ثم حزم لغات برعاية جمعيات دعوية، ومشاريع رقمنة للمكتبات والجامعات، ووقف على المدى البعيد</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:18px;align-items:center"><div class="ico"><svg><use href="#target"/></svg></div><b style="font-size:29px">مؤشرات الأداء</b></div><div class="mute" style="font-size:23px;line-height:1.55">البطاقات المعتمدة، ومقاييس السلامة الشهرية، والزيارات من رموز QR، وطلبات المحادثة. لا نتتبّع المعتقد</div></div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">15</span></div>
+</section>
+
+<!-- 16 · الفريق -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><div class="kicker">الفريق</div>
+  <h1 class="t">فريق العمل</h1>
+  <p class="sub">ثلاثة تخصصات: التقنية، والعلم الشرعي، والفن</p>
+  <div class="body" style="display:flex;justify-content:space-around;align-items:flex-start;padding-top:10px">
+    <div style="text-align:center;width:440px"><img src="assets/team1.png" style="width:330px;height:380px;object-fit:cover;border-radius:22px" alt=""><div style="font-size:36px;font-weight:700;margin-top:24px">محمود أبو زيد</div><div class="teal" style="font-size:24px;margin-top:10px;line-height:1.5">القائد · المتخصص الشرعي ومراجع المحتوى، ومطوّر بوابة المؤسسات</div></div>
+    <div style="text-align:center;width:440px"><img src="assets/team2.png" style="width:330px;height:380px;object-fit:cover;border-radius:22px" alt=""><div style="font-size:36px;font-weight:700;margin-top:24px">محمد عصمت</div><div class="teal" style="font-size:24px;margin-top:10px;line-height:1.5">مطوّر الذكاء الاصطناعي وتطبيق المستفيد</div></div>
+    <div style="text-align:center;width:440px"><img src="assets/team3.png" style="width:330px;height:380px;object-fit:cover;border-radius:22px" alt=""><div style="font-size:36px;font-weight:700;margin-top:24px">لقاء محمود</div><div class="teal" style="font-size:24px;margin-top:10px;line-height:1.5">فنانة وخبيرة واقع افتراضي · الهوية البصرية وتجربة المستفيد</div></div>
+  </div>
+  <div class="foot"><span>تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي</span><span class="n">16</span></div>
+</section>
+
+<!-- 17 · ما بعد التحدي + شكرًا لكم (الشريحة الأخيرة) -->
+<section class="slide">
+  <img class="logo" src="assets/aic-small.png" alt=""><img src="assets/bathel.png" style="position:absolute;top:70px;right:150px;height:84px" alt="">
+  <div style="position:absolute;top:150px;right:150px;font-size:44px;font-weight:700">ما بعد التحدي <span class="mute" style="font-size:26px;font-weight:300">— ثلاثة مسارات للنمو، تبدأ من منتج يعمل اليوم</span></div>
+  <div style="position:absolute;top:240px;right:150px;left:150px;display:flex;gap:26px">
+    <div class="card" style="flex:1"><div style="display:flex;gap:16px;align-items:center;margin-bottom:14px"><div class="ico s"><svg><use href="#layers"/></svg></div><b style="font-size:27px" class="teal">التوسع الوظيفي</b></div><ul style="font-size:21px;line-height:1.75;padding-right:22px" class="mute"><li>أول دورة ضبط دقيق لنموذج عربي مفتوح على المحتوى المعتمد</li><li>تصدير PAGE-XML لتدريب نماذج قراءة الخط العربي</li><li>مخطوطات بخطوط مائلة ورأسية</li><li>قرّاء ولغات إضافية للتلاوة والترجمة</li></ul></div>
+    <div class="card" style="flex:1"><div style="display:flex;gap:16px;align-items:center;margin-bottom:14px"><div class="ico s"><svg><use href="#globe"/></svg></div><b style="font-size:27px" class="teal">التوسع السوقي</b></div><ul style="font-size:21px;line-height:1.75;padding-right:22px" class="mute"><li>تجربة رائدة في بينالي الفنون الإسلامية 2027 بجدة</li><li>رموز QR في المساجد ومكاتب الجاليات</li><li>الجامعات ومكتبات المخطوطات مؤسساتٍ مساهمة</li><li>نشر تطبيق أندرويد على المتجر</li></ul></div>
+    <div class="card" style="flex:1"><div style="display:flex;gap:16px;align-items:center;margin-bottom:14px"><div class="ico s"><svg><use href="#leaf"/></svg></div><b style="font-size:27px" class="teal">نموذج عمل مستدام</b></div><ul style="font-size:21px;line-height:1.75;padding-right:22px" class="mute"><li>منحة تأسيس، ثم حزم لغات برعاية جمعيات</li><li>مشاريع رقمنة للمكتبات والجامعات</li><li>وقف يضمن الاستمرار والاستقلال</li><li>تدقيق شهري لمقاييس السلامة</li></ul></div>
+  </div>
+  <div style="position:absolute;top:640px;right:150px;left:150px;display:flex;align-items:center;gap:60px">
+    <div style="flex:1">
+      <div style="font-size:120px;font-weight:700;line-height:1.1">شكرًا لكم</div>
+      <div class="teal" style="font-size:32px;margin-top:16px">المنصة تعمل اليوم — جرّبها الآن</div>
+      <div class="mute ltr" style="font-size:26px;margin-top:8px;text-align:right">79-72-0-206.sslip.io</div>
+    </div>
+    <div style="text-align:center"><img src="assets/qr-live.png" style="width:230px;height:230px;border-radius:16px;border:8px solid #fff" alt=""><div class="dim" style="font-size:18px;margin-top:8px">التطبيق والبوابة · رمز الدخول التجريبي 1448</div></div>
+  </div>
+</section>
+<script>
+for (const h of document.querySelectorAll("h1.t")) { let f = 66; while (h.scrollHeight > 95 && f > 44) h.style.fontSize = (f -= 2) + "px"; }
+for (const p of document.querySelectorAll("p.sub")) { let f = 30; while (p.scrollHeight > 50 && f > 22) p.style.fontSize = (f -= 1) + "px"; }
+</script>
+</body>
+</html>
