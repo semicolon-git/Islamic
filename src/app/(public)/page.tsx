@@ -10,6 +10,7 @@ import { cn } from "@/components/ui/cn";
 import { heroImage, listConcepts, recentApproved } from "@/features/beneficiary/data";
 import { cardHref, cardsFirst, conceptHref, conceptHue, conceptLabel, TRACKS, type ConceptSummary, type Track } from "@/features/beneficiary/labels";
 import { ApprovedSinceYouAsked, FirstVisitGate } from "@/features/beneficiary/home-client";
+import { ExploreSearch } from "@/features/discover/ui/explore-search";
 
 export const dynamic = "force-dynamic";
 
@@ -88,6 +89,7 @@ export default async function Home() {
           <h2 id="explore-h" className="text-2xl font-semibold text-ink">{t("beneficiary.home.explore")}</h2>
           <p className="text-ink-2">{t("beneficiary.home.exploreBody")}</p>
         </div>
+        <ExploreSearch concepts={concepts.map((c) => ({ id: c.id, label_en: c.label_en, label_ar: c.label_ar }))} />
         {TRACKS.map((tr) => {
           const list = byTrack[tr];
           if (!list.length) return null;

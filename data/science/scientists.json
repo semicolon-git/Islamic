@@ -1,0 +1,614 @@
+[
+  {
+    "id": "al-fazari",
+    "name_en": "Muhammad ibn Ibrahim al-Fazari",
+    "name_ar": "محمد بن إبراهيم الفزاري",
+    "dates": "fl. second half of the 8th century CE / 2nd century AH",
+    "places_en": "Baghdad (Abbasid court)",
+    "places_ar": "بغداد (البلاط العباسي)",
+    "fields": ["astronomy"],
+    "summary_en": "Al-Fazari was one of the earliest astronomers at the Abbasid court. Medieval sources credit him with building the first astrolabe in the Islamic world, and he took part in translating the Indian astronomical work known as the Sindhind into Arabic. Medieval biographers were unsure whether 'Ibrahim al-Fazari' and 'Muhammad ibn Ibrahim al-Fazari' were father and son; modern scholarship generally treats the astronomical references as one person.",
+    "summary_ar": "الفزاري من أوائل الفلكيين في البلاط العباسي. تنسب إليه المصادر القديمة صنع أول أسطرلاب في العالم الإسلامي، وشارك في نقل الكتاب الفلكي الهندي المعروف بالسندهند إلى العربية. وقد تردد المترجمون القدامى في كون «إبراهيم الفزاري» و«محمد بن إبراهيم الفزاري» أبًا وابنه، ويميل الباحثون اليوم إلى أن المقصود في الأخبار الفلكية شخص واحد.",
+    "contributions": [
+      { "en": "Credited by medieval sources with constructing the first astrolabe in the Islamic world, both flat and melon-shaped.", "ar": "تنسب إليه المصادر القديمة صنع أول أسطرلاب في العالم الإسلامي، مسطحًا ومبطّخًا." },
+      { "en": "Works ascribed to him include a book on the use of the flat astrolabe and a book on the use of the armillary sphere.", "ar": "تنسب إليه كتب منها كتاب العمل بالأسطرلاب المسطح وكتاب العمل بذات الحلق." },
+      { "en": "Worked on the Arabic version of the Indian Sindhind astronomical tables in Baghdad.", "ar": "عمل على النسخة العربية من الجداول الفلكية الهندية «السندهند» في بغداد." }
+    ],
+    "works": [],
+    "instruments": ["astrolabe", "armillary-sphere"],
+    "stars": [],
+    "concepts": ["astrolabe", "stars"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers (Springer), entry 'Fazari' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Fazari_BEA.htm" },
+      { "citation": "Wikipedia, 'Muhammad ibn Ibrahim al-Fazari' (secondary)", "url": "https://en.wikipedia.org/wiki/Mu%E1%B8%A5ammad_ibn_Ibr%C4%81h%C4%ABm_al-Faz%C4%81r%C4%AB" }
+    ]
+  },
+  {
+    "id": "al-khwarizmi",
+    "name_en": "Muhammad ibn Musa al-Khwarizmi",
+    "name_ar": "محمد بن موسى الخوارزمي",
+    "dates": "c. 780–c. 850 CE",
+    "places_en": "Khwarazm; Baghdad (House of Wisdom, under the caliph al-Ma'mun)",
+    "places_ar": "خوارزم؛ بغداد (بيت الحكمة في عهد الخليفة المأمون)",
+    "fields": ["mathematics", "astronomy", "geography"],
+    "summary_en": "Al-Khwarizmi worked in Baghdad under the caliph al-Ma'mun. His book on calculation by completion and balancing (al-jabr wa'l-muqabala) set out systematic rules, with geometric demonstrations, for solving linear and quadratic equations. Its Latin translation in the 12th century gave European languages the word 'algebra', and his own name became 'algorithm'.",
+    "summary_ar": "عمل الخوارزمي في بغداد في عهد الخليفة المأمون. وضع في كتابه في حساب الجبر والمقابلة قواعد منهجية مدعومة ببراهين هندسية لحل المعادلات من الدرجتين الأولى والثانية. وقد ترجم الكتاب إلى اللاتينية في القرن الثاني عشر الميلادي، فاشتقت منه كلمة «الجبر» (Algebra)، ومن اسمه كلمة «الخوارزمية» (Algorithm).",
+    "contributions": [
+      { "en": "Wrote al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala, a systematic treatment of linear and quadratic equations.", "ar": "ألّف «الكتاب المختصر في حساب الجبر والمقابلة»، وهو عرض منهجي لحل المعادلات الخطية والتربيعية." },
+      { "en": "His works helped introduce Hindu-Arabic numerals to European mathematics through Latin translations.", "ar": "أسهمت ترجمات كتبه اللاتينية في تعريف أوروبا بالأرقام الهندية العربية." },
+      { "en": "A 9th-century treatise on a quadrant for finding the sine and the hours is attributed to him.", "ar": "تنسب إليه رسالة من القرن التاسع الميلادي في عمل ربع يعرف به الجيب والساعات." }
+    ],
+    "works": ["al-jabr-wal-muqabala"],
+    "instruments": ["quadrant"],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'al-Khwarizmi'", "url": "https://www.britannica.com/biography/al-Khwarizmi" },
+      { "citation": "Dictionary of Scientific Biography, 'Al-Khwarizmi' (MacTutor copy)", "url": "https://mathshistory.st-andrews.ac.uk/DSB/Al-Khwarizmi.pdf" },
+      { "citation": "Wikipedia, 'Sine quadrant' (secondary, for the attributed quadrant treatise)", "url": "https://en.wikipedia.org/wiki/Sine_quadrant" }
+    ]
+  },
+  {
+    "id": "al-battani",
+    "name_en": "Abu 'Abd Allah Muhammad ibn Jabir al-Battani",
+    "name_ar": "أبو عبد الله محمد بن جابر البتاني",
+    "dates": "before 858–929 CE / before c. 244–317 AH",
+    "places_en": "Harran; Raqqa (private observatory); died near Samarra",
+    "places_ar": "حران؛ الرقة (مرصده الخاص)؛ توفي قرب سامراء",
+    "fields": ["astronomy", "mathematics"],
+    "summary_en": "Al-Battani came from a Sabian family of Harran but was himself a Muslim. He observed the sky from his own observatory at Raqqa from 877 to 918 and was known for the accuracy of his observations. His astronomical handbook, later called al-Zij al-Sabi', was translated into Latin by Plato of Tivoli and cited by Copernicus.",
+    "summary_ar": "ينحدر البتاني من أسرة صابئية في حران، لكنه كان مسلمًا. رصد السماء من مرصده الخاص في الرقة بين عامي 877 و918م، واشتهر بدقة أرصاده. وقد ترجم زيجه المعروف لاحقًا بـ«الزيج الصابئ» إلى اللاتينية على يد أفلاطون التيفولي، واستشهد به كوبرنيكوس.",
+    "contributions": [
+      { "en": "Made regular observations at Raqqa over about forty years (877–918).", "ar": "أجرى أرصادًا منتظمة في الرقة نحو أربعين سنة (877–918م)." },
+      { "en": "Found that the motion of the Sun's apogee matches the precession of the equinoxes.", "ar": "وجد أن حركة أوج الشمس تساوي مبادرة الاعتدالين." },
+      { "en": "Used sines in place of Greek chords and tabulated cotangents in his astronomical computations.", "ar": "استعمل الجيوب بدل الأوتار اليونانية، وجدول ظلال التمام في حساباته الفلكية." }
+    ],
+    "works": ["zij-al-sabi"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["moon", "sun", "stars"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Battani' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Battani_BEA.htm" },
+      { "citation": "Encyclopedia.com, 'al-Battani' (Complete Dictionary of Scientific Biography)", "url": "https://www.encyclopedia.com/people/science-and-technology/astronomy-biographies/al-battani" }
+    ]
+  },
+  {
+    "id": "al-sufi",
+    "name_en": "'Abd al-Rahman al-Sufi",
+    "name_ar": "عبد الرحمن الصوفي",
+    "dates": "903–986 CE / 291–376 AH",
+    "places_en": "Rayy (near Tehran); Shiraz and Isfahan (Buyid court)",
+    "places_ar": "الري (قرب طهران)؛ شيراز وأصفهان (البلاط البويهي)",
+    "fields": ["astronomy"],
+    "summary_en": "Al-Sufi was an astronomer at the court of the Buyid ruler 'Adud al-Dawla. His Book of the Constellations of the Fixed Stars (c. 964) revised Ptolemy's star catalogue with his own magnitude estimates, the old Arabic star names and two drawings of every constellation. Many star names used today, such as Aldebaran, Algol, Betelgeuse, Rigel and Vega, reached modern astronomy through the Arabic tradition his book helped to fix.",
+    "summary_ar": "كان عبد الرحمن الصوفي فلكيًا في بلاط عضد الدولة البويهي. راجع في «كتاب صور الكواكب الثابتة» (نحو 964م) فهرس بطليموس للنجوم، وأضاف تقديراته الخاصة لأقدارها، والأسماء العربية القديمة للنجوم، ورسمين لكل كوكبة. ووصلت كثير من أسماء النجوم المستعملة اليوم، مثل الدبران والغول ويد الجوزاء ورجل الجوزاء والنسر الواقع، إلى علم الفلك الحديث عبر التقليد العربي الذي أسهم كتابه في تثبيته.",
+    "contributions": [
+      { "en": "Described the 48 Ptolemaic constellations and critiqued each star of Ptolemy's catalogue against his own observations.", "ar": "وصف الكوكبات البطلمية الثماني والأربعين، وراجع كل نجم في فهرس بطليموس بناءً على أرصاده." },
+      { "en": "Recorded the old Arabic names of stars beside the Ptolemaic descriptions, a key source for star names used today.", "ar": "دوّن الأسماء العربية القديمة للنجوم إلى جانب أوصاف بطليموس، فصار كتابه مصدرًا رئيسًا لأسماء النجوم المستعملة اليوم." },
+      { "en": "Gave the earliest known description of the Andromeda Galaxy, which he called a 'little cloud'.", "ar": "قدّم أقدم وصف معروف لمجرة المرأة المسلسلة، وسمّاها «اللطخة السحابية»." },
+      { "en": "His constellation figures were followed on later celestial globes and instruments for centuries.", "ar": "اتّبع صانعو الكرات السماوية والآلات الفلكية صور كوكباته قرونًا." }
+    ],
+    "works": ["book-of-fixed-stars"],
+    "instruments": ["celestial-globe"],
+    "stars": ["Aldebaran", "Algol", "Betelgeuse", "Rigel", "Vega"],
+    "concepts": ["stars", "night_day", "manuscript_page"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Sufi' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Sufi_BEA.pdf" },
+      { "citation": "Science Museum blog, 'Updating stars and observing the Andromeda Galaxy'", "url": "https://blog.sciencemuseum.org.uk/updating-stars-and-observing-the-andromeda-galaxy" },
+      { "citation": "University of Michigan, Early Astronomy: 'Stars and Constellations: al-Sufi'", "url": "https://early-astronomy.web.itd.umich.edu/islamic_al-sufi.php" }
+    ]
+  },
+  {
+    "id": "al-biruni",
+    "name_en": "Abu al-Rayhan al-Biruni",
+    "name_ar": "أبو الريحان البيروني",
+    "dates": "973–c. 1050 CE / 362–c. 442 AH (sources give 1048 to after 1050 for his death)",
+    "places_en": "Kath (Khwarazm); Ghazna; travelled in India",
+    "places_ar": "كاث (خوارزم)؛ غزنة؛ وارتحل إلى الهند",
+    "fields": ["astronomy", "mathematics", "geography"],
+    "summary_en": "Al-Biruni wrote on a very wide range of subjects, including astronomy, mathematical geography, calendars and India. He measured the Earth's radius by a new method: he found the height of a hill, then measured from its top how far the horizon dips below the horizontal. His Tahdid (completed 1025) and al-Qanun al-Mas'udi worked out the coordinates of cities and the direction of Mecca from Ghazna using spherical trigonometry.",
+    "summary_ar": "كتب البيروني في موضوعات كثيرة، منها الفلك والجغرافيا الرياضية والتقاويم وفي الهند. وقاس نصف قطر الأرض بطريقة جديدة: حدّد ارتفاع جبل، ثم قاس من قمته زاوية انخفاض الأفق. وفي كتابه «تحديد نهايات الأماكن» (أتمّه سنة 1025م) وفي «القانون المسعودي» حسب إحداثيات المدن واتجاه القبلة من غزنة بحساب المثلثات الكروية.",
+    "contributions": [
+      { "en": "Measured the Earth's radius from the dip of the horizon seen from a hill near Nandana, in the Punjab.", "ar": "قاس نصف قطر الأرض من انخفاض الأفق كما يُرى من جبل قرب قلعة نندنة في البنجاب." },
+      { "en": "Solved the spherical-trigonometry problem of the qibla direction at Ghazna in the Tahdid.", "ar": "حلّ في «التحديد» مسألة اتجاه القبلة في غزنة بحساب المثلثات الكروية." },
+      { "en": "Wrote al-Qanun al-Mas'udi, an encyclopedic astronomical handbook dedicated to Sultan Mas'ud of Ghazna.", "ar": "ألّف «القانون المسعودي»، موسوعة فلكية أهداها إلى السلطان مسعود الغزنوي." },
+      { "en": "Coordinated a lunar-eclipse observation in 997 with Abu al-Wafa' in Baghdad to find the longitude difference.", "ar": "نسّق رصد خسوف القمر سنة 997م مع أبي الوفاء في بغداد لتحديد فرق الطول بين البلدين." }
+    ],
+    "works": ["al-qanun-al-masudi", "tahdid-nihayat-al-amakin"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["mountain", "qibla", "mihrab", "moon"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Biruni' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Biruni_BEA.pdf" },
+      { "citation": "Encyclopaedia Britannica, 'al-Biruni'", "url": "https://www.britannica.com/biography/al-Biruni" },
+      { "citation": "AUB Press, al-Biruni, The Determination of the Coordinates of Positions for the Correction of Distances Between Cities (tr. J. Ali, 1967)", "url": "https://press.aub.edu.lb/the-determination-of-the-coordinates-of-positions-for-the-correction-of-distances-between-cities" },
+      { "citation": "Encyclopaedia Iranica, 'Abu'l-Wafa' Buzjani' (for the joint eclipse observation of 997)", "url": "https://www.iranicaonline.org/articles/abul-wafa-buzjani/" }
+    ]
+  },
+  {
+    "id": "ibn-al-haytham",
+    "name_en": "Abu 'Ali al-Hasan ibn al-Haytham (Alhazen)",
+    "name_ar": "أبو علي الحسن بن الهيثم",
+    "dates": "c. 965–c. 1040 CE / c. 354–c. 430 AH",
+    "places_en": "Basra; Cairo",
+    "places_ar": "البصرة؛ القاهرة",
+    "fields": ["optics", "mathematics", "astronomy"],
+    "summary_en": "Ibn al-Haytham worked mainly in Cairo. His Kitab al-Manazir (Book of Optics) argued from experiments that we see because light from objects enters the eye, rejecting the older idea that the eye sends out rays. The Latin translation (De aspectibus), printed by Risner in 1572, was used by Kepler, Descartes and other European scholars of optics.",
+    "summary_ar": "عمل ابن الهيثم في القاهرة في أغلب حياته. واحتجّ في «كتاب المناظر» بالتجربة على أن الإبصار يحدث بدخول الضوء من الأجسام إلى العين، ورفض الرأي القديم القائل إن العين تُخرج أشعة. وقد طبع ريزنر ترجمته اللاتينية سنة 1572م، فاستفاد منها كبلر وديكارت وغيرهما من علماء البصريات في أوروبا.",
+    "contributions": [
+      { "en": "Used controlled experiments to support the theory that vision happens when light enters the eye.", "ar": "استعمل التجارب المضبوطة لتأييد نظرية أن الإبصار يحدث بدخول الضوء إلى العين." },
+      { "en": "Described image formation through a small hole in a dark chamber (the camera obscura).", "ar": "وصف تكوّن الصورة عبر ثقب صغير في «البيت المظلم» (الحجرة المظلمة)." },
+      { "en": "Studied reflection and refraction, including the problem of reflection from a curved mirror now called 'Alhazen's problem'.", "ar": "درس الانعكاس والانكسار، ومنها مسألة الانعكاس عن المرايا المنحنية المعروفة اليوم بـ«مسألة ابن الهيثم»." }
+    ],
+    "works": ["kitab-al-manazir"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["lamp", "sun"],
+    "sources": [
+      { "citation": "Bibliotheca Hertziana, Perspectiva digital library: Risner's 1572 edition, Opticae thesaurus Alhazeni Arabis libri septem", "url": "https://dlib.biblhertz.it/perspectiva/doc01.html" },
+      { "citation": "Wikipedia, 'Book of Optics' (secondary, for dating and contents)", "url": "https://en.wikipedia.org/wiki/Book_of_Optics" },
+      { "citation": "MacTutor (Strick), 'al-Haitham'", "url": "https://mathshistory.st-andrews.ac.uk/Strick/al-haitham.pdf" }
+    ]
+  },
+  {
+    "id": "al-zarqali",
+    "name_en": "Abu Ishaq Ibrahim ibn Yahya al-Zarqali (Azarquiel)",
+    "name_ar": "أبو إسحاق إبراهيم بن يحيى الزرقالي",
+    "dates": "d. 1100 CE / 493 AH",
+    "places_en": "Toledo; Cordoba",
+    "places_ar": "طليطلة؛ قرطبة",
+    "fields": ["astronomy", "engineering"],
+    "summary_en": "Al-Zarqali began as an instrument maker in Toledo and taught himself astronomy, becoming a leading member of the group of astronomers around the judge Sa'id al-Andalusi. He designed a universal astrolabe plate (al-safiha, Latin 'saphaea') that works at any latitude without changing plates. The Toledan Tables, compiled by Sa'id's group with al-Zarqali as a prominent member, circulated widely in Latin Europe.",
+    "summary_ar": "بدأ الزرقالي صانعًا للآلات في طليطلة، وتعلّم الفلك بنفسه حتى صار من أبرز أعضاء جماعة الفلكيين حول القاضي صاعد الأندلسي. وصمّم صفيحة أسطرلاب شاملة («الصفيحة»، وباللاتينية saphaea) تصلح لكل العروض دون تبديل الصفائح. وانتشرت «الجداول الطليطلية» التي أعدّتها جماعة صاعد، وكان الزرقالي من أبرزهم، انتشارًا واسعًا في أوروبا اللاتينية.",
+    "contributions": [
+      { "en": "Designed the universal plate (saphaea) using a projection onto the plane of the solstitial colure, valid for every latitude.", "ar": "صمّم «الصفيحة» الشاملة بإسقاط على مستوى دائرة الانقلابين، فتصلح لكل خطوط العرض." },
+      { "en": "Was a prominent member of the team that compiled the Toledan Tables.", "ar": "كان من أبرز أعضاء الفريق الذي أعدّ الجداول الطليطلية." },
+      { "en": "His universal projection was known in medieval Europe and revived in the 16th century by Gemma Frisius.", "ar": "عُرف إسقاطه الشامل في أوروبا في العصور الوسطى، وأحياه جيما فريزيوس في القرن السادس عشر." }
+    ],
+    "works": ["toledan-tables"],
+    "instruments": ["universal-astrolabe", "astrolabe"],
+    "stars": [],
+    "concepts": ["astrolabe", "stars"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Zarqali' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Zarqali_BEA.htm" },
+      { "citation": "History of Science Museum, Oxford, Astrolabe Catalogue, inv. 52869 (universal projection of az-Zarqallu's type)", "url": "https://www.mhs.ox.ac.uk/astrolabe/catalogue/browseReport/Astrolabe_ID%3d241.html" },
+      { "citation": "MacTutor, 'al-Zarqali'", "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Zarqali/" }
+    ]
+  },
+  {
+    "id": "al-ijliyya",
+    "name_en": "al-'Ijliyya bint al-'Ijli",
+    "name_ar": "العجلية بنت العجلي",
+    "dates": "fl. 10th century CE / 4th century AH",
+    "places_en": "Aleppo (court of Sayf al-Dawla, r. 944–967)",
+    "places_ar": "حلب (بلاط سيف الدولة الحمداني، حكم 944–967م)",
+    "fields": ["astronomy", "engineering"],
+    "summary_en": "Al-'Ijliyya was an astrolabe maker in Aleppo who worked for the Hamdanid emir Sayf al-Dawla. The only known source on her life is Ibn al-Nadim's Fihrist, which says that she and her father, al-'Ijli, were apprentices of the Baghdad astrolabe maker Nastulus. The first name 'Mariam' often given to her today is a modern attribution and does not appear in that source. The main-belt asteroid 7060 Al-'Ijliya is named after her.",
+    "summary_ar": "العجلية صانعة أسطرلابات في حلب عملت لدى الأمير الحمداني سيف الدولة. والمصدر الوحيد المعروف عنها هو «الفهرست» لابن النديم، وفيه أنها وأباها العجلي تتلمذا على صانع الأسطرلابات البغدادي نسطولس. أما اسم «مريم» الشائع لها اليوم فنسبة حديثة لا ترد في ذلك المصدر. ويحمل الكويكب 7060 اسمها.",
+    "contributions": [
+      { "en": "One of the very few women instrument makers named in medieval Arabic sources.", "ar": "من النساء القليلات جدًا من صانعي الآلات اللواتي ذكرتهن المصادر العربية القديمة." },
+      { "en": "Made astrolabes for the court of Sayf al-Dawla in Aleppo, according to Ibn al-Nadim.", "ar": "صنعت الأسطرلابات لبلاط سيف الدولة في حلب، بحسب ابن النديم." }
+    ],
+    "works": [],
+    "instruments": ["astrolabe"],
+    "stars": [],
+    "concepts": ["astrolabe"],
+    "sources": [
+      { "citation": "Wikipedia, 'Al-ʻIjliyyah' (secondary; summarises Ibn al-Nadim, Kitab al-Fihrist)", "url": "https://en.wikipedia.org/wiki/Al-%CA%BBIjliyyah" },
+      { "citation": "KTH Royal Institute of Technology Library, 'Vem var al-Ijliyyah?'", "url": "https://kth.se/en/biblioteket/anvanda-biblioteket/studera-i-biblioteke/vem-var/al-ijliyyah-1.1349544" }
+    ]
+  },
+  {
+    "id": "ibn-al-shatir",
+    "name_en": "'Ala' al-Din 'Ali ibn Ibrahim ibn al-Shatir",
+    "name_ar": "علاء الدين علي بن إبراهيم ابن الشاطر",
+    "dates": "1304–c. 1375 CE / 704–777 AH",
+    "places_en": "Damascus (Umayyad Mosque)",
+    "places_ar": "دمشق (الجامع الأموي)",
+    "fields": ["astronomy", "engineering"],
+    "summary_en": "Ibn al-Shatir was the muwaqqit (timekeeper) of the Umayyad Mosque in Damascus. In 1371/72 he built a large marble sundial for the mosque's northern minaret; the dial there today is a later copy. In theoretical astronomy he built planetary and lunar models without Ptolemy's equant, and his lunar model is mathematically the same as the one Copernicus later used.",
+    "summary_ar": "كان ابن الشاطر موقّت الجامع الأموي في دمشق. وفي سنة 1371/1372م صنع مزولة رخامية كبيرة للمئذنة الشمالية للجامع، والمزولة القائمة هناك اليوم نسخة لاحقة. وفي الفلك النظري بنى نماذج للكواكب والقمر من غير «معدّل المسير» البطلمي، ونموذجه للقمر مطابق رياضيًا لما استعمله كوبرنيكوس بعده.",
+    "contributions": [
+      { "en": "Built a monumental horizontal marble sundial (about 2 m × 1 m) for the Umayyad Mosque, with lines for the time of the 'asr prayer.", "ar": "صنع مزولة رخامية أفقية كبيرة (نحو 2×1 م) للجامع الأموي، فيها خطوط لوقت صلاة العصر." },
+      { "en": "Proposed a lunar model with a double epicycle that gave a better range of Earth–Moon distances than Ptolemy's.", "ar": "اقترح نموذجًا للقمر بفلك تدوير مزدوج يعطي مدى أدق لأبعاد القمر عن الأرض من نموذج بطليموس." },
+      { "en": "As muwaqqit, regulated the times of prayer for the mosque by astronomy.", "ar": "تولّى بصفته موقّتًا ضبط أوقات الصلاة للجامع بالحساب الفلكي." }
+    ],
+    "works": [],
+    "instruments": ["sundial"],
+    "stars": [],
+    "concepts": ["sun", "shadow", "time_asr", "minaret_call_to_prayer", "moon"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Ibn al-Shatir' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_al-Shatir_BEA.htm" },
+      { "citation": "Wikipedia, 'Ibn al-Shatir' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_al-Shatir" }
+    ]
+  },
+  {
+    "id": "nasir-al-din-al-tusi",
+    "name_en": "Nasir al-Din al-Tusi",
+    "name_ar": "نصير الدين الطوسي",
+    "dates": "1201–1274 CE / 597–672 AH",
+    "places_en": "Tus (Khurasan); Maragha (north-west Iran); died in Baghdad",
+    "places_ar": "طوس (خراسان)؛ مراغة (شمال غرب إيران)؛ توفي في بغداد",
+    "fields": ["astronomy", "mathematics"],
+    "summary_en": "Al-Tusi persuaded the Mongol ruler Hulagu to found an observatory at Maragha in 1259, with large instruments and a major library. In his Tadhkira on astronomy he described the geometric device now called the 'Tusi couple', which produces straight-line motion from two circular motions. The observatory's work produced the Ilkhani Zij.",
+    "summary_ar": "أقنع الطوسي الحاكم المغولي هولاكو بإنشاء مرصد في مراغة سنة 1259م، فيه آلات كبيرة ومكتبة عظيمة. ووصف في كتابه «التذكرة في علم الهيئة» البناء الهندسي المعروف اليوم بـ«مزدوجة الطوسي»، الذي يولّد حركة مستقيمة من حركتين دائريتين. وأثمر عمل المرصد «الزيج الإيلخاني».",
+    "contributions": [
+      { "en": "Founded and directed the Maragha observatory from 1259.", "ar": "أسّس مرصد مراغة وأداره منذ سنة 1259م." },
+      { "en": "Described the 'Tusi couple' in his Tadhkira, allowing models that keep uniform circular motion.", "ar": "وصف «مزدوجة الطوسي» في «التذكرة»، مما أتاح نماذج تحافظ على الحركة الدائرية المنتظمة." },
+      { "en": "Led the work that produced the Zij-i Ilkhani astronomical tables.", "ar": "قاد العمل الذي أثمر الجداول الفلكية «الزيج الإيلخاني»." }
+    ],
+    "works": ["tadhkira-fi-ilm-al-haya"],
+    "instruments": ["armillary-sphere"],
+    "stars": [],
+    "concepts": ["stars"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Tusi: Nasir al-Din' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Tusi_BEA.pdf" },
+      { "citation": "University of Michigan, Early Astronomy: 'Mathematical Models: Nasir al-Din Tusi'", "url": "https://early-astronomy.web.itd.umich.edu/islamic_tusi.php" }
+    ]
+  },
+  {
+    "id": "ulugh-beg",
+    "name_en": "Ulugh Beg",
+    "name_ar": "ألغ بيك",
+    "dates": "1394–1449 CE / 796–853 AH",
+    "places_en": "Samarkand",
+    "places_ar": "سمرقند",
+    "fields": ["astronomy", "mathematics"],
+    "summary_en": "Ulugh Beg, a Timurid prince and ruler, founded a madrasa and an observatory in Samarkand. The observatory's main instrument was a huge meridian arc, built partly below ground, whose lower part survives. The Zij-i Sultani, produced by his team, contains a catalogue of 1,018 stars, most of them re-observed at Samarkand.",
+    "summary_ar": "كان ألغ بيك أميرًا وحاكمًا تيموريًا، أنشأ في سمرقند مدرسة ومرصدًا. وكانت آلة المرصد الرئيسة قوسًا زواليًا ضخمًا مبنيًا جزئيًا تحت الأرض، وما زال جزؤه السفلي قائمًا. ويضم «الزيج السلطاني» الذي أعدّه فريقه فهرسًا لـ1018 نجمًا، أُعيد رصد أكثرها في سمرقند.",
+    "contributions": [
+      { "en": "Founded the Samarkand observatory, rediscovered by the archaeologist V. Vyatkin in 1908.", "ar": "أسّس مرصد سمرقند الذي أعاد الأثري فياتكين اكتشافه سنة 1908م." },
+      { "en": "Sponsored the Zij-i Sultani: re-determined positions of 992 stars and added 27 southern stars taken from al-Sufi.", "ar": "رعى «الزيج السلطاني»: أُعيد فيه تحديد مواقع 992 نجمًا، وأضيف إليها 27 نجمًا جنوبيًا من كتاب الصوفي." }
+    ],
+    "works": ["zij-i-sultani"],
+    "instruments": ["mural-sextant", "armillary-sphere"],
+    "stars": [],
+    "concepts": ["stars"],
+    "sources": [
+      { "citation": "University of Michigan, Early Astronomy: 'Work of the Observatory: Zij of Ulugh Beg'", "url": "https://early-astronomy.web.itd.umich.edu/islamic_ulugh-beg.php" },
+      { "citation": "Wikipedia, 'Zij-i Sultani' (secondary)", "url": "https://en.wikipedia.org/wiki/Zij-i_Sultani" },
+      { "citation": "Wikipedia, 'Ulugh Beg Observatory' (secondary)", "url": "https://en.wikipedia.org/wiki/Ulugh_Beg_Observatory" }
+    ]
+  },
+  {
+    "id": "al-jazari",
+    "name_en": "Badi' al-Zaman Abu al-'Izz Isma'il ibn al-Razzaz al-Jazari",
+    "name_ar": "بديع الزمان أبو العز إسماعيل بن الرزاز الجزري",
+    "dates": "fl. late 12th–early 13th century; completed his book in 1206 CE / 602 AH",
+    "places_en": "Diyarbakir (Artuqid court, Upper Mesopotamia)",
+    "places_ar": "آمد/ديار بكر (البلاط الأرتقي في الجزيرة الفراتية)",
+    "fields": ["engineering"],
+    "summary_en": "Al-Jazari served as chief engineer to the Artuqid rulers of Diyarbakir. In 1206 he finished his Book of Knowledge of Ingenious Mechanical Devices, which describes about fifty devices in six categories, with drawings and instructions for building them. They include water clocks such as the 'elephant clock' and five machines for raising water.",
+    "summary_ar": "عمل الجزري كبيرًا للمهندسين لدى الأراتقة في ديار بكر. وأتمّ سنة 1206م «الجامع بين العلم والعمل النافع في صناعة الحيل»، ووصف فيه نحو خمسين آلة في ستة أنواع، مع رسوم وتعليمات لصنعها. ومنها ساعات مائية كـ«ساعة الفيل»، وخمس آلات لرفع الماء.",
+    "contributions": [
+      { "en": "Documented about fifty devices with construction details: clocks, drinking vessels, washing devices, fountains, water-raising machines and others.", "ar": "وثّق نحو خمسين آلة مع تفاصيل صنعها: ساعات، وأوانٍ للشراب، وأدوات للوضوء والغسل، ونوافير، وآلات لرفع الماء وغيرها." },
+      { "en": "Described the elephant water clock, which he said combined Indian, Chinese, Persian, Greek and Islamic elements.", "ar": "وصف ساعة الفيل المائية، وذكر أنها تجمع عناصر هندية وصينية وفارسية ويونانية وإسلامية." },
+      { "en": "Described water-raising machines, including a crank-driven saqiya chain pump and a double-acting piston pump.", "ar": "وصف آلات لرفع الماء، منها ساقية ذات سلسلة تدار بذراع مرفقي، ومضخة ذات مكبسين متقابلين." }
+    ],
+    "works": ["book-of-ingenious-mechanical-devices"],
+    "instruments": ["water-clock"],
+    "stars": [],
+    "concepts": ["river", "water_life"],
+    "sources": [
+      { "citation": "Science Museum Group Collection, people record: Isma'il ibn al-Razzaz al-Jazari", "url": "https://collection.sciencemuseumgroup.org.uk/people/cp52302/ismail-ibn-al-razzaz-al-jazari" },
+      { "citation": "Wikipedia, 'Ismail al-Jazari' (secondary)", "url": "https://en.wikipedia.org/wiki/Ismail_al-Jazari" },
+      { "citation": "Wikipedia, 'Elephant clock' (secondary)", "url": "https://en.wikipedia.org/wiki/Elephant_clock" }
+    ]
+  },
+  {
+    "id": "ibn-majid",
+    "name_en": "Ahmad ibn Majid",
+    "name_ar": "أحمد بن ماجد",
+    "dates": "c. 1432–c. 1500 CE / c. 835–c. 906 AH",
+    "places_en": "Julfar (present-day Ras al-Khaimah); the Indian Ocean, Red Sea and Gulf",
+    "places_ar": "جلفار (رأس الخيمة اليوم)؛ المحيط الهندي والبحر الأحمر والخليج",
+    "fields": ["navigation", "astronomy"],
+    "summary_en": "Ibn Majid was a navigator from a family of navigators and wrote in verse and prose on the science of the sea. His Kitab al-Fawa'id (1490) covers the principles of navigation, the lunar mansions, star positions, sea routes and ports from East Africa to Indonesia, and the monsoon winds. The story that he piloted Vasco da Gama to India is rejected by modern historians; the pilot was most likely a Gujarati sailor provided at Malindi.",
+    "summary_ar": "كان ابن ماجد ربّانًا من أسرة ربابنة، وكتب شعرًا ونثرًا في علم البحر. ويتناول «كتاب الفوائد في أصول علم البحر والقواعد» (1490م) أصول الملاحة، ومنازل القمر، ومواقع النجوم، والطرق البحرية والموانئ من شرق أفريقيا إلى إندونيسيا، ورياح الموسم. أما القول بأنه أرشد فاسكو دا غاما إلى الهند فيرفضه المؤرخون المعاصرون، والأرجح أن المرشد كان بحّارًا كجراتيًا قُدّم في ماليندي.",
+    "contributions": [
+      { "en": "Wrote Kitab al-Fawa'id fi usul 'ilm al-bahr wa'l-qawa'id (1490), a compendium of Indian Ocean navigation.", "ar": "ألّف «كتاب الفوائد في أصول علم البحر والقواعد» (1490م)، وهو جامع لعلم الملاحة في المحيط الهندي." },
+      { "en": "Measured star altitudes in finger-widths (isba') rather than degrees, the practical unit of Indian Ocean pilots.", "ar": "قاس ارتفاع النجوم بالأصابع (الإصبع) لا بالدرجات، وهي الوحدة العملية عند ربابنة المحيط الهندي." },
+      { "en": "Recorded sea routes, ports, seasonal winds and the use of stars for finding latitude.", "ar": "دوّن الطرق البحرية والموانئ والرياح الموسمية واستعمال النجوم في معرفة العرض." }
+    ],
+    "works": ["kitab-al-fawaid"],
+    "instruments": ["kamal"],
+    "stars": ["Polaris"],
+    "concepts": ["sea", "ships", "stars", "wind"],
+    "sources": [
+      { "citation": "AramcoWorld, 'The Navigator Ahmad ibn Majid' (July/August 2005)", "url": "https://archive.aramcoworld.com/issue/200504/the.navigator.ahmad.ibn.majid.htm" },
+      { "citation": "Wikipedia, 'Ahmad ibn Majid' (secondary; summarises Tibbetts on the da Gama question)", "url": "https://en.wikipedia.org/wiki/Ahmad_ibn_Majid" },
+      { "citation": "UNESCO Silk Roads Programme, 'L'astronomie nautique le long de la route maritime de la soie'", "url": "https://en.unesco.org/silkroad/knowledge-bank/lastronomie-nautique-le-long-de-la-route-maritime-de-la-soie" }
+    ]
+  },
+  {
+    "id": "ibn-sina",
+    "name_en": "Abu 'Ali al-Husayn ibn Sina (Avicenna)",
+    "name_ar": "أبو علي الحسين بن سينا",
+    "dates": "980–1037 CE / 370–428 AH",
+    "places_en": "Bukhara; Isfahan; died in Hamadan",
+    "places_ar": "بخارى؛ أصفهان؛ توفي في همذان",
+    "fields": ["medicine"],
+    "summary_en": "Ibn Sina was a physician and philosopher, called al-Shaykh al-Ra'is by later Muslim authors. His al-Qanun fi al-tibb (Canon of Medicine) organised the medical knowledge of his time into five books, from theory and simple drugs to compound remedies. Translated into Latin by Gerard of Cremona in the 12th century, it was taught in European medical schools until the 17th century.",
+    "summary_ar": "ابن سينا طبيب وفيلسوف، لقّبه المؤلفون المسلمون بعده بـ«الشيخ الرئيس». نظّم في كتابه «القانون في الطب» المعارف الطبية في زمنه في خمسة كتب، من الأصول والأدوية المفردة إلى الأدوية المركبة. وقد ترجمه جيرارد الكريموني إلى اللاتينية في القرن الثاني عشر، وظل يُدرَّس في مدارس الطب الأوروبية حتى القرن السابع عشر.",
+    "contributions": [
+      { "en": "Wrote the Canon of Medicine in five books: general principles, simple drugs, diseases of particular organs, general diseases, and compound drugs.", "ar": "ألّف «القانون في الطب» في خمسة كتب: الأمور الكلية، والأدوية المفردة، والأمراض الجزئية، والأمراض العامة، والأدوية المركبة." },
+      { "en": "Book II of the Canon lists simple drugs alphabetically after an essay on their general properties.", "ar": "يسرد الكتاب الثاني من «القانون» الأدوية المفردة مرتبة على حروف المعجم بعد مقالة في قواها العامة." },
+      { "en": "The Canon remained a standard text in Latin Europe from the 12th to the late 17th century.", "ar": "بقي «القانون» مرجعًا معتمدًا في أوروبا اللاتينية من القرن الثاني عشر إلى أواخر القرن السابع عشر." }
+    ],
+    "works": ["canon-of-medicine"],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'Avicenna' (summary)", "url": "https://www.britannica.com/summary/Avicenna" },
+      { "citation": "Library of Congress, catalogue record for a manuscript of al-Qanun fi al-tibb", "url": "https://www.loc.gov/item/2021667333/" },
+      { "citation": "Encyclopedia.com, 'Ibn Sina'", "url": "https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/ibn-sina" }
+    ]
+  },
+  {
+    "id": "al-idrisi",
+    "name_en": "al-Sharif al-Idrisi",
+    "name_ar": "الشريف الإدريسي",
+    "dates": "1100–1165/66 CE / 493–560 AH",
+    "places_en": "Ceuta; Cordoba; Palermo (court of Roger II of Sicily)",
+    "places_ar": "سبتة؛ قرطبة؛ باليرمو (بلاط روجر الثاني ملك صقلية)",
+    "fields": ["geography", "cartography"],
+    "summary_en": "Al-Idrisi was invited to Palermo around 1138–1140 by the Norman king Roger II. There he produced a silver planisphere (now lost), a world map in 70 sections built on the seven climates, and a descriptive geography, Nuzhat al-mushtaq fi ikhtiraq al-afaq, completed in 1154 and known in the West as the Tabula Rogeriana. His maps place south at the top.",
+    "summary_ar": "دعا الملك النورماني روجر الثاني الإدريسيَّ إلى باليرمو نحو 1138–1140م. وهناك صنع كرة أرضية مسطحة من الفضة (فُقدت)، وخريطة للعالم في سبعين قطعة على الأقاليم السبعة، وكتابًا في وصف البلدان هو «نزهة المشتاق في اختراق الآفاق»، أتمّه سنة 1154م ويعرف في الغرب بـ«الخريطة الرجارية». وتضع خرائطه الجنوب في أعلاها.",
+    "contributions": [
+      { "en": "Completed Nuzhat al-mushtaq (the 'Book of Roger') in 1154, with 70 regional maps and descriptions.", "ar": "أتمّ «نزهة المشتاق» («كتاب رجار») سنة 1154م، وفيه سبعون خريطة إقليمية مع أوصافها." },
+      { "en": "Made a large silver planisphere for Roger II, later lost.", "ar": "صنع لروجر الثاني لوحًا فضيًا كبيرًا للعالم، فُقد لاحقًا." },
+      { "en": "Combined earlier Greek and Arabic geography with reports gathered from travellers.", "ar": "جمع بين الجغرافيا اليونانية والعربية السابقة وأخبار جمعها من الرحالة." }
+    ],
+    "works": ["tabula-rogeriana"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["sea", "river", "mountain"],
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'al-Idrisi'", "url": "https://www.britannica.com/print/article/282089" },
+      { "citation": "Factum Foundation, 'Al-Idrisi and Roger II: mapping the world in the twelfth century'", "url": "https://factumfoundation.org/our-projects/digital-restorations/re-creating-the-lost-map-of-al-idrisi/al-idrisi-and-roger-ii-mapping-the-world-in-the-twelfth-century/" },
+      { "citation": "Wikipedia, 'Tabula Rogeriana' (secondary)", "url": "https://en.wikipedia.org/wiki/Tabula_Rogeriana" }
+    ]
+  },
+  {
+    "id": "abu-al-wafa-al-buzjani",
+    "name_en": "Abu al-Wafa' al-Buzjani",
+    "name_ar": "أبو الوفاء البوزجاني",
+    "dates": "940–997 or 998 CE / 328–387 or 388 AH",
+    "places_en": "Buzjan (Khurasan); Baghdad",
+    "places_ar": "بوزجان (خراسان)؛ بغداد",
+    "fields": ["mathematics", "astronomy"],
+    "summary_en": "Abu al-Wafa' was a mathematician and astronomer who worked at an observatory in Baghdad. He developed trigonometry for astronomy, computing sine and tangent tables and proving the sine theorem for spherical triangles. A practical manual of geometric constructions for craftsmen is attributed to him; in it the author says he attended meetings between geometers and artisans, though some scholars think the text may be a student's record of his teaching.",
+    "summary_ar": "كان أبو الوفاء رياضيًا وفلكيًا عمل في مرصد ببغداد. طوّر حساب المثلثات لخدمة الفلك، فحسب جداول الجيب والظل، وبرهن على قانون الجيوب للمثلثات الكروية. وينسب إليه كتاب عملي في الإنشاءات الهندسية للصنّاع، يذكر فيه مؤلفه أنه حضر مجالس جمعت المهندسين والصنّاع، وإن رأى بعض الباحثين أن النص قد يكون تقييدًا لدروسه كتبه أحد طلابه.",
+    "contributions": [
+      { "en": "Proved the general sine theorem for spherical triangles and computed tangent and cotangent tables.", "ar": "برهن على قانون الجيوب العام للمثلثات الكروية، وحسب جداول الظل وظل التمام." },
+      { "en": "Observed the lunar eclipse of 24 May 997 in Baghdad while al-Biruni observed it in Khwarazm, to find the longitude difference.", "ar": "رصد خسوف القمر في 24 مايو 997م في بغداد بينما رصده البيروني في خوارزم، لتحديد فرق الطول." },
+      { "en": "A treatise of over a hundred ruler-and-compass constructions for craftsmen, including ornamental patterns, is attributed to him.", "ar": "تنسب إليه رسالة تضم أكثر من مئة إنشاء بالمسطرة والفرجار للصنّاع، منها أشكال زخرفية." }
+    ],
+    "works": ["geometric-constructions-for-artisans"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["geometric_pattern", "moon"],
+    "sources": [
+      { "citation": "Encyclopaedia Iranica, 'Abu'l-Wafa' Buzjani'", "url": "https://www.iranicaonline.org/articles/abul-wafa-buzjani/" },
+      { "citation": "Encyclopaedia Britannica, 'Abu al-Wafa''", "url": "https://www.britannica.com/biography/Abu-al-Wafa" },
+      { "citation": "R. Sarhangi et al., 'The Heart is a Dust Board: Abu'l Wafa al-Buzjani, Dissection, Construction, and the Dialog Between Art and Mathematics' (arXiv:1910.14432)", "url": "https://arxiv.org/pdf/1910.14432" },
+      { "citation": "Marmara University, study on the authorship of Kitab fima yahtaju ilayhi al-sani' (in Turkish)", "url": "https://openaccess.marmara.edu.tr/entities/publication/e2b2c3e2-1c9c-47d7-9118-81b66c9dcda5" }
+    ]
+  },
+  {
+    "id": "taqi-al-din",
+    "name_en": "Taqi al-Din Muhammad ibn Ma'ruf al-Rasid",
+    "name_ar": "تقي الدين محمد بن معروف الراصد",
+    "dates": "1526–1585 CE / 932–993 AH",
+    "places_en": "Damascus; Istanbul",
+    "places_ar": "دمشق؛ إسطنبول",
+    "fields": ["astronomy", "engineering", "mathematics", "optics"],
+    "summary_en": "Taqi al-Din, born in Damascus, directed the Ottoman observatory in Istanbul under Sultan Murad III, working there from 1577. He reproduced instruments of earlier Islamic observatories, designed new ones and used mechanical clocks in his observations, including of the comet of 1577. He wrote a book on the construction of mechanical clocks. The observatory was demolished in 1580.",
+    "summary_ar": "وُلد تقي الدين في دمشق، وأدار المرصد العثماني في إسطنبول في عهد السلطان مراد الثالث، وعمل فيه منذ سنة 1577م. أعاد صنع آلات المراصد الإسلامية السابقة، وصمّم آلات جديدة، واستعمل الساعات الآلية في أرصاده، ومنها رصد مذنّب سنة 1577م. وألّف كتابًا في صنع الساعات الآلية. وقد هُدم المرصد سنة 1580م.",
+    "contributions": [
+      { "en": "Directed the 'New Observatory' (Dar al-Rasad al-Jadid) in Istanbul.", "ar": "أدار «دار الرصد الجديد» في إسطنبول." },
+      { "en": "Wrote al-Kawakib al-durriyya fi wad' al-bankamat al-dawriyya on the construction of mechanical clocks.", "ar": "ألّف «الكواكب الدرية في وضع البنكامات الدورية» في صنع الساعات الآلية." },
+      { "en": "Used mechanical clocks alongside instruments such as the armillary sphere for observations.", "ar": "استعمل الساعات الآلية مع آلات مثل ذات الحلق في أرصاده." }
+    ],
+    "works": [],
+    "instruments": ["armillary-sphere"],
+    "stars": [],
+    "concepts": ["stars", "night_day"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Taqi al-Din' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Taqi_al-Din_BEA.htm" },
+      { "citation": "Muslim Heritage, 'Taqi al-Din Ibn Ma'ruf: A Bio-Bibliographical Essay'", "url": "https://muslimheritage.com/taqi-al-din-bio-essay/" }
+    ]
+  },
+  {
+    "id": "ibn-yunus",
+    "name_en": "Abu al-Hasan 'Ali ibn 'Abd al-Rahman ibn Yunus",
+    "name_ar": "أبو الحسن علي بن عبد الرحمن بن يونس المصري",
+    "dates": "c. 950–1009 CE / d. 399 AH",
+    "places_en": "Fustat / Cairo (Fatimid court)",
+    "places_ar": "الفسطاط / القاهرة (البلاط الفاطمي)",
+    "fields": ["astronomy", "mathematics"],
+    "summary_en": "Ibn Yunus worked as an astronomer for the Fatimid caliphs al-'Aziz and al-Hakim for about twenty-six years. His al-Zij al-Hakimi al-kabir is unusual because it opens with a record of observations by himself and his predecessors, including eclipses and planetary conjunctions. Its main tables give the time since sunrise as a function of the Sun's altitude, and some tables relate to the times of the five daily prayers.",
+    "summary_ar": "عمل ابن يونس فلكيًا للخليفتين الفاطميين العزيز والحاكم نحو ستة وعشرين عامًا. ويتميز «الزيج الحاكمي الكبير» بأنه يبدأ بسجل لأرصاده وأرصاد من سبقه، ومنها الكسوفات والخسوفات واقترانات الكواكب. وتعطي جداوله الرئيسة الوقت المنقضي منذ الشروق بدلالة ارتفاع الشمس، وبعضها يتعلق بمواقيت الصلوات الخمس.",
+    "contributions": [
+      { "en": "Compiled al-Zij al-Hakimi al-kabir, dedicated to the caliph al-Hakim.", "ar": "صنّف «الزيج الحاكمي الكبير» وأهداه إلى الخليفة الحاكم." },
+      { "en": "Recorded observations of about 40 planetary conjunctions and 30 lunar eclipses, later used by modern astronomers.", "ar": "سجّل أرصاد نحو 40 اقترانًا للكواكب و30 خسوفًا للقمر، استعملها فلكيون محدثون لاحقًا." },
+      { "en": "Produced tables for finding the time of day from the Sun's altitude, some of them related to the prayer times.", "ar": "وضع جداول لمعرفة الوقت من ارتفاع الشمس، يتعلق بعضها بمواقيت الصلاة." },
+      { "en": "Proposed a criterion for the first visibility of the lunar crescent.", "ar": "اقترح معيارًا لرؤية الهلال أول الشهر." }
+    ],
+    "works": ["al-zij-al-hakimi"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["moon", "time_asr", "sun"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Ibn Yunus' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_Yunus_BEA.htm" },
+      { "citation": "MacTutor, 'Ibn Yunus'", "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Yunus/" },
+      { "citation": "Universiti Malaya, 'Islamic historical review on the middle age lunar crescent visibility criterion'", "url": "https://eprints.um.edu.my/43609" }
+    ]
+  },
+  {
+    "id": "al-khujandi",
+    "name_en": "Abu Mahmud Hamid ibn al-Khidr al-Khujandi",
+    "name_ar": "أبو محمود حامد بن الخضر الخجندي",
+    "dates": "c. 945–1000 CE",
+    "places_en": "Khujand; Rayy (near Tehran), under the Buyid ruler Fakhr al-Dawla",
+    "places_ar": "خجندة؛ الري (قرب طهران) في كنف فخر الدولة البويهي",
+    "fields": ["astronomy", "mathematics", "engineering"],
+    "summary_en": "Al-Khujandi worked at Rayy for the Buyid ruler Fakhr al-Dawla. He built a giant meridian sextant (al-suds al-Fakhri), a 60° arc about 43 m in diameter, and in 994 used it to measure the obliquity of the ecliptic and the latitude of Rayy. A signed astrolabe by him, dated 374 AH (984–85 CE), is in the Museum of Islamic Art in Doha.",
+    "summary_ar": "عمل الخجندي في الري لدى فخر الدولة البويهي. وبنى سدسًا زواليًا ضخمًا («السدس الفخري»)، قوسه ستون درجة وقطره نحو 43 مترًا، واستعمله سنة 994م لقياس ميل دائرة البروج وعرض الري. ومن صنعه أسطرلاب موقّع مؤرخ سنة 374هـ (984–985م) محفوظ في متحف الفن الإسلامي في الدوحة.",
+    "contributions": [
+      { "en": "Built the Fakhri sextant, a monumental meridian instrument graduated to 10 arc-minutes.", "ar": "بنى السدس الفخري، آلة زوالية ضخمة مدرّجة إلى عشر دقائق قوسية." },
+      { "en": "Measured the obliquity of the ecliptic in 994 as 23;32,19°.", "ar": "قاس ميل دائرة البروج سنة 994م فوجده 23 درجة و32 دقيقة و19 ثانية." },
+      { "en": "Made astrolabes, including a signed example of 984–85 now in Doha.", "ar": "صنع الأسطرلابات، ومنها أسطرلاب موقّع من سنة 984–985م محفوظ في الدوحة." }
+    ],
+    "works": [],
+    "instruments": ["mural-sextant", "astrolabe"],
+    "stars": [],
+    "concepts": ["sun", "astrolabe"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khujandi' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khujandi_BEA.htm" },
+      { "citation": "Qatar Museums collection: planispheric astrolabe by Hamid ibn al-Khidr al-Khujandi", "url": "https://collections.qm.org.qa/objects/planispheric-astrolabe-si51999" }
+    ]
+  },
+  {
+    "id": "al-khalili",
+    "name_en": "Shams al-Din al-Khalili",
+    "name_ar": "شمس الدين الخليلي",
+    "dates": "fl. c. 1365 CE / c. 766 AH",
+    "places_en": "Damascus (Umayyad Mosque)",
+    "places_ar": "دمشق (الجامع الأموي)",
+    "fields": ["astronomy", "mathematics"],
+    "summary_en": "Al-Khalili was a muwaqqit at the Umayyad Mosque in Damascus, a colleague in time and place of Ibn al-Shatir. He computed extensive tables for timekeeping by the Sun and for the times of prayer at Damascus, together with auxiliary tables usable at any latitude. He also tabulated the qibla for every degree of latitude and longitude. Some of his tables were used in Damascus until the 19th century.",
+    "summary_ar": "كان الخليلي موقّتًا في الجامع الأموي في دمشق، معاصرًا لابن الشاطر في الزمان والمكان. حسب جداول واسعة لضبط الوقت بالشمس ولأوقات الصلاة في دمشق، مع جداول مساعدة تصلح لكل العروض. وجدول اتجاه القبلة لكل درجة من العرض والطول. وظلّ بعض جداوله مستعملًا في دمشق إلى القرن التاسع عشر.",
+    "contributions": [
+      { "en": "Computed prayer-time tables for the latitude of Damascus.", "ar": "حسب جداول أوقات الصلاة لعرض دمشق." },
+      { "en": "Produced a table giving the qibla for each degree of latitude and longitude.", "ar": "وضع جدولًا يعطي اتجاه القبلة لكل درجة من العرض والطول." },
+      { "en": "Prepared auxiliary tables for solving spherical-astronomy problems at any latitude.", "ar": "أعدّ جداول مساعدة لحل مسائل الفلك الكروي في أي عرض." }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["qibla", "time_asr", "mihrab", "shadow"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khalili' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khalili_BEA.htm" },
+      { "citation": "MacTutor, 'Shams al-Din Abu Abdallah al-Khalili'", "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khalili/" }
+    ]
+  },
+  {
+    "id": "al-kashi",
+    "name_en": "Ghiyath al-Din Jamshid al-Kashi",
+    "name_ar": "غياث الدين جمشيد الكاشي",
+    "dates": "c. 1380–1429 CE / d. 832 AH",
+    "places_en": "Kashan; Samarkand (with Ulugh Beg)",
+    "places_ar": "قاشان؛ سمرقند (مع ألغ بيك)",
+    "fields": ["mathematics", "astronomy"],
+    "summary_en": "Al-Kashi was a leading mathematician at Ulugh Beg's scientific circle in Samarkand. In 1424 he computed 2π to the equivalent of 16 decimal places. His Key of Arithmetic (Miftah al-hisab, 1427) includes a chapter on measuring buildings, with methods for arches, vaults, domes and the muqarnas, useful for estimating materials and costs.",
+    "summary_ar": "كان الكاشي من كبار الرياضيين في حلقة ألغ بيك العلمية بسمرقند. وفي سنة 1424م حسب قيمة ضعف النسبة التقريبية بدقة تعادل ست عشرة منزلة عشرية. ويضم كتابه «مفتاح الحساب» (1427م) بابًا في مساحة الأبنية، فيه طرق لحساب الطاقات والأقبية والقباب والمقرنصات، تفيد في تقدير المواد والتكاليف.",
+    "contributions": [
+      { "en": "Computed 2π to nine sexagesimal places (about 16 decimal places) in al-Risala al-muhitiyya (1424).", "ar": "حسب ضعف النسبة التقريبية إلى تسع منازل ستينية (نحو 16 منزلة عشرية) في «الرسالة المحيطية» (1424م)." },
+      { "en": "In Miftah al-hisab (1427) gave methods to measure the surfaces of arches, vaults, domes and muqarnas.", "ar": "قدّم في «مفتاح الحساب» (1427م) طرقًا لحساب سطوح الطاقات والأقبية والقباب والمقرنصات." }
+    ],
+    "works": ["miftah-al-hisab"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["muqarnas", "mosque_dome", "geometric_pattern"],
+    "sources": [
+      { "citation": "MacTutor, 'Ghiyath al-Din Jamshid Mas'ud al-Kashi'", "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Kashi/" },
+      { "citation": "Encyclopaedia Britannica, 'al-Kashi'", "url": "https://www.britannica.com/biography/al-Kashi" },
+      { "citation": "Y. Dold-Samplonius, 'Calculating Surface Areas and Volumes in Islamic Architecture', Nexus Network Journal conference paper (2000)", "url": "https://emis.univie.ac.at/journals/NNJ/conferences/N2000-DoldSamplonius.html" }
+    ]
+  },
+  {
+    "id": "ibn-bassal",
+    "name_en": "Ibn Bassal",
+    "name_ar": "ابن بصال",
+    "dates": "fl. 11th century CE / 5th century AH",
+    "places_en": "Toledo; Seville",
+    "places_ar": "طليطلة؛ إشبيلية",
+    "fields": ["botany"],
+    "summary_en": "Ibn Bassal was an Andalusi agronomist who directed the garden of al-Ma'mun, the Dhu al-Nunid ruler of Toledo, and, after Toledo fell in 1085, worked in Seville for al-Mu'tamid. His Kitab al-qasd wa'l-bayan is a practical manual that distinguishes classes of soil and explains how to grow over 180 plants. Its section on trees covers the propagation of the date palm, olive, pomegranate, fig and grape, among many others.",
+    "summary_ar": "ابن بصال مهندس زراعي أندلسي، أدار بستان المأمون بن ذي النون صاحب طليطلة، ثم عمل في إشبيلية للمعتمد بعد سقوط طليطلة سنة 1085م. وكتابه «كتاب القصد والبيان» دليل عملي يميّز أصناف التربة ويشرح زراعة أكثر من 180 نباتًا. ويتناول باب الأشجار فيه إكثار النخل والزيتون والرمان والتين والعنب وغيرها كثير.",
+    "contributions": [
+      { "en": "Classified soils into ten kinds by their quality across the seasons.", "ar": "صنّف التربة عشرة أصناف بحسب جودتها في الفصول." },
+      { "en": "Described the cultivation of over 180 plants, including onion and garlic, and the propagation of fruit trees.", "ar": "وصف زراعة أكثر من 180 نباتًا، منها البصل والثوم، وطرق إكثار الأشجار المثمرة." }
+    ],
+    "works": ["kitab-al-qasd-wal-bayan"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["soil", "date_palm", "olive", "pomegranate", "fig", "grapes", "onion_garlic"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn Bassal'", "url": "https://filaha.org/author_Ibn_bassal.html" },
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "id": "ibn-al-awwam",
+    "name_en": "Abu Zakariyya Yahya ibn al-'Awwam al-Ishbili",
+    "name_ar": "أبو زكريا يحيى بن العوام الإشبيلي",
+    "dates": "fl. late 12th century CE / 6th century AH",
+    "places_en": "Seville (the Aljarafe district)",
+    "places_ar": "إشبيلية (الشرف)",
+    "fields": ["botany"],
+    "summary_en": "Ibn al-'Awwam wrote his Kitab al-filaha (Book of Agriculture) in Seville, probably towards the end of the 12th century. It draws on earlier authors and on his own experiments, such as grafting wild mountain olives with cultivated olives in the Aljarafe near Seville. Its last section covers animal husbandry, including camels, horses and beekeeping, and veterinary care.",
+    "summary_ar": "ألّف ابن العوام «كتاب الفلاحة» في إشبيلية، على الأرجح في أواخر القرن الثاني عشر الميلادي. واعتمد فيه على من سبقه وعلى تجاربه الخاصة، كتطعيم الزيتون البري الجبلي بالزيتون المزروع في الشرف قرب إشبيلية. ويتناول قسمه الأخير تربية الحيوان، ومنها الإبل والخيل وتربية النحل، والعناية البيطرية.",
+    "contributions": [
+      { "en": "Wrote Kitab al-filaha in 34 or 35 chapters (counts differ between sources), among the most comprehensive agricultural treatises in Arabic.", "ar": "ألّف «كتاب الفلاحة» في 34 أو 35 بابًا (تختلف المصادر في العدد)، وهو من أوسع كتب الزراعة بالعربية." },
+      { "en": "Recorded his own grafting and cultivation experiments near Seville, including olives and saffron.", "ar": "سجّل تجاربه في التطعيم والزراعة قرب إشبيلية، ومنها الزيتون والزعفران." },
+      { "en": "Included chapters on cattle, sheep, goats, camels, horses, poultry and bees, with veterinary matters.", "ar": "ضمّنه أبوابًا في البقر والغنم والمعز والإبل والخيل والطيور والنحل، مع مسائل بيطرية." }
+    ],
+    "works": ["kitab-al-filaha"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["olive", "date_palm", "grain", "honey_bee", "camel", "horse", "livestock", "soil"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" },
+      { "citation": "Qatar Digital Library, manuscript of Kitab al-filahah by Ibn al-'Awwam (British Library copy)", "url": "https://www.qdl.qa/en/archive/81055/vdc_100000000042.0x0003d4" }
+    ]
+  },
+  {
+    "id": "al-dinawari",
+    "name_en": "Abu Hanifa Ahmad ibn Dawud al-Dinawari",
+    "name_ar": "أبو حنيفة أحمد بن داود الدينوري",
+    "dates": "d. c. 895 CE / c. 282 AH",
+    "places_en": "Dinawar (western Iran)",
+    "places_ar": "الدينور (غرب إيران)",
+    "fields": ["botany"],
+    "summary_en": "Al-Dinawari was a polymath best known for his work on plants. His Kitab al-Nabat (Book of Plants) was a six-volume work, of which only parts survive; it gathered Arabic knowledge of plants, their growth, flowering and fruiting. The surviving parts and later quotations cover cereals, vines, date palms, aromatic and dye plants, and honey and bees.",
+    "summary_ar": "الدينوري عالم متعدد المعارف، اشتهر بكتابه في النبات. كان «كتاب النبات» في ستة أجزاء لم يبق منها إلا بعضها، وجمع فيه معارف العرب بالنبات ونموه وإزهاره وإثماره. وتتناول الأجزاء الباقية والنقول اللاحقة الحبوب والكروم والنخل والنباتات العطرية ونباتات الصباغة، والعسل والنحل.",
+    "contributions": [
+      { "en": "Compiled Kitab al-Nabat, a major early Arabic work on plants; volumes 3 and 5 survive.", "ar": "جمع «كتاب النبات»، من أهم المؤلفات العربية المبكرة في النبات؛ وقد بقي الجزآن الثالث والخامس." },
+      { "en": "Described plant life from germination to flowering and fruiting.", "ar": "وصف حياة النبات من الإنبات إلى الإزهار والإثمار." }
+    ],
+    "works": ["kitab-al-nabat"],
+    "instruments": [],
+    "stars": [],
+    "concepts": ["date_palm", "grain", "grapes", "honey_bee", "tree_leaf"],
+    "sources": [
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" },
+      { "citation": "Muslim Heritage, 'Al-Dinawari'", "url": "https://muslimheritage.com/al-dinawari/" }
+    ]
+  },
+  {
+    "id": "ibrahim-ibn-said-al-sahli",
+    "name_en": "Ibrahim ibn Sa'id al-Sahli al-Wazzan",
+    "name_ar": "إبراهيم بن سعيد السهلي الوزان",
+    "dates": "fl. c. 1050–1090 CE / 5th century AH",
+    "places_en": "Toledo; Valencia",
+    "places_ar": "طليطلة؛ بلنسية",
+    "fields": ["astronomy", "engineering"],
+    "summary_en": "Ibrahim ibn Sa'id al-Sahli was an instrument maker of al-Andalus. An astrolabe he signed in Toledo in 1068 is in the History of Science Museum, Oxford, and a celestial globe he made in Valencia with his son Muhammad in 1085 is in the Museo Galileo, Florence. The Florence globe is described by the museum as the oldest Arabic celestial globe known.",
+    "summary_ar": "إبراهيم بن سعيد السهلي صانع آلات أندلسي. وأسطرلاب وقّعه في طليطلة سنة 1068م محفوظ في متحف تاريخ العلوم بأكسفورد، وكرة سماوية صنعها مع ابنه محمد في بلنسية سنة 1085م محفوظة في متحف غاليليو بفلورنسا، ويصفها المتحف بأنها أقدم كرة سماوية عربية معروفة.",
+    "contributions": [
+      { "en": "Made the 1068 Toledo astrolabe whose calendar gives Christian month names in Arabic and Latin.", "ar": "صنع أسطرلاب طليطلة (1068م) الذي يذكر تقويمه أسماء الشهور النصرانية بالعربية واللاتينية." },
+      { "en": "With his son, made the 1085 Valencia celestial globe showing 47 of the 48 classical constellations.", "ar": "صنع مع ابنه كرة بلنسية السماوية (1085م) التي تُظهر 47 من الكوكبات الكلاسيكية الثماني والأربعين." }
+    ],
+    "works": [],
+    "instruments": ["astrolabe", "celestial-globe"],
+    "stars": [],
+    "concepts": ["stars", "astrolabe"],
+    "sources": [
+      { "citation": "Museo Galileo, biography 'Ibrahim Ibn Said as-Sahli'", "url": "https://catalogue.museogalileo.it/biography/IbrahimIbnSaidAsSahli.html" },
+      { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West': inv. 55331", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/55331.html" }
+    ]
+  }
+]

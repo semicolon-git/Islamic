@@ -1,0 +1,438 @@
+[
+  {
+    "concept": "stars",
+    "note_en": "Many star names used by astronomers today, such as Vega, Aldebaran and Algol, are Arabic and reached modern astronomy through the tradition of al-Sufi's Book of the Fixed Stars (c. 964). On an astrolabe, the pointers of the rotating star map each mark a named bright star.",
+    "note_ar": "كثير من أسماء النجوم التي يستعملها الفلكيون اليوم، مثل النسر الواقع (Vega) والدبران والغول، عربية الأصل، ووصلت إلى الفلك الحديث عبر تقليد «كتاب صور الكواكب الثابتة» للصوفي (نحو 964م). وفي الأسطرلاب تشير كل ذؤابة من ذؤابات العنكبوت إلى نجم لامع مسمّى.",
+    "scientists": ["al-sufi", "ulugh-beg"],
+    "instruments": ["astrolabe", "celestial-globe"],
+    "works": ["book-of-fixed-stars", "zij-i-sultani"],
+    "sources": [
+      { "citation": "Science Museum blog, 'Updating stars and observing the Andromeda Galaxy'", "url": "https://blog.sciencemuseum.org.uk/updating-stars-and-observing-the-andromeda-galaxy" },
+      { "citation": "History of Science Museum, Oxford, Al-Mizan exhibition, 'Al-ankabut as art'", "url": "https://www.mhs.ox.ac.uk/almizan/Al-ankabutAsArt.html" }
+    ]
+  },
+  {
+    "concept": "moon",
+    "note_en": "Because the Islamic months begin with the new crescent, astronomers studied when it first becomes visible: Ibn Yunus in Cairo proposed a visibility criterion, and al-Battani and Ibn Yunus tabulated the Moon's motion. In Damascus, Ibn al-Shatir built a new geometric model of the Moon's motion.",
+    "note_ar": "لأن الشهور الهجرية تبدأ برؤية الهلال، درس الفلكيون متى يمكن أن يُرى أول مرة: فاقترح ابن يونس في القاهرة معيارًا لرؤيته، وجدول البتاني وابن يونس حركة القمر. وفي دمشق بنى ابن الشاطر نموذجًا هندسيًا جديدًا لحركة القمر.",
+    "scientists": ["ibn-yunus", "al-battani", "ibn-al-shatir"],
+    "instruments": [],
+    "works": ["al-zij-al-hakimi", "zij-al-sabi"],
+    "sources": [
+      { "citation": "Universiti Malaya, 'Islamic historical review on the middle age lunar crescent visibility criterion'", "url": "https://eprints.um.edu.my/43609" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Ibn al-Shatir' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_al-Shatir_BEA.htm" }
+    ]
+  },
+  {
+    "concept": "sun",
+    "note_en": "Following the Sun's yearly path precisely was central to calendars and prayer times. Al-Battani refined the solar parameters from forty years of observation at Raqqa, and al-Khujandi built a giant meridian arc at Rayy to measure the Sun's noon altitude.",
+    "note_ar": "كان تتبّع مسار الشمس السنوي بدقة أساسًا للتقاويم وأوقات الصلاة. فقد دقّق البتاني معاملات الشمس من أربعين سنة من الرصد في الرقة، وبنى الخجندي قوسًا زواليًا ضخمًا في الري لقياس ارتفاع الشمس عند الزوال.",
+    "scientists": ["al-battani", "al-khujandi"],
+    "instruments": ["mural-sextant", "sundial"],
+    "works": ["zij-al-sabi"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Battani' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Battani_BEA.htm" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khujandi' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khujandi_BEA.htm" }
+    ]
+  },
+  {
+    "concept": "shadow",
+    "note_en": "The length of a shadow tells the time. Muslim sundial makers engraved curves for the moments when a shadow reaches set lengths, such as the start of 'asr, and Ibn al-Shatir's sundial in Damascus is a well-known example.",
+    "note_ar": "يدل طول الظل على الوقت. فقد نقش صانعو المزاول المسلمون منحنيات للحظات التي يبلغ فيها الظل أطوالًا معيّنة، كبداية وقت العصر، ومزولة ابن الشاطر في دمشق مثال مشهور على ذلك.",
+    "scientists": ["ibn-al-shatir", "al-khalili"],
+    "instruments": ["sundial", "quadrant"],
+    "works": [],
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'Sundial'", "url": "https://britannica.com/technology/sundial" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Ibn al-Shatir' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_al-Shatir_BEA.htm" }
+    ]
+  },
+  {
+    "concept": "time_asr",
+    "note_en": "The time of 'asr is defined by the length of a shadow, so mosque timekeepers (muwaqqits) used astronomy to fix it. In 14th-century Damascus, al-Khalili computed prayer-time tables and Ibn al-Shatir built a sundial with 'asr lines for the Umayyad Mosque.",
+    "note_ar": "يُحدَّد وقت العصر بطول الظل، فاستعمل موقّتو المساجد علم الفلك لضبطه. وفي دمشق في القرن الرابع عشر الميلادي حسب الخليلي جداول أوقات الصلاة، وصنع ابن الشاطر للجامع الأموي مزولة فيها خطوط العصر.",
+    "scientists": ["al-khalili", "ibn-al-shatir", "ibn-yunus"],
+    "instruments": ["sundial", "quadrant"],
+    "works": [],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khalili' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khalili_BEA.htm" },
+      { "citation": "Muslim Heritage, 'Astronomy in Medieval Jerusalem' (muwaqqit tables for 'asr)", "url": "https://muslimheritage.com/astronomy-jerusalem/" }
+    ]
+  },
+  {
+    "concept": "qibla",
+    "note_en": "Finding the direction of Mecca from a distant city is a problem of spherical trigonometry. Al-Biruni solved it for Ghazna in his Tahdid (1025), al-Khalili tabulated the qibla for every degree of latitude and longitude, and portable qibla indicators put the result in a traveller's hand.",
+    "note_ar": "معرفة اتجاه مكة من مدينة بعيدة مسألة في المثلثات الكروية. حلّها البيروني لغزنة في كتابه «التحديد» (1025م)، وجدول الخليلي القبلة لكل درجة من العرض والطول، ثم وضعت مؤشرات القبلة المحمولة النتيجة في يد المسافر.",
+    "scientists": ["al-biruni", "al-khalili"],
+    "instruments": ["qibla-indicator", "astrolabe", "quadrant"],
+    "works": ["tahdid-nihayat-al-amakin", "al-qanun-al-masudi"],
+    "sources": [
+      { "citation": "AUB Press, al-Biruni, The Determination of the Coordinates of Positions (tr. 1967)", "url": "https://press.aub.edu.lb/the-determination-of-the-coordinates-of-positions-for-the-correction-of-distances-between-cities" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khalili' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khalili_BEA.htm" }
+    ]
+  },
+  {
+    "concept": "mihrab",
+    "note_en": "A mihrab marks the qibla wall, and setting it correctly required knowing the direction of Mecca. Scholars such as al-Biruni and al-Khalili computed that direction mathematically from the coordinates of cities.",
+    "note_ar": "يدل المحراب على جدار القبلة، وكان وضعه الصحيح يتطلب معرفة اتجاه مكة. وقد حسب علماء مثل البيروني والخليلي هذا الاتجاه رياضيًا من إحداثيات المدن.",
+    "scientists": ["al-biruni", "al-khalili"],
+    "instruments": ["qibla-indicator"],
+    "works": ["tahdid-nihayat-al-amakin"],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khalili' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khalili_BEA.htm" },
+      { "citation": "Royal Museums Greenwich, qibla indicator (orienting prayer, burial and buildings)", "url": "https://www.rmg.co.uk/collections/objects/rmgc-object-10605" }
+    ]
+  },
+  {
+    "concept": "night_day",
+    "note_en": "Telling the hour by day and by night was a daily need. The astrolabe gives the time from the Sun by day and from the stars by night, and water clocks such as those described by al-Jazari kept time without either.",
+    "note_ar": "كانت معرفة الساعة ليلًا ونهارًا حاجة يومية. فالأسطرلاب يعطي الوقت بالشمس نهارًا وبالنجوم ليلًا، والساعات المائية كالتي وصفها الجزري كانت تقيس الوقت دونهما.",
+    "scientists": ["al-jazari"],
+    "instruments": ["astrolabe", "water-clock"],
+    "works": ["book-of-ingenious-mechanical-devices"],
+    "sources": [
+      { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West'", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/" },
+      { "citation": "Wikipedia, 'Elephant clock' (secondary)", "url": "https://en.wikipedia.org/wiki/Elephant_clock" }
+    ]
+  },
+  {
+    "concept": "lamp",
+    "note_en": "Why can we see a lit lamp across a room? In his Book of Optics, Ibn al-Haytham argued from experiments that vision happens when light from objects enters the eye, not when the eye sends out rays.",
+    "note_ar": "لماذا نرى المصباح المضيء من طرف الغرفة؟ احتجّ ابن الهيثم في «كتاب المناظر» بالتجربة على أن الإبصار يحدث بدخول الضوء من الأجسام إلى العين، لا بخروج أشعة من العين.",
+    "scientists": ["ibn-al-haytham"],
+    "instruments": [],
+    "works": ["kitab-al-manazir"],
+    "sources": [
+      { "citation": "Wikipedia, 'Book of Optics' (secondary)", "url": "https://en.wikipedia.org/wiki/Book_of_Optics" },
+      { "citation": "Bibliotheca Hertziana, Perspectiva digital library: Risner 1572 edition", "url": "https://dlib.biblhertz.it/perspectiva/doc01.html" }
+    ]
+  },
+  {
+    "concept": "mountain",
+    "note_en": "Al-Biruni used a mountain to measure the Earth: he found the height of a hill near Nandana in the Punjab, then measured from its top how far the horizon dips below the horizontal, and computed the Earth's radius from these two values.",
+    "note_ar": "استعمل البيروني جبلًا لقياس الأرض: فحدّد ارتفاع جبل قرب قلعة نندنة في البنجاب، ثم قاس من قمته مقدار انخفاض الأفق، وحسب من هاتين القيمتين نصف قطر الأرض.",
+    "scientists": ["al-biruni"],
+    "instruments": [],
+    "works": [],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Biruni' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Biruni_BEA.pdf" },
+      { "citation": "Observatoire de Paris, Etymological Dictionary of Astronomy and Astrophysics, 'Biruni's method'", "url": "https://dictionary.obspm.fr/terms/birunis-method/" }
+    ]
+  },
+  {
+    "concept": "sea",
+    "note_en": "Arab pilots of the Indian Ocean crossed open sea by the stars. Ibn Majid's Kitab al-Fawa'id (1490) gathered their knowledge of routes, ports, star positions and seasons, and al-Idrisi's world maps of 1154 described the seas and coasts known in his time.",
+    "note_ar": "عبر الربابنة العرب المحيط الهندي في عرض البحر مهتدين بالنجوم. وجمع ابن ماجد في «كتاب الفوائد» (1490م) معارفهم بالطرق والموانئ ومواقع النجوم والمواسم، ووصفت خرائط الإدريسي (1154م) البحار والسواحل المعروفة في زمنه.",
+    "scientists": ["ibn-majid", "al-idrisi"],
+    "instruments": ["kamal"],
+    "works": ["kitab-al-fawaid", "tabula-rogeriana"],
+    "sources": [
+      { "citation": "AramcoWorld, 'The Navigator Ahmad ibn Majid' (2005)", "url": "https://archive.aramcoworld.com/issue/200504/the.navigator.ahmad.ibn.majid.htm" },
+      { "citation": "Encyclopaedia Britannica, 'al-Idrisi'", "url": "https://www.britannica.com/print/article/282089" }
+    ]
+  },
+  {
+    "concept": "ships",
+    "note_en": "Indian Ocean navigators measured the height of the Pole Star with a simple wooden board on a knotted string, the kamal, to know how far north they were. Ibn Majid recorded such star altitudes in finger-widths (isba').",
+    "note_ar": "قاس ملاحو المحيط الهندي ارتفاع نجم القطب بلوح خشبي بسيط على خيط معقود يسمى «الكمال» ليعرفوا موقعهم شمالًا وجنوبًا. ودوّن ابن ماجد ارتفاعات النجوم هذه بالأصابع.",
+    "scientists": ["ibn-majid"],
+    "instruments": ["kamal"],
+    "works": ["kitab-al-fawaid"],
+    "sources": [
+      { "citation": "UNESCO Silk Roads Programme, 'L'astronomie nautique le long de la route maritime de la soie'", "url": "https://en.unesco.org/silkroad/knowledge-bank/lastronomie-nautique-le-long-de-la-route-maritime-de-la-soie" },
+      { "citation": "Wikipedia, 'Kamal (navigation)' (secondary)", "url": "https://en.wikipedia.org/wiki/Kamal_(navigation)" }
+    ]
+  },
+  {
+    "concept": "wind",
+    "note_en": "Sailing in the Indian Ocean depended on the seasonal monsoon winds. Ibn Majid's Kitab al-Fawa'id includes accounts of the monsoon and other seasonal winds, which pilots used to time their voyages.",
+    "note_ar": "كان الإبحار في المحيط الهندي مرتبطًا برياح الموسم. ويتضمن «كتاب الفوائد» لابن ماجد أخبار رياح الموسم وغيرها من الرياح الموسمية التي كان الربابنة يوقّتون بها أسفارهم.",
+    "scientists": ["ibn-majid"],
+    "instruments": [],
+    "works": ["kitab-al-fawaid"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ahmad ibn Majid' (secondary)", "url": "https://en.wikipedia.org/wiki/Ahmad_ibn_Majid" }
+    ]
+  },
+  {
+    "concept": "date_palm",
+    "note_en": "The date palm appears in Arabic agricultural and botanical writing: al-Dinawari's Book of Plants (9th century) covers date palms, and the Andalusi agronomist Ibn Bassal (11th century) explains how to propagate them.",
+    "note_ar": "تحضر النخلة في كتب الزراعة والنبات العربية: فـ«كتاب النبات» للدينوري (القرن التاسع الميلادي) يتناول النخل، ويشرح المهندس الزراعي الأندلسي ابن بصال (القرن الحادي عشر) طرق إكثاره.",
+    "scientists": ["al-dinawari", "ibn-bassal", "ibn-al-awwam"],
+    "instruments": [],
+    "works": ["kitab-al-nabat", "kitab-al-qasd-wal-bayan", "kitab-al-filaha"],
+    "sources": [
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" },
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "concept": "olive",
+    "note_en": "Andalusi agronomists wrote from practice: Ibn al-'Awwam records his own experiments grafting wild mountain olives with cultivated olives near Seville, and Ibn Bassal explains olive propagation.",
+    "note_ar": "كتب المهندسون الزراعيون الأندلسيون عن تجربة: فابن العوام يسجّل تجاربه في تطعيم الزيتون البري الجبلي بالزيتون المزروع قرب إشبيلية، وابن بصال يشرح إكثار الزيتون.",
+    "scientists": ["ibn-al-awwam", "ibn-bassal"],
+    "instruments": [],
+    "works": ["kitab-al-filaha", "kitab-al-qasd-wal-bayan"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" },
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "concept": "grain",
+    "note_en": "Cereals and field crops are treated in Arabic plant and farming books, from al-Dinawari's Book of Plants to Ibn Bassal's manual, which describes the cultivation of crops such as chickpeas, beans and rice.",
+    "note_ar": "تتناول كتب النبات والفلاحة العربية الحبوب والمحاصيل، من «كتاب النبات» للدينوري إلى كتاب ابن بصال الذي يصف زراعة محاصيل كالحمص والفول والأرز.",
+    "scientists": ["al-dinawari", "ibn-bassal"],
+    "instruments": [],
+    "works": ["kitab-al-nabat", "kitab-al-qasd-wal-bayan"],
+    "sources": [
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" },
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "concept": "grapes",
+    "note_en": "Vines are covered in al-Dinawari's Book of Plants, and Ibn Bassal's manual explains the propagation of the grape among other fruit trees.",
+    "note_ar": "يتناول «كتاب النبات» للدينوري الكروم، ويشرح كتاب ابن بصال إكثار العنب مع غيره من الأشجار المثمرة.",
+    "scientists": ["al-dinawari", "ibn-bassal"],
+    "instruments": [],
+    "works": ["kitab-al-nabat", "kitab-al-qasd-wal-bayan"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" },
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" }
+    ]
+  },
+  {
+    "concept": "pomegranate",
+    "note_en": "The pomegranate is among the fruit trees whose propagation Ibn Bassal describes in his 11th-century manual written from his work in the royal gardens of Toledo and Seville.",
+    "note_ar": "الرمان من الأشجار المثمرة التي يصف ابن بصال طرق إكثارها في كتابه من القرن الحادي عشر الميلادي، الذي كتبه من خبرته في بساتين طليطلة وإشبيلية.",
+    "scientists": ["ibn-bassal"],
+    "instruments": [],
+    "works": ["kitab-al-qasd-wal-bayan"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" },
+      { "citation": "Filaha Texts Project, author page 'Ibn Bassal'", "url": "https://filaha.org/author_Ibn_bassal.html" }
+    ]
+  },
+  {
+    "concept": "fig",
+    "note_en": "The fig is among the fruit trees whose propagation Ibn Bassal explains in his practical farming manual.",
+    "note_ar": "التين من الأشجار المثمرة التي يشرح ابن بصال طرق إكثارها في كتابه العملي في الفلاحة.",
+    "scientists": ["ibn-bassal"],
+    "instruments": [],
+    "works": ["kitab-al-qasd-wal-bayan"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "concept": "onion_garlic",
+    "note_en": "Onion and garlic are among the root vegetables whose cultivation Ibn Bassal describes, alongside carrots, radishes and leeks.",
+    "note_ar": "البصل والثوم من الخضر الجذرية التي يصف ابن بصال زراعتها، مع الجزر والفجل والكرّاث.",
+    "scientists": ["ibn-bassal"],
+    "instruments": [],
+    "works": ["kitab-al-qasd-wal-bayan"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "concept": "soil",
+    "note_en": "Ibn Bassal distinguished ten classes of soil by their quality in different seasons, and the first chapters of Ibn al-'Awwam's Book of Agriculture deal with soils, manures and water.",
+    "note_ar": "ميّز ابن بصال عشرة أصناف من التربة بحسب جودتها في الفصول المختلفة، وتتناول الأبواب الأولى من «كتاب الفلاحة» لابن العوام التربة والأسمدة والمياه.",
+    "scientists": ["ibn-bassal", "ibn-al-awwam"],
+    "instruments": [],
+    "works": ["kitab-al-qasd-wal-bayan", "kitab-al-filaha"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" },
+      { "citation": "Qatar Digital Library, Kitab al-filahah by Ibn al-'Awwam (catalogue description of chapters)", "url": "https://www.qdl.qa/en/archive/81055/vdc_100000000042.0x0003d4" }
+    ]
+  },
+  {
+    "concept": "honey_bee",
+    "note_en": "Beekeeping was part of farming knowledge: Ibn al-'Awwam's Book of Agriculture has a chapter on bees, and al-Dinawari's Book of Plants discusses honey and bees.",
+    "note_ar": "كانت تربية النحل جزءًا من معارف الفلاحة: ففي «كتاب الفلاحة» لابن العوام باب في النحل، ويتناول «كتاب النبات» للدينوري العسل والنحل.",
+    "scientists": ["ibn-al-awwam", "al-dinawari"],
+    "instruments": [],
+    "works": ["kitab-al-filaha", "kitab-al-nabat"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" },
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" }
+    ]
+  },
+  {
+    "concept": "camel",
+    "note_en": "Ibn al-'Awwam's Book of Agriculture includes chapters on rearing camels, along with other livestock, and ends with a section on veterinary care.",
+    "note_ar": "يضم «كتاب الفلاحة» لابن العوام أبوابًا في تربية الإبل مع غيرها من الماشية، ويختم بقسم في العناية البيطرية.",
+    "scientists": ["ibn-al-awwam"],
+    "instruments": [],
+    "works": ["kitab-al-filaha"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" }
+    ]
+  },
+  {
+    "concept": "horse",
+    "note_en": "Horses, mules and donkeys have their own chapters in the animal-husbandry section of Ibn al-'Awwam's Book of Agriculture, which also covers their veterinary care.",
+    "note_ar": "للخيل والبغال والحمير أبواب خاصة في قسم تربية الحيوان من «كتاب الفلاحة» لابن العوام، الذي يتناول أيضًا علاجها البيطري.",
+    "scientists": ["ibn-al-awwam"],
+    "instruments": [],
+    "works": ["kitab-al-filaha"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" }
+    ]
+  },
+  {
+    "concept": "livestock",
+    "note_en": "Cattle, sheep and goats are treated in the animal-husbandry chapters of Ibn al-'Awwam's 12th-century Book of Agriculture from Seville.",
+    "note_ar": "يتناول «كتاب الفلاحة» لابن العوام الإشبيلي (القرن الثاني عشر الميلادي) البقر والغنم والمعز في أبواب تربية الحيوان.",
+    "scientists": ["ibn-al-awwam"],
+    "instruments": [],
+    "works": ["kitab-al-filaha"],
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" }
+    ]
+  },
+  {
+    "concept": "river",
+    "note_en": "Lifting river water to fields and towns was an engineering problem. In 1206 al-Jazari described five machines for raising water, including a crank-driven chain pump (saqiya) and a double-acting piston pump.",
+    "note_ar": "كان رفع ماء النهر إلى الحقول والمدن مسألة هندسية. وقد وصف الجزري سنة 1206م خمس آلات لرفع الماء، منها ساقية ذات سلسلة تُدار بذراع مرفقي، ومضخة ذات مكبسين متقابلين.",
+    "scientists": ["al-jazari"],
+    "instruments": [],
+    "works": ["book-of-ingenious-mechanical-devices"],
+    "sources": [
+      { "citation": "Wikipedia, 'Ismail al-Jazari' (secondary)", "url": "https://en.wikipedia.org/wiki/Ismail_al-Jazari" },
+      { "citation": "Bibliotheca Alexandrina Planetarium Science Center, 'Back to History: water pump' (PDF)", "url": "https://bibalex.org/psc/en/Attachment/Attachment/HSM%20-%20Back%20to%20History%20_water%20pump_-ENG(2).pdf" }
+    ]
+  },
+  {
+    "concept": "water_life",
+    "note_en": "Engineers in Muslim societies built machines to move and measure water: al-Jazari's book describes water-raising machines for irrigation as well as water clocks.",
+    "note_ar": "بنى المهندسون في المجتمعات الإسلامية آلات لنقل الماء وقياس الوقت به: فكتاب الجزري يصف آلات لرفع الماء للري، وساعات مائية.",
+    "scientists": ["al-jazari"],
+    "instruments": ["water-clock"],
+    "works": ["book-of-ingenious-mechanical-devices"],
+    "sources": [
+      { "citation": "Science Museum Group Collection, people record: al-Jazari", "url": "https://collection.sciencemuseumgroup.org.uk/people/cp52302/ismail-ibn-al-razzaz-al-jazari" },
+      { "citation": "Wikipedia, 'Ismail al-Jazari' (secondary)", "url": "https://en.wikipedia.org/wiki/Ismail_al-Jazari" }
+    ]
+  },
+  {
+    "concept": "pen_and_ink",
+    "note_en": "Paper spread through the Islamic world from the 8th century: it was made in Samarkand and, from the late 8th century, in Baghdad, where a market of paper sellers and booksellers grew. Cheaper paper made it easier to copy the scientific books listed here.",
+    "note_ar": "انتشر الورق في العالم الإسلامي منذ القرن الثامن الميلادي: فقد صُنع في سمرقند، ومنذ أواخر القرن الثامن في بغداد، حيث نشأ سوق للورّاقين وباعة الكتب. وسهّل الورق الأرخص نسخ الكتب العلمية المذكورة هنا.",
+    "scientists": [],
+    "instruments": [],
+    "works": [],
+    "sources": [
+      { "citation": "World History Encyclopedia, review of J. Bloom, Paper Before Print: The History and Impact of Paper in the Islamic World (Yale, 2001)", "url": "https://www.worldhistory.org/review/492/" },
+      { "citation": "UNESCO Silk Roads Programme, 'The Importance of Paper Making Technology in Cultural Exchange along the Silk Roads'", "url": "https://fr.unesco.org/silkroad/node/11083" }
+    ]
+  },
+  {
+    "concept": "manuscript_page",
+    "note_en": "Scientific knowledge travelled in manuscripts. The Bodleian Library's copy of al-Sufi's Book of the Fixed Stars (MS Marsh 144) carries the date 1009–10 and is among the oldest illustrated Arabic manuscripts, though some scholars think it was copied over 150 years later.",
+    "note_ar": "انتقلت المعارف العلمية في المخطوطات. ونسخة مكتبة بودليان من «كتاب صور الكواكب الثابتة» للصوفي (Marsh 144) تحمل تاريخ 1009–1010م، وهي من أقدم المخطوطات العربية المصوّرة، وإن رأى بعض الباحثين أنها نُسخت بعد ذلك بأكثر من 150 سنة.",
+    "scientists": ["al-sufi"],
+    "instruments": [],
+    "works": ["book-of-fixed-stars"],
+    "sources": [
+      { "citation": "Bodleian Libraries blog, 'Newly Digitized Arabic Astronomy Manuscript Now Online'", "url": "https://blogs.bodleian.ox.ac.uk/archivesandmanuscripts/2016/03/18/newly-digitized-arabic-astronomy-manuscript-now-online/" },
+      { "citation": "Bodleian Libraries blog, tag 'Mosul' (dating of MS Marsh 144)", "url": "https://blogs.bodleian.ox.ac.uk/archivesandmanuscripts/tag/mosul/" }
+    ]
+  },
+  {
+    "concept": "geometric_pattern",
+    "note_en": "Geometric ornament has a documented link to mathematics: a 10th-century manual attributed to Abu al-Wafa' al-Buzjani gives ruler-and-compass constructions for craftsmen and reports meetings where geometers and artisans discussed how to build patterns.",
+    "note_ar": "للزخرفة الهندسية صلة موثّقة بالرياضيات: فدليل من القرن العاشر الميلادي منسوب إلى أبي الوفاء البوزجاني يقدّم للصنّاع إنشاءات بالمسطرة والفرجار، ويذكر مجالس تناقش فيها المهندسون والصنّاع طرق بناء الأشكال.",
+    "scientists": ["abu-al-wafa-al-buzjani"],
+    "instruments": [],
+    "works": ["geometric-constructions-for-artisans"],
+    "sources": [
+      { "citation": "R. Sarhangi et al., 'The Heart is a Dust Board' (arXiv:1910.14432)", "url": "https://arxiv.org/pdf/1910.14432" },
+      { "citation": "Pattern in Islamic Art, 'Postscript A: Academic Mathematical Involvement in Islamic Geometric Ornament'", "url": "https://patterninislamicart.com/postscript-a-academic-mathematical-involvement-in-islamic-geometric-ornament" }
+    ]
+  },
+  {
+    "concept": "muqarnas",
+    "note_en": "In his Key of Arithmetic (1427), al-Kashi gave a method for measuring the surface of a muqarnas vault, so that builders could estimate materials and costs.",
+    "note_ar": "قدّم الكاشي في «مفتاح الحساب» (1427م) طريقة لحساب سطح القبو المقرنص، ليتمكن البنّاؤون من تقدير المواد والتكاليف.",
+    "scientists": ["al-kashi"],
+    "instruments": [],
+    "works": ["miftah-al-hisab"],
+    "sources": [
+      { "citation": "Y. Dold-Samplonius, 'Calculating Surface Areas and Volumes in Islamic Architecture' (2000)", "url": "https://emis.univie.ac.at/journals/NNJ/conferences/N2000-DoldSamplonius.html" },
+      { "citation": "F. van Schooten, 'Muqarnas according to al-Kashi'", "url": "https://www.fransvanschooten.nl/muqarnas_kashi.htm" }
+    ]
+  },
+  {
+    "concept": "mosque_dome",
+    "note_en": "Al-Kashi's Key of Arithmetic (1427) includes a chapter on buildings with methods for measuring arches, vaults and domes.",
+    "note_ar": "يضم «مفتاح الحساب» للكاشي (1427م) بابًا في الأبنية فيه طرق لحساب الطاقات والأقبية والقباب.",
+    "scientists": ["al-kashi"],
+    "instruments": [],
+    "works": ["miftah-al-hisab"],
+    "sources": [
+      { "citation": "Y. Dold-Samplonius, 'Calculating Surface Areas and Volumes in Islamic Architecture' (2000)", "url": "https://emis.univie.ac.at/journals/NNJ/conferences/N2000-DoldSamplonius.html" },
+      { "citation": "Korea Science, study of al-Kashi's arches and domes in Miftah al-hisab", "url": "https://koreascience.kr/article/JAKO202332559602915.do" }
+    ]
+  },
+  {
+    "concept": "astrolabe",
+    "note_en": "The astrolabe is Hellenistic in origin. Muslim scholars did not invent it, but they built, refined and adapted it: al-Fazari is credited with the first astrolabe in the Islamic world, al-'Ijliyya made astrolabes in Aleppo, and al-Zarqali designed a universal plate that works at any latitude.",
+    "note_ar": "الأسطرلاب هلنستي الأصل. لم يخترعه المسلمون، لكنهم صنعوه وأتقنوه وكيّفوه: فيُنسب إلى الفزاري أول أسطرلاب في العالم الإسلامي، وصنعت العجلية الأسطرلابات في حلب، وصمّم الزرقالي صفيحة شاملة تصلح لكل العروض.",
+    "scientists": ["al-fazari", "al-ijliyya", "al-zarqali", "al-khujandi"],
+    "instruments": ["astrolabe", "universal-astrolabe", "spherical-astrolabe"],
+    "works": [],
+    "sources": [
+      { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West'", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Fazari' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Fazari_BEA.htm" }
+    ]
+  },
+  {
+    "concept": "minaret_call_to_prayer",
+    "note_en": "Before the call to prayer could be given on time, the mosque timekeeper (muwaqqit) had to know the time. In Damascus, Ibn al-Shatir placed his great sundial on the northern minaret of the Umayyad Mosque in 1371/72.",
+    "note_ar": "كان على موقّت المسجد أن يعرف الوقت قبل أن يُرفع الأذان في حينه. وفي دمشق وضع ابن الشاطر مزولته الكبيرة على المئذنة الشمالية للجامع الأموي سنة 1371/1372م.",
+    "scientists": ["ibn-al-shatir", "al-khalili"],
+    "instruments": ["sundial"],
+    "works": [],
+    "sources": [
+      { "citation": "Wikipedia, 'Ibn al-Shatir' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_al-Shatir" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khalili' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khalili_BEA.htm" }
+    ]
+  },
+  {
+    "concept": "calligraphy_inscription",
+    "note_en": "Astrolabes are also works of calligraphy: star names are engraved on the pointers, and some carry religious formulas, such as the basmala on the faceplate of a Safavid astrolabe by Muhammad Zaman in the Metropolitan Museum.",
+    "note_ar": "الأسطرلابات أعمال خطية أيضًا: تُنقش أسماء النجوم على الذؤابات، ويحمل بعضها عبارات دينية، كالبسملة على واجهة أسطرلاب صفوي من صنع محمد زمان في متحف المتروبوليتان.",
+    "scientists": [],
+    "instruments": ["astrolabe"],
+    "works": [],
+    "sources": [
+      { "citation": "The Metropolitan Museum of Art, planispheric astrolabe by Muhammad Zaman, 63.166a–j", "url": "https://www.metmuseum.org/art/collection/search/451699" },
+      { "citation": "Qatar Museums collection, astrolabe by al-Khujandi (each pointer engraved with its star's name)", "url": "https://collections.qm.org.qa/objects/planispheric-astrolabe-si51999" }
+    ]
+  },
+  {
+    "concept": "spider",
+    "note_en": "In Arabic the openwork star map of the astrolabe is called al-'ankabut, 'the spider', after its web-like look; Latin calls the same part the rete.",
+    "note_ar": "تسمى شبكة النجوم المفرّغة في الأسطرلاب بالعربية «العنكبوت» لشبهها بنسيجه، وتسميها اللاتينية «rete».",
+    "scientists": [],
+    "instruments": ["astrolabe"],
+    "works": [],
+    "sources": [
+      { "citation": "History of Science Museum, Oxford, Al-Mizan exhibition, 'Al-ankabut as art'", "url": "https://www.mhs.ox.ac.uk/almizan/Al-ankabutAsArt.html" }
+    ]
+  },
+  {
+    "concept": "tree_leaf",
+    "note_en": "Al-Dinawari's Book of Plants (9th century) describes the life of plants from germination through growth, flowering and fruiting.",
+    "note_ar": "يصف «كتاب النبات» للدينوري (القرن التاسع الميلادي) حياة النبات من الإنبات مرورًا بالنمو والإزهار حتى الإثمار.",
+    "scientists": ["al-dinawari"],
+    "instruments": [],
+    "works": ["kitab-al-nabat"],
+    "sources": [
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" }
+    ]
+  }
+]

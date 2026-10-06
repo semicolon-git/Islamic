@@ -76,7 +76,7 @@ export const POST = handler(async (req: Request) => {
       .map((c) => ({ ...c, concept: by.get(c.concept_id) }))
       .filter((c) => c.concept)
       .map((c) => ({ concept_id: c.concept_id, tier: c.tier, ...c.concept! }));
-    return ok({ mode: "ai" as const, status: result.status, candidates, flags: result.flags });
+    return ok({ mode: "ai" as const, status: result.status, candidates, flags: result.flags, subject: result.subject ?? null });
   } catch (e) {
     if (e instanceof AiFailure) return ok({ mode: "manual" as const, reason: e.kind });
     throw e;

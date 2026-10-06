@@ -2,20 +2,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { BadgeCheck, CameraOff, Check, ImagePlus, LayoutGrid, RefreshCw, ScanText, UserX, WifiOff, X, Info, ChevronRight } from "lucide-react";
+import { BadgeCheck, BookOpen, CameraOff, Check, ImagePlus, LayoutGrid, RefreshCw, ScanText, UserX, WifiOff, X, Info, ChevronRight } from "lucide-react";
 import { cn } from "@/components/ui/cn";
 import { ConceptImage } from "@/components/ui/concept-image";
 import { useI18n } from "@/i18n/client";
 import { fileToJpeg, toJpeg } from "./image";
 import { ConceptPicker } from "./picker";
 import { conceptHref, conceptHue, conceptLabel, type ConceptSummary, type Track } from "./labels";
+import { discoverHref } from "@/features/discover/link";
 
 type Blocked = "denied" | "nocamera" | "unsupported";
 type Flags = { person: boolean; inscription: boolean; other_religious_symbol: boolean; text_instructions: boolean };
 type Candidate = { concept_id: string; tier: "confident" | "possible" };
+type Subject = { label_en: string; label_ar: string; category: string; search_terms_en: string[]; search_terms_ar: string[]; sensitive: boolean };
 type Outcome =
-  | { kind: "match"; candidates: Candidate[]; flags: Flags }
-  | { kind: "nothing"; unsure: boolean; flags: Flags }
+  | { kind: "match"; candidates: Candidate[]; flags: Flags; subject?: Subject | null }
+  | { kind: "nothing"; unsure: boolean; flags: Flags; subject?: Subject | null }
   | { kind: "error"; offline: boolean };
 
 const SLOW_MS = 6000;
@@ -109,13 +111,13 @@ export function Snap({ concepts, samples, aiOn, startWithPicker, initialTrack }:
         const res = await fetch("/api/snap", { method: "POST", body: fd, signal: ctrl.signal });
         const j = await res.json();
         if (!j.ok) throw new Error(j.error?.code || "error");
-        const d = j.data as { mode: "manual"; reason: string } | { mode: "ai"; status: "match" | "none" | "unsure"; candidates: Candidate[]; flags: Flags };
+        const d = j.data as { mode: "manual"; reason: string } | { mode: "ai"; status: "match" | "none" | "unsure"; candidates: Candidate[]; flags: Flags; subject?: Subject | null };
         if (d.mode === "manual") {
           openPicker(d.reason === "no_key" ? t("beneficiary.snap.manualNoKey") : t("beneficiary.snap.manualFailed"));
         } else if (d.status === "match" && d.candidates.length) {
-          setOutcome({ kind: "match", candidates: d.candidates.filter((c) => byId.has(c.concept_id)), flags: d.flags });
+          setOutcome({ kind: "match", candidates: d.candidates.filter((c) => byId.has(c.concept_id)), flags: d.flags, subject: d.subject });
         } else {
-          setOutcome({ kind: "nothing", unsure: d.status === "unsure", flags: d.flags });
+          setOutcome({ kind: "nothing", unsure: d.status === "unsure", flags: d.flags, subject: d.subject });
         }
       } catch (e) {
         if ((e as Error).name === "AbortError" && !ctrl.signal.reason) {
@@ -327,6 +329,8 @@ export function Snap({ concepts, samples, aiOn, startWithPicker, initialTrack }:
   );
 }
 
+const subjectLabel = (s: Subject, locale: "en" | "ar") => (locale === "ar" ? s.label_ar || s.label_en : s.label_en || s.label_ar);
+
 function FlagNotes({ flags }: { flags: Flags }) {
   const { t } = useI18n();
   const notes: React.ReactNode[] = [];
@@ -367,7 +371,7 @@ function ResultPanel({
   onRetake: () => void;
   onRetry: () => void;
 }) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   return (
     <section className="mx-3 mb-1 rounded-[24px] bg-surface text-ink p-5 shadow-pop animate-rise flex flex-col gap-4" aria-live="polite" aria-labelledby="result-h" data-testid="snap-result">
       {outcome.kind === "match" && (
@@ -396,6 +400,11 @@ function ResultPanel({
               })}
             </div>
           </div>
+          {outcome.subject && outcome.subject.category !== "person" && !(outcome.candidates[0]?.tier === "confident" && byId.get(outcome.candidates[0].concept_id)?.has_card) && (
+            <Link href={discoverHref(outcome.subject)} className="h-11 rounded-[12px] bg-surface-2 text-sm font-semibold inline-flex items-center justify-center gap-2 hover:bg-surface-3" data-testid="snap-discover">
+              <BookOpen className="size-4" aria-hidden />{t("discover.fromSnapCta")}: <bdi>{subjectLabel(outcome.subject, locale)}</bdi>
+            </Link>
+          )}
           <FlagNotes flags={outcome.flags} />
           <div className="flex gap-2">
             <button type="button" onClick={onChange} className="flex-1 h-11 rounded-[12px] border border-line-strong text-sm font-medium hover:bg-surface-2">{t("beneficiary.snap.change")}</button>
@@ -403,7 +412,24 @@ function ResultPanel({
           </div>
         </>
       )}
-      {outcome.kind === "nothing" && (
+      {outcome.kind === "nothing" && outcome.subject && outcome.subject.category !== "person" && !outcome.unsure && (
+        <>
+          <div className="flex flex-col gap-1">
+            <h2 id="result-h" className="text-sm font-medium text-ink-3">{t("discover.looksLike")}</h2>
+            <p className="text-2xl font-semibold first-letter:uppercase" data-testid="snap-subject">{subjectLabel(outcome.subject, locale)}</p>
+            <p className="text-sm text-ink-2">{t("discover.fromSnapBody")}</p>
+          </div>
+          <FlagNotes flags={outcome.flags} />
+          <div className="flex flex-col gap-2">
+            <Link href={discoverHref(outcome.subject)} className="h-12 rounded-[14px] bg-accent text-accent-ink font-semibold inline-flex items-center justify-center gap-2" data-testid="snap-discover"><BookOpen className="size-5" aria-hidden />{t("discover.fromSnapCta")}</Link>
+            <div className="flex gap-2">
+              <button type="button" onClick={onChange} className="flex-1 h-11 rounded-[12px] border border-line-strong text-sm font-medium hover:bg-surface-2">{t("beneficiary.snap.change")}</button>
+              <button type="button" onClick={onRetake} className="flex-1 h-11 rounded-[12px] border border-line-strong text-sm font-medium hover:bg-surface-2">{t("beneficiary.snap.retake")}</button>
+            </div>
+          </div>
+        </>
+      )}
+      {outcome.kind === "nothing" && !(outcome.subject && outcome.subject.category !== "person" && !outcome.unsure) && (
         <>
           <div className="flex flex-col gap-1">
             <h2 id="result-h" className="text-lg font-semibold">{outcome.unsure ? t("beneficiary.snap.unsure") : t("beneficiary.snap.none")}</h2>

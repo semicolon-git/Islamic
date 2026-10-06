@@ -1,0 +1,315 @@
+[
+  {
+    "id": "astrolabe",
+    "name_en": "Planispheric astrolabe",
+    "name_ar": "الأسطرلاب المسطح",
+    "origin_en": "Hellenistic (Greek) in origin. The stereographic projection behind it goes back to Hipparchus in Alexandria (2nd century BCE); Ptolemy wrote on the projection, and Theon of Alexandria (4th century CE) and John Philoponus (6th century CE) wrote treatises on the instrument itself. Muslim scholars did not invent the astrolabe; they inherited it through Greek and Syriac learning, then refined it and adapted it to Islamic needs.",
+    "origin_ar": "أصل الأسطرلاب هلنستي (يوناني). يرجع الإسقاط المجسّم الذي يقوم عليه إلى هيبارخوس في الإسكندرية (القرن الثاني قبل الميلاد)، وكتب بطليموس في هذا الإسقاط، وألّف ثيون الإسكندري (القرن الرابع الميلادي) ويوحنا فيلوبونوس (القرن السادس الميلادي) رسائل في الآلة نفسها. فالمسلمون لم يخترعوا الأسطرلاب، بل ورثوه عن العلوم اليونانية والسريانية، ثم أتقنوه وكيّفوه لحاجات الحياة الإسلامية.",
+    "muslim_contribution_en": "Al-Fazari is credited with building the first astrolabe in the Islamic world in the 8th century. By the later 9th century the astrolabe was in use across the Islamic world, from Spain to India, and makers such as al-'Ijliyya of Aleppo, al-Khujandi of Rayy and Ibrahim ibn Sa'id al-Sahli of Toledo signed fine instruments. Muslim makers added plates and scales for Islamic needs: the times of prayer, the qibla, lunar calendars and gazetteers of city coordinates. They also developed universal, spherical and geared versions.",
+    "muslim_contribution_ar": "يُنسب إلى الفزاري صنع أول أسطرلاب في العالم الإسلامي في القرن الثامن الميلادي. وبحلول أواخر القرن التاسع كان الأسطرلاب مستعملًا في أرجاء العالم الإسلامي من الأندلس إلى الهند، ووقّع صنّاع مثل العجلية في حلب والخجندي في الري وإبراهيم بن سعيد السهلي في طليطلة آلات متقنة. وأضاف الصنّاع المسلمون صفائح ومقاييس لحاجات المسلمين: أوقات الصلاة، والقبلة، والتقويم القمري، وجداول إحداثيات المدن. وطوّروا كذلك الأسطرلاب الشامل والكروي وذا التروس.",
+    "how_it_works_en": "An astrolabe is a flat model of the sky. A plate (tympan) engraved for one latitude shows the horizon, altitude circles and azimuth lines. Over it turns an openwork star map, the rete, called al-'ankabut ('the spider') in Arabic, whose pointers mark bright stars and whose off-centre ring is the zodiac (the Sun's yearly path). On the back, a sighting rule (alidade) measures the altitude of the Sun or a star; turning the rete to match that altitude gives the time and solves many other problems.",
+    "how_it_works_ar": "الأسطرلاب نموذج مسطح للسماء. تُنقش على صفيحة خاصة بعرض بلد معيّن دائرةُ الأفق ودوائر الارتفاع وخطوط السمت. وفوقها تدور شبكة مفرّغة للنجوم تسمى «العنكبوت»، تشير ذؤاباتها إلى النجوم اللامعة، وحلقتها اللامركزية هي دائرة البروج (مسار الشمس السنوي). وعلى الظهر عضادة للتصويب يقاس بها ارتفاع الشمس أو النجم، فإذا أُدير العنكبوت ليوافق ذلك الارتفاع عُرف الوقت وحُلّت مسائل أخرى كثيرة.",
+    "uses_en": [
+      "Telling the time by day from the Sun and by night from the stars",
+      "Finding the times of prayer",
+      "Finding the direction of the qibla",
+      "Measuring the altitude of the Sun and stars, and finding latitude",
+      "Surveying heights and distances with the shadow square",
+      "Astrological calculations, a common historical use"
+    ],
+    "uses_ar": [
+      "معرفة الوقت نهارًا بالشمس وليلًا بالنجوم",
+      "معرفة أوقات الصلاة",
+      "معرفة اتجاه القبلة",
+      "قياس ارتفاع الشمس والنجوم ومعرفة عرض البلد",
+      "قياس الارتفاعات والمسافات بمربع الظل",
+      "الحسابات التنجيمية، وكانت من استعمالاته الشائعة تاريخيًا"
+    ],
+    "scientists": ["al-fazari", "al-ijliyya", "al-khujandi", "ibrahim-ibn-said-al-sahli", "al-zarqali"],
+    "concepts": ["astrolabe", "stars", "night_day", "qibla", "sun", "calligraphy_inscription", "spider"],
+    "stars": ["Aldebaran", "Altair", "Arcturus", "Vega"],
+    "sources": [
+      { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West' (online exhibition)", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/" },
+      { "citation": "Centre for the History of Science, Technology and Medicine, 'An Introductory History of Astrolabes'", "url": "https://chstm.org/node/2951" },
+      { "citation": "The Khalili Collections, large planispheric astrolabe SCI 161 ('an invention of Hellenistic Alexandria')", "url": "https://www.khalilicollections.org/collections/islamic-art/khalili-collection-islamic-art-large-planispheric-astrolabe-sci161" },
+      { "citation": "History of Science Museum, Oxford, Al-Mizan exhibition, 'Al-ankabut as art'", "url": "https://www.mhs.ox.ac.uk/almizan/Al-ankabutAsArt.html" },
+      { "citation": "History of Science Museum, Oxford, Astrolabe Catalogue, rete star lists (example rete report)", "url": "https://www.mhs.ox.ac.uk/astrolabe/catalogue/reteReport/Astrolabe_ID%3d253.html" },
+      { "citation": "Qatar Museums collection, planispheric astrolabe by al-Khujandi (uses: time, qibla, horoscopes)", "url": "https://collections.qm.org.qa/objects/planispheric-astrolabe-si51999" }
+    ]
+  },
+  {
+    "id": "universal-astrolabe",
+    "name_en": "Universal astrolabe (saphaea / al-safiha)",
+    "name_ar": "الأسطرلاب الشامل (الصفيحة الزرقالية)",
+    "origin_en": "A development of al-Andalus in the 11th century. 'Ali ibn Khalaf of Toledo described a universal plate, and al-Zarqali designed the universal plate known in Latin as the saphaea.",
+    "origin_ar": "تطوير أندلسي من القرن الحادي عشر الميلادي. وصف علي بن خلف الطليطلي صفيحة شاملة، وصمّم الزرقالي الصفيحة الشاملة المعروفة باللاتينية «saphaea».",
+    "muslim_contribution_en": "An ordinary astrolabe needs a separate plate for each latitude. Al-Zarqali's universal plate projects the sky onto the plane through the solstices, so one plate serves every latitude. The idea was known in medieval Europe but little used there until Gemma Frisius revived it in the 16th century. Later makers such as Ibn al-Sarraj of Aleppo (1328/29) built still more versatile universal astrolabes.",
+    "muslim_contribution_ar": "يحتاج الأسطرلاب العادي إلى صفيحة لكل عرض. أما صفيحة الزرقالي الشاملة فتُسقط السماء على المستوى المار بالانقلابين، فتكفي صفيحة واحدة لكل العروض. وعُرفت الفكرة في أوروبا في العصور الوسطى لكنها قلّما استُعملت حتى أحياها جيما فريزيوس في القرن السادس عشر. وصنع متأخرون مثل ابن السراج الحلبي (1328/1329م) أسطرلابات شاملة أوسع استعمالًا.",
+    "how_it_works_en": "The front carries a grid of the celestial coordinate system projected onto the meridian plane of the solstices. A rule, or a second rotating projection, lets the user model the horizon of any latitude, so the same instrument answers time and position questions anywhere.",
+    "how_it_works_ar": "يحمل الوجه شبكة لنظام الإحداثيات السماوية مُسقطة على مستوى دائرة الانقلابين. وتتيح مسطرة، أو إسقاط ثانٍ دوّار، تمثيل أفق أي عرض، فتجيب الآلة نفسها عن مسائل الوقت والموضع في أي مكان.",
+    "uses_en": [
+      "Solving astrolabe problems at any latitude without changing plates",
+      "Converting between ecliptic and equatorial coordinates"
+    ],
+    "uses_ar": [
+      "حل مسائل الأسطرلاب في أي عرض دون تبديل الصفائح",
+      "التحويل بين إحداثيات دائرة البروج والإحداثيات الاستوائية"
+    ],
+    "scientists": ["al-zarqali"],
+    "concepts": ["astrolabe", "stars"],
+    "stars": [],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Zarqali' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Zarqali_BEA.htm" },
+      { "citation": "History of Science Museum, Oxford, Astrolabe Catalogue, inv. 52869 (universal projection of az-Zarqallu's type; little used until Gemma Frisius)", "url": "https://www.mhs.ox.ac.uk/astrolabe/catalogue/browseReport/Astrolabe_ID%3d241.html" },
+      { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West': universal astrolabes", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/universals_1.html" },
+      { "citation": "Universitat de Barcelona repository, study of Andalusi universal instruments ('Ali ibn Khalaf, al-Zarqallu)", "url": "https://diposit.ub.edu/dspace/bitstream/2445/69704/1/547755.pdf" }
+    ]
+  },
+  {
+    "id": "spherical-astrolabe",
+    "name_en": "Spherical astrolabe",
+    "name_ar": "الأسطرلاب الكروي",
+    "origin_en": "Described by astronomers of the Islamic world, including a treatise by al-Nayrizi (Baghdad, late 9th century). Whether it had Greek antecedents is uncertain.",
+    "origin_ar": "وصفه فلكيو العالم الإسلامي، ومنهم النيريزي في رسالة (بغداد، أواخر القرن التاسع الميلادي). ولا يُعرف على وجه اليقين أكان له سلف يوناني.",
+    "muslim_contribution_en": "Instead of projecting the sky onto a flat plate, the spherical astrolabe keeps it on a sphere. It was praised in Islamic written accounts but was hard to make, awkward to use and fragile. The only complete surviving example, signed by Musa and dated 1480/81, is in the History of Science Museum, Oxford.",
+    "muslim_contribution_ar": "بدل إسقاط السماء على صفيحة مسطحة، يبقيها الأسطرلاب الكروي على كرة. وقد أثنت عليه الكتب الإسلامية، لكنه كان صعب الصنع، غير مريح في الاستعمال، سريع العطب. والنسخة الكاملة الوحيدة الباقية، الموقّعة باسم موسى والمؤرخة 1480/1481م، محفوظة في متحف تاريخ العلوم بأكسفورد.",
+    "how_it_works_en": "A solid inner sphere is engraved with altitude and azimuth lines and unequal-hour lines. A rete, shaped to fit the sphere, rotates over it to model the daily motion of the heavens.",
+    "how_it_works_ar": "تُنقش على كرة داخلية مصمتة خطوط الارتفاع والسمت والساعات الزمانية. ويدور فوقها عنكبوت مشكّل على هيئة الكرة ليمثّل الحركة اليومية للسماء.",
+    "uses_en": [
+      "The same astronomical problems as the flat astrolabe, without a projection"
+    ],
+    "uses_ar": [
+      "حل المسائل الفلكية نفسها التي يحلها الأسطرلاب المسطح، دون إسقاط"
+    ],
+    "scientists": [],
+    "concepts": ["astrolabe", "stars"],
+    "stars": [],
+    "sources": [
+      { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West': spherical astrolabe", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/spherical.html" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Nayrizi' (MacTutor copy)", "url": "https://mathshistory.st-andrews.ac.uk/BEA/al_nayrizi_bea.pdf" }
+    ]
+  },
+  {
+    "id": "quadrant",
+    "name_en": "Quadrant (sine quadrant and astrolabic quadrant)",
+    "name_ar": "الربع (الربع المجيب والربع المقنطر)",
+    "origin_en": "Simple quadrants for measuring altitude were known in antiquity. The sine quadrant (al-rub' al-mujayyab), a graphical calculator for trigonometry, is a development of the Islamic world: a 9th-century Baghdad treatise on it is attributed to al-Khwarizmi. The astrolabic quadrant folds the astrolabe's markings into a quarter circle.",
+    "origin_ar": "عُرفت الأرباع البسيطة لقياس الارتفاع منذ القدم. أما الربع المجيب، وهو أداة رسومية لحساب المثلثات، فتطوير نشأ في العالم الإسلامي، وتُنسب إلى الخوارزمي رسالة فيه من بغداد في القرن التاسع الميلادي. ويجمع الربع المقنطر علامات الأسطرلاب في ربع دائرة.",
+    "muslim_contribution_en": "Muslim timekeepers used quadrants to find prayer times and the qibla. In the later period, especially in the Ottoman world, the quadrant largely replaced the astrolabe; Ottoman quadrants often have astrolabic markings on one side and a sine grid on the other.",
+    "muslim_contribution_ar": "استعمل الموقّتون المسلمون الأرباع لمعرفة أوقات الصلاة والقبلة. وفي العصور المتأخرة، ولا سيما في الدولة العثمانية، حلّ الربع إلى حد كبير محل الأسطرلاب، وكثيرًا ما تحمل الأرباع العثمانية علامات الأسطرلاب على وجه وشبكة الجيوب على الوجه الآخر.",
+    "how_it_works_en": "A quarter circle with sights along one edge and a plumb line from the corner measures the altitude of the Sun or a star. On a sine quadrant, the grid of lines (like graph paper) and a thread with a sliding bead let the user read sines, cosines and other values and solve spherical-astronomy problems graphically.",
+    "how_it_works_ar": "ربع دائرة على أحد حرفيه هدفتان للتصويب، ومن زاويته خيط بثقل، يقاس به ارتفاع الشمس أو النجم. وفي الربع المجيب تتيح شبكة الخطوط (كورق الرسم البياني) وخيط عليه خرزة منزلقة قراءةَ الجيوب وجيوب التمام وغيرها، وحلَّ مسائل الفلك الكروي رسمًا.",
+    "uses_en": [
+      "Measuring the altitude of the Sun and stars",
+      "Finding the time and the times of prayer",
+      "Finding the qibla",
+      "Trigonometric calculation"
+    ],
+    "uses_ar": [
+      "قياس ارتفاع الشمس والنجوم",
+      "معرفة الوقت وأوقات الصلاة",
+      "معرفة القبلة",
+      "حساب المثلثات"
+    ],
+    "scientists": ["al-khwarizmi"],
+    "concepts": ["time_asr", "qibla", "sun", "shadow"],
+    "stars": [],
+    "sources": [
+      { "citation": "British Museum, astrolabic quadrant made for the muwaqqit of the Umayyad Mosque, Damascus, 1333–34 (1888,1201.276)", "url": "https://www.britishmuseum.org/collection/object/W_1888-1201-276" },
+      { "citation": "Royal Museums Greenwich, Islamic quadrant (astrolabic front, sine quadrant reverse), 1813", "url": "https://rmg.co.uk/collections/objects/rmgc-object-43268" },
+      { "citation": "Wikipedia, 'Sine quadrant' (secondary)", "url": "https://en.wikipedia.org/wiki/Sine_quadrant" }
+    ]
+  },
+  {
+    "id": "celestial-globe",
+    "name_en": "Celestial globe",
+    "name_ar": "الكرة السماوية",
+    "origin_en": "Greek in origin: Ptolemy described a celestial globe in the Almagest. Islamic celestial globes, made from the 9th century, drew on Hellenistic, Persian and Indian traditions.",
+    "origin_ar": "أصلها يوناني، فقد وصف بطليموس الكرة السماوية في «المجسطي». واستفادت الكرات السماوية الإسلامية، التي صُنعت منذ القرن التاسع الميلادي، من التقاليد الهلنستية والفارسية والهندية.",
+    "muslim_contribution_en": "Muslim makers produced engraved metal globes, often following al-Sufi's constellation figures; a 1362/63 globe in Oxford states this in its inscription. The oldest surviving Islamic celestial globe was made in Valencia in 1085 by Ibrahim ibn Sa'id al-Sahli and his son. Later centres included Mosul, Maragha, Mashhad and Lahore.",
+    "muslim_contribution_ar": "صنع الصنّاع المسلمون كرات معدنية منقوشة، كثيرًا ما اتّبعت صور كوكبات الصوفي، ويصرّح بذلك نقش على كرة في أكسفورد من سنة 1362/1363م. وأقدم كرة سماوية إسلامية باقية صنعها إبراهيم بن سعيد السهلي وابنه في بلنسية سنة 1085م. ومن المراكز اللاحقة الموصل ومراغة ومشهد ولاهور.",
+    "how_it_works_en": "The stars and constellation figures are drawn on the outside of a sphere, as if seen from outside the sky. Mounted with a horizon ring and a meridian ring, the globe can be set for a latitude and turned to show which stars rise, set or culminate at a given time.",
+    "how_it_works_ar": "تُرسم النجوم وصور الكوكبات على ظاهر كرة، كأنها تُرى من خارج السماء. وإذا رُكّبت مع حلقة الأفق وحلقة الزوال أمكن ضبطها على عرض البلد وإدارتها لبيان ما يطلع من النجوم وما يغرب وما يتوسط السماء في وقت معيّن.",
+    "uses_en": [
+      "Teaching and showing the constellations",
+      "Finding the rising and setting of stars",
+      "Solving problems of spherical astronomy without calculation"
+    ],
+    "uses_ar": [
+      "تعليم الكوكبات وعرضها",
+      "معرفة مطالع النجوم ومغاربها",
+      "حل مسائل الفلك الكروي دون حساب"
+    ],
+    "scientists": ["al-sufi", "ibrahim-ibn-said-al-sahli"],
+    "concepts": ["stars", "night_day"],
+    "stars": [],
+    "sources": [
+      { "citation": "Museo Galileo, celestial globe by Ibrahim ibn Sa'id al-Sahli, Valencia 1085 (inv. 2712)", "url": "https://catalogue.museogalileo.it/object/CelestialGlobe_n14.html" },
+      { "citation": "Bibliothèque nationale de France, 'Le monde en sphères': spheres in the Muslim world", "url": "https://expositions.bnf.fr/monde-en-spheres/en/spheres-in-the-muslim-world/index.html" },
+      { "citation": "History of Science Museum, Oxford, 'Globes in the collection': Persian celestial globe, 1362/3 (inv. 44790)", "url": "https://mhs.web.ox.ac.uk/sites/default/files/mhs/documents/media/globes-in-the-collection_info_44790_.pdf" }
+    ]
+  },
+  {
+    "id": "armillary-sphere",
+    "name_en": "Armillary sphere",
+    "name_ar": "ذات الحلق",
+    "origin_en": "Greek in origin. The earliest clear description is in Ptolemy's Almagest; some credit Hipparchus with earlier use.",
+    "origin_ar": "أصلها يوناني. وأقدم وصف واضح لها في «المجسطي» لبطليموس، وينسب بعضهم استعمالها إلى هيبارخوس قبله.",
+    "muslim_contribution_en": "A book on the use of the armillary sphere is ascribed to al-Fazari in the 8th century. Large observational armillary spheres were used at the observatories of Maragha (13th century), Samarkand (15th century) and Istanbul (16th century); Ulugh Beg's star catalogue was probably based on observations with a zodiacal armillary.",
+    "muslim_contribution_ar": "يُنسب إلى الفزاري في القرن الثامن الميلادي كتاب في العمل بذات الحلق. واستُعملت ذوات حلق رصدية كبيرة في مراصد مراغة (القرن الثالث عشر) وسمرقند (القرن الخامس عشر) وإسطنبول (القرن السادس عشر)، والأرجح أن فهرس ألغ بيك للنجوم بُني على أرصاد بذات حلق بروجية.",
+    "how_it_works_en": "A set of nested rings represents the great circles of the sky (equator, ecliptic, meridian, colures). An observer turns the movable rings and sights a star through a sighting ring to read its coordinates directly.",
+    "how_it_works_ar": "مجموعة حلقات متداخلة تمثّل الدوائر العظمى في السماء (معدّل النهار، ودائرة البروج، ودائرة نصف النهار، والدائرتين الماريتين بالاعتدالين والانقلابين). ويدير الراصد الحلقات المتحركة ويصوّب نحو النجم من خلال حلقة التصويب ليقرأ إحداثياته مباشرة.",
+    "uses_en": [
+      "Measuring the coordinates of stars and planets",
+      "Demonstrating the circles of the celestial sphere"
+    ],
+    "uses_ar": [
+      "قياس إحداثيات النجوم والكواكب",
+      "شرح دوائر الكرة السماوية"
+    ],
+    "scientists": ["al-fazari", "nasir-al-din-al-tusi", "ulugh-beg", "taqi-al-din"],
+    "concepts": ["stars"],
+    "stars": [],
+    "sources": [
+      { "citation": "Whipple Museum, University of Cambridge, 'The Observational Armillary Sphere'", "url": "https://www.sites.hps.cam.ac.uk/starry/armillobser.html" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Fazari' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Fazari_BEA.htm" }
+    ]
+  },
+  {
+    "id": "sundial",
+    "name_en": "Sundial",
+    "name_ar": "المزولة",
+    "origin_en": "Ancient: sundials were made in Egypt and Mesopotamia and developed with great complexity by the Greeks, from whom Muslim scholars learned the basic principles.",
+    "origin_ar": "قديمة: صُنعت المزاول في مصر وبلاد الرافدين، وطوّرها اليونان تطويرًا كبيرًا، وعنهم أخذ العلماء المسلمون أصولها.",
+    "muslim_contribution_en": "Muslim scholars used trigonometry to design many new kinds of sundial and added lines for the times of prayer, especially the midday (zuhr) and afternoon ('asr) prayers; horizontal dials often show the qibla. The best-known example is the large marble sundial Ibn al-Shatir made for the Umayyad Mosque in Damascus in 1371/72; the dial on the minaret today is a 19th-century copy, and fragments of the original are reported to be in the Damascus museum.",
+    "muslim_contribution_ar": "استعمل العلماء المسلمون حساب المثلثات لتصميم أنواع جديدة كثيرة من المزاول، وأضافوا خطوط أوقات الصلاة، ولا سيما الظهر والعصر، وكثيرًا ما تُظهر المزاول الأفقية اتجاه القبلة. وأشهرها المزولة الرخامية الكبيرة التي صنعها ابن الشاطر للجامع الأموي في دمشق سنة 1371/1372م، والمزولة القائمة على المئذنة اليوم نسخة من القرن التاسع عشر، ويُذكر أن قطعًا من الأصل محفوظة في متحف دمشق.",
+    "how_it_works_en": "A gnomon casts a shadow on a dial engraved with lines. The direction or length of the shadow shows the hour; extra curves mark the moments when, for example, the shadow reaches the length that begins the 'asr prayer.",
+    "how_it_works_ar": "يُلقي الشاخص ظلًا على سطح منقوش بالخطوط، فيدل اتجاه الظل أو طوله على الساعة، وتدل خطوط إضافية على أوقات معيّنة، كبلوغ الظل الطول الذي يبدأ به وقت العصر.",
+    "uses_en": [
+      "Telling the hour by day",
+      "Marking the times of the zuhr and 'asr prayers",
+      "Showing the direction of the qibla (on some dials)"
+    ],
+    "uses_ar": [
+      "معرفة الساعة نهارًا",
+      "تحديد وقتي الظهر والعصر",
+      "بيان اتجاه القبلة (في بعض المزاول)"
+    ],
+    "scientists": ["ibn-al-shatir"],
+    "concepts": ["sun", "shadow", "time_asr", "minaret_call_to_prayer", "qibla"],
+    "stars": [],
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'Sundial'", "url": "https://britannica.com/technology/sundial" },
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Ibn al-Shatir' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_al-Shatir_BEA.htm" },
+      { "citation": "Muslim Heritage, 'Principle and Use of Ottoman Sundials'", "url": "https://muslimheritage.com/principle-and-use-of-ottoman-sundials/" },
+      { "citation": "Madain Project, 'Ibn Shatir's Sundial at the Umayyad Mosque' (secondary, for the copy and the original's fragments)", "url": "https://madainproject.com/ibn_shatir_sundial" }
+    ]
+  },
+  {
+    "id": "kamal",
+    "name_en": "Kamal",
+    "name_ar": "الكمال (الخشبة)",
+    "origin_en": "A simple navigational device used by Arab and Indian pilots in the Indian Ocean. Its exact origin and date are uncertain; popular accounts place it in the 9th–10th centuries, but the clearest descriptions come from later Arabic nautical literature such as that of Ibn Majid.",
+    "origin_ar": "أداة ملاحية بسيطة استعملها الربابنة العرب والهنود في المحيط الهندي. ولا يُعرف أصلها وتاريخها على وجه الدقة، فالروايات الشائعة تضعها في القرنين التاسع والعاشر الميلاديين، لكن أوضح أوصافها جاءت في كتب الملاحة العربية المتأخرة مثل كتب ابن ماجد.",
+    "muslim_contribution_en": "Arab navigators used it to measure the height of the Pole Star above the horizon in finger-widths (isba'), which told them their latitude. Ibn Majid recorded star altitudes in these units, and knots on the string could be tied for the latitudes of particular ports.",
+    "muslim_contribution_ar": "استعمله الملاحون العرب لقياس ارتفاع نجم القطب عن الأفق بالأصابع، فيعرفون بذلك عرض مكانهم. ودوّن ابن ماجد ارتفاعات النجوم بهذه الوحدة، وكانت تُعقد على الخيط عُقد تدل على عروض موانئ معيّنة.",
+    "how_it_works_en": "A small rectangular board has a knotted string through its centre. The navigator holds the string's end to his face (often in his teeth) and moves the board until its lower edge sits on the horizon and its upper edge touches the Pole Star. The knot reached shows the star's altitude, and hence the latitude.",
+    "how_it_works_ar": "لوح خشبي صغير مستطيل يمر في وسطه خيط معقود. يمسك الملاح طرف الخيط عند وجهه (وكثيرًا ما يكون بين أسنانه)، ويحرّك اللوح حتى يوافق حرفه الأسفل الأفق وحرفه الأعلى نجم القطب، فتدل العقدة التي يبلغها على ارتفاع النجم، ومن ثم على عرض المكان.",
+    "uses_en": [
+      "Measuring the altitude of the Pole Star at sea",
+      "Finding latitude and checking the run to a known port"
+    ],
+    "uses_ar": [
+      "قياس ارتفاع نجم القطب في البحر",
+      "معرفة العرض والتحقق من الاقتراب من ميناء معروف"
+    ],
+    "scientists": ["ibn-majid"],
+    "concepts": ["ships", "sea", "stars"],
+    "stars": ["Polaris"],
+    "sources": [
+      { "citation": "UNESCO Silk Roads Programme, 'L'astronomie nautique le long de la route maritime de la soie'", "url": "https://en.unesco.org/silkroad/knowledge-bank/lastronomie-nautique-le-long-de-la-route-maritime-de-la-soie" },
+      { "citation": "Wikipedia, 'Kamal (navigation)' (secondary)", "url": "https://en.wikipedia.org/wiki/Kamal_(navigation)" },
+      { "citation": "A. C. Sparavigna, 'Navigating with the Kamal' (arXiv:1710.04482)", "url": "https://arxiv.org/pdf/1710.04482" }
+    ]
+  },
+  {
+    "id": "water-clock",
+    "name_en": "Water clock (including al-Jazari's elephant clock)",
+    "name_ar": "الساعة المائية (ومنها ساعة الفيل للجزري)",
+    "origin_en": "Ancient: water clocks were used in Egypt, Mesopotamia, Greece, India and China. Greek and Indian designs were available to Muslim engineers and gave them a basis to build on.",
+    "origin_ar": "قديمة: استُعملت الساعات المائية في مصر وبلاد الرافدين واليونان والهند والصين. وكانت التصاميم اليونانية والهندية في متناول المهندسين المسلمين، فبنوا عليها.",
+    "muslim_contribution_en": "Al-Jazari described several water clocks in 1206 with full construction details. His elephant clock uses a perforated bowl that sinks in a hidden tank every half hour, triggering a ball release and moving figures; he wrote that its parts stood for Indian, African, Chinese, Persian, Greek and Islamic cultures.",
+    "muslim_contribution_ar": "وصف الجزري سنة 1206م عدة ساعات مائية مع تفاصيل صنعها كاملة. وتعتمد ساعة الفيل على طاسة مثقوبة تغطس في حوض خفي كل نصف ساعة، فتُطلق كرة وتحرّك تماثيل، وذكر أن أجزاءها ترمز إلى الثقافات الهندية والأفريقية والصينية والفارسية واليونانية والإسلامية.",
+    "how_it_works_en": "Time is measured by water flowing at a steady rate. In the elephant clock a bowl with a small hole fills and sinks in about half an hour; as it sinks it pulls strings that release a ball, which drops through the mechanism, sounds the hour and resets the bowl.",
+    "how_it_works_ar": "يُقاس الوقت بجريان الماء بمعدل ثابت. وفي ساعة الفيل تمتلئ طاسة ذات ثقب صغير وتغطس في نحو نصف ساعة، فتشد في غطسها خيوطًا تُطلق كرة تسقط عبر الآلة فتعلن الوقت وتعيد الطاسة إلى مكانها.",
+    "uses_en": [
+      "Measuring hours, including at night",
+      "Public and courtly display of time"
+    ],
+    "uses_ar": [
+      "قياس الساعات، ومنها ساعات الليل",
+      "عرض الوقت في القصور والأماكن العامة"
+    ],
+    "scientists": ["al-jazari"],
+    "concepts": ["water_life", "night_day"],
+    "stars": [],
+    "sources": [
+      { "citation": "Wikipedia, 'Elephant clock' (secondary)", "url": "https://en.wikipedia.org/wiki/Elephant_clock" },
+      { "citation": "Science Museum Group Collection, people record: al-Jazari", "url": "https://collection.sciencemuseumgroup.org.uk/people/cp52302/ismail-ibn-al-razzaz-al-jazari" }
+    ]
+  },
+  {
+    "id": "qibla-indicator",
+    "name_en": "Qibla indicator (qibla compass)",
+    "name_ar": "مؤشر القبلة (بوصلة القبلة)",
+    "origin_en": "An Islamic instrument. Museums describe it as a purely Islamic instrument, unlike the astrolabe, quadrant and sundial, which are found in both Europe and the Islamic world. Indicators with a magnetic compass, a sundial and a list of cities became very popular in Iran from the 17th century.",
+    "origin_ar": "آلة إسلامية. وتصفها المتاحف بأنها آلة إسلامية خالصة، بخلاف الأسطرلاب والربع والمزولة التي توجد في أوروبا والعالم الإسلامي معًا. وانتشرت كثيرًا في إيران منذ القرن السابع عشر الميلادي المؤشرات التي تجمع بوصلة مغناطيسية ومزولة وقائمة بالمدن.",
+    "muslim_contribution_en": "Qibla indicators turned the mathematical work of scholars such as al-Biruni and al-Khalili, who computed the direction of Mecca from city coordinates, into a portable tool. Many list dozens of places, some more than a hundred, with their coordinates or qibla angles.",
+    "muslim_contribution_ar": "حوّلت مؤشرات القبلة عمل العلماء الرياضي، مثل البيروني والخليلي اللذين حسبا اتجاه مكة من إحداثيات المدن، إلى أداة محمولة. ويسرد كثير منها عشرات الأماكن، وبعضها أكثر من مئة، مع إحداثياتها أو زوايا قبلتها.",
+    "how_it_works_en": "The user aligns the magnetic needle with north, finds his own city in the list engraved around the compass, and reads the angle at which to face for the qibla. Some indicators add a small sundial to find the time.",
+    "how_it_works_ar": "يوجّه المستعمل الإبرة المغناطيسية نحو الشمال، ويجد مدينته في القائمة المنقوشة حول البوصلة، فيقرأ الزاوية التي يتجه بها إلى القبلة. ويضيف بعضها مزولة صغيرة لمعرفة الوقت.",
+    "uses_en": [
+      "Finding the direction of the Ka'ba for prayer when travelling",
+      "Orienting graves and buildings"
+    ],
+    "uses_ar": [
+      "معرفة اتجاه الكعبة للصلاة في السفر",
+      "توجيه القبور والمباني"
+    ],
+    "scientists": [],
+    "concepts": ["qibla", "mihrab"],
+    "stars": [],
+    "sources": [
+      { "citation": "Royal Museums Greenwich, qibla indicator, 18th century ('a purely Islamic instrument')", "url": "https://www.rmg.co.uk/collections/objects/rmgc-object-10605" },
+      { "citation": "Qatar Museums collection, qibla indicator with sundial, Iran, Qajar period", "url": "https://collections.qm.org.qa/en/objects/qibla-indicator-mw3192007" },
+      { "citation": "History of Science Museum, Oxford, 'Qibla indicators and sundials'", "url": "https://hsm.ox.ac.uk/files/qiblaindicatorsandsundials-0" }
+    ]
+  },
+  {
+    "id": "mural-sextant",
+    "name_en": "Monumental meridian instrument (mural sextant / meridian arc)",
+    "name_ar": "الآلة الزوالية الضخمة (السدس الفخري والقوس الزوالي)",
+    "origin_en": "Ptolemy describes fixed meridian instruments, but the giant arcs of the Islamic observatories were new in scale. Abu al-Wafa' is credited with a wall quadrant in Baghdad, and al-Khujandi built the Fakhri sextant at Rayy in the 990s.",
+    "origin_ar": "وصف بطليموس آلات زوالية ثابتة، لكن الأقواس الضخمة في المراصد الإسلامية كانت جديدة في حجمها. ويُنسب إلى أبي الوفاء ربع جداري في بغداد، وبنى الخجندي السدس الفخري في الري في تسعينيات القرن العاشر الميلادي.",
+    "muslim_contribution_en": "Al-Khujandi's Fakhri sextant was a 60° meridian arc about 43 m in diameter, graduated to 10 arc-minutes. Ulugh Beg's observatory in Samarkand had an even larger meridian arc, built in a trench in the hill, whose marble-faced lower part survives.",
+    "muslim_contribution_ar": "كان السدس الفخري للخجندي قوسًا زواليًا من ستين درجة قطره نحو 43 مترًا، مدرّجًا إلى عشر دقائق قوسية. وكان في مرصد ألغ بيك بسمرقند قوس زوالي أكبر، مبني في خندق محفور في التل، وما زال جزؤه السفلي المكسو بالرخام قائمًا.",
+    "how_it_works_en": "A huge graduated arc is fixed in the plane of the meridian. Sunlight passes through an aperture in the roof and falls on the arc at noon, so the Sun's meridian altitude can be read very precisely; size gives finer graduations.",
+    "how_it_works_ar": "قوس ضخم مدرّج مثبّت في مستوى دائرة نصف النهار. يمر ضوء الشمس من فتحة في السقف فيقع على القوس عند الزوال، فيُقرأ ارتفاع الشمس الزوالي بدقة عالية، وكلما كبر الحجم دقّ التدريج.",
+    "uses_en": [
+      "Measuring the Sun's noon altitude through the year",
+      "Determining the obliquity of the ecliptic and the latitude of the observatory"
+    ],
+    "uses_ar": [
+      "قياس ارتفاع الشمس عند الزوال على مدار السنة",
+      "تحديد ميل دائرة البروج وعرض المرصد"
+    ],
+    "scientists": ["al-khujandi", "ulugh-beg", "abu-al-wafa-al-buzjani"],
+    "concepts": ["sun"],
+    "stars": [],
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Khujandi' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Khujandi_BEA.htm" },
+      { "citation": "Encyclopaedia Iranica, 'Abu'l-Wafa' Buzjani' (wall quadrant)", "url": "https://www.iranicaonline.org/articles/abul-wafa-buzjani/" },
+      { "citation": "Wikipedia, 'Ulugh Beg Observatory' (secondary)", "url": "https://en.wikipedia.org/wiki/Ulugh_Beg_Observatory" }
+    ]
+  }
+]
