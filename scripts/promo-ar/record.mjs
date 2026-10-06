@@ -132,8 +132,8 @@ const T = (s) => page.getByText(s, { exact: false });
 
 // ───────────────────────── shots
 const SHOTS = {
-  /** Home in Arabic → camera → photo of a pomegranate → what the sources say: Mushaf text, al-Muyassar, graded hadith. */
-  async snap() {
+  /** Home in Arabic → the camera → a photo of a pomegranate → “looks like: pomegranate”. */
+  async camera() {
     await goto("/?welcome=0");
     await wait(2200);
     await scrollBy(420, 1500);
@@ -144,19 +144,17 @@ const SHOTS = {
     await wait(3200);
     await tap(page.getByRole("button", { name: "التقط صورة" }));
     const result = page.getByTestId("snap-result");
-    let matched = await result.waitFor({ timeout: 40_000 }).then(() => true).catch(() => false);
-    if (matched) {
-      await wait(1400);
-      const chip = result.locator("a[href^='/c/']").first();
-      matched = await chip.isVisible().catch(() => false);
-      if (matched) {
-        await ring(chip, "يبدو أنه: الرمان", 1800);
-        await tap(chip);
-        await page.waitForURL(/\/c\//, { timeout: 20_000 }).catch(() => {});
-      }
-    }
-    if (!matched || !/\/c\/pomegranate/.test(page.url())) await goto("/c/pomegranate");
-    await wait(1600);
+    await result.waitFor({ timeout: 40_000 });
+    await wait(1400);
+    const chip = result.locator("a[href^='/c/']").first();
+    await ring(chip, "يبدو أنه: الرمان", 2200);
+    await wait(400);
+  },
+
+  /** What the sources say about the pomegranate: Mushaf text, al-Muyassar, a hadith with its number and grade. */
+  async sources() {
+    await goto("/c/pomegranate");
+    await wait(1400);
     await tap(page.locator(`a[href^="/discover"]`).first());
     await page.getByTestId("discover-summary").waitFor({ timeout: 90_000 });
     await wait(1800);
@@ -261,7 +259,7 @@ async function record(browser, name) {
   }
   page = await ctx.newPage();
   // warm up (caches discoveries, fonts, images) before the camera rolls
-  if (name === "snap" || name === "badges") for (const p of [POMEGRANATE, CAR]) {
+  if (name === "sources" || name === "badges") for (const p of [POMEGRANATE, CAR]) {
     await page.goto(APP + p);
     await page.locator("[data-testid=discover-summary],[data-testid=discover-panel]").first().waitFor({ timeout: 120_000 }).catch(() => {});
   }
@@ -300,7 +298,7 @@ async function record(browser, name) {
   fs.writeFileSync(list, lines.join("\n"));
   const mp4 = path.join(OUT, name + ".mp4");
   execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", list,
-    "-vf", `fps=30,scale=${w}:${h}:flags=lanczos,format=yuv420p`, "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-movflags", "+faststart", mp4], { stdio: "inherit" });
+    "-vf", `fps=30,scale=${w}:${h}:flags=lanczos,format=yuv420p`, "-c:v", "libx264", "-preset", "medium", "-crf", process.env.CRF ?? "16", "-movflags", "+faststart", mp4], { stdio: "inherit" });
   fs.rmSync(dir, { recursive: true, force: true });
   console.log(`wrote ${mp4}`);
 }
