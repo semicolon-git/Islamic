@@ -17,6 +17,7 @@ for (const s of specs) {
     *{margin:0;padding:0;box-sizing:border-box} html,body{width:${s.w}px;height:${s.h}px;overflow:hidden;background:${s.transparent ? "transparent" : "#0b0e29"}}
   </style></head><body>${s.html}</body></html>`, { waitUntil: "load" });
   await page.evaluate(() => document.fonts.ready);
+  if (s.require_font && !(await page.evaluate((f) => document.fonts.check(f), s.require_font))) throw new Error(`font not loaded for ${s.file}: ${s.require_font}`);
   await page.waitForTimeout(60);
   await page.screenshot({ path: s.file, omitBackground: !!s.transparent });
 }

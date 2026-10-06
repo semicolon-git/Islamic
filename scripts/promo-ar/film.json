@@ -6,7 +6,7 @@
  "tail": 0.9,
  "endcard": 5.0,
  "min_speed": 0.7,
- "hafs_font": "https://79-72-0-206.sslip.io/fonts/hafs.18.woff2",
+ "hafs_font": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/public/fonts/hafs.18.woff2",
  "verse": {
   "text": "سَنُرِيهِمۡ ءَايَٰتِنَا فِي ٱلۡأٓفَاقِ وَفِيٓ أَنفُسِهِمۡ حَتَّىٰ يَتَبَيَّنَ لَهُمۡ أَنَّهُ ٱلۡحَقُّۗ أَوَلَمۡ يَكۡفِ بِرَبِّكَ أَنَّهُۥ عَلَىٰ كُلِّ شَيۡءٖ شَهِيدٌ ٥٣",
   "cite": "سورة فُصِّلَت · الآية ٥٣"
@@ -27,8 +27,8 @@
   "r": 14
  },
  "side": {
-  "x": 880,
-  "w": 900
+  "x": 850,
+  "w": 960
  },
  "allowed": [
   [

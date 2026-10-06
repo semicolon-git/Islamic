@@ -128,7 +128,8 @@ for sc in scenes:
 
 # ───────────────────────── 3. layers (Chromium)
 FONT_CSS = """@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500;600;700&family=Amiri:wght@400;700&family=Readex+Pro:wght@400;600&display=block');
-@font-face{font-family:"KFGQPC Hafs";src:url("%s") format("woff2");font-display:block}""" % film["hafs_font"]
+@font-face{font-family:"KFGQPC Hafs";src:url("data:font/woff2;base64,%s") format("woff2");font-display:block}""" % __import__("base64").b64encode(
+    open(fetch(film["hafs_font"], os.path.join(OUT, "hafs.woff2")), "rb").read()).decode()
 KHATAM = '<svg viewBox="-50 -50 100 100" width="{s}" height="{s}"><g fill="none" stroke="{c}" stroke-width="{w}"><rect x="-26" y="-26" width="52" height="52" rx="4"/><rect x="-26" y="-26" width="52" height="52" rx="4" transform="rotate(45)"/></g><circle r="11" fill="{c}"/></svg>'
 BG = f"""<div style="position:absolute;inset:0;background:radial-gradient(900px 600px at 85% 15%,rgba(54,220,184,.14),transparent 60%),radial-gradient(1000px 700px at 10% 90%,rgba(160,148,255,.14),transparent 60%),linear-gradient(180deg,#0d1130,#090c24)"></div>
 <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.06) 1px,transparent 0);background-size:28px 28px"></div>
@@ -151,7 +152,7 @@ layers = [
     {"file": f"{L}/logo.png", "w": W, "h": H, "transparent": True, "html": f"""<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;filter:drop-shadow(0 6px 30px rgba(0,0,0,.6))">
         {KHATAM.format(s=120, c="#36dcb8", w=5)}
         <div style="font-family:Amiri;font-weight:700;font-size:128px;line-height:1.35;color:#fff">آياتٌ حولك</div></div>"""},
-    {"file": f"{L}/endcard.png", "w": W, "h": H, "html": BG + f"""<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 170px">
+    {"file": f"{L}/endcard.png", "w": W, "h": H, "require_font": "66px \"KFGQPC Hafs\"", "html": BG + f"""<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 170px">
         <div style="font-family:'KFGQPC Hafs';font-size:66px;line-height:2.05;color:#f3eee4;text-align:center">{film["verse"]["text"]}</div>
         <div style="font-family:'IBM Plex Sans Arabic';font-weight:500;font-size:30px;color:#8b91ba;margin-top:18px">{film["verse"]["cite"]}</div>
         <div style="display:flex;align-items:center;gap:20px;margin-top:70px">{KHATAM.format(s=64, c="#36dcb8", w=5)}
