@@ -290,5 +290,6 @@
   "sky": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/sky.mp4",
   "astrolabe": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/astrolabe.mp4",
   "portal": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/portal.mp4"
- }
+ },
+ "timing_url": "https://raw.githubusercontent.com/semicolon-git/Islamic/0a4f3943ff455e4c0ea880415d822d8f55abd0b2/scripts/promo-ar/timing.json"
 }
