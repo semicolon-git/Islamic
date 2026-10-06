@@ -69,7 +69,7 @@ for (const name of names) {
     await page.evaluate(() => document.fonts.ready);
     if (s.prep) await s.prep(page);
     await page.waitForTimeout(800);
-    await page.screenshot({ path: path.join(OUT, name + ".png") });
+    await page.screenshot({ path: path.join(OUT, name + ".jpg"), type: "jpeg", quality: 86 });
     console.log("shot", name);
   } catch (e) {
     console.log("FAILED", name, e.message.split("\n")[0]);
