@@ -9,8 +9,8 @@ import { useI18n } from "@/i18n/client";
 import { SettingsSheet } from "./settings-sheet";
 
 const TABS = [
-  { href: "/", key: "nav.discover", icon: Compass, match: (p: string) => p === "/" || p.startsWith("/c/") || p.startsWith("/card/") },
-  { href: "/snap", key: "nav.snap", icon: Camera, match: (p: string) => p.startsWith("/snap") || p.startsWith("/inscription") },
+  { href: "/", key: "nav.discover", icon: Compass, match: (p: string) => p === "/" || p.startsWith("/c/") || p.startsWith("/card/") || p.startsWith("/discover") || p.startsWith("/science") },
+  { href: "/snap", key: "nav.snap", icon: Camera, match: (p: string) => p.startsWith("/snap") || p.startsWith("/inscription") || p.startsWith("/sky") },
   { href: "/ask", key: "nav.ask", icon: MessageCircleQuestion, match: (p: string) => p.startsWith("/ask") || p.startsWith("/talk") },
   { href: "/heritage", key: "nav.heritage", icon: Landmark, match: (p: string) => p.startsWith("/heritage") },
 ];

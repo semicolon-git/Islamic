@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { BadgeCheck, Camera, ChevronRight, Leaf, Landmark, Shapes, ShieldCheck, Sparkles, LayoutGrid, MessageCircleQuestion, Building2 } from "lucide-react";
+import { BadgeCheck, Camera, ChevronRight, FlaskConical, Telescope, Leaf, Landmark, Shapes, ShieldCheck, Sparkles, LayoutGrid, MessageCircleQuestion, Building2 } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { fmtNumber, fmtRelative, type Locale } from "@/i18n/core";
 import { env } from "@/lib/env";
@@ -10,6 +10,7 @@ import { cn } from "@/components/ui/cn";
 import { heroImage, listConcepts, recentApproved } from "@/features/beneficiary/data";
 import { cardHref, cardsFirst, conceptHref, conceptHue, conceptLabel, TRACKS, type ConceptSummary, type Track } from "@/features/beneficiary/labels";
 import { ApprovedSinceYouAsked, FirstVisitGate } from "@/features/beneficiary/home-client";
+import { ExploreSearch } from "@/features/discover/ui/explore-search";
 
 export const dynamic = "force-dynamic";
 
@@ -88,6 +89,7 @@ export default async function Home() {
           <h2 id="explore-h" className="text-2xl font-semibold text-ink">{t("beneficiary.home.explore")}</h2>
           <p className="text-ink-2">{t("beneficiary.home.exploreBody")}</p>
         </div>
+        <ExploreSearch concepts={concepts.map((c) => ({ id: c.id, label_en: c.label_en, label_ar: c.label_ar }))} />
         {TRACKS.map((tr) => {
           const list = byTrack[tr];
           if (!list.length) return null;
@@ -108,6 +110,27 @@ export default async function Home() {
             </div>
           );
         })}
+      </section>
+
+      {/* Muslim science + Sky mode */}
+      <section className="grid gap-3 sm:grid-cols-2" aria-label={t("science.title")} data-testid="home-science">
+        <Link href="/science" className="flex items-start gap-3 rounded-[20px] border border-line bg-surface p-5 hover:border-line-strong">
+          <span className="size-11 shrink-0 rounded-full bg-accent-soft text-accent grid place-items-center"><FlaskConical className="size-5" aria-hidden /></span>
+          <span className="flex-1 flex flex-col gap-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-ink-3">{t("science.title")}</span>
+            <span className="font-semibold text-ink">{t("science.homeTitle")}</span>
+            <span className="text-sm text-ink-2">{t("science.homeBody")}</span>
+          </span>
+          <ChevronRight className="size-5 text-ink-3 rtl:rotate-180 self-center" aria-hidden />
+        </Link>
+        <Link href="/sky" className="flex items-start gap-3 rounded-[20px] bg-[#0b0e29] text-white p-5 hover:opacity-95">
+          <span className="size-11 shrink-0 rounded-full bg-white/10 text-[#f3d27a] grid place-items-center"><Telescope className="size-5" aria-hidden /></span>
+          <span className="flex-1 flex flex-col gap-1">
+            <span className="font-semibold">{t("science.sky")}</span>
+            <span className="text-sm text-white/75">{t("science.skyBody")}</span>
+          </span>
+          <ChevronRight className="size-5 text-white/60 rtl:rotate-180 self-center" aria-hidden />
+        </Link>
       </section>
 
       {/* Recently approved */}

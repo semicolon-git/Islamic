@@ -1,0 +1,251 @@
+[
+  {
+    "id": "book-of-fixed-stars",
+    "title_en": "Book of the Constellations of the Fixed Stars (Kitab suwar al-kawakib al-thabita)",
+    "title_ar": "كتاب صور الكواكب الثابتة",
+    "author": "al-sufi",
+    "date_text": "c. 964 CE / c. 353 AH",
+    "summary_en": "A revision of the star catalogue in Ptolemy's Almagest. For each of the 48 classical constellations al-Sufi describes the figure and its stars, gives the old Arabic star names, tabulates coordinates (Ptolemy's, adjusted for precession) and his own magnitude estimates, and draws the constellation twice: as seen in the sky and as seen on a globe. Modern summaries give the number of stars as roughly a thousand; Ptolemy's catalogue, which al-Sufi reviewed star by star, has about 1,025 entries. The Bodleian copy (MS Marsh 144) carries the date 1009–10, but some scholars think it was made more than 150 years later.",
+    "summary_ar": "مراجعة لفهرس النجوم في «المجسطي» لبطليموس. يصف الصوفي لكل كوكبة من الكوكبات الكلاسيكية الثماني والأربعين صورتها ونجومها، ويذكر الأسماء العربية القديمة للنجوم، ويجدول إحداثياتها (إحداثيات بطليموس بعد تعديلها للمبادرة) وأقدارها كما قدّرها بنفسه، ويرسم الكوكبة مرتين: كما تُرى في السماء وكما تُرى على الكرة. وتذكر الدراسات الحديثة أن عدد النجوم نحو ألف، وفهرس بطليموس الذي راجعه الصوفي نجمًا نجمًا يضم نحو 1025 نجمًا. وتحمل نسخة مكتبة بودليان (Marsh 144) تاريخ 400هـ (1009–1010م)، لكن بعض الباحثين يرون أنها نُسخت بعد ذلك بأكثر من 150 سنة.",
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Sufi' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Sufi_BEA.pdf" },
+      { "citation": "Science Museum blog, 'Updating stars and observing the Andromeda Galaxy'", "url": "https://blog.sciencemuseum.org.uk/updating-stars-and-observing-the-andromeda-galaxy" },
+      { "citation": "Bodleian Libraries blog, 'Newly Digitized Arabic Astronomy Manuscript Now Online' (MS Marsh 144)", "url": "https://blogs.bodleian.ox.ac.uk/archivesandmanuscripts/2016/03/18/newly-digitized-arabic-astronomy-manuscript-now-online/" }
+    ]
+  },
+  {
+    "id": "al-qanun-al-masudi",
+    "title_en": "The Mas'udic Canon (al-Qanun al-Mas'udi)",
+    "title_ar": "القانون المسعودي",
+    "author": "al-biruni",
+    "date_text": "c. 1030s CE (after 1030) / 5th century AH",
+    "summary_en": "Al-Biruni's major astronomical handbook, dedicated to Sultan Mas'ud of Ghazna (r. 1030–1040). It is arranged in 11 treatises covering cosmology and time, calendars (Hijri, Seleucid and Persian), trigonometry, and the motions of the Sun, Moon, planets and stars, and it includes calculations of the qibla. It updates Ptolemy's astronomy with Arabic, Persian and Sanskrit material.",
+    "summary_ar": "أكبر كتب البيروني في الفلك، أهداه إلى السلطان مسعود الغزنوي (حكم 1030–1040م). يقع في إحدى عشرة مقالة تتناول الكون والزمان، والتقاويم (الهجري والسلوقي والفارسي)، وحساب المثلثات، وحركات الشمس والقمر والكواكب والنجوم، ويتضمن حساب القبلة. ويحدّث فيه فلك بطليموس بمواد عربية وفارسية وسنسكريتية.",
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Biruni' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Biruni_BEA.pdf" },
+      { "citation": "Qatar Digital Library, 'al-Biruni: a high point in the development of Islamic astronomy'", "url": "https://qdl.qa/en/al-bīrūnī-high-point-development-islamic-astronomy" }
+    ]
+  },
+  {
+    "id": "tahdid-nihayat-al-amakin",
+    "title_en": "The Determination of the Coordinates of Places (Tahdid nihayat al-amakin li-tashih masafat al-masakin)",
+    "title_ar": "تحديد نهايات الأماكن لتصحيح مسافات المساكن",
+    "author": "al-biruni",
+    "date_text": "begun 1018, completed 1025 CE / 409–416 AH, Ghazna",
+    "summary_en": "A work of mathematical geography. Al-Biruni discusses how to determine latitude, the obliquity of the ecliptic, longitude differences from lunar eclipses and distances between cities, and he solves the spherical-trigonometry problem of the direction of Mecca (qibla) at Ghazna.",
+    "summary_ar": "كتاب في الجغرافيا الرياضية. يناقش فيه البيروني طرق تحديد العرض، وميل دائرة البروج، وفروق الأطوال من خسوفات القمر، والمسافات بين المدن، ويحلّ مسألة اتجاه القبلة في غزنة بحساب المثلثات الكروية.",
+    "sources": [
+      { "citation": "AUB Press, The Determination of the Coordinates of Positions for the Correction of Distances Between Cities (tr. Jamil Ali, 1967)", "url": "https://press.aub.edu.lb/the-determination-of-the-coordinates-of-positions-for-the-correction-of-distances-between-cities" },
+      { "citation": "Kure Ansiklopedi (Turkish), 'Tahdidu nihayati'l-emakin' (dates of composition)", "url": "https://kureansiklopedi.com/tr/detay/tahdidu-nihayatil-emakin" }
+    ]
+  },
+  {
+    "id": "kitab-al-manazir",
+    "title_en": "Book of Optics (Kitab al-Manazir)",
+    "title_ar": "كتاب المناظر",
+    "author": "ibn-al-haytham",
+    "date_text": "early 11th century CE (often dated c. 1011–1021)",
+    "summary_en": "A seven-book treatise on light and vision. Ibn al-Haytham used experiments to argue that vision occurs when light from objects enters the eye, analysed reflection and refraction, and described image formation in a darkened chamber. A Latin translation (De aspectibus) circulated by about 1200, and Friedrich Risner printed it in 1572 as Opticae thesaurus; Kepler and Descartes used this edition.",
+    "summary_ar": "كتاب في الضوء والإبصار في سبع مقالات. احتجّ فيه ابن الهيثم بالتجربة على أن الإبصار يحدث بدخول الضوء من الأجسام إلى العين، وحلّل الانعكاس والانكسار، ووصف تكوّن الصورة في الحجرة المظلمة. وانتشرت ترجمته اللاتينية (De aspectibus) نحو سنة 1200م، وطبعها فريدريش ريزنر سنة 1572م، واستعمل كبلر وديكارت هذه الطبعة.",
+    "sources": [
+      { "citation": "Bibliotheca Hertziana, Perspectiva digital library: Risner 1572 edition", "url": "https://dlib.biblhertz.it/perspectiva/doc01.html" },
+      { "citation": "Wikipedia, 'Book of Optics' (secondary)", "url": "https://en.wikipedia.org/wiki/Book_of_Optics" }
+    ]
+  },
+  {
+    "id": "al-jabr-wal-muqabala",
+    "title_en": "The Compendious Book on Calculation by Completion and Balancing (al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala)",
+    "title_ar": "الكتاب المختصر في حساب الجبر والمقابلة",
+    "author": "al-khwarizmi",
+    "date_text": "c. 820 CE (reign of al-Ma'mun, 813–833)",
+    "summary_en": "A book of rules, with geometric demonstrations, for solving linear and quadratic equations, followed by practical applications such as inheritance and measurement. It is written in words rather than symbols. Its 12th-century Latin translation gave Europe the term 'algebra'.",
+    "summary_ar": "كتاب في قواعد حل المعادلات من الدرجتين الأولى والثانية مع براهين هندسية، تليها تطبيقات عملية كالمواريث والمساحة. وهو مكتوب بالألفاظ لا بالرموز. ومن ترجمته اللاتينية في القرن الثاني عشر الميلادي اشتُق مصطلح «Algebra».",
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'al-Khwarizmi'", "url": "https://www.britannica.com/biography/al-Khwarizmi" },
+      { "citation": "Dictionary of Scientific Biography, 'Al-Khwarizmi' (MacTutor copy)", "url": "https://mathshistory.st-andrews.ac.uk/DSB/Al-Khwarizmi.pdf" }
+    ]
+  },
+  {
+    "id": "book-of-ingenious-mechanical-devices",
+    "title_en": "The Book of Knowledge of Ingenious Mechanical Devices (al-Jami' bayn al-'ilm wa'l-'amal al-nafi' fi sina'at al-hiyal)",
+    "title_ar": "الجامع بين العلم والعمل النافع في صناعة الحيل",
+    "author": "al-jazari",
+    "date_text": "1206 CE / 602 AH, Diyarbakir",
+    "summary_en": "Describes about fifty devices in six categories: clocks; vessels and figures for drinking sessions; pitchers and basins for washing; fountains and perpetual flutes; machines for raising water; and miscellaneous devices such as a lock and a self-closing door. Each is explained with drawings and construction instructions, which makes the book a rare record of a medieval engineer's working practice.",
+    "summary_ar": "يصف نحو خمسين آلة في ستة أنواع: الساعات؛ والأواني والتماثيل لمجالس الشراب؛ والأباريق والطسوت للغسل؛ والنوافير والزمّارات الدائمة؛ وآلات رفع الماء؛ وآلات متفرقة كالقفل والباب الذي يغلق نفسه. ويشرح كل آلة برسوم وتعليمات للصنع، فصار الكتاب سجلًا نادرًا لطريقة عمل مهندس في العصور الوسطى.",
+    "sources": [
+      { "citation": "Science Museum Group Collection, people record: al-Jazari (1206, Kitab fi ma'rifat al-hiyal al-handasiyya)", "url": "https://collection.sciencemuseumgroup.org.uk/people/cp52302/ismail-ibn-al-razzaz-al-jazari" },
+      { "citation": "Wikipedia, 'Ismail al-Jazari' (secondary)", "url": "https://en.wikipedia.org/wiki/Ismail_al-Jazari" }
+    ]
+  },
+  {
+    "id": "tabula-rogeriana",
+    "title_en": "The Book of Pleasant Journeys into Faraway Lands (Nuzhat al-mushtaq fi ikhtiraq al-afaq), the 'Tabula Rogeriana'",
+    "title_ar": "نزهة المشتاق في اختراق الآفاق (الكتاب الرجاري)",
+    "author": "al-idrisi",
+    "date_text": "1154 CE / 548 AH, Palermo",
+    "summary_en": "A descriptive geography with 70 sectional maps, made for King Roger II of Sicily. The inhabited world north of the equator is divided into seven climates, each split into ten sections, with descriptions of each region. The maps place south at the top.",
+    "summary_ar": "كتاب في وصف البلدان مع سبعين خريطة جزئية، صُنع للملك روجر الثاني ملك صقلية. قُسّم فيه المعمور شمال خط الاستواء إلى سبعة أقاليم، وكل إقليم إلى عشرة أجزاء، مع وصف كل ناحية. وتضع الخرائط الجنوب في أعلاها.",
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'al-Idrisi'", "url": "https://www.britannica.com/print/article/282089" },
+      { "citation": "Wikipedia, 'Tabula Rogeriana' (secondary)", "url": "https://en.wikipedia.org/wiki/Tabula_Rogeriana" }
+    ]
+  },
+  {
+    "id": "canon-of-medicine",
+    "title_en": "The Canon of Medicine (al-Qanun fi al-tibb)",
+    "title_ar": "القانون في الطب",
+    "author": "ibn-sina",
+    "date_text": "early 11th century CE / early 5th century AH",
+    "summary_en": "A medical encyclopedia in five books: general principles of medicine; simple drugs (arranged alphabetically after an essay on their properties); diseases of particular organs; diseases affecting the whole body; and compound drugs. Gerard of Cremona translated it into Latin in the 12th century, and it stayed in European medical curricula until the late 17th century.",
+    "summary_ar": "موسوعة طبية في خمسة كتب: الأمور الكلية في الطب؛ والأدوية المفردة (مرتبة على حروف المعجم بعد مقالة في قواها)؛ والأمراض الجزئية الخاصة بالأعضاء؛ والأمراض التي تعم البدن؛ والأدوية المركبة. ترجمه جيرارد الكريموني إلى اللاتينية في القرن الثاني عشر الميلادي، وبقي في مناهج الطب الأوروبية إلى أواخر القرن السابع عشر.",
+    "sources": [
+      { "citation": "Encyclopaedia Britannica, 'Avicenna' (summary)", "url": "https://www.britannica.com/summary/Avicenna" },
+      { "citation": "Majalla, 'Canon of Medicine: Ibn Sina's al-Qanun fi al-Tibb'", "url": "https://majalla.org/ilm/canon-of-medicine-ibn-sinasal-qanun-fi-al-ṭibb/" }
+    ]
+  },
+  {
+    "id": "toledan-tables",
+    "title_en": "The Toledan Tables",
+    "title_ar": "الجداول الطليطلية",
+    "author": "al-zarqali",
+    "date_text": "second half of the 11th century CE / 5th century AH, Toledo",
+    "summary_en": "Astronomical tables compiled in Toledo by a group of astronomers led by the judge Sa'id al-Andalusi, in which al-Zarqali was a prominent member; they are listed here under al-Zarqali for that reason, not as his sole work. They adapted the best earlier material, especially from al-Khwarizmi and al-Battani, to the coordinates of Toledo and added the group's own observations. The Arabic original is lost, but Latin versions circulated widely in Europe.",
+    "summary_ar": "جداول فلكية أعدّتها في طليطلة جماعة من الفلكيين بقيادة القاضي صاعد الأندلسي، وكان الزرقالي من أبرز أعضائها؛ ولذلك تُذكر هنا تحت اسمه دون أن تُنسب إليه وحده. وقد كيّفت أفضل ما سبقها، ولا سيما مادة الخوارزمي والبتاني، على إحداثيات طليطلة، وأضافت أرصاد الجماعة. والأصل العربي مفقود، لكن نسخها اللاتينية انتشرت انتشارًا واسعًا في أوروبا.",
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Zarqali' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Zarqali_BEA.htm" },
+      { "citation": "MacTutor, 'al-Zarqali'", "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Zarqali/" }
+    ]
+  },
+  {
+    "id": "zij-i-sultani",
+    "title_en": "The Sultan's Astronomical Tables (Zij-i Sultani)",
+    "title_ar": "الزيج السلطاني (زيج ألغ بيك)",
+    "author": "ulugh-beg",
+    "date_text": "c. 1437–1439 CE, Samarkand",
+    "summary_en": "A Persian astronomical handbook produced jointly by the astronomers working under Ulugh Beg at the Samarkand observatory; it is listed under Ulugh Beg as patron and leader of the project. Its star catalogue gives 1,018 stars: positions of 992 were re-determined at Samarkand and 27 southern stars were taken from al-Sufi. It also contains tables for the Sun, Moon and planets.",
+    "summary_ar": "كتاب فلكي بالفارسية أعدّه معًا الفلكيون العاملون في مرصد سمرقند تحت رعاية ألغ بيك، ويُذكر هنا تحت اسمه بوصفه راعي المشروع وقائده. ويضم فهرسه 1018 نجمًا: أُعيد تحديد مواقع 992 منها في سمرقند، وأُخذ 27 نجمًا جنوبيًا من كتاب الصوفي. ويحتوي كذلك على جداول للشمس والقمر والكواكب.",
+    "sources": [
+      { "citation": "University of Michigan, Early Astronomy: 'Work of the Observatory: Zij of Ulugh Beg'", "url": "https://early-astronomy.web.itd.umich.edu/islamic_ulugh-beg.php" },
+      { "citation": "Wikipedia, 'Zij-i Sultani' (secondary)", "url": "https://en.wikipedia.org/wiki/Zij-i_Sultani" }
+    ]
+  },
+  {
+    "id": "kitab-al-fawaid",
+    "title_en": "Book of Useful Information on the Principles and Rules of Navigation (Kitab al-Fawa'id fi usul 'ilm al-bahr wa'l-qawa'id)",
+    "title_ar": "كتاب الفوائد في أصول علم البحر والقواعد",
+    "author": "ibn-majid",
+    "date_text": "1490 CE / 895 AH",
+    "summary_en": "A compendium of Indian Ocean navigation: the history and basic principles of the craft, the lunar mansions, rhumbs, the difference between coastal and open-sea sailing, the positions of ports from East Africa to Indonesia, star positions, the monsoon and other seasonal winds, and storms. Ibn Majid drew on his own voyages, his father's experience and the lore of generations of pilots.",
+    "summary_ar": "جامع لعلم الملاحة في المحيط الهندي: تاريخ الصنعة وأصولها، ومنازل القمر، والأخنان (اتجاهات البوصلة)، والفرق بين الملاحة الساحلية وملاحة عرض البحر، ومواقع الموانئ من شرق أفريقيا إلى إندونيسيا، ومواقع النجوم، ورياح الموسم وغيرها، والعواصف. واعتمد فيه ابن ماجد على أسفاره وخبرة أبيه وتراث أجيال من الربابنة.",
+    "sources": [
+      { "citation": "AramcoWorld, 'The Navigator Ahmad ibn Majid' (2005)", "url": "https://archive.aramcoworld.com/issue/200504/the.navigator.ahmad.ibn.majid.htm" },
+      { "citation": "Wikipedia, 'Ahmad ibn Majid' (secondary)", "url": "https://en.wikipedia.org/wiki/Ahmad_ibn_Majid" }
+    ]
+  },
+  {
+    "id": "zij-al-sabi",
+    "title_en": "The Sabian Tables (al-Zij al-Sabi')",
+    "title_ar": "الزيج الصابئ",
+    "author": "al-battani",
+    "date_text": "early 10th century CE, from observations made 877–918",
+    "summary_en": "Al-Battani's astronomical handbook with tables, based on his observations at Raqqa. It uses sines rather than chords and includes his finding that the solar apogee moves with the precession of the equinoxes. Plato of Tivoli's Latin translation, De motu stellarum, made it known in Europe, and Copernicus cited al-Battani.",
+    "summary_ar": "كتاب البتاني الفلكي بجداوله، مبني على أرصاده في الرقة. يستعمل الجيوب بدل الأوتار، ويتضمن ما وجده من أن أوج الشمس يتحرك بحركة مبادرة الاعتدالين. وعرّفت به أوروبا ترجمةُ أفلاطون التيفولي اللاتينية «في حركة النجوم»، واستشهد كوبرنيكوس بالبتاني.",
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Battani' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Battani_BEA.htm" },
+      { "citation": "Encyclopedia.com, 'al-Battani'", "url": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/al-battani" }
+    ]
+  },
+  {
+    "id": "al-zij-al-hakimi",
+    "title_en": "The Great Hakimi Tables (al-Zij al-Hakimi al-kabir)",
+    "title_ar": "الزيج الحاكمي الكبير",
+    "author": "ibn-yunus",
+    "date_text": "completed before 1009 CE / 399 AH, Cairo",
+    "summary_en": "Astronomical tables begun at the order of the Fatimid caliph al-'Aziz and completed under al-Hakim. Unlike other surviving zijes, it opens with a list of observations by Ibn Yunus and his predecessors, including eclipses and planetary conjunctions.",
+    "summary_ar": "جداول فلكية بدأها ابن يونس بأمر الخليفة الفاطمي العزيز وأتمّها في عهد الحاكم. وبخلاف الأزياج الباقية الأخرى، يبدأ بقائمة بأرصاد ابن يونس ومن سبقه، ومنها الكسوفات والخسوفات واقترانات الكواكب.",
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Ibn Yunus' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_Yunus_BEA.htm" },
+      { "citation": "Wikipedia, 'Ibn Yunus' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Yunus" }
+    ]
+  },
+  {
+    "id": "tadhkira-fi-ilm-al-haya",
+    "title_en": "Memoir on Astronomy (al-Tadhkira fi 'ilm al-hay'a)",
+    "title_ar": "التذكرة في علم الهيئة",
+    "author": "nasir-al-din-al-tusi",
+    "date_text": "13th century CE (Maragha period)",
+    "summary_en": "A summary of theoretical astronomy in which al-Tusi presents the geometric device now called the 'Tusi couple': a small circle rolling inside a larger circle of twice its diameter, so that a point on the small circle moves back and forth in a straight line. It allowed planetary models that keep uniform circular motion while matching Ptolemy's accuracy.",
+    "summary_ar": "خلاصة في علم الهيئة النظري، يعرض فيها الطوسي البناء الهندسي المعروف اليوم بـ«مزدوجة الطوسي»: دائرة صغيرة تدور داخل دائرة كبيرة قطرها ضعف قطرها، فتتحرك نقطة على الصغيرة ذهابًا وإيابًا على خط مستقيم. وأتاح ذلك نماذج للكواكب تحافظ على الحركة الدائرية المنتظمة مع بلوغ دقة بطليموس.",
+    "sources": [
+      { "citation": "Biographical Encyclopedia of Astronomers, entry 'Tusi: Nasir al-Din' (RASI copy, McGill)", "url": "https://islamsci.mcgill.ca/RASI/BEA/Tusi_BEA.pdf" },
+      { "citation": "University of Michigan, Early Astronomy: 'Mathematical Models: Nasir al-Din Tusi'", "url": "https://early-astronomy.web.itd.umich.edu/islamic_tusi.php" }
+    ]
+  },
+  {
+    "id": "kitab-al-filaha",
+    "title_en": "Book of Agriculture (Kitab al-filaha)",
+    "title_ar": "كتاب الفلاحة",
+    "author": "ibn-al-awwam",
+    "date_text": "probably late 12th century CE / 6th century AH, Seville",
+    "summary_en": "An agricultural treatise in 34 or 35 chapters (counts differ between sources). It opens with soils, manures and water, then covers grafting, trees, field crops and vegetables, and ending with animal husbandry (cattle, sheep, goats, camels, horses, mules and donkeys, poultry and bees) and veterinary care. It was translated into Spanish in 1802 and into French in 1864–67.",
+    "summary_ar": "كتاب في الزراعة في 34 أو 35 بابًا (تختلف المصادر في العدد)، يبدأ بالتربة والأسمدة والمياه، ثم يتناول التطعيم والأشجار والمحاصيل والخضر، ويختم بتربية الحيوان (البقر والغنم والمعز والإبل والخيل والبغال والحمير والطيور والنحل) والعناية البيطرية. ترجم إلى الإسبانية سنة 1802م وإلى الفرنسية بين 1864 و1867م.",
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn al-'Awwam'", "url": "https://www.filaha.org/author_ibn_al_awwam.html" },
+      { "citation": "Qatar Digital Library, manuscript of Kitab al-filahah (British Library copy)", "url": "https://www.qdl.qa/en/archive/81055/vdc_100000000042.0x0003d4" }
+    ]
+  },
+  {
+    "id": "kitab-al-nabat",
+    "title_en": "The Book of Plants (Kitab al-Nabat)",
+    "title_ar": "كتاب النبات",
+    "author": "al-dinawari",
+    "date_text": "9th century CE / 3rd century AH",
+    "summary_en": "Originally six volumes, of which the third and fifth survive and parts of the sixth have been reconstructed from later quotations. It describes plants and their growth, flowering and fruiting, cereals, vines and date palms, aromatic plants and dye plants, and honey and bees. The surviving parts were edited by Bernhard Lewin from 1953.",
+    "summary_ar": "كان في ستة أجزاء، بقي منها الثالث والخامس، وأعيد بناء أجزاء من السادس من نقول المتأخرين. يصف النبات ونموه وإزهاره وإثماره، والحبوب والكروم والنخل، والنباتات العطرية ونباتات الصباغة، والعسل والنحل. ونشر برنهارد لوين الأجزاء الباقية محققة ابتداءً من سنة 1953م.",
+    "sources": [
+      { "citation": "Wikipedia, 'Abu Hanifa Dinawari' (secondary)", "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Dinawari" },
+      { "citation": "Muslim Heritage, 'Al-Dinawari'", "url": "https://muslimheritage.com/al-dinawari/" }
+    ]
+  },
+  {
+    "id": "kitab-al-qasd-wal-bayan",
+    "title_en": "The Book of Concision and Clarity (Kitab al-qasd wa'l-bayan)",
+    "title_ar": "كتاب القصد والبيان",
+    "author": "ibn-bassal",
+    "date_text": "11th century CE / 5th century AH",
+    "summary_en": "An abridgement, made in the author's lifetime, of Ibn Bassal's larger Diwan al-filaha written for the garden of al-Ma'mun at Toledo. It classifies soils into ten kinds and describes the cultivation of over 180 plants, from field crops, herbs and vegetables (including onion and garlic) to fruit trees such as the date palm, olive, pomegranate, fig and grape.",
+    "summary_ar": "اختصار، وُضع في حياة المؤلف، لكتاب ابن بصال الأكبر «ديوان الفلاحة» الذي كتبه لبستان المأمون في طليطلة. يصنّف التربة عشرة أصناف، ويصف زراعة أكثر من 180 نباتًا، من المحاصيل والأعشاب والخضر (ومنها البصل والثوم) إلى الأشجار المثمرة كالنخل والزيتون والرمان والتين والعنب.",
+    "sources": [
+      { "citation": "Filaha Texts Project, author page 'Ibn Bassal'", "url": "https://filaha.org/author_Ibn_bassal.html" },
+      { "citation": "Wikipedia, 'Ibn Bassal' (secondary)", "url": "https://en.wikipedia.org/wiki/Ibn_Bassal" }
+    ]
+  },
+  {
+    "id": "miftah-al-hisab",
+    "title_en": "The Key of Arithmetic (Miftah al-hisab)",
+    "title_ar": "مفتاح الحساب",
+    "author": "al-kashi",
+    "date_text": "completed 2 March 1427 CE / 830 AH, Samarkand",
+    "summary_en": "A large textbook of arithmetic and practical mathematics dedicated to Ulugh Beg. Its chapter on buildings gives methods for measuring the surfaces and volumes of arches, barrel vaults, domes and muqarnas, which could be used to estimate materials and wages.",
+    "summary_ar": "كتاب كبير في الحساب والرياضيات العملية أهداه الكاشي إلى ألغ بيك. ويقدّم بابه في الأبنية طرقًا لحساب سطوح وأحجام الطاقات والأقبية والقباب والمقرنصات، يمكن استعمالها في تقدير المواد والأجور.",
+    "sources": [
+      { "citation": "MacTutor, 'Ghiyath al-Din Jamshid Mas'ud al-Kashi'", "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Kashi/" },
+      { "citation": "Y. Dold-Samplonius, 'Calculating Surface Areas and Volumes in Islamic Architecture', Nexus Network Journal conference paper (2000)", "url": "https://emis.univie.ac.at/journals/NNJ/conferences/N2000-DoldSamplonius.html" }
+    ]
+  },
+  {
+    "id": "geometric-constructions-for-artisans",
+    "title_en": "On the Geometric Constructions Necessary for the Artisan (Kitab fima yahtaju ilayhi al-sani' min a'mal al-handasa)",
+    "title_ar": "كتاب فيما يحتاج إليه الصانع من أعمال الهندسة",
+    "author": "abu-al-wafa-al-buzjani",
+    "date_text": "late 10th century CE (after c. 990); authorship and form debated",
+    "summary_en": "A practical manual of more than a hundred ruler-and-compass constructions, including regular polygons and the dissection and assembly of squares used in ornament. The author reports attending meetings of geometers and artisans and notes that geometers erred for lack of practice and artisans for lack of proof. It is attributed to Abu al-Wafa'; some scholars think the surviving text records his teaching as written down by a student.",
+    "summary_ar": "دليل عملي يضم أكثر من مئة إنشاء بالمسطرة والفرجار، منها المضلعات المنتظمة وتقسيم المربعات وتركيبها كما تُستعمل في الزخرفة. ويذكر المؤلف أنه حضر مجالس للمهندسين والصنّاع، وأن المهندسين أخطؤوا لقلة الممارسة والصنّاع لقلة معرفتهم بالبرهان. ويُنسب الكتاب إلى أبي الوفاء، ويرى بعض الباحثين أن النص الباقي تقييد لدروسه كتبه أحد طلابه.",
+    "sources": [
+      { "citation": "R. Sarhangi et al., 'The Heart is a Dust Board' (arXiv:1910.14432)", "url": "https://arxiv.org/pdf/1910.14432" },
+      { "citation": "Pattern in Islamic Art, 'Postscript A: Academic Mathematical Involvement in Islamic Geometric Ornament'", "url": "https://patterninislamicart.com/postscript-a-academic-mathematical-involvement-in-islamic-geometric-ornament" },
+      { "citation": "Marmara University, study on the authorship of the treatise (in Turkish)", "url": "https://openaccess.marmara.edu.tr/entities/publication/e2b2c3e2-1c9c-47d7-9118-81b66c9dcda5" }
+    ]
+  }
+]

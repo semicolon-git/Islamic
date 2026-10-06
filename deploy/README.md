@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/semicolon-git/Islamic/main/deploy/i
 
 Leave off the domain to use the `sslip.io` address. The script:
 1. installs Docker;
-2. clones the repo to `/opt/signs-around-you` and downloads the pinned Quran, hadith and translation sources;
+2. clones the repo to `/opt/signs-around-you` and downloads the pinned Quran, hadith, translation and library (tafsir, hadith collections) sources, all sha256-checked;
 3. writes `deploy/.env` with fresh random secrets;
 4. builds and starts everything;
 5. waits until the app is healthy, then prints the URLs.
@@ -46,6 +46,10 @@ sudo bash deploy/install.sh # update to the latest code (keeps data and secrets)
 
 **Switch on AI:** put your key in `deploy/.env` as `ANTHROPIC_API_KEY=...`, then run `$C up -d app`. Check it with `$C exec app npx tsx scripts/ai-check.ts`.
 If the check says the key "is not scoped to a workspace", also set `ANTHROPIC_WORKSPACE_ID=wrkspc_...` (Claude Console → Settings → Workspaces), or create the key inside a workspace instead.
+
+**Updating an existing server** keeps your data: re-run the install command. On start the app adds what is new (library books, Muslim-science entries) without touching existing content.
+
+**Uploading books (PDF):** Portal → Library. Text PDFs are read directly; scanned or image-only pages need AI switched on. Files are kept in the `uploads` volume.
 
 **Reset the demo data** (wipes the database and re-seeds it on start):
 ```bash

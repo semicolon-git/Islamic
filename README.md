@@ -54,6 +54,9 @@ All AI features work without an API key through deterministic fallbacks. Set `AN
 | `/inscription` | Type or photograph Arabic calligraphy. The matcher finds the exact verse (or the nearest one, with the differences shown) or says it is not a Quranic verse. |
 | `/heritage`, `/heritage/item/[code]` | Museum items by label code or QR code, with confirmed inscriptions. |
 | `/heritage/manuscripts/…` | The public reader for published manuscript pages: diplomatic and reading layers, marks explained, contributors credited. |
+| `/discover` | **Any photo or search, answered from verified sources.** No approved card for it? The verse keys and hadith numbers are found by word search and proposed by AI, the texts are fetched by reference, each passage is judged, and a short summary is linted and independently verified. Trust is always labelled: 🟢 approved card · 🟡 sources found, not yet reviewed · ⚪ we won't guess. |
+| `/science` | **Muslim science:** 25 scholars, 19 works, 11 instruments and 28 museum objects (where to see an astrolabe), all sourced, linked from concept pages. |
+| `/sky` | **Sky mode:** point the phone at the sky; the star, planet or Moon is computed from time, place and compass (no photo, no AI). 177 stars, Arabic star names, Hijri date and Moon phase. |
 | `/about` | Sources, privacy, how approval works. |
 
 ### Portal (desktop first, Arabic/English)
@@ -67,6 +70,8 @@ All AI features work without an API key through deterministic fallbacks. Set `AN
 | `/portal/items` | Heritage items, printable QR labels, inscription confirmation. |
 | `/portal/eval` | The Ask safety scoreboard: fabricated hadith, quote fidelity, citation coverage, false refusals, levels. Can be run from the UI. |
 | `/portal/people` | Learning points from accepted work. Students are shown by initials. |
+| `/portal/library` | **Library:** the books answers may quote, word for word. Built in: al-Tafsir al-Muyassar, Tafsir al-Saʿdi, Ibn Kathir (Arabic and abridged English), al-Tabari; Sunan Abi Dawud, Jamiʿ al-Tirmidhi, Sunan al-Nasaʾi, Sunan Ibn Majah, al-Muwattaʾ, al-Nawawi's Forty, Forty Qudsi (grades shown; only sahih/hasan by the primary grader are used in answers). **Upload a PDF**: its text layer is read, or Claude reads scanned pages; an institution admin other than the uploader approves it before answers can quote it. |
+| `/portal/demand` | Also lists what visitors **explored** without a card; "Draft a card" turns a discovery into a pre-filled draft for the normal review workflow. |
 
 ### Manuscript Studio, the novel part
 A manuscript is never "corrected". The **diplomatic layer** records exactly what the scribe wrote, marks and all. The **reading layer** adds confirmed abbreviation expansions and normalisation. The two are never merged. The domain research behind every decision is in [`docs/research/manuscripts.md`](docs/research/manuscripts.md).
@@ -96,11 +101,10 @@ A manuscript is never "corrected". The **diplomatic layer** records exactly what
 
 ## Rules the code enforces
 - **Quran text** comes only by reference from the KFGQPC Hafs v18 table and is rendered in the KFGQPC font. It is never generated or typed.
-- **Quran recitation** is a human recording looked up by verse key (Al-Husary, murattal, Hafs), never synthesised speech. Every verse shows a "Listen" button; an invalid key gets no audio. `npm run recitation:check` verifies the recordings' numbering against KFGQPC in all 114 suras, that first verses are recorded without the bismillah (matching the text), and the pinned sha256 of every verse the cards cite.
-- **Word highlighting** follows the recitation using word timings made for the exact file that plays. `npm run recitation:segments` keeps a verse only if its word list matches the KFGQPC words one for one (letter skeletons compared) and its timings are complete and in order: 6,181 of 6,236 verses (99.1%, including every verse a card cites). The other 55 play without highlighting rather than risk lighting the wrong word.
 - **Hadith** come only by id (Bukhari, standard numbering; Muslim, Abd al-Baqi numbering) and always show the collection, number and grade.
 - **Counts** are computed by code from the Quranic Arabic Corpus, and the counting rule is shown.
 - **Ask** answers only from approved cards. It abstains when the evidence is empty, refers fatwa-type questions (level D) to a person, and never confirms "scientific miracle" framing.
+- **Open-world answers** never contain AI-written scripture: the model only names references, code fetches the texts, a second call keeps only passages that are directly or clearly related (a shared material or word is not enough), and a third checks the summary. People are never identified or described; sensitive subjects (pork, alcohol, weapons…) get sources only and a referral.
 - **Workflow:** student → researcher → institution, and no one approves their own work.
 - **Privacy:** no visitor accounts, no belief tracking, photos are never stored, "Notify me" is keyed to a hashed device token.
 
@@ -114,6 +118,8 @@ npm test               # vitest (unit)
 npm run test:e2e       # playwright (builds nothing: run `npm run build` first; it seeds its own database)
 npm run eval           # Ask evaluation on data/eval/cases.json → data/eval/results.json (committed run: AI on; results.nokey.json: deterministic path)
 npm run verify         # all of the above
+node scripts/library/fetch.mjs                                   # library books (tafsir, hadith collections), checksummed
+npx tsx --conditions=react-server scripts/ms-draft-bench.ts      # live manuscript-draft CER benchmark (needs a key)
 npx tsx scripts/sql.mts "select count(*) from cards"   # quick SQL against the local DB
 ```
 
@@ -152,9 +158,10 @@ Full guide, everyday commands, backups and troubleshooting: [`deploy/README.md`]
   - Text: KFGQPC Hafs v18 (King Fahd Glorious Quran Printing Complex).
   - Translation: Saheeh International.
   - Morphology: Quranic Arabic Corpus 0.4 (GPL, used verbatim for counts).
-  - Recitation: Sheikh Mahmoud Khalil Al-Husary (murattal), verse-by-verse files (64 kbps) streamed from EveryAyah.com; checksums of the cited verses are pinned in [`data/content/recitation/husary.json`](data/content/recitation/husary.json). EveryAyah publishes no licence terms, so **confirm permission before commercial use**.
-  - Word timings: Quran.com API v4 (recitation 6), stored in [`data/content/recitation/husary-segments.json`](data/content/recitation/husary-segments.json). Check the Quran.com / Quran Foundation terms before commercial use.
-- **Hadith:** Sahih al-Bukhari and Sahih Muslim, from the fawazahmed0 hadith-api mirror. Re-verify each one on dorar.net before launch.
+- **Hadith:** Sahih al-Bukhari and Sahih Muslim, plus the four Sunan, al-Muwattaʾ, al-Nawawi's Forty and Forty Qudsi with their graders' verdicts, from the fawazahmed0 hadith-api mirror (pinned commit). Re-verify on dorar.net before launch.
+- **Tafsir:** al-Muyassar, al-Saʿdi, Ibn Kathir (Arabic, abridged English), al-Tabari, from the spa5k/tafsir_api mirror of the Quran.com/QUL resources (pinned commit, every file sha256-checked: `data/library/manifest.json`).
+- **Stars:** HYG database v4.1 (CC BY-SA 4.0); Arabic star names after Kunitzsch & Smart (see `data/sky/README.md`, awaiting specialist review).
+- **Muslim science:** `data/science/` — every entry sourced; museum records checked on 2026-10-06 (see `data/science/README.md`).
 - **Manuscript images:** the bundled pages come from public collections. The holding library, shelfmark, licence and credit line are stored for every copy and shown wherever an image appears. **Check each licence before commercial use** (some are non-commercial).
 - **Decorative images:** generated, and they contain no letters. No AI-generated calligraphy or fake manuscripts are used anywhere.
 

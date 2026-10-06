@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Native/wasm packages must not be bundled by webpack.
-  serverExternalPackages: ["@electric-sql/pglite", "tesseract.js", "sharp", "pg"],
+  serverExternalPackages: ["@electric-sql/pglite", "tesseract.js", "sharp", "pg", "pdfjs-dist", "pdf-lib"],
   poweredByHeader: false,
   images: { unoptimized: true },
   experimental: { serverActions: { bodySizeLimit: "12mb" } },

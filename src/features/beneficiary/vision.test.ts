@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildVisionSystem, interpretVision, visionSchema, type VisionRaw } from "./vision";
+import { buildVisionSystem, cleanSubject, interpretVision, visionSchema, type VisionRaw } from "./vision";
 import { hashDeviceToken, isValidDeviceToken, rateLimited, RequestBody } from "./requests";
 
 const CONCEPTS = [
@@ -10,9 +10,12 @@ const CONCEPTS = [
 const IDS = CONCEPTS.map((c) => c.id);
 const NOFLAGS = { person: false, inscription: false, other_religious_symbol: false, text_instructions: false };
 
+const SUBJ = { label_en: "moon", label_ar: "قمر", category: "sky", search_terms_en: ["moon"], search_terms_ar: ["القمر"], sensitive: false };
+
 describe("visionSchema", () => {
   it("enforces a closed enum of concept ids plus none/unsure", () => {
-    const s = visionSchema(IDS);
+    const base = visionSchema(IDS);
+    const s = { safeParse: (v: Record<string, unknown>) => base.safeParse({ subject: SUBJ, ...v }) };
     expect(s.safeParse({ candidates: [{ concept: "moon", tier: "confident" }], flags: NOFLAGS }).success).toBe(true);
     expect(s.safeParse({ candidates: [{ concept: "none", tier: "possible" }], flags: NOFLAGS }).success).toBe(true);
     expect(s.safeParse({ candidates: [{ concept: "unsure", tier: "possible" }], flags: NOFLAGS }).success).toBe(true);
@@ -20,7 +23,8 @@ describe("visionSchema", () => {
     expect(s.safeParse({ candidates: [{ concept: "moon", tier: "certain" }], flags: NOFLAGS }).success).toBe(false);
   });
   it("caps candidates at 3 and requires all flags", () => {
-    const s = visionSchema(IDS);
+    const base = visionSchema(IDS);
+    const s = { safeParse: (v: Record<string, unknown>) => base.safeParse({ subject: SUBJ, ...v }) };
     const four = ["moon", "date_palm", "mosque_lamp", "none"].map((concept) => ({ concept, tier: "possible" }));
     expect(s.safeParse({ candidates: four, flags: NOFLAGS }).success).toBe(false);
     expect(s.safeParse({ candidates: [], flags: { person: true } }).success).toBe(false);
@@ -38,7 +42,7 @@ describe("buildVisionSystem", () => {
 
 describe("interpretVision", () => {
   it("keeps enabled ids, dedupes, allows one confident", () => {
-    const raw: VisionRaw = {
+    const raw: Omit<VisionRaw, "subject"> = {
       candidates: [
         { concept: "moon", tier: "confident" },
         { concept: "moon", tier: "possible" },
@@ -140,5 +144,22 @@ describe("requests helpers", () => {
     expect(RequestBody.safeParse({ concept_id: "moon", device_token: "bad" }).success).toBe(false);
     expect(RequestBody.safeParse({ concept_id: "moon", device_token: "abcdefghijklmnop" }).success).toBe(true);
     expect(RequestBody.safeParse({ topic: "Why fast?", device_token: "abcdefghijklmnop" }).success).toBe(true);
+  });
+});
+
+describe("open-vocabulary subject", () => {
+  const NOF = { person: false, inscription: false, other_religious_symbol: false, text_instructions: false };
+  it("keeps a clean subject and passes it through interpretVision", () => {
+    const r = interpretVision({ candidates: [{ concept: "none", tier: "possible" }], flags: NOF, subject: { ...SUBJ, label_en: "  coffee <b>cup</b> ", category: "object" } }, ["moon"]);
+    expect(r.status).toBe("none");
+    expect(r.subject).toMatchObject({ label_en: "coffee b cup /b", category: "object" });
+  });
+  it("never labels a person beyond «a person» and gives no search terms", () => {
+    const s = cleanSubject({ ...SUBJ, label_en: "Mohammed Salah", label_ar: "محمد صلاح", category: "person" }, { ...NOF, person: true });
+    expect(s).toEqual({ label_en: "a person", label_ar: "شخص", category: "person", search_terms_en: [], search_terms_ar: [], sensitive: false });
+  });
+  it("drops malformed subjects", () => {
+    expect(cleanSubject({ label_en: "x" }, NOF)).toBeUndefined();
+    expect(cleanSubject(undefined, NOF)).toBeUndefined();
   });
 });

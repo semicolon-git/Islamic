@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Bell, BellRing, MessageCircleQuestion, Users, ShieldCheck } from "lucide-react";
+import { Bell, BellRing, BookOpen, ChevronRight, MessageCircleQuestion, Users, ShieldCheck } from "lucide-react";
 import { ConceptImage } from "@/components/ui/concept-image";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
@@ -10,6 +10,7 @@ import { useI18n } from "@/i18n/client";
 import { useEvents } from "@/lib/use-events";
 import { getDeviceToken } from "./device";
 import { conceptHref } from "./labels";
+import { discoverHref } from "@/features/discover/link";
 
 type State = "idle" | "sending" | "requested" | "error" | "limited";
 
@@ -19,12 +20,14 @@ type State = "idle" | "sending" | "requested" | "error" | "limited";
  */
 export function NoCard({
   conceptId,
+  labels,
   label,
   image,
   hue,
   suggestions,
 }: {
   conceptId: string;
+  labels?: { en: string; ar: string };
   label: string;
   image: string | null;
   hue: number;
@@ -94,6 +97,17 @@ export function NoCard({
         <h1 className="text-[1.75rem] leading-tight font-semibold text-ink">{t("beneficiary.nocard.title")}</h1>
         <p className="text-ink-2 leading-relaxed">{t("beneficiary.nocard.why", { label })}</p>
       </div>
+
+      {labels && (
+        <Link href={discoverHref({ label_en: labels.en, label_ar: labels.ar }, "search")} className="flex items-center gap-3 rounded-[20px] bg-[#fdf3d6] text-[#5c4100] dark:bg-[#3a2f12] dark:text-[#f3d27a] p-4 hover:brightness-95" data-testid="nocard-discover">
+          <BookOpen className="size-6 shrink-0" aria-hidden />
+          <span className="flex-1 flex flex-col">
+            <span className="font-semibold">{t("discover.fromSnapCta")}</span>
+            <span className="text-sm opacity-90">{t("discover.tier.sources")}</span>
+          </span>
+          <ChevronRight className="size-5 rtl:rotate-180" aria-hidden />
+        </Link>
+      )}
 
       <div className="rounded-[20px] border border-line bg-surface p-5 flex flex-col gap-3 shadow-card" aria-live="polite">
         {state === "requested" ? (

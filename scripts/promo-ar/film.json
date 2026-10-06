@@ -1,0 +1,317 @@
+{
+ "output": "signs-around-you-promo-ar.mp4",
+ "tempo": 1.0,
+ "gap": 0.3,
+ "lead": 0.7,
+ "tail": 0.9,
+ "endcard": 5.0,
+ "min_speed": 0.7,
+ "hafs_font": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/public/fonts/hafs.18.woff2",
+ "verse": {
+  "text": "سَنُرِيهِمۡ ءَايَٰتِنَا فِي ٱلۡأٓفَاقِ وَفِيٓ أَنفُسِهِمۡ حَتَّىٰ يَتَبَيَّنَ لَهُمۡ أَنَّهُ ٱلۡحَقُّۗ أَوَلَمۡ يَكۡفِ بِرَبِّكَ أَنَّهُۥ عَلَىٰ كُلِّ شَيۡءٖ شَهِيدٌ ٥٣",
+  "cite": "سورة فُصِّلَت · الآية ٥٣"
+ },
+ "phone": {
+  "x": 330,
+  "y": 90,
+  "w": 416,
+  "h": 900,
+  "r": 46,
+  "bezel": 12
+ },
+ "desk": {
+  "x": 160,
+  "y": 28,
+  "w": 1600,
+  "h": 900,
+  "r": 14
+ },
+ "side": {
+  "x": 850,
+  "w": 960
+ },
+ "allowed": [
+  [
+   "يدري",
+   "يدر"
+  ],
+  [
+   "الاسطرلاب",
+   "الاسطر لاب"
+  ],
+  [
+   "الاسطرلاب",
+   "الاسترلاب"
+  ],
+  [
+   "صريحا",
+   "صريحه"
+  ]
+ ],
+ "broll": {
+  "1": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083401_baa6798d-64ce-40c0-bb7e-573f809bc381.mp4",
+  "2": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083325_aee92bf0-7caa-4188-819e-b8e1c3fb6d75.mp4",
+  "3": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_084206_101005bd-0ab5-4dec-890b-6a6574e7698c.mp4",
+  "4": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083413_fb38b73c-62c2-4ff8-8cb7-44caaf8fbf15.mp4",
+  "5": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_084206_bc1fa215-65be-4c65-9ec1-adee9e70ad9a.mp4",
+  "6": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083413_8d80274e-a575-4086-ab47-20b9efc4627c.mp4",
+  "7": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083425_a8396c58-8365-4028-a92f-1ed92b5dd6ce.mp4",
+  "8": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083425_64e0deec-36be-4676-a193-53beea072ff9.mp4",
+  "9": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083425_efd51541-1c43-4c13-92ae-65f6c7855cea.mp4",
+  "10": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_083425_e3c2c267-5ff5-48be-a794-219c4d4f0282.mp4"
+ },
+ "scenes": [
+  {
+   "n": 1,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_084531_a805dc3f-d583-487d-9610-507dca38f5cf.mp3",
+   "captions": [
+    "كم مرةً رأيتَ شيئًا من حولك،",
+    "فتساءلتَ في نفسك:",
+    "ماذا جاء عنه في كتاب الله،",
+    "وفي سنّة رسوله صلى الله عليه وسلم؟"
+   ],
+   "parts": [
+    {
+     "kind": "broll",
+     "src": "b1"
+    }
+   ],
+   "tts": "كَمْ مَرَّةً رَأَيْتَ شَيْئًا مِنْ حَوْلِكَ، فَتَسَاءَلْتَ فِي نَفْسِكْ: مَاذَا جَاءَ عَنْهُ فِي كِتَابِ اللَّهِ، وَفِي سُنَّةِ رَسُولِهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمْ؟"
+  },
+  {
+   "n": 2,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_084831_4c1a2921-9ded-4394-878a-eaef45ab1d0f.mp3",
+   "captions": [
+    "في عالمٍ تتسارع فيه الإجابات،",
+    "يختلط الصحيح بغيره،",
+    "ويُنسَب إلى القرآن والسنّة ما لم يَرِد فيهما،",
+    "فلا يدري السائل بمن يثق."
+   ],
+   "parts": [
+    {
+     "kind": "broll",
+     "src": "b2",
+     "sat": 0.75
+    }
+   ],
+   "tts": "فِي عَالَمٍ تَتَسَارَعُ فِيهِ الْإِجَابَاتُ، يَخْتَلِطُ الصَّحِيحُ بِغَيْرِهِ، وَيُنْسَبُ إِلَى الْقُرْآنِ وَالسُّنَّةِ مَا لَمْ يَرِدْ فِيهِمَا، فَلَا يَدْرِي السَّائِلُ بِمَنْ يَثِقْ."
+  },
+  {
+   "n": 3,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_084531_7c69a723-b6e2-4293-9116-bda9ce735fbc.mp3",
+   "captions": [
+    "ومن هنا جاءت منصّة «آياتٌ حولك»:",
+    "وجّه عدسة هاتفك إلى ما تراه،",
+    "لتعرف ما تقوله المصادر الموثوقة عنه."
+   ],
+   "parts": [
+    {
+     "kind": "title",
+     "len": 3.0,
+     "nocaps": true
+    },
+    {
+     "kind": "phone",
+     "src": "camera",
+     "in": 0,
+     "out": 11.0
+    }
+   ],
+   "tts": "وَمِنْ هُنَا جَاءَتْ مِنَصَّةُ آيَاتٌ حَوْلَكْ: وَجِّهْ عَدَسَةَ هَاتِفِكَ إِلَى مَا تَرَاهُ، لِتَعْرِفَ مَا تَقُولُهُ الْمَصَادِرُ الْمَوْثُوقَةُ عَنْهْ."
+  },
+  {
+   "n": 4,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_085539_de6b98d7-6b12-4953-9d9a-51ddb1b8f2ea.mp3",
+   "captions": [
+    "صوّر رمّانةً،",
+    "تظهر لك الآيات التي ذكرت الرمّان،",
+    "منقولةً بنص مصحف مجمَّع الملك فهد،",
+    "ومعها «التفسير الميسَّر»،",
+    "والأحاديث بأرقامها ودرجاتها.",
+    "والذكاء الاصطناعي هنا",
+    "لا يكتب آيةً ولا حديثًا،",
+    "وإنما يدلّ على موضعه،",
+    "ثم يُجلَب النص من مصدره،",
+    "ويُفحَص قبل أن يصل إليك."
+   ],
+   "parts": [
+    {
+     "kind": "phone",
+     "src": "camera",
+     "in": 11.0,
+     "len": 4.6
+    },
+    {
+     "kind": "broll",
+     "src": "b3",
+     "len": 2.8
+    },
+    {
+     "kind": "phone",
+     "src": "sources",
+     "in": 0.2
+    }
+   ],
+   "tts": "صَوِّرْ رُمَّانَةً، تَظْهَرْ لَكَ الْآيَاتُ الَّتِي ذَكَرَتِ الرُّمَّانَ، مَنْقُولَةً بِنَصِّ مُصْحَفِ مُجَمَّعِ الْمَلِكِ فَهْدْ، وَمَعَهَا التَّفْسِيرُ الْمُيَسَّرُ، وَالْأَحَادِيثُ بِأَرْقَامِهَا وَدَرَجَاتِهَا. وَالذَّكَاءُ الِاصْطِنَاعِيُّ هُنَا لَا يَكْتُبُ آيَةً وَلَا حَدِيثًا، وَإِنَّمَا يَدُلُّ عَلَى مَوْضِعِهِ، ثُمَّ يُجْلَبُ النَّصُّ مِنْ مَصْدَرِهِ، وَيُفْحَصُ قَبْلَ أَنْ يَصِلَ إِلَيْكْ."
+  },
+  {
+   "n": 5,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_130058_7d8c735c-2d02-402f-8b7e-bb5b2903aff2.mp3",
+   "captions": [
+    "وكلّ إجابةٍ تحمل شارةً صادقة:",
+    "بطاقةٌ اعتمدتها مؤسسة علمية،",
+    "أو مصادر موثّقة لم يراجعها العلماء بعد،",
+    "أو «لن نخمّن» حين لا نجد نصًّا صريحًا."
+   ],
+   "parts": [
+    {
+     "kind": "phone",
+     "src": "badges",
+     "in": 0.3
+    }
+   ],
+   "tts": "وَكُلُّ إِجَابَةٍ تَحْمِلُ شَارَةً صَادِقَةْ: بِطَاقَةٌ اعْتَمَدَتْهَا مُؤَسَّسَةٌ عِلْمِيَّةٌ، أَوْ مَصَادِرُ مُوَثَّقَةٌ لَمْ يُرَاجِعْهَا الْعُلَمَاءُ بَعْدُ، أَوْ لَنْ نُخَمِّنَ حِينَ لَا نَجِدُ نَصًّا صَرِيحَا."
+  },
+  {
+   "n": 6,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_090448_afac1703-c570-48af-8aaa-47a36a197688.mp3",
+   "captions": [
+    "وفي الليل، ارفع هاتفك نحو السماء:",
+    "هذا «النسر الواقع»، اسمٌ عربيّ قديم،",
+    "دوّنه عبد الرحمن الصوفي",
+    "قبل أكثر من ألف عام،",
+    "في «كتاب صُوَر الكواكب الثابتة».",
+    "ومن النجم إلى الأسطرلاب،",
+    "الذي طوّره علماء المسلمين،",
+    "وكيّفوه لمعرفة مواقيت الصلاة واتجاه القبلة،",
+    "ثم إلى المتاحف التي تحفظ نماذجه اليوم."
+   ],
+   "parts": [
+    {
+     "kind": "broll",
+     "src": "b4",
+     "len": 4.2
+    },
+    {
+     "kind": "phone",
+     "src": "sky"
+    },
+    {
+     "kind": "broll",
+     "src": "b5",
+     "len": 3.0,
+     "out": 3.4
+    },
+    {
+     "kind": "phone",
+     "src": "astrolabe"
+    }
+   ],
+   "tts": "وَفِي اللَّيْلِ، ارْفَعْ هَاتِفَكَ نَحْوَ السَّمَاءْ: هَذَا النَّسْرُ الْوَاقِعُ، اسْمٌ عَرَبِيٌّ قَدِيمٌ، دَوَّنَهُ عَبْدُ الرَّحْمَنِ الصُّوفِيُّ قَبْلَ أَكْثَرَ مِنْ أَلْفِ عَامٍ، فِي كِتَابِ صُوَرِ الْكَوَاكِبِ الثَّابِتَةْ. وَمِنَ النَّجْمِ إِلَى الْأُسْطُرْلَابِ، الَّذِي طَوَّرَهُ عُلَمَاءُ الْمُسْلِمِينَ، وَكَيَّفُوهُ لِمَعْرِفَةِ مَوَاقِيتِ الصَّلَاةِ وَاتِّجَاهِ الْقِبْلَةِ، ثُمَّ إِلَى الْمَتَاحِفِ الَّتِي تَحْفَظُ نَمَاذِجَهُ الْيَوْمْ."
+  },
+  {
+   "n": 7,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_085539_fc3a2550-c477-46fc-a80f-cfeeaae28447.mp3",
+   "captions": [
+    "وخلف ذلك كلّه بوابةٌ للمؤسسات العلمية:",
+    "يُعِدّ فيها الطلاب والباحثون المحتوى",
+    "ويدقّقونه، ويرفعون كتب التراث،",
+    "ويفرّغون المخطوطات القديمة سطرًا سطرًا،",
+    "ويقابلون بين نُسَخها،",
+    "ولا يُنشَر شيءٌ إلا بعد مراجعة المختصّين",
+    "واعتماد المؤسسة."
+   ],
+   "parts": [
+    {
+     "kind": "broll",
+     "src": "b6",
+     "len": 3.2
+    },
+    {
+     "kind": "desk",
+     "src": "portal",
+     "in": 1.5
+    },
+    {
+     "kind": "broll",
+     "src": "b7",
+     "len": 3.0,
+     "out": 3.0
+    }
+   ],
+   "tts": "وَخَلْفَ ذَلِكَ كُلِّهِ بَوَّابَةٌ لِلْمُؤَسَّسَاتِ الْعِلْمِيَّةْ: يُعِدُّ فِيهَا الطُّلَّابُ وَالْبَاحِثُونَ الْمُحْتَوَى وَيُدَقِّقُونَهُ، وَيَرْفَعُونَ كُتُبَ التُّرَاثِ، وَيُفَرِّغُونَ الْمَخْطُوطَاتِ الْقَدِيمَةَ سَطْرًا سَطْرًا، وَيُقَابِلُونَ بَيْنَ نُسَخِهَا، وَلَا يُنْشَرُ شَيْءٌ إِلَّا بَعْدَ مُرَاجَعَةِ الْمُخْتَصِّينَ وَاعْتِمَادِ الْمُؤَسَّسَةْ."
+  },
+  {
+   "n": 8,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_090449_17a34a27-01ef-455f-b769-1eb410944d93.mp3",
+   "captions": [
+    "للزائر في المتحف، وللطالب في درسه،",
+    "وللأسرة في نزهتها،",
+    "ولمن يخطو خطواته الأولى نحو الإسلام:",
+    "معرفةٌ موثوقة، في لحظة الفضول."
+   ],
+   "parts": [
+    {
+     "kind": "broll",
+     "src": "b5",
+     "in": 2.5,
+     "weight": 1
+    },
+    {
+     "kind": "broll",
+     "src": "b7",
+     "in": 3.0,
+     "weight": 1
+    },
+    {
+     "kind": "broll",
+     "src": "b8",
+     "in": 0,
+     "out": 3.2,
+     "weight": 1
+    },
+    {
+     "kind": "broll",
+     "src": "b9",
+     "weight": 1
+    }
+   ],
+   "tts": "لِلزَّائِرِ فِي الْمَتْحَفِ، وَلِلطَّالِبِ فِي دَرْسِهِ، وَلِلْأُسْرَةِ فِي نُزْهَتِهَا، وَلِمَنْ يَخْطُو خُطُوَاتِهِ الْأُولَى نَحْوَ الْإِسْلَامْ: مَعْرِفَةٌ مَوْثُوقَةٌ، فِي لَحْظَةِ الْفُضُولْ."
+  },
+  {
+   "n": 9,
+   "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/hf_20261006_084531_5c82a880-73f5-4321-a237-2ebd78f9f539.mp3",
+   "captions": [
+    "«آياتٌ حولك»…",
+    "فكلّ ما تراه بابٌ إلى التفكّر."
+   ],
+   "parts": [
+    {
+     "kind": "broll",
+     "src": "b10",
+     "logo": 3.6,
+     "nocaps": false
+    }
+   ],
+   "tts": "آيَاتٌ حَوْلَكْ… فَكُلُّ مَا تَرَاهُ بَابٌ إِلَى التَّفَكُّرْ."
+  }
+ ],
+ "shots": {
+  "camera": "https://d2ol7oe51mr4n9.cloudfront.net/user_3FFmwv1vLYy26YbrQKwFJhvyzP7/aa8711af-561f-4583-9eec-fc9616148747.mp4",
+  "sources": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/sources.mp4",
+  "badges": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/badges.mp4",
+  "sky": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/sky.mp4",
+  "astrolabe": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/astrolabe.mp4",
+  "portal": "https://raw.githubusercontent.com/semicolon-git/Islamic/main/docs/demo/promo-ar/footage/portal.mp4"
+ },
+ "voice": {
+  "provider": "elevenlabs",
+  "voice_id": "MI88rOZjXbH22N8KHXUo",
+  "name": "Ali - calm & Deep Arabic Saudi Narrator (ElevenLabs voice library, ar-SA)",
+  "model_id": "eleven_multilingual_v2"
+ },
+ "hallucinations": [
+  "ترجمة نانسي قنقر",
+  "اشتركوا في القناة"
+ ]
+}

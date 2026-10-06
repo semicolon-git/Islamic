@@ -47,6 +47,8 @@ export interface StructuredCall<S extends z.ZodType> {
   system: string;              // stable instructions (cached)
   user: string;                // per-request text
   images?: ImageInput[];
+  /** PDF documents (base64), e.g. a few pages of an uploaded book to transcribe. */
+  documents?: { base64: string; title?: string }[];
   schema: S;
   effort?: "low" | "medium" | "high";
   maxTokens?: number;
@@ -64,6 +66,13 @@ export async function callStructured<S extends z.ZodType>(req: StructuredCall<S>
   const c = getClient();
   const model = env.models[req.agent];
   const content: Anthropic.Beta.BetaContentBlockParam[] = [
+    ...(req.documents ?? []).map(
+      (d): Anthropic.Beta.BetaRequestDocumentBlock => ({
+        type: "document",
+        source: { type: "base64", media_type: "application/pdf", data: d.base64 },
+        ...(d.title ? { title: d.title } : {}),
+      }),
+    ),
     ...(req.images ?? []).map(
       (img): Anthropic.Beta.BetaImageBlockParam => ({
         type: "image",

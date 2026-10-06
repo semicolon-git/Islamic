@@ -7,6 +7,7 @@ import { NoCard } from "@/features/beneficiary/no-card";
 import { getConcept, listConcepts } from "@/features/beneficiary/data";
 import { conceptHue, conceptLabel } from "@/features/beneficiary/labels";
 import { BackLink } from "@/features/beneficiary/back-link";
+import { ScienceForConcept } from "@/features/science/ui/concept-section";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,7 @@ export default async function ConceptPage({ params, searchParams }: Props) {
       <>
         <BackLink label={t("nav.back")} />
         <CardView resolved={resolved} justApproved={sp.approved === "1"} />
+        <ScienceForConcept conceptId={conceptId} />
       </>
     );
   }
@@ -48,7 +50,8 @@ export default async function ConceptPage({ params, searchParams }: Props) {
   return (
     <>
       <BackLink label={t("nav.back")} />
-      <NoCard conceptId={concept.id} label={conceptLabel(concept, locale)} image={concept.image} hue={conceptHue(concept.id, concept.track)} suggestions={suggestions} />
+      <NoCard conceptId={concept.id} labels={{ en: concept.label_en, ar: concept.label_ar }} label={conceptLabel(concept, locale)} image={concept.image} hue={conceptHue(concept.id, concept.track)} suggestions={suggestions} />
+      <ScienceForConcept conceptId={conceptId} />
     </>
   );
 }

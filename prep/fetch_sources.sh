@@ -37,4 +37,10 @@ q = json.load(open('data/raw/quran_kfgqpc_hafs_v18.json'))
 assert len(q) == 6236, len(q)
 print(f"ok: {len(q)} ayat in KFGQPC Hafs v18")
 PY
+# Library: tafsir and hadith collections (pinned commits, every file sha256-checked against data/library/manifest.json).
+if command -v node >/dev/null 2>&1; then
+  (cd .. && node scripts/library/fetch.mjs)
+else
+  echo "note: node not found — run 'node scripts/library/fetch.mjs' to download the library (deploy/install.sh does this in a container)"
+fi
 echo "done: raw inputs in prep/data/raw/"
