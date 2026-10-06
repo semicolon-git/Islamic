@@ -48,9 +48,10 @@ for sc in scenes:
     raw = fetch(sc["audio"], os.path.join(OUT, f"n{n}.mp3"))
     wav = os.path.join(OUT, f"n{n}.wav")
     tempo = sc.get("tempo", film.get("tempo", 1.0))
-    trim = "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.04"
-    sh("ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af",
-       f"{trim},areverse,{trim},areverse,atempo={tempo},aresample=48000", "-ac", "2", wav)
+    # leading silence only: trimming the tail (areverse) clipped final words; tempo stays 1.0 unless asked
+    trim = "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.05"
+    af = f"{trim},aresample=48000" + (f",atempo={tempo}" if tempo != 1.0 else "")
+    sh("ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", af, "-ac", "2", wav)
     sc["wav"], sc["dur"] = wav, dur(wav)
 
 timing_file = os.path.join(OUT, "timing.json")

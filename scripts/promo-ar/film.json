@@ -1,7 +1,7 @@
 {
  "output": "signs-around-you-promo-ar.mp4",
- "tempo": 1.1,
- "gap": 0.35,
+ "tempo": 1.0,
+ "gap": 0.3,
  "lead": 0.7,
  "tail": 0.9,
  "endcard": 5.0,
@@ -38,6 +38,10 @@
   [
    "الاسطرلاب",
    "الاسطر لاب"
+  ],
+  [
+   "صريحا",
+   "صريحه"
   ]
  ],
  "broll": {
