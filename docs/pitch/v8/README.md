@@ -14,7 +14,7 @@ node scripts/pitch-deck/render.mjs docs/pitch/v8/deck.html docs/pitch/v8/Signs-A
 | Slide 7: numbers must be measured | The numbers slide (now 13) only shows figures from committed runs; see the table below. Two v7 figures changed: 63/65 → **62/65** (the committed run), and 13.6% CER (a report figure with no saved output) → **10.5% vs 70.2%** for Tesseract on the same 314 lines. "28/30 photos" (also report only) was replaced by "10/10 fatwa questions referred". The eval dashboard screenshot sits beside the numbers. |
 | Shorten Mohamed Esmat's title | Now reads «مطوّر الذكاء الاصطناعي وتطبيق المستفيد». |
 | Slide 10 last, with "thank you" | «ما بعد التحدي» is now the final slide, together with «شكرًا لكم», the live link and a QR code. |
-| Verses to the beginning | Fussilat 41:53 is slide 1. |
+| Verses to the beginning | Fussilat 41:53 opens the deck as slide 2, right after the cover. |
 | Slide 5: remove the cost | The business model has no cost or service-fee line. The separate funding slide was folded into one «الاستدامة» card, with no amounts. |
 | Focus on the institutions portal | Four portal slides: overview (6), visitor request → approved card workflow with four-eyes (7), Manuscript Studio (8), blind double-keying and collation (9). |
 | Sky mode technical detail | Slide 11 covers inputs → astronomy-engine + HYG v4.1 (177 stars) → pointing (12° field). It also covers Umm al-Qura Hijri, privacy, Arabic star names and the links to verses and the astrolabe. |
