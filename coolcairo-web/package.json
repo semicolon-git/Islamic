@@ -1,0 +1,24 @@
+{
+  "name": "coolcairo-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CoolCairo planner in the browser: block-level urban heat decision support for Nasr City, Cairo.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-singlefile": "^2.2.0",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  }
+}

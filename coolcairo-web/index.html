@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CoolCairo Planner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Plan cool roofs, street trees, cool pavements and pocket parks block by block in Nasr City, Cairo, and see the predicted effect on surface heat and heat exposure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap">
+</head>
+<body>
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2" class="bm-hot"/><rect x="18" y="2" width="12" height="12" rx="2" class="bm-warm"/><rect x="2" y="18" width="12" height="12" rx="2" class="bm-cool"/><rect x="18" y="18" width="12" height="12" rx="2" class="bm-cooler"/></svg>
+      <div class="brand-text">
+        <span class="brand-name">CoolCairo</span>
+        <span class="brand-place" id="placeLabel">Nasr City · east Cairo</span>
+      </div>
+    </div>
+
+    <nav class="views" aria-label="Map view">
+      <div class="seg" role="radiogroup" id="viewSeg">
+        <button role="radio" data-view="heat" aria-checked="true" title="Surface heat (1)"><span class="key-dot heat"></span>Surface heat</button>
+        <button role="radio" data-view="risk" aria-checked="false" title="Heat risk (2)"><span class="key-dot risk"></span>Heat risk</button>
+        <button role="radio" data-view="materials" aria-checked="false" title="Surfaces (3)"><span class="key-dot materials"></span>Surfaces</button>
+        <button role="radio" data-view="effect" aria-checked="false" title="Plan effect (4)"><span class="key-dot effect"></span>Plan effect</button>
+        <button role="radio" data-view="growth" aria-checked="false" title="Urban growth (5)"><span class="key-dot growth"></span>Growth</button>
+      </div>
+    </nav>
+
+    <div class="top-actions">
+      <button class="icon-btn" id="evidenceBtn" title="Analysis maps behind this view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z M4 15l5-5 4 4 3-3 4 4"/></svg><span class="label">Maps</span></button>
+      <button class="icon-btn" id="aboutBtn" title="Method, data and limits"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span class="label">Method</span></button>
+      <button class="icon-btn" id="helpBtn" title="Shortcuts (?)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h1M11 10h1M15 10h2M7 14h10"/></svg><span class="label">Keys</span></button>
+      <button class="icon-btn" id="themeBtn" title="Switch light / dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="sr">Theme</span></button>
+    </div>
+  </header>
+
+  <aside class="panel plan-panel" id="planPanel" aria-label="Plan">
+    <section class="block-sec" aria-labelledby="autoTitle">
+      <div class="sec-head">
+        <h2 id="autoTitle">Targeted plan</h2>
+        <span class="hint-chip">fastest start</span>
+      </div>
+      <p class="sec-copy">Put measures on the blocks where heat and residents overlap most.</p>
+      <div class="auto-row">
+        <label for="autoShare">Riskiest</label>
+        <output id="autoShareOut" for="autoShare">33%</output>
+        <span class="muted">of blocks</span>
+      </div>
+      <input type="range" id="autoShare" min="5" max="100" step="1" value="33" aria-describedby="autoShareCount">
+      <div class="muted small" id="autoShareCount">192 of 576 blocks</div>
+      <fieldset class="auto-measures">
+        <legend class="sr">Measures in the targeted plan</legend>
+        <label><input type="checkbox" id="autoRoof" value="roof" checked> <span class="sw roof"></span>Cool roofs</label>
+        <label><input type="checkbox" id="autoTrees" value="trees"> <span class="sw trees"></span>Street trees</label>
+        <label><input type="checkbox" id="autoPavement" value="pavement"> <span class="sw pavement"></span>Cool pavements</label>
+        <label><input type="checkbox" id="autoPark" value="park" checked> <span class="sw park"></span>Pocket parks</label>
+      </fieldset>
+      <button class="btn primary wide" id="autoApply">Apply targeted plan</button>
+    </section>
+
+    <section class="block-sec" aria-labelledby="paintTitle">
+      <div class="sec-head">
+        <h2 id="paintTitle">Paint by hand</h2>
+      </div>
+      <div class="seg small-seg" role="radiogroup" aria-label="Map tool" id="modeSeg">
+        <button role="radio" data-mode="inspect" aria-checked="true" title="Inspect and move the map (V)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 2-2 6z"/></svg>Inspect</button>
+        <button role="radio" data-mode="paint" aria-checked="false" title="Paint the chosen measure (B)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c2 0 4-1 4-3s-1.5-2.5-2-2.5M14.5 4.5l5 5L10 19l-5-5z"/></svg>Paint</button>
+        <button role="radio" data-mode="erase" aria-checked="false" title="Erase measures (X)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 20h12M4.5 14.5l9-9 6 6-7 7H9z"/></svg>Erase</button>
+      </div>
+      <div class="measures" role="radiogroup" aria-label="Measure to paint" id="measureList"></div>
+      <div class="brush-row">
+        <div class="field">
+          <label for="brushSize">Brush</label>
+          <input type="range" id="brushSize" min="0" max="4" step="1" value="1" aria-describedby="brushOut">
+          <output id="brushOut" for="brushSize">5 blocks</output>
+        </div>
+        <div class="field">
+          <span class="field-label" id="strengthLabel">Strength</span>
+          <div class="seg tiny-seg" role="radiogroup" aria-labelledby="strengthLabel" id="strengthSeg">
+            <button role="radio" data-strength="0.25" aria-checked="false">25%</button>
+            <button role="radio" data-strength="0.5" aria-checked="false">50%</button>
+            <button role="radio" data-strength="1" aria-checked="true">100%</button>
+          </div>
+        </div>
+      </div>
+      <p class="muted small" id="paintHint">Choose Paint, then drag across blocks. Right-drag turns the map; Shift-drag erases.</p>
+    </section>
+
+    <section class="block-sec actions-sec">
+      <div class="btn-row">
+        <button class="btn" id="undoBtn" title="Undo (Ctrl+Z)" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7L4 12l5 5M4 12h11a5 5 0 0 1 0 10h-2"/></svg>Undo</button>
+        <button class="btn" id="redoBtn" title="Redo (Ctrl+Shift+Z)" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7l5 5-5 5M20 12H9a5 5 0 0 0 0 10h2"/></svg>Redo</button>
+        <button class="btn danger-ghost" id="clearBtn" disabled>Clear plan</button>
+      </div>
+      <div class="clear-confirm" id="clearConfirm" hidden>
+        <span>Remove every measure from the map?</span>
+        <button class="btn danger small" id="clearYes">Clear</button>
+        <button class="btn small" id="clearNo">Keep</button>
+      </div>
+    </section>
+
+    <section class="block-sec" aria-labelledby="shareTitle">
+      <div class="sec-head"><h2 id="shareTitle">Save and share</h2></div>
+      <div class="save-row">
+        <label class="sr" for="planName">Plan name</label>
+        <input type="text" id="planName" placeholder="Name this plan" maxlength="40" autocomplete="off">
+        <button class="btn" id="saveBtn" disabled>Save</button>
+      </div>
+      <ul class="saved" id="savedList" aria-label="Saved plans"></ul>
+      <div class="btn-row">
+        <button class="btn small" id="copyCodeBtn" disabled>Copy plan code</button>
+        <button class="btn small" id="loadCodeBtn">Load a code</button>
+        <button class="btn small" id="copyCsvBtn" disabled>Copy block table</button>
+      </div>
+      <div class="code-load" id="codeLoad" hidden>
+        <label for="codeInput" class="small">Paste a plan code</label>
+        <textarea id="codeInput" rows="3" spellcheck="false" placeholder="CC1|…"></textarea>
+        <div class="btn-row">
+          <button class="btn primary small" id="codeApply">Load plan</button>
+          <button class="btn small" id="codeCancel">Cancel</button>
+        </div>
+        <p class="error small" id="codeError" hidden>That code is not a CoolCairo plan. Codes start with CC1|.</p>
+      </div>
+    </section>
+  </aside>
+
+  <section class="map-wrap" id="mapWrap" aria-label="District map">
+    <div class="map" id="map"></div>
+
+    <div class="map-loading" id="loading">
+      <div class="load-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span>Building 576 blocks and 1,901 buildings…</span>
+    </div>
+
+    <div class="legend" id="legend" aria-live="polite"></div>
+
+    <div class="map-ctrls" role="toolbar" aria-label="Map controls">
+      <button class="ctrl" id="zoomIn" title="Zoom in" aria-label="Zoom in">+</button>
+      <button class="ctrl" id="zoomOut" title="Zoom out" aria-label="Zoom out">−</button>
+      <button class="ctrl" id="homeBtn" title="Reset camera" aria-label="Reset camera"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7M6 10v10h12V10"/></svg></button>
+      <button class="ctrl text" id="dimBtn" title="2D / 3D (M)" aria-pressed="false">2D</button>
+      <button class="ctrl" id="bldBtn" title="Show buildings" aria-pressed="true" aria-label="Show buildings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l5-3v14M9 20V4l7 3v13M16 20v-9l4 2v7M3 20h18"/></svg></button>
+    </div>
+
+    <div class="tooltip" id="tooltip" role="status" hidden></div>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <div class="coach" id="coach" hidden>
+      <div class="coach-step" id="coachStep"></div>
+      <div class="coach-foot">
+        <span class="coach-count" id="coachCount">1 / 3</span>
+        <button class="btn small" id="coachSkip">Skip</button>
+        <button class="btn primary small" id="coachNext">Next</button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel results-panel" id="resultsPanel" aria-label="Results">
+    <section class="block-sec kpis" aria-label="Plan results" aria-live="polite">
+      <div class="kpi hero" id="kpiExposure">
+        <div class="kpi-label">Heat exposure <button class="info" data-tip="exposure" aria-label="What is heat exposure?">?</button></div>
+        <div class="kpi-value"><span id="expNow">6,460</span> <span class="unit">person·°C</span></div>
+        <div class="kpi-delta" id="expDelta">No plan yet. Today's baseline.</div>
+        <div class="meter" aria-hidden="true"><span id="expMeter"></span></div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">Avg surface temp</div>
+          <div class="kpi-value sm" id="tempNow">44.7 °C</div>
+          <div class="kpi-sub" id="tempSub">576 blocks</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Felt by residents</div>
+          <div class="kpi-value sm" id="wDelta">0.00 °C</div>
+          <div class="kpi-sub">avg change per resident</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Residents in cooled blocks</div>
+          <div class="kpi-value sm" id="resCooled">0</div>
+          <div class="kpi-sub" id="resSub">of 95,141</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Indicative cost <button class="info" data-tip="cost" aria-label="How is cost estimated?">?</button></div>
+          <div class="kpi-value sm" id="costNow">—</div>
+          <div class="kpi-sub" id="costSub">EGP, installed</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block-sec" aria-labelledby="mixTitle">
+      <div class="sec-head"><h2 id="mixTitle">Where the cooling comes from</h2></div>
+      <div class="mix" id="mixBars"></div>
+    </section>
+
+    <section class="block-sec" aria-labelledby="lineTitle">
+      <div class="sec-head"><h2 id="lineTitle">How hot is too hot?</h2></div>
+      <p class="sec-copy small">Heat exposure only counts degrees above this line. Move it to see how much the result depends on where it starts.</p>
+      <div class="auto-row">
+        <label for="heatLine">Heat line</label>
+        <output id="heatLineOut" for="heatLine">45.7 °C</output>
+        <button class="link-btn" id="heatLineReset" hidden>Reset to typical block</button>
+      </div>
+      <input type="range" id="heatLine" min="43.5" max="47.5" step="0.1" value="45.7">
+      <div class="sens" id="sensChart" role="img" aria-label="Exposure change by heat line"></div>
+    </section>
+
+    <section class="block-sec inspector" id="inspector" aria-labelledby="inspTitle">
+      <div class="sec-head">
+        <h2 id="inspTitle">Block</h2>
+        <button class="link-btn" id="inspClose" hidden>Close</button>
+      </div>
+      <div id="inspBody"><p class="muted small">Select a block on the map with the Inspect tool to see what it is made of and what each measure would do there.</p></div>
+    </section>
+  </aside>
+
+  <nav class="sheet-tabs" id="sheetTabs" aria-label="Panels">
+    <button data-sheet="plan" aria-pressed="false">Plan</button>
+    <button data-sheet="results" aria-pressed="false">Results</button>
+    <button data-sheet="map" aria-pressed="true">Map</button>
+  </nav>
+
+  <footer class="statusbar">
+    <span class="model-chip" id="modelChip">Heat model R² 0.25 · ±1.2 °C</span>
+    <span class="credits" id="credits"></span>
+  </footer>
+</div>
+
+<dialog id="evidenceDlg" class="dlg wide-dlg" aria-labelledby="evTitle">
+  <div class="dlg-head">
+    <h2 id="evTitle">Analysis map</h2>
+    <span class="muted small" id="evCount"></span>
+    <button class="icon-btn" data-close aria-label="Close">✕</button>
+  </div>
+  <figure class="ev-fig">
+    <img id="evImg" alt="">
+    <figcaption id="evCap"></figcaption>
+  </figure>
+  <div class="dlg-foot">
+    <button class="btn" id="evPrev">Previous</button>
+    <button class="btn" id="evNext">Next</button>
+  </div>
+</dialog>
+
+<dialog id="aboutDlg" class="dlg" aria-labelledby="aboutTitle">
+  <div class="dlg-head">
+    <h2 id="aboutTitle">Method, data and limits</h2>
+    <button class="icon-btn" data-close aria-label="Close">✕</button>
+  </div>
+  <div class="dlg-body prose" id="aboutBody"></div>
+</dialog>
+
+<dialog id="helpDlg" class="dlg" aria-labelledby="helpTitle">
+  <div class="dlg-head">
+    <h2 id="helpTitle">Keyboard and mouse</h2>
+    <button class="icon-btn" data-close aria-label="Close">✕</button>
+  </div>
+  <div class="dlg-body">
+    <table class="keys">
+      <tbody>
+        <tr><td><kbd>1</kbd>–<kbd>5</kbd></td><td>Surface heat, heat risk, surfaces, plan effect, growth</td></tr>
+        <tr><td><kbd>V</kbd> <kbd>B</kbd> <kbd>X</kbd></td><td>Inspect, paint, erase</td></tr>
+        <tr><td><kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd></td><td>Cool roofs, street trees, cool pavements, pocket parks</td></tr>
+        <tr><td><kbd>[</kbd> <kbd>]</kbd></td><td>Smaller / larger brush</td></tr>
+        <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Undo (add <kbd>Shift</kbd> to redo)</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Switch 2D / 3D</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Close a window or deselect the block</td></tr>
+        <tr><td>Drag</td><td>Inspect: turn the map. Paint: paint blocks</td></tr>
+        <tr><td>Right-drag</td><td>Inspect: move the map. Paint: turn the map</td></tr>
+        <tr><td>Shift-drag</td><td>Erase while painting</td></tr>
+        <tr><td>Scroll / pinch</td><td>Zoom</td></tr>
+      </tbody>
+    </table>
+  </div>
+</dialog>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
