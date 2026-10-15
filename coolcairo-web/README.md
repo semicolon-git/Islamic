@@ -14,6 +14,8 @@ Also in this folder:
 
 ## Run
 
+Needs Node.js 20.19 or newer. Don't use `sudo`: if `npm install` says `EACCES`, the folder belongs to another user; fix it with `sudo chown -R "$(whoami)" .` and run `npm install` again.
+
 ```bash
 cd coolcairo-web
 npm install
