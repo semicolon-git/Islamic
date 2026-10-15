@@ -1,0 +1,325 @@
+From a5bc261a22c148218f673fbbc05fde4241028614 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 07:42:42 +0000
+Subject: [PATCH 1/3] Give one dark-roof explanation everywhere and remove
+ stale notes
+
+- README, notebooks 00/03/05, aoi.yaml and the report source now say the
+  same thing: the negative dark-roof coefficient has no confirmed cause
+  (shadow, rooftop clutter or sparse trees in the 10 m dark class), and dark
+  roofs cover only ~0.5% of an urban block. Notebook 05 no longer claims
+  shadow was ruled out (its argument used 30 m pixels; classes are 10 m).
+- Notebook 01 no longer says EnMAP is pending; notebook 02 and classify.py
+  no longer call the classes interim or 'three'; notebook 03 says which
+  measures use the regression and which use published values.
+- Remove references to CLAUDE.md, which the repository no longer contains.
+- enmap_scenes.txt: the April scene is before the June-August LST window.
+- Unity: import analysis figures without power-of-two rescaling (they were
+  stretched in the Analysis maps pop-up); rename SAT LINK to ARCHIVE CHECK
+  and RESIDENTS COOLED to RESIDENTS IN TREATED BLOCKS.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019LPfV4rvbkEpTMU3bHqkjU
+---
+ README.md                                       |  4 ++--
+ analysis/config/aoi.yaml                        |  5 +++--
+ analysis/config/enmap_scenes.txt                |  2 +-
+ analysis/notebooks/00_quick_example.ipynb       |  2 +-
+ analysis/notebooks/01_data_acquisition.ipynb    |  2 +-
+ analysis/notebooks/02_classification.ipynb      |  2 +-
+ analysis/notebooks/03_model.ipynb               |  2 +-
+ analysis/notebooks/05_hyperspectral_value.ipynb |  4 ++--
+ analysis/report/build_report.py                 | 11 ++++++-----
+ analysis/src/coolcairo/classify.py              |  6 +++---
+ analysis/src/coolcairo/enmap.py                 |  2 +-
+ analysis/src/coolcairo/interventions.py         |  2 +-
+ unity/Assets/CoolCairo/Editor/HudBuilder.cs     |  4 ++--
+ unity/Assets/CoolCairo/Editor/ProjectSetup.cs   |  1 +
+ unity/Assets/CoolCairo/Main.unity               |  4 ++--
+ unity/Assets/CoolCairo/Scripts/UI/HudMotion.cs  |  2 +-
+ unity/Assets/CoolCairo/Scripts/UI/HudStyle.cs   |  2 +-
+ 17 files changed, 30 insertions(+), 27 deletions(-)
+
+diff --git a/README.md b/README.md
+index 862e4cd..019e86a 100644
+--- a/README.md
++++ b/README.md
+@@ -59,7 +59,7 @@ In execution order (code in `analysis/src/coolcairo`, run by `analysis/run_pipel
+ 6. **Heat model.** Linear regression: surface temperature ~ vegetation + dark roof + dark ground + sand + building cover + mean height, on the **2,538 urban blocks** (≥ 10% building cover). Tested with **spatial cross-validation**: 5 folds of whole 1 km tiles, because neighbouring blocks share heat. Linear on purpose: the app computes every effect as a weighted sum.
+ 7. **Heat risk.** Heat exposure = residents × max(0, block temperature − **45.7 °C**), the median of the urban blocks (person·°C).
+ 8. **Cooling measures** (°C per unit of block area converted):
+-   - **Cool roofs:** −8 °C per unit of albedo (Wang, Huang & Li 2020, *GRL* 47) × albedo 0.12 → 0.70 for dark roofs (**−4.64**) and 0.25 → 0.70 for pale roofs (**−3.60**). Published values, because the fitted dark-roof coefficient is implausible (shadow read as dark roof).
++   - **Cool roofs:** −8 °C per unit of albedo (Wang, Huang & Li 2020, *GRL* 47) × albedo 0.12 → 0.70 for dark roofs (**−4.64**) and 0.25 → 0.70 for pale roofs (**−3.60**). Published values, because the fitted dark-roof coefficient is implausible: dark roofs look cooler. The cause is not yet confirmed (shadow, rooftop clutter or sparse trees in the 10 m "dark" class), and dark roofs cover only about 0.5% of an urban block, so the coefficient rests on little data.
+    - **In practice:** reflective coatings are proven and entering mass production. A radiative-cooling coating kept roofs about 24 °C cooler at the surface than concrete in a 2.5-year Hong Kong field trial and cut air-conditioning energy by 10% ([PolyU 2024](https://www.polyu.edu.hk/rio/news/2024/20240924---polyu-researchers-unveil-novel-carbon-dots-driven-green-radiative-cooling-coating/)); a similar paint entered mass production in China in 2026, reported as up to 25 °C cooler on surfaces ([SCMP 2026](https://www.scmp.com/news/china/science/article/3367812/chinese-paint-cuts-wall-temperature-25-degrees-celsius-summer-test-report), not yet independently verified). These are peak temperatures of the coated surface itself, not comparable with our block-average summer medians; such coatings are stronger than the white paint we model, so our cool-roof effects are conservative.
+    - **Cool pavements:** same physics, asphalt albedo 0.12 → 0.40 (**−2.24**).
+    - **Street trees:** our model, vegetation minus dark ground (**−3.28**), on up to 25% of dark ground.
+@@ -169,7 +169,7 @@ The first run streams about 1 GB from the public archives into `analysis/data/`
+ - **Surface, not air, temperature.** Satellites measure how hot surfaces get. Studies suggest city-wide cool roofs lower air temperature by about 0.1–0.33 °C per +0.1 roof albedo; the effect on air is smaller and spreads beyond the district.
+ - **Block level only (90 m).** Landsat's thermal band is 100 m, so no per-building temperatures are claimed.
+ - **Modest model fit** (R² 0.25). Fine for comparing measures, not for predicting one block exactly; cool roofs and cool pavements therefore use published values. The score also depends on which blocks are mapped: with live OpenStreetMap on 8 Oct 2026 (six more buildings, six more urban blocks) the same code gives R² 0.30 and 6,277 person·°C, which is why the published results use the committed 23 Sep extract.
+-- **Dusty roofs vs sand, shadows as dark roofs.** The single-index material rules confuse them (the spot-check misses; the implausible dark-roof coefficient).
++- **Dusty roofs vs sand; an implausible dark-roof sign.** The single-index material rules read dusty asphalt and roofs as sand (the spot-check misses). The dark-roof coefficient is negative; its cause is not yet confirmed, so cool roofs use published physics.
+ - **OpenStreetMap gaps in Cairo.** Only 3.4% of east Cairo is mapped as roof, so the model learns from the 2,538 well-mapped blocks.
+ - **Heat risk is a screening indicator** (heat × residents, WorldPop is modelled). No vulnerability yet: age, housing, access to cooling.
+ - **One EnMAP scene** (April), so hyperspectral is a strong signal, not yet the main model.
+diff --git a/analysis/config/aoi.yaml b/analysis/config/aoi.yaml
+index e9ac08b..a9740e0 100644
+--- a/analysis/config/aoi.yaml
++++ b/analysis/config/aoi.yaml
+@@ -51,8 +51,9 @@ s2_classification:
+ 
+ # Cool-roof effect. "literature" (default) or "regression" (use -coef(dark_roof_frac) once the
+ # fitted coefficient is physically plausible, e.g. after EnMAP classification).
+-# Interim Sentinel-2 data gives a negative dark-roof coefficient (dark roofs look cooler, likely
+-# building shadow), so the fitted value cannot be used; see CLAUDE.md fallbacks.
++# The fitted dark-roof coefficient is negative (dark roofs look cooler). The cause is not yet confirmed
++# (shadow, rooftop clutter or sparse trees in the 10 m dark class) and dark roofs cover only ~0.5% of an
++# urban block, so the fitted value is not used (interventions.plausibility_warnings flags it).
+ cool_roof:
+   method: literature
+   # Roof surface temperature change per unit roof albedo increase (K). Wang, Huang & Li (2020),
+diff --git a/analysis/config/enmap_scenes.txt b/analysis/config/enmap_scenes.txt
+index a3bad10..be4fbad 100644
+--- a/analysis/config/enmap_scenes.txt
++++ b/analysis/config/enmap_scenes.txt
+@@ -2,7 +2,7 @@
+ #   https://geoservice.dlr.de/eoc/ogc/stac/v1  collection ENMAP_HSI_L2A, bbox = model_aoi
+ # 19 scenes matched on 30 Sep 2026; 11 are night acquisitions (sun elevation 0) and unusable.
+ # Chosen daytime, cloud-free scenes that cover the display district:
+-#   1. 2025-04-22 09:17 UTC, sun 70 deg, 0% cloud   (primary: most recent, inside the LST period)
++#   1. 2025-04-22 09:17 UTC, sun 70 deg, 0% cloud   (primary: most recent; April, before the June-August LST window)
+ #   2. 2023-04-16 09:10 UTC, sun 67 deg, 0% cloud   (second date / backup)
+ # Downloads need an EOC Geoservice account subscribed to the "EnMAP Access Service".
+ # Save files to analysis/data/enmap/ (git-ignored). Per scene: spectral image, metadata, quality.
+diff --git a/analysis/notebooks/00_quick_example.ipynb b/analysis/notebooks/00_quick_example.ipynb
+index 1f76f22..a041c3c 100644
+--- a/analysis/notebooks/00_quick_example.ipynb
++++ b/analysis/notebooks/00_quick_example.ipynb
+@@ -347,7 +347,7 @@
+    "id": "1f4f7089",
+    "metadata": {},
+    "source": [
+-    "Vegetation cools and sand heats, as expected. The dark-roof number is **implausible** (dark roofs absorb more sun): building shadow is read as dark roof. That is why the cool-roof tool uses published physics (−4.64 °C per unit of dark roof coated) instead of this coefficient."
++    "Vegetation cools and sand heats, as expected. The dark-roof number is **implausible** (dark roofs absorb more sun). The cause is not yet confirmed (shadow, rooftop clutter or sparse trees in the 10 m \"dark\" class), and dark roofs cover only about 0.5% of an urban block, so the coefficient rests on little data. That is why the cool-roof tool uses published physics (−4.64 °C per unit of dark roof coated) instead of this coefficient."
+    ]
+   },
+   {
+diff --git a/analysis/notebooks/01_data_acquisition.ipynb b/analysis/notebooks/01_data_acquisition.ipynb
+index faf345e..9203d2a 100644
+--- a/analysis/notebooks/01_data_acquisition.ipynb
++++ b/analysis/notebooks/01_data_acquisition.ipynb
+@@ -9,7 +9,7 @@
+     "\n",
+     "Streams Landsat 8/9 surface temperature and Sentinel-2 reflectance from Microsoft Planetary Computer (no account needed) onto one common grid in the project CRS. First run downloads and caches to `analysis/data/`; later runs load the cache.\n",
+     "\n",
+-    "**EnMAP**: pending data access. It will be loaded onto the same grid via `geobox_for(cfg, 'model_aoi')`."
++    "**EnMAP** (one scene, 22 Apr 2025) is loaded onto the same grid in notebook 05; it needs a DLR EOC Geoservice account, so it is optional for notebooks 01–04 and 06."
+    ]
+   },
+   {
+diff --git a/analysis/notebooks/02_classification.ipynb b/analysis/notebooks/02_classification.ipynb
+index d4793c9..08aec7c 100644
+--- a/analysis/notebooks/02_classification.ipynb
++++ b/analysis/notebooks/02_classification.ipynb
+@@ -7,7 +7,7 @@
+    "source": [
+     "# 02 · Material classification (milestone M2)\n",
+     "\n",
+-    "**Interim**: four classes from Sentinel-2 (vegetation / dark / bright / bare soil), per the fallback in CLAUDE.md. Replaced by the EnMAP classifier when data access is granted. Validate by spot-checking 20 roofs against high-resolution imagery."
++    "Four classes from Sentinel-2 rules (vegetation / dark / bright / bare soil). Notebook 05 tested EnMAP and a 6-band Sentinel-2 classifier against these rules: neither improved the heat model, so the pipeline keeps them. Validated by spot-checking 20 points against high-resolution imagery."
+    ]
+   },
+   {
+diff --git a/analysis/notebooks/03_model.ipynb b/analysis/notebooks/03_model.ipynb
+index 1dce1d0..d7ce502 100644
+--- a/analysis/notebooks/03_model.ipynb
++++ b/analysis/notebooks/03_model.ipynb
+@@ -11,7 +11,7 @@
+     "\n",
+     "All temperatures are **land surface temperature**, not air temperature.\n",
+     "\n",
+-    "**Cool roofs** use a literature coefficient (Wang, Huang & Li 2020, GRL; sources in `config/aoi.yaml`) because the interim Sentinel-2 regression gives dark roofs a cooling sign, likely from building shadow. **Trees** use the fitted coefficients."
++    "**Cool roofs** use a literature coefficient (Wang, Huang & Li 2020, GRL; sources in `config/aoi.yaml`) because the regression gives dark roofs a cooling sign: the cause is not yet confirmed (shadow, rooftop clutter or sparse trees in the 10 m \"dark\" class), and dark roofs cover only about 0.5% of an urban block, so the coefficient rests on little data. **Street trees and pocket parks** use the fitted coefficients; **cool pavements** use published values, because the model sees dark ground as about as hot as pale ground."
+    ]
+   },
+   {
+diff --git a/analysis/notebooks/05_hyperspectral_value.ipynb b/analysis/notebooks/05_hyperspectral_value.ipynb
+index d359a51..1608472 100644
+--- a/analysis/notebooks/05_hyperspectral_value.ipynb
++++ b/analysis/notebooks/05_hyperspectral_value.ipynb
+@@ -331,10 +331,10 @@
+    "source": [
+     "## Conclusion (30 Sep 2026 run)\n",
+     "- Hyperspectral detail carries real extra information: full EnMAP beats the same scene reduced to 6 bands by ~2–4 points (robust across logistic regression and random forest).\n",
+-    "- For built-vs-desert separation, a 70-scene Sentinel-2 summer composite already captures it: fusing EnMAP adds ~0.2 points (within fold noise).\n",
++    "- For built-vs-desert separation, a Sentinel-2 summer composite (70 granules from 58 days) already captures it: fusing EnMAP adds ~0.2 points (within fold noise).\n",
+     "- A 6-band Sentinel-2 classifier reaches ~86% on these clean 30 m test pixels, but it does **not** transfer to the full map: at 10 m it scores ~76% (same as the BSI rule), and using it in the pipeline (at 10 m or 30 m) lowered the heat model's spatial-CV R² from 0.25 to 0.20–0.22. The pipeline therefore keeps the simple BSI rule.\n",
+     "- **For explaining surface heat, hyperspectral clearly adds value** (test 2): EnMAP block spectra reach spatial-CV R² ≈ 0.46–0.53 vs 0.35 for the same scene reduced to Sentinel-2 bands, and our model features + EnMAP reach 0.50–0.58 vs 0.40–0.44 with Sentinel-2. Robust to 1–3 km held-out tiles.\n",
+-    "- (Shadow was ruled out as the cause of the dark-roof sign: at 65–75° sun elevation a 16 m building casts a ~6 m shadow, a fraction of a 30 m pixel.)"
++    "- Dark-roof sign: shadow is unlikely to explain it at 30 m (at 65–75° sun elevation a 16 m building casts a ~6 m shadow), but the material classes are 10 m pixels, where it cannot be ruled out. The cause is not yet confirmed (shadow, rooftop clutter or sparse trees in the \"dark\" class), so cool roofs use published physics."
+    ]
+   }
+  ],
+diff --git a/analysis/report/build_report.py b/analysis/report/build_report.py
+index 7a8e800..213e5b4 100644
+--- a/analysis/report/build_report.py
++++ b/analysis/report/build_report.py
+@@ -438,8 +438,9 @@ def story(r: Results, figs: dict[str, Path]) -> list:
+           p("<b>Table 2.</b> Cooling measures. Caps are assumptions stated in the app: trees leave "
+             "room for traffic, parks leave room for paths and facilities.", CAPTION),
+           p("The fitted dark-roof coefficient is negative (dark roofs look <i>cooler</i> than pale "
+-            "roofs), which is physically implausible and most likely building shadow being "
+-            "classified as dark roof at 10 m. An automatic sign check flags this and the model "
++            "roofs), which is physically implausible. The cause is not yet confirmed (shadow, rooftop "
++            "clutter or sparse trees in the 10 m dark class), and dark roofs cover only about 0.5% "
++            "of an urban block, so the coefficient rests on little data. An automatic sign check flags this and the model "
+             "therefore uses the literature value for cool roofs; switching to the regression is "
+             "one config line if better material data fixes the sign."),
+           p("<b>Cool coatings in practice.</b> Reflective coatings are proven and entering mass "
+@@ -483,7 +484,7 @@ def story(r: Results, figs: dict[str, Path]) -> list:
+     coef_rows = [["Feature", "Coefficient", "Reading"],
+                  ["Intercept", f"{m(f.intercept)} °C", "Block of pale ground, no buildings"],
+                  ["Vegetation share", m(c["veg_frac"]), "Vegetation cools"],
+-                 ["Dark roof share", m(c["dark_roof_frac"]), "Implausible sign: shadow (see 4.7)"],
++                 ["Dark roof share", m(c["dark_roof_frac"]), "Implausible sign, cause open (see 4.7)"],
+                  ["Dark ground share", m(c["dark_ground_frac"]), "About as hot as pale ground"],
+                  ["Bare sand share", m(c["soil_frac"]), "Sand is the hottest surface"],
+                  ["Roof share", m(c["roof_frac"]), "Pale roofs warmer than pale ground"],
+@@ -623,8 +624,8 @@ def story(r: Results, figs: dict[str, Path]) -> list:
+               "temperature is claimed.",
+               f"<b>Modest model fit</b> (spatial R² {f.r2_spatial_cv:.2f}). Effects are averages "
+               "for blocks like the treated one, not guarantees for a single block.",
+-              "<b>Interim material classes.</b> Rules on Sentinel-2 confuse dark roofs with "
+-              f"shadow and dusty surfaces with sand; the spot check found {m2_short}, from "
++              "<b>Simple material classes.</b> Rules on Sentinel-2 read dusty asphalt and roofs "
++              f"as sand, and the dark class may hold shadow or clutter; the spot check found {m2_short}, from "
+               "20 points checked non-blind.",
+               "<b>Growth comes from yearly model predictions</b> (Open Buildings Temporal), so "
+               "small year-to-year changes are partly noise; only the 2016 → 2023 change is used. "
+diff --git a/analysis/src/coolcairo/classify.py b/analysis/src/coolcairo/classify.py
+index 7592e67..bb8ace1 100644
+--- a/analysis/src/coolcairo/classify.py
++++ b/analysis/src/coolcairo/classify.py
+@@ -1,8 +1,8 @@
+ """Surface material classification.
+ 
+-Interim: three coarse classes from Sentinel-2 (the fallback in CLAUDE.md), so the rest of the
+-pipeline and the Unity app can be built before EnMAP access arrives. The EnMAP classifier must
+-return the same kind of integer raster; everything downstream only sees class codes.
++Four classes from Sentinel-2 rules (vegetation, dark, bright, bare soil). Notebook 05 tested EnMAP
++and a learned Sentinel-2 classifier; neither improved the heat model, so these rules stay. Any
++replacement must return the same kind of integer raster; everything downstream only sees class codes.
+ """
+ 
+ from __future__ import annotations
+diff --git a/analysis/src/coolcairo/enmap.py b/analysis/src/coolcairo/enmap.py
+index f16353c..fa75361 100644
+--- a/analysis/src/coolcairo/enmap.py
++++ b/analysis/src/coolcairo/enmap.py
+@@ -3,7 +3,7 @@
+ Files come from DLR's EOC Geoservice (login required, so downloaded manually) into
+ analysis/data/enmap/; scene IDs are listed in config/enmap_scenes.txt.
+ Licence: EnMAP data (c) DLR. Derived outputs must say "Contains modified EnMAP data (c) DLR
+-[year]"; raw data must never be published in downloadable form (see CLAUDE.md).
++[year]"; raw data must never be published in downloadable form (see docs/License_for_the_utilization_of_the_EnMAP_Access_Service_for_Scientific_Use.pdf).
+ """
+ 
+ from __future__ import annotations
+diff --git a/analysis/src/coolcairo/interventions.py b/analysis/src/coolcairo/interventions.py
+index 656b558..1d6efec 100644
+--- a/analysis/src/coolcairo/interventions.py
++++ b/analysis/src/coolcairo/interventions.py
+@@ -103,7 +103,7 @@ def full_adoption_summary(cfg: Config, fit: FitResult, blocks: pd.DataFrame) ->
+ 
+ 
+ def plausibility_warnings(cfg: Config, fit: FitResult) -> list[str]:
+-    """Sign checks. A failure here triggers the literature-coefficient fallback in CLAUDE.md."""
++    """Sign checks. A failed dark-roof check is why config cool_roof.method is "literature"."""
+     c = fit.coefficients
+     warnings = []
+     if c["dark_roof_frac"] <= 0:
+diff --git a/unity/Assets/CoolCairo/Editor/HudBuilder.cs b/unity/Assets/CoolCairo/Editor/HudBuilder.cs
+index a961169..24836d7 100644
+--- a/unity/Assets/CoolCairo/Editor/HudBuilder.cs
++++ b/unity/Assets/CoolCairo/Editor/HudBuilder.cs
+@@ -132,7 +132,7 @@ namespace CoolCairo.EditorTools
+             var dot = Img(bar.transform, HudStyle.LinkDot, s_dot, HudStyle.Good);
+             dot.type = Image.Type.Simple;
+             Fixed(dot.gameObject, 10, 10);
+-            Fixed(Label(bar.transform, "LinkLabel", "SAT LINK", 13, HudStyle.Good, bold: true, mono: true).gameObject, -1, 40);
++            Fixed(Label(bar.transform, "LinkLabel", "ARCHIVE CHECK", 13, HudStyle.Good, bold: true, mono: true).gameObject, -1, 40);
+             Fixed(Label(bar.transform, HudStyle.Clock, "UTC 00:00:00", 13, HudStyle.Muted, mono: true).gameObject, 120, 40);
+             Fixed(Button(bar.transform, HudStyle.GlobeButton, "‹ GLOBE", 13).gameObject, 104, 36);
+         }
+@@ -194,7 +194,7 @@ namespace CoolCairo.EditorTools
+             h.childForceExpandWidth = h.childForceExpandHeight = true;
+             Kpi(box, HudStyle.KpiDelta, "⌜ SURFACE TEMP · AVG ⌝");
+             Kpi(box, HudStyle.KpiExposure, "⌜ HEAT EXPOSURE ⌝");
+-            Kpi(box, HudStyle.KpiResidents, "⌜ RESIDENTS COOLED ⌝");
++            Kpi(box, HudStyle.KpiResidents, "⌜ RESIDENTS IN TREATED BLOCKS ⌝");
+         }
+ 
+         static void Kpi(Transform parent, string name, string title)
+diff --git a/unity/Assets/CoolCairo/Editor/ProjectSetup.cs b/unity/Assets/CoolCairo/Editor/ProjectSetup.cs
+index de4a43d..1647441 100644
+--- a/unity/Assets/CoolCairo/Editor/ProjectSetup.cs
++++ b/unity/Assets/CoolCairo/Editor/ProjectSetup.cs
+@@ -306,6 +306,7 @@ namespace CoolCairo.EditorTools
+                 var importer = (TextureImporter)AssetImporter.GetAtPath(path);
+                 importer.textureType = TextureImporterType.Default;
+                 importer.mipmapEnabled = false;
++                importer.npotScale = TextureImporterNPOTScale.None;  // keep the figure's shape (no power-of-two stretch)
+                 importer.wrapMode = TextureWrapMode.Clamp;
+                 importer.maxTextureSize = 2048;
+                 importer.textureCompression = TextureImporterCompression.Uncompressed;
+diff --git a/unity/Assets/CoolCairo/Main.unity b/unity/Assets/CoolCairo/Main.unity
+index c9c941d..634f8f0 100644
+--- a/unity/Assets/CoolCairo/Main.unity
++++ b/unity/Assets/CoolCairo/Main.unity
+@@ -2100,7 +2100,7 @@ MonoBehaviour:
+   m_OnCullStateChanged:
+     m_PersistentCalls:
+       m_Calls: []
+-  m_text: SAT LINK
++  m_text: ARCHIVE CHECK
+   m_isRightToLeft: 0
+   m_fontAsset: {fileID: 11400000, guid: 04cf753a4f00d64468dfa859353890b9, type: 2}
+   m_sharedMaterial: {fileID: 6653018650229542070, guid: 04cf753a4f00d64468dfa859353890b9, type: 2}
+@@ -9701,7 +9701,7 @@ MonoBehaviour:
+   m_OnCullStateChanged:
+     m_PersistentCalls:
+       m_Calls: []
+-  m_text: "\u231C RESIDENTS COOLED \u231D"
++  m_text: "\u231C RESIDENTS IN TREATED BLOCKS \u231D"
+   m_isRightToLeft: 0
+   m_fontAsset: {fileID: 11400000, guid: 04cf753a4f00d64468dfa859353890b9, type: 2}
+   m_sharedMaterial: {fileID: 6653018650229542070, guid: 04cf753a4f00d64468dfa859353890b9, type: 2}
+diff --git a/unity/Assets/CoolCairo/Scripts/UI/HudMotion.cs b/unity/Assets/CoolCairo/Scripts/UI/HudMotion.cs
+index 8d693e3..8e57fbe 100644
+--- a/unity/Assets/CoolCairo/Scripts/UI/HudMotion.cs
++++ b/unity/Assets/CoolCairo/Scripts/UI/HudMotion.cs
+@@ -6,7 +6,7 @@ using UnityEngine.UI;
+ namespace CoolCairo
+ {
+     // The HUD's constant small motion, so the screen reads as a live feed rather than a static
+-    // page: panels slide in on arrival, a scan line sweeps the map, "SAT LINK" blinks, the UTC
++    // page: panels slide in on arrival, a scan line sweeps the map, "ARCHIVE CHECK" blinks, the UTC
+     // clock ticks and the data sources scroll past along the bottom. Also slides popups in.
+     public class HudMotion : MonoBehaviour
+     {
+diff --git a/unity/Assets/CoolCairo/Scripts/UI/HudStyle.cs b/unity/Assets/CoolCairo/Scripts/UI/HudStyle.cs
+index d5f0cb3..2d3ae62 100644
+--- a/unity/Assets/CoolCairo/Scripts/UI/HudStyle.cs
++++ b/unity/Assets/CoolCairo/Scripts/UI/HudStyle.cs
+@@ -62,7 +62,7 @@ namespace CoolCairo
+         public const string Footer = "Footer";                  // The scrolling ticker text
+         public const string Ticker = "Ticker";
+         public const string ScanLine = "ScanLine";
+-        public const string LinkDot = "LinkDot";                // "SAT LINK ●"
++        public const string LinkDot = "LinkDot";                // "ARCHIVE CHECK ●"
+         public const string Clock = "Clock";
+         public const string FloatLabel = "FloatLabel";          // Template for "−0.6 °C" pop-ups
+         public const string FiguresButton = "FiguresButton";    // Sidebar: opens the analysis maps
+-- 
+2.43.0
+

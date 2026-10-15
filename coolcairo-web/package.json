@@ -9,7 +9,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:artifact": "tsc --noEmit && vite build --mode artifact --outDir dist-artifact",
+    "districts": "echo 'uv run --project <CoolCairo>/analysis python scripts/export_districts.py <CoolCairo> src/assets'"
   },
   "devDependencies": {
     "@types/three": "^0.170.0",

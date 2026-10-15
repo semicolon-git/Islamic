@@ -1,5 +1,9 @@
 import "./styles.css";
-import districtRaw from "./assets/district.json";
+import nasrRaw from "./assets/district.json";
+import heliopolisRaw from "./assets/districts/heliopolis-edge.json";
+import nozhaRaw from "./assets/districts/nozha-growth.json";
+import zeitounRaw from "./assets/districts/zeitoun.json";
+import nasrPhoto from "./assets/nasr_city_sentinel2.jpg";
 import fig2 from "./assets/fig2_district.webp";
 import fig3 from "./assets/fig3_model_fit.webp";
 import fig4 from "./assets/fig4_hyperspectral.webp";
@@ -12,6 +16,7 @@ import {
 import { Colorizer } from "./colorizer";
 import { hasGrowth, parseDistrict } from "./data";
 import { COST_EGP_PER_M2, MEASURES, PlanModel, type Measure } from "./model";
+import { buildReport } from "./report";
 import { DistrictScene, type Interaction } from "./scene";
 
 // ---------- formatting ----------
@@ -30,10 +35,36 @@ function egp(v: number): string {
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 
+// ---------- browser storage (optional: the page works without it) ----------
+
+const store = {
+  get<T>(k: string, fallback: T): T { try { const v = localStorage.getItem(k); return v ? (JSON.parse(v) as T) : fallback; } catch { return fallback; } },
+  set(k: string, v: unknown) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
+};
+const STORE = "coolcairo.plans.v1";
+/** Print and file downloads work on a normal web host, not inside the Claude artifact viewer. */
+const HOSTED = import.meta.env.VITE_TARGET !== "artifact";
+
+// ---------- districts ----------
+
+interface DistrictEntry { raw: unknown; label: string; note: string; photo?: string; }
+const DISTRICTS: Record<string, DistrictEntry> = {
+  "nasr-city": { raw: nasrRaw, label: "Nasr City", note: "The district of the CoolCairo report and app.", photo: nasrPhoto },
+  "heliopolis-edge": { raw: heliopolisRaw, label: "Heliopolis edge", note: (heliopolisRaw as { about: string }).about },
+  "zeitoun": { raw: zeitounRaw, label: "El Zeitoun area", note: (zeitounRaw as { about: string }).about },
+  "nozha-growth": { raw: nozhaRaw, label: "Eastern growth edge", note: (nozhaRaw as { about: string }).about },
+};
+const requested = location.hash.slice(1);
+const districtKey = requested in DISTRICTS ? requested : (() => {
+  const k = store.get<string>("coolcairo.district", "nasr-city");
+  return k in DISTRICTS ? k : "nasr-city";
+})();
+const district = DISTRICTS[districtKey];
+
 // ---------- data and model ----------
 
-const d = parseDistrict(districtRaw);
-const model = new PlanModel(d);
+const d = parseDistrict(district.raw);
+const model = new PlanModel(d, districtKey);
 const colors = new Colorizer(model);
 const m = d.model;
 
@@ -47,17 +78,17 @@ const INFO: Record<Measure, MeasureInfo> = {
   trees: {
     name: "Street trees", key: "W", source: "own",
     effect: `${signed(m.vegFrac - m.darkGroundFrac)} °C per unit area`,
-    note: `Plant up to ${share(model.treeMax)} of the block's dark ground (asphalt, dark paving).`,
+    note: `Plant up to ${share(model.treeMax)} of the block's dark ground (asphalt, dark paving). Needs irrigation, not modelled.`,
   },
   pavement: {
     name: "Cool pavements", key: "E", source: "lit",
     effect: `${signed(m.coolPavementDeltaC)} °C per unit area`,
-    note: "Reflective coating on the dark ground that trees have not taken.",
+    note: "Reflective coating on the dark ground that trees have not taken. Rests on published values only.",
   },
   park: {
     name: "Pocket parks", key: "R", source: "own",
     effect: `${signed(m.pocketParkDeltaC)} °C per unit area`,
-    note: `Green up to ${share(model.parkMax)} of the block's bare sand.`,
+    note: `Green up to ${share(model.parkMax)} of the block's bare sand with drought-tolerant planting. Likely overstated: allowing for sand in neighbouring blocks roughly halves it.`,
   },
 };
 
@@ -271,7 +302,7 @@ function renderKpis() {
   $("wDelta").classList.toggle("good", s.residentWeightedDelta < -0.005);
   $("resCooled").textContent = int(s.residentsCooled);
   $("resCooled").classList.toggle("good", s.residentsCooled > 0);
-  $("resSub").textContent = `of ${int(s.residents)} residents`;
+  $("resSub").textContent = plan ? `${int(s.residentsCooledAbove)} above the heat line · of ${int(s.residents)}` : `of ${int(s.residents)} residents`;
   $("costNow").textContent = plan ? `${egp(s.cost.low)}–${egp(s.cost.high)}` : "—";
   $("costSub").textContent = plan ? `EGP installed · ${int(Object.values(s.areaM2).reduce((a, b) => a + b, 0))} m² treated` : "EGP, installed";
 
@@ -292,6 +323,31 @@ function renderKpis() {
     : `<p class="mix-empty">Apply the targeted plan or paint blocks to see which measures do the cooling.</p>`;
 
   renderSensitivity();
+  scheduleWhere();
+}
+
+// The targeting comparison runs a few hundred scenarios, so it waits until painting pauses.
+let whereTimer = 0;
+function scheduleWhere() {
+  clearTimeout(whereTimer);
+  whereTimer = window.setTimeout(renderWhere, 250);
+}
+
+function renderWhere() {
+  const rows = model.targetingComparison(200);
+  if (!rows) {
+    $("whereBody").innerHTML = `<p class="mix-empty">With a plan on the map, this compares it with the same measures on every block and on random blocks.</p>`;
+    return;
+  }
+  const area = (r: (typeof rows)[number]) => Object.values(r.summary.areaM2).reduce((a, b) => a + b, 0) / 1e4;
+  const [mine, above, every, random] = rows;
+  $("whereBody").innerHTML = `<table class="where">
+    <tr><th>Same measures on…</th><th>Exposure</th><th>Area</th></tr>
+    ${rows.map((r, k) => `<tr class="${k === 0 ? "mine" : ""}"><td>${esc(r.label)}${r.note ? `<span class="note">${esc(r.note)}</span>` : ""}</td><td>${pct(r.summary.exposureChangePct)}</td><td>${area(r).toFixed(0)} ha</td></tr>`).join("")}
+  </table>
+  <p class="where-take muted">${every.summary.exposureChangePct < -0.5
+    ? `Treating every block cuts ${pct(every.summary.exposureChangePct)} with ${area(every).toFixed(0)} ha. ${Math.abs(above.summary.exposureChangePct - every.summary.exposureChangePct) < 1 ? `The ${above.label.split(" ")[2]} hot blocks alone give the same cut with ${Math.round(100 * (1 - area(above) / Math.max(area(every), 1e-9)))}% less area; random blocks give ${pct(random.summary.exposureChangePct)}.` : `Random blocks of the same number give ${pct(random.summary.exposureChangePct)}.`}`
+    : "These measures barely change exposure at this heat line."}${area(mine) > area(above) * 1.15 && Math.abs(mine.summary.exposureChangePct - above.summary.exposureChangePct) < 1 ? " Your plan treats blocks that are already below the line; dropping them would save area without losing exposure cuts." : ""}</p>`;
 }
 
 function renderSensitivity() {
@@ -433,29 +489,26 @@ function renderButtons() {
   ($("copyCodeBtn") as HTMLButtonElement).disabled = !plan;
   ($("copyCsvBtn") as HTMLButtonElement).disabled = !plan;
   ($("saveBtn") as HTMLButtonElement).disabled = !plan;
+  ($("reportBtn") as HTMLButtonElement).disabled = !plan;
 }
 
-interface SavedPlan { name: string; code: string; pct: number; cost: [number, number]; blocks: number; line: number; }
-const STORE = "coolcairo.plans.v1";
-const store = {
-  get<T>(k: string, fallback: T): T { try { const v = localStorage.getItem(k); return v ? (JSON.parse(v) as T) : fallback; } catch { return fallback; } },
-  set(k: string, v: unknown) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
-};
+interface SavedPlan { name: string; code: string; pct: number; cost: [number, number]; blocks: number; line: number; district?: string; }
 let saved: SavedPlan[] = store.get<SavedPlan[]>(STORE, []);
+const savedHere = (p: SavedPlan) => (p.district ?? "nasr-city") === districtKey;
 
 function renderSaved() {
-  $("savedList").innerHTML = saved.map((p, k) => `<li>
+  $("savedList").innerHTML = saved.map((p, k) => savedHere(p) ? `<li>
     <span class="s-name">${esc(p.name)}</span>
     <span class="s-meta">${pct(p.pct)} exposure · ${p.blocks} blocks · EGP ${egp(p.cost[0])}–${egp(p.cost[1])}</span>
     <span class="s-actions"><button class="btn small" data-load="${k}">Open</button><button class="btn small" data-del="${k}" aria-label="Delete ${esc(p.name)}">✕</button></span>
-  </li>`).join("");
+  </li>` : "").join("");
 }
 
 $("saveBtn").addEventListener("click", () => {
   const input = $("planName") as HTMLInputElement;
   const s = model.summary(m.heatReferenceC);
   const name = input.value.trim() || `Plan ${saved.length + 1}`;
-  const entry: SavedPlan = { name, code: model.encode(), pct: s.exposureChangePct, cost: [s.cost.low, s.cost.high], blocks: s.blocksTreated, line: m.heatReferenceC };
+  const entry: SavedPlan = { name, code: model.encode(), pct: s.exposureChangePct, cost: [s.cost.low, s.cost.high], blocks: s.blocksTreated, line: m.heatReferenceC, district: districtKey };
   saved = [entry, ...saved].slice(0, 12);
   store.set(STORE, saved);
   input.value = "";
@@ -489,7 +542,26 @@ $("codeCancel").addEventListener("click", () => { $("codeLoad").hidden = true; $
 $("codeApply").addEventListener("click", () => {
   const ok = model.decode(($("codeInput") as HTMLTextAreaElement).value);
   $("codeError").hidden = ok;
+  $("codeError").textContent = model.decodeError;
   if (ok) { $("codeLoad").hidden = true; toast("Plan loaded"); }
+});
+
+// ---------- plan report ----------
+
+let reportText = "";
+$("reportBtn").addEventListener("click", () => {
+  const { html, text } = buildReport(model, d, district.label, scene.snapshot(), CREDITS, model.targetingComparison(200));
+  reportText = text;
+  $("reportBody").innerHTML = html;
+  ($("reportDlg") as HTMLDialogElement).showModal();
+});
+$("repCopy").addEventListener("click", () => copy(reportText, "report"));
+$("repPrint").addEventListener("click", () => window.print());
+$("repCsv").addEventListener("click", () => {
+  const url = URL.createObjectURL(new Blob([model.toCsv()], { type: "text/csv" }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: `coolcairo-${districtKey}-plan.csv` });
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 
 $("undoBtn").addEventListener("click", () => model.undo());
@@ -542,8 +614,8 @@ const FIGURES: Record<View, { src: string; title: string; caption: string }[]> =
   const district = { src: fig2, title: "Nasr City from four angles", caption: "a: Sentinel-2 true colour. b: surface materials at 10 m. c: summer surface temperature per 90 m block (centre of the scale = typical block). d: heat exposure per block." };
   const fit = { src: fig3, title: "How well the heat model fits", caption: `Surface temperature predicted by the linear heat model against Landsat, on ${int(m.nBlocks)} urban blocks with 1 km tiles held out: R² ${m.r2SpatialCv.toFixed(2)}, ±${m.maeSpatialCv.toFixed(1)} °C. Good for comparing measures, not for predicting a single block.` };
   const hyper = { src: fig4, title: "What hyperspectral data adds", caption: `EnMAP block spectra explain surface heat at R² ${d.hyperspectral?.r2Hyperspectral.toFixed(2) ?? "0.58"} against ${d.hyperspectral?.r2Multispectral.toFixed(2) ?? "0.40"} for Sentinel-2. ${d.hyperspectral?.attribution ?? ""}.` };
-  const meas = { src: fig5, title: "One measure everywhere vs a targeted plan", caption: "Cut in Nasr City heat exposure at full adoption of each measure, against cool roofs and pocket parks on only the riskiest third of blocks. All at the 45.7 °C heat line." };
-  const growth = { src: fig6, title: "Urban growth 2016–2023", caption: "a: building growth per 90 m block across east Cairo (box: Nasr City). b: building footprint area. c: newly built blocks run about 1 °C hotter than established ones; open desert is hotter still." };
+  const meas = { src: fig5, title: "One measure everywhere vs a targeted plan", caption: "Cut in Nasr City heat exposure at full adoption of each measure, against cool roofs and pocket parks on the riskiest third of blocks, at the 45.7 °C heat line. The same two measures on every block also give −74%: the gain from targeting is the area saved, not a bigger cut (see “Does choosing the blocks matter?”)." };
+  const growth = { src: fig6, title: "Urban growth 2016–2023", caption: "a: building growth per 90 m block across east Cairo (box: Nasr City). b: building footprint area. c: newly built blocks run about 1 °C hotter than established ones, mostly because they are sandier and less built up: allowing for cover, sand and vegetation the gap is about 0.2 °C. Open desert is hotter still." };
   return { heat: [district, fit, hyper], risk: [district, meas], materials: [district, hyper], effect: [meas, fit], growth: [growth] };
 })();
 
@@ -555,7 +627,7 @@ function showFigure(k: number) {
   ($("evImg") as HTMLImageElement).src = f.src;
   ($("evImg") as HTMLImageElement).alt = f.title;
   $("evTitle").textContent = f.title;
-  $("evCap").textContent = f.caption;
+  $("evCap").textContent = f.caption + (districtKey === "nasr-city" ? "" : " These figures come from the CoolCairo report and show Nasr City and the whole east-Cairo model area.");
   $("evCount").textContent = list.length > 1 ? `${evIndex + 1} of ${list.length}` : "";
   ($("evPrev") as HTMLButtonElement).disabled = evIndex === 0;
   ($("evNext") as HTMLButtonElement).disabled = evIndex === list.length - 1;
@@ -573,6 +645,8 @@ for (const dlg of document.querySelectorAll<HTMLDialogElement>("dialog")) {
 function renderAbout() {
   const src = (d.sources ?? []).map((s) => `<tr><td>${esc(s.satellite)}</td><td>${esc(s.use)}</td><td class="num">${s.sceneIds.length}</td><td class="num">${s.firstDate} → ${s.lastDate}</td></tr>`).join("");
   $("aboutBody").innerHTML = `
+    <h3>This district</h3>
+    <p>${esc(district.note)} ${int(model.rankedByRisk().length)} blocks of ${d.blockSize} m, ${int(model.summary().residents)} residents, ${int(d.buildings.count)} mapped buildings.</p>
     <h3>What the planner computes</h3>
     <p>Every number is per 90 m block (3 × 3 Landsat pixels). Surface temperature is the median of summer 2023–25 Landsat 8/9 scenes. A measure changes a block's surface shares, and the change in temperature is a weighted sum of those shares, the same arithmetic as the CoolCairo Python analysis and the desktop app.</p>
     <ul>
@@ -585,9 +659,15 @@ function renderAbout() {
       <li><b>Surface, not air, temperature.</b> City-wide cool roofs lower air temperature by roughly 0.1–0.33 °C per +0.1 roof albedo; the effect on air is smaller and spreads beyond the district.</li>
       <li><b>The heat model fits modestly</b>: spatial cross-validated R² ${m.r2SpatialCv.toFixed(2)}, ±${m.maeSpatialCv.toFixed(1)} °C on ${int(m.nBlocks)} blocks. Use it to compare measures and places, not to predict one block.</li>
       <li><b>Percent cuts depend on the heat line.</b> Only ${int(model.rankedByRisk().filter((i) => model.baseline(i) > m.heatReferenceC).length)} of ${int(model.rankedByRisk().length)} blocks sit above the default line, so a cooling of about 1 °C can remove most of a block's exposure. "Felt by residents" (average °C change per resident) has no threshold and is the steadier figure to quote.</li>
-      <li><b>Shadows can read as dark roofs</b> and dusty roofs as sand, which is why cool roofs use published values.</li>
+      <li><b>Choosing blocks saves area, not extra cuts.</b> Exposure only counts heat above the line, so measures on blocks below it cannot change it. Cool roofs and pocket parks on the riskiest third and on every block both cut Nasr City's exposure 74%; on a random third they cut about 25%. "Does choosing the blocks matter?" shows this for any plan.</li>
+      <li><b>No single ranking of measures.</b> At the default line pocket parks remove the most excess heat; per resident, with no threshold, cool roofs cool the most people. The order changes with the heat line.</li>
+      <li><b>Pocket parks are probably overstated.</b> Landsat's thermal pixel is about 100 m, so a block beside open sand reads hotter than its own surfaces explain. Adding the sand share of neighbouring blocks lifts the model's R² from 0.25 to 0.37 and roughly halves the park effect (to about ${MINUS}3.3 °C per unit area). The targeted plan still cuts exposure by about two thirds.</li>
+      <li><b>Cool pavements rest on published values only.</b> The model sees dark ground as no hotter than pale ground (${signed(m.darkGroundFrac, 2)} °C), so our own data neither supports nor contradicts the pavement effect.</li>
+      <li><b>Dark-roof coefficient.</b> The model says dark roofs are cooler (${signed(m.darkRoofFrac, 1)} °C), which is not physical. The cause is not yet confirmed (shadow, rooftop clutter or sparse trees in the 10 m "dark" class), and dark roofs cover only about 0.5% of an urban block, so the coefficient rests on little data. Cool roofs therefore use published physics.</li>
+      <li><b>Water.</b> Trees and pocket parks need irrigation, which is not modelled; drought-tolerant planting on treated wastewater uses far less.</li>
       <li><b>Costs are indicative</b>, from international and Egyptian price ranges; there are no supplier quotes yet.</li>
-      <li><b>Residents are modelled</b> (WorldPop) and vulnerability (age, housing, access to cooling) is not included.</li>
+      <li><b>Residents are modelled</b> (WorldPop 2024, not a census), and vulnerability (age, housing, access to cooling) is not included.</li>
+      <li><b>Buildings come from OpenStreetMap</b>, which maps only part of Cairo's roofs. ${districtKey === "nasr-city" ? "Heights are per footprint (Google Open Buildings 2.5D, OSM tags)." : "In this district, heights are OSM tags where present, otherwise the block's mean height from Google Open Buildings; blocks with few mapped buildings still have full heat and resident data."}</li>
     </ul>
     <h3>Satellite scenes behind this district</h3>
     <div class="table-wrap"><table><thead><tr><th>Sensor</th><th>Used for</th><th>Scenes</th><th>Dates</th></tr></thead><tbody>${src}</tbody></table></div>
@@ -691,6 +771,12 @@ function toggle2D() {
   $("dimBtn").setAttribute("aria-pressed", String(is2D));
 }
 $("dimBtn").addEventListener("click", toggle2D);
+function toggleSatellite() {
+  scene.setSatellite(!scene.satellite);
+  $("satBtn").setAttribute("aria-pressed", String(scene.satellite));
+  toast(scene.satellite ? "Satellite photo on: Sentinel-2, summer 2023–25 composite" : "Satellite photo off");
+}
+$("satBtn").addEventListener("click", toggleSatellite);
 $("bldBtn").addEventListener("click", () => {
   buildingsOn = !buildingsOn;
   scene.setBuildingsVisible(buildingsOn);
@@ -739,6 +825,7 @@ document.addEventListener("keydown", (e) => {
   else if (k === "[") setRadius(state.radius - 1);
   else if (k === "]") setRadius(state.radius + 1);
   else if (k === "m") toggle2D();
+  else if (k === "s" && district.photo) toggleSatellite();
   else if (k === "?") ($("helpDlg") as HTMLDialogElement).showModal();
   else if (k === "escape") select(-1);
 });
@@ -761,7 +848,20 @@ model.onChange(() => {
 
 const theme = store.get<string | null>("coolcairo.theme", null);
 if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
-$("placeLabel").textContent = `${d.name} · east Cairo · ${d.rows}×${d.cols} blocks of ${d.blockSize} m`;
+const sel = $("districtSelect") as HTMLSelectElement;
+sel.innerHTML = Object.entries(DISTRICTS).map(([k, v]) => `<option value="${k}"${k === districtKey ? " selected" : ""}>${esc(v.label)} · east Cairo</option>`).join("");
+sel.title = district.note;
+sel.addEventListener("change", () => {
+  store.set("coolcairo.district", sel.value);
+  location.hash = sel.value;
+  location.reload();
+});
+if (district.photo) {
+  scene.setBasemap(district.photo);
+  $("satBtn").hidden = false;
+}
+for (const el of document.querySelectorAll<HTMLElement>("[data-hosted]")) el.hidden = !HOSTED;
+if (!HOSTED) $("reportNote").textContent = "Copy the report into an email or document. Printing and downloads work when the planner is hosted on a website.";
 $("modelChip").textContent = `Heat model R² ${m.r2SpatialCv.toFixed(2)} · ±${m.maeSpatialCv.toFixed(1)} °C · ${int(m.nBlocks)} blocks`;
 $("credits").textContent = CREDITS;
 ($("heatLine") as HTMLInputElement).value = m.heatReferenceC.toFixed(1);

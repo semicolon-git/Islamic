@@ -1,0 +1,51 @@
+From 6e5d9328e22973b491d2fae2b0ccd8bd5d0497ce Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 15 Oct 2026 07:46:16 +0000
+Subject: [PATCH 3/3] Add CI: unit tests, notebook 00 and a reproducibility
+ check on every push
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_019LPfV4rvbkEpTMU3bHqkjU
+---
+ .github/workflows/tests.yml | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+ create mode 100644 .github/workflows/tests.yml
+
+diff --git a/.github/workflows/tests.yml b/.github/workflows/tests.yml
+new file mode 100644
+index 0000000..8252b82
+--- /dev/null
++++ b/.github/workflows/tests.yml
+@@ -0,0 +1,29 @@
++# Runs on every push and pull request: the unit tests, then the offline quick-example notebook,
++# then checks that the published example results are unchanged (they are written by notebook 00).
++name: tests
++
++on:
++  push:
++  pull_request:
++
++jobs:
++  analysis:
++    runs-on: ubuntu-latest
++    timeout-minutes: 20
++    defaults:
++      run:
++        working-directory: analysis
++    steps:
++      - uses: actions/checkout@v4
++      - uses: astral-sh/setup-uv@v6
++        with:
++          enable-cache: true
++      - name: Install the locked environment
++        run: uv sync --locked
++      - name: Unit tests
++        run: uv run pytest -q
++      - name: Run notebook 00 from a clean kernel
++        run: uv run jupyter nbconvert --to notebook --execute notebooks/00_quick_example.ipynb --output /tmp/00_executed.ipynb
++      - name: Published example results are reproducible
++        # Maps (PNG) differ by font rendering between machines, so only data files are compared.
++        run: git diff --exit-code -- ../results/*.json ../results/*.csv ../results/summary.md
+-- 
+2.43.0
+

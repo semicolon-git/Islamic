@@ -91,10 +91,17 @@ The Unity app answers the first half of the question well (the map, the model, l
 
 All 14 tests pass. This closes the gap noted in the code review: the C# copy had no automated check against the Python reference, and now the browser copy does.
 
-## 5. Next steps (not built yet)
+## 5. Added in the second round
 
-1. **More districts.** The planner reads any `district.json` (schema 1); export a second Cairo district or another MENA city and add a district picker.
-2. **Satellite basemap toggle** (the Sentinel-2 fly-in tile the Unity app fetches) under the blocks.
-3. **Printable plan report** (map snapshot, figures, block table) for hosted deployments; the artifact sandbox blocks printing and downloads.
-4. **Shared plans** via a small backend so a team can comment on the same plan.
-5. **Vulnerability layer** (age, housing) once census data is joined in the analysis.
+- **Four districts.** A district picker with Nasr City plus three more 24 × 24-block areas exported from CoolCairo's committed sample data and OSM extract (`scripts/export_districts.py`, CoolCairo's own export helpers, schema 1).
+- **Satellite basemap** for Nasr City from the Sentinel-2 summer composite in the sample data, under tinted block colours.
+- **Plan report**: map snapshot, results, targeting comparison, heat-line sensitivity, measures with area and cost, the ten blocks where the plan removes most exposure, and caveats. Copy as text everywhere; print / PDF and CSV download on a hosted copy.
+- **"Does choosing the blocks matter?"**: the pre-pitch review's main point, live for any plan. Exposure only counts heat above the line, so the gain from targeting is the area saved; the panel compares the plan with the same measures on only the hot blocks, on every block and on random blocks.
+- **Honest labels**: "Residents in treated blocks" (with how many were above the line), "published / our data" badges, the pocket-park and pavement caveats, water, and one dark-roof explanation on the Method page.
+
+## 6. Next steps (not built yet)
+
+1. **Live archive data**: refresh districts from the satellite archives on a server (the planner reads any schema-1 `district.json`).
+2. **Shared plans** via a small backend so a team can comment on the same plan.
+3. **Vulnerability layer** (age, housing) once census data is joined in the analysis.
+4. **Basemaps for the other districts** once Sentinel-2 composites are exported for them.

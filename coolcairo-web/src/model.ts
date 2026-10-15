@@ -18,6 +18,8 @@ export interface PlanSummary {
   exposureChangePct: number;
   residents: number;
   residentsCooled: number;
+  /** Residents of cooled blocks that were above the heat line before the plan. */
+  residentsCooledAbove: number;
   blocksTreated: number;
   areaM2: Record<Measure, number>;
   cost: { low: number; high: number };
@@ -45,8 +47,10 @@ export class PlanModel {
   /** Reference ("typical block") temperature for heat exposure. Defaults to the analysis value. */
   heatLine: number;
   version = 0;
+  /** Why the last decode() failed, for the interface. */
+  decodeError = "";
 
-  constructor(d: District) {
+  constructor(d: District, readonly districtKey = "nasr-city") {
     this.d = d;
     this.n = blockCount(d);
     this.share = this.emptyShares();
@@ -235,7 +239,7 @@ export class PlanModel {
   // ---------- summaries ----------
 
   summary(line = this.heatLine): PlanSummary {
-    let sumBefore = 0, sumAfter = 0, nValid = 0, eB = 0, eA = 0, res = 0, cooled = 0, wDelta = 0, treated = 0;
+    let sumBefore = 0, sumAfter = 0, nValid = 0, eB = 0, eA = 0, res = 0, cooled = 0, cooledAbove = 0, wDelta = 0, treated = 0;
     const area: Record<Measure, number> = { roof: 0, trees: 0, pavement: 0, park: 0 };
     const blockArea = this.d.blockSize * this.d.blockSize;
     for (let i = 0; i < this.n; i++) {
@@ -248,7 +252,7 @@ export class PlanModel {
       eA += r * Math.max(0, t0 + dl - line);
       res += r;
       wDelta += r * dl;
-      if (dl < -0.01) cooled += r;
+      if (dl < -0.01) { cooled += r; if (t0 > line) cooledAbove += r; }
       if (this.treated(i)) treated++;
       area.roof += this.roofCoated(i) * blockArea;
       area.trees += this.treePlanted(i) * blockArea;
@@ -269,6 +273,7 @@ export class PlanModel {
       exposureChangePct: eB > 0 ? (100 * (eA - eB)) / eB : 0,
       residents: res,
       residentsCooled: cooled,
+      residentsCooledAbove: cooledAbove,
       blocksTreated: treated,
       areaM2: area,
       cost: { low, high },
@@ -284,31 +289,91 @@ export class PlanModel {
     });
   }
 
+  /** Measures in the current plan (at least 1% adoption somewhere). */
+  planMeasures(): Measure[] {
+    return MEASURES.filter((m) => this.share[m].some((v) => v >= 0.01));
+  }
+
+  /** Summary of a hypothetical plan: these measures at full adoption on these blocks.
+   *  Leaves the current plan untouched. */
+  scenario(measures: Measure[], blocks: number[]): PlanSummary {
+    const saved = this.share;
+    this.share = this.emptyShares();
+    for (const m of measures) for (const i of blocks) if (this.isValid(i)) this.share[m][i] = 1;
+    const s = this.summary();
+    this.share = saved;
+    return s;
+  }
+
+  /** How much does choosing the blocks matter? The current plan's measures on every block, only
+   *  on the blocks above the heat line, and on random sets of the same size (median of draws). */
+  targetingComparison(draws = 200): { label: string; summary: PlanSummary; note?: string }[] | null {
+    const measures = this.planMeasures();
+    const treated = [...Array(this.n).keys()].filter((i) => this.treated(i));
+    if (!measures.length || !treated.length) return null;
+    const valid = [...Array(this.n).keys()].filter((i) => this.isValid(i));
+    const above = valid.filter((i) => this.baseline(i) > this.heatLine && this.residents(i) >= 1);
+    // Seeded shuffle, so the comparison is the same on every run.
+    let seed = 20261015;
+    const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32);
+    const randomRuns: PlanSummary[] = [];
+    for (let k = 0; k < draws; k++) {
+      const pool = valid.slice();
+      for (let j = pool.length - 1; j > 0; j--) { const r = Math.floor(rand() * (j + 1)); [pool[j], pool[r]] = [pool[r], pool[j]]; }
+      randomRuns.push(this.scenario(measures, pool.slice(0, treated.length)));
+    }
+    randomRuns.sort((a, b) => a.exposureChangePct - b.exposureChangePct);
+    const median = randomRuns[Math.floor(randomRuns.length / 2)];
+    const lo = randomRuns[Math.floor(0.05 * randomRuns.length)].exposureChangePct;
+    const hi = randomRuns[Math.floor(0.95 * randomRuns.length)].exposureChangePct;
+    return [
+      { label: "Your plan", summary: this.summary() },
+      { label: `Only the ${above.length} blocks above the line`, summary: this.scenario(measures, above) },
+      { label: "Every block", summary: this.scenario(measures, valid) },
+      { label: `${treated.length} random blocks`, summary: median, note: `median of ${draws} draws; 90% between \u2212${Math.abs(Math.round(lo))}% and \u2212${Math.abs(Math.round(hi))}%` },
+    ];
+  }
+
   // ---------- serialisation ----------
 
-  /** Compact plan code: per measure, the non-zero blocks as index:percent pairs. */
+  /** Compact plan code: district, then per measure the non-zero blocks as index[.percent]. */
   encode(): string {
     const parts = MEASURES.map((m) => {
       const items: string[] = [];
       this.share[m].forEach((v, i) => { if (v > 0) items.push(`${i.toString(36)}${v >= 0.995 ? "" : "." + Math.round(v * 100)}`); });
       return items.join(",");
     });
-    return "CC1|" + parts.join("|");
+    return `CC2|${this.districtKey}|` + parts.join("|");
   }
 
   decode(code: string): boolean {
-    const parts = code.trim().split("|");
-    if (parts[0] !== "CC1" || parts.length !== MEASURES.length + 1) return false;
+    let parts = code.trim().split("|");
+    // CC1 codes (first web release) carry no district and are always Nasr City.
+    if (parts[0] === "CC1") parts = ["CC2", "nasr-city", ...parts.slice(1)];
+    if (parts[0] !== "CC2" || parts.length !== MEASURES.length + 2) {
+      this.decodeError = "That is not a CoolCairo plan code. Codes start with CC2|.";
+      return false;
+    }
+    if (parts[1] !== this.districtKey) {
+      this.decodeError = `That plan is for another district (${parts[1]}). Switch district first.`;
+      return false;
+    }
     const next = this.emptyShares();
     for (let k = 0; k < MEASURES.length; k++) {
-      if (!parts[k + 1]) continue;
-      for (const item of parts[k + 1].split(",")) {
+      const field = parts[k + 2];
+      if (!field) continue;
+      for (const item of field.split(",")) {
         const [idx, pct] = item.split(".");
         const i = parseInt(idx, 36);
-        if (!Number.isFinite(i) || i < 0 || i >= this.n) return false;
-        next[MEASURES[k]][i] = pct === undefined ? 1 : Math.min(1, Math.max(0, Number(pct) / 100));
+        const v = pct === undefined ? 1 : Number(pct) / 100;
+        if (!/^[0-9a-z]+$/.test(idx) || i >= this.n || !Number.isFinite(v)) {
+          this.decodeError = "That plan code is damaged. Copy it again from the source.";
+          return false;
+        }
+        next[MEASURES[k]][i] = Math.min(1, Math.max(0, v));
       }
     }
+    this.decodeError = "";
     this.checkpoint();
     this.share = next;
     this.emit();

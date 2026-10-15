@@ -18,7 +18,8 @@
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2" class="bm-hot"/><rect x="18" y="2" width="12" height="12" rx="2" class="bm-warm"/><rect x="2" y="18" width="12" height="12" rx="2" class="bm-cool"/><rect x="18" y="18" width="12" height="12" rx="2" class="bm-cooler"/></svg>
       <div class="brand-text">
         <span class="brand-name">CoolCairo</span>
-        <span class="brand-place" id="placeLabel">Nasr City · east Cairo</span>
+        <label class="sr" for="districtSelect">District</label>
+        <select id="districtSelect" class="district-select" title="Choose a district"></select>
       </div>
     </div>
 
@@ -145,6 +146,7 @@
       <button class="ctrl" id="zoomOut" title="Zoom out" aria-label="Zoom out">−</button>
       <button class="ctrl" id="homeBtn" title="Reset camera" aria-label="Reset camera"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7M6 10v10h12V10"/></svg></button>
       <button class="ctrl text" id="dimBtn" title="2D / 3D (M)" aria-pressed="false">2D</button>
+      <button class="ctrl" id="satBtn" title="Satellite photo under the blocks (S)" aria-pressed="false" aria-label="Satellite photo" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l4-4 3 3-4 4zM12 12l3-3 4 4-3 3zM9 15l-4 4M14 6l2-2M8 12l4 4"/></svg></button>
       <button class="ctrl" id="bldBtn" title="Show buildings" aria-pressed="true" aria-label="Show buildings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l5-3v14M9 20V4l7 3v13M16 20v-9l4 2v7M3 20h18"/></svg></button>
     </div>
 
@@ -181,7 +183,7 @@
           <div class="kpi-sub">avg change per resident</div>
         </div>
         <div class="kpi">
-          <div class="kpi-label">Residents in cooled blocks</div>
+          <div class="kpi-label">Residents in treated blocks</div>
           <div class="kpi-value sm" id="resCooled">0</div>
           <div class="kpi-sub" id="resSub">of 95,141</div>
         </div>
@@ -193,9 +195,18 @@
       </div>
     </section>
 
+    <section class="block-sec report-sec">
+      <button class="btn wide" id="reportBtn" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/></svg>Plan report</button>
+    </section>
+
     <section class="block-sec" aria-labelledby="mixTitle">
       <div class="sec-head"><h2 id="mixTitle">Where the cooling comes from</h2></div>
       <div class="mix" id="mixBars"></div>
+    </section>
+
+    <section class="block-sec" aria-labelledby="whereTitle">
+      <div class="sec-head"><h2 id="whereTitle">Does choosing the blocks matter?</h2></div>
+      <div id="whereBody"><p class="mix-empty">With a plan on the map, this compares it with the same measures on every block and on random blocks.</p></div>
     </section>
 
     <section class="block-sec" aria-labelledby="lineTitle">
@@ -247,6 +258,22 @@
   </div>
 </dialog>
 
+<dialog id="reportDlg" class="dlg wide-dlg" aria-labelledby="repTitle">
+  <div class="dlg-head">
+    <h2 id="repTitle">Plan report</h2>
+    <button class="icon-btn" data-close aria-label="Close">✕</button>
+  </div>
+  <div class="dlg-body report" id="reportBody"></div>
+  <div class="dlg-foot report-foot">
+    <span class="muted small" id="reportNote">Copy the report into an email or document.</span>
+    <div class="btn-row">
+      <button class="btn" id="repCopy">Copy as text</button>
+      <button class="btn" id="repCsv" data-hosted hidden>Download block table</button>
+      <button class="btn primary" id="repPrint" data-hosted hidden>Print or save as PDF</button>
+    </div>
+  </div>
+</dialog>
+
 <dialog id="aboutDlg" class="dlg" aria-labelledby="aboutTitle">
   <div class="dlg-head">
     <h2 id="aboutTitle">Method, data and limits</h2>
@@ -269,6 +296,7 @@
         <tr><td><kbd>[</kbd> <kbd>]</kbd></td><td>Smaller / larger brush</td></tr>
         <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Undo (add <kbd>Shift</kbd> to redo)</td></tr>
         <tr><td><kbd>M</kbd></td><td>Switch 2D / 3D</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Satellite photo under the blocks (Nasr City)</td></tr>
         <tr><td><kbd>Esc</kbd></td><td>Close a window or deselect the block</td></tr>
         <tr><td>Drag</td><td>Inspect: turn the map. Paint: paint blocks</td></tr>
         <tr><td>Right-drag</td><td>Inspect: move the map. Paint: turn the map</td></tr>

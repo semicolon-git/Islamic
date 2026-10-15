@@ -50,6 +50,9 @@ export class DistrictScene {
   footprint: number[] = [];
   interaction: Interaction = "inspect";
   showRings = true;
+  /** True-colour satellite photo of the grid (north up), shown under tinted block colours. */
+  private basemap: HTMLImageElement | null = null;
+  satellite = false;
   private is2D = false;
   private dirty = true;
   private reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -207,10 +210,15 @@ export class DistrictScene {
   private drawGround() {
     const ctx = this.groundCtx, d = this.d;
     const rowsY = (r: number) => (d.rows - 1 - r) * CELL;
+    const photo = this.satellite && this.basemap?.complete ? this.basemap : null;
+    if (photo) ctx.drawImage(photo, 0, 0, this.groundCanvas.width, this.groundCanvas.height);
+    // Over the photo, block colours become a light tint so streets and parks stay readable.
+    ctx.globalAlpha = photo ? 0.42 : 1;
     for (let i = 0; i < this.groundShown.length; i++) {
       ctx.fillStyle = css(this.groundShown[i]);
       ctx.fillRect((i % d.cols) * CELL, rowsY(Math.floor(i / d.cols)), CELL, CELL);
     }
+    ctx.globalAlpha = 1;
     // Faint block grid: blocks are the unit of every number.
     ctx.strokeStyle = "rgba(0,0,0,0.10)";
     ctx.lineWidth = 1;
@@ -274,6 +282,18 @@ export class DistrictScene {
     this.renderer.shadowMap.enabled = on;
     this.sun.castShadow = on;
     (this.buildings.material as THREE.Material).needsUpdate = true;
+    this.dirty = true;
+  }
+
+  setBasemap(url: string) {
+    const img = new Image();
+    img.onload = () => (this.dirty = true);
+    img.src = url;
+    this.basemap = img;
+  }
+
+  setSatellite(on: boolean) {
+    this.satellite = on;
     this.dirty = true;
   }
 

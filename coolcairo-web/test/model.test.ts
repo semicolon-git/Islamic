@@ -82,3 +82,47 @@ describe("editing", () => {
     expect(high).toBeLessThan(-95);
   });
 });
+
+describe("knowing where pays (pre-pitch review, section 3)", () => {
+  const m = fresh();
+  m.autoPlan(["roof", "park"], 1 / 3);
+  const rows = m.targetingComparison(200)!;
+  const pctOf = (label: string) => rows.find((r) => r.label.startsWith(label))!.summary.exposureChangePct;
+  it("the same −74% on the 106 hot blocks, the riskiest third and every block", () => {
+    expect(rows[1].label).toContain("106");
+    for (const l of ["Your plan", "Only", "Every"]) expect(Math.round(pctOf(l))).toBe(-74);
+  });
+  it("a random third cuts only about a quarter", () => {
+    expect(pctOf("192 random")).toBeGreaterThan(-32);
+    expect(pctOf("192 random")).toBeLessThan(-18);
+  });
+  it("treats far less area than every block", () => {
+    const area = (l: string) => { const a = rows.find((r) => r.label.startsWith(l))!.summary.areaM2; return a.roof + a.park; };
+    expect(area("Only") / area("Every")).toBeLessThan(0.2);
+  });
+  it("splits residents in treated blocks by the heat line (10,487 above it)", () => {
+    expect(m.summary().residentsCooledAbove).toBeCloseTo(10487, -1);
+  });
+});
+
+describe("extra districts exported from the CoolCairo sample data", () => {
+  const files = import.meta.glob("../src/assets/districts/*.json", { eager: true, import: "default" });
+  it("there are three", () => expect(Object.keys(files)).toHaveLength(3));
+  for (const [path, raw] of Object.entries(files)) {
+    it(`${path.split("/").pop()}: valid schema, same model, residents and heat`, () => {
+      const dd = parseDistrict(raw);
+      expect(dd.rows * dd.cols).toBe(576);
+      expect(dd.model).toEqual(district.model);
+      const m = new PlanModel(dd, "x");
+      const s = m.summary();
+      expect(s.residents).toBeGreaterThan(10000);
+      expect(s.exposureBefore).toBeGreaterThan(0);
+      for (let k = 0; k < dd.buildings.count; k++) expect(dd.buildings.blockIndex[k]).toBeLessThan(576);
+      m.autoPlan(["roof", "park"], 1 / 3);
+      expect(m.summary().exposureChangePct).toBeLessThan(0);
+      const other = new PlanModel(dd, "x");
+      expect(other.decode(m.encode())).toBe(true);
+      expect(new PlanModel(district, "nasr-city").decode(m.encode())).toBe(false);
+    });
+  }
+});
