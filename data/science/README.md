@@ -2,7 +2,7 @@
 
 Curated seed data for the Muslim-science layer described in
 [`docs/roadmap/open-world-snap-and-science-heritage.md` §3](../../docs/roadmap/open-world-snap-and-science-heritage.md).
-It is **data only**: no app code reads it yet. Every entry still needs the same scholar review as a card before it is shown to the public.
+It is seeded into `science_entries` by `scripts/seed/science.ts`. Contribution chains carry a visible review status: "every step sourced" until a researcher and a different institution admin sign the chain off in the portal (`/portal/science`).
 
 **Date verified:** 2026-10-06 (`verified_on` on every holding).
 
@@ -14,6 +14,7 @@ It is **data only**: no app code reads it yet. Every entry still needs the same 
 | `works.json` | 19 | Books and tables, each with one `author` (a scientist id). Group works (the Toledan Tables, the Zij-i Sultani) say so in the summary. |
 | `instruments.json` | 11 | Astrolabe, universal astrolabe, spherical astrolabe, quadrant, celestial globe, armillary sphere, sundial, kamal, water clock, qibla indicator, monumental meridian instrument. Each has an honest `origin_*` (for example, the astrolabe is Hellenistic), the Muslim contribution, how it works, and uses. |
 | `holdings.json` | 28 | Museum objects with the museum's own object or catalogue URL: History of Science Museum Oxford (8), Museum of Islamic Art Doha (4), British Museum (3), Royal Museums Greenwich (3), Museo Galileo (3), The Met (2), Khalili Collections (2), Museum für Islamische Kunst Berlin (1), V&A (1), Smithsonian NMAH (1). |
+| `chains.json` | 12 | **Contribution chains** (2026-10-27): for an everyday object (TV, glasses, phone, clock, map, robot, paper, hospital, scalpel, perfume, coffee), the history of its science as steps (before → Muslim scholars → transmission → after → today), each sourced, plus *what we do not claim* and the *popular claims we checked* (29 myths with corrections). Design: [`docs/roadmap/muslim-contributions-chains.md`](../../docs/roadmap/muslim-contributions-chains.md). |
 | `topics.json` | 37 | Links from the platform's concept ids to scholars, works and instruments, with a 1–2 sentence note in each language and its sources. |
 
 Validation: `src/features/science/data.test.ts` (run `npx vitest run src/features/science/data.test.ts`). It checks the schemas strictly, unique ids, every cross-reference, that concept ids come from the platform list, that every entity has at least one http(s) source, that bilingual fields are filled in both languages (Arabic fields must contain Arabic script), and that the astrolabe's origin is given as Hellenistic/Greek.
@@ -24,6 +25,38 @@ Validation: `src/features/science/data.test.ts` (run `npx vitest run src/feature
 - Preferred sources: museum catalogues, the *Biographical Encyclopedia of Astronomers* (McGill RASI copies), MacTutor, Britannica, Encyclopaedia Iranica, the Filaha Texts Project. Wikipedia is used only as a labelled secondary source.
 - Wording rules followed: "developed / refined / described / built", never "Muslims invented X" unless that is the consensus; no unsourced superlatives (where a museum makes a superlative claim, the text says "described by the museum as …"); no "scientific miracle" framing and no claim that the Quran predicted science.
 - "On display": only stated where the museum's page said so, always as "listed as on view when checked" (The Met 63.166a–j and 91.1.535a–h, V&A M.827-1928). RMG says its 1813 astrolabe is *not* on display.
+
+## Contribution chains: how they were made (2026-10-27)
+
+- Researched in three parallel passes against Britannica, the Stanford Encyclopedia of Philosophy, MacTutor, Encyclopaedia Iranica, McGill's Biographical Encyclopedia of Astronomers, NobelPrize.org, the US National Library of Medicine, UNESCO and peer-reviewed articles. As with the 2026-10-06 data, **page loads were blocked** and every fact was checked through search extracts of the cited page. Before launch a person should open each chain source once.
+- Ten scholars were added for the chains: Ibn Sahl, Kamal al-Din al-Farisi, al-Kindi, al-Uqlidisi, the Banu Musa, Ibn Khalaf al-Muradi, Ibn al-Nadim, al-Razi, al-Zahrawi and Ibn al-Nafis.
+- Editorial cuts made when merging:
+  - **Object labels that made the link too loose were removed.** Examples: airplanes from navigation; car engines, washing and vending machines, and the bare word «آلة» (machine) from machines; makeup from chemistry; photo frames and the bare word «صورة» (photo) from light and image; «حبوب» (pills, but also grains) and «بن» (coffee beans, but also "son of") as ambiguous words.
+  - **Ibn al-Baytar was dropped**: no Britannica, Iranica or museum source was found.
+  - **A closing "today" step was added to lenses-and-eyeglasses.**
+- Uncertainties are written into the data rather than smoothed over:
+  - the dating of the *Book of Optics* (c. 1011–1021 or c. 1028–1038);
+  - Ibn Sahl's "law of refraction" following Rashed;
+  - the date of Taqi al-Din's clock book (1559 vs 1563);
+  - authorship of the Jabirian corpus;
+  - the 'Adudi hospital's founding year.
+- Myths include the following, each corrected with a source:
+  - Ibn al-Haytham invented the camera;
+  - Muslims invented zero or paper;
+  - al-Jazari invented the crankshaft or the first robot;
+  - Ibn Majid piloted Vasco da Gama;
+  - Harvey learned the circulation of the blood from Ibn al-Nafis;
+  - al-Zahrawi invented the syringe;
+  - the Kaldi goatherd legend.
+- Guardrail tests (`src/features/science/data.test.ts`) check that every chain has:
+  - Muslim steps;
+  - a before or after step;
+  - a last step set to today;
+  - sources on every Muslim and transmission step;
+  - no "invented" claimed for Muslims;
+  - no miracle framing;
+  - object labels that are unique across chains.
+- Matching quality is measured in `src/features/science/chains.eval.test.ts`.
 
 ## Corrections to the roadmap and to common claims
 

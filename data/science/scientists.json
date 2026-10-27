@@ -610,5 +610,426 @@
       { "citation": "Museo Galileo, biography 'Ibrahim Ibn Said as-Sahli'", "url": "https://catalogue.museogalileo.it/biography/IbrahimIbnSaidAsSahli.html" },
       { "citation": "History of Science Museum, Oxford, 'The Astrolabe, East and West': inv. 55331", "url": "https://www.mhs.ox.ac.uk/astrolabe/exhibition/55331.html" }
     ]
+  },
+  {
+    "id": "ibn-sahl",
+    "name_en": "Abu Sa'd al-'Ala' ibn Sahl",
+    "name_ar": "أبو سعد العلاء بن سهل",
+    "dates": "c. 940–1000 CE (treatise c. 984) / 4th century AH",
+    "places_en": "Baghdad (Buyid court)",
+    "places_ar": "بغداد (البلاط البويهي)",
+    "fields": [
+      "optics",
+      "mathematics"
+    ],
+    "summary_en": "Ibn Sahl was a mathematician at the Buyid court in Baghdad. His treatise On Burning Instruments (c. 984), reconstructed by Roshdi Rashed from manuscripts in Damascus and Tehran, studies how mirrors and lenses can focus light. In it he states a geometric relation for refraction that, written in modern notation, is equivalent to the sine law for the cases he treated, and uses it to design lenses that focus without geometric aberration.",
+    "summary_ar": "ابن سهل رياضي عمل في البلاط البويهي ببغداد. ودرس في رسالته «الحرّاقات» (نحو 984م)، التي أعاد رشدي راشد بناءها من مخطوطتين في دمشق وطهران، كيف تجمع المرايا والعدسات الضوء. وفيها علاقة هندسية للانكسار تكافئ قانون الجيوب إذا كُتبت بلغة حديثة، في الحالات التي درسها، واستعملها لتصميم عدسات تجمع الضوء دون زيغ هندسي.",
+    "contributions": [
+      {
+        "en": "Gave a geometric rule for refraction in glass that historians read as equivalent to the sine law in the cases he studied (its status as a 'discovery' of the law is debated).",
+        "ar": "قدّم قاعدة هندسية لانكسار الضوء في الزجاج يقرؤها المؤرخون على أنها تكافئ قانون الجيوب في الحالات التي درسها (والخلاف قائم في عدّها «اكتشافًا» للقانون)."
+      },
+      {
+        "en": "Designed lens and mirror shapes (hyperbolic and ellipsoidal) that bring rays to a single focus.",
+        "ar": "صمّم أشكال عدسات ومرايا (زائدية وإهليلجية) تجمع الأشعة في بؤرة واحدة."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "R. Rashed, 'A Pioneer in Anaclastics: Ibn Sahl on Burning Mirrors and Lenses', Isis 81 (1990)",
+        "url": "https://www.journals.uchicago.edu/doi/10.1086/355456"
+      },
+      {
+        "citation": "McGill University, Biographical Encyclopedia of Astronomers, 'Ibn Sahl'",
+        "url": "https://islamsci.mcgill.ca/RASI/BEA/Ibn_Sahl_BEA.htm"
+      }
+    ]
+  },
+  {
+    "id": "kamal-al-din-al-farisi",
+    "name_en": "Kamal al-Din al-Farisi",
+    "name_ar": "كمال الدين الفارسي",
+    "dates": "c. 1260–1320 CE / d. c. 719–720 AH",
+    "places_en": "Tabriz",
+    "places_ar": "تبريز",
+    "fields": [
+      "optics",
+      "mathematics"
+    ],
+    "summary_en": "Al-Farisi was a Persian mathematician and optician whose Tanqih al-Manazir ('Revision of the Optics') is a critical revision of Ibn al-Haytham's Book of Optics that also incorporates Ibn al-Haytham's treatises on the burning sphere and on the rainbow. Using a water-filled glass sphere in a dark room as a model raindrop, he explained the rainbow by two refractions with one or more internal reflections. Theodoric of Freiberg reached a similar explanation in Europe at about the same time, independently.",
+    "summary_ar": "الفارسي رياضي وعالم بصريات فارسي، وكتابه «تنقيح المناظر» مراجعة نقدية لـ«كتاب المناظر» لابن الهيثم، ضمّ إليها رسائل ابن الهيثم في الكرة المحرقة وفي قوس قزح. واستعمل كرة زجاجية مملوءة بالماء في بيت مظلم نموذجًا لقطرة المطر، ففسّر قوس قزح بانكسارين بينهما انعكاس داخلي أو أكثر. وقد توصّل ثيودوريك الفرايبورغي في أوروبا إلى تفسير قريب في الوقت نفسه تقريبًا، مستقلًّا عنه.",
+    "contributions": [
+      {
+        "en": "Revised and extended Ibn al-Haytham's optics in Tanqih al-Manazir.",
+        "ar": "نقّح بصريات ابن الهيثم ووسّعها في «تنقيح المناظر»."
+      },
+      {
+        "en": "Explained the primary and secondary rainbows, including the reversed colour order of the secondary bow, using a glass-sphere model.",
+        "ar": "فسّر قوس قزح الأول والثاني، ومنه انعكاس ترتيب الألوان في القوس الثاني، بنموذج الكرة الزجاجية."
+      },
+      {
+        "en": "Used dark-room (camera obscura) experiments in his study of light and vision.",
+        "ar": "استعمل تجارب البيت المظلم في دراسته للضوء والإبصار."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Encyclopaedia Iranica, 'Fāresi, Kamāl-al-Din'",
+        "url": "https://www.iranicaonline.org/articles/faresi-2/"
+      },
+      {
+        "citation": "MacTutor History of Mathematics, 'Al-Farisi'",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Farisi/"
+      }
+    ]
+  },
+  {
+    "id": "al-kindi",
+    "name_en": "Abu Yusuf Ya'qub ibn Ishaq al-Kindi (Alkindus)",
+    "name_ar": "أبو يوسف يعقوب بن إسحاق الكندي",
+    "dates": "c. 800–c. 870 CE",
+    "places_en": "Baghdad",
+    "places_ar": "بغداد",
+    "fields": [
+      "chemistry"
+    ],
+    "summary_en": "Al-Kindi was a scholar of the Arab tribe of Kinda who worked in Abbasid Baghdad and is described by the Stanford Encyclopedia of Philosophy as the first self-identified philosopher in the Arabic tradition. He helped mediate the translation of Greek works into Arabic. His Book of the Chemistry of Perfume and Distillations gives recipes for aromatic waters and scented oils, while he also wrote against the alchemists' claim of transmuting metals.",
+    "summary_ar": "الكندي عالم من قبيلة كندة العربية عمل في بغداد العباسية، وتصفه موسوعة ستانفورد للفلسفة بأنه أول من عرّف نفسه فيلسوفًا في التراث العربي. أسهم في التوسط لترجمة المؤلفات اليونانية إلى العربية، وقدّم في كتابه «كيمياء العطر والتصعيدات» وصفات للمياه العطرية والأدهان المعطرة، كما ردّ على دعوى الكيميائيين تحويل المعادن.",
+    "contributions": [
+      {
+        "en": "Wrote the Book of the Chemistry of Perfume and Distillations, with recipes for aromatic waters, scented oils and imitation perfumes.",
+        "ar": "ألّف كتاب «كيمياء العطر والتصعيدات» وفيه وصفات للمياه العطرية والأدهان المعطرة وبدائل العطور."
+      },
+      {
+        "en": "Described distillation for perfume-making, which he distinguished from alchemical distillation.",
+        "ar": "وصف التقطير لصناعة العطور، وميّزه عن التقطير عند الكيميائيين."
+      },
+      {
+        "en": "Argued against the alchemical claim that base metals can be turned into gold.",
+        "ar": "ردّ على دعوى الكيميائيين إمكان تحويل المعادن الخسيسة إلى ذهب."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Stanford Encyclopedia of Philosophy, 'al-Kindi'",
+        "url": "https://plato.stanford.edu/entries/al-kindi/"
+      },
+      {
+        "citation": "Orient (J-STAGE), Takatomo Inoue, 'Al-Kindī's Attack on Alchemy and His Perfume Making' (2017)",
+        "url": "https://www.jstage.jst.go.jp/article/orient/52/0/52_72/_article"
+      },
+      {
+        "citation": "University of Pennsylvania Libraries, catalogue record for K. Garbers' 1948 edition of al-Kindi's perfume book",
+        "url": "https://find.library.upenn.edu/catalog/995706753503681"
+      }
+    ]
+  },
+  {
+    "id": "al-uqlidisi",
+    "name_en": "Abu'l-Hasan Ahmad ibn Ibrahim al-Uqlidisi",
+    "name_ar": "أبو الحسن أحمد بن إبراهيم الإقليدسي",
+    "dates": "c. 920–980 CE (book 952–953) / 4th century AH",
+    "places_en": "Damascus",
+    "places_ar": "دمشق",
+    "fields": [
+      "mathematics"
+    ],
+    "summary_en": "Al-Uqlidisi composed Kitab al-Fusul fi al-Hisab al-Hindi ('Chapters on Indian Arithmetic') in Damascus in 952–953; it survives in a single copy made in 1157. The Dictionary of Scientific Biography calls it the earliest known text with a direct treatment of decimal fractions: he marked the units place with a small stroke and used it, for example, in repeatedly halving a number.",
+    "summary_ar": "ألّف الإقليدسي «الفصول في الحساب الهندي» في دمشق سنة 952–953م، ولم يبقَ منه إلا نسخة واحدة كُتبت سنة 1157م. ويصفه «قاموس السير العلمية» بأنه أقدم نص معروف يعالج الكسور العشرية معالجة مباشرة؛ إذ ميّز منزلة الآحاد بشَرطة صغيرة واستعملها، مثلًا، في تنصيف العدد مرة بعد مرة.",
+    "contributions": [
+      {
+        "en": "Wrote the earliest known Arabic treatment of decimal fractions, with a mark separating whole and fractional parts.",
+        "ar": "كتب أقدم معالجة عربية معروفة للكسور العشرية، مع علامة تفصل الجزء الصحيح عن الكسري."
+      },
+      {
+        "en": "Explained written arithmetic with the Indian digits for a wide readership.",
+        "ar": "شرح الحساب المكتوب بالأرقام الهندية لجمهور واسع من القرّاء."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "MacTutor History of Mathematics, 'Abu'l Hasan Ahmad ibn Ibrahim Al-Uqlidisi'",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Uqlidisi/"
+      },
+      {
+        "citation": "Dictionary of Scientific Biography (via MacTutor), 'Al-Uqlīdisī'",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Al-Uqlidisi.pdf"
+      }
+    ]
+  },
+  {
+    "id": "banu-musa",
+    "name_en": "The Banu Musa brothers (Muhammad, Ahmad and al-Hasan ibn Musa ibn Shakir)",
+    "name_ar": "بنو موسى بن شاكر (محمد وأحمد والحسن)",
+    "dates": "fl. c. 830–873 CE / 3rd century AH",
+    "places_en": "Baghdad (House of Wisdom, under al-Ma'mun and his successors)",
+    "places_ar": "بغداد (بيت الحكمة، في عهد المأمون ومن بعده)",
+    "fields": [
+      "engineering",
+      "mathematics",
+      "astronomy"
+    ],
+    "summary_en": "Three brothers who worked in Abbasid Baghdad as scholars and patrons of translation. Their Book of Ingenious Devices (Kitab al-Hiyal, c. 850), usually attributed mainly to Ahmad, describes about a hundred devices — trick vessels, fountains and musical automata — some based on Hero and Philo and others new. They also wrote on geometry, including a treatise on measuring plane and spherical figures that takes up problems treated by Archimedes.",
+    "summary_ar": "ثلاثة إخوة عملوا في بغداد العباسية علماءَ ورعاةً لحركة الترجمة. ويصف «كتاب الحيل» (نحو 850م)، الذي يُنسب في الغالب إلى أحمد، نحو مئة جهاز — أوانٍ عجيبة ونوافير ودمى موسيقية — بعضها مبني على هيرون وفيلون وبعضها جديد. وكتبوا كذلك في الهندسة، ومن ذلك كتاب في معرفة مساحة الأشكال المستوية والكروية يتناول مسائل عالجها أرخميدس.",
+    "contributions": [
+      {
+        "en": "Described about a hundred mechanical devices in the Book of Ingenious Devices (Kitab al-Hiyal).",
+        "ar": "وصفوا نحو مئة جهاز آلي في «كتاب الحيل»."
+      },
+      {
+        "en": "Used floats and valves so that devices regulated the flow of water automatically.",
+        "ar": "استعملوا العوامات والصمامات لتنظّم الأجهزة جريان الماء تلقائيًا."
+      },
+      {
+        "en": "Wrote a geometry treatise on measuring plane and spherical figures, continuing Archimedes' problems.",
+        "ar": "ألّفوا كتابًا في معرفة مساحة الأشكال المستوية والكروية، تابعوا فيه مسائل أرخميدس."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Encyclopaedia Iranica, 'Banu Musa'",
+        "url": "https://www.iranicaonline.org/articles/banu-musa-the-name-applied-to-three-brothers-abbasid-astronomers-whose-father-was-musa-b/"
+      },
+      {
+        "citation": "MacTutor History of Mathematics (St Andrews), 'Banu Musa brothers – Biography'",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Banu_Musa/"
+      },
+      {
+        "citation": "Encyclopaedia Britannica, 'Banu Musa'",
+        "url": "https://www.britannica.com/biography/Banu-Musa"
+      }
+    ]
+  },
+  {
+    "id": "ibn-khalaf-al-muradi",
+    "name_en": "Ahmad (or Muhammad) ibn Khalaf al-Muradi",
+    "name_ar": "ابن خلف المرادي",
+    "dates": "11th century CE / 5th century AH (exact dates unknown)",
+    "places_en": "al-Andalus (probably Toledo or Córdoba)",
+    "places_ar": "الأندلس (طليطلة أو قرطبة على الأرجح)",
+    "fields": [
+      "engineering"
+    ],
+    "summary_en": "An Andalusian engineer known from one book, the Book of Secrets in the Results of Thoughts (Kitab al-asrar fi nata'ij al-afkar). It describes about thirty devices, most of them water clocks with automata, plus water-lifting and war machines. The only known copy was made in Toledo in 1266 and is kept in the Biblioteca Medicea Laurenziana in Florence; its drawings are damaged and hard to interpret.",
+    "summary_ar": "مهندس أندلسي لا نعرفه إلا من كتاب واحد هو «كتاب الأسرار في نتائج الأفكار». ويصف نحو ثلاثين آلة، أكثرها ساعات مائية ذات دمى متحركة، إضافة إلى آلات لرفع الماء وآلات حربية. والنسخة الوحيدة المعروفة كُتبت في طليطلة سنة 1266م وتحفظها مكتبة لورنتسيانا في فلورنسا، ورسومها تالفة يصعب تفسيرها.",
+    "contributions": [
+      {
+        "en": "Described water clocks and automata driven by complex gear trains, including segmental and epicyclic gears (as identified by Donald Hill).",
+        "ar": "وصف ساعات مائية ودمى متحركة تديرها مجموعات معقدة من التروس، منها تروس قطاعية وتروس فلكية (كما بيّن دونالد هيل)."
+      },
+      {
+        "en": "Described water-lifting machines and war machines alongside the clocks.",
+        "ar": "وصف إلى جانب الساعات آلات لرفع الماء وآلات حربية."
+      }
+    ],
+    "works": [],
+    "instruments": [
+      "water-clock"
+    ],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Muslim Heritage (FSTC), 'The Clocks of the Andalusian Ibn Khalaf al-Muradi'",
+        "url": "https://muslimheritage.com/the-clocks-of-al-muradi/"
+      },
+      {
+        "citation": "Torres-Garrido et al., 'Historical and technological study of the 26 and 30 mechanisms of \"the book of secrets\" by Ibn Khalaf al-Muradi' (Springer, 2019) – record at Universidade de Vigo",
+        "url": "https://portalcientifico.uvigo.gal/documentos/5f1cdf5a29995265e44d86c7?lang=de"
+      },
+      {
+        "citation": "Wikipedia, 'Ibn Khalaf al-Muradi' (secondary)",
+        "url": "https://en.wikipedia.org/wiki/Ibn_Khalaf_al-Muradi"
+      }
+    ]
+  },
+  {
+    "id": "ibn-al-nadim",
+    "name_en": "Abu al-Faraj Muhammad ibn Ishaq ibn al-Nadim",
+    "name_ar": "أبو الفرج محمد بن إسحاق ابن النديم",
+    "dates": "d. c. 995 CE / c. 385 AH",
+    "places_en": "Baghdad",
+    "places_ar": "بغداد",
+    "fields": [
+      "education"
+    ],
+    "summary_en": "A Baghdad bookseller (warraq) who in 987–988 compiled al-Fihrist, a catalogue of books written in Arabic on every subject, from grammar and poetry to theology, philosophy, the sciences and alchemy. The Fihrist survives intact, while most of the books it lists are lost, so it is a key witness to the size of the book culture that cheap paper made possible.",
+    "summary_ar": "ورّاق بغدادي ألّف سنة 987–988م كتاب «الفهرست»، وهو فهرس للكتب المؤلفة بالعربية في كل علم، من النحو والشعر إلى الكلام والفلسفة والعلوم والكيمياء القديمة. وقد بقي «الفهرست» كاملًا بينما ضاع أكثر الكتب التي يذكرها، فهو شاهد مهم على اتساع ثقافة الكتاب التي أتاحها الورق الرخيص.",
+    "contributions": [
+      {
+        "en": "Compiled al-Fihrist (987–988 CE), a catalogue of Arabic books across all fields.",
+        "ar": "ألّف «الفهرست» (987–988م)، وهو فهرس للكتب العربية في جميع العلوم."
+      },
+      {
+        "en": "Preserved the titles and authors of many works that are otherwise lost, including translations from Greek, Persian and Indian.",
+        "ar": "حفظ عناوين كثير من الكتب الضائعة وأسماء مؤلفيها، ومنها ترجمات عن اليونانية والفارسية والهندية."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Encyclopaedia Britannica, 'Ibn al-Nadim'",
+        "url": "https://www.britannica.com/biography/Ibn-al-Nadim"
+      },
+      {
+        "citation": "Encyclopaedia Iranica, 'Fehrest'",
+        "url": "https://www.iranicaonline.org/articles/fehrest/"
+      }
+    ]
+  },
+  {
+    "id": "al-razi",
+    "name_en": "Abu Bakr Muhammad ibn Zakariya al-Razi (Rhazes)",
+    "name_ar": "أبو بكر محمد بن زكريا الرازي",
+    "dates": "c. 865–925 CE (some sources c. 935) / c. 251–313 AH",
+    "places_en": "Rayy (near modern Tehran); Baghdad",
+    "places_ar": "الري (قرب طهران الحالية)؛ بغداد",
+    "fields": [
+      "medicine",
+      "chemistry"
+    ],
+    "summary_en": "Al-Razi was a physician, alchemist and philosopher from Rayy who worked in Rayy and Baghdad. Britannica describes him as considered the greatest physician of the Islamic world. His al-Hawi gathered Greek, Syriac, Arabic and Indian medicine together with his own clinical notes, and his treatise on smallpox and measles was translated into Latin and many European languages. In alchemy he described laboratory apparatus and procedures.",
+    "summary_ar": "الرازي طبيب وكيميائي وفيلسوف من الري، عمل فيها وفي بغداد، وتذكر دائرة المعارف البريطانية أنه يُعدّ أعظم أطباء العالم الإسلامي. جمع في «الحاوي» الطب اليوناني والسرياني والعربي والهندي مع ملاحظاته السريرية، وتُرجمت رسالته في الجدري والحصبة إلى اللاتينية ولغات أوروبية كثيرة. ووصف في الكيمياء أدوات المختبر وطرق العمل فيه.",
+    "contributions": [
+      {
+        "en": "Compiled al-Hawi, a vast medical notebook combining earlier sources with his own clinical observations.",
+        "ar": "جمع «الحاوي»، وهو مدوّنة طبية ضخمة تضم المصادر السابقة مع ملاحظاته السريرية."
+      },
+      {
+        "en": "Wrote a treatise describing how to distinguish smallpox from measles, later translated into Latin and modern European languages.",
+        "ar": "ألّف رسالة في التمييز بين الجدري والحصبة، تُرجمت لاحقًا إلى اللاتينية ولغات أوروبية حديثة."
+      },
+      {
+        "en": "In the Secret of Secrets described the tools needed for an alchemical laboratory, and classified materials into metals, stones, vitriols, boraxes, salts and spirits.",
+        "ar": "وصف في «سر الأسرار» الأدوات اللازمة لمختبر الكيمياء، وصنّف المواد إلى معادن وأحجار وزاجات وبوارق وأملاح وأرواح."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Encyclopaedia Britannica, 'al-Razi'",
+        "url": "https://www.britannica.com/biography/al-Razi"
+      },
+      {
+        "citation": "Encyclopaedia Iranica, 'Ḥāwi, al-'",
+        "url": "https://www.iranicaonline.org/articles/hawi-medical-book/"
+      },
+      {
+        "citation": "U.S. National Library of Medicine, 'Islamic Medical Manuscripts: Alchemy 45'",
+        "url": "https://www.nlm.nih.gov/hmd/arabic/alchemy45.html"
+      },
+      {
+        "citation": "Encyclopaedia Britannica, 'Alchemy: Arabic alchemy'",
+        "url": "https://www.britannica.com/topic/alchemy/Arabic-alchemy"
+      }
+    ]
+  },
+  {
+    "id": "al-zahrawi",
+    "name_en": "Abu al-Qasim Khalaf ibn al-'Abbas al-Zahrawi (Albucasis)",
+    "name_ar": "أبو القاسم خلف بن العباس الزهراوي",
+    "dates": "c. 936–c. 1013 CE",
+    "places_en": "Córdoba (Madinat al-Zahra), al-Andalus",
+    "places_ar": "قرطبة (مدينة الزهراء)، الأندلس",
+    "fields": [
+      "medicine"
+    ],
+    "summary_en": "Al-Zahrawi was a physician and surgeon in Córdoba, known in Latin as Albucasis. His medical encyclopedia al-Tasrif has 30 parts; the last, on surgery, contains drawings of more than 200 instruments and is described by Britannica as the first illustrated independent work on surgery. It drew heavily on Paul of Aegina, and in Gerard of Cremona's Latin translation it was a leading surgery textbook in Europe for centuries.",
+    "summary_ar": "الزهراوي طبيب وجرّاح من قرطبة، عُرف في اللاتينية باسم «ألبوكاسيس». تتألف موسوعته الطبية «التصريف لمن عجز عن التأليف» من ثلاثين مقالة، آخرها في الجراحة وفيها رسوم لأكثر من مئتي أداة، وتصفها دائرة المعارف البريطانية بأنها أول عمل مستقل مصوَّر في الجراحة. وقد نقل فيها كثيرًا عن بولس الأجانيطي، وبترجمة جيرارد الكريموني اللاتينية صارت من أهم كتب الجراحة في أوروبا قرونًا.",
+    "contributions": [
+      {
+        "en": "Wrote the surgical treatise of al-Tasrif with drawings of more than 200 instruments.",
+        "ar": "ألّف المقالة الجراحية من «التصريف» مع رسوم لأكثر من مئتي أداة."
+      },
+      {
+        "en": "Described dental procedures such as scaling tartar, extraction, and wiring loose teeth with gold or silver wire.",
+        "ar": "وصف أعمالًا في طب الأسنان مثل كشط الجير والقلع وربط الأسنان المتخلخلة بسلك من الذهب أو الفضة."
+      },
+      {
+        "en": "His surgery, translated into Latin in the 12th century, was used in Europe for centuries.",
+        "ar": "تُرجمت جراحته إلى اللاتينية في القرن الثاني عشر واستُعملت في أوروبا قرونًا."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Encyclopaedia Britannica, 'Abū al-Qāsim al-Zahrāwī'",
+        "url": "https://www.britannica.com/biography/Abu-al-Qasim"
+      },
+      {
+        "citation": "Encyclopaedia Britannica, 'Paul of Aegina'",
+        "url": "https://www.britannica.com/biography/Paul-of-Aegina"
+      },
+      {
+        "citation": "Magiran (journal article), 'A Short Review on Albucasis Achievements in Dentistry based on His Book: Al-Tasrif li man Ajaz an-il-Talif'",
+        "url": "https://magiran.com/paper/1374964/?lang=en"
+      }
+    ]
+  },
+  {
+    "id": "ibn-al-nafis",
+    "name_en": "'Ala' al-Din Ibn al-Nafis",
+    "name_ar": "علاء الدين ابن النفيس",
+    "dates": "c. 1213–1288 CE / c. 610–687 AH",
+    "places_en": "Damascus; Cairo",
+    "places_ar": "دمشق؛ القاهرة",
+    "fields": [
+      "medicine"
+    ],
+    "summary_en": "Ibn al-Nafis was a physician who trained in Damascus and worked in Cairo. In his commentary on the anatomy of Ibn Sina's Canon he rejected Galen's claim that blood seeps through pores in the heart's septum and explained that it passes from the right ventricle to the left through the lungs. Britannica describes him as the first to describe the pulmonary circulation, while noting that his work went unnoticed in the West until the 20th century.",
+    "summary_ar": "ابن النفيس طبيب درس في دمشق وعمل في القاهرة. رفض في شرحه لتشريح «القانون» لابن سينا قول جالينوس بأن الدم يتسرّب عبر مسامّ في الحاجز بين البطينين، وشرح أنه ينتقل من البطين الأيمن إلى الأيسر مرورًا بالرئتين. وتصفه دائرة المعارف البريطانية بأنه أول من وصف الدورة الدموية الرئوية، مع إشارتها إلى أن عمله بقي مجهولًا في الغرب حتى القرن العشرين.",
+    "contributions": [
+      {
+        "en": "Rejected Galen's idea of invisible pores in the septum between the ventricles.",
+        "ar": "رفض فكرة جالينوس عن وجود مسامّ خفية في الحاجز بين البطينين."
+      },
+      {
+        "en": "Explained that blood passes from the right side of the heart to the left through the lungs (pulmonary circulation).",
+        "ar": "شرح أن الدم ينتقل من الجانب الأيمن للقلب إلى الأيسر عبر الرئتين (الدورة الدموية الصغرى)."
+      }
+    ],
+    "works": [],
+    "instruments": [],
+    "stars": [],
+    "concepts": [],
+    "sources": [
+      {
+        "citation": "Encyclopaedia Britannica, 'Ibn an-Nafīs'",
+        "url": "https://www.britannica.com/biography/Ibn-an-Nafis"
+      },
+      {
+        "citation": "Heart Views (PMC), 'Ibn Nafis – a forgotten genius in the discovery of pulmonary blood circulation'",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2964710/"
+      }
+    ]
   }
 ]

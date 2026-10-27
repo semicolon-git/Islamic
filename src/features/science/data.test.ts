@@ -304,8 +304,12 @@ describe("contribution chains (chains.json)", () => {
   it("says what it does not claim, and never says Muslims invented the object or frames history as a miracle", () => {
     for (const c of chains) {
       expect(c.not_claimed_en.length, c.id).toBeGreaterThan(30);
-      const claims = [c.answer_en, ...c.steps.filter((s) => s.role === "muslim").map((s) => s.what_en)].map(strip).join(" ");
-      expect(claims, `${c.id} uses "invented" for a Muslim step`).not.toMatch(/\binvent(?:ed|or|ion)\b/i);
+      // No Muslim-scholar step says "invented"; the answer may say others invented things ("paper was invented in China"),
+      // but never that Muslims/Arabs/Islamic scholars did, unless negated.
+      const steps = c.steps.filter((s) => s.role === "muslim").map((s) => strip(s.what_en)).join(" ");
+      expect(steps, `${c.id} uses "invented" for a Muslim step`).not.toMatch(/\binvent(?:ed|or|ion)\b/i);
+      const answer = c.answer_en.split(/(?<=[.;])\s+/).map(strip).filter((x) => /\b(?:Muslims?|Arabs?|Islamic|Islam)\b/.test(x)).join(" ");
+      expect(answer, `${c.id} answer says Muslims invented something`).not.toMatch(/\binvent(?:ed|or|ion)\b/i);
       const claimsAr = [c.answer_ar, ...c.steps.filter((s) => s.role === "muslim").map((s) => s.what_ar)].join(" ");
       expect(claimsAr, `${c.id} uses «اخترع» for a Muslim step`).not.toMatch(/(?<!لم ي|لم |ما )اخترع/);
       expect(JSON.stringify(c), c.id).not.toMatch(/scientific miracle|إعجاز علمي|Quran predicted|predicted by the Quran/i);

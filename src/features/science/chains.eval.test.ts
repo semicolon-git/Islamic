@@ -57,7 +57,8 @@ export const LABELS: [string, string, string[]][] = [
   ["palm tree", "نخلة", []],
   ["mosque dome", "قبة مسجد", []],
   ["red car", "سيارة حمراء", []],
-  ["clock tower", "برج الساعة", []],
+  ["clock tower", "برج الساعة", ["clocks-and-timekeeping"]], // a clock tower is a clock (its object list says so)
+  ["coffee machine", "آلة قهوة", ["coffee"]],
 ];
 
 export function score() {
