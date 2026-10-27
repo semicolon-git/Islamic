@@ -5,6 +5,9 @@
  * Evidence ids:  Q:<sura>:<aya> · H:<bukhari|muslim>:<number> · L:<hadith-book>:<number> · B:<book>:<ref>
  */
 import type { VerseView } from "@/components/ui/quran";
+import type { DiscoveryChain } from "@/features/science/chains";
+
+export type { DiscoveryChain };
 
 export type Relation = "direct" | "thematic";
 export type DiscoveryStatus = "ready" | "empty" | "sensitive" | "failed";
@@ -65,6 +68,7 @@ export interface DiscoveryScience {
   id: string;
   name_en: string;
   name_ar: string;
+  /** Curated one-line description from the knowledge base (never written by the AI). */
   note: Reason;
   href: string;
 }
@@ -84,6 +88,11 @@ export interface DiscoveryResult {
   /** Nothing in the sources names the subject directly (thematic links at most). */
   no_direct_mention: boolean;
   science: DiscoveryScience[];
+  /**
+   * Contribution chains: the documented contributions of Muslim scholars in the history of the science behind the subject
+   * (a TV → optics → Ibn al-Haytham …). Curated text, picked by id; absent on results cached before chains existed.
+   */
+  chains?: DiscoveryChain[];
   /** A published card that covers the subject (the UI links to it). */
   card: { id: string; concept_id: string | null; title_en: string; title_ar: string } | null;
   ai: boolean;

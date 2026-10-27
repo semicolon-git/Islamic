@@ -4,7 +4,7 @@ import path from "node:path";
 import { z } from "zod";
 
 // Validates the curated "contributions of scholars in Muslim civilisation" knowledge base in data/science.
-// Data only: no app code reads these files yet (see data/science/README.md).
+// Seeded into science_entries by scripts/seed/science.ts (see data/science/README.md).
 
 const DIR = path.join(process.cwd(), "data", "science");
 const load = (name: string): unknown => JSON.parse(fs.readFileSync(path.join(DIR, name), "utf8"));
@@ -20,7 +20,7 @@ const CONCEPT_IDS = [
 ] as const;
 
 const FIELDS = [
-  "astronomy", "mathematics", "optics", "medicine", "geography", "botany", "engineering", "navigation", "chemistry", "cartography",
+  "astronomy", "mathematics", "optics", "medicine", "geography", "botany", "engineering", "navigation", "chemistry", "cartography", "education",
 ] as const;
 
 const ARABIC = /[؀-ۿ]/;
@@ -112,7 +112,39 @@ const Topic = z.strictObject({
   sources,
 });
 
+const step = z.strictObject({
+  role: z.enum(["before", "muslim", "transmission", "after", "today"]),
+  who_en: en,
+  who_ar: ar,
+  scientist: slug.nullable(),
+  date_text: en,
+  place_en: en.optional(),
+  place_ar: ar.optional(),
+  what_en: en,
+  what_ar: ar,
+  sources: z.array(source),
+});
+const Chain = z.strictObject({
+  id: slug,
+  title_en: en,
+  title_ar: ar,
+  science_en: en,
+  science_ar: ar,
+  claim: z.enum(["foundational", "contributor", "direct"]),
+  objects: z.array(z.string().regex(/^[a-z0-9][a-z0-9 '-]*$/, "lowercase label")).min(3),
+  objects_ar: z.array(ar).min(2),
+  answer_en: en,
+  answer_ar: ar,
+  not_claimed_en: en,
+  not_claimed_ar: ar,
+  steps: z.array(step).min(3),
+  myths: z.array(z.strictObject({ claim_en: en, claim_ar: ar, correction_en: en, correction_ar: ar, sources })).optional(),
+  sources: z.array(source).min(2),
+  review: z.strictObject({ status: z.enum(["sourced", "reviewed"]), by_en: en.optional(), by_ar: ar.optional(), on: en.optional() }).optional(),
+});
+
 const scientists = z.array(Scientist).min(1).parse(load("scientists.json"));
+const chains = z.array(Chain).min(1).parse(load("chains.json"));
 const works = z.array(Work).min(1).parse(load("works.json"));
 const instruments = z.array(Instrument).min(1).parse(load("instruments.json"));
 const holdings = z.array(Holding).min(1).parse(load("holdings.json"));
@@ -134,6 +166,7 @@ describe("science knowledge base: schemas", () => {
     expect(instruments.length).toBeGreaterThanOrEqual(10);
     expect(holdings.length).toBeGreaterThanOrEqual(20);
     expect(topics.length).toBeGreaterThanOrEqual(20);
+    expect(chains.length).toBeGreaterThanOrEqual(10);
   });
 
   it("ids are unique within each file, and each concept has at most one topic entry", () => {
@@ -142,6 +175,7 @@ describe("science knowledge base: schemas", () => {
     expect(dupes(instruments.map((i) => i.id))).toEqual([]);
     expect(dupes(holdings.map((h) => h.id))).toEqual([]);
     expect(dupes(topics.map((t) => t.concept))).toEqual([]);
+    expect(dupes(chains.map((c) => c.id))).toEqual([]);
   });
 
   it("bilingual pairs are both present (optional pairs come together)", () => {
@@ -154,7 +188,8 @@ describe("science knowledge base: schemas", () => {
 
   it("every source and holding URL is http(s)", () => {
     const urls = [
-      ...[scientists, works, instruments, topics].flat().flatMap((e) => e.sources.map((s) => s.url)),
+      ...[scientists, works, instruments, topics, chains].flat().flatMap((e) => e.sources.map((s) => s.url)),
+      ...chains.flatMap((c) => [...c.steps, ...(c.myths ?? [])].flatMap((x) => x.sources.map((s) => s.url))),
       ...holdings.map((h) => h.url),
     ];
     expect(urls.filter((u) => !/^https?:\/\//.test(u))).toEqual([]);
@@ -234,3 +269,47 @@ describe("science knowledge base: history guardrails", () => {
     expect(toledan.summary_en).toMatch(/group/);
   });
 });
+
+describe("contribution chains (chains.json)", () => {
+  const strip = (s: string) => s.replace(/\b(?:did not|didn't|not|never|nor)\b[^.]*\binvent\w*/gi, "");
+
+  it("every chain has Muslim steps, credits who came before or after, and ends with today", () => {
+    for (const c of chains) {
+      const roles = c.steps.map((s) => s.role);
+      expect(roles, `${c.id} needs a step by Muslim scholars`).toContain("muslim");
+      expect(roles.some((r) => r === "before" || r === "after"), `${c.id} must credit predecessors or successors`).toBe(true);
+      expect(roles.at(-1), `${c.id} should end with today`).toBe("today");
+    }
+  });
+
+  it("every step by Muslim scholars, and every transmission step, cites at least one source", () => {
+    for (const c of chains)
+      for (const s of c.steps.filter((x) => x.role === "muslim" || x.role === "transmission"))
+        expect(s.sources.length, `${c.id}: ${s.who_en}`).toBeGreaterThan(0);
+  });
+
+  it("scholar links resolve, and only steps by Muslim scholars link a scholar", () => {
+    for (const c of chains)
+      for (const s of c.steps) {
+        if (s.scientist) expect(scientistIds.has(s.scientist), `${c.id}: unknown scholar ${s.scientist}`).toBe(true);
+        if (s.scientist) expect(s.role, `${c.id}: ${s.scientist}`).toBe("muslim");
+      }
+  });
+
+  it("an object label belongs to one chain only, so the word matcher is unambiguous", () => {
+    expect(dupes(chains.flatMap((c) => c.objects))).toEqual([]);
+    expect(dupes(chains.flatMap((c) => c.objects_ar))).toEqual([]);
+  });
+
+  it("says what it does not claim, and never says Muslims invented the object or frames history as a miracle", () => {
+    for (const c of chains) {
+      expect(c.not_claimed_en.length, c.id).toBeGreaterThan(30);
+      const claims = [c.answer_en, ...c.steps.filter((s) => s.role === "muslim").map((s) => s.what_en)].map(strip).join(" ");
+      expect(claims, `${c.id} uses "invented" for a Muslim step`).not.toMatch(/\binvent(?:ed|or|ion)\b/i);
+      const claimsAr = [c.answer_ar, ...c.steps.filter((s) => s.role === "muslim").map((s) => s.what_ar)].join(" ");
+      expect(claimsAr, `${c.id} uses «اخترع» for a Muslim step`).not.toMatch(/(?<!لم ي|لم |ما )اخترع/);
+      expect(JSON.stringify(c), c.id).not.toMatch(/scientific miracle|إعجاز علمي|Quran predicted|predicted by the Quran/i);
+    }
+  });
+});
+

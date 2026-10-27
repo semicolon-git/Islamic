@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Compass, Landmark, MapPin, Telescope } from "lucide-react";
+import { ChevronRight, Compass, Landmark, MapPin, Telescope, Waypoints } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { entries, type Holding, type Instrument, type Scientist, type Work } from "@/features/science/server";
+import { chainHref, type Chain } from "@/features/science/chains";
 import { Eyebrow, L } from "@/features/science/ui/parts";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SciencePage() {
   const { t, locale } = await getI18n();
-  const [instruments, scientists, works, holdings] = await Promise.all([
-    entries<Instrument>("instrument"), entries<Scientist>("scientist"), entries<Work>("work"), entries<Holding>("holding"),
+  const [instruments, scientists, works, holdings, chains] = await Promise.all([
+    entries<Instrument>("instrument"), entries<Scientist>("scientist"), entries<Work>("work"), entries<Holding>("holding"), entries<Chain>("chain"),
   ]);
   const byCity = new Map<string, Holding[]>();
   for (const h of holdings) {
@@ -37,6 +38,24 @@ export default async function SciencePage() {
           <ChevronRight className="size-5 rtl:rotate-180" aria-hidden />
         </Link>
       </header>
+
+      {chains.length > 0 && (
+        <section className="flex flex-col gap-3" aria-labelledby="sci-chains" data-testid="science-chains">
+          <h2 id="sci-chains" className="text-2xl font-semibold text-ink inline-flex items-center gap-2"><Waypoints className="size-6 text-accent" aria-hidden />{t("science.chains")}</h2>
+          <p className="text-ink-2 max-w-[65ch]">{t("science.chainsBody")}</p>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {chains.map((c) => (
+              <li key={c.id}>
+                <Link href={chainHref(c.id)} className="flex h-full flex-col gap-1.5 rounded-[18px] border border-line bg-surface p-4 hover:border-line-strong" data-chain-link={c.id}>
+                  <span className="text-xs font-semibold text-accent">{L(locale, c.science_en, c.science_ar)}</span>
+                  <span className="font-semibold text-ink">{L(locale, c.title_en, c.title_ar)}</span>
+                  <span className="text-sm text-ink-2">{(locale === "ar" ? c.objects_ar : c.objects).slice(0, 4).join(locale === "ar" ? "، " : ", ")}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="flex flex-col gap-3" aria-labelledby="sci-inst">
         <h2 id="sci-inst" className="text-2xl font-semibold text-ink inline-flex items-center gap-2"><Compass className="size-6 text-accent" aria-hidden />{t("science.instruments")}</h2>

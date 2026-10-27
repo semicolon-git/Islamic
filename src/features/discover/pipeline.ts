@@ -2,9 +2,10 @@ import type { z } from "zod";
 import type { StructuredCall, StructuredResult } from "@/lib/ai/claude";
 import type { QuranIndex } from "@/lib/quran/matcher";
 import { lintCard } from "@/features/cards/lint";
+import { chainHref, matchChains, renderChainList, type Chain, type ChainLite, type DiscoveryChain } from "@/features/science/chains";
 import { detectQuotes } from "@/features/ms-collab/quran-detect";
 import {
-  citedIds, DISCOVER_PROMPT_VERSION, JUDGE_SYSTEM, JudgeOut, PROPOSE_SYSTEM, ProposeOut, renderCandidates, REWRITE_SYSTEM, RewriteOut, stripCitations, VERIFY_SYSTEM, VerifyOut,
+  CHAIN_SYSTEM, ChainPickOut, citedIds, DISCOVER_PROMPT_VERSION, JUDGE_SYSTEM, JudgeOut, PROPOSE_SYSTEM, ProposeOut, renderCandidates, REWRITE_SYSTEM, RewriteOut, stripCitations, VERIFY_SYSTEM, VerifyOut,
 } from "./ai";
 import type {
   DiscoverInput, DiscoverStage, DiscoveryBook, DiscoveryHadith, DiscoveryResult, DiscoveryScience, Reason, Relation,
@@ -20,7 +21,8 @@ export interface SahihLite { id: string; collection: "bukhari" | "muslim"; numbe
 export interface LibHadithLite { id: string; book_id: string; number: string; title_en: string; title_ar: string; text_ar: string; text_en: string | null; grade: string | null; grade_ar: string | null; grader: string | null }
 export interface BookLite { id: string; book_id: string; title_en: string; title_ar: string; author_en: string; author_ar: string; page: number | null; text: string; machine_read: boolean }
 export interface TafsirLite { book_id: string; title_en: string; title_ar: string; author_en: string; author_ar: string; range: string; text: string }
-export interface ScienceLite { kind: DiscoveryScience["kind"]; id: string; name_en: string; name_ar: string }
+/** A science entry the judge may link, with its curated one-line note (shown as is; the AI only picks the id). */
+export interface ScienceLite { kind: DiscoveryScience["kind"]; id: string; name_en: string; name_ar: string; note_en: string; note_ar: string }
 
 export interface DiscoverDeps {
   ai: boolean;
@@ -33,6 +35,9 @@ export interface DiscoverDeps {
   searchBooks(terms: string[]): Promise<BookLite[]>;
   tafsirFor(verseKey: string): Promise<TafsirLite | null>;
   science(): Promise<ScienceLite[]>;
+  /** Approved contribution chains (light list for matching) and the full entries by id. */
+  chains(): Promise<ChainLite[]>;
+  getChains(ids: string[]): Promise<Chain[]>;
   quranIndex(): Promise<QuranIndex | null>;
   onStage?: (s: DiscoverStage) => void;
 }
@@ -85,7 +90,7 @@ export async function discover(input: DiscoverInput, deps: DiscoverDeps): Promis
   let label_ar = input.label_ar.trim();
   const base = (): DiscoveryResult => ({
     key: subjectKey(input.label_en, input.label_ar), label_en, label_ar, category: input.category ?? null, status: "empty", tier: "none",
-    verses: [], hadith: [], books: [], summary: null, no_direct_mention: true, science: [], card: null, ai: deps.ai, model: null,
+    verses: [], hadith: [], books: [], summary: null, no_direct_mention: true, science: [], chains: [], card: null, ai: deps.ai, model: null,
     prompt_version: DISCOVER_PROMPT_VERSION, generated_at: new Date().toISOString(), checks,
   });
 
@@ -100,13 +105,24 @@ export async function discover(input: DiscoverInput, deps: DiscoverDeps): Promis
         .catch((e: unknown) => { checks.push({ id: "propose", status: "skip", detail: e instanceof Error ? e.message : "failed" }); return null; })
     : Promise.resolve(null);
   const strict = !deps.ai; // without a judge, only exact word forms count
-  const [lex, sahih, lib, books, proposal, scienceList] = await Promise.all([
+  // Contribution chains are picked in parallel with the source search: by the label's own words (deterministic), and by the
+  // AI from the closed list (ids only). Sensitive subjects get sources only.
+  const chainListP = input.sensitive ? Promise.resolve([] as ChainLite[]) : deps.chains().catch(() => [] as ChainLite[]);
+  const chainPickP = chainListP.then((list) =>
+    deps.ai && list.length
+      ? deps.call({ agent: "router", system: CHAIN_SYSTEM, user: `Subject: ${label_en || "—"} / ${label_ar || "—"}${input.category ? ` (category: ${input.category})` : ""}\n\nChains (id: title — science — example objects):\n${renderChainList(list)}`, schema: ChainPickOut, effort: "low", maxTokens: 300, timeoutMs: 20_000 })
+          .catch((e: unknown) => { checks.push({ id: "chains", status: "skip", detail: e instanceof Error ? e.message : "failed" }); return null; })
+      : null,
+  );
+  const [lex, sahih, lib, books, proposal, scienceList, chainList, chainPick] = await Promise.all([
     deps.searchQuran(terms.ar, terms.en, { strict }),
     deps.searchSahihayn(allTerms, { strict }),
     deps.searchLibraryHadith(allTerms),
     deps.searchBooks(allTerms),
     proposeP,
     deps.science(),
+    chainListP,
+    chainPickP,
   ]);
 
   // Candidate verses: model proposals first (validated by fetching), then the strongest lexical hits.
@@ -195,12 +211,13 @@ export async function discover(input: DiscoverInput, deps: DiscoverDeps): Promis
         result.hadith = [...directH, ...hadith.filter((h) => h.relation === "thematic").slice(0, LIMITS.thematicHadith)].slice(0, LIMITS.hadith);
         result.books = bookCands.filter((b) => rel(b.id)).map((b): DiscoveryBook => ({ ...b, relation: rel(b.id)!, reason: reason(b.id) })).sort(order).slice(0, LIMITS.books);
 
+        // Science links: ids from the closed list only; the note is the entry's own curated text, not the model's words.
         const scienceById = new Map(scienceList.map((s) => [s.id, s]));
-        result.science = judged.science
-          .filter((s) => scienceById.has(s.id))
-          .map((s) => {
-            const e = scienceById.get(s.id)!;
-            return { kind: e.kind, id: e.id, name_en: e.name_en, name_ar: e.name_ar, note: { en: s.reason_en.slice(0, 240), ar: s.reason_ar.slice(0, 240) }, href: `/science/${e.kind}/${e.id}` };
+        result.science = [...new Set(judged.science)]
+          .filter((id) => scienceById.has(id))
+          .map((id) => {
+            const e = scienceById.get(id)!;
+            return { kind: e.kind, id: e.id, name_en: e.name_en, name_ar: e.name_ar, note: { en: e.note_en, ar: e.note_ar }, href: `/science/${e.kind}/${e.id}` };
           });
 
         // Summary: only with kept passages, citations limited to them, deterministic lint, no Quran text in prose.
@@ -268,6 +285,21 @@ export async function discover(input: DiscoverInput, deps: DiscoverDeps): Promis
     }
   }
 
+  // Contribution chains: label words first, then the AI's picks that exist in the list; at most 2.
+  const known = new Set(chainList.map((c) => c.id));
+  const byWords = matchChains({ label_en: input.label_en, label_ar: input.label_ar }, chainList);
+  const byAi = (chainPick?.data.chains ?? []).filter((id) => known.has(id));
+  const unknown = (chainPick?.data.chains ?? []).filter((id) => !known.has(id));
+  const chainIds = [...new Set([...byWords, ...byAi])].slice(0, 2);
+  if (chainList.length) checks.push({ id: "chains", status: chainIds.length ? "pass" : "skip", detail: `words: ${byWords.join(", ") || "—"} · ai: ${byAi.join(", ") || "—"}${unknown.length ? ` · dropped unknown: ${unknown.join(", ")}` : ""}` });
+  if (chainIds.length) {
+    const full = new Map((await deps.getChains(chainIds)).map((c) => [c.id, c]));
+    result.chains = chainIds.filter((id) => full.has(id)).map((id): DiscoveryChain => {
+      const { objects: _o, objects_ar: _oa, ...c } = full.get(id)!;
+      return { ...c, review: c.review ?? { status: "sourced" }, matched: byWords.includes(id) ? "words" : "ai", href: chainHref(id) };
+    });
+  }
+
   // Tafsir for each kept verse (verbatim, approved books).
   stage("compose");
   const tafsir = await Promise.all(result.verses.map((v) => deps.tafsirFor(v.verse.key).catch(() => null)));
@@ -277,7 +309,8 @@ export async function discover(input: DiscoverInput, deps: DiscoverDeps): Promis
   result.label_ar = label_ar;
   result.no_direct_mention = ![...result.verses, ...result.hadith, ...result.books].some((x) => x.relation === "direct");
   const any = result.verses.length + result.hadith.length + result.books.length > 0;
-  result.status = input.sensitive && any ? "sensitive" : any ? "ready" : "empty";
+  // The tier speaks for the Quran and hadith only; a chain carries its own review badge.
+  result.status = input.sensitive && any ? "sensitive" : any || result.chains?.length ? "ready" : "empty";
   result.tier = any ? "sources" : "none";
   stage("done");
   checks.push({ id: "timing", status: "pass", detail: timings.join(" ") });

@@ -5,6 +5,7 @@ import { getAyat, quranIndex } from "@/lib/quran";
 import { getHadith } from "@/lib/hadith";
 import { normalizeArabic } from "@/lib/quran/normalize";
 import { searchBooks, searchLibraryHadith, tafsirFor } from "@/features/library/server";
+import type { Chain, ChainLite } from "@/features/science/chains";
 import { discover, type DiscoverDeps, type ScienceLite } from "./pipeline";
 import { searchQuranWords, searchSahihayn } from "./search";
 import { DISCOVER_PROMPT_VERSION } from "./ai";
@@ -38,10 +39,38 @@ export async function cardForSubject(label_en: string, label_ar: string): Promis
   return null;
 }
 
+/** First sentence of a curated text (the note shown under a science link). */
+export function firstSentence(s: string | null | undefined, max = 220): string {
+  const t = (s ?? "").trim();
+  const m = t.match(/^[\s\S]+?[.!?؟](?=\s|$)/);
+  const one = (m ? m[0] : t).trim();
+  return one.length > max ? one.slice(0, max - 1).trimEnd() + "…" : one;
+}
+
 async function scienceList(): Promise<ScienceLite[]> {
-  return sql<ScienceLite>(
-    "select kind, id, name_en, name_ar from science_entries where status = 'approved' and kind in ('scientist','instrument','work') order by sort, id",
+  const rows = await sql<Omit<ScienceLite, "note_en" | "note_ar"> & { note_en: string | null; note_ar: string | null }>(
+    `select kind, id, name_en, name_ar,
+            case kind when 'scientist' then coalesce(data->'contributions'->0->>'en', data->>'summary_en')
+                      when 'instrument' then data->>'muslim_contribution_en' else data->>'summary_en' end as note_en,
+            case kind when 'scientist' then coalesce(data->'contributions'->0->>'ar', data->>'summary_ar')
+                      when 'instrument' then data->>'muslim_contribution_ar' else data->>'summary_ar' end as note_ar
+       from science_entries where status = 'approved' and kind in ('scientist','instrument','work') order by sort, id`,
   ).catch(() => []);
+  return rows.map((r) => ({ ...r, note_en: firstSentence(r.note_en), note_ar: firstSentence(r.note_ar) }));
+}
+
+async function chainList(): Promise<ChainLite[]> {
+  return sql<ChainLite>(
+    `select id, name_en as title_en, name_ar as title_ar, data->>'science_en' as science_en,
+            coalesce(array(select jsonb_array_elements_text(data->'objects')), '{}') as objects,
+            coalesce(array(select jsonb_array_elements_text(data->'objects_ar')), '{}') as objects_ar
+       from science_entries where kind = 'chain' and status = 'approved' order by sort, id`,
+  ).catch(() => []);
+}
+
+export async function getChains(ids: string[]): Promise<Chain[]> {
+  if (!ids.length) return [];
+  return (await sql<{ data: Chain }>("select data from science_entries where kind = 'chain' and status = 'approved' and id = any($1::text[])", [ids])).map((r) => r.data);
 }
 
 export function defaultDeps(onStage?: (s: DiscoverStage) => void): DiscoverDeps {
@@ -56,6 +85,8 @@ export function defaultDeps(onStage?: (s: DiscoverStage) => void): DiscoverDeps 
     searchBooks: (terms) => searchBooks(terms, 4),
     tafsirFor: async (key) => (await tafsirFor(key, { maxChars: 700 }))[0] ?? null,
     science: scienceList,
+    chains: chainList,
+    getChains,
     quranIndex: () => quranIndex().catch(() => null),
     onStage,
   };

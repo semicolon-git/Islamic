@@ -9,12 +9,20 @@ const AYA = (key: string, en = "…") => {
 };
 const HAD = (id: string) => ({ id, collection: id.split(":")[0] as "bukhari", number: id.split(":")[1], text_ar: "حديث", text_en: "hadith", grade: "Sahih", grader: "al-Bukhari", numbering_scheme: "std", source_url: null });
 
-function deps(over: Partial<DiscoverDeps> & { judge?: unknown; verify?: unknown; rewrite?: unknown } = {}): DiscoverDeps {
+const CHAIN = (id: string, objects: string[], objects_ar: string[]) => ({
+  id, title_en: `T ${id}`, title_ar: `ع ${id}`, science_en: "Optics", science_ar: "البصريات", claim: "foundational" as const, objects, objects_ar,
+  answer_en: "a", answer_ar: "ج", not_claimed_en: "n", not_claimed_ar: "ن", steps: [], sources: [{ citation: "c", url: "https://example.org" }],
+});
+const CHAINS = [CHAIN("light-and-image", ["television", "tv", "camera"], ["تلفاز", "تلفزيون", "كاميرا"]), CHAIN("clocks-and-timekeeping", ["clock", "watch"], ["ساعة"])];
+// «ساعة حائط» (wall clock) — Arabic head noun first.
+
+function deps(over: Partial<DiscoverDeps> & { judge?: unknown; verify?: unknown; rewrite?: unknown; chainPick?: unknown } = {}): DiscoverDeps {
   const call = vi.fn().mockImplementation(async (req: { system: string }) => {
     if (req.system.startsWith("You help an Islamic-content app find")) return { data: { quran: ["6:99", "99:99"], hadith: ["bukhari:5427"] }, model: "m", usage: {}, fallback_used: false };
     if (req.system.startsWith("You are the evidence checker")) return { data: over.judge, model: "m", usage: {}, fallback_used: false };
     if (req.system.startsWith("You independently check")) return { data: over.verify ?? { supported: true, problems: [] }, model: "m", usage: {}, fallback_used: false };
     if (req.system.startsWith("You fix a short")) return { data: over.rewrite, model: "m", usage: {}, fallback_used: false };
+    if (req.system.startsWith("You map an everyday subject")) return { data: over.chainPick ?? { chains: [] }, model: "m", usage: {}, fallback_used: false };
     throw new Error("unexpected call");
   });
   return {
@@ -27,7 +35,9 @@ function deps(over: Partial<DiscoverDeps> & { judge?: unknown; verify?: unknown;
     searchLibraryHadith: async () => [],
     searchBooks: async () => [],
     tafsirFor: async (k) => ({ book_id: "tafsir-muyassar", title_en: "Muyassar", title_ar: "الميسر", author_en: "", author_ar: "", range: k, text: "تفسير" }),
-    science: async () => [{ kind: "scientist", id: "al-dinawari", name_en: "al-Dinawari", name_ar: "الدينوري" }],
+    science: async () => [{ kind: "scientist", id: "al-dinawari", name_en: "al-Dinawari", name_ar: "الدينوري", note_en: "Wrote the Book of Plants.", note_ar: "ألّف كتاب النبات." }],
+    chains: async () => CHAINS,
+    getChains: async (ids) => CHAINS.filter((c) => ids.includes(c.id)),
     quranIndex: async () => null,
     ...over,
   };
@@ -39,13 +49,16 @@ const item = (id: string, relation: string) => ({ id, relation, reason_en: `r ${
 describe("discover pipeline", () => {
   it("keeps only judged passages, fetched by reference; drops unknown proposed keys", async () => {
     const r = await discover(INPUT, deps({
-      judge: { label_en: "pomegranate", label_ar: "رمان", items: [item("Q:6:99", "direct"), item("Q:55:68", "thematic"), item("H:bukhari:5427", "unrelated")], summary_en: "Named among fruits [Q:6:99].", summary_ar: "يذكر بين الثمار [Q:6:99].", science: [{ id: "al-dinawari", reason_en: "Book of Plants", reason_ar: "كتاب النبات" }, { id: "made-up", reason_en: "x", reason_ar: "x" }] },
+      judge: { label_en: "pomegranate", label_ar: "رمان", items: [item("Q:6:99", "direct"), item("Q:55:68", "thematic"), item("H:bukhari:5427", "unrelated")], summary_en: "Named among fruits [Q:6:99].", summary_ar: "يذكر بين الثمار [Q:6:99].", science: ["al-dinawari", "made-up"] },
     }));
     expect(r.verses.map((v) => v.id)).toEqual(["Q:6:99", "Q:55:68"]);
     expect(r.verses[0].tafsir?.book_id).toBe("tafsir-muyassar");
     expect(r.hadith).toEqual([]);
     expect(r.summary?.cites).toEqual(["Q:6:99"]);
     expect(r.science.map((s) => s.id)).toEqual(["al-dinawari"]);
+    // The note under a science link is the knowledge base's own text, never the model's.
+    expect(r.science[0].note).toEqual({ en: "Wrote the Book of Plants.", ar: "ألّف كتاب النبات." });
+    expect(r.chains).toEqual([]);
     expect(r.tier).toBe("sources");
     expect(r.no_direct_mention).toBe(false);
   });
@@ -119,5 +132,45 @@ describe("helpers", () => {
   it("citations", () => {
     expect(citedIds("a [Q:6:99] b [H:bukhari:12] c [L:hadith-tirmidhi:5] [B:upl_x:p3.1]")).toEqual(["Q:6:99", "H:bukhari:12", "L:hadith-tirmidhi:5", "B:upl_x:p3.1"]);
     expect(stripCitations("a [Q:6:99] b [Q:1:1].", new Set(["Q:6:99"]))).toBe("a [Q:6:99] b.");
+  });
+
+  describe("contribution chains", () => {
+    const TV: DiscoverInput = { label_en: "flat screen TV", label_ar: "تلفاز", category: "object", source: "snap" };
+    const empty = { label_en: "television", label_ar: "تلفاز", items: [], summary_en: "", summary_ar: "", science: [] };
+    const quiet = { searchQuran: async () => [], searchSahihayn: async () => [], getAyat: async () => [], getHadith: async () => [] };
+
+    it("links a TV to its chain by the label's own words, even with AI off, and shows it without any Quran passage", async () => {
+      const r = await discover(TV, { ...deps({ ...quiet }), ai: false });
+      expect(r.chains?.map((c) => [c.id, c.matched, c.href])).toEqual([["light-and-image", "words", "/science/chain/light-and-image"]]);
+      expect(r.chains?.[0].review).toEqual({ status: "sourced" });
+      expect(r.verses).toEqual([]);
+      expect(r.tier).toBe("none"); // the tier speaks for Quran and hadith only
+      expect(r.status).toBe("ready");
+    });
+
+    it("matches Arabic labels with the article and English labels inside longer phrases", async () => {
+      const a = await discover({ ...TV, label_en: "", label_ar: "التلفاز" }, { ...deps({ ...quiet }), ai: false });
+      const b = await discover({ ...TV, label_en: "an old wall clock", label_ar: "" }, { ...deps({ ...quiet }), ai: false });
+      const c = await discover({ ...TV, label_en: "", label_ar: "ساعة حائط" }, { ...deps({ ...quiet }), ai: false });
+      expect(a.chains?.map((x) => x.id)).toEqual(["light-and-image"]);
+      expect(b.chains?.map((x) => x.id)).toEqual(["clocks-and-timekeeping"]);
+      expect(c.chains?.map((x) => x.id)).toEqual(["clocks-and-timekeeping"]);
+    });
+
+    it("keeps only chain ids from the list that the AI picks, after the word matches, at most two", async () => {
+      const r = await discover({ ...TV, label_en: "smartwatch", label_ar: "" }, deps({ ...quiet, judge: empty, chainPick: { chains: ["made-up", "clocks-and-timekeeping", "light-and-image"] } }));
+      expect(r.chains?.map((c) => [c.id, c.matched])).toEqual([["clocks-and-timekeeping", "ai"], ["light-and-image", "ai"]]);
+      expect(r.checks.find((c) => c.id === "chains")?.detail).toContain("dropped unknown: made-up");
+    });
+
+    it("never links a chain to a loose word match or to a sensitive subject", async () => {
+      const tower = await discover({ ...TV, label_en: "television tower", label_ar: "برج التلفاز" }, { ...deps({ ...quiet }), ai: false });
+      expect(tower.chains).toEqual([]); // the head noun decides: a television tower is a tower
+      const part = await discover({ ...TV, label_en: "watchtower", label_ar: "" }, { ...deps({ ...quiet }), ai: false });
+      expect(part.chains).toEqual([]); // never part of a word
+      const sens = await discover({ ...TV, sensitive: true }, { ...deps({ ...quiet }), ai: false });
+      expect(sens.chains).toEqual([]);
+      expect(sens.status).toBe("empty");
+    });
   });
 });

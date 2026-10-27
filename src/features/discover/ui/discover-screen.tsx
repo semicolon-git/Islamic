@@ -12,6 +12,7 @@ import { useI18n } from "@/i18n/client";
 import { fmtDate } from "@/i18n/core";
 import { getDeviceToken } from "@/features/beneficiary/device";
 import { conceptHref } from "@/features/beneficiary/labels";
+import { ChainView } from "@/features/science/ui/chain-view";
 import type { DiscoverStage, DiscoveryBook, DiscoveryHadith, DiscoveryResult, DiscoveryVerse } from "../types";
 
 type Input = {
@@ -140,6 +141,7 @@ function Result({ result, label }: { result: DiscoveryResult; label: string }) {
       </Panel>
     );
 
+  const chains = result.chains ?? [];
   return (
     <div className="flex flex-col gap-6">
       {result.card && (
@@ -157,7 +159,9 @@ function Result({ result, label }: { result: DiscoveryResult; label: string }) {
       {!result.ai && result.tier === "sources" && <p className="text-sm text-ink-3">{t("discover.withoutAi")}</p>}
       {result.status === "sensitive" && <Panel tone="warn" icon={<ShieldAlert className="size-5" aria-hidden />} title={t("discover.tier.sensitive")}><p>{t("discover.sensitiveBody")}</p></Panel>}
 
-      {result.tier === "none" ? (
+      {result.tier === "none" && chains.length > 0 ? (
+        <p className="rounded-[14px] bg-surface-2 px-4 py-3 text-sm text-ink-2" data-testid="no-scripture">{t("discover.noScripture", { label })}</p>
+      ) : result.tier === "none" ? (
         <Panel tone="neutral" icon={<CircleHelp className="size-5" aria-hidden />} title={t("discover.empty", { label })}>
           <p>{t("discover.emptyBody")}</p>
         </Panel>
@@ -188,6 +192,17 @@ function Result({ result, label }: { result: DiscoveryResult; label: string }) {
       {result.books.length > 0 && (
         <Section title={t("discover.library")} icon={<Library className="size-4" aria-hidden />} testid="discover-library">
           {result.books.map((b) => <BookItem key={b.id} b={b} />)}
+        </Section>
+      )}
+
+      {chains.length > 0 && (
+        <Section title={t("discover.chains")} icon={<FlaskConical className="size-4" aria-hidden />} testid="discover-chains">
+          <p className="text-sm text-ink-2 -mt-1">{t("discover.chainsIntro", { label })}</p>
+          {chains.map((c) => (
+            <div key={c.id} className="rounded-[18px] border border-line bg-surface p-4">
+              <ChainView chain={c} t={t} locale={locale} compact href={c.href} />
+            </div>
+          ))}
         </Section>
       )}
 

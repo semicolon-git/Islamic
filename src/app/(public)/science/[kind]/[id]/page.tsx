@@ -7,13 +7,15 @@ import { fmtDate } from "@/i18n/core";
 import { BackLink } from "@/features/beneficiary/back-link";
 import { conceptHref } from "@/features/beneficiary/labels";
 import { listConcepts } from "@/features/beneficiary/data";
-import { entry, holdingsFor, names, scientistsLinkedTo, type Holding, type Instrument, type Scientist, type Work } from "@/features/science/server";
+import { chainsForScientist, entry, holdingsFor, names, scientistsLinkedTo, type Holding, type Instrument, type Scientist, type Work } from "@/features/science/server";
+import { chainHref, type Chain } from "@/features/science/chains";
+import { ChainView } from "@/features/science/ui/chain-view";
 import { Block, Chips, Eyebrow, L, Sources, starHref } from "@/features/science/ui/parts";
 
 export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ kind: string; id: string }> };
-const KINDS = ["scientist", "instrument", "work"] as const;
+const KINDS = ["scientist", "instrument", "work", "chain"] as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kind, id } = await params;
@@ -63,10 +65,22 @@ export default async function ScienceEntryPage({ params }: Props) {
   const concepts = await listConcepts();
   const conceptChips = (ids: string[]) => concepts.filter((c) => ids?.includes(c.id)).map((c) => ({ id: c.id, name_en: c.label_en, name_ar: c.label_ar }));
 
+  if (kind === "chain") {
+    const c = await entry<Chain>("chain", id);
+    if (!c) notFound();
+    return (
+      <div className="flex flex-col gap-7 pb-12" data-testid="science-chain">
+        <BackLink label={t("nav.back")} />
+        <ChainView chain={c} t={t} locale={locale} />
+        <Sources sources={c.sources} title={t("chain.sources")} />
+      </div>
+    );
+  }
+
   if (kind === "scientist") {
     const s = await entry<Scientist>("scientist", id);
     if (!s) notFound();
-    const [works, instruments] = await Promise.all([names("work", s.works ?? []), names("instrument", s.instruments ?? [])]);
+    const [works, instruments, chains] = await Promise.all([names("work", s.works ?? []), names("instrument", s.instruments ?? []), chainsForScientist(s.id)]);
     return (
       <article className="flex flex-col gap-7 pb-12" data-testid="science-scientist">
         <BackLink label={t("nav.back")} />
@@ -83,6 +97,7 @@ export default async function ScienceEntryPage({ params }: Props) {
         )}
         {works.length > 0 && <Block title={t("science.worksOf")}><Chips items={works} href={(i) => `/science/work/${i}`} locale={locale} /></Block>}
         {instruments.length > 0 && <Block title={t("science.instrumentsOf")}><Chips items={instruments} href={(i) => `/science/instrument/${i}`} locale={locale} /></Block>}
+        {chains.length > 0 && <Block title={t("science.chains")}><Chips items={chains} href={chainHref} locale={locale} /></Block>}
         <Stars stars={s.stars} title={t("science.starsScholar")} />
         {conceptChips(s.concepts).length > 0 && <Block title={t("science.related")}><Chips items={conceptChips(s.concepts)} href={conceptHref} locale={locale} /></Block>}
         <Sources sources={s.sources} title={t("science.sources")} />

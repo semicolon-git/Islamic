@@ -6,12 +6,13 @@ import type { Queryable } from "../../src/lib/db";
 import { exists, log, readJson } from "./util";
 
 type Entry = Record<string, unknown> & { id: string };
-const FILES: { kind: "scientist" | "work" | "instrument" | "holding" | "topic"; file: string; name: (e: Entry) => [string, string]; id?: (e: Entry) => string }[] = [
+const FILES: { kind: "scientist" | "work" | "instrument" | "holding" | "topic" | "chain"; file: string; name: (e: Entry) => [string, string]; id?: (e: Entry) => string }[] = [
   { kind: "scientist", file: "data/science/scientists.json", name: (e) => [String(e.name_en), String(e.name_ar)] },
   { kind: "work", file: "data/science/works.json", name: (e) => [String(e.title_en), String(e.title_ar)] },
   { kind: "instrument", file: "data/science/instruments.json", name: (e) => [String(e.name_en), String(e.name_ar)] },
   { kind: "holding", file: "data/science/holdings.json", name: (e) => [String(e.object_en), String(e.object_ar)] },
   { kind: "topic", file: "data/science/topics.json", name: (e) => [String(e.concept), String(e.concept)], id: (e) => String(e.concept) },
+  { kind: "chain", file: "data/science/chains.json", name: (e) => [String(e.title_en), String(e.title_ar)] },
 ];
 
 export async function seed(q: Queryable) {
@@ -32,5 +33,5 @@ export async function seed(q: Queryable) {
       n++;
     }
   }
-  if (n) log(`science: ${n} entries (scientists, works, instruments, museum holdings, topics)`);
+  if (n) log(`science: ${n} entries (scientists, works, instruments, museum holdings, topics, contribution chains)`);
 }

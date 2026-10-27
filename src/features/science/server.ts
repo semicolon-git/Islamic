@@ -3,7 +3,7 @@ import { one, sql } from "@/lib/db";
 
 /** Muslim-science knowledge graph (curated, sourced entries in science_entries). */
 
-export type ScienceKind = "scientist" | "work" | "instrument" | "holding" | "topic";
+export type ScienceKind = "scientist" | "work" | "instrument" | "holding" | "topic" | "chain";
 export interface Source { citation: string; url: string }
 export interface EntryRow<T = Record<string, unknown>> { kind: ScienceKind; id: string; name_en: string; name_ar: string; data: T; status: string }
 
@@ -63,5 +63,15 @@ export async function scientistsLinkedTo(field: "works" | "instruments", id: str
   return sql<{ id: string; name_en: string; name_ar: string }>(
     `select id, name_en, name_ar from science_entries where kind = 'scientist' and status = 'approved' and data->$1 ? $2 order by sort`,
     [field, id],
+  );
+}
+
+/** Contribution chains with a step by this scholar (reverse links for the scholar page). */
+export async function chainsForScientist(id: string) {
+  return sql<{ id: string; name_en: string; name_ar: string }>(
+    `select id, name_en, name_ar from science_entries
+      where kind = 'chain' and status = 'approved' and exists (select 1 from jsonb_array_elements(data->'steps') s where s->>'scientist' = $1)
+      order by sort`,
+    [id],
   );
 }
