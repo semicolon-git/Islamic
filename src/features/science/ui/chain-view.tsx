@@ -70,7 +70,7 @@ export function ChainView({ chain, t, locale, compact = false, href }: { chain: 
                 ) : (
                   L(locale, s.who_en, s.who_ar)
                 )}
-                <span className="font-normal text-ink-3 text-sm"> · {s.date_text}{L(locale, s.place_en, s.place_ar) ? ` · ${L(locale, s.place_en, s.place_ar)}` : ""}</span>
+                <span className="font-normal text-ink-3 text-sm"> · {L(locale, s.date_text, s.date_ar)}{L(locale, s.place_en, s.place_ar) ? ` · ${L(locale, s.place_en, s.place_ar)}` : ""}</span>
               </span>
               <span className="text-ink-2 leading-relaxed">{L(locale, s.what_en, s.what_ar)}</span>
               {s.sources.length > 0 && (

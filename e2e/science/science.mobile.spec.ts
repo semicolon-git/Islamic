@@ -4,7 +4,7 @@ import { expectAccessible, setLang } from "../helpers";
 test("Muslim science: instruments, honest origin, museums, stars → Sky", async ({ page }) => {
   await page.goto("/science");
   await expect(page.getByRole("heading", { level: 1, name: "From Muslim science" })).toBeVisible();
-  await expect(page.locator("[data-scientist]")).toHaveCount(25);
+  await expect(page.locator("[data-scientist]")).toHaveCount(35);
   await expectAccessible(page);
   await page.locator('[data-instrument="astrolabe"]').click();
   await expect(page).toHaveURL(/\/science\/instrument\/astrolabe$/);

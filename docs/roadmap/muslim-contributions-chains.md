@@ -66,7 +66,22 @@ The portal review uses the same rules as cards. A researcher can approve, or ret
 
 ## 5. Coverage: which objects, which chains
 
-CHAIN_TABLE
+| Chain | Example objects (EN · AR) | Muslim scholars in the chain | Claim | Myths checked |
+|---|---|---|---|---|
+| **Light, sight and the image** (`light-and-image`) | television, tv, flat screen, screen · تلفاز، تلفزيون، شاشة | al-Kindi, Ibn Sahl, Ibn al-Haytham, Kamal al-Din al-Farisi | foundational step | 2 |
+| **Lenses, eyes and glasses** (`lenses-and-eyeglasses`) | glasses, eyeglasses, spectacles, sunglasses · نظارة، نظارات، نظارة طبية | Ibn Sahl, Ibn al-Haytham, Kamal al-Din al-Farisi | one contribution among several | 2 |
+| **Algorithms and computing** (`algorithms-and-computing`) | computer, laptop, desktop computer, pc · حاسوب، كمبيوتر، حاسوب محمول | al-Khwarizmi, The Banu Musa brothers, al-Kashi | one contribution among several | 2 |
+| **Digits, zero and the decimal system** (`numbers-and-zero`) | price tag, receipt, phone keypad, keypad · بطاقة سعر، إيصال، فاتورة | al-Khwarizmi, al-Kindi, al-Uqlidisi, al-Kashi | one contribution among several | 2 |
+| **Angles, maps and finding your way** (`maps-and-navigation`) | map, world map, road map, atlas · خريطة، خريطة العالم، أطلس | Muhammad ibn Musa al-Khwarizmi, al-Battani, Abu al-Wafa' al-Buzjani, Abu Rayhan al-Biruni, al-Sharif al-Idrisi, Nasir al-Din al-Tusi, Ahmad ibn Majid | one contribution among several | 4 |
+| **Measuring time** (`clocks-and-timekeeping`) | clock, wall clock, alarm clock, watch · ساعة، ساعة حائط، منبه | Ibn Khalaf al-Muradi, al-Jazari, Ibn al-Shatir, timekeeper, Shams al-Din al-Khalili, Taqi al-Din ibn Ma'ruf | one contribution among several | 2 |
+| **Machines that move by themselves** (`machines-and-automation`) | robot, toy robot, robotic arm, industrial robot · روبوت، روبوت لعبة، ذراع آلية | The Banu Musa brothers, al-Jazari, Taqi al-Din ibn Ma'ruf | one contribution among several | 4 |
+| **Paper and the spread of books** (`paper-and-books`) | paper, sheet of paper, printer paper, notebook · ورق، ورقة، ورق طباعة | Abbasid administration and papermakers of Baghdad, Copyists and booksellers | one contribution among several | 2 |
+| **Hospitals, doctors and medicines** (`hospitals-and-medicine`) | hospital, clinic, ambulance, medicine · مستشفى، عيادة، سيارة إسعاف | Bimaristans of Baghdad, Damascus and Cairo, Abu Bakr al-Razi, Ibn Sina, Ibn al-Nafis | one contribution among several | 3 |
+| **Surgery, surgical instruments and dentistry** (`surgery-and-dentistry`) | scalpel, surgical instruments, surgical tools, forceps · مشرط، أدوات جراحية، ملقط | Abu al-Qasim al-Zahrawi, Al-Zahrawi on the teeth | one contribution among several | 2 |
+| **Distillation, perfume and the chemistry lab** (`chemistry-and-perfume`) | perfume, perfume bottle, fragrance, cologne · عطر، زجاجة عطر، كولونيا | Writings attributed to Jabir ibn Hayyan, Al-Kindi, Abu Bakr al-Razi | one contribution among several | 2 |
+| **Coffee and the coffeehouse** (`coffee`) | coffee, coffee cup, cup of coffee, coffee mug · قهوة، فنجان قهوة، كوب قهوة | Sufi circles of Yemen, Coffee in Mecca, Cairo and Istanbul | direct ancestor | 2 |
+
+Totals: **12 chains, 114 steps, 268 source citations, 29 myths checked, 215 English and 187 Arabic object labels.** Ten scholars were added for these chains: Ibn Sahl, Kamal al-Din al-Farisi, al-Kindi, al-Uqlidisi, the Banu Musa, Ibn Khalaf al-Muradi, Ibn al-Nadim, al-Razi, al-Zahrawi and Ibn al-Nafis.
 
 **Next chains, ranked by how often visitors photograph the object** (from the demand board):
 - architecture (domes, arches, muqarnas → geometry, al-Kashi);
@@ -93,7 +108,14 @@ Each new chain goes through the same tests and the portal review.
 
 ## 7. Measured
 
-MEASURED
+| What | Result | How |
+|---|---|---|
+| Word matcher on 45 everyday photo labels (35 objects that have a chain, 10 decoys such as a television tower, a watchtower, a picture frame, a red car and a cat) | **35/35** objects got the right chain · **10/10** decoys got none · **0** wrong links | `src/features/science/chains.eval.test.ts`, EN + AR labels, no AI. Arabic label alone: 35/35 · English label alone: 34/35 ("gps navigation device": head noun "device") |
+| History guardrails on all 12 chains | pass | `data.test.ts`: Muslim steps; before or after steps; ends with today; sources on every Muslim and transmission step; no "invented" claimed for Muslims; no miracle framing; object labels unique across chains |
+| Pipeline rules | pass | `pipeline.test.ts`: chain text is never AI-written; unknown ids are dropped; at most 2 chains; head noun decides ("television tower" ✗); sensitive subjects get no chain |
+| Whole unit suite | **696/696** | `npx vitest run` (48 files), 2026-10-27 |
+| Browser tests (e2e) | see commit | `e2e/science/chains.mobile.spec.ts` (TV → chain, head noun, index and scholar pages), `e2e/science/chains-review.desktop.spec.ts` (approve → self sign-off blocked → another admin signs off → "Reviewed by"; four eyes; a return needs a note) |
+| AI picker (live) | not measured yet | Next step: 60 real photos against a live key (§9). |
 
 ## 8. What's in this change (files)
 

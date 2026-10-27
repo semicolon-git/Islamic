@@ -5,7 +5,7 @@ import { getAyat, quranIndex } from "@/lib/quran";
 import { getHadith } from "@/lib/hadith";
 import { normalizeArabic } from "@/lib/quran/normalize";
 import { searchBooks, searchLibraryHadith, tafsirFor } from "@/features/library/server";
-import type { Chain, ChainLite } from "@/features/science/chains";
+import type { Chain, ChainLite, DiscoveryChain } from "@/features/science/chains";
 import { discover, type DiscoverDeps, type ScienceLite } from "./pipeline";
 import { searchQuranWords, searchSahihayn } from "./search";
 import { DISCOVER_PROMPT_VERSION } from "./ai";
@@ -73,6 +73,19 @@ export async function getChains(ids: string[]): Promise<Chain[]> {
   return (await sql<{ data: Chain }>("select data from science_entries where kind = 'chain' and status = 'approved' and id = any($1::text[])", [ids])).map((r) => r.data);
 }
 
+/**
+ * Chains are stored in a cached result by id, but their text and review status always come from the knowledge base at
+ * serving time — a correction or an institution's sign-off shows at once, and a hidden chain disappears.
+ */
+export async function freshChains(chains: DiscoveryChain[] | undefined): Promise<DiscoveryChain[]> {
+  if (!chains?.length) return [];
+  const now = new Map((await getChains(chains.map((c) => c.id)).catch(() => [])).map((c) => [c.id, c]));
+  return chains.filter((c) => now.has(c.id)).map((c) => {
+    const { objects: _o, objects_ar: _oa, ...cur } = now.get(c.id)!;
+    return { ...cur, review: cur.review ?? { status: "sourced" }, matched: c.matched, href: c.href };
+  });
+}
+
 export function defaultDeps(onStage?: (s: DiscoverStage) => void): DiscoverDeps {
   return {
     ai: aiEnabled(),
@@ -110,7 +123,7 @@ export async function discoverSubject(input: DiscoverInput, opts: { onStage?: (s
     if (row && row.prompt_version === DISCOVER_PROMPT_VERSION && row.age_days < MAX_AGE_DAYS && (row.ai || !aiEnabled()) && row.result.status !== "failed") {
       await sql("update discoveries set hits = hits + 1, last_hit_at = now() where key = $1", [key]);
       opts.onStage?.("done");
-      return { ...row.result, card, cached: true };
+      return { ...row.result, chains: await freshChains(row.result.chains), card, cached: true };
     }
   }
 
@@ -164,7 +177,7 @@ export async function discoveryBoard(limit = 40): Promise<DiscoveryRow[]> {
 
 export async function getDiscovery(key: string): Promise<DiscoveryResult | null> {
   const row = await one<{ result: DiscoveryResult }>("select result from discoveries where key = $1", [key]);
-  return row?.result ?? null;
+  return row ? { ...row.result, chains: await freshChains(row.result.chains) } : null;
 }
 
 export async function dismissDiscovery(key: string) {

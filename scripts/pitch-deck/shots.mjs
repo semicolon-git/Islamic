@@ -30,6 +30,10 @@ const SHOTS = {
   "m-star": { url: "/sky/star/vega" },
   "m-astrolabe": { url: "/science/instrument/astrolabe" },
   "m-manuscript": { url: "/heritage/manuscripts" },
+  "m-tv": { url: `/discover?en=Television&ar=${enc("تلفاز")}&src=search`, wait: "[data-testid=discover-chains]", full: true },
+  "m-chain": { url: "/science/chain/light-and-image", full: true },
+  "d-chains": { desk: true, persona: "u_huda", url: "/portal/science" },
+  "d-chain-review": { desk: true, persona: "u_huda", url: "/portal/science/light-and-image" },
   "d-portal": { desk: true, persona: "u_noura", url: "/portal" },
   "d-portal-student": { desk: true, persona: "u_sara", url: "/portal" },
   "d-library": { desk: true, persona: "u_huda", url: "/portal/library" },
@@ -69,7 +73,7 @@ for (const name of names) {
     await page.evaluate(() => document.fonts.ready);
     if (s.prep) await s.prep(page);
     await page.waitForTimeout(800);
-    await page.screenshot({ path: path.join(OUT, name + ".jpg"), type: "jpeg", quality: 86 });
+    await page.screenshot({ path: path.join(OUT, name + ".jpg"), type: "jpeg", quality: 86, fullPage: !!s.full });
     console.log("shot", name);
   } catch (e) {
     console.log("FAILED", name, e.message.split("\n")[0]);

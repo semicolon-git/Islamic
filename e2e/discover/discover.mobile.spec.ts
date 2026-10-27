@@ -9,20 +9,21 @@ test("Explore search → discovery: verses that contain the word, tafsir, honest
   await page.getByTestId("explore-search").getByRole("button").click();
   await expect(page).toHaveURL(/\/discover\?q=/);
   await expect(page.locator("[data-tier]")).toHaveAttribute("data-tier", "sources", { timeout: 30_000 });
-  await expect(page.locator('[data-verse="3:14"]')).toBeVisible();
-  await expect(page.locator('[data-verse="9:34"]')).toBeVisible();
+  await expect(page.locator('article[data-verse="3:14"]')).toBeVisible();
+  await expect(page.locator('article[data-verse="9:34"]')).toBeVisible();
   await expect(page.getByTestId("discover-summary")).toHaveCount(0); // no AI → no prose
   await expect(page.getByText("AI is off on this server")).toBeVisible();
   // Verbatim tafsir, fetched by reference
-  await page.locator('[data-verse="3:14"] summary').click();
-  await expect(page.locator('[data-verse="3:14"]').getByText("al-Tafsir al-Muyassar").first()).toBeVisible();
+  await page.locator('article[data-verse="3:14"] summary').click();
+  await expect(page.locator('article[data-verse="3:14"]').getByText("al-Tafsir al-Muyassar").first()).toBeVisible();
   await page.getByTestId("discover-how").locator("summary").click();
   await expect(page.getByTestId("discover-how")).toContainText("candidates");
   await expectAccessible(page);
 });
 
 test("nothing found is said plainly; visitors can ask scholars to cover it", async ({ page }) => {
-  await page.goto("/discover?q=%D9%82%D9%87%D9%88%D8%A9"); // قهوة
+  // Potatoes: no verse or hadith names them, and no contribution chain covers them (coffee now has one — see e2e/science/chains).
+  await page.goto("/discover?q=" + encodeURIComponent("بطاطس"));
   await expect(page.locator("[data-tier]")).toHaveAttribute("data-tier", "none", { timeout: 30_000 });
   await expect(page.getByTestId("discover-panel")).toContainText("We found no verse or authentic hadith");
   await page.getByRole("button", { name: "Ask scholars to review this" }).click();
@@ -48,7 +49,7 @@ test("Arabic discovery is right-to-left", async ({ page }) => {
   await expect(page.locator("[data-tier]")).toHaveAttribute("data-tier", "sources", { timeout: 30_000 });
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expect(page.getByRole("heading", { name: "من القرآن الكريم" })).toBeVisible();
-  await expect(page.locator('[data-verse="16:68"]')).toBeVisible();
+  await expect(page.locator('article[data-verse="16:68"]')).toBeVisible();
 });
 
 test("discover API: validation, people are never searched", async ({ request }) => {

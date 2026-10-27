@@ -1,4 +1,4 @@
-# Pitch deck v8 (Arabic, 17 slides)
+# Pitch deck v8 (Arabic, 18 slides)
 
 `Signs-Around-You-Pitch-v8.pdf` is rendered from `deck.html`. Every screen in it is the real app (`shots/`, taken by `scripts/pitch-deck/shots.mjs`).
 
@@ -20,6 +20,16 @@ node scripts/pitch-deck/render.mjs docs/pitch/v8/deck.html docs/pitch/v8/Signs-A
 | Sky mode technical detail | Slide 11 covers inputs → astronomy-engine + HYG v4.1 (177 stars) → pointing (12° field). It also covers Umm al-Qura Hijri, privacy, Arabic star names and the links to verses and the astrolabe. |
 | Explain the flow | Slide 5 shows the discovery pipeline and the three trust badges. Slide 7 shows the portal workflow. Slide 12 shows the architecture across four lanes. |
 | Recursive improvement | Slide 10 shows the loop and what each human action becomes as training data. It marks what works today (versions and decisions stored; JSONL/TEI export of approved lines) and what comes next (first fine-tuning run). |
+
+## Added 2026-10-27: Muslim scholars' contributions (slide 6)
+
+«صوّر تلفازًا، فاكتشف ابن الهيثم» (photograph a TV, discover Ibn al-Haytham). This slide shows what a visitor sees after photographing a TV: a sourced **contribution chain** for optics. It runs from Euclid and Ptolemy, through al-Kindi, Ibn Sahl, Ibn al-Haytham and al-Farisi, then the Latin translation, Kepler and photography, to television. The chain also shows «ما لا ندّعيه» (what we don't claim) and the popular claims we checked. Three real phone screenshots (`shots/m-tv-*.jpg`) are annotated.
+
+Its numbers:
+- 12 chains, 268 source citations and 29 myths, from `data/science/chains.json`.
+- 35/35 objects get the right chain and 0 wrong links in 45 labels, from `src/features/science/chains.eval.test.ts`.
+
+Design and analysis: `docs/roadmap/muslim-contributions-chains.md`.
 
 ## Where each number comes from
 

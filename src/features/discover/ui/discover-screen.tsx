@@ -105,6 +105,9 @@ function TierBadge({ result }: { result: DiscoveryResult }) {
   const { t } = useI18n();
   if (result.status === "sensitive")
     return <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-warn-soft text-warn px-3 py-1 text-sm font-medium" data-tier="sensitive"><ShieldAlert className="size-4" aria-hidden />{t("discover.tier.sensitive")}</span>;
+  // No scripture link but a contribution chain: the page has an answer, so no «we won't guess» badge on top
+  // (the note under the title says plainly that the Quran and hadith don't mention it).
+  if (result.tier === "none" && result.chains?.length) return null;
   if (result.tier === "sources")
     return (
       <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-[#fdf3d6] text-[#7a5600] dark:bg-[#3a2f12] dark:text-[#f3d27a] px-3 py-1 text-sm font-medium" data-tier="sources">

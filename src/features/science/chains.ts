@@ -18,6 +18,7 @@ export interface ChainStep {
   /** A scholar id in science_entries, for steps by Muslim scholars that have a page. */
   scientist: string | null;
   date_text: string;
+  date_ar: string;
   place_en?: string;
   place_ar?: string;
   what_en: string;

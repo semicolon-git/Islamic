@@ -118,6 +118,7 @@ const step = z.strictObject({
   who_ar: ar,
   scientist: slug.nullable(),
   date_text: en,
+  date_ar: ar,
   place_en: en.optional(),
   place_ar: ar.optional(),
   what_en: en,
