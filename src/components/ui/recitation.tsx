@@ -172,7 +172,7 @@ export function RecitationButton({ keys, locale, className }: { keys: string[]; 
           <Play className="size-4 rtl:-scale-x-100" aria-hidden />
         )}
         <span>{label}</span>
-        <span className="text-ink-3" aria-hidden>· {reciter}</span>
+        <span className="text-ink-2" aria-hidden>· {reciter}</span>
       </button>
       {urls.length > 1 && status !== "idle" && status !== "error" && (
         <span className="mono text-xs text-ink-3" dir="ltr" aria-live="polite">
