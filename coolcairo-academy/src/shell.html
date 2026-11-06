@@ -1,0 +1,32 @@
+<header class="hud">
+  <div class="hud-in">
+    <a class="logo" href="#home" aria-label="CoolCairo Academy home">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="var(--line)" stroke-width="2"/><path d="M16 3a13 13 0 0 1 0 26" fill="none" stroke="var(--heat)" stroke-width="2.4"/><path d="M16 29a13 13 0 0 1 0-26" fill="none" stroke="var(--cool)" stroke-width="2.4"/><circle cx="16" cy="16" r="4.5" fill="var(--gold)"/></svg>
+      <div><b>CoolCairo Academy</b><span>Heat · Satellites · Models</span></div>
+    </a>
+    <div class="hud-xp" aria-label="Progress">
+      <div class="hud-xp-top"><span id="rankName">Cadet</span><span><b id="xpNow">0</b> XP · <span id="doneCount">0</span>/16 missions</span></div>
+      <div class="bar"><span id="xpBar" style="width:0%"></span></div>
+    </div>
+    <div class="hud-btns">
+      <button class="chip-btn" id="glossBtn" title="Glossary (G)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z M5 17a3 3 0 0 1 3-3h11"/></svg>Words</button>
+      <button class="chip-btn" id="themeBtn" title="Light / dark" aria-label="Switch light or dark"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="view" tabindex="-1"></main>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<dialog class="dlg gloss" id="glossDlg" aria-labelledby="glossTitle">
+  <div class="dlg-head">
+    <h2 id="glossTitle">Words to know</h2>
+    <button class="chip-btn" data-close aria-label="Close">Close</button>
+  </div>
+  <div class="dlg-body">
+    <label class="muted small" for="glossSearch">Search 40 terms from remote sensing, statistics and urban heat</label>
+    <input id="glossSearch" type="search" placeholder="Try NDVI, emissivity, R²…" autocomplete="off">
+    <dl id="glossList"></dl>
+  </div>
+</dialog>
