@@ -284,7 +284,7 @@ dialog.dlg::backdrop { background: rgb(5 10 18 / 0.6); }
       <div><b>CoolCairo Academy</b><span>Heat · Satellites · Models</span></div>
     </a>
     <div class="hud-xp" aria-label="Progress">
-      <div class="hud-xp-top"><span id="rankName">Cadet</span><span><b id="xpNow">0</b> XP · <span id="doneCount">0</span>/16 missions</span></div>
+      <div class="hud-xp-top"><span id="rankName">Cadet</span><span><b id="xpNow">0</b> XP · <span id="doneCount">0</span>/<span id="totalCount">17</span> missions</span></div>
       <div class="bar"><span id="xpBar" style="width:0%"></span></div>
     </div>
     <div class="hud-btns">
@@ -304,7 +304,7 @@ dialog.dlg::backdrop { background: rgb(5 10 18 / 0.6); }
     <button class="chip-btn" data-close aria-label="Close">Close</button>
   </div>
   <div class="dlg-body">
-    <label class="muted small" for="glossSearch">Search 40 terms from remote sensing, statistics and urban heat</label>
+    <label class="muted small" for="glossSearch">Search the terms from remote sensing, statistics and urban heat</label>
     <input id="glossSearch" type="search" placeholder="Try NDVI, emissivity, R²…" autocomplete="off">
     <dl id="glossList"></dl>
   </div>
@@ -377,10 +377,14 @@ try { const s = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); if (s) st
 function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch { /* storage off */ } }
 
 const RANKS = [[0, "Cadet"], [400, "Observer"], [1000, "Analyst"], [1800, "Specialist"], [2600, "Expert"]];
-const MAX_XP = 16 * (40 + 4 * 30 + 50) + 20 * 15;
+// Missions are routed by id (#m17) but shown and ordered by their position in CHAPTERS.
+const TOTAL = () => CHAPTERS.length;
+const posOf = (ch) => CHAPTERS.indexOf(ch) + 1;
+const byId = (id) => CHAPTERS.find((c) => c.id === id);
+const MAX_XP_FN = () => TOTAL() * (40 + 4 * 30 + 50) + 20 * 15;
 function rank() {
   const done = Object.keys(state.done).length;
-  if (done >= 16 && state.exam.best >= 16) return "Super Expert";
+  if (done >= TOTAL() && state.exam.best >= 16) return "Super Expert";
   let r = RANKS[0][1];
   for (const [x, n] of RANKS) if (state.xp >= x) r = n;
   return r;
@@ -398,7 +402,8 @@ function renderHud() {
   $("#xpNow").textContent = fint(state.xp);
   $("#rankName").textContent = rank();
   $("#doneCount").textContent = Object.keys(state.done).length;
-  $("#xpBar").style.width = `${Math.min(100, (100 * state.xp) / MAX_XP)}%`;
+  $("#xpBar").style.width = `${Math.min(100, (100 * state.xp) / MAX_XP_FN())}%`;
+  $("#totalCount").textContent = TOTAL();
 }
 let toastT = 0;
 function toast(html) {
@@ -417,7 +422,7 @@ function route() {
   const h = location.hash.slice(1) || "home";
   view.innerHTML = "";
   const m = h.match(/^m(\d+)$/);
-  if (m && CHAPTERS[+m[1] - 1]) renderChapter(CHAPTERS[+m[1] - 1]);
+  if (m && byId(+m[1])) renderChapter(byId(+m[1]));
   else if (h === "exam") renderExam();
   else renderHome();
   window.scrollTo(0, 0);
@@ -433,14 +438,14 @@ function starsFor(ch) {
 }
 function renderHome() {
   const done = Object.keys(state.done).length;
-  const next = CHAPTERS.find((c) => !state.done[c.id]) || CHAPTERS[15];
+  const next = CHAPTERS.find((c) => !state.done[c.id]) || CHAPTERS[CHAPTERS.length - 1];
   const hero = el("section", { class: "hero" }, [
     el("div", {}, [
       el("div", { class: "eyebrow", text: "Team 46 · Hyperspectral course prep" }),
       el("h1", { html: "From a glow in space<br>to a cooler street." }),
-      el("p", { class: "lead", text: "Sixteen missions take you from what an urban heat island is, through how satellites measure heat and materials, to every number in CoolCairo and how to defend it. Each mission has a briefing, a hands-on lab, real-world cases and a checkpoint." }),
+      el("p", { class: "lead", text: `${TOTAL()} missions take you from what an urban heat island is, through how satellites measure heat and materials, to every number in CoolCairo and how to defend it. Each mission has a briefing, a hands-on lab, real-world cases and a checkpoint.` }),
       el("div", { class: "hero-stats" }, [
-        el("div", { class: "stat" }, [el("b", { text: `${done}/16` }), el("span", { text: "missions" })]),
+        el("div", { class: "stat" }, [el("b", { text: `${done}/${TOTAL()}` }), el("span", { text: "missions" })]),
         el("div", { class: "stat" }, [el("b", { text: fint(state.xp) }), el("span", { text: "XP earned" })]),
         el("div", { class: "stat" }, [el("b", { text: rank() }), el("span", { text: "rank" })]),
         el("div", { class: "stat" }, [el("b", { text: state.exam.best ? `${state.exam.best}/20` : "—" }), el("span", { text: "best exam" })]),
@@ -462,7 +467,7 @@ function renderHome() {
     for (const ch of CHAPTERS.filter((c) => c.act === act.n)) {
       const st = starsFor(ch);
       grid.append(el("a", { class: `station${state.done[ch.id] ? " done" : ""}`, href: `#m${ch.id}` }, [
-        el("span", { class: "st-no", text: state.done[ch.id] ? "✓" : String(ch.id) }),
+        el("span", { class: "st-no", text: state.done[ch.id] ? "✓" : String(posOf(ch)) }),
         el("span", { class: "st-title", text: ch.title }),
         el("span", { class: "st-sub", text: ch.sub }),
         el("span", { class: "st-meta" }, [el("span", { class: "stars", text: "★".repeat(st) + "☆".repeat(3 - st) }), el("span", { text: state.labs[ch.id] ? "lab done" : "lab" })]),
@@ -472,7 +477,7 @@ function renderHome() {
     acts.append(sec);
   }
   const badges = el("div", { class: "badges" }, CHAPTERS.map((c) => el("span", { class: `badge${state.done[c.id] ? " on" : ""}`, text: `${state.done[c.id] ? "★" : "☆"} ${c.title}` })));
-  acts.append(el("section", {}, [el("div", { class: "act-head" }, [el("span", { class: "eyebrow", text: "Badges" }), el("h2", { text: "Your collection" }), el("p", { text: "Pass a mission's checkpoint (3 of 4) to earn its badge. All 16 badges and 16/20 on the final exam make you a Super Expert." })]), badges]));
+  acts.append(el("section", {}, [el("div", { class: "act-head" }, [el("span", { class: "eyebrow", text: "Badges" }), el("h2", { text: "Your collection" }), el("p", { text: `Pass a mission's checkpoint (3 of 4) to earn its badge. All ${TOTAL()} badges and 16/20 on the final exam make you a Super Expert.` })]), badges]));
   view.append(acts);
 }
 
@@ -531,7 +536,7 @@ function renderChapter(ch) {
   const act = ACTS[ch.act - 1];
   view.append(el("div", { class: "crumbs" }, [el("a", { href: "#home", text: "Mission map" }), el("span", { text: "/" }), el("span", { text: `Act ${act.n} · ${act.name}` })]));
   view.append(el("header", { class: "ch-head" }, [
-    el("div", { class: "eyebrow", text: `Mission ${ch.id} of 16${state.done[ch.id] ? " · badge earned" : ""}` }),
+    el("div", { class: "eyebrow", text: `Mission ${posOf(ch)} of ${TOTAL()}${state.done[ch.id] ? " · badge earned" : ""}` }),
     el("h1", { text: ch.title }),
     el("p", { text: ch.sub }),
   ]));
@@ -596,7 +601,7 @@ function renderChapter(ch) {
   });
 
   // pager
-  const prev = CHAPTERS[ch.id - 2], next = CHAPTERS[ch.id];
+  const prev = CHAPTERS[posOf(ch) - 2], next = CHAPTERS[posOf(ch)];
   view.append(el("nav", { class: "pager" }, [
     prev ? el("a", { class: "btn", href: `#m${prev.id}`, text: `← ${prev.title}` }) : el("a", { class: "btn", href: "#home", text: "← Mission map" }),
     next ? el("a", { class: "btn primary", href: `#m${next.id}`, text: `${next.title} →` }) : el("a", { class: "btn primary", href: "#exam", text: "Final exam →" }),
@@ -669,7 +674,7 @@ function renderExam() {
   view.append(el("header", { class: "ch-head" }, [
     el("div", { class: "eyebrow", text: "Certification" }),
     el("h1", { text: "The expert exam" }),
-    el("p", { text: "Twenty questions drawn at random from all sixteen missions, answers shuffled. Score 16 or more, with all sixteen badges, to become a CoolCairo Super Expert." }),
+    el("p", { text: `Twenty questions drawn at random from all ${TOTAL()} missions, answers shuffled. Score 16 or more, with all ${TOTAL()} badges, to become a CoolCairo Super Expert.` }),
   ]));
   const box = el("div");
   view.append(box);
@@ -686,8 +691,8 @@ function renderExam() {
         setTimeout(() => {
           if (score >= 16) box.prepend(el("div", { class: "cert" }, [
             el("div", { class: "eyebrow", text: "CoolCairo Academy" }),
-            el("h2", { text: done >= 16 ? "Super Expert" : "Exam passed" }),
-            el("p", { text: done >= 16 ? `Certified: ${score}/20 on the expert exam with all sixteen badges. You can explain and defend every part of CoolCairo.` : `You scored ${score}/20. Earn the remaining ${16 - done} badges to become a Super Expert.` }),
+            el("h2", { text: done >= TOTAL() ? "Super Expert" : "Exam passed" }),
+            el("p", { text: done >= TOTAL() ? `Certified: ${score}/20 on the expert exam with all ${TOTAL()} badges. You can explain and defend every part of CoolCairo.` : `You scored ${score}/20. Earn the remaining ${TOTAL() - done} badges to become a Super Expert.` }),
           ]));
         }, 0);
         return score >= 16 ? "Passed. Every explanation above links back to its mission." : `You need 16 to pass. Revisit the missions named in the explanations.`;
@@ -708,7 +713,7 @@ function renderGlossary(filter = "") {
   list.innerHTML = "";
   for (const [term, meaning, m] of GLOSSARY) {
     if (f && !(term + " " + meaning).toLowerCase().includes(f)) continue;
-    list.append(el("div", {}, [el("dt", { text: term }), el("dd", {}, [document.createTextNode(meaning + " "), el("a", { class: "go", href: `#m${m}`, text: `Mission ${m} →`, onclick: () => $("#glossDlg").close() })])]));
+    list.append(el("div", {}, [el("dt", { text: term }), el("dd", {}, [document.createTextNode(meaning + " "), el("a", { class: "go", href: `#m${m}`, text: `Mission ${posOf(byId(m))} →`, onclick: () => $("#glossDlg").close() })])]));
   }
   if (!list.children.length) list.append(el("p", { class: "muted", text: "No term matches. Try a shorter word." }));
 }
@@ -1134,6 +1139,51 @@ const CHAPTERS = [
     ],
   },
   {
+    id: 17, act: 4, title: "Clean bands, better shares", sub: "Band cleaning and all-band ridge: CoolCairo's hyperspectral upgrade path",
+    brief: `
+      <p>A team experiment tested what actually improves results with hyperspectral data. Two steps came out on top, and both are now
+      CoolCairo's recommended path for EnMAP and, later, Satellite 813.</p>
+      <p><b>Step 1: clean the bands.</b> Some bands carry almost no ground signal, so they add only noise:</p>
+      <ul>
+        <li><b>Water-vapour bands</b> around 1.35–1.45 µm and 1.80–1.95 µm, where the air absorbs the light.</li>
+        <li><b>Detector edges</b>: at the ends of each detector's range the detector, the optics and the sunlight all weaken, so the
+        <b>signal-to-noise ratio (SNR)</b> collapses.</li>
+        <li><b>The VNIR/SWIR junction</b> (about 900–1,000 nm), where EnMAP's two detectors overlap, both are at their weak edge, water vapour absorbs
+        near 940 nm and the two spectra can join with a small step. Keep one clean copy, not two noisy ones.</li>
+      </ul>
+      <p>You can measure SNR from the image itself. Real spectra are smooth from one band to the next; noise is not. So the residual
+      <b>r = x<sub>b</sub> − (x<sub>b−1</sub> + x<sub>b+1</sub>) ÷ 2</b> is mostly noise. SNR ≈ mean signal ÷ spread of r. Flag bands below a threshold
+      (for example 20), then <b>review the list</b>: bands beside a water-vapour gap or on a sharp real absorption feature can be flagged by mistake.
+      EnMAP's 224 bands become CoolCairo's 203 usable ones this way.</p>
+      <p><b>Step 2: keep every clean band, and let ridge regression do the work.</b> Instead of labelling each pixel, predict the <b>share</b> of each
+      material directly from its full spectrum. With hundreds of correlated bands, plain least squares overreacts to noise. <b>Ridge regression</b>
+      adds a penalty, λ × (sum of squared coefficients), that shrinks the coefficients. Neighbouring bands then share the weight instead of fighting.
+      λ is chosen on training data only, and the predicted shares are clipped at zero and rescaled to add up to one.</p>
+      <p><b>What the experiment found</b> (HYDICE Urban, 400–2500 nm, hidden tiles):</p>
+      <ul>
+        <li>Share error per 90 m block: <b>1.8 points</b> with all clean bands + ridge, against <b>6.5</b> with Sentinel-2-like bands: about <b>3.5× smaller</b>.</li>
+        <li>Roof-vs-dirt error, CoolCairo's pale-roof-or-sand problem: <b>8.0 → 5.0 points</b> per 10 m pixel.</li>
+        <li>Picking 20 "best" bands did worse (7.3 points per 10 m pixel vs 5.3), and so did a layered model (6.2).</li>
+        <li>With noisy edge bands left in, all-band ridge barely changed; models that <b>select</b> bands collapsed until the noisy bands were removed
+        (layered: 0.74 → 0.93 balanced accuracy).</li>
+      </ul>
+      <p>These were airborne benchmark scenes at 2 m, not Cairo. EnMAP's 30 m pixels mix more surfaces, so the next step is to confirm the same ranking on the Cairo EnMAP scene.</p>`,
+    keys: [["203 of 224", "EnMAP bands left after cleaning"], ["≈ 3.5×", "Smaller block-share error than Sentinel-2-like bands"], ["SNR < 20", "Flag, then review before dropping"]],
+    note: { kind: "gold", html: "<b>The recipe:</b> clean the bands → keep everything that is left → ridge regression for material shares → shares per 90 m block → the heat model. Band selection is for understanding which wavelengths matter, not for scoring." },
+    lab: "cleanridge", labTitle: "Clean a scene, then predict shares", labHint: "First find the noisy bands from the image itself and clean them. Then train ridge regression to predict roof and sand shares, and compare it with Sentinel-2-like bands and with a handful of selected bands. Simulated spectra, real arithmetic; the last chart shows the real experiment.",
+    field: [
+      { where: "Weather forecasting", title: "Blacklisting noisy channels", text: "Forecast centres feed thousands of channels from hyperspectral sounders such as IASI and AIRS into their models, but first monitor each channel and leave out the noisy or unreliable ones.", link: "The same step as CoolCairo's band cleaning: measure each band, drop what is mostly noise." },
+      { where: "Food and pharma labs", title: "Predicting protein and moisture from spectra", text: "Near-infrared analysers predict a sample's protein, fat or moisture from hundreds of correlated wavelengths using regularised regression (ridge, PLS) rather than a few hand-picked bands.", link: "Exactly the ridge-on-all-bands idea, applied to grain instead of city blocks." },
+      { where: "Genetics", title: "Thousands of correlated inputs", text: "Models that predict traits from thousands of genetic markers rely on ridge-type penalties, because the inputs far outnumber the samples and are strongly correlated.", link: "When inputs are many and correlated, shrink the weights instead of throwing inputs away." },
+    ],
+    quiz: [
+      { q: "Why is the residual x_b − (x_{b−1} + x_{b+1}) ÷ 2 a good way to measure a band's noise?", opts: ["It removes clouds", "Real spectra are smooth across neighbouring bands, so what is left is mostly noise", "It equals the signal", "It only works for vegetation"], a: 1, why: "Signal changes slowly from band to band; noise is independent in each band, so it survives the subtraction." },
+      { q: "What does the ridge penalty do?", opts: ["Deletes bands", "Shrinks the coefficients so many correlated bands share the weight instead of overreacting to noise", "Adds more bands", "Makes the model classify instead of predict shares"], a: 1, why: "Least squares + λ × (sum of squared coefficients). λ is chosen on training data only." },
+      { q: "In the experiment, how did all clean bands + ridge compare with Sentinel-2-like bands for shares per 90 m block?", opts: ["About the same", "About 3.5× smaller error (1.8 vs 6.5 points)", "Worse", "Only better for vegetation"], a: 1, why: "And roof-vs-dirt error fell from 8.0 to 5.0 points per 10 m pixel." },
+      { q: "Your SNR check flags a band right beside the 1.94 µm water-vapour gap. What should you do?", opts: ["Always drop every flagged band automatically", "Review it: the estimator can flag bands at gap edges or sharp real features, so check the wavelength before dropping", "Keep all bands, never clean", "Replace it with Sentinel-2"], a: 1, why: "Flag, then review. Most flagged bands go, but the decision is checked against the wavelength." },
+    ],
+  },
+  {
     id: 14, act: 4, title: "Growth and other cities", sub: "Desert expansion and whether the method travels",
     brief: `
       <p>Google Open Buildings 2.5D Temporal maps building presence every year at 4 m. East Cairo's building area grew from
@@ -1222,7 +1272,7 @@ const CHAPTERS = [
   },
 ];
 
-// Flashcards for mission 16: the judges' questions from the guide plus the verification role.
+// Flashcards for the judges' drill: the judges' questions from the guide plus the verification role.
 const FLASHCARDS = [
   ["Why hyperspectral data?", "More, narrower bands give each surface a fuller fingerprint. EnMAP alone explains block heat at R² 0.53 vs 0.31 for Sentinel-2, and only 0.33 when cut to Sentinel-2's bands: the gain is the spectral detail."],
   ["You used only one scene?", "One April scene over Cairo, yes. We repeated the test in Algiers, Dubai and Riyadh with scenes from other seasons and years, and EnMAP won every time. Next: summer scenes and Satellite 813."],
@@ -1241,6 +1291,9 @@ const FLASHCARDS = [
   ["Is the pocket-park effect just the desert next door?", "Partly. Adding neighbouring sand lifts R² from 0.25 to 0.37 and roughly halves the park effect. The targeted plan still cuts exposure by about two thirds."],
   ["Surface or air temperature?", "Surface, at about 10:30 am. City-wide cool roofs lower air by roughly 0.1–0.33 °C per +0.1 albedo. Night heat and ground sensors are next steps."],
   ["Where do the population numbers come from?", "WorldPop 2024, 100 m, modelled, not a census. Heat exposure is a screening number; vulnerability is not yet included."],
+  ["How do you handle noisy bands?", "Drop the water-vapour bands, then estimate each band's SNR from the image (the spectral-neighbour residual) and review bands below 20 before dropping them. EnMAP's 224 bands become 203 usable ones."],
+  ["What is your hyperspectral upgrade path?", "Clean the bands, keep all that remain, and predict material shares with ridge regression. On a benchmark it gave about 3.5× smaller block-level share error than Sentinel-2-like bands; next we confirm it on Cairo's EnMAP scene."],
+  ["Did you try band selection or layering?", "Yes, on two real scenes with hidden-area testing. Picking a few bands never beat all clean bands with ridge; a careful layered design gained under one point. We use selection to explain which wavelengths matter, not to score."],
   ["Are new neighbourhoods built hot?", "New blocks average 46.9 °C vs 46.0 °C, but most of the gap is sand: allowing for cover and sand it is +0.2 °C. They are where cooling is cheapest to build in."],
 ];
 
@@ -1285,6 +1338,10 @@ const GLOSSARY = [
   ["Ridge regression", "Regression that stays stable with many correlated inputs by shrinking coefficients.", 13],
   ["Control (experiment)", "A comparison where everything is the same except one thing, e.g. EnMAP cut to six bands.", 13],
   ["PCA", "Squeezes many correlated bands into a few summary ones.", 13],
+  ["Signal-to-noise ratio (SNR)", "How much real signal a band carries compared with the sensor's own noise; low at detector edges and in water-vapour bands.", 17],
+  ["Band cleaning", "Removing water-vapour, detector-edge and duplicate overlap bands before modelling; EnMAP 224 → 203 usable bands.", 17],
+  ["Spectral-neighbour residual", "x_b − (x_{b−1} + x_{b+1}) ÷ 2: what is left after removing the smooth spectrum, used to estimate each band's noise.", 17],
+  ["Regularisation", "A penalty that keeps a model's coefficients small so it does not chase noise; ridge regression is one form.", 17],
   ["STAC / Planetary Computer", "A standard catalogue of satellite images, and Microsoft's free archive Landsat and Sentinel-2 stream from.", 3],
 ];
 
@@ -2278,6 +2335,214 @@ LABS.flash = (box, api) => {
   ]);
   show();
   box.append(wrap, ctrls, el("div", { class: "readout" }, [prog.wrap]));
+};
+
+// ---------------------------------------------------------------- 17. band cleaning + ridge shares
+LABS.cleanridge = (box, api) => {
+  // An EnMAP-like sensor: VNIR 420–1000 nm (91 bands) and SWIR 900–2450 nm (133 bands), overlapping at 900–1000 nm.
+  const bands = [];
+  for (let i = 0; i < 91; i++) bands.push({ l: 0.42 + i * (0.58 / 90), det: "VNIR" });
+  for (let i = 0; i < 133; i++) bands.push({ l: 0.9 + i * (1.55 / 132), det: "SWIR" });
+  bands.sort((a, b) => a.l - b.l);
+  const NB = bands.length, L = bands.map((b) => b.l);
+  const g = (l, c, w) => Math.exp(-(((l - c) / w) ** 2));
+  const END = {
+    Vegetation: (l) => { let v = 0.05 + 0.04 * g(l, 0.55, 0.04) + 0.42 / (1 + Math.exp(-(l - 0.72) / 0.018)); if (l > 1.3) v *= Math.max(0.35, 1 - 0.55 * (l - 1.3)); return v - 0.04 * g(l, 0.97, 0.03) - 0.05 * g(l, 1.2, 0.04); },
+    // Pale concrete roof and desert sand share the same broad brightness; they differ in narrow features
+    // (iron oxide near 0.87 µm and clay near 2.2 µm for sand, carbonate near 2.33 µm for concrete).
+    Sand: (l) => 0.27 + 0.08 * Math.min(l - 0.4, 1.6) - 0.045 * g(l, 0.87, 0.035) - 0.06 * g(l, 2.2, 0.014) - 0.02 * g(l, 0.5, 0.05),
+    Roof: (l) => 0.27 + 0.08 * Math.min(l - 0.4, 1.6) - 0.06 * g(l, 2.33, 0.014) - 0.015 * g(l, 1.95, 0.02),
+    Asphalt: (l) => 0.06 + 0.03 * (l - 0.4) - 0.015 * g(l, 1.73, 0.015) - 0.02 * g(l, 2.31, 0.02),
+  };
+  const MATS = Object.keys(END);
+  // Signal reaching each band: sunlight × air transmission × detector response. SNR scales with it.
+  const sun = (l) => { const T = 5800, c2 = 14388; return 1 / (l ** 5 * (Math.exp(c2 / (l * T)) - 1)); };
+  const sunMax = sun(0.5);
+  const tau = (l) => 1 - 0.35 * g(l, 0.94, 0.02) - 0.25 * g(l, 1.13, 0.025) - 0.97 * g(l, 1.4, 0.045) - 0.98 * g(l, 1.88, 0.06) - 0.5 * g(l, 2.5, 0.06);
+  const resp = (b) => b.det === "VNIR" ? Math.min(1, (b.l - 0.415) / 0.05) * Math.min(1, Math.max(0.05, (1.0 - b.l) / 0.08)) : Math.min(1, Math.max(0.05, (b.l - 0.9) / 0.1)) * Math.min(1, Math.max(0.05, (2.455 - b.l) / 0.12));
+  const SNR = bands.map((b) => Math.max(0.6, 260 * Math.sqrt((sun(b.l) / sunMax) * Math.max(0.005, tau(b.l)) * resp(b))));
+  // A small dataset: pixels mixing the four materials, with brightness variability and band noise.
+  function makeScene(n, seed) {
+    const r = mulberry32(seed), X = [], Y = [];
+    for (let p = 0; p < n; p++) {
+      const w = MATS.map(() => -Math.log(r() + 1e-9)); const s = w.reduce((a, b) => a + b, 0); const f = w.map((v) => v / s);
+      // Brightness varies by material (weathering, dust) and for the whole pixel (slope, illumination).
+      const scale = MATS.map(() => 0.85 + 0.3 * r()), light = 0.9 + 0.2 * r();
+      X.push(bands.map((b, k) => { const t = light * MATS.reduce((a, m, j) => a + f[j] * scale[j] * END[m](b.l), 0); return t + gauss(r) * (0.3 / SNR[k]) + (b.det === "SWIR" && b.l < 1.0 ? 0.012 : 0); }));
+      Y.push(f);
+    }
+    return { X, Y };
+  }
+  const scene = makeScene(400, 71);
+  // Spectral-neighbour residual SNR estimate.
+  const est = L.map((_, k) => {
+    const res = scene.X.map((x) => k === 0 ? (x[0] - x[1]) / Math.SQRT2 : k === NB - 1 ? (x[k] - x[k - 1]) / Math.SQRT2 : (x[k] - (x[k - 1] + x[k + 1]) / 2) / Math.sqrt(1.5));
+    const md = median(res), mad = median(res.map((v) => Math.abs(v - md))) * 1.4826;
+    return mean(scene.X.map((x) => x[k])) / Math.max(mad, 1e-6);
+  });
+
+  // --- Part A UI
+  const thr = ctl("crThr", "Flag bands with estimated SNR below", 5, 60, 1, 20, (v) => v);
+  const cbDrop = el("input", { type: "checkbox", id: "crDrop" }), cbOver = el("input", { type: "checkbox", id: "crOver" });
+  const checks = el("div", { class: "ctl" }, [
+    el("label", { for: "crDrop", style: "justify-content:flex-start;gap:8px;color:var(--ink)" }, [cbDrop, document.createTextNode("Drop the flagged bands")]),
+    el("label", { for: "crOver", style: "justify-content:flex-start;gap:8px;color:var(--ink)" }, [cbOver, document.createTextNode("Keep one copy in the 900–1000 nm overlap")]),
+  ]);
+  const keptR = ro("Bands kept", "gold"), flagR = ro("Flagged", "bad"), overR = ro("Overlap duplicates removed");
+  const sf = frame(640, 230, { x: [0.4, 2.5], y: [0, 0.65], b: 30 });
+  gridY(sf, [0, 0.2, 0.4, 0.6], (v) => v.toFixed(1)); gridX(sf, [0.5, 1, 1.5, 2, 2.5], (v) => `${v} µm`);
+  const sg = S("g"); sf.svg.append(sg);
+  const nf = frame(640, 200, { x: [0.4, 2.5], y: [-0.2, 2.6], b: 30 });
+  gridX(nf, [0.5, 1, 1.5, 2, 2.5], (v) => `${v} µm`); gridY(nf, [0, 1, 2], (v) => `${10 ** v}`);
+  nf.svg.append(S("rect", { x: nf.X(0.9), y: nf.t, width: nf.X(1.0) - nf.X(0.9), height: nf.h - nf.t - nf.b, fill: "var(--gold)", opacity: 0.14 }));
+  nf.svg.append(S("text", { x: nf.X(0.95), y: nf.t + 11, "text-anchor": "middle", "font-size": 9.5, fill: "var(--gold)", text: "overlap" }));
+  const ng = S("g"); nf.svg.append(ng);
+  let keep = new Array(NB).fill(true);
+  const overlapDup = bands.map((b) => (b.det === "VNIR" && b.l > 0.95) || (b.det === "SWIR" && b.l < 0.95));
+  const pix = scene.X[3];
+  function updA() {
+    const t = +thr.input.value;
+    const flagged = est.map((s) => s < t);
+    keep = bands.map((_, k) => !((cbDrop.checked && flagged[k]) || (cbOver.checked && overlapDup[k])));
+    sg.innerHTML = ""; ng.innerHTML = "";
+    let d = "";
+    pix.forEach((v, k) => { if (!keep[k]) return; d += `${d ? "L" : "M"}${sf.X(L[k]).toFixed(1)},${sf.Y(clamp(v, 0, 0.65)).toFixed(1)}`; });
+    sg.append(S("path", { d, fill: "none", stroke: "var(--cool)", "stroke-width": 1.4 }));
+    pix.forEach((v, k) => { if (flagged[k] && keep[k]) sg.append(S("circle", { cx: sf.X(L[k]), cy: sf.Y(clamp(v, 0, 0.65)), r: 2.6, fill: "var(--bad)" })); });
+    est.forEach((s, k) => ng.append(S("circle", { cx: nf.X(L[k]), cy: nf.Y(Math.log10(Math.max(s, 0.7))), r: 2.2, fill: !keep[k] ? "var(--muted)" : flagged[k] ? "var(--bad)" : "var(--good)", opacity: keep[k] ? 1 : 0.35 })));
+    ng.append(S("line", { x1: nf.l, x2: nf.w - nf.r, y1: nf.Y(Math.log10(t)), y2: nf.Y(Math.log10(t)), stroke: "var(--ink)", "stroke-dasharray": "4 3" }));
+    keptR.b.textContent = `${keep.filter(Boolean).length} / ${NB}`; flagR.b.textContent = flagged.filter(Boolean).length; overR.b.textContent = cbOver.checked ? overlapDup.filter(Boolean).length : 0;
+    if (cbDrop.checked && cbOver.checked) api.award("Lab: cleaned the bands");
+    clean = keep.slice();
+  }
+  let clean = keep.slice();
+  [thr.input, cbDrop, cbOver].forEach((c) => c.addEventListener("input", updA));
+  [cbDrop, cbOver].forEach((c) => c.addEventListener("change", updA));
+  updA();
+
+  // --- Part B: ridge shares in the browser
+  function solveRidge(X, Y, lambda) { return prepRidge(X, Y)(lambda); }
+  function prepRidge(X, Y) {
+    const n = X.length, d = X[0].length, q = Y[0].length;
+    const mu = new Array(d).fill(0), sd = new Array(d).fill(0), ym = new Array(q).fill(0);
+    X.forEach((x) => x.forEach((v, j) => (mu[j] += v / n))); X.forEach((x) => x.forEach((v, j) => (sd[j] += (v - mu[j]) ** 2 / n)));
+    sd.forEach((v, j) => (sd[j] = Math.sqrt(v) || 1)); Y.forEach((y) => y.forEach((v, j) => (ym[j] += v / n)));
+    const Z = X.map((x) => x.map((v, j) => (v - mu[j]) / sd[j]));
+    const A = Array.from({ length: d }, () => new Float64Array(d)), B = Array.from({ length: d }, () => new Float64Array(q));
+    for (let i = 0; i < n; i++) { const z = Z[i]; for (let a = 0; a < d; a++) { const za = z[a]; if (!za) continue; const Ar = A[a]; for (let b = a; b < d; b++) Ar[b] += za * z[b]; for (let c = 0; c < q; c++) B[a][c] += za * (Y[i][c] - ym[c]); } }
+    for (let a = 0; a < d; a++) for (let b = 0; b < a; b++) A[a][b] = A[b][a];
+    const G = A.map((row) => Float64Array.from(row));
+    return (lambda) => {
+    const A = G.map((row) => Float64Array.from(row));
+    for (let a = 0; a < d; a++) A[a][a] += lambda * n;
+    // Cholesky solve
+    for (let j = 0; j < d; j++) { let s = A[j][j]; for (let k = 0; k < j; k++) s -= A[j][k] ** 2; A[j][j] = Math.sqrt(Math.max(s, 1e-12)); for (let i = j + 1; i < d; i++) { let t = A[i][j]; for (let k = 0; k < j; k++) t -= A[i][k] * A[j][k]; A[i][j] = t / A[j][j]; } }
+    const W = Array.from({ length: d }, () => new Float64Array(q));
+    for (let c = 0; c < q; c++) { const yv = new Float64Array(d); for (let i = 0; i < d; i++) { let t = B[i][c]; for (let k = 0; k < i; k++) t -= A[i][k] * yv[k]; yv[i] = t / A[i][i]; } for (let i = d - 1; i >= 0; i--) { let t = yv[i]; for (let k = i + 1; k < d; k++) t -= A[k][i] * W[k][c]; W[i][c] = t / A[i][i]; } }
+    return (Xt) => Xt.map((x) => { const p = ym.map((m, c) => m + x.reduce((s, v, j) => s + ((v - mu[j]) / sd[j]) * W[j][c], 0)); const cl = p.map((v) => Math.max(0, v)); const t = cl.reduce((a, b) => a + b, 0) || 1; return cl.map((v) => v / t); });
+    };
+  }
+  const train = makeScene(600, 101), test = makeScene(400, 202);
+  const LAMS = [1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10];
+  const rmse = (P, Y, cols = [1, 2]) => Math.sqrt(mean(P.flatMap((p, i) => cols.map((c) => (p[c] - Y[i][c]) ** 2))));
+  const s2win = [[0.458, 0.523], [0.543, 0.578], [0.65, 0.68], [0.785, 0.9], [1.565, 1.655], [2.1, 2.28]];
+  const toS2 = (X) => X.map((x) => s2win.map(([a, b]) => mean(x.filter((_, k) => L[k] >= a && L[k] <= b))));
+  const pick = (X, cols) => X.map((x) => cols.map((c) => x[c]));
+  function selectTop(X, Y, cols, k) {
+    const sc = cols.map((c) => { const xs = X.map((x) => x[c]); const mx = mean(xs); let best = 0; for (const t of [1, 2]) { const ys = Y.map((y) => y[t]); const my = mean(ys); let sxy = 0, sxx = 0, syy = 0; xs.forEach((v, i) => { sxy += (v - mx) * (ys[i] - my); sxx += (v - mx) ** 2; syy += (ys[i] - my) ** 2; }); best += Math.abs(sxy / Math.sqrt(sxx * syy || 1)); } return { c, s: best }; });
+    const chosen = [];
+    for (const { c } of sc.sort((a, b) => b.s - a.s)) { if (chosen.every((o) => Math.abs(L[o] - L[c]) > 0.03)) chosen.push(c); if (chosen.length === k) break; }
+    return chosen;
+  }
+  function cvLambda(Xtr, Ytr) {
+    const n = Xtr.length, fold = Xtr.map((_, i) => i % 4);
+    let best = LAMS[0], bestE = Infinity;
+    const err = LAMS.map(() => 0);
+    for (let f = 0; f < 4; f++) {
+      const tr = [], te = []; fold.forEach((v, i) => (v === f ? te : tr).push(i));
+      const prep = prepRidge(tr.map((i) => Xtr[i]), tr.map((i) => Ytr[i])), Xte = te.map((i) => Xtr[i]), Yte = te.map((i) => Ytr[i]);
+      LAMS.forEach((lam, k) => (err[k] += rmse(prep(lam)(Xte), Yte)));
+    }
+    LAMS.forEach((lam, k) => { if (err[k] < bestE) { bestE = err[k]; best = lam; } });
+    void n; return best;
+  }
+  const bf = frame(640, 210, { l: 230, x: [0, 0.2], y: [0, 4], b: 30 });
+  const bg = S("g"); bf.svg.append(bg);
+  const lf = frame(420, 220, { x: [-5, 1], y: [0, 0.2], b: 34, l: 44 });
+  gridX(lf, [-5, -4, -3, -2, -1, 0, 1], (v) => `1e${v}`); gridY(lf, [0, 0.05, 0.1, 0.15, 0.2], (v) => `${Math.round(v * 100)}`);
+  lf.svg.append(S("text", { x: lf.w / 2, y: lf.h - 2, "text-anchor": "middle", "font-size": 10.5, fill: "var(--muted)", text: "ridge penalty λ (log scale)" }));
+  const lg = S("g"); lf.svg.append(lg);
+  const lam = ctl("crLam", "Ridge penalty λ (log₁₀)", -5, 1, 1, -2, (v) => `1e${v}`);
+  const status = el("p", { class: "note" });
+  const runBtn = el("button", { class: "btn primary small", text: "Train and compare" });
+  let curve = null;
+  function compare() {
+    const all = [...Array(NB).keys()], cl = all.filter((k) => clean[k]);
+    const sets = [
+      ["Sentinel-2-like (6 bands)", toS2(train.X), toS2(test.X), "#8aa0b8"],
+      ["All 224 bands, uncleaned", train.X, test.X, "#5b9bea"],
+      [`All clean bands (${cl.length})`, pick(train.X, cl), pick(test.X, cl), "var(--good)"],
+      ["10 selected clean bands", null, null, "var(--gold)"],
+    ];
+    const sel = selectTop(train.X, train.Y, cl, 10);
+    sets[3][1] = pick(train.X, sel); sets[3][2] = pick(test.X, sel);
+    const out = sets.map(([n, Xa, Xb, col]) => { const l2 = cvLambda(Xa, train.Y); const m = solveRidge(Xa, train.Y, l2); return { n, col, e: rmse(m(Xb), test.Y), lam: l2 }; });
+    bg.innerHTML = "";
+    gridX({ ...bf, svg: bg }, [0, 0.05, 0.1, 0.15, 0.2], (v) => `${Math.round(v * 100)} pts`);
+    out.forEach((o, i) => {
+      const y = bf.Y(3.5 - i) - 10;
+      bg.append(S("text", { x: bf.l - 8, y: y + 14, "text-anchor": "end", "font-size": 11.5, fill: "var(--ink)", text: o.n }), S("rect", { x: bf.X(0), y, width: Math.max(2, bf.X(Math.min(o.e, 0.2)) - bf.X(0)), height: 20, rx: 4, fill: o.col }), S("text", { x: bf.X(Math.min(o.e, 0.2)) + 6, y: y + 14, "font-size": 11.5, fill: "var(--ink)", text: `${(o.e * 100).toFixed(1)} pts` }));
+    });
+    const prepC = prepRidge(pick(train.X, cl), train.Y), XtC = pick(test.X, cl);
+    curve = LAMS.map((l2) => ({ l: Math.log10(l2), e: rmse(prepC(l2)(XtC), test.Y) }));
+    drawCurve();
+    const best = out.reduce((a, b) => (a.e < b.e ? a : b));
+    const [s2o, rawo, cleano, selo] = out;
+    const parts = [`<b>Lowest share error: ${best.n}</b> (${(best.e * 100).toFixed(1)} points).`];
+    if (s2o.e > cleano.e) parts.push(`All clean bands beat Sentinel-2-like bands by ${(s2o.e / cleano.e).toFixed(1)}×: the narrow features that tell roof from sand (iron oxide near 0.87 µm, clay near 2.2 µm, carbonate near 2.33 µm) survive in narrow bands and are averaged away in wide ones.`);
+    if (cl.length === NB) parts.push("You have not cleaned the bands yet: do part 1, then train again.");
+    else parts.push(Math.abs(rawo.e - cleano.e) < 0.004 ? "Cleaning barely changed ridge: it down-weights noisy bands by itself, as in the real experiment. Cleaning matters most for models that select bands." : `Cleaning changed ridge's error from ${(rawo.e * 100).toFixed(1)} to ${(cleano.e * 100).toFixed(1)} points.`);
+    if (selo.e > cleano.e) parts.push(`Keeping only 10 bands cost ${((selo.e - cleano.e) * 100).toFixed(1)} points: selection throws information away.`);
+    status.innerHTML = parts.join(" ");
+    api.award("Lab: ridge shares");
+  }
+  function drawCurve() {
+    lg.innerHTML = "";
+    if (!curve) return;
+    const ymax = Math.max(...curve.map((c) => c.e)) * 1.15;
+    const Y = (v) => lf.t + (1 - v / Math.max(ymax, 0.05)) * (lf.h - lf.t - lf.b);
+    lg.append(S("path", { d: curve.map((c, i) => `${i ? "L" : "M"}${lf.X(c.l)},${Y(c.e)}`).join(""), fill: "none", stroke: "var(--good)", "stroke-width": 2.4 }));
+    const lv = +lam.input.value, near = curve.reduce((a, b) => (Math.abs(b.l - lv) < Math.abs(a.l - lv) ? b : a));
+    lg.append(S("circle", { cx: lf.X(near.l), cy: Y(near.e), r: 6, fill: "var(--heat)" }), S("text", { x: lf.X(near.l) + 8, y: Y(near.e) - 8, "font-size": 11, fill: "var(--ink)", text: `${(near.e * 100).toFixed(1)} pts` }));
+    lg.append(S("text", { x: lf.X(-4.9), y: lf.t + 12, "font-size": 10, fill: "var(--muted)", text: "too little: chases noise" }), S("text", { x: lf.X(0.9), y: lf.t + 12, "text-anchor": "end", "font-size": 10, fill: "var(--muted)", text: "too much: flattens the signal" }));
+  }
+  runBtn.addEventListener("click", () => { runBtn.disabled = true; runBtn.textContent = "Training…"; setTimeout(() => { compare(); runBtn.disabled = false; runBtn.textContent = "Train and compare again"; }, 30); });
+  lam.input.addEventListener("input", drawCurve);
+
+  // --- Part C: the real experiment
+  const rf2 = frame(900, 240, { l: 250, x: [0, 0.18], y: [0, 5], b: 30 });
+  gridX(rf2, [0, 0.04, 0.08, 0.12, 0.16], (v) => `${Math.round(v * 100)} pts`);
+  [["Sentinel-2-like bands · ridge", 0.1134, 0.0649, "#8aa0b8"], ["All 162 bands · ridge", 0.0529, 0.0184, "#16865a"], ["20 selected bands · ridge", 0.0732, 0.033, "#a77b0f"], ["Layered · soft · ridge", 0.0615, 0.0237, "#c9501f"], ["Unmixing, simple endmembers", 0.126, 0.0879, "#93a3b8"]].forEach(([n, a, b2, col], i) => {
+    const y = rf2.Y(4.6 - i) - 10;
+    rf2.svg.append(S("text", { x: rf2.l - 8, y: y + 12, "text-anchor": "end", "font-size": 11.5, fill: "var(--ink)", text: n }));
+    rf2.svg.append(S("rect", { x: rf2.X(0), y, width: rf2.X(a) - rf2.X(0), height: 9, rx: 2, fill: col, opacity: 0.45 }), S("rect", { x: rf2.X(0), y: y + 10, width: rf2.X(b2) - rf2.X(0), height: 9, rx: 2, fill: col }));
+    rf2.svg.append(S("text", { x: rf2.X(a) + 5, y: y + 8, "font-size": 9.5, fill: "var(--muted)", text: `${(a * 100).toFixed(1)} per 10 m pixel` }), S("text", { x: rf2.X(b2) + 5, y: y + 18, "font-size": 10, fill: "var(--ink)", text: `${(b2 * 100).toFixed(1)} per 90 m block` }));
+  });
+
+  box.append(
+    el("h3", { text: "1 · Find and remove the noisy bands" }),
+    el("div", { class: "viz-box" }, nf.svg),
+    el("div", { class: "legend-row" }, [el("span", { html: '<i style="background:var(--good)"></i>Estimated SNR, kept' }), el("span", { html: '<i style="background:var(--bad)"></i>Below the threshold' }), el("span", { html: '<i style="background:var(--muted)"></i>Removed' })]),
+    el("div", { class: "lab-row" }, [el("div", { class: "lab-ctrl" }, [thr.wrap, checks]), el("div", { class: "lab-ctrl" }, [el("div", { class: "readout" }, [keptR.wrap, flagR.wrap, overR.wrap]), el("p", { class: "hint", text: "The SNR here is estimated from 400 pixels of the image alone, using the spectral-neighbour residual. Notice the collapse at both ends, in the water-vapour bands near 1.4 and 1.9 µm, and the overlap where both detectors are weak." })])]),
+    el("div", { class: "viz-box" }, sf.svg),
+    el("p", { class: "hint", text: "One pixel's measured spectrum. Red dots are bands still flagged as noisy. Clean the bands and watch the spectrum become readable." }),
+    el("h3", { text: "2 · Predict roof and sand shares with ridge regression" }),
+    el("div", { class: "lab-row" }, [el("div", { class: "lab-ctrl" }, [runBtn, el("div", { class: "viz-box" }, bf.svg)]), el("div", { class: "lab-ctrl" }, [el("div", { class: "viz-box" }, lf.svg), lam.wrap, el("p", { class: "hint", text: "Test error of ridge on all clean bands for each penalty λ. The best λ is picked by cross-validation on the training pixels only." })])]),
+    status,
+    el("h3", { text: "3 · The real experiment (HYDICE Urban, hidden tiles)" }),
+    el("div", { class: "viz-box" }, rf2.svg),
+    el("p", { class: "hint", text: "Root-mean-square error of material shares in percentage points of area. Faint bar: per 10 m mixed pixel. Solid bar: per 90 m block, CoolCairo's unit. All clean bands with ridge was the most accurate at both scales." }),
+  );
 };
 
 route();

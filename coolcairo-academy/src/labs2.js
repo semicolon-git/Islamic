@@ -448,3 +448,211 @@ LABS.flash = (box, api) => {
   show();
   box.append(wrap, ctrls, el("div", { class: "readout" }, [prog.wrap]));
 };
+
+// ---------------------------------------------------------------- 17. band cleaning + ridge shares
+LABS.cleanridge = (box, api) => {
+  // An EnMAP-like sensor: VNIR 420–1000 nm (91 bands) and SWIR 900–2450 nm (133 bands), overlapping at 900–1000 nm.
+  const bands = [];
+  for (let i = 0; i < 91; i++) bands.push({ l: 0.42 + i * (0.58 / 90), det: "VNIR" });
+  for (let i = 0; i < 133; i++) bands.push({ l: 0.9 + i * (1.55 / 132), det: "SWIR" });
+  bands.sort((a, b) => a.l - b.l);
+  const NB = bands.length, L = bands.map((b) => b.l);
+  const g = (l, c, w) => Math.exp(-(((l - c) / w) ** 2));
+  const END = {
+    Vegetation: (l) => { let v = 0.05 + 0.04 * g(l, 0.55, 0.04) + 0.42 / (1 + Math.exp(-(l - 0.72) / 0.018)); if (l > 1.3) v *= Math.max(0.35, 1 - 0.55 * (l - 1.3)); return v - 0.04 * g(l, 0.97, 0.03) - 0.05 * g(l, 1.2, 0.04); },
+    // Pale concrete roof and desert sand share the same broad brightness; they differ in narrow features
+    // (iron oxide near 0.87 µm and clay near 2.2 µm for sand, carbonate near 2.33 µm for concrete).
+    Sand: (l) => 0.27 + 0.08 * Math.min(l - 0.4, 1.6) - 0.045 * g(l, 0.87, 0.035) - 0.06 * g(l, 2.2, 0.014) - 0.02 * g(l, 0.5, 0.05),
+    Roof: (l) => 0.27 + 0.08 * Math.min(l - 0.4, 1.6) - 0.06 * g(l, 2.33, 0.014) - 0.015 * g(l, 1.95, 0.02),
+    Asphalt: (l) => 0.06 + 0.03 * (l - 0.4) - 0.015 * g(l, 1.73, 0.015) - 0.02 * g(l, 2.31, 0.02),
+  };
+  const MATS = Object.keys(END);
+  // Signal reaching each band: sunlight × air transmission × detector response. SNR scales with it.
+  const sun = (l) => { const T = 5800, c2 = 14388; return 1 / (l ** 5 * (Math.exp(c2 / (l * T)) - 1)); };
+  const sunMax = sun(0.5);
+  const tau = (l) => 1 - 0.35 * g(l, 0.94, 0.02) - 0.25 * g(l, 1.13, 0.025) - 0.97 * g(l, 1.4, 0.045) - 0.98 * g(l, 1.88, 0.06) - 0.5 * g(l, 2.5, 0.06);
+  const resp = (b) => b.det === "VNIR" ? Math.min(1, (b.l - 0.415) / 0.05) * Math.min(1, Math.max(0.05, (1.0 - b.l) / 0.08)) : Math.min(1, Math.max(0.05, (b.l - 0.9) / 0.1)) * Math.min(1, Math.max(0.05, (2.455 - b.l) / 0.12));
+  const SNR = bands.map((b) => Math.max(0.6, 260 * Math.sqrt((sun(b.l) / sunMax) * Math.max(0.005, tau(b.l)) * resp(b))));
+  // A small dataset: pixels mixing the four materials, with brightness variability and band noise.
+  function makeScene(n, seed) {
+    const r = mulberry32(seed), X = [], Y = [];
+    for (let p = 0; p < n; p++) {
+      const w = MATS.map(() => -Math.log(r() + 1e-9)); const s = w.reduce((a, b) => a + b, 0); const f = w.map((v) => v / s);
+      // Brightness varies by material (weathering, dust) and for the whole pixel (slope, illumination).
+      const scale = MATS.map(() => 0.85 + 0.3 * r()), light = 0.9 + 0.2 * r();
+      X.push(bands.map((b, k) => { const t = light * MATS.reduce((a, m, j) => a + f[j] * scale[j] * END[m](b.l), 0); return t + gauss(r) * (0.3 / SNR[k]) + (b.det === "SWIR" && b.l < 1.0 ? 0.012 : 0); }));
+      Y.push(f);
+    }
+    return { X, Y };
+  }
+  const scene = makeScene(400, 71);
+  // Spectral-neighbour residual SNR estimate.
+  const est = L.map((_, k) => {
+    const res = scene.X.map((x) => k === 0 ? (x[0] - x[1]) / Math.SQRT2 : k === NB - 1 ? (x[k] - x[k - 1]) / Math.SQRT2 : (x[k] - (x[k - 1] + x[k + 1]) / 2) / Math.sqrt(1.5));
+    const md = median(res), mad = median(res.map((v) => Math.abs(v - md))) * 1.4826;
+    return mean(scene.X.map((x) => x[k])) / Math.max(mad, 1e-6);
+  });
+
+  // --- Part A UI
+  const thr = ctl("crThr", "Flag bands with estimated SNR below", 5, 60, 1, 20, (v) => v);
+  const cbDrop = el("input", { type: "checkbox", id: "crDrop" }), cbOver = el("input", { type: "checkbox", id: "crOver" });
+  const checks = el("div", { class: "ctl" }, [
+    el("label", { for: "crDrop", style: "justify-content:flex-start;gap:8px;color:var(--ink)" }, [cbDrop, document.createTextNode("Drop the flagged bands")]),
+    el("label", { for: "crOver", style: "justify-content:flex-start;gap:8px;color:var(--ink)" }, [cbOver, document.createTextNode("Keep one copy in the 900–1000 nm overlap")]),
+  ]);
+  const keptR = ro("Bands kept", "gold"), flagR = ro("Flagged", "bad"), overR = ro("Overlap duplicates removed");
+  const sf = frame(640, 230, { x: [0.4, 2.5], y: [0, 0.65], b: 30 });
+  gridY(sf, [0, 0.2, 0.4, 0.6], (v) => v.toFixed(1)); gridX(sf, [0.5, 1, 1.5, 2, 2.5], (v) => `${v} µm`);
+  const sg = S("g"); sf.svg.append(sg);
+  const nf = frame(640, 200, { x: [0.4, 2.5], y: [-0.2, 2.6], b: 30 });
+  gridX(nf, [0.5, 1, 1.5, 2, 2.5], (v) => `${v} µm`); gridY(nf, [0, 1, 2], (v) => `${10 ** v}`);
+  nf.svg.append(S("rect", { x: nf.X(0.9), y: nf.t, width: nf.X(1.0) - nf.X(0.9), height: nf.h - nf.t - nf.b, fill: "var(--gold)", opacity: 0.14 }));
+  nf.svg.append(S("text", { x: nf.X(0.95), y: nf.t + 11, "text-anchor": "middle", "font-size": 9.5, fill: "var(--gold)", text: "overlap" }));
+  const ng = S("g"); nf.svg.append(ng);
+  let keep = new Array(NB).fill(true);
+  const overlapDup = bands.map((b) => (b.det === "VNIR" && b.l > 0.95) || (b.det === "SWIR" && b.l < 0.95));
+  const pix = scene.X[3];
+  function updA() {
+    const t = +thr.input.value;
+    const flagged = est.map((s) => s < t);
+    keep = bands.map((_, k) => !((cbDrop.checked && flagged[k]) || (cbOver.checked && overlapDup[k])));
+    sg.innerHTML = ""; ng.innerHTML = "";
+    let d = "";
+    pix.forEach((v, k) => { if (!keep[k]) return; d += `${d ? "L" : "M"}${sf.X(L[k]).toFixed(1)},${sf.Y(clamp(v, 0, 0.65)).toFixed(1)}`; });
+    sg.append(S("path", { d, fill: "none", stroke: "var(--cool)", "stroke-width": 1.4 }));
+    pix.forEach((v, k) => { if (flagged[k] && keep[k]) sg.append(S("circle", { cx: sf.X(L[k]), cy: sf.Y(clamp(v, 0, 0.65)), r: 2.6, fill: "var(--bad)" })); });
+    est.forEach((s, k) => ng.append(S("circle", { cx: nf.X(L[k]), cy: nf.Y(Math.log10(Math.max(s, 0.7))), r: 2.2, fill: !keep[k] ? "var(--muted)" : flagged[k] ? "var(--bad)" : "var(--good)", opacity: keep[k] ? 1 : 0.35 })));
+    ng.append(S("line", { x1: nf.l, x2: nf.w - nf.r, y1: nf.Y(Math.log10(t)), y2: nf.Y(Math.log10(t)), stroke: "var(--ink)", "stroke-dasharray": "4 3" }));
+    keptR.b.textContent = `${keep.filter(Boolean).length} / ${NB}`; flagR.b.textContent = flagged.filter(Boolean).length; overR.b.textContent = cbOver.checked ? overlapDup.filter(Boolean).length : 0;
+    if (cbDrop.checked && cbOver.checked) api.award("Lab: cleaned the bands");
+    clean = keep.slice();
+  }
+  let clean = keep.slice();
+  [thr.input, cbDrop, cbOver].forEach((c) => c.addEventListener("input", updA));
+  [cbDrop, cbOver].forEach((c) => c.addEventListener("change", updA));
+  updA();
+
+  // --- Part B: ridge shares in the browser
+  function solveRidge(X, Y, lambda) { return prepRidge(X, Y)(lambda); }
+  function prepRidge(X, Y) {
+    const n = X.length, d = X[0].length, q = Y[0].length;
+    const mu = new Array(d).fill(0), sd = new Array(d).fill(0), ym = new Array(q).fill(0);
+    X.forEach((x) => x.forEach((v, j) => (mu[j] += v / n))); X.forEach((x) => x.forEach((v, j) => (sd[j] += (v - mu[j]) ** 2 / n)));
+    sd.forEach((v, j) => (sd[j] = Math.sqrt(v) || 1)); Y.forEach((y) => y.forEach((v, j) => (ym[j] += v / n)));
+    const Z = X.map((x) => x.map((v, j) => (v - mu[j]) / sd[j]));
+    const A = Array.from({ length: d }, () => new Float64Array(d)), B = Array.from({ length: d }, () => new Float64Array(q));
+    for (let i = 0; i < n; i++) { const z = Z[i]; for (let a = 0; a < d; a++) { const za = z[a]; if (!za) continue; const Ar = A[a]; for (let b = a; b < d; b++) Ar[b] += za * z[b]; for (let c = 0; c < q; c++) B[a][c] += za * (Y[i][c] - ym[c]); } }
+    for (let a = 0; a < d; a++) for (let b = 0; b < a; b++) A[a][b] = A[b][a];
+    const G = A.map((row) => Float64Array.from(row));
+    return (lambda) => {
+    const A = G.map((row) => Float64Array.from(row));
+    for (let a = 0; a < d; a++) A[a][a] += lambda * n;
+    // Cholesky solve
+    for (let j = 0; j < d; j++) { let s = A[j][j]; for (let k = 0; k < j; k++) s -= A[j][k] ** 2; A[j][j] = Math.sqrt(Math.max(s, 1e-12)); for (let i = j + 1; i < d; i++) { let t = A[i][j]; for (let k = 0; k < j; k++) t -= A[i][k] * A[j][k]; A[i][j] = t / A[j][j]; } }
+    const W = Array.from({ length: d }, () => new Float64Array(q));
+    for (let c = 0; c < q; c++) { const yv = new Float64Array(d); for (let i = 0; i < d; i++) { let t = B[i][c]; for (let k = 0; k < i; k++) t -= A[i][k] * yv[k]; yv[i] = t / A[i][i]; } for (let i = d - 1; i >= 0; i--) { let t = yv[i]; for (let k = i + 1; k < d; k++) t -= A[k][i] * W[k][c]; W[i][c] = t / A[i][i]; } }
+    return (Xt) => Xt.map((x) => { const p = ym.map((m, c) => m + x.reduce((s, v, j) => s + ((v - mu[j]) / sd[j]) * W[j][c], 0)); const cl = p.map((v) => Math.max(0, v)); const t = cl.reduce((a, b) => a + b, 0) || 1; return cl.map((v) => v / t); });
+    };
+  }
+  const train = makeScene(600, 101), test = makeScene(400, 202);
+  const LAMS = [1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10];
+  const rmse = (P, Y, cols = [1, 2]) => Math.sqrt(mean(P.flatMap((p, i) => cols.map((c) => (p[c] - Y[i][c]) ** 2))));
+  const s2win = [[0.458, 0.523], [0.543, 0.578], [0.65, 0.68], [0.785, 0.9], [1.565, 1.655], [2.1, 2.28]];
+  const toS2 = (X) => X.map((x) => s2win.map(([a, b]) => mean(x.filter((_, k) => L[k] >= a && L[k] <= b))));
+  const pick = (X, cols) => X.map((x) => cols.map((c) => x[c]));
+  function selectTop(X, Y, cols, k) {
+    const sc = cols.map((c) => { const xs = X.map((x) => x[c]); const mx = mean(xs); let best = 0; for (const t of [1, 2]) { const ys = Y.map((y) => y[t]); const my = mean(ys); let sxy = 0, sxx = 0, syy = 0; xs.forEach((v, i) => { sxy += (v - mx) * (ys[i] - my); sxx += (v - mx) ** 2; syy += (ys[i] - my) ** 2; }); best += Math.abs(sxy / Math.sqrt(sxx * syy || 1)); } return { c, s: best }; });
+    const chosen = [];
+    for (const { c } of sc.sort((a, b) => b.s - a.s)) { if (chosen.every((o) => Math.abs(L[o] - L[c]) > 0.03)) chosen.push(c); if (chosen.length === k) break; }
+    return chosen;
+  }
+  function cvLambda(Xtr, Ytr) {
+    const n = Xtr.length, fold = Xtr.map((_, i) => i % 4);
+    let best = LAMS[0], bestE = Infinity;
+    const err = LAMS.map(() => 0);
+    for (let f = 0; f < 4; f++) {
+      const tr = [], te = []; fold.forEach((v, i) => (v === f ? te : tr).push(i));
+      const prep = prepRidge(tr.map((i) => Xtr[i]), tr.map((i) => Ytr[i])), Xte = te.map((i) => Xtr[i]), Yte = te.map((i) => Ytr[i]);
+      LAMS.forEach((lam, k) => (err[k] += rmse(prep(lam)(Xte), Yte)));
+    }
+    LAMS.forEach((lam, k) => { if (err[k] < bestE) { bestE = err[k]; best = lam; } });
+    void n; return best;
+  }
+  const bf = frame(640, 210, { l: 230, x: [0, 0.2], y: [0, 4], b: 30 });
+  const bg = S("g"); bf.svg.append(bg);
+  const lf = frame(420, 220, { x: [-5, 1], y: [0, 0.2], b: 34, l: 44 });
+  gridX(lf, [-5, -4, -3, -2, -1, 0, 1], (v) => `1e${v}`); gridY(lf, [0, 0.05, 0.1, 0.15, 0.2], (v) => `${Math.round(v * 100)}`);
+  lf.svg.append(S("text", { x: lf.w / 2, y: lf.h - 2, "text-anchor": "middle", "font-size": 10.5, fill: "var(--muted)", text: "ridge penalty λ (log scale)" }));
+  const lg = S("g"); lf.svg.append(lg);
+  const lam = ctl("crLam", "Ridge penalty λ (log₁₀)", -5, 1, 1, -2, (v) => `1e${v}`);
+  const status = el("p", { class: "note" });
+  const runBtn = el("button", { class: "btn primary small", text: "Train and compare" });
+  let curve = null;
+  function compare() {
+    const all = [...Array(NB).keys()], cl = all.filter((k) => clean[k]);
+    const sets = [
+      ["Sentinel-2-like (6 bands)", toS2(train.X), toS2(test.X), "#8aa0b8"],
+      ["All 224 bands, uncleaned", train.X, test.X, "#5b9bea"],
+      [`All clean bands (${cl.length})`, pick(train.X, cl), pick(test.X, cl), "var(--good)"],
+      ["10 selected clean bands", null, null, "var(--gold)"],
+    ];
+    const sel = selectTop(train.X, train.Y, cl, 10);
+    sets[3][1] = pick(train.X, sel); sets[3][2] = pick(test.X, sel);
+    const out = sets.map(([n, Xa, Xb, col]) => { const l2 = cvLambda(Xa, train.Y); const m = solveRidge(Xa, train.Y, l2); return { n, col, e: rmse(m(Xb), test.Y), lam: l2 }; });
+    bg.innerHTML = "";
+    gridX({ ...bf, svg: bg }, [0, 0.05, 0.1, 0.15, 0.2], (v) => `${Math.round(v * 100)} pts`);
+    out.forEach((o, i) => {
+      const y = bf.Y(3.5 - i) - 10;
+      bg.append(S("text", { x: bf.l - 8, y: y + 14, "text-anchor": "end", "font-size": 11.5, fill: "var(--ink)", text: o.n }), S("rect", { x: bf.X(0), y, width: Math.max(2, bf.X(Math.min(o.e, 0.2)) - bf.X(0)), height: 20, rx: 4, fill: o.col }), S("text", { x: bf.X(Math.min(o.e, 0.2)) + 6, y: y + 14, "font-size": 11.5, fill: "var(--ink)", text: `${(o.e * 100).toFixed(1)} pts` }));
+    });
+    const prepC = prepRidge(pick(train.X, cl), train.Y), XtC = pick(test.X, cl);
+    curve = LAMS.map((l2) => ({ l: Math.log10(l2), e: rmse(prepC(l2)(XtC), test.Y) }));
+    drawCurve();
+    const best = out.reduce((a, b) => (a.e < b.e ? a : b));
+    const [s2o, rawo, cleano, selo] = out;
+    const parts = [`<b>Lowest share error: ${best.n}</b> (${(best.e * 100).toFixed(1)} points).`];
+    if (s2o.e > cleano.e) parts.push(`All clean bands beat Sentinel-2-like bands by ${(s2o.e / cleano.e).toFixed(1)}×: the narrow features that tell roof from sand (iron oxide near 0.87 µm, clay near 2.2 µm, carbonate near 2.33 µm) survive in narrow bands and are averaged away in wide ones.`);
+    if (cl.length === NB) parts.push("You have not cleaned the bands yet: do part 1, then train again.");
+    else parts.push(Math.abs(rawo.e - cleano.e) < 0.004 ? "Cleaning barely changed ridge: it down-weights noisy bands by itself, as in the real experiment. Cleaning matters most for models that select bands." : `Cleaning changed ridge's error from ${(rawo.e * 100).toFixed(1)} to ${(cleano.e * 100).toFixed(1)} points.`);
+    if (selo.e > cleano.e) parts.push(`Keeping only 10 bands cost ${((selo.e - cleano.e) * 100).toFixed(1)} points: selection throws information away.`);
+    status.innerHTML = parts.join(" ");
+    api.award("Lab: ridge shares");
+  }
+  function drawCurve() {
+    lg.innerHTML = "";
+    if (!curve) return;
+    const ymax = Math.max(...curve.map((c) => c.e)) * 1.15;
+    const Y = (v) => lf.t + (1 - v / Math.max(ymax, 0.05)) * (lf.h - lf.t - lf.b);
+    lg.append(S("path", { d: curve.map((c, i) => `${i ? "L" : "M"}${lf.X(c.l)},${Y(c.e)}`).join(""), fill: "none", stroke: "var(--good)", "stroke-width": 2.4 }));
+    const lv = +lam.input.value, near = curve.reduce((a, b) => (Math.abs(b.l - lv) < Math.abs(a.l - lv) ? b : a));
+    lg.append(S("circle", { cx: lf.X(near.l), cy: Y(near.e), r: 6, fill: "var(--heat)" }), S("text", { x: lf.X(near.l) + 8, y: Y(near.e) - 8, "font-size": 11, fill: "var(--ink)", text: `${(near.e * 100).toFixed(1)} pts` }));
+    lg.append(S("text", { x: lf.X(-4.9), y: lf.t + 12, "font-size": 10, fill: "var(--muted)", text: "too little: chases noise" }), S("text", { x: lf.X(0.9), y: lf.t + 12, "text-anchor": "end", "font-size": 10, fill: "var(--muted)", text: "too much: flattens the signal" }));
+  }
+  runBtn.addEventListener("click", () => { runBtn.disabled = true; runBtn.textContent = "Training…"; setTimeout(() => { compare(); runBtn.disabled = false; runBtn.textContent = "Train and compare again"; }, 30); });
+  lam.input.addEventListener("input", drawCurve);
+
+  // --- Part C: the real experiment
+  const rf2 = frame(900, 240, { l: 250, x: [0, 0.18], y: [0, 5], b: 30 });
+  gridX(rf2, [0, 0.04, 0.08, 0.12, 0.16], (v) => `${Math.round(v * 100)} pts`);
+  [["Sentinel-2-like bands · ridge", 0.1134, 0.0649, "#8aa0b8"], ["All 162 bands · ridge", 0.0529, 0.0184, "#16865a"], ["20 selected bands · ridge", 0.0732, 0.033, "#a77b0f"], ["Layered · soft · ridge", 0.0615, 0.0237, "#c9501f"], ["Unmixing, simple endmembers", 0.126, 0.0879, "#93a3b8"]].forEach(([n, a, b2, col], i) => {
+    const y = rf2.Y(4.6 - i) - 10;
+    rf2.svg.append(S("text", { x: rf2.l - 8, y: y + 12, "text-anchor": "end", "font-size": 11.5, fill: "var(--ink)", text: n }));
+    rf2.svg.append(S("rect", { x: rf2.X(0), y, width: rf2.X(a) - rf2.X(0), height: 9, rx: 2, fill: col, opacity: 0.45 }), S("rect", { x: rf2.X(0), y: y + 10, width: rf2.X(b2) - rf2.X(0), height: 9, rx: 2, fill: col }));
+    rf2.svg.append(S("text", { x: rf2.X(a) + 5, y: y + 8, "font-size": 9.5, fill: "var(--muted)", text: `${(a * 100).toFixed(1)} per 10 m pixel` }), S("text", { x: rf2.X(b2) + 5, y: y + 18, "font-size": 10, fill: "var(--ink)", text: `${(b2 * 100).toFixed(1)} per 90 m block` }));
+  });
+
+  box.append(
+    el("h3", { text: "1 · Find and remove the noisy bands" }),
+    el("div", { class: "viz-box" }, nf.svg),
+    el("div", { class: "legend-row" }, [el("span", { html: '<i style="background:var(--good)"></i>Estimated SNR, kept' }), el("span", { html: '<i style="background:var(--bad)"></i>Below the threshold' }), el("span", { html: '<i style="background:var(--muted)"></i>Removed' })]),
+    el("div", { class: "lab-row" }, [el("div", { class: "lab-ctrl" }, [thr.wrap, checks]), el("div", { class: "lab-ctrl" }, [el("div", { class: "readout" }, [keptR.wrap, flagR.wrap, overR.wrap]), el("p", { class: "hint", text: "The SNR here is estimated from 400 pixels of the image alone, using the spectral-neighbour residual. Notice the collapse at both ends, in the water-vapour bands near 1.4 and 1.9 µm, and the overlap where both detectors are weak." })])]),
+    el("div", { class: "viz-box" }, sf.svg),
+    el("p", { class: "hint", text: "One pixel's measured spectrum. Red dots are bands still flagged as noisy. Clean the bands and watch the spectrum become readable." }),
+    el("h3", { text: "2 · Predict roof and sand shares with ridge regression" }),
+    el("div", { class: "lab-row" }, [el("div", { class: "lab-ctrl" }, [runBtn, el("div", { class: "viz-box" }, bf.svg)]), el("div", { class: "lab-ctrl" }, [el("div", { class: "viz-box" }, lf.svg), lam.wrap, el("p", { class: "hint", text: "Test error of ridge on all clean bands for each penalty λ. The best λ is picked by cross-validation on the training pixels only." })])]),
+    status,
+    el("h3", { text: "3 · The real experiment (HYDICE Urban, hidden tiles)" }),
+    el("div", { class: "viz-box" }, rf2.svg),
+    el("p", { class: "hint", text: "Root-mean-square error of material shares in percentage points of area. Faint bar: per 10 m mixed pixel. Solid bar: per 90 m block, CoolCairo's unit. All clean bands with ridge was the most accurate at both scales." }),
+  );
+};

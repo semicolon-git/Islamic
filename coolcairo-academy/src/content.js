@@ -403,6 +403,51 @@ const CHAPTERS = [
     ],
   },
   {
+    id: 17, act: 4, title: "Clean bands, better shares", sub: "Band cleaning and all-band ridge: CoolCairo's hyperspectral upgrade path",
+    brief: `
+      <p>A team experiment tested what actually improves results with hyperspectral data. Two steps came out on top, and both are now
+      CoolCairo's recommended path for EnMAP and, later, Satellite 813.</p>
+      <p><b>Step 1: clean the bands.</b> Some bands carry almost no ground signal, so they add only noise:</p>
+      <ul>
+        <li><b>Water-vapour bands</b> around 1.35–1.45 µm and 1.80–1.95 µm, where the air absorbs the light.</li>
+        <li><b>Detector edges</b>: at the ends of each detector's range the detector, the optics and the sunlight all weaken, so the
+        <b>signal-to-noise ratio (SNR)</b> collapses.</li>
+        <li><b>The VNIR/SWIR junction</b> (about 900–1,000 nm), where EnMAP's two detectors overlap, both are at their weak edge, water vapour absorbs
+        near 940 nm and the two spectra can join with a small step. Keep one clean copy, not two noisy ones.</li>
+      </ul>
+      <p>You can measure SNR from the image itself. Real spectra are smooth from one band to the next; noise is not. So the residual
+      <b>r = x<sub>b</sub> − (x<sub>b−1</sub> + x<sub>b+1</sub>) ÷ 2</b> is mostly noise. SNR ≈ mean signal ÷ spread of r. Flag bands below a threshold
+      (for example 20), then <b>review the list</b>: bands beside a water-vapour gap or on a sharp real absorption feature can be flagged by mistake.
+      EnMAP's 224 bands become CoolCairo's 203 usable ones this way.</p>
+      <p><b>Step 2: keep every clean band, and let ridge regression do the work.</b> Instead of labelling each pixel, predict the <b>share</b> of each
+      material directly from its full spectrum. With hundreds of correlated bands, plain least squares overreacts to noise. <b>Ridge regression</b>
+      adds a penalty, λ × (sum of squared coefficients), that shrinks the coefficients. Neighbouring bands then share the weight instead of fighting.
+      λ is chosen on training data only, and the predicted shares are clipped at zero and rescaled to add up to one.</p>
+      <p><b>What the experiment found</b> (HYDICE Urban, 400–2500 nm, hidden tiles):</p>
+      <ul>
+        <li>Share error per 90 m block: <b>1.8 points</b> with all clean bands + ridge, against <b>6.5</b> with Sentinel-2-like bands: about <b>3.5× smaller</b>.</li>
+        <li>Roof-vs-dirt error, CoolCairo's pale-roof-or-sand problem: <b>8.0 → 5.0 points</b> per 10 m pixel.</li>
+        <li>Picking 20 "best" bands did worse (7.3 points per 10 m pixel vs 5.3), and so did a layered model (6.2).</li>
+        <li>With noisy edge bands left in, all-band ridge barely changed; models that <b>select</b> bands collapsed until the noisy bands were removed
+        (layered: 0.74 → 0.93 balanced accuracy).</li>
+      </ul>
+      <p>These were airborne benchmark scenes at 2 m, not Cairo. EnMAP's 30 m pixels mix more surfaces, so the next step is to confirm the same ranking on the Cairo EnMAP scene.</p>`,
+    keys: [["203 of 224", "EnMAP bands left after cleaning"], ["≈ 3.5×", "Smaller block-share error than Sentinel-2-like bands"], ["SNR < 20", "Flag, then review before dropping"]],
+    note: { kind: "gold", html: "<b>The recipe:</b> clean the bands → keep everything that is left → ridge regression for material shares → shares per 90 m block → the heat model. Band selection is for understanding which wavelengths matter, not for scoring." },
+    lab: "cleanridge", labTitle: "Clean a scene, then predict shares", labHint: "First find the noisy bands from the image itself and clean them. Then train ridge regression to predict roof and sand shares, and compare it with Sentinel-2-like bands and with a handful of selected bands. Simulated spectra, real arithmetic; the last chart shows the real experiment.",
+    field: [
+      { where: "Weather forecasting", title: "Blacklisting noisy channels", text: "Forecast centres feed thousands of channels from hyperspectral sounders such as IASI and AIRS into their models, but first monitor each channel and leave out the noisy or unreliable ones.", link: "The same step as CoolCairo's band cleaning: measure each band, drop what is mostly noise." },
+      { where: "Food and pharma labs", title: "Predicting protein and moisture from spectra", text: "Near-infrared analysers predict a sample's protein, fat or moisture from hundreds of correlated wavelengths using regularised regression (ridge, PLS) rather than a few hand-picked bands.", link: "Exactly the ridge-on-all-bands idea, applied to grain instead of city blocks." },
+      { where: "Genetics", title: "Thousands of correlated inputs", text: "Models that predict traits from thousands of genetic markers rely on ridge-type penalties, because the inputs far outnumber the samples and are strongly correlated.", link: "When inputs are many and correlated, shrink the weights instead of throwing inputs away." },
+    ],
+    quiz: [
+      { q: "Why is the residual x_b − (x_{b−1} + x_{b+1}) ÷ 2 a good way to measure a band's noise?", opts: ["It removes clouds", "Real spectra are smooth across neighbouring bands, so what is left is mostly noise", "It equals the signal", "It only works for vegetation"], a: 1, why: "Signal changes slowly from band to band; noise is independent in each band, so it survives the subtraction." },
+      { q: "What does the ridge penalty do?", opts: ["Deletes bands", "Shrinks the coefficients so many correlated bands share the weight instead of overreacting to noise", "Adds more bands", "Makes the model classify instead of predict shares"], a: 1, why: "Least squares + λ × (sum of squared coefficients). λ is chosen on training data only." },
+      { q: "In the experiment, how did all clean bands + ridge compare with Sentinel-2-like bands for shares per 90 m block?", opts: ["About the same", "About 3.5× smaller error (1.8 vs 6.5 points)", "Worse", "Only better for vegetation"], a: 1, why: "And roof-vs-dirt error fell from 8.0 to 5.0 points per 10 m pixel." },
+      { q: "Your SNR check flags a band right beside the 1.94 µm water-vapour gap. What should you do?", opts: ["Always drop every flagged band automatically", "Review it: the estimator can flag bands at gap edges or sharp real features, so check the wavelength before dropping", "Keep all bands, never clean", "Replace it with Sentinel-2"], a: 1, why: "Flag, then review. Most flagged bands go, but the decision is checked against the wavelength." },
+    ],
+  },
+  {
     id: 14, act: 4, title: "Growth and other cities", sub: "Desert expansion and whether the method travels",
     brief: `
       <p>Google Open Buildings 2.5D Temporal maps building presence every year at 4 m. East Cairo's building area grew from
@@ -491,7 +536,7 @@ const CHAPTERS = [
   },
 ];
 
-// Flashcards for mission 16: the judges' questions from the guide plus the verification role.
+// Flashcards for the judges' drill: the judges' questions from the guide plus the verification role.
 const FLASHCARDS = [
   ["Why hyperspectral data?", "More, narrower bands give each surface a fuller fingerprint. EnMAP alone explains block heat at R² 0.53 vs 0.31 for Sentinel-2, and only 0.33 when cut to Sentinel-2's bands: the gain is the spectral detail."],
   ["You used only one scene?", "One April scene over Cairo, yes. We repeated the test in Algiers, Dubai and Riyadh with scenes from other seasons and years, and EnMAP won every time. Next: summer scenes and Satellite 813."],
@@ -510,6 +555,9 @@ const FLASHCARDS = [
   ["Is the pocket-park effect just the desert next door?", "Partly. Adding neighbouring sand lifts R² from 0.25 to 0.37 and roughly halves the park effect. The targeted plan still cuts exposure by about two thirds."],
   ["Surface or air temperature?", "Surface, at about 10:30 am. City-wide cool roofs lower air by roughly 0.1–0.33 °C per +0.1 albedo. Night heat and ground sensors are next steps."],
   ["Where do the population numbers come from?", "WorldPop 2024, 100 m, modelled, not a census. Heat exposure is a screening number; vulnerability is not yet included."],
+  ["How do you handle noisy bands?", "Drop the water-vapour bands, then estimate each band's SNR from the image (the spectral-neighbour residual) and review bands below 20 before dropping them. EnMAP's 224 bands become 203 usable ones."],
+  ["What is your hyperspectral upgrade path?", "Clean the bands, keep all that remain, and predict material shares with ridge regression. On a benchmark it gave about 3.5× smaller block-level share error than Sentinel-2-like bands; next we confirm it on Cairo's EnMAP scene."],
+  ["Did you try band selection or layering?", "Yes, on two real scenes with hidden-area testing. Picking a few bands never beat all clean bands with ridge; a careful layered design gained under one point. We use selection to explain which wavelengths matter, not to score."],
   ["Are new neighbourhoods built hot?", "New blocks average 46.9 °C vs 46.0 °C, but most of the gap is sand: allowing for cover and sand it is +0.2 °C. They are where cooling is cheapest to build in."],
 ];
 
@@ -554,5 +602,9 @@ const GLOSSARY = [
   ["Ridge regression", "Regression that stays stable with many correlated inputs by shrinking coefficients.", 13],
   ["Control (experiment)", "A comparison where everything is the same except one thing, e.g. EnMAP cut to six bands.", 13],
   ["PCA", "Squeezes many correlated bands into a few summary ones.", 13],
+  ["Signal-to-noise ratio (SNR)", "How much real signal a band carries compared with the sensor's own noise; low at detector edges and in water-vapour bands.", 17],
+  ["Band cleaning", "Removing water-vapour, detector-edge and duplicate overlap bands before modelling; EnMAP 224 → 203 usable bands.", 17],
+  ["Spectral-neighbour residual", "x_b − (x_{b−1} + x_{b+1}) ÷ 2: what is left after removing the smooth spectrum, used to estimate each band's noise.", 17],
+  ["Regularisation", "A penalty that keeps a model's coefficients small so it does not chase noise; ridge regression is one form.", 17],
   ["STAC / Planetary Computer", "A standard catalogue of satellite images, and Microsoft's free archive Landsat and Sentinel-2 stream from.", 3],
 ];

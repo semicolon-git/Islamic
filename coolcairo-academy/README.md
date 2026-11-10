@@ -6,14 +6,14 @@ A browser game that teaches the domain behind CoolCairo and every part of its me
 
 ## Structure
 
-16 missions in four acts. Each mission has a **briefing** (key ideas and the numbers to remember), a **lab** (an interactive visual), **In the field** (real-world uses, each linked back to CoolCairo) and a **checkpoint** (4 questions; 3 of 4 earns the badge).
+17 missions in four acts. Each mission has a **briefing** (key ideas and the numbers to remember), a **lab** (an interactive visual), **In the field** (real-world uses, each linked back to CoolCairo) and a **checkpoint** (4 questions; 3 of 4 earns the badge).
 
 | Act | Missions |
 | --- | --- |
 | 1 · Foundations | Urban heat islands · Light and the spectrum (Planck, Wien) · Pixels and resolution · Thermal infrared and LST (emissivity, atmosphere, USGS Level-2) |
 | 2 · From pixels to facts | Clouds and the median · Spectral fingerprints (NDVI, brightness, BSI, the four rules) · Thresholds and balanced accuracy · Blocks, buildings, people (fusion, heat exposure, unmixing) |
 | 3 · The model | The heat model (linear regression, least squares, sign check) · Scoring (R², MAE) · The hidden-areas exam (spatial cross-validation) |
-| 4 · Decisions and the frontier | Cooling measures and targeting (albedo, "knowing where pays") · Hyperspectral data (EnMAP, the control, ridge, PCA) · Growth and other cities · Honest limits and verification · The judges' drill (flashcards) |
+| 4 · Decisions and the frontier | Cooling measures and targeting (albedo, "knowing where pays") · Hyperspectral data (EnMAP, the control, ridge, PCA) · Clean bands, better shares (SNR band cleaning, ridge shares on every clean band) · Growth and other cities · Honest limits and verification · The judges' drill (flashcards) |
 
 Then a **final exam** (20 random questions from all missions); 16/20 with all 16 badges makes you a *Super Expert*. Press **G** for the glossary of 40 terms.
 

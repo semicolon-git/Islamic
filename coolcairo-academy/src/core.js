@@ -64,10 +64,14 @@ try { const s = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); if (s) st
 function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch { /* storage off */ } }
 
 const RANKS = [[0, "Cadet"], [400, "Observer"], [1000, "Analyst"], [1800, "Specialist"], [2600, "Expert"]];
-const MAX_XP = 16 * (40 + 4 * 30 + 50) + 20 * 15;
+// Missions are routed by id (#m17) but shown and ordered by their position in CHAPTERS.
+const TOTAL = () => CHAPTERS.length;
+const posOf = (ch) => CHAPTERS.indexOf(ch) + 1;
+const byId = (id) => CHAPTERS.find((c) => c.id === id);
+const MAX_XP_FN = () => TOTAL() * (40 + 4 * 30 + 50) + 20 * 15;
 function rank() {
   const done = Object.keys(state.done).length;
-  if (done >= 16 && state.exam.best >= 16) return "Super Expert";
+  if (done >= TOTAL() && state.exam.best >= 16) return "Super Expert";
   let r = RANKS[0][1];
   for (const [x, n] of RANKS) if (state.xp >= x) r = n;
   return r;
@@ -85,7 +89,8 @@ function renderHud() {
   $("#xpNow").textContent = fint(state.xp);
   $("#rankName").textContent = rank();
   $("#doneCount").textContent = Object.keys(state.done).length;
-  $("#xpBar").style.width = `${Math.min(100, (100 * state.xp) / MAX_XP)}%`;
+  $("#xpBar").style.width = `${Math.min(100, (100 * state.xp) / MAX_XP_FN())}%`;
+  $("#totalCount").textContent = TOTAL();
 }
 let toastT = 0;
 function toast(html) {
@@ -104,7 +109,7 @@ function route() {
   const h = location.hash.slice(1) || "home";
   view.innerHTML = "";
   const m = h.match(/^m(\d+)$/);
-  if (m && CHAPTERS[+m[1] - 1]) renderChapter(CHAPTERS[+m[1] - 1]);
+  if (m && byId(+m[1])) renderChapter(byId(+m[1]));
   else if (h === "exam") renderExam();
   else renderHome();
   window.scrollTo(0, 0);
@@ -120,14 +125,14 @@ function starsFor(ch) {
 }
 function renderHome() {
   const done = Object.keys(state.done).length;
-  const next = CHAPTERS.find((c) => !state.done[c.id]) || CHAPTERS[15];
+  const next = CHAPTERS.find((c) => !state.done[c.id]) || CHAPTERS[CHAPTERS.length - 1];
   const hero = el("section", { class: "hero" }, [
     el("div", {}, [
       el("div", { class: "eyebrow", text: "Team 46 · Hyperspectral course prep" }),
       el("h1", { html: "From a glow in space<br>to a cooler street." }),
-      el("p", { class: "lead", text: "Sixteen missions take you from what an urban heat island is, through how satellites measure heat and materials, to every number in CoolCairo and how to defend it. Each mission has a briefing, a hands-on lab, real-world cases and a checkpoint." }),
+      el("p", { class: "lead", text: `${TOTAL()} missions take you from what an urban heat island is, through how satellites measure heat and materials, to every number in CoolCairo and how to defend it. Each mission has a briefing, a hands-on lab, real-world cases and a checkpoint.` }),
       el("div", { class: "hero-stats" }, [
-        el("div", { class: "stat" }, [el("b", { text: `${done}/16` }), el("span", { text: "missions" })]),
+        el("div", { class: "stat" }, [el("b", { text: `${done}/${TOTAL()}` }), el("span", { text: "missions" })]),
         el("div", { class: "stat" }, [el("b", { text: fint(state.xp) }), el("span", { text: "XP earned" })]),
         el("div", { class: "stat" }, [el("b", { text: rank() }), el("span", { text: "rank" })]),
         el("div", { class: "stat" }, [el("b", { text: state.exam.best ? `${state.exam.best}/20` : "—" }), el("span", { text: "best exam" })]),
@@ -149,7 +154,7 @@ function renderHome() {
     for (const ch of CHAPTERS.filter((c) => c.act === act.n)) {
       const st = starsFor(ch);
       grid.append(el("a", { class: `station${state.done[ch.id] ? " done" : ""}`, href: `#m${ch.id}` }, [
-        el("span", { class: "st-no", text: state.done[ch.id] ? "✓" : String(ch.id) }),
+        el("span", { class: "st-no", text: state.done[ch.id] ? "✓" : String(posOf(ch)) }),
         el("span", { class: "st-title", text: ch.title }),
         el("span", { class: "st-sub", text: ch.sub }),
         el("span", { class: "st-meta" }, [el("span", { class: "stars", text: "★".repeat(st) + "☆".repeat(3 - st) }), el("span", { text: state.labs[ch.id] ? "lab done" : "lab" })]),
@@ -159,7 +164,7 @@ function renderHome() {
     acts.append(sec);
   }
   const badges = el("div", { class: "badges" }, CHAPTERS.map((c) => el("span", { class: `badge${state.done[c.id] ? " on" : ""}`, text: `${state.done[c.id] ? "★" : "☆"} ${c.title}` })));
-  acts.append(el("section", {}, [el("div", { class: "act-head" }, [el("span", { class: "eyebrow", text: "Badges" }), el("h2", { text: "Your collection" }), el("p", { text: "Pass a mission's checkpoint (3 of 4) to earn its badge. All 16 badges and 16/20 on the final exam make you a Super Expert." })]), badges]));
+  acts.append(el("section", {}, [el("div", { class: "act-head" }, [el("span", { class: "eyebrow", text: "Badges" }), el("h2", { text: "Your collection" }), el("p", { text: `Pass a mission's checkpoint (3 of 4) to earn its badge. All ${TOTAL()} badges and 16/20 on the final exam make you a Super Expert.` })]), badges]));
   view.append(acts);
 }
 
@@ -218,7 +223,7 @@ function renderChapter(ch) {
   const act = ACTS[ch.act - 1];
   view.append(el("div", { class: "crumbs" }, [el("a", { href: "#home", text: "Mission map" }), el("span", { text: "/" }), el("span", { text: `Act ${act.n} · ${act.name}` })]));
   view.append(el("header", { class: "ch-head" }, [
-    el("div", { class: "eyebrow", text: `Mission ${ch.id} of 16${state.done[ch.id] ? " · badge earned" : ""}` }),
+    el("div", { class: "eyebrow", text: `Mission ${posOf(ch)} of ${TOTAL()}${state.done[ch.id] ? " · badge earned" : ""}` }),
     el("h1", { text: ch.title }),
     el("p", { text: ch.sub }),
   ]));
@@ -283,7 +288,7 @@ function renderChapter(ch) {
   });
 
   // pager
-  const prev = CHAPTERS[ch.id - 2], next = CHAPTERS[ch.id];
+  const prev = CHAPTERS[posOf(ch) - 2], next = CHAPTERS[posOf(ch)];
   view.append(el("nav", { class: "pager" }, [
     prev ? el("a", { class: "btn", href: `#m${prev.id}`, text: `← ${prev.title}` }) : el("a", { class: "btn", href: "#home", text: "← Mission map" }),
     next ? el("a", { class: "btn primary", href: `#m${next.id}`, text: `${next.title} →` }) : el("a", { class: "btn primary", href: "#exam", text: "Final exam →" }),
@@ -356,7 +361,7 @@ function renderExam() {
   view.append(el("header", { class: "ch-head" }, [
     el("div", { class: "eyebrow", text: "Certification" }),
     el("h1", { text: "The expert exam" }),
-    el("p", { text: "Twenty questions drawn at random from all sixteen missions, answers shuffled. Score 16 or more, with all sixteen badges, to become a CoolCairo Super Expert." }),
+    el("p", { text: `Twenty questions drawn at random from all ${TOTAL()} missions, answers shuffled. Score 16 or more, with all ${TOTAL()} badges, to become a CoolCairo Super Expert.` }),
   ]));
   const box = el("div");
   view.append(box);
@@ -373,8 +378,8 @@ function renderExam() {
         setTimeout(() => {
           if (score >= 16) box.prepend(el("div", { class: "cert" }, [
             el("div", { class: "eyebrow", text: "CoolCairo Academy" }),
-            el("h2", { text: done >= 16 ? "Super Expert" : "Exam passed" }),
-            el("p", { text: done >= 16 ? `Certified: ${score}/20 on the expert exam with all sixteen badges. You can explain and defend every part of CoolCairo.` : `You scored ${score}/20. Earn the remaining ${16 - done} badges to become a Super Expert.` }),
+            el("h2", { text: done >= TOTAL() ? "Super Expert" : "Exam passed" }),
+            el("p", { text: done >= TOTAL() ? `Certified: ${score}/20 on the expert exam with all ${TOTAL()} badges. You can explain and defend every part of CoolCairo.` : `You scored ${score}/20. Earn the remaining ${TOTAL() - done} badges to become a Super Expert.` }),
           ]));
         }, 0);
         return score >= 16 ? "Passed. Every explanation above links back to its mission." : `You need 16 to pass. Revisit the missions named in the explanations.`;
@@ -395,7 +400,7 @@ function renderGlossary(filter = "") {
   list.innerHTML = "";
   for (const [term, meaning, m] of GLOSSARY) {
     if (f && !(term + " " + meaning).toLowerCase().includes(f)) continue;
-    list.append(el("div", {}, [el("dt", { text: term }), el("dd", {}, [document.createTextNode(meaning + " "), el("a", { class: "go", href: `#m${m}`, text: `Mission ${m} →`, onclick: () => $("#glossDlg").close() })])]));
+    list.append(el("div", {}, [el("dt", { text: term }), el("dd", {}, [document.createTextNode(meaning + " "), el("a", { class: "go", href: `#m${m}`, text: `Mission ${posOf(byId(m))} →`, onclick: () => $("#glossDlg").close() })])]));
   }
   if (!list.children.length) list.append(el("p", { class: "muted", text: "No term matches. Try a shorter word." }));
 }
